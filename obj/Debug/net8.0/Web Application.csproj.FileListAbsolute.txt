@@ -1,0 +1,53 @@
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/appsettings.Development.json
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/appsettings.json
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application.deps.json
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application.runtimeconfig.json
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application.dll
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application.pdb
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.AssemblyInfoInputs.cache
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.AssemblyInfo.cs
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.csproj.CoreCompileInputs.cache
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.MvcApplicationPartsAssemblyInfo.cache
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets.build.json
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets.development.json
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.Web Application.Microsoft.AspNetCore.StaticWebAssets.props
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.build.Web Application.props
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Web Application.props
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Web Application.props
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/staticwebassets.pack.json
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/scopedcss/bundle/Web Application.styles.css
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.dll
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/refint/Web Application.dll
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.pdb
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/Web Application.genruntimeconfig.cache
+/home/william/Documents/Coding Projects/Website/Web Application/obj/Debug/net8.0/ref/Web Application.dll
+/home/william/Documents/Coding Projects/Website/Web Application/bin/Debug/net8.0/Web Application.staticwebassets.runtime.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/appsettings.Development.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/appsettings.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/tsconfig.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application.staticwebassets.runtime.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application.deps.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application.runtimeconfig.json
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application.dll
+/home/william/Documents/Coding Projects/Web Application/bin/Debug/net8.0/Web Application.pdb
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.AssemblyInfoInputs.cache
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.AssemblyInfo.cs
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.csproj.CoreCompileInputs.cache
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.MvcApplicationPartsAssemblyInfo.cache
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets.build.json
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets.development.json
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.Web Application.Microsoft.AspNetCore.StaticWebAssets.props
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.build.Web Application.props
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Web Application.props
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Web Application.props
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/staticwebassets.pack.json
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/scopedcss/bundle/Web Application.styles.css
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.dll
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/refint/Web Application.dll
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.pdb
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/Web Application.genruntimeconfig.cache
+/home/william/Documents/Coding Projects/Web Application/obj/Debug/net8.0/ref/Web Application.dll
