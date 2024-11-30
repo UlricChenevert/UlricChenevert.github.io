@@ -5,3 +5,6 @@ export let generateUniqueId = {
         return this.lastID;
     }
 };
+export function withinBounds(value, lowerBound, upperBound) {
+    return value >= lowerBound && value <= upperBound;
+}
