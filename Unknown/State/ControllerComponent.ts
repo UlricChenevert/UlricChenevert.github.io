@@ -1,5 +1,0 @@
-class ControllerComponent {
-    constructor () {
-        
-    }
-}

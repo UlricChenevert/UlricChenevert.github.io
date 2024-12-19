@@ -1,4 +1,5 @@
-export interface IDisplayable {
-    isDisplaying : boolean
-    display : Function 
+import { ComponentBundler } from "../State/Interfaces"
+
+export interface IScene {
+    display : Function
 }

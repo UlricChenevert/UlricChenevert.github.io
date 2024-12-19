@@ -1,4 +1,4 @@
-import { Entity } from "./Entity.js"
+import { Entity } from "./Component/Entity.js"
 
 export interface IPhysicalComponent {
     x : number
