@@ -13,7 +13,7 @@ export class PhysicalRenderSystem implements IRenderSystem {
 
     async render () {
         this.physicalComponents.entityBundle.forEach((entity)=>{
-            this.frameBundler.tileGrid[entity.x][entity.y].representation = entity.representation
+            this.frameBundler.tileGrid[entity.y][entity.x].representation = entity.representation
         })
     }
 }

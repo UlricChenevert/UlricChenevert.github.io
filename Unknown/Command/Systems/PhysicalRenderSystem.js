@@ -15,7 +15,7 @@ export class PhysicalRenderSystem {
     render() {
         return __awaiter(this, void 0, void 0, function* () {
             this.physicalComponents.entityBundle.forEach((entity) => {
-                this.frameBundler.tileGrid[entity.x][entity.y].representation = entity.representation;
+                this.frameBundler.tileGrid[entity.y][entity.x].representation = entity.representation;
             });
         });
     }
