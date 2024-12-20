@@ -28,7 +28,7 @@ export class LoadingSceneCommands implements ISceneCommand {
         // Change all tiles to blank
         this.frameBundler.tileGrid.forEach((row) => {
             row.forEach((TileComponent) => {
-                TileComponent.representation = GraphicsConfig.WaterRepresentation
+                TileComponent.representation = GraphicsConfig.Representation.Blank
             })
         })
 
@@ -46,7 +46,7 @@ export class LoadingSceneCommands implements ISceneCommand {
         const affectedCharacters = Math.floor(this.loadingProgressState.progress * GraphicsConfig.LoadLength)
 
         for (let index = beginningIndex + 1; index < beginningIndex + affectedCharacters + 1; index ++) {
-            this.frameBundler.tileGrid[centerIndex][index].representation = GraphicsConfig.NPCRepresentation
+            this.frameBundler.tileGrid[centerIndex][index].representation = GraphicsConfig.Representation.LoadingBar
         }
     }
 }

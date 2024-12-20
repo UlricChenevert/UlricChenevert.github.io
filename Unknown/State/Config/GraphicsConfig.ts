@@ -3,10 +3,24 @@
 
 export const GraphicsConfig = {
     "displayLength" : 100, 
-    "nullRepresentation" : "&#0",
     "LoadLength" : 10,
-    "BlankRepresentation" : ' ',
-    "CharacterRepresentation" : '8',
-    "NPCRepresentation" : 'o',
-    "WaterRepresentation" : '-',
+    Representation : {
+        "Blank" : '&#x0020;',
+        "Character" : '&#x1338;',
+        "NPC" : '&#x1330;',
+        "Water" : '&#x2248;',
+        "Null" : "&#x0",
+        "Animal" : "&#x040B;", // I really want "&#x12B8;"
+        "Path" : ".",
+        "PineTree" : "&#x219F;",
+        "Hill" : "&#x02C4;",
+        "Mountain" : "&#xx0668;",
+        "Grass" : "&#x02F5;",
+        "Shrine" : "&#x127E;",
+        "Farmland":"&#x2583;",
+        "Hut":"&#x03C0;",
+        "SmallHouse":"&#x21D1;",
+        "LargeHouse":"&#x220F;",
+        "LoadingBar" : "o"
+    }
 };

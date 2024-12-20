@@ -11,6 +11,7 @@ import { BeingComponent } from "../../State/Component/BeingComponent.js";
 import { Entity } from "../../State/Component/Entity.js";
 import { PhysicalComponent } from "../../State/Component/PhysicalComponent.js";
 import { PlayerControlSystem } from "../Systems/PlayerControlSystem.js";
+import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";
 export class StartupEventCommand {
     constructor(physicalComponentBundler, beingComponentBundler, entityDirectory, cellBundler, keyEventCommand) {
         this.physicalComponentBundler = physicalComponentBundler;
@@ -42,7 +43,7 @@ function createNPC(entityDirectory, beingComponentBundler, physicalComponentBund
     // Adding to all the bundlers
     entityDirectory.Entities.push(npc);
     beingComponentBundler.entityBundle.set(npc.id, new BeingComponent(100, 1, 1, 1));
-    physicalComponentBundler.entityBundle.set(npc.id, new PhysicalComponent(20, 20, 'o'));
+    physicalComponentBundler.entityBundle.set(npc.id, new PhysicalComponent(20, 20, GraphicsConfig.Representation.NPC));
 }
 // I want a new entity with physical components and being components
 function createPlayer(entityDirectory, beingComponentBundler, physicalComponentBundler, keyEventCommand) {
@@ -51,7 +52,7 @@ function createPlayer(entityDirectory, beingComponentBundler, physicalComponentB
     entityDirectory.Entities.push(player);
     beingComponentBundler.entityBundle.set(player.id, new BeingComponent(100, 1, 1, 1));
     // Create a physical component and attach it to the keyEventCommand
-    let playerPhysicalComponent = new PhysicalComponent(10, 10, '8');
+    let playerPhysicalComponent = new PhysicalComponent(10, 10, GraphicsConfig.Representation.Character);
     physicalComponentBundler.entityBundle.set(player.id, playerPhysicalComponent);
     keyEventCommand.keyEventSystems.push(new PlayerControlSystem(playerPhysicalComponent));
 }

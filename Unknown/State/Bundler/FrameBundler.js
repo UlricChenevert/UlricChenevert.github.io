@@ -9,7 +9,7 @@ export class FrameBundler {
         for (let i = 0; i < GraphicsConfig.displayLength; i++) {
             const tempArray = [];
             for (let j = 0; j < GraphicsConfig.displayLength; j++) {
-                tempArray[j] = new TileComponent(GraphicsConfig.WaterRepresentation); // or whatever 
+                tempArray[j] = new TileComponent(GraphicsConfig.Representation.Blank); // or whatever 
             }
             blankCell[i] = tempArray;
         }
