@@ -34,7 +34,11 @@ export class CellComponent {
             return response.json();
         })
         .then(result => {
-            this.tileGrid = result.Data;
+            for(let i = 0; i < GraphicsConfig.displayLength; i++) {
+                for (let j = 0; j < GraphicsConfig.displayLength; j++) {
+                    this.tileGrid[i][j].representation = result.Grid[i][j]
+                }
+            }
             resolve();
         })
         .catch(() => {

@@ -34,14 +34,11 @@ export class ModeHandler {
     }
     handleStartup() {
         return __awaiter(this, void 0, void 0, function* () {
-            /* Set Mode */
-            //  Only one layer may be active at a time
-            this.activeScene = this.loadingScene;
             /* Bubble to command */
-            this.startupEventCommand.handleStartup()
-                .then(() => this.activeScene.render());
-            // /* Bubble to layer */
-            // .then(()=>this.activeScene.display())
+            this.startupEventCommand.handleStartup().then(() => {
+                /* Set Mode */
+                this.activeScene = this.gameScene;
+            });
         });
     }
     // This will be requested >10 times per second

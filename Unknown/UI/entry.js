@@ -3,21 +3,6 @@ const modeHandler = DependencyInjection.resolve("ModeHandler");
 const displayElement = document.getElementById("Game");
 if (displayElement === null)
     throw "Game not defined";
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Game starting up!");
-    // Start game loop
-    modeHandler.handleStartup()
-        .then(() => {
-        modeHandler.requestFrame(displayElement);
-        // Startup game loop
-        let lastUpdate = document.timeline.currentTime;
-        requestAnimationFrame(() => gameLoop(lastUpdate));
-    });
-});
-document.addEventListener('keyup', (event) => {
-    modeHandler.handleKeyEvent(event);
-    console.log("Handled " + event.key);
-});
 function gameLoop(lastUpdate) {
     if (document.timeline.currentTime - lastUpdate >= 100) {
         modeHandler.requestFrame(displayElement);
@@ -26,3 +11,15 @@ function gameLoop(lastUpdate) {
     }
     requestAnimationFrame(() => gameLoop(lastUpdate)); // loop
 }
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Game starting up!");
+    // Start game loop
+    modeHandler.requestFrame(displayElement);
+    modeHandler.step();
+    requestAnimationFrame(() => gameLoop(document.timeline.currentTime));
+    modeHandler.handleStartup();
+});
+document.addEventListener('keyup', (event) => {
+    modeHandler.handleKeyEvent(event);
+    console.log("Handled " + event.key);
+});
