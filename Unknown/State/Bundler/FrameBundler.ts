@@ -1,5 +1,5 @@
-import { TileComponent } from "../Component/TileComponent"
-import { GraphicsConfig } from "../Config/GraphicsConfig"
+import { TileComponent } from "../Component/TileComponent.js"
+import { GraphicsConfig } from "../Config/GraphicsConfig.js"
 
 export class FrameBundler {
     tileGrid : Array<Array<TileComponent>>
@@ -15,7 +15,7 @@ export class FrameBundler {
             const tempArray: TileComponent[] = []
             
             for (let j = 0; j < GraphicsConfig.displayLength; j++) {
-                tempArray[j] = new TileComponent(GraphicsConfig.nullRepresentation) // or whatever 
+                tempArray[j] = new TileComponent(GraphicsConfig.WaterRepresentation) // or whatever 
             }
             
             blankCell[i] = tempArray

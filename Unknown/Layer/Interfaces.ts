@@ -1,5 +1,3 @@
-import { ComponentBundler } from "../State/Interfaces"
-
-export interface IScene {
-    display : Function
+export interface ISceneLoader {
+    display : (displayElement : HTMLElement) => void
 }

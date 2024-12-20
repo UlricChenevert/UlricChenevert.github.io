@@ -8,13 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 export class ModeHandler {
-    constructor(keyEventCommand, gameScene, menuScene, loadingScene, startupEventCommand, requestFrameCommand) {
+    constructor(keyEventCommand, startupEventCommand, gameScene, menuScene, loadingScene, sceneLoader) {
         this.keyEventCommand = keyEventCommand;
+        this.startupEventCommand = startupEventCommand;
+        this.sceneLoader = sceneLoader;
         this.gameScene = gameScene;
         this.menuScene = menuScene;
         this.loadingScene = loadingScene;
-        this.startupEventCommand = startupEventCommand;
-        this.requestFrameCommand = requestFrameCommand;
+        this.activeScene = this.loadingScene;
     }
     handleKeyEvent(event) {
         // Bubble up input - ModeHandler cannot handle it
@@ -23,37 +24,43 @@ export class ModeHandler {
             this.keyEventCommand.handleKeyEvent(event);
             /* Bubble to layer */
             // N/A - because keys just change data
+            return;
         }
         /* Set Mode */
-        this.gameScene.toggleIsDisplaying();
-        this.menuScene.toggleIsDisplaying();
+        if (this.activeScene !== this.gameScene)
+            this.activeScene = this.gameScene;
+        else if (this.activeScene !== this.menuScene)
+            this.activeScene = this.menuScene;
     }
     handleStartup() {
         return __awaiter(this, void 0, void 0, function* () {
             /* Set Mode */
             //  Only one layer may be active at a time
-            this.gameScene.isDisplaying = false;
-            this.menuScene.isDisplaying = false;
-            this.loadingScene.isDisplaying = true;
+            this.activeScene = this.loadingScene;
             /* Bubble to command */
-            this.startupEventCommand.handleStartup(); // Kinda Async
-            this.requestFrameCommand.renderLoading(); // Async
-            /* Bubble to layer */
-            // this.loadingScene.display() // Should be async
+            this.startupEventCommand.handleStartup()
+                .then(() => this.activeScene.render());
+            // /* Bubble to layer */
+            // .then(()=>this.activeScene.display())
         });
     }
-    // This will be requested 60 times per second
-    requestFrame() {
-        return __awaiter(this, void 0, void 0, function* () {
-            /* Set Mode */
-            // N/A
-            /* Bubble to command */
-            // N/A - Information is all ready in state
-            /* Bubble to layer */
-            // Display layer 
-            this.gameScene.display();
-            this.menuScene.display();
-            this.loadingScene.display();
-        });
+    // This will be requested >10 times per second
+    requestFrame(displayElement) {
+        /* Set Mode */
+        // N/A
+        /* Bubble to command */
+        // N/A - Information is all ready in state
+        /* Bubble to layer */
+        // Display layer 
+        this.sceneLoader.display(displayElement);
+    }
+    step() {
+        /* Set Mode */
+        // N/A
+        /* Bubble to command */
+        this.activeScene.step();
+        this.activeScene.render();
+        /* Bubble to layer */
+        // N/A
     }
 }

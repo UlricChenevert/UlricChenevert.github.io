@@ -1,7 +1,16 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { BeingComponent } from "../../State/Component/BeingComponent.js";
 import { Entity } from "../../State/Component/Entity.js";
 import { PhysicalComponent } from "../../State/Component/PhysicalComponent.js";
-import { PlayerControlSystem } from "./PlayerControlSystem.js";
+import { PlayerControlSystem } from "../Systems/PlayerControlSystem.js";
 export class StartupEventCommand {
     constructor(physicalComponentBundler, beingComponentBundler, entityDirectory, cellBundler, keyEventCommand) {
         this.physicalComponentBundler = physicalComponentBundler;
@@ -11,13 +20,20 @@ export class StartupEventCommand {
         this.keyEventCommand = keyEventCommand;
     }
     handleStartup() {
-        // I want to set up / generate map data
-        // Rest of the cells can just use the blank cell default constructor (for now)
-        this.cellBundler.activeCell.loadCell("SpawnCell");
-        /* Initialize all game states */
-        createPlayer(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler, this.keyEventCommand);
-        // IDK just for fun
-        createNPC(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler);
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve) => {
+                // I want to set up / generate map data
+                // Rest of the cells can just use the blank cell default constructor (for now)
+                let loadCellPromise = this.cellBundler.activeCell.loadCell("SpawnCell");
+                /* Initialize all game states */
+                createPlayer(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler, this.keyEventCommand);
+                // IDK just for fun
+                createNPC(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler);
+                loadCellPromise.then(() => {
+                    resolve();
+                });
+            });
+        });
     }
 }
 // I want a new entity with physical components and being components

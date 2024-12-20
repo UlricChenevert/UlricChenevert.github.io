@@ -8,34 +8,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { TileComponent } from "./TileComponent.js";
-import { dispatchCellLoadedEvent } from "../../Events/CellLoaded.js";
 import { GraphicsConfig } from "../Config/GraphicsConfig.js";
 export class CellComponent {
     constructor(worldCoordinate, specificFile = "BlankCell") {
         this.worldCoordinate = worldCoordinate;
         this.tileGrid = [];
-        this.isLoaded = false;
         this.loadCell(specificFile);
     }
     loadCell() {
         return __awaiter(this, arguments, void 0, function* (specificFile = "BlankCell") {
-            this.isLoaded = false;
-            // Targeted file search if specificFile is not specified
-            let fileName = "";
-            if (specificFile != "BlankCell")
-                fileName = specificFile;
-            else if (this.worldCoordinate.x != -1 && this.worldCoordinate.y != -1)
-                fileName = `${this.worldCoordinate.x}-${this.worldCoordinate.y}`;
-            else // if (-1, -1) and BlankCell
-                fileName = "BlankCell";
-            let response = fetch(`../Maps/${fileName}.json`)
-                .then(response => response.json())
-                .then(result => {
-                this.tileGrid = result.Data;
-                this.isLoaded = true;
-                dispatchCellLoadedEvent(this.worldCoordinate);
-            })
-                .catch(() => this.tileGrid = this.blankCell());
+            return new Promise((resolve) => {
+                // Targeted file search if specificFile is not specified
+                let fileName = "";
+                if (specificFile != "BlankCell")
+                    fileName = specificFile;
+                else if (this.worldCoordinate.x != -1 && this.worldCoordinate.y != -1)
+                    fileName = `${this.worldCoordinate.x}-${this.worldCoordinate.y}`;
+                else // if (-1, -1) and BlankCell
+                    fileName = "BlankCell";
+                // I dislike this, but I cannot figure out a way to handle errors and without emitting
+                fetch(`../State/Maps/${fileName}.json`, {})
+                    .then(response => {
+                    if (!response.ok)
+                        throw Error('Handled failure');
+                    return response.json();
+                })
+                    .then(result => {
+                    this.tileGrid = result.Data;
+                    resolve();
+                })
+                    .catch(() => {
+                    console.warn("Could not find " + fileName);
+                    this.tileGrid = this.blankCell();
+                    resolve();
+                });
+            });
         });
     }
     blankCell() {

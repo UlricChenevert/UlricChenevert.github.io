@@ -1,27 +1,32 @@
 import { KeyEventCommand } from "../Command/Events/KeyEventCommand.js"
-import { RequestFrameCommand } from "../Command/Events/RequestFrameCommand.js"
 import { StartupEventCommand } from "../Command/Events/StartupEventCommand.js"
-import { IScene } from "../Layer/Interfaces.js"
+import { ISceneCommand } from "../Command/Interfaces.js"
+import { ISceneLoader } from "../Layer/Interfaces.js"
 
 export class ModeHandler {
     // Needs to know about the different modes and needs to interact with its display
     keyEventCommand : KeyEventCommand
     startupEventCommand : StartupEventCommand
-    requestFrameCommand : RequestFrameCommand
+    sceneLoader : ISceneLoader
 
-    gameScene: IScene
-    menuScene: IScene
-    loadingScene : IScene
+    gameScene: ISceneCommand
+    menuScene: ISceneCommand
+    loadingScene : ISceneCommand
 
-    activeScene : IScene
+    activeScene : ISceneCommand
 
-    constructor (keyEventCommand: KeyEventCommand, gameScene: IScene, menuScene: IScene, loadingScene : IScene, startupEventCommand : StartupEventCommand, requestFrameCommand : RequestFrameCommand) {
+    constructor (
+        keyEventCommand: KeyEventCommand, startupEventCommand : StartupEventCommand,
+        gameScene: ISceneCommand, menuScene: ISceneCommand, loadingScene : ISceneCommand,
+        sceneLoader : ISceneLoader) {
         this.keyEventCommand = keyEventCommand
+        this.startupEventCommand = startupEventCommand
+
+        this.sceneLoader = sceneLoader
+        
         this.gameScene = gameScene
         this.menuScene = menuScene
         this.loadingScene = loadingScene
-        this.startupEventCommand = startupEventCommand
-        this.requestFrameCommand = requestFrameCommand
 
         this.activeScene = this.loadingScene
     }
@@ -34,6 +39,8 @@ export class ModeHandler {
 
             /* Bubble to layer */
             // N/A - because keys just change data
+            
+            return
         }
 
         /* Set Mode */
@@ -51,14 +58,14 @@ export class ModeHandler {
 
         /* Bubble to command */
         this.startupEventCommand.handleStartup()
-        .then(()=>this.requestFrameCommand.renderLoading())
-        /* Bubble to layer */
-        .then(()=>this.activeScene.display())
+        .then(()=>this.activeScene.render())
+        // /* Bubble to layer */
+        // .then(()=>this.activeScene.display())
 
     }
     
     // This will be requested >10 times per second
-    async requestFrame () { 
+    requestFrame (displayElement : HTMLElement) { 
         /* Set Mode */
         // N/A
 
@@ -67,6 +74,18 @@ export class ModeHandler {
 
         /* Bubble to layer */
         // Display layer 
-        this.activeScene.display()
+        this.sceneLoader.display(displayElement)
+    }
+
+    step () { 
+        /* Set Mode */
+        // N/A
+
+        /* Bubble to command */
+        this.activeScene.step()
+        this.activeScene.render()
+
+        /* Bubble to layer */
+        // N/A
     }
 }

@@ -1,26 +1,21 @@
 import { Coordinate } from "./Coordinate.js"
 import { TileComponent } from "./TileComponent.js"
-import { dispatchCellLoadedEvent } from "../../Events/CellLoaded.js"
 import { GraphicsConfig } from "../Config/GraphicsConfig.js"
 
 export class CellComponent {
     tileGrid : Array<Array<TileComponent>>
     worldCoordinate : Coordinate
-    isLoaded : boolean
-
     constructor (worldCoordinate : Coordinate, specificFile = "BlankCell") {
         this.worldCoordinate = worldCoordinate
-        this.tileGrid = [] 
-        this.isLoaded = false
+        this.tileGrid = []
 
         this.loadCell(specificFile)
     }
 
     async loadCell (specificFile = "BlankCell") {
-        return new Promise<void>((resolve) => {
-            this.isLoaded = false;
-
-        // Targeted file search if specificFile is not specified
+        return new Promise<void>((resolve) => 
+        {
+            // Targeted file search if specificFile is not specified
         let fileName = ""
 
         if (specificFile != "BlankCell")
@@ -32,19 +27,22 @@ export class CellComponent {
         else // if (-1, -1) and BlankCell
             fileName = "BlankCell"
 
-        fetch(`../Maps/${fileName}.json`)
-            .then(response => response.json())
-            .then(result => {
-                this.tileGrid = result.Data
-                this.isLoaded = true
+        // I dislike this, but I cannot figure out a way to handle errors and without emitting
+        fetch(`../State/Maps/${fileName}.json`, {})
+        .then(response => {
+            if (!response.ok) throw Error('Handled failure');
+            return response.json();
+        })
+        .then(result => {
+            this.tileGrid = result.Data;
+            resolve();
+        })
+        .catch(() => {
+            console.warn("Could not find " + fileName);
+            this.tileGrid = this.blankCell();
+            resolve();
+        });
 
-                dispatchCellLoadedEvent(this.worldCoordinate)
-                resolve();
-            })
-            .catch(() => {
-                this.tileGrid = this.blankCell()
-                resolve();
-            })
         })
     }
     
@@ -63,4 +61,5 @@ export class CellComponent {
         
         return blankCell
     }
+    
 }

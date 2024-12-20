@@ -1,5 +1,3 @@
-import { GameScene } from "../Layer/GameScene.js";
-import { MenuScene } from "../Layer/MenuScene.js";
 import { ModeHandler } from "../Mode/ModeHandler.js";
 import { KeyEventCommand } from "../Command/Events/KeyEventCommand.js";
 import { PhysicalComponentBundler } from "../State/Bundler/PhysicalComponentBundler.js";
@@ -8,8 +6,16 @@ import { BeingComponentBundler } from "../State/Bundler/BeingComponentBundler.js
 import { EntityDirectory } from "../State/Bundler/EntityDirectory.js";
 import { CellBundler } from "../State/Bundler/CellBundler.js"
 import { FrameBundler } from "../State/Bundler/FrameBundler.js";
-import { RequestFrameCommand } from "../Command/Events/RequestFrameCommand.js";
-import { LoadingScene } from "../Layer/LoadingScene.js";
+import { SceneLoader } from "../Layer/SceneLoader.js";
+import { LoadingProgressState } from "../State/LoadingProgressState.js";
+import { GameSceneCommands } from "../Command/Scene/GameSceneCommands.js";
+import { LoadingSceneCommands } from "../Command/Scene/LoadingSceneCommands.js";
+import { MenuSceneCommands } from "../Command/Scene/MenuSceneCommands.js";
+import { CellRenderSystem } from "../Command/Systems/CellRenderSystem.js";
+import { PlayerControlSystem } from "../Command/Systems/PlayerControlSystem.js";
+import { PhysicalRenderSystem } from "../Command/Systems/PhysicalRenderSystem.js";
+import { ISceneCommand } from "../Command/Interfaces.js";
+import { ISceneLoader } from "../Layer/Interfaces.js";
 
 class DependenciesContainer {
     instances : Map<string, any>
@@ -37,25 +43,26 @@ export let DependencyInjection = new DependenciesContainer()
 DependencyInjection.register("PhysicalComponentBundler", new PhysicalComponentBundler())
 DependencyInjection.register("BeingComponentBundler", new BeingComponentBundler())
 DependencyInjection.register("EntityDirectory", new EntityDirectory())
-// TODO: Fix this
-DependencyInjection.register("CellBundler", new CellBundler()) //new CellComponent(), new CellComponent(), new CellComponent(), new CellComponent(), new CellComponent()))
+DependencyInjection.register("LoadingProgressState", new LoadingProgressState())
+DependencyInjection.register("CellBundler", new CellBundler())
 DependencyInjection.register("FrameBundler", new FrameBundler())
 
+
 // Systems
-// DependencyInjection.register("PlayerControlSystem", new PlayerControlSystem())
-// DependencyInjection.register("CameraControlSystem", new CameraControlSystem())
+//DependencyInjection.register("PlayerControlSystem", new PlayerControlSystem())
+DependencyInjection.register("CellRenderSystem", new CellRenderSystem(
+    <CellBundler>DependencyInjection.resolve("CellBundler"),
+    <FrameBundler>DependencyInjection.resolve("FrameBundler")
+))
+DependencyInjection.register("PhysicalRenderSystem", new PhysicalRenderSystem (
+    <FrameBundler>DependencyInjection.resolve("FrameBundler"),
+    <PhysicalComponentBundler>DependencyInjection.resolve("PhysicalComponentBundler"),
+))
 
 // Layer
-DependencyInjection.register("MenuScene", new MenuScene(
+DependencyInjection.register("SceneLoader", new SceneLoader(
     <FrameBundler>DependencyInjection.resolve("FrameBundler"),
 ))
-DependencyInjection.register("GameScene", new GameScene(
-    <FrameBundler>DependencyInjection.resolve("FrameBundler"),
-))
-DependencyInjection.register("LoadingScene", new LoadingScene(
-    <FrameBundler>DependencyInjection.resolve("FrameBundler"),
-))
-
 
 // Commands
 DependencyInjection.register("KeyEventCommand", new KeyEventCommand())
@@ -66,20 +73,26 @@ DependencyInjection.register("StartupEventCommand", new StartupEventCommand(
     <CellBundler>DependencyInjection.resolve("CellBundler"),
     <KeyEventCommand>DependencyInjection.resolve("KeyEventCommand"), 
 ))
-DependencyInjection.register("RequestFrameCommand", new RequestFrameCommand (
-    <FrameBundler>DependencyInjection.resolve("FrameBundler"),
-    <PhysicalComponentBundler>DependencyInjection.resolve("PhysicalComponentBundler"),
-    <CellBundler>DependencyInjection.resolve("CellBundler"),
-))
 
+DependencyInjection.register("GameSceneCommands", new GameSceneCommands(
+    <CellRenderSystem>DependencyInjection.resolve("CellRenderSystem"),
+    <PhysicalRenderSystem>DependencyInjection.resolve("PhysicalRenderSystem")
+))
+DependencyInjection.register("LoadingSceneCommands", new LoadingSceneCommands(
+    <LoadingProgressState>DependencyInjection.resolve("LoadingProgressState"),
+    <FrameBundler>DependencyInjection.resolve("FrameBundler")
+))
+DependencyInjection.register("MenuSceneCommands", new MenuSceneCommands(
+    <FrameBundler>DependencyInjection.resolve("FrameBundler")
+))
 
 // Mode
 DependencyInjection.register("ModeHandler", new ModeHandler(
         <KeyEventCommand>DependencyInjection.resolve("KeyEventCommand"), 
-        <GameScene>DependencyInjection.resolve("GameScene"),
-        <MenuScene>DependencyInjection.resolve("MenuScene"),
-        <LoadingScene>DependencyInjection.resolve("LoadingScene"),
         <StartupEventCommand>DependencyInjection.resolve("StartupEventCommand"),
-        <RequestFrameCommand>DependencyInjection.resolve("RequestFrameCommand"), 
+        <ISceneCommand>DependencyInjection.resolve("GameSceneCommands"),
+        <ISceneCommand>DependencyInjection.resolve("MenuSceneCommands"), 
+        <ISceneCommand>DependencyInjection.resolve("LoadingSceneCommands"),
+        <ISceneLoader>DependencyInjection.resolve("SceneLoader"), 
     )
 )

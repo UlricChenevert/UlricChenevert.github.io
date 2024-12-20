@@ -7,19 +7,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export class LoadingScene {
+export class SceneLoader {
     constructor(frame) {
-        this.isDisplaying = false;
         this.frame = frame;
     }
-    toggleIsDisplaying() {
-        this.isDisplaying = !this.isDisplaying;
-    }
-    display() {
+    display(displayElement) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!this.isDisplaying)
-                return; // Only display if you should display
-            console.error("Not Implemented");
+            let html = "";
+            this.frame.tileGrid.forEach((row) => {
+                row.forEach((tile) => {
+                    html += tile.representation;
+                });
+                html += '<br>';
+            });
+            displayElement.innerHTML = html;
         });
     }
 }
