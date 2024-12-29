@@ -3,5 +3,8 @@
         "**/*.js.map": true,
         "**/*.js": { "when": "$(basename).ts" },
         // "**/*.d.ts": { "when": "$(basename).ts"}
-    }
+    },
+    "cSpell.words": [
+        "Perlin"
+    ]
 }

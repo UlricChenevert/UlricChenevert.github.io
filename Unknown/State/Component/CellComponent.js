@@ -34,8 +34,8 @@ export class CellComponent {
                     return response.json();
                 })
                     .then(result => {
-                    for (let i = 0; i < GraphicsConfig.displayLength; i++) {
-                        for (let j = 0; j < GraphicsConfig.displayLength; j++) {
+                    for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
+                        for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
                             this.tileGrid[i][j].representation = result.Grid[i][j];
                         }
                     }
@@ -51,9 +51,9 @@ export class CellComponent {
     }
     blankCell() {
         const blankCell = [];
-        for (let i = 0; i < GraphicsConfig.displayLength; i++) {
+        for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
             const tempArray = [];
-            for (let j = 0; j < GraphicsConfig.displayLength; j++) {
+            for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
                 tempArray[j] = new TileComponent(' '); // or whatever 
             }
             blankCell[i] = tempArray;

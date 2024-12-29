@@ -1,8 +1,10 @@
 // I know it is weird to put it in a object, but think about it. 
 // Pre-defined state at startup doesn't need to be in a json file
 export const GraphicsConfig = {
-    "displayLength": 100,
-    "LoadLength": 10,
+    "DisplaySize": 100,
+    LoadingScene: {
+        "LoadingBarSize": 10
+    },
     Representation: {
         "Blank": '&#x0020;',
         "Character": '&#x1338;',

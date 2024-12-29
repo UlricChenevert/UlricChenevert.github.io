@@ -6,9 +6,9 @@ export class FrameBundler {
     }
     blankCell() {
         const blankCell = [];
-        for (let i = 0; i < GraphicsConfig.displayLength; i++) {
+        for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
             const tempArray = [];
-            for (let j = 0; j < GraphicsConfig.displayLength; j++) {
+            for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
                 tempArray[j] = new TileComponent(GraphicsConfig.Representation.Blank); // or whatever 
             }
             blankCell[i] = tempArray;
