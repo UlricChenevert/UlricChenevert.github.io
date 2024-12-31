@@ -27,5 +27,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('keyup', (event) => {
     modeHandler.handleKeyEvent(event)
-    console.log("Handled " + event.key)
+    // console.log("Handled " + event.key)
 }); 

@@ -1,7 +1,7 @@
 import { BeingComponent } from "../Component/BeingComponent.js";
-import { ComponentBundler } from "../Interfaces.js";
+import { IComponentBundler } from "../Interfaces.js";
 
-export class BeingComponentBundler implements ComponentBundler<BeingComponent> {
+export class BeingComponentBundler implements IComponentBundler<BeingComponent> {
     entityBundle: Map<number, BeingComponent>;
 
     constructor() {

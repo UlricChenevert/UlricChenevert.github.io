@@ -11,7 +11,13 @@ export const GraphicsConfig = {
             water : 0.0
         }
     },
-    "DisplaySize" : 100, 
+    Colors : {
+        Background : {red: 0, green: 0, blue: 0},
+        Player : {red: 255, green: 0, blue: 0},
+        Villages : {red: 0, green: 255, blue: 0},
+        NPC : {red: 100, green: 255, blue: 100}
+    },
+    "DisplaySize" : 50, 
     LoadingScene : {
         "LoadingBarSize" : 10},
     Representation : {

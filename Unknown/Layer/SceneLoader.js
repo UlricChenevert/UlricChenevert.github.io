@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { Color } from "../State/DTO/Color.js";
 export class SceneLoader {
     constructor(frame) {
         this.frame = frame;
@@ -14,9 +15,15 @@ export class SceneLoader {
     display(displayElement) {
         return __awaiter(this, void 0, void 0, function* () {
             let html = "";
+            let defaultColor = new Color(0, 0, 0);
             this.frame.tileGrid.forEach((row) => {
                 row.forEach((tile) => {
-                    html += tile.representation;
+                    if (tile.color != defaultColor) {
+                        html += `<span style="color:rgba(${tile.color.red}, ${tile.color.green}, ${tile.color.blue}, ${tile.color.opacity});">${tile.representation}</span>`;
+                    }
+                    else {
+                        html += tile.representation;
+                    }
                 });
                 html += '<br>';
             });

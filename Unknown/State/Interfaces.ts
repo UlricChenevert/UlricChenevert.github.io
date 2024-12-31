@@ -1,10 +1,15 @@
-import { Entity } from "./Component/Entity.js"
+import { Color } from "./DTO/Color.js"
+import { Coordinate } from "./DTO/Coordinate.js"
+import { Entity } from "./DTO/Entity.js"
 
-export interface IPhysicalComponent {
-    x : number
-    y : number
-    representation : string
+export interface ILocationComponent {
+    location : Coordinate
 }
+
+// export interface IPhysicalComponent {
+//     location : Coordinate
+//     representation : string
+// }
 
 export interface IBasicNeedsComponent {
     health : number,
@@ -17,6 +22,10 @@ export interface IBasicEmotionsComponent {
     fear : number, // 0 - 1
 }  
 
+export interface IColorComponent {
+    color : Color
+}
+
 export interface IAdvancedEmotionsComponent {
     fear : number, // 0 - 1
     happiness : number, // 0 - 1
@@ -26,16 +35,23 @@ export interface IAdvancedEmotionsComponent {
     surprise : number // 0 - 1
 }  
 
+export interface IDisplayableComponent extends IColorComponent, IDepictionComponent, ILocationComponent {
+    representation : string
+    location: Coordinate;
+    color: Color;
+}
+
 export interface IVectorComponent {
     xMagnitude : number,
     yMagnitude : number
 }   
 
-export interface ComponentBundler<T> {
+export interface IComponentBundler<T> {
     entityBundle : Map<number, T>
+}
 
-    // register : (entityId : number, entityData : T) => void
-    // bundleData : () => Array<T>
+export interface IDepictionComponent {
+    representation : string
 }
 
 export interface IResourceComponent {
@@ -43,6 +59,6 @@ export interface IResourceComponent {
     amount : number
 }
 
-export interface EntityDirectory {
+export interface IEntityDirectory {
     Entities : Array<Entity>
 }

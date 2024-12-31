@@ -8,14 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 export class PhysicalRenderSystem {
-    constructor(frameBundler, physicalComponents) {
-        this.physicalComponents = physicalComponents;
+    constructor(frameBundler, displayableComponents) {
+        this.displayableComponents = displayableComponents;
         this.frameBundler = frameBundler;
     }
     render() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.physicalComponents.entityBundle.forEach((entity) => {
-                this.frameBundler.tileGrid[entity.y][entity.x].representation = entity.representation;
+            this.displayableComponents.entityBundle.forEach((component) => {
+                const temp = this.frameBundler.tileGrid[component.location.y][component.location.x];
+                temp.representation = component.representation;
+                temp.color = component.color;
             });
         });
     }

@@ -7,15 +7,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { DisplayComponent } from "./DisplayComponent.js";
 import { GraphicsConfig } from "../Config/GraphicsConfig.js";
+import { TileComponent } from "./TileComponent.js";
 export class CellComponent {
     constructor(worldCoordinate, perlin) {
         this.worldCoordinate = worldCoordinate;
         this.tileGrid = [];
         // Perlin needs to be persistent because you want to always generate the same tile if you load it or unload it
         this.perlin = perlin;
-        // this.loadCell()
     }
     loadCell() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -46,18 +45,18 @@ export class CellComponent {
                     const temp = [];
                     for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
                         const noise = this.perlin.getNoise(i, j, { width: GraphicsConfig.DisplaySize, height: GraphicsConfig.DisplaySize });
-                        let tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Blank);
+                        let tileRepresentation = new TileComponent(GraphicsConfig.Representation.Blank);
                         if (noise > GraphicsConfig.MapCreation.Thresholds.mountain) {
-                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Mountain);
+                            tileRepresentation = new TileComponent(GraphicsConfig.Representation.Mountain);
                         }
                         else if (noise > GraphicsConfig.MapCreation.Thresholds.hill) {
-                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Hill);
+                            tileRepresentation = new TileComponent(GraphicsConfig.Representation.Hill);
                         }
                         else if (noise > GraphicsConfig.MapCreation.Thresholds.grassland) {
-                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Grass);
+                            tileRepresentation = new TileComponent(GraphicsConfig.Representation.Grass);
                         }
                         else { // (GraphicsConfig.MapCreation.Thresholds.water > noise) 
-                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Water);
+                            tileRepresentation = new TileComponent(GraphicsConfig.Representation.Water);
                         }
                         temp.push(tileRepresentation);
                     }
@@ -78,7 +77,7 @@ export class CellComponent {
         for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
             const tempArray = [];
             for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
-                tempArray[j] = new DisplayComponent(GraphicsConfig.Representation.Blank); // or whatever 
+                tempArray[j] = new TileComponent(GraphicsConfig.Representation.Blank); // or whatever 
             }
             blankCell[i] = tempArray;
         }

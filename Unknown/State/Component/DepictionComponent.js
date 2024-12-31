@@ -1,4 +1,4 @@
-export class DisplayComponent {
+export class DepictionComponent {
     constructor(characterRepresentation) {
         this.representation = characterRepresentation;
     }

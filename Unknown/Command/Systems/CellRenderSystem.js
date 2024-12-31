@@ -8,6 +8,7 @@ export class CellRenderSystem {
         this.cellBundler.centerCell.tileGrid.forEach((row, x) => {
             row.forEach((DisplayComponent, y) => {
                 this.frameBundler.tileGrid[x][y].representation = DisplayComponent.representation;
+                this.frameBundler.tileGrid[x][y].color = DisplayComponent.color;
             });
         });
     }

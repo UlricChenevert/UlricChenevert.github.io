@@ -1,6 +1,5 @@
 import { ModeHandler } from "../Mode/ModeHandler.js";
 import { KeyEventCommand } from "../Command/Events/KeyEventCommand.js";
-import { PhysicalComponentBundler } from "../State/Bundler/PhysicalComponentBundler.js";
 import { StartupEventCommand } from "../Command/Events/StartupEventCommand.js";
 import { BeingComponentBundler } from "../State/Bundler/BeingComponentBundler.js";
 import { EntityDirectory } from "../State/Bundler/EntityDirectory.js";
@@ -15,9 +14,10 @@ import { CellRenderSystem } from "../Command/Systems/CellRenderSystem.js";
 import { PhysicalRenderSystem } from "../Command/Systems/PhysicalRenderSystem.js";
 import { ISceneCommand } from "../Command/Interfaces.js";
 import { ISceneLoader } from "../Layer/Interfaces.js";
-import { Coordinate } from "../State/Component/Coordinate.js";
+import { Coordinate } from "../State/DTO/Coordinate.js";
 import { CellComponent } from "../State/Component/CellComponent.js";
 import { Perlin } from "./PerlinNoise.js";
+import { DisplayableBundler } from "../State/Bundler/DisplayableBundler.js";
 
 class DependenciesContainer {
     instances : Map<string, any>
@@ -43,7 +43,7 @@ export let DependencyInjection = new DependenciesContainer()
 DependencyInjection.register("Perlin", new Perlin())
 
 // State
-DependencyInjection.register("PhysicalComponentBundler", new PhysicalComponentBundler())
+DependencyInjection.register("DisplayableBundler", new DisplayableBundler())
 DependencyInjection.register("BeingComponentBundler", new BeingComponentBundler())
 DependencyInjection.register("EntityDirectory", new EntityDirectory())
 DependencyInjection.register("LoadingProgressState", new LoadingProgressState())
@@ -65,7 +65,7 @@ DependencyInjection.register("CellRenderSystem", new CellRenderSystem(
 ))
 DependencyInjection.register("PhysicalRenderSystem", new PhysicalRenderSystem (
     <FrameBundler>DependencyInjection.resolve("FrameBundler"),
-    <PhysicalComponentBundler>DependencyInjection.resolve("PhysicalComponentBundler"),
+    <DisplayableBundler>DependencyInjection.resolve("DisplayableBundler"),
 ))
 
 // Layer
@@ -76,7 +76,7 @@ DependencyInjection.register("SceneLoader", new SceneLoader(
 // Commands
 DependencyInjection.register("KeyEventCommand", new KeyEventCommand())
 DependencyInjection.register("StartupEventCommand", new StartupEventCommand(
-    <PhysicalComponentBundler>DependencyInjection.resolve("PhysicalComponentBundler"),
+    <DisplayableBundler>DependencyInjection.resolve("DisplayableBundler"),
     <BeingComponentBundler>DependencyInjection.resolve("BeingComponentBundler"),
     <EntityDirectory>DependencyInjection.resolve("EntityDirectory"),
     <CellBundler>DependencyInjection.resolve("CellBundler"),

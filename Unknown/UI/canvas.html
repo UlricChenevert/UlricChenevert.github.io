@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>Video Game</title>
     <style type="text/css">
+        :root {
+          --characterAmount: 50
+        }
+        
         body { 
           background-color: rgb(210, 194, 151); 
           margin: 0; 
@@ -14,8 +18,8 @@
           /*width: 100vw;*/
           color: #000000;
           /*aspect-ratio: 1/1; */ 
-          letter-spacing: calc(100vw/100 - 1ch);
-          font-size: 1vh;  /*calc(100vh/100);*/
+          letter-spacing: calc(100vw/var(--characterAmount) - 1ch);
+          font-size: calc(100vh/var(--characterAmount));
           line-height: 1;
           font-family: "DejaVuSansMono", monospace; 
           text-wrap: nowrap;

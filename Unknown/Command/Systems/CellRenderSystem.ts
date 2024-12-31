@@ -12,10 +12,12 @@ export class CellRenderSystem implements IRenderSystem {
     }
     
     render () {
+        
         // Render the cell bundler
         this.cellBundler.centerCell.tileGrid.forEach((row, x) => {
             row.forEach((DisplayComponent, y) => {
                 this.frameBundler.tileGrid[x][y].representation = DisplayComponent.representation
+                this.frameBundler.tileGrid[x][y].color = DisplayComponent.color
             })
         })
     }

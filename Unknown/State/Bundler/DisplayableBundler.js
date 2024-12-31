@@ -1,4 +1,4 @@
-export class PhysicalComponentBundler {
+export class DisplayableBundler {
     constructor() {
         this.entityBundle = new Map();
     }
