@@ -25,12 +25,16 @@ export class StartupEventCommand {
             return new Promise((resolve) => {
                 // I want to set up / generate map data
                 // Rest of the cells can just use the blank cell default constructor (for now)
-                let loadCellPromise = this.cellBundler.activeCell.loadCell("SpawnCell");
+                let loadMainCellPromise = this.cellBundler.centerCell.loadCell();
+                this.cellBundler.topCell.loadCell();
+                this.cellBundler.bottomCell.loadCell();
+                this.cellBundler.leftCell.loadCell();
+                this.cellBundler.rightCell.loadCell();
                 /* Initialize all game states */
                 createPlayer(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler, this.keyEventCommand);
                 // IDK just for fun
                 createNPC(this.entityDirectory, this.beingComponentBundler, this.physicalComponentBundler);
-                loadCellPromise.then(() => {
+                loadMainCellPromise.then(() => {
                     resolve();
                 });
             });

@@ -13,6 +13,9 @@ import { LoadingSceneCommands } from "../Command/Scene/LoadingSceneCommands.js";
 import { MenuSceneCommands } from "../Command/Scene/MenuSceneCommands.js";
 import { CellRenderSystem } from "../Command/Systems/CellRenderSystem.js";
 import { PhysicalRenderSystem } from "../Command/Systems/PhysicalRenderSystem.js";
+import { Coordinate } from "../State/Component/Coordinate.js";
+import { CellComponent } from "../State/Component/CellComponent.js";
+import { Perlin } from "./PerlinNoise.js";
 class DependenciesContainer {
     constructor() { this.instances = new Map(); }
     register(name, instance) {
@@ -27,12 +30,13 @@ class DependenciesContainer {
 }
 export let DependencyInjection = new DependenciesContainer();
 // TODO: Do this automatically
+DependencyInjection.register("Perlin", new Perlin());
 // State
 DependencyInjection.register("PhysicalComponentBundler", new PhysicalComponentBundler());
 DependencyInjection.register("BeingComponentBundler", new BeingComponentBundler());
 DependencyInjection.register("EntityDirectory", new EntityDirectory());
 DependencyInjection.register("LoadingProgressState", new LoadingProgressState());
-DependencyInjection.register("CellBundler", new CellBundler());
+DependencyInjection.register("CellBundler", new CellBundler(new CellComponent(new Coordinate(0, 0), DependencyInjection.resolve("Perlin")), new CellComponent(new Coordinate(-1, 0), DependencyInjection.resolve("Perlin")), new CellComponent(new Coordinate(1, 0), DependencyInjection.resolve("Perlin")), new CellComponent(new Coordinate(0, -1), DependencyInjection.resolve("Perlin")), new CellComponent(new Coordinate(0, 1), DependencyInjection.resolve("Perlin"))));
 DependencyInjection.register("FrameBundler", new FrameBundler());
 // Systems
 //DependencyInjection.register("PlayerControlSystem", new PlayerControlSystem())

@@ -3,4 +3,7 @@ export class Coordinate {
         this.x = x;
         this.y = y;
     }
+    name() {
+        return `${this.x}-${this.y}`;
+    }
 }

@@ -13,9 +13,9 @@ export class CellRenderSystem implements IRenderSystem {
     
     render () {
         // Render the cell bundler
-        this.cellBundler.activeCell.tileGrid.forEach((row, x) => {
-            row.forEach((TileComponent, y) => {
-                this.frameBundler.tileGrid[x][y].representation = TileComponent.representation
+        this.cellBundler.centerCell.tileGrid.forEach((row, x) => {
+            row.forEach((DisplayComponent, y) => {
+                this.frameBundler.tileGrid[x][y].representation = DisplayComponent.representation
             })
         })
     }

@@ -27,8 +27,8 @@ export interface IAdvancedEmotionsComponent {
 }  
 
 export interface IVectorComponent {
-    direction : number,
-    magnitude : number
+    xMagnitude : number,
+    yMagnitude : number
 }   
 
 export interface ComponentBundler<T> {
@@ -36,6 +36,11 @@ export interface ComponentBundler<T> {
 
     // register : (entityId : number, entityData : T) => void
     // bundleData : () => Array<T>
+}
+
+export interface IResourceComponent {
+    type : string
+    amount : number
 }
 
 export interface EntityDirectory {

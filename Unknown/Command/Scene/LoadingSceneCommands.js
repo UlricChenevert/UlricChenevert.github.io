@@ -17,8 +17,8 @@ export class LoadingSceneCommands {
         //-    14
         // Change all tiles to blank
         this.frameBundler.tileGrid.forEach((row) => {
-            row.forEach((TileComponent) => {
-                TileComponent.representation = GraphicsConfig.Representation.Blank;
+            row.forEach((DisplayComponent) => {
+                DisplayComponent.representation = GraphicsConfig.Representation.Blank;
             });
         });
         const centerIndex = Math.floor(GraphicsConfig.DisplaySize / 2);

@@ -12,10 +12,12 @@ import { GameSceneCommands } from "../Command/Scene/GameSceneCommands.js";
 import { LoadingSceneCommands } from "../Command/Scene/LoadingSceneCommands.js";
 import { MenuSceneCommands } from "../Command/Scene/MenuSceneCommands.js";
 import { CellRenderSystem } from "../Command/Systems/CellRenderSystem.js";
-import { PlayerControlSystem } from "../Command/Systems/PlayerControlSystem.js";
 import { PhysicalRenderSystem } from "../Command/Systems/PhysicalRenderSystem.js";
 import { ISceneCommand } from "../Command/Interfaces.js";
 import { ISceneLoader } from "../Layer/Interfaces.js";
+import { Coordinate } from "../State/Component/Coordinate.js";
+import { CellComponent } from "../State/Component/CellComponent.js";
+import { Perlin } from "./PerlinNoise.js";
 
 class DependenciesContainer {
     instances : Map<string, any>
@@ -38,13 +40,20 @@ class DependenciesContainer {
 export let DependencyInjection = new DependenciesContainer()
 
 // TODO: Do this automatically
+DependencyInjection.register("Perlin", new Perlin())
 
 // State
 DependencyInjection.register("PhysicalComponentBundler", new PhysicalComponentBundler())
 DependencyInjection.register("BeingComponentBundler", new BeingComponentBundler())
 DependencyInjection.register("EntityDirectory", new EntityDirectory())
 DependencyInjection.register("LoadingProgressState", new LoadingProgressState())
-DependencyInjection.register("CellBundler", new CellBundler())
+DependencyInjection.register("CellBundler", new CellBundler(
+    new CellComponent(new Coordinate(0,0), <Perlin>DependencyInjection.resolve("Perlin")),
+    new CellComponent(new Coordinate(-1,0), <Perlin>DependencyInjection.resolve("Perlin")),
+    new CellComponent(new Coordinate(1,0), <Perlin>DependencyInjection.resolve("Perlin")),
+    new CellComponent(new Coordinate(0,-1), <Perlin>DependencyInjection.resolve("Perlin")),
+    new CellComponent(new Coordinate(0,1), <Perlin>DependencyInjection.resolve("Perlin"))
+))
 DependencyInjection.register("FrameBundler", new FrameBundler())
 
 

@@ -1,5 +1,5 @@
-import { TileComponent } from "../Component/TileComponent.js";
+import { DisplayComponent } from "../Component/DisplayComponent.js";
 
 export interface CellDTO {
-    Data : Array<Array<TileComponent>>
+    Data : Array<Array<DisplayComponent>>
 }

@@ -7,15 +7,84 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { TileComponent } from "./TileComponent.js";
+import { DisplayComponent } from "./DisplayComponent.js";
 import { GraphicsConfig } from "../Config/GraphicsConfig.js";
 export class CellComponent {
-    constructor(worldCoordinate, specificFile = "BlankCell") {
+    constructor(worldCoordinate, perlin) {
         this.worldCoordinate = worldCoordinate;
         this.tileGrid = [];
-        this.loadCell(specificFile);
+        // Perlin needs to be persistent because you want to always generate the same tile if you load it or unload it
+        this.perlin = perlin;
+        // this.loadCell()
     }
     loadCell() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve) => {
+                let localStorageCell = localStorage.getItem(this.worldCoordinate.name());
+                if (localStorageCell === null) { // No local storage
+                    this.generateCell().then(() => {
+                        resolve();
+                    });
+                }
+                else { // Finds local storage
+                    this.tileGrid = JSON.parse(localStorageCell);
+                    // Type check
+                    if (this.tileGrid.length != GraphicsConfig.DisplaySize ||
+                        this.tileGrid[0].length != GraphicsConfig.DisplaySize ||
+                        typeof (this.tileGrid[0][0].representation) != "string")
+                        throw TypeError(`Localstorage of ${this.worldCoordinate.name()} does not fit DisplayComponent[][] shape!`);
+                    resolve();
+                }
+            });
+        });
+    }
+    generateCell() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve) => {
+                const tempCellData = [];
+                for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
+                    const temp = [];
+                    for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
+                        const noise = this.perlin.getNoise(i, j, { width: GraphicsConfig.DisplaySize, height: GraphicsConfig.DisplaySize });
+                        let tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Blank);
+                        if (noise > GraphicsConfig.MapCreation.Thresholds.mountain) {
+                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Mountain);
+                        }
+                        else if (noise > GraphicsConfig.MapCreation.Thresholds.hill) {
+                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Hill);
+                        }
+                        else if (noise > GraphicsConfig.MapCreation.Thresholds.grassland) {
+                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Grass);
+                        }
+                        else { // (GraphicsConfig.MapCreation.Thresholds.water > noise) 
+                            tileRepresentation = new DisplayComponent(GraphicsConfig.Representation.Water);
+                        }
+                        temp.push(tileRepresentation);
+                    }
+                    tempCellData.push(temp);
+                }
+                this.tileGrid = tempCellData;
+                resolve();
+            });
+        });
+    }
+    saveCell() {
+        return __awaiter(this, void 0, void 0, function* () {
+            localStorage.setItem(this.worldCoordinate.name(), JSON.stringify(this.tileGrid));
+        });
+    }
+    blankCell() {
+        const blankCell = [];
+        for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
+            const tempArray = [];
+            for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
+                tempArray[j] = new DisplayComponent(GraphicsConfig.Representation.Blank); // or whatever 
+            }
+            blankCell[i] = tempArray;
+        }
+        return blankCell;
+    }
+    loadCellFromFile() {
         return __awaiter(this, arguments, void 0, function* (specificFile = "BlankCell") {
             return new Promise((resolve) => {
                 // Targeted file search if specificFile is not specified
@@ -29,8 +98,6 @@ export class CellComponent {
                 // I dislike this, but I cannot figure out a way to handle errors and without emitting
                 fetch(`../State/Maps/${fileName}.json`, {})
                     .then(response => {
-                    if (!response.ok)
-                        throw Error('Handled failure');
                     return response.json();
                 })
                     .then(result => {
@@ -48,16 +115,5 @@ export class CellComponent {
                 });
             });
         });
-    }
-    blankCell() {
-        const blankCell = [];
-        for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
-            const tempArray = [];
-            for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
-                tempArray[j] = new TileComponent(' '); // or whatever 
-            }
-            blankCell[i] = tempArray;
-        }
-        return blankCell;
     }
 }

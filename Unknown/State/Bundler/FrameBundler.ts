@@ -1,21 +1,21 @@
-import { TileComponent } from "../Component/TileComponent.js"
+import { DisplayComponent } from "../Component/DisplayComponent.js"
 import { GraphicsConfig } from "../Config/GraphicsConfig.js"
 
 export class FrameBundler {
-    tileGrid : Array<Array<TileComponent>>
+    tileGrid : Array<Array<DisplayComponent>>
 
     constructor () {
         this.tileGrid = this.blankCell()
     }
 
     private blankCell() {
-        const blankCell: Array<Array<TileComponent>> = []
+        const blankCell: Array<Array<DisplayComponent>> = []
         
         for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
-            const tempArray: TileComponent[] = []
+            const tempArray: DisplayComponent[] = []
             
             for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
-                tempArray[j] = new TileComponent(GraphicsConfig.Representation.Blank) // or whatever 
+                tempArray[j] = new DisplayComponent(GraphicsConfig.Representation.Blank) // or whatever 
             }
             
             blankCell[i] = tempArray

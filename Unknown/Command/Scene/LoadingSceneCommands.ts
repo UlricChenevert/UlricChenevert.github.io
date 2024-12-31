@@ -27,8 +27,8 @@ export class LoadingSceneCommands implements ISceneCommand {
 
         // Change all tiles to blank
         this.frameBundler.tileGrid.forEach((row) => {
-            row.forEach((TileComponent) => {
-                TileComponent.representation = GraphicsConfig.Representation.Blank
+            row.forEach((DisplayComponent) => {
+                DisplayComponent.representation = GraphicsConfig.Representation.Blank
             })
         })
 
