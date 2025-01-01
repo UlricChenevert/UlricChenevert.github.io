@@ -21,22 +21,22 @@ export const GraphicsConfig = {
     LoadingScene : {
         "LoadingBarSize" : 10},
     Representation : {
-        "Blank" : '&#x0020;',
-        "Character" : '&#x1338;',
-        "NPC" : '&#x1330;',
-        "Water" : '_',//&#x2248;
-        "Null" : "&#x0000;",
-        "Animal" : "&#x040B;", // I really want "&#x12B8;"
-        "Path" : ".",
-        "PineTree" : "&#x219F;",
-        "Hill" : "^", //
-        "Mountain" : "A", //&#x22C0;
-        "Grass" : " ", // &#x02F5;
-        "Shrine" : "&#x127E;",
-        "Farmland":"&#x2583;",
-        "Hut":"&#x03C0;",
-        "SmallHouse":"&#x21D1;",
-        "LargeHouse":"&#x220F;",
-        "LoadingBar" : "o"
+        Blank : '&#x0020;',
+        Character : '&#x1338;',
+        NPC : '&#x1330;',
+        Water : '_',//&#x2248;
+        Null : "&#x0000;",
+        Animal : "&#x040B;", // I really want "&#x12B8;"
+        Path : ".",
+        PineTree : "&#x219F;",
+        Hill : "^", //
+        Mountain : "A", //&#x22C0;
+        Grass : " ", // &#x02F5;
+        Shrine : "&#x127E;",
+        Farmland:"&#x2583;",
+        SmallHouse:"&#x21D1;",
+        Hut:"&#x03C0;",
+        LargeHouse:"&#x220F;",
+        LoadingBar : "o"
     }
 };
