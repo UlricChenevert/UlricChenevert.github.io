@@ -1,12 +1,13 @@
 import { DependencyInjection } from "../Libraries/DependencyInjection.js";
 import { ModeHandler } from "../Mode/ModeHandler.js";
+import { GraphicsConfig } from "../State/Config/GraphicsConfig.js";
 
 const modeHandler = <ModeHandler>DependencyInjection.resolve("ModeHandler")
 const displayElement = document.getElementById("Game")
 if(displayElement === null) throw "Game not defined"
 
 function gameLoop(lastUpdate : DOMHighResTimeStamp) {
-    if(<DOMHighResTimeStamp>document.timeline.currentTime - lastUpdate >= 1000) {
+    if(<DOMHighResTimeStamp>document.timeline.currentTime - lastUpdate >= GraphicsConfig.GameSpeedMilliseconds) {
         modeHandler.requestFrame(<HTMLElement>displayElement);
         modeHandler.step()
         lastUpdate = <DOMHighResTimeStamp>document.timeline.currentTime

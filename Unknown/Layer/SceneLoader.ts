@@ -1,4 +1,5 @@
 import { FrameBundler } from "../State/Bundler/FrameBundler.js"
+import { GraphicsConfig } from "../State/Config/GraphicsConfig.js"
 import { Color } from "../State/DTO/Color.js"
 import { ISceneLoader } from "./Interfaces.js"
 
@@ -11,7 +12,7 @@ export class SceneLoader implements ISceneLoader {
 
     async display (displayElement : HTMLElement) {
         let html = ""
-        let defaultColor = new Color(0,0,0)
+        let defaultColor = new Color(GraphicsConfig.Colors.Background.red,GraphicsConfig.Colors.Background.green,GraphicsConfig.Colors.Background.blue)
         this.frame.tileGrid.forEach((row) => {
             row.forEach((tile)=>{
                 if (tile.color != defaultColor) {

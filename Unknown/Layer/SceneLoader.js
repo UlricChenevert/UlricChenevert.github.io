@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { GraphicsConfig } from "../State/Config/GraphicsConfig.js";
 import { Color } from "../State/DTO/Color.js";
 export class SceneLoader {
     constructor(frame) {
@@ -15,7 +16,7 @@ export class SceneLoader {
     display(displayElement) {
         return __awaiter(this, void 0, void 0, function* () {
             let html = "";
-            let defaultColor = new Color(0, 0, 0);
+            let defaultColor = new Color(GraphicsConfig.Colors.Background.red, GraphicsConfig.Colors.Background.green, GraphicsConfig.Colors.Background.blue);
             this.frame.tileGrid.forEach((row) => {
                 row.forEach((tile) => {
                     if (tile.color != defaultColor) {

@@ -17,6 +17,7 @@ export const GraphicsConfig = {
         NPC: { red: 28, green: 92, blue: 28 }
     },
     "DisplaySize": 50,
+    "GameSpeedMilliseconds": 100,
     LoadingScene: {
         "LoadingBarSize": 10
     },
