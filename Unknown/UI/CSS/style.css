@@ -17,6 +17,25 @@ body {
     text-wrap: nowrap;
     white-space: pre;
 }
+/* Background : {red: 0, green: 0, blue: 0},
+        Player : {red: 255, green: 0, blue: 0},
+        Villages : {red: 0, green: 255, blue: 0},
+        NPC : {red: 100, green: 255, blue: 100} */
+.color-0-0-0 {
+    color: rgb(0, 0, 0);
+}
+
+.color-255-0-0 {
+    color: rgb(255, 0, 0);
+}
+
+.color-0-255-0 {
+    color: rgb(0, 255, 0);
+}
+
+.color-28-92-28 {
+    color: rgb(28, 92, 28);
+}
 
 @font-face {
     font-family: "DejaVuSansMono";

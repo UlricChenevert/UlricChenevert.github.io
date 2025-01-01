@@ -4,7 +4,7 @@ const displayElement = document.getElementById("Game");
 if (displayElement === null)
     throw "Game not defined";
 function gameLoop(lastUpdate) {
-    if (document.timeline.currentTime - lastUpdate >= 100) {
+    if (document.timeline.currentTime - lastUpdate >= 1000) {
         modeHandler.requestFrame(displayElement);
         modeHandler.step();
         lastUpdate = document.timeline.currentTime;

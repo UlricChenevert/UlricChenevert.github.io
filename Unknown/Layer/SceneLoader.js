@@ -19,7 +19,7 @@ export class SceneLoader {
             this.frame.tileGrid.forEach((row) => {
                 row.forEach((tile) => {
                     if (tile.color != defaultColor) {
-                        html += `<span style="color:rgba(${tile.color.red}, ${tile.color.green}, ${tile.color.blue}, ${tile.color.opacity});">${tile.representation}</span>`;
+                        html += `<span style="color:rgba(${tile.color.red}, ${tile.color.green}, ${tile.color.blue}, ${tile.color.opacity});">${tile.representation}</span>`; //
                     }
                     else {
                         html += tile.representation;

@@ -14,29 +14,29 @@ export const GraphicsConfig = {
         Background: { red: 0, green: 0, blue: 0 },
         Player: { red: 255, green: 0, blue: 0 },
         Villages: { red: 0, green: 255, blue: 0 },
-        NPC: { red: 100, green: 255, blue: 100 }
+        NPC: { red: 28, green: 92, blue: 28 }
     },
     "DisplaySize": 50,
     LoadingScene: {
         "LoadingBarSize": 10
     },
     Representation: {
-        "Blank": '&#x0020;',
-        "Character": '&#x1338;',
-        "NPC": '&#x1330;',
-        "Water": '_', //&#x2248;
-        "Null": "&#x0000;",
-        "Animal": "&#x040B;", // I really want "&#x12B8;"
-        "Path": ".",
-        "PineTree": "&#x219F;",
-        "Hill": "^", //
-        "Mountain": "A", //&#x22C0;
-        "Grass": " ", // &#x02F5;
-        "Shrine": "&#x127E;",
-        "Farmland": "&#x2583;",
-        "Hut": "&#x03C0;",
-        "SmallHouse": "&#x21D1;",
-        "LargeHouse": "&#x220F;",
-        "LoadingBar": "o"
+        Blank: '&#x0020;',
+        Character: '&#x1338;',
+        NPC: '&#x1330;',
+        Water: '_', //&#x2248;
+        Null: "&#x0000;",
+        Animal: "&#x040B;", // I really want "&#x12B8;"
+        Path: ".",
+        PineTree: "&#x219F;",
+        Hill: "^", //
+        Mountain: "A", //&#x22C0;
+        Grass: " ", // &#x02F5;
+        Shrine: "&#x127E;",
+        Farmland: "&#x2583;",
+        SmallHouse: "&#x21D1;",
+        Hut: "&#x03C0;",
+        LargeHouse: "&#x220F;",
+        LoadingBar: "o"
     }
 };

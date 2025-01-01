@@ -15,7 +15,7 @@ export const GraphicsConfig = {
         Background : {red: 0, green: 0, blue: 0},
         Player : {red: 255, green: 0, blue: 0},
         Villages : {red: 0, green: 255, blue: 0},
-        NPC : {red: 100, green: 255, blue: 100}
+        NPC : {red: 28, green: 92, blue: 28}
     },
     "DisplaySize" : 50, 
     LoadingScene : {
