@@ -1,22 +1,47 @@
-import { DisplayableBundler } from "../../State/Bundler/DisplayableBundler";
-import { FrameBundler } from "../../State/Bundler/FrameBundler";
-import { TileComponent } from "../../State/Component/TileComponent.js";
-import { IRenderSystem } from "../Interfaces";
+import { withinBounds } from "../../Libraries/Utility.js";
+import { DisplayableBundler } from "../../State/Bundler/DisplayableBundler.js";
+import { FrameBundler } from "../../State/Bundler/FrameBundler.js";
+import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";
+import { ILocationComponent } from "../../State/Interfaces.js";
+import { IRenderSystem } from "../Interfaces.js";
 
 export class PhysicalRenderSystem implements IRenderSystem {
     displayableComponents : DisplayableBundler
+    center : ILocationComponent
     frameBundler : FrameBundler
+    private readonly viewRadius : number
 
-    constructor(frameBundler : FrameBundler, displayableComponents : DisplayableBundler) {
+    constructor(frameBundler : FrameBundler, displayableComponents : DisplayableBundler, center : ILocationComponent) {
         this.displayableComponents = displayableComponents
         this.frameBundler = frameBundler
+        this.center = center
+        this.viewRadius = Math.floor(GraphicsConfig.DisplaySize/2)
     }
 
-    async render () {
+    render () {
+        const leftEdgeX = this.center.location.x - this.viewRadius
+        // Because you are accessing an array, you are bounded by one less
+        const rightEdgeX = this.center.location.x + this.viewRadius - 1 
+
+        const topEdgeY = this.center.location.y - this.viewRadius
+        // Because you are accessing an array, you are bounded by one less
+        const bottomEdgeY = this.center.location.y + this.viewRadius - 1
+
         this.displayableComponents.entityBundle.forEach((component)=>{
-            const temp = this.frameBundler.tileGrid[component.location.y][component.location.x]
-            temp.representation = component.representation
-            temp.color = component.color
+            const locationX = component.location.x
+            const locationY = component.location.y
+
+            if (!withinBounds(locationX, leftEdgeX, rightEdgeX) ||
+                !withinBounds(locationY, topEdgeY, bottomEdgeY))
+                return;
+
+            const temp = this.frameBundler.tileGrid[locationY - topEdgeY][locationX - leftEdgeX]
+            if (temp === undefined) console.log("Woah   ")
+
+            Object.assign(temp, {
+                    representation: component.representation,
+                    color: component.color
+                }) 
         })
     }
 }

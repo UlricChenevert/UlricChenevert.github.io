@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { Coordinate } from "../DTO/Coordinate.js";
 import { GraphicsConfig } from "../Config/GraphicsConfig.js";
 import { TileComponent } from "./TileComponent.js";
 export class CellComponent {
@@ -44,7 +45,9 @@ export class CellComponent {
                 for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
                     const temp = [];
                     for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
-                        const noise = this.perlin.getNoise(i, j, { width: GraphicsConfig.DisplaySize, height: GraphicsConfig.DisplaySize });
+                        const tileWorldCoordinate = new Coordinate(this.worldCoordinate.x + i, this.worldCoordinate.y + j);
+                        const noise = this.perlin.getNoise(tileWorldCoordinate.x + GraphicsConfig.Generation.WorldBorder, // % GraphicsConfig.Generation.GenerationSize, // tmp
+                        tileWorldCoordinate.y + GraphicsConfig.Generation.WorldBorder);
                         let tileRepresentation = new TileComponent(GraphicsConfig.Representation.Blank);
                         if (noise > GraphicsConfig.MapCreation.Thresholds.mountain) {
                             tileRepresentation = new TileComponent(GraphicsConfig.Representation.Mountain);

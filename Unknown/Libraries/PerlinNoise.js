@@ -1,8 +1,10 @@
 export class Perlin {
-    constructor(gradientGridWidth = 32, octaves = 4) {
+    constructor(gradientGridWidth = 32, imageWidth = -1, imageHeight = -1, octaves = 4) {
         this.gradientGridWidth = gradientGridWidth;
         this.octaves = octaves;
         this.GradientVectorGrid = [];
+        this.imageWidth = imageWidth;
+        this.imageHeight = imageHeight;
         // Generate gradient grid
         for (let i = 0; i < gradientGridWidth; i++) {
             const vectorArray = [];
@@ -13,14 +15,17 @@ export class Perlin {
             this.GradientVectorGrid.push(vectorArray);
         }
     }
-    getNoise(x, y, imageSize) {
+    getNoise(x, y, imageWidth = this.imageWidth, imageHeight = this.imageHeight) {
         // Convert pixel coordinates to gradient grid space
-        const cellWidth = imageSize.width / (this.gradientGridWidth - 1);
-        const cellHeight = imageSize.height / (this.gradientGridWidth - 1);
-        // Calculate which grid cell we're in
-        const gridX = x / cellWidth;
-        const gridY = y / cellHeight;
-        return this.generateNoise(gridX, gridY);
+        // const cellWidth = imageWidth / (this.gradientGridWidth - 1)
+        // const cellHeight = imageHeight / (this.gradientGridWidth - 1)
+        // // Calculate which grid cell we're in
+        // const gridX = x / cellWidth
+        // const gridY = y / cellHeight
+        // return this.generateNoise(gridX, gridY)
+        // const withinGridX = Math.floor(x / imageWidth * )
+        // const withinGridY = Math.floor(y / imageHeight)
+        return this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth));
     }
     FractalBrownianMotion(x, y, imageSize) {
         let result = 0.0;
@@ -40,9 +45,9 @@ export class Perlin {
     }
     generateNoise(x, y) {
         const LeftX = Math.floor(x) % (this.gradientGridWidth - 1);
-        const RightX = LeftX + 1 % (this.gradientGridWidth - 1);
+        const RightX = (LeftX + 1) % (this.gradientGridWidth - 1);
         const TopY = Math.floor(y) % (this.gradientGridWidth - 1);
-        const BottomY = TopY + 1 % (this.gradientGridWidth - 1);
+        const BottomY = (TopY + 1) % (this.gradientGridWidth - 1);
         const relativePosition = new Coordinate(x - Math.floor(x), y - Math.floor(y));
         //const relativeVector = new Vector(relativePosition.x, relativePosition.y)
         // Distances

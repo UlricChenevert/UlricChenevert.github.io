@@ -2,23 +2,16 @@ import { CellComponent } from "../Component/CellComponent.js"
 
 export class CellBundler {
     // - - - - - - - - -
-    // - - - - x - - - -
     // - - - x x x - - -
-    // - - - - x - - - -
+    // - - - x x x - - -
+    // - - - x x x - - -
     // - - - - - - - - -
 
-    centerCell : CellComponent 
-    leftCell : CellComponent
-    rightCell : CellComponent
-    topCell : CellComponent
-    bottomCell : CellComponent
+    CellGrid : CellComponent[][]
+    
 
-    constructor (centerCell : CellComponent, leftCell : CellComponent, rightCell : CellComponent, topCell : CellComponent, bottomCell : CellComponent) {
-        this.centerCell = centerCell
-        this.leftCell = leftCell
-        this.rightCell = rightCell
-        this.topCell = topCell
-        this.bottomCell = bottomCell
+    constructor () {
+        this.CellGrid = []
     }
 
 

@@ -15,7 +15,7 @@ export class SceneLoader implements ISceneLoader {
         let defaultColor = new Color(GraphicsConfig.Colors.Background.red,GraphicsConfig.Colors.Background.green,GraphicsConfig.Colors.Background.blue)
         this.frame.tileGrid.forEach((row) => {
             row.forEach((tile)=>{
-                if (tile.color != defaultColor) {
+                if (!compareColors(tile.color, defaultColor)) {
                     html += `<span style="color:rgba(${tile.color.red}, ${tile.color.green}, ${tile.color.blue}, ${tile.color.opacity});">${tile.representation}</span>` //
                 } else {
                     html += tile.representation
@@ -27,4 +27,8 @@ export class SceneLoader implements ISceneLoader {
         
         displayElement.innerHTML = html
     }
+}
+
+function compareColors(colorA : Color, colorB : Color) {
+    return colorA.red == colorB.red && colorA.blue == colorB.blue && colorA.green == colorB.green
 }

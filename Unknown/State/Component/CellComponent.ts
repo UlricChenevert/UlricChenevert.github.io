@@ -49,7 +49,12 @@ export class CellComponent {
             const temp = []
 
             for (let j = 0; j < GraphicsConfig.DisplaySize; j ++) {
-                const noise = this.perlin.getNoise(i, j, {width: GraphicsConfig.DisplaySize, height: GraphicsConfig.DisplaySize})
+                const tileWorldCoordinate = new Coordinate(this.worldCoordinate.x + i, this.worldCoordinate.y + j)
+                const noise = this.perlin.getNoise(
+                    tileWorldCoordinate.x + GraphicsConfig.Generation.WorldBorder,// % GraphicsConfig.Generation.GenerationSize, // tmp
+                    tileWorldCoordinate.y + GraphicsConfig.Generation.WorldBorder,// % GraphicsConfig.Generation.GenerationSize, // tmp need normalization idea
+                )
+
                 let tileRepresentation = new TileComponent(GraphicsConfig.Representation.Blank) 
     
                 if (noise > GraphicsConfig.MapCreation.Thresholds.mountain) {

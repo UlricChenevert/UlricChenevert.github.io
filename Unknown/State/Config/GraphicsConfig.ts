@@ -18,9 +18,18 @@ export const GraphicsConfig = {
         NPC : {red: 28, green: 92, blue: 28}
     },
     "DisplaySize" : 50, 
+    Generation : {
+        resolution : 32,    //128,
+        WorldBorder : 1e3, //1e4,
+        GenerationSize: 2e3 //1e4 * 2 // double size of world border
+    },    
     "GameSpeedMilliseconds" : 100,
-    LoadingScene : {
-        "LoadingBarSize" : 10},
+    Loading : {
+        LoadingBarSize : 10,
+        CellWidth:3,
+        //LoadCellToCellWidthRatio:4,
+    
+    },
     Representation : {
         Blank : '&#x0020;',
         Character : '&#x1338;',

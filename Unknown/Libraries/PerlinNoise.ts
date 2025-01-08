@@ -3,11 +3,15 @@ export class Perlin {
     GradientVectorGrid : Array<Array<Vector>>
     octaves : number
     gradientGridWidth : number
+    private readonly imageWidth : number
+    private readonly imageHeight : number
 
-    constructor (gradientGridWidth = 32, octaves = 4) {
+    constructor (gradientGridWidth = 32, imageWidth = -1, imageHeight = -1, octaves = 4) {
         this.gradientGridWidth = gradientGridWidth
         this.octaves = octaves
         this.GradientVectorGrid = []
+        this.imageWidth = imageWidth
+        this.imageHeight = imageHeight
         
 
         // Generate gradient grid
@@ -25,16 +29,21 @@ export class Perlin {
     }
 
 
-    getNoise (x : number, y : number, imageSize : {width: number, height : number}) : number {
+    getNoise (x : number, y : number, imageWidth = this.imageWidth, imageHeight = this.imageHeight) : number {
         // Convert pixel coordinates to gradient grid space
-        const cellWidth = imageSize.width / (this.gradientGridWidth - 1)
-        const cellHeight = imageSize.height / (this.gradientGridWidth - 1)
+        // const cellWidth = imageWidth / (this.gradientGridWidth - 1)
+        // const cellHeight = imageHeight / (this.gradientGridWidth - 1)
         
-        // Calculate which grid cell we're in
-        const gridX = x / cellWidth
-        const gridY = y / cellHeight
+        // // Calculate which grid cell we're in
+        // const gridX = x / cellWidth
+        // const gridY = y / cellHeight
         
-        return this.generateNoise(gridX, gridY)
+        // return this.generateNoise(gridX, gridY)
+
+        // const withinGridX = Math.floor(x / imageWidth * )
+        // const withinGridY = Math.floor(y / imageHeight)
+
+        return this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth))
     }
 
     private FractalBrownianMotion (x : number, y : number, imageSize : {width: number, height : number}) : number {
@@ -62,9 +71,9 @@ export class Perlin {
     private generateNoise (x : number, y : number) : number {
         
         const LeftX = Math.floor(x) % (this.gradientGridWidth - 1)
-        const RightX = LeftX + 1  % (this.gradientGridWidth - 1)
+        const RightX = (LeftX + 1)  % (this.gradientGridWidth - 1)
         const TopY = Math.floor(y) % (this.gradientGridWidth - 1)
-        const BottomY = TopY + 1  % (this.gradientGridWidth - 1)
+        const BottomY = (TopY + 1)  % (this.gradientGridWidth - 1)
 
         const relativePosition = new Coordinate(x - Math.floor(x), y - Math.floor(y)) 
         //const relativeVector = new Vector(relativePosition.x, relativePosition.y)
