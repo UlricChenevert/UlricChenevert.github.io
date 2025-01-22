@@ -34,12 +34,14 @@ export class StartupEventCommand {
             return new Promise((resolve) => {
                 // I want to set up / generate map data
                 // Rest of the cells can just use the blank cell default constructor (for now)
-                this.cellBundler.CellGrid =
-                    [
-                        [new CellComponent(new Coordinate(-1 * GraphicsConfig.DisplaySize, -1 * GraphicsConfig.DisplaySize), this.perlin), new CellComponent(new Coordinate(0, -1 * GraphicsConfig.DisplaySize), this.perlin), new CellComponent(new Coordinate(1 * GraphicsConfig.DisplaySize, -1 * GraphicsConfig.DisplaySize), this.perlin)],
-                        [new CellComponent(new Coordinate(-1 * GraphicsConfig.DisplaySize, 0), this.perlin), new CellComponent(new Coordinate(0, 0), this.perlin), new CellComponent(new Coordinate(1 * GraphicsConfig.DisplaySize, 0), this.perlin)],
-                        [new CellComponent(new Coordinate(-1 * GraphicsConfig.DisplaySize, 1 * GraphicsConfig.DisplaySize), this.perlin), new CellComponent(new Coordinate(0, 1 * GraphicsConfig.DisplaySize), this.perlin), new CellComponent(new Coordinate(1 * GraphicsConfig.DisplaySize, 1 * GraphicsConfig.DisplaySize), this.perlin)]
-                    ];
+                this.cellBundler.CellGrid = [];
+                for (let i = 0; i < GraphicsConfig.Loading.CellWidth; i++) {
+                    const temp = [];
+                    for (let j = 0; j < GraphicsConfig.Loading.CellWidth; j++) {
+                        temp.push(new CellComponent(new Coordinate((-1 + j) * GraphicsConfig.DisplaySize, (-1 + i) * GraphicsConfig.DisplaySize), this.perlin));
+                    }
+                    this.cellBundler.CellGrid.push(temp);
+                }
                 const promises = [];
                 this.cellBundler.CellGrid.forEach((row) => {
                     row.forEach((cell) => { promises.push(cell.loadCell()); });

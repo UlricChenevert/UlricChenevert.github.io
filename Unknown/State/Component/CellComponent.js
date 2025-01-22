@@ -42,12 +42,13 @@ export class CellComponent {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve) => {
                 const tempCellData = [];
-                for (let i = 0; i < GraphicsConfig.DisplaySize; i++) {
+                if (this.worldCoordinate.x % GraphicsConfig.DisplaySize != 0 || this.worldCoordinate.y % GraphicsConfig.DisplaySize != 0)
+                    console.warn(`Coordinate state is in error ${this.worldCoordinate.x}, ${this.worldCoordinate.y}`);
+                for (let localY = 0; localY < GraphicsConfig.DisplaySize; localY++) {
                     const temp = [];
-                    for (let j = 0; j < GraphicsConfig.DisplaySize; j++) {
-                        const tileWorldCoordinate = new Coordinate(this.worldCoordinate.x + i, this.worldCoordinate.y + j);
-                        const noise = this.perlin.getNoise(tileWorldCoordinate.x + GraphicsConfig.Generation.WorldBorder, // % GraphicsConfig.Generation.GenerationSize, // tmp
-                        tileWorldCoordinate.y + GraphicsConfig.Generation.WorldBorder);
+                    for (let localX = 0; localX < GraphicsConfig.DisplaySize; localX++) {
+                        const tileWorldCoordinate = new Coordinate(this.worldCoordinate.x + localX, this.worldCoordinate.y + localY);
+                        const noise = this.perlin.getNoise(tileWorldCoordinate.x, tileWorldCoordinate.y);
                         let tileRepresentation = new TileComponent(GraphicsConfig.Representation.Blank);
                         if (noise > GraphicsConfig.MapCreation.Thresholds.mountain) {
                             tileRepresentation = new TileComponent(GraphicsConfig.Representation.Mountain);
@@ -65,7 +66,9 @@ export class CellComponent {
                     }
                     tempCellData.push(temp);
                 }
+                console.log(this.tileGrid);
                 this.tileGrid = tempCellData;
+                console.log(this.tileGrid);
                 resolve();
             });
         });

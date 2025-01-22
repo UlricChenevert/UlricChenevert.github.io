@@ -34,14 +34,16 @@ class DependenciesContainer {
     }
 }
 
+// TODO: Do this automatically
 export let DependencyInjection = new DependenciesContainer()
 
-// TODO: Do this automatically
 DependencyInjection.register("Perlin", 
     new Perlin(
-        Math.floor(GraphicsConfig.Generation.GenerationSize/GraphicsConfig.DisplaySize) + 1, 
-        GraphicsConfig.Generation.GenerationSize, 
-        GraphicsConfig.Generation.GenerationSize)
+        GraphicsConfig.Generation.WorldBorder,
+        GraphicsConfig.Generation.WorldBorder,
+        -1*GraphicsConfig.Generation.WorldBorder,
+        -1*GraphicsConfig.Generation.WorldBorder,
+        GraphicsConfig.Generation.resolution)
 )
 
 // State

@@ -4,7 +4,6 @@ import { FrameBundler } from "../../State/Bundler/FrameBundler.js";
 import { ILocationComponent } from "../../State/Interfaces.js";
 import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";
 import { Coordinate } from "../../State/DTO/Coordinate.js";
-import { CellManagerSystem } from "./CellManagerSystem.js";
 
 export class CellRenderSystem implements IRenderSystem {
     cellBundler : CellBundler
@@ -46,16 +45,16 @@ export class CellRenderSystem implements IRenderSystem {
                 // Copy over cell :)
                 Object.assign(tile, {
                     color: GraphicsConfig.Colors.Background, 
-                    representation: GraphicsConfig.Representation.Null
+                    representation: GraphicsConfig.Representation.LargeHouse
                 })
-                return
+                
+            } else {
+                // Copy over cell :)
+                Object.assign(tile, {
+                    color: temp.color, 
+                    representation: temp.representation
+                })
             }
-
-            // Copy over cell :)
-            Object.assign(tile, {
-                color: temp.color, 
-                representation: temp.representation
-            })
         })})
 
     }

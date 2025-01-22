@@ -1,10 +1,12 @@
 export class Perlin {
-    constructor(gradientGridWidth = 32, imageWidth = -1, imageHeight = -1, octaves = 4) {
+    constructor(maximumX, maximumY, minimumX = 0, minimumY = 0, gradientGridWidth = 32, octaves = 4) {
         this.gradientGridWidth = gradientGridWidth;
         this.octaves = octaves;
         this.GradientVectorGrid = [];
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
+        this.rangeX = maximumX - minimumX;
+        this.rangeY = maximumY - minimumY;
+        this.minimumX = minimumX;
+        this.minimumY = minimumY;
         // Generate gradient grid
         for (let i = 0; i < gradientGridWidth; i++) {
             const vectorArray = [];
@@ -15,17 +17,14 @@ export class Perlin {
             this.GradientVectorGrid.push(vectorArray);
         }
     }
-    getNoise(x, y, imageWidth = this.imageWidth, imageHeight = this.imageHeight) {
-        // Convert pixel coordinates to gradient grid space
-        // const cellWidth = imageWidth / (this.gradientGridWidth - 1)
-        // const cellHeight = imageHeight / (this.gradientGridWidth - 1)
-        // // Calculate which grid cell we're in
-        // const gridX = x / cellWidth
-        // const gridY = y / cellHeight
-        // return this.generateNoise(gridX, gridY)
-        // const withinGridX = Math.floor(x / imageWidth * )
-        // const withinGridY = Math.floor(y / imageHeight)
-        return this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth));
+    getNoise(x, y) {
+        // normalize 0 to 1 
+        const normalizedX = (x - this.minimumX) / this.rangeX;
+        const normalizedY = (y - this.minimumY) / this.rangeY;
+        // Normalize 0 to gradientGridWidth
+        const gridX = normalizedX * this.gradientGridWidth;
+        const gridY = normalizedY * this.gradientGridWidth;
+        return this.generateNoise(gridX, gridY); //this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth))
     }
     FractalBrownianMotion(x, y, imageSize) {
         let result = 0.0;

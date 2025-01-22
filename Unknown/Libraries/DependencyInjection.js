@@ -25,9 +25,9 @@ class DependenciesContainer {
         return instance;
     }
 }
-export let DependencyInjection = new DependenciesContainer();
 // TODO: Do this automatically
-DependencyInjection.register("Perlin", new Perlin(Math.floor(GraphicsConfig.Generation.GenerationSize / GraphicsConfig.DisplaySize) + 1, GraphicsConfig.Generation.GenerationSize, GraphicsConfig.Generation.GenerationSize));
+export let DependencyInjection = new DependenciesContainer();
+DependencyInjection.register("Perlin", new Perlin(GraphicsConfig.Generation.WorldBorder, GraphicsConfig.Generation.WorldBorder, -1 * GraphicsConfig.Generation.WorldBorder, -1 * GraphicsConfig.Generation.WorldBorder, GraphicsConfig.Generation.resolution));
 // State
 DependencyInjection.register("DisplayableBundler", new DisplayableBundler());
 DependencyInjection.register("BeingComponentBundler", new BeingComponentBundler());

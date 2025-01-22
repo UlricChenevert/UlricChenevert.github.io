@@ -29,15 +29,16 @@ export class CellRenderSystem {
                     // Copy over cell :)
                     Object.assign(tile, {
                         color: GraphicsConfig.Colors.Background,
-                        representation: GraphicsConfig.Representation.Null
+                        representation: GraphicsConfig.Representation.LargeHouse
                     });
-                    return;
                 }
-                // Copy over cell :)
-                Object.assign(tile, {
-                    color: temp.color,
-                    representation: temp.representation
-                });
+                else {
+                    // Copy over cell :)
+                    Object.assign(tile, {
+                        color: temp.color,
+                        representation: temp.representation
+                    });
+                }
             });
         });
     }

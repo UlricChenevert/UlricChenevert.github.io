@@ -3,16 +3,23 @@ export class Perlin {
     GradientVectorGrid : Array<Array<Vector>>
     octaves : number
     gradientGridWidth : number
-    private readonly imageWidth : number
-    private readonly imageHeight : number
 
-    constructor (gradientGridWidth = 32, imageWidth = -1, imageHeight = -1, octaves = 4) {
+    private readonly rangeY : number
+    private readonly rangeX : number
+
+    private readonly minimumY : number
+    private readonly minimumX : number
+
+    constructor (maximumX : number, maximumY : number, minimumX = 0, minimumY = 0, gradientGridWidth = 32, octaves = 4) {
         this.gradientGridWidth = gradientGridWidth
         this.octaves = octaves
         this.GradientVectorGrid = []
-        this.imageWidth = imageWidth
-        this.imageHeight = imageHeight
-        
+
+        this.rangeX = maximumX - minimumX
+        this.rangeY = maximumY - minimumY
+
+        this.minimumX = minimumX
+        this.minimumY = minimumY
 
         // Generate gradient grid
         for (let i = 0; i < gradientGridWidth; i++) {  
@@ -29,21 +36,16 @@ export class Perlin {
     }
 
 
-    getNoise (x : number, y : number, imageWidth = this.imageWidth, imageHeight = this.imageHeight) : number {
-        // Convert pixel coordinates to gradient grid space
-        // const cellWidth = imageWidth / (this.gradientGridWidth - 1)
-        // const cellHeight = imageHeight / (this.gradientGridWidth - 1)
-        
-        // // Calculate which grid cell we're in
-        // const gridX = x / cellWidth
-        // const gridY = y / cellHeight
-        
-        // return this.generateNoise(gridX, gridY)
+    getNoise (x : number, y : number) : number {
+        // normalize 0 to 1 
+        const normalizedX = (x - this.minimumX) / this.rangeX 
+        const normalizedY = (y - this.minimumY) / this.rangeY
 
-        // const withinGridX = Math.floor(x / imageWidth * )
-        // const withinGridY = Math.floor(y / imageHeight)
+        // Normalize 0 to gradientGridWidth
+        const gridX = normalizedX * this.gradientGridWidth
+        const gridY = normalizedY * this.gradientGridWidth
 
-        return this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth))
+        return this.generateNoise(gridX, gridY) //this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth))
     }
 
     private FractalBrownianMotion (x : number, y : number, imageSize : {width: number, height : number}) : number {
