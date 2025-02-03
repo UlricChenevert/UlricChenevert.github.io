@@ -32,13 +32,14 @@ export class CellRenderSystem implements IRenderSystem {
             const targetWorldCoordinate = new Coordinate(worldRelativeFrameCoordinate.x + frameX, worldRelativeFrameCoordinate.y + frameY)
 
             // Determine which cell to use
+            // Absolute value will cause symmetry in cell; however, it should not crop up if the grid buffer is correct
             const relativeCoordinate = new Coordinate(Math.abs(worldRelativeCellCoordinate.x - targetWorldCoordinate.x), Math.abs(worldRelativeCellCoordinate.y - targetWorldCoordinate.y))
             const cellCoordinate = new Coordinate(Math.floor(relativeCoordinate.x / this.cellWidth), Math.floor(relativeCoordinate.y / this.cellWidth))
 
             // Determine which tile to copy
             const tileCoordinate = new Coordinate(relativeCoordinate.x - cellCoordinate.x * this.cellWidth, relativeCoordinate.y - cellCoordinate.y * this.cellWidth)
 
-            const temp = gridBuffer[cellCoordinate.x]?.[cellCoordinate.y]?.tileGrid[tileCoordinate.x][tileCoordinate.y]
+            const temp = gridBuffer[cellCoordinate.y]?.[cellCoordinate.x]?.tileGrid[tileCoordinate.y][tileCoordinate.x]
 
             // Edge case: cannot access tile
             if (temp === undefined) {

@@ -19,11 +19,12 @@ export class CellRenderSystem {
                 // Translate frame coordinate into world coordinate
                 const targetWorldCoordinate = new Coordinate(worldRelativeFrameCoordinate.x + frameX, worldRelativeFrameCoordinate.y + frameY);
                 // Determine which cell to use
+                // Absolute value will cause symmetry in cell; however, it should not crop up if the grid buffer is correct
                 const relativeCoordinate = new Coordinate(Math.abs(worldRelativeCellCoordinate.x - targetWorldCoordinate.x), Math.abs(worldRelativeCellCoordinate.y - targetWorldCoordinate.y));
                 const cellCoordinate = new Coordinate(Math.floor(relativeCoordinate.x / this.cellWidth), Math.floor(relativeCoordinate.y / this.cellWidth));
                 // Determine which tile to copy
                 const tileCoordinate = new Coordinate(relativeCoordinate.x - cellCoordinate.x * this.cellWidth, relativeCoordinate.y - cellCoordinate.y * this.cellWidth);
-                const temp = (_b = (_a = gridBuffer[cellCoordinate.x]) === null || _a === void 0 ? void 0 : _a[cellCoordinate.y]) === null || _b === void 0 ? void 0 : _b.tileGrid[tileCoordinate.x][tileCoordinate.y];
+                const temp = (_b = (_a = gridBuffer[cellCoordinate.y]) === null || _a === void 0 ? void 0 : _a[cellCoordinate.x]) === null || _b === void 0 ? void 0 : _b.tileGrid[tileCoordinate.y][tileCoordinate.x];
                 // Edge case: cannot access tile
                 if (temp === undefined) {
                     // Copy over cell :)

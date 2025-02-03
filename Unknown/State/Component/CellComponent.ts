@@ -77,9 +77,9 @@ export class CellComponent {
             tempCellData.push(temp)
         }
         
-        console.log(this.tileGrid)
+        // console.log(this.tileGrid)
         this.tileGrid = tempCellData
-        console.log(this.tileGrid)
+        // console.log(this.tileGrid)
         resolve()
         })
     }
