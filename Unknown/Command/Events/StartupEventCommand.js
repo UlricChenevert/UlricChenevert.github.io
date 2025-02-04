@@ -35,9 +35,9 @@ export class StartupEventCommand {
                 // I want to set up / generate map data
                 // Rest of the cells can just use the blank cell default constructor (for now)
                 this.cellBundler.CellGrid = [];
-                for (let i = 0; i < GraphicsConfig.Loading.CellWidth; i++) {
+                for (let i = 0; i < GraphicsConfig.Loading.CellGridWidth; i++) {
                     const temp = [];
-                    for (let j = 0; j < GraphicsConfig.Loading.CellWidth; j++) {
+                    for (let j = 0; j < GraphicsConfig.Loading.CellGridWidth; j++) {
                         temp.push(new CellComponent(new Coordinate((-1 + j) * GraphicsConfig.DisplaySize, (-1 + i) * GraphicsConfig.DisplaySize), this.perlin));
                     }
                     this.cellBundler.CellGrid.push(temp);
@@ -65,8 +65,9 @@ export class StartupEventCommand {
         let player = new Entity();
         this.entityDirectory.Entities.push(player);
         this.beingComponentBundler.entityBundle.set(player.id, new BeingComponent(100, 1, 1, 1));
+        const playerLocation = new Coordinate(GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1, GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1); //new Coordinate(Math.floor(GraphicsConfig.DisplaySize/2), Math.floor(GraphicsConfig.DisplaySize/2))
         // Create a physical component and attach it to the keyEventCommand
-        let playerPhysicalComponent = new DisplayableComponent(GraphicsConfig.Representation.Character, new Coordinate(Math.floor(GraphicsConfig.DisplaySize / 2), Math.floor(GraphicsConfig.DisplaySize / 2)), new Color(GraphicsConfig.Colors.Player.red, GraphicsConfig.Colors.Player.green, GraphicsConfig.Colors.Player.blue));
+        let playerPhysicalComponent = new DisplayableComponent(GraphicsConfig.Representation.Character, playerLocation, new Color(GraphicsConfig.Colors.Player.red, GraphicsConfig.Colors.Player.green, GraphicsConfig.Colors.Player.blue));
         this.physicalComponentBundler.entityBundle.set(player.id, playerPhysicalComponent);
         this.keyEventCommand.keyEventSystems.push(new PlayerControlSystem(playerPhysicalComponent));
         return player;

@@ -25,8 +25,7 @@ export const GraphicsConfig = {
     "GameSpeedMilliseconds": 100,
     Loading: {
         LoadingBarSize: 10,
-        CellWidth: 3,
-        //LoadCellToCellWidthRatio:4,
+        CellGridWidth: 3
     },
     Representation: {
         Blank: '&#x0020;',
