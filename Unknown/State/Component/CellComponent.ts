@@ -1,14 +1,14 @@
 import { Coordinate } from "../DTO/Coordinate.js"
 import { GraphicsConfig } from "../Config/GraphicsConfig.js"
-import { Perlin } from "../../Libraries/PerlinNoise.js"
 import { TileComponent } from "./TileComponent.js"
+import { IPerlin } from "../../Libraries/interfaces.js"
 
 export class CellComponent {
     tileGrid : Array<Array<TileComponent>>
     worldCoordinate : Coordinate
-    perlin : Perlin
+    perlin : IPerlin
 
-    constructor (worldCoordinate : Coordinate, perlin: Perlin) {
+    constructor (worldCoordinate : Coordinate, perlin: IPerlin) {
         this.worldCoordinate = worldCoordinate
         this.tileGrid = []
         

@@ -65,7 +65,7 @@ export class StartupEventCommand {
         let player = new Entity();
         this.entityDirectory.Entities.push(player);
         this.beingComponentBundler.entityBundle.set(player.id, new BeingComponent(100, 1, 1, 1));
-        const playerLocation = new Coordinate(GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1, GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1); //new Coordinate(Math.floor(GraphicsConfig.DisplaySize/2), Math.floor(GraphicsConfig.DisplaySize/2))
+        const playerLocation = new Coordinate(Math.floor(GraphicsConfig.DisplaySize / 2), Math.floor(GraphicsConfig.DisplaySize / 2)); // new Coordinate(GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1, GraphicsConfig.Generation.WorldBorder - GraphicsConfig.DisplaySize - 1) 
         // Create a physical component and attach it to the keyEventCommand
         let playerPhysicalComponent = new DisplayableComponent(GraphicsConfig.Representation.Character, playerLocation, new Color(GraphicsConfig.Colors.Player.red, GraphicsConfig.Colors.Player.green, GraphicsConfig.Colors.Player.blue));
         this.physicalComponentBundler.entityBundle.set(player.id, playerPhysicalComponent);
