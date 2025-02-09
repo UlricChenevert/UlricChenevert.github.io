@@ -21,7 +21,8 @@ export const GraphicsConfig = {
     Generation : {
         resolution : 32,    //128,
         WorldBorder : 1e3, //1e4,
-        GenerationSize: 2e3 //1e4 * 2 // double size of world border
+        GenerationSize: 2e3, //1e4 * 2 // double size of world border
+        Seed : 1000
     },    
     "GameSpeedMilliseconds" : 100,
     Loading : {

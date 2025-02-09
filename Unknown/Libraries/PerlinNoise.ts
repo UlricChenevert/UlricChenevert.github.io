@@ -1,4 +1,7 @@
-export class Perlin {
+import { IPerlin, IRandom } from "./interfaces"
+
+export class Perlin implements IPerlin {
+    RandomGenerator : IRandom
 
     GradientVectorGrid : Array<Array<Vector>>
     octaves : number
@@ -10,24 +13,25 @@ export class Perlin {
     private readonly minimumY : number
     private readonly minimumX : number
 
-    constructor (maximumX : number, maximumY : number, minimumX = 0, minimumY = 0, gradientGridWidth = 32, octaves = 4) {
-        this.gradientGridWidth = gradientGridWidth
-        this.octaves = octaves
+    constructor (randomGenerator: IRandom, config : {maximumX : number, maximumY : number, minimumX : number, minimumY : number, gradientGridWidth  : number, octaves : number}) {
+        this.gradientGridWidth = config.gradientGridWidth
+        this.octaves = config.octaves
         this.GradientVectorGrid = []
+        this.RandomGenerator = randomGenerator
 
-        this.rangeX = maximumX - minimumX
-        this.rangeY = maximumY - minimumY
+        this.rangeX = config.maximumX - config.minimumX
+        this.rangeY = config.maximumY - config.minimumY
 
-        this.minimumX = minimumX
-        this.minimumY = minimumY
+        this.minimumX = config.minimumX
+        this.minimumY = config.minimumY
 
         // Generate gradient grid
-        for (let i = 0; i < gradientGridWidth; i++) {  
+        for (let i = 0; i < this.gradientGridWidth; i++) {  
             const vectorArray = []
-            for (let j = 0; j < gradientGridWidth; j++) {  
+            for (let j = 0; j < this.gradientGridWidth; j++) {  
 
                 // Range from -1, 1
-                vectorArray.push(new Vector(Math.random() * 2 - 1, Math.random() * 2 - 1))
+                vectorArray.push(new Vector(this.RandomGenerator.random() * 2 - 1, this.RandomGenerator.random() * 2 - 1))
             }
 
             this.GradientVectorGrid.push(vectorArray)
@@ -48,7 +52,7 @@ export class Perlin {
         return this.generateNoise(gridX, gridY) //this.generateNoise(x / (this.gradientGridWidth), y / (this.gradientGridWidth))
     }
 
-    private FractalBrownianMotion (x : number, y : number, imageSize : {width: number, height : number}) : number {
+    FractalBrownianMotion (x : number, y : number, imageSize : {width: number, height : number}) : number {
         let result = 0.0
         let amplitude = 1.0
         let frequency = 0.25
@@ -70,7 +74,7 @@ export class Perlin {
         return result
     }
 
-    private generateNoise (x : number, y : number) : number {
+    generateNoise (x : number, y : number) : number {
         
         const LeftX = Math.floor(x) % (this.gradientGridWidth - 1)
         const RightX = (LeftX + 1)  % (this.gradientGridWidth - 1)

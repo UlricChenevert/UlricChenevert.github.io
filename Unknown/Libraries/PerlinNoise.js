@@ -1,18 +1,19 @@
 export class Perlin {
-    constructor(maximumX, maximumY, minimumX = 0, minimumY = 0, gradientGridWidth = 32, octaves = 4) {
-        this.gradientGridWidth = gradientGridWidth;
-        this.octaves = octaves;
+    constructor(randomGenerator, config) {
+        this.gradientGridWidth = config.gradientGridWidth;
+        this.octaves = config.octaves;
         this.GradientVectorGrid = [];
-        this.rangeX = maximumX - minimumX;
-        this.rangeY = maximumY - minimumY;
-        this.minimumX = minimumX;
-        this.minimumY = minimumY;
+        this.RandomGenerator = randomGenerator;
+        this.rangeX = config.maximumX - config.minimumX;
+        this.rangeY = config.maximumY - config.minimumY;
+        this.minimumX = config.minimumX;
+        this.minimumY = config.minimumY;
         // Generate gradient grid
-        for (let i = 0; i < gradientGridWidth; i++) {
+        for (let i = 0; i < this.gradientGridWidth; i++) {
             const vectorArray = [];
-            for (let j = 0; j < gradientGridWidth; j++) {
+            for (let j = 0; j < this.gradientGridWidth; j++) {
                 // Range from -1, 1
-                vectorArray.push(new Vector(Math.random() * 2 - 1, Math.random() * 2 - 1));
+                vectorArray.push(new Vector(this.RandomGenerator.random() * 2 - 1, this.RandomGenerator.random() * 2 - 1));
             }
             this.GradientVectorGrid.push(vectorArray);
         }

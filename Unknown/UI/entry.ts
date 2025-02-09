@@ -1,8 +1,20 @@
-import { DependencyInjection } from "../Libraries/DependencyInjection.js";
+
+import { buildCommand } from "../Command/DependencyInjection.js";
+import { buildLayer } from "../Layer/DependencyInjection.js";
+import { buildLibraries } from "../Libraries/DependencyInjection.js";
+import { DependencyInjection } from "../Libraries/Injection.js";
+import { buildMode } from "../Mode/DependencyInjection.js";
+buildLibraries()
+buildState()
+buildCommand()
+buildLayer()
+buildMode()
+
 import { ModeHandler } from "../Mode/ModeHandler.js";
 import { GraphicsConfig } from "../State/Config/GraphicsConfig.js";
+import { buildState } from "../State/DependencyInjection.js";
 
-const modeHandler = <ModeHandler>DependencyInjection.resolve("ModeHandler")
+const modeHandler = <ModeHandler>DependencyInjection.resolve(ModeHandler)
 const displayElement = document.getElementById("Game")
 if(displayElement === null) throw "Game not defined"
 
