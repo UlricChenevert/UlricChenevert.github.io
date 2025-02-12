@@ -35,7 +35,7 @@ class Injector implements IInjector {
         this.recipesContainer.set(classSymbol, tempClassRecipe)
         
         // Checks for circular dependencies
-        // this.checkCyclicalDependencies(classSymbol, [classSymbol])
+        this.checkCyclicalDependencies(classSymbol, tempClassRecipe)
 
         return
     }
@@ -77,21 +77,23 @@ class Injector implements IInjector {
         return new (classRecipe.classReference as any)(...classDependencies) 
     }
 
-    checkCyclicalDependencies(currentClassSymbol: constructorType, ancestors : dependencyTypes[]) {
+    checkCyclicalDependencies(target: constructorType, tree : IClassRecipe) {
         // Gets children
-        const children = this.recipesContainer.get(currentClassSymbol)?.dependencies
+        const children = tree.dependencies
 
         // Checks children
-        children?.forEach((childDependency)=>{
-            ancestors.forEach((ancestor)=>{
-                if (childDependency == ancestor) throw `${currentClassSymbol.name} has cyclical / diamond dependencies`
-            })
-            
-            if (typeof childDependency == "function") {
-                ancestors.push(childDependency)
-                this.checkCyclicalDependencies(<constructorType>childDependency, children)
+        children?.forEach((dependency)=>{
+            if (typeof dependency != "function") return
+
+            if (dependency == target) {
+                throw `${target} has cyclical dependencies`
             }
+
+            // Check children for current target
+            this.checkCyclicalDependencies(tree.classReference, <IClassRecipe>this.recipesContainer.get(<constructorType>dependency))
             
+            // Iterate through tree with child as target
+            this.checkCyclicalDependencies(<constructorType>dependency, <IClassRecipe>this.recipesContainer.get(<constructorType>dependency))
         })
     }
 }

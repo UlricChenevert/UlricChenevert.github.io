@@ -42,3 +42,21 @@ export function shiftGrid<T>(grid : T[][], verticalShift : number, horizontalShi
     return tempGrid
 }
 
+// Jenkins Integer Mixing Algorithm
+export const integerMixing = (key : number) => {
+    key = key + (key << 15)
+    key = key ^ (key >> 12)
+    key = key + (key << 2)
+    key = key ^ (key >> 4)
+    key = key * 2057
+    key = key ^ (key >> 16)
+    return key
+}
+
+export const normalizedIntegerMixing = (key : number) => {
+    return integerMixing(key) % 0x7ffffff / 0x7ffffff
+}
+
+export const normalize = (value : number, max : number, min = 0) => {
+    return (value - min)/(max- min)
+}

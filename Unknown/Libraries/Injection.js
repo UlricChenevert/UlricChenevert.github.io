@@ -21,7 +21,7 @@ class Injector {
         const tempClassRecipe = new ClassRecipe(classSymbol, dependencies, isSingleInstance);
         this.recipesContainer.set(classSymbol, tempClassRecipe);
         // Checks for circular dependencies
-        // this.checkCyclicalDependencies(classSymbol, [classSymbol])
+        this.checkCyclicalDependencies(classSymbol, tempClassRecipe);
         return;
     }
     // Returns an object based on it's "type"
@@ -54,20 +54,20 @@ class Injector {
         // If there is a type error, I want it to fail here
         return new classRecipe.classReference(...classDependencies);
     }
-    checkCyclicalDependencies(currentClassSymbol, ancestors) {
-        var _a;
+    checkCyclicalDependencies(target, tree) {
         // Gets children
-        const children = (_a = this.recipesContainer.get(currentClassSymbol)) === null || _a === void 0 ? void 0 : _a.dependencies;
+        const children = tree.dependencies;
         // Checks children
-        children === null || children === void 0 ? void 0 : children.forEach((childDependency) => {
-            ancestors.forEach((ancestor) => {
-                if (childDependency == ancestor)
-                    throw `${currentClassSymbol.name} has cyclical / diamond dependencies`;
-            });
-            if (typeof childDependency == "function") {
-                ancestors.push(childDependency);
-                this.checkCyclicalDependencies(childDependency, children);
+        children === null || children === void 0 ? void 0 : children.forEach((dependency) => {
+            if (typeof dependency != "function")
+                return;
+            if (dependency == target) {
+                throw `${target} has cyclical dependencies`;
             }
+            // Check children for current target
+            this.checkCyclicalDependencies(tree.classReference, this.recipesContainer.get(dependency));
+            // Iterate through tree with child as target
+            this.checkCyclicalDependencies(dependency, this.recipesContainer.get(dependency));
         });
     }
 }

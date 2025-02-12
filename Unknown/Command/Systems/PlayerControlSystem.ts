@@ -1,5 +1,6 @@
 // System: A system is a process which acts on all entities with the desired components. For example, a physics system may query for entities having mass, velocity and position components, and iterate over the results doing physics calculations on the set of components for each entity. 
 
+import { integerMixing, normalizedIntegerMixing } from "../../Libraries/Utility.js";
 import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";
 import { Coordinate } from "../../State/DTO/Coordinate.js";
 import { IDisplayableComponent } from "../../State/Interfaces.js";
@@ -39,6 +40,11 @@ export class PlayerControlSystem implements IHandlesKeyboardEvents {
         
         else if (event.key === '~') {
             console.log(`${this.playerPhysicalComponent.location.x}, ${this.playerPhysicalComponent.location.y}`)
+        }
+
+        // Temp
+        else if (event.key === 'e') {
+            console.log(`${normalizedIntegerMixing(this.playerPhysicalComponent.location.x + this.playerPhysicalComponent.location.y)}`)
         }
 
         // Boundary
