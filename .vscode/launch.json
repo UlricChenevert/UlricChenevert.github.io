@@ -23,7 +23,7 @@
             "restart": true,
             "args": [],
             "console":"integratedTerminal",
-            "preLaunchTask": "Build Typescript Files",
+            "preLaunchTask": "Compile files",
         },
         {
             "type": "node",
@@ -37,7 +37,7 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],
-            "preLaunchTask": "Build Typescript Files"
+            "preLaunchTask": "Compile files"
         }
     ]
 }

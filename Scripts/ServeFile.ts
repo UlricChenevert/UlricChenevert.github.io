@@ -43,6 +43,8 @@ function determineContentType (extension : string) {
             return 'text/plain';
         case '.html':
             return 'text/html';
+        case '.ttf':
+            return 'font/ttf';
         default:
             return "unknown"
     }
