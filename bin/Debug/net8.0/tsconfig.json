@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "strict": true,
-        "noEmitOnError": true,
-        "target": "ES6",
-        "rootDir": "Source/",
-        "outDir": "wwwroot/Scripts"
-    }
-}
