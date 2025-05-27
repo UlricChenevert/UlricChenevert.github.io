@@ -1,8 +1,0 @@
-{
-    "Port":3001,
-    "HostName":"127.0.0.1",
-    "LogLocation": "./Logs/log.txt",
-    "HTMLLocation": "./HTML",
-    "MaxLogSizeBytes" : 1e6,
-    "LogEncoding" : "utf-8"
-}

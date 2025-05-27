@@ -4,14 +4,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        // {
-        //     "type": "firefox",
-        //     "request": "launch",
-        //     "reAttach": true,
-        //     "name": "Launch localhost",
-        //     "url": "http://localhost/index.html",
-        //     "webRoot": "${workspaceFolder}"
-        // },
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch localhost",
+            "url": "http://localhost/",
+            "webRoot": "${workspaceFolder}",
+            "port": 3001
+        },
         {
             "type": "node",
             "request": "launch",
@@ -23,7 +24,7 @@
             "restart": true,
             "args": [],
             "console":"integratedTerminal",
-            "preLaunchTask": "Compile files",
+            "preLaunchTask": "Build Typescript Files",
         },
         {
             "type": "node",
@@ -33,7 +34,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\server.js",
+            "program": "${workspaceFolder}\\Backend\\server.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],

@@ -3,5 +3,7 @@
     "**/*.js": true,
     "**/*.js.map": true,
     "**/*.css": true,
+    "package.json":true,
+    "package-lock.json":true
 }
 }

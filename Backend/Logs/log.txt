@@ -1,0 +1,1377 @@
+{"id":"9dc7ce98-1b4c-49de-b509-5f84fb69c62c","timestamp":"2025-05-05T17:21:08.586Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"d3ec5968-536a-459c-9d55-7acbc4377ab3","timestamp":"2025-05-05T17:21:46.255Z","message":"/ GET"}
+{"id":"6ef2a13f-805d-49d3-8f9c-ebd92e54f8f9","timestamp":"2025-05-05T17:21:46.314Z","message":"/CSS/style.css GET"}
+{"id":"689930c6-8018-4657-9daf-543d0b2050c0","timestamp":"2025-05-05T17:21:46.320Z","message":"/Images/mcdonalds-logo.png GET"}
+{"id":"1fb1a9b1-7275-426d-ad84-5afaa74476a2","timestamp":"2025-05-05T17:21:46.325Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"e08aab38-a361-4ad2-87b7-218a8729ad87","timestamp":"2025-05-05T17:21:46.367Z","message":"/favicon.ico GET"}
+{"id":"8ecca272-38ed-4837-bb09-a18fe2c8e491","timestamp":"2025-05-05T17:21:46.374Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"ca00a504-77e7-48b7-b4e9-332bb0d3b21d","timestamp":"2025-05-05T17:52:28.908Z","message":"/ GET"}
+{"id":"63bc1696-2c02-4071-b2f4-92f3a754f619","timestamp":"2025-05-05T17:52:28.955Z","message":"/CSS/style.css GET"}
+{"id":"7e565531-e04d-4ac7-9fc6-6e426bf2d0fc","timestamp":"2025-05-05T17:52:28.958Z","message":"/Images/Logo.png GET"}
+{"id":"fe234277-ea58-4bc7-927d-5ae6ef4748fc","timestamp":"2025-05-05T17:52:28.959Z","message":"User attempted to accesss unsupported file"}
+{"id":"3d46eb4f-ba5c-4dde-b824-4a97f366b610","timestamp":"2025-05-05T17:52:28.961Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1c9085ad-e050-4599-b736-940da76dc2a3","timestamp":"2025-05-05T17:52:28.974Z","message":"/favicon.ico GET"}
+{"id":"54a6e908-c562-4934-b72a-732bd54ec554","timestamp":"2025-05-05T17:52:28.975Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"5e4cd7e3-3669-4ca6-b84f-f2969142f965","timestamp":"2025-05-05T17:53:05.931Z","message":"/ GET"}
+{"id":"1e485feb-b940-4b47-b2bd-d76f231125be","timestamp":"2025-05-05T17:53:05.983Z","message":"/CSS/style.css GET"}
+{"id":"ed87e025-cdc2-4d4f-96c1-b5bd99e935f7","timestamp":"2025-05-05T17:53:05.992Z","message":"/Images/Logo.jpg GET"}
+{"id":"38a5592c-b7af-4fe9-92e4-e6414f2f1ee9","timestamp":"2025-05-05T17:53:05.994Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"4c365971-a874-42fc-8d91-e9c2e6fe3cfc","timestamp":"2025-05-05T17:53:06.038Z","message":"/favicon.ico GET"}
+{"id":"4fd4b3f8-3182-42f5-ab9e-543bde4b7654","timestamp":"2025-05-05T17:53:06.039Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"d5a85c83-1adf-466c-b79a-b58e63916158","timestamp":"2025-05-05T17:53:34.341Z","message":"/ GET"}
+{"id":"f8714ac3-756b-4f2e-9fc8-df2b3a7da059","timestamp":"2025-05-05T17:53:34.380Z","message":"/CSS/style.css GET"}
+{"id":"17578752-ad93-4b10-8200-29e7bbe0f097","timestamp":"2025-05-05T17:53:34.391Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b47a75dd-b413-4830-bf1e-d13f12338401","timestamp":"2025-05-05T17:53:34.392Z","message":"/Images/Logo.jpg GET"}
+{"id":"5fb8c1d4-4056-469a-b090-edf2148e7935","timestamp":"2025-05-05T17:53:34.410Z","message":"/favicon.ico GET"}
+{"id":"ddfc34f6-bc2d-4133-a93d-bb7cbb2584b7","timestamp":"2025-05-05T17:53:34.411Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"87720613-467e-495c-9cbd-44008c874ce8","timestamp":"2025-05-05T17:53:45.716Z","message":"/ GET"}
+{"id":"8dacee04-aa63-48ad-b0f7-e5e89b3a6c72","timestamp":"2025-05-05T17:53:45.759Z","message":"/CSS/style.css GET"}
+{"id":"d5483f39-83cc-4c12-8f1e-b420a41900d8","timestamp":"2025-05-05T17:53:45.763Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7633f669-95a1-439c-b185-1f0ee9672365","timestamp":"2025-05-05T17:53:45.767Z","message":"/Images/Logo.jpg GET"}
+{"id":"4e3ca8a6-c5ef-483a-85b2-52143711a733","timestamp":"2025-05-05T17:53:45.792Z","message":"/favicon.ico GET"}
+{"id":"df3bad78-f3e9-46d0-9714-4b967eab0633","timestamp":"2025-05-05T17:53:45.793Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"bff9c00b-1b4d-44df-a688-32c2b0140c4a","timestamp":"2025-05-05T17:54:35.004Z","message":"/ GET"}
+{"id":"53f4b6b6-b922-456b-9a0c-4cb17569c6ea","timestamp":"2025-05-05T17:54:35.054Z","message":"/CSS/style.css GET"}
+{"id":"43322206-d2ad-4898-bb20-9ea580db115b","timestamp":"2025-05-05T17:54:35.061Z","message":"/Images/Logo.jpg GET"}
+{"id":"6eb1db75-8c9f-40bf-a585-31ead31d074c","timestamp":"2025-05-05T17:54:35.059Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"cc8863ef-fa27-4a5d-9032-da4d4acd8f5a","timestamp":"2025-05-05T17:54:35.095Z","message":"/favicon.ico GET"}
+{"id":"661dea8f-55a2-40ad-acbc-c711fef7ed3f","timestamp":"2025-05-05T17:54:35.095Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"8868176b-0b20-4fef-819b-b01ad9fda303","timestamp":"2025-05-05T17:54:50.243Z","message":"/ GET"}
+{"id":"2fdf66d3-0de7-42d8-99e2-a2530cef50ee","timestamp":"2025-05-05T17:54:50.288Z","message":"/CSS/style.css GET"}
+{"id":"d8381b6a-6ee8-45b7-9cd2-593e26fa52a3","timestamp":"2025-05-05T17:54:50.296Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"00628edf-bc04-498e-bc6b-b9e712591bee","timestamp":"2025-05-05T17:54:50.298Z","message":"/Images/Logo.jpg GET"}
+{"id":"34331b8e-12f1-4d5e-8c7d-00096068cc5d","timestamp":"2025-05-05T17:54:50.338Z","message":"/favicon.ico GET"}
+{"id":"9ab603bb-f3ab-4740-b9af-d4c8556167d2","timestamp":"2025-05-05T17:54:50.339Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"e47e4f30-dd8a-4f23-aeec-4c1ee3f73a5c","timestamp":"2025-05-05T17:55:22.815Z","message":"/ GET"}
+{"id":"49696147-a90f-4cbd-a001-b36fd4c34fdc","timestamp":"2025-05-05T17:55:22.862Z","message":"/CSS/style.css GET"}
+{"id":"072ffd6c-9e3c-4fc7-9a48-e55133d5b1a6","timestamp":"2025-05-05T17:55:22.879Z","message":"/Images/Logo.jpg GET"}
+{"id":"ecb4219b-0254-4917-a9c6-3c720aef46e0","timestamp":"2025-05-05T17:55:22.876Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"753ca278-1100-40b6-8551-87a68931ed79","timestamp":"2025-05-05T17:55:22.928Z","message":"/favicon.ico GET"}
+{"id":"61f8ec20-5e60-4462-b6d5-b1c7620a58c6","timestamp":"2025-05-05T17:55:22.928Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"70c64d07-8e5c-4b6b-afc5-a2bb8f0fe389","timestamp":"2025-05-05T17:55:32.276Z","message":"/ GET"}
+{"id":"122c5cdc-ce0d-48ff-a5c3-02dca8e2d0af","timestamp":"2025-05-05T17:55:32.314Z","message":"/CSS/style.css GET"}
+{"id":"0e588cb1-fb8e-4dcd-b065-2dd236c0c5c0","timestamp":"2025-05-05T17:55:32.325Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"032a6b85-813d-4f77-9176-e2588d8150a5","timestamp":"2025-05-05T17:55:32.327Z","message":"/Images/Logo.jpg GET"}
+{"id":"6fcc995b-eae7-40d3-a8fb-44592f3ff6bc","timestamp":"2025-05-05T17:55:32.373Z","message":"/favicon.ico GET"}
+{"id":"13159fcf-dc2a-4f74-a58f-b18ac2dbcae0","timestamp":"2025-05-05T17:55:32.373Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"c5e2cf6c-fd1d-47dc-bf07-05296ea450e0","timestamp":"2025-05-05T17:57:52.161Z","message":"/ GET"}
+{"id":"044efac7-beae-4e96-b96d-620ee63b1680","timestamp":"2025-05-05T17:57:52.210Z","message":"/CSS/style.css GET"}
+{"id":"ae7377ba-28ba-4734-a736-44992a80a6f2","timestamp":"2025-05-05T17:57:52.222Z","message":"/Images/Logo.jpg GET"}
+{"id":"c6da94cb-cb8b-4e61-b461-b55d8235f180","timestamp":"2025-05-05T17:57:52.224Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"fc9406f5-ec4b-4db2-9cac-5f48d8165cb1","timestamp":"2025-05-05T17:57:52.247Z","message":"/favicon.ico GET"}
+{"id":"589a5a52-b159-4438-a19f-a38706856091","timestamp":"2025-05-05T17:57:52.248Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"21921eb3-3f32-4bba-8f5a-b51e07f060bf","timestamp":"2025-05-05T17:58:02.326Z","message":"/ GET"}
+{"id":"588be0a7-4219-47bc-b548-b689d83c7fa1","timestamp":"2025-05-05T17:58:02.366Z","message":"/CSS/style.css GET"}
+{"id":"5ab07292-6d54-432c-b62a-2615fd09e180","timestamp":"2025-05-05T17:58:02.380Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"4d3fd7c0-98f5-45f0-8bc2-264f8563974b","timestamp":"2025-05-05T17:58:02.382Z","message":"/Images/Logo.jpg GET"}
+{"id":"f0e2b385-708c-4079-a877-573373e577db","timestamp":"2025-05-05T17:58:02.411Z","message":"/favicon.ico GET"}
+{"id":"6d9c4ecf-1ce4-4587-8bba-30fe0853019f","timestamp":"2025-05-05T17:58:02.412Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"5285106a-e669-4f4a-92d2-5ac07ffb3d77","timestamp":"2025-05-05T18:00:04.892Z","message":"/ GET"}
+{"id":"701adcfd-2eb6-49d6-9b61-305b16704f9a","timestamp":"2025-05-05T18:00:04.944Z","message":"/CSS/style.css GET"}
+{"id":"37ba0ee0-ebe6-464e-af5a-ed271bd464fe","timestamp":"2025-05-05T18:00:04.956Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b989727f-f2b6-4d7d-b384-0dc9873aae1c","timestamp":"2025-05-05T18:00:04.959Z","message":"/Images/Logo.jpg GET"}
+{"id":"9b19ac51-f621-48d0-ab2a-3f05b25d5748","timestamp":"2025-05-05T18:00:05.019Z","message":"/favicon.ico GET"}
+{"id":"06ad0a71-bebb-4586-9702-0b9361a0b243","timestamp":"2025-05-05T18:00:05.020Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"eb186a8c-1a8f-4da5-a1d9-3bea4ec6cadc","timestamp":"2025-05-05T18:00:24.296Z","message":"/ GET"}
+{"id":"8ac84962-788d-4145-8d3f-65eec1f6c6be","timestamp":"2025-05-05T18:00:24.335Z","message":"/CSS/style.css GET"}
+{"id":"c52ea9b8-9f38-4562-ac6d-9e04863215f5","timestamp":"2025-05-05T18:00:24.344Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"0ff2f790-cd17-4fca-8335-93eab12d0e90","timestamp":"2025-05-05T18:00:24.346Z","message":"/Images/Logo.jpg GET"}
+{"id":"ba756cdf-a7cd-4efe-b1c4-3eb2948a299c","timestamp":"2025-05-05T18:00:24.377Z","message":"/favicon.ico GET"}
+{"id":"ca469007-61d1-4afb-b9ed-f528a6b0d977","timestamp":"2025-05-05T18:00:24.378Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"abd3278b-9df7-4d44-966f-8b282f025aac","timestamp":"2025-05-05T18:00:32.963Z","message":"/ GET"}
+{"id":"8c0253f6-c214-42db-9a64-92b0d2ae621e","timestamp":"2025-05-05T18:00:33.012Z","message":"/CSS/style.css GET"}
+{"id":"121855a5-391f-4e0e-beb6-769a76ce7dcb","timestamp":"2025-05-05T18:00:33.080Z","message":"/favicon.ico GET"}
+{"id":"a6df8937-75ea-4882-8dd1-d9e08f712330","timestamp":"2025-05-05T18:00:33.080Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"715f6c85-7311-4a66-a8cf-6b72e1263a22","timestamp":"2025-05-05T18:00:45.394Z","message":"/ GET"}
+{"id":"48f50ea6-5e6e-4ba4-bf0c-3da5fa514532","timestamp":"2025-05-05T18:00:45.435Z","message":"/CSS/style.css GET"}
+{"id":"1cccebc8-5940-4971-b609-4b6d5a7db925","timestamp":"2025-05-05T18:00:45.446Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"e9fcfc7f-12f3-4d3e-976f-eb51a48db536","timestamp":"2025-05-05T18:00:45.467Z","message":"/favicon.ico GET"}
+{"id":"95fd1c4f-22db-4157-9605-40359a247adf","timestamp":"2025-05-05T18:00:45.468Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"dccf0d89-7cbd-4972-b0ad-f571deb21183","timestamp":"2025-05-05T18:02:08.676Z","message":"/ GET"}
+{"id":"ee4e78f6-f747-4325-bdd1-2260eb71c83c","timestamp":"2025-05-05T18:02:08.714Z","message":"/CSS/style.css GET"}
+{"id":"032c8879-8bce-4e3e-a22a-b009c3844d63","timestamp":"2025-05-05T18:02:08.718Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"82fd027e-a1e4-4f05-bbfb-7b55db820ad3","timestamp":"2025-05-05T18:02:08.730Z","message":"/favicon.ico GET"}
+{"id":"d086de24-2385-406c-824b-8efd72809f26","timestamp":"2025-05-05T18:02:08.730Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"fe1a5725-7ab3-4501-9ced-dccf4c3e20b7","timestamp":"2025-05-05T18:02:21.793Z","message":"/ GET"}
+{"id":"a88c114e-4afc-471b-a0ce-efb199e0fec4","timestamp":"2025-05-05T18:02:21.830Z","message":"/CSS/style.css GET"}
+{"id":"d1e822d1-9ec4-49b8-8f76-329a6637fb17","timestamp":"2025-05-05T18:02:21.834Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"a1df1073-c8e2-4bb5-99e7-8da56f694436","timestamp":"2025-05-05T18:02:21.844Z","message":"/favicon.ico GET"}
+{"id":"681beb81-a07e-40fc-9f99-7b2197e9de8f","timestamp":"2025-05-05T18:02:21.845Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"67907498-0c1b-46dc-918c-a4a80edf5209","timestamp":"2025-05-05T18:02:40.396Z","message":"/ GET"}
+{"id":"2e824ef6-7b6b-4cff-93f6-a83d9950c001","timestamp":"2025-05-05T18:02:40.430Z","message":"/CSS/style.css GET"}
+{"id":"b7cfd1f9-9b37-4b6f-9a4f-203c3f0c0d84","timestamp":"2025-05-05T18:02:40.433Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"4be08680-4f43-47cc-86be-293349ecc2da","timestamp":"2025-05-05T18:02:40.463Z","message":"/favicon.ico GET"}
+{"id":"15545717-2995-4262-b831-25f3d2c0aef6","timestamp":"2025-05-05T18:02:40.464Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"dbedf6bd-8959-4a13-a4f4-d0aacd1a8a49","timestamp":"2025-05-05T18:02:56.864Z","message":"/ GET"}
+{"id":"bb408bd1-50ad-4897-b21c-a3618b9a946c","timestamp":"2025-05-05T18:02:56.901Z","message":"/CSS/style.css GET"}
+{"id":"10ceda4d-ecec-4bd1-9c62-78f475ff51d5","timestamp":"2025-05-05T18:02:56.915Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b4cc5f9d-b386-400f-8dca-13a379502647","timestamp":"2025-05-05T18:02:56.945Z","message":"/favicon.ico GET"}
+{"id":"8483a638-a5b8-4bb4-abf4-b0f80ad060e9","timestamp":"2025-05-05T18:02:56.946Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"817eb581-847c-46dd-9767-c39ed62bc1bd","timestamp":"2025-05-05T18:03:06.928Z","message":"/ GET"}
+{"id":"2836d621-4e0a-4f9d-9e4b-d4aad50ddb6b","timestamp":"2025-05-05T18:03:06.966Z","message":"/CSS/style.css GET"}
+{"id":"d1a2cc5d-1a61-459e-be3e-d8896d2e4fb9","timestamp":"2025-05-05T18:03:06.970Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"ab29f25a-4b14-4e38-8c44-130cf90bf026","timestamp":"2025-05-05T18:03:06.981Z","message":"/favicon.ico GET"}
+{"id":"2943c661-82a5-4f06-a276-1add0bd74ea0","timestamp":"2025-05-05T18:03:06.982Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"7e2b2bee-51a2-43f1-beb4-320511fdccf3","timestamp":"2025-05-05T18:03:46.412Z","message":"/ GET"}
+{"id":"3d481160-a63d-4000-848a-8a5cad4e63f5","timestamp":"2025-05-05T18:03:46.468Z","message":"/CSS/style.css GET"}
+{"id":"838a75b7-d08f-4912-94e9-c05b371fb91b","timestamp":"2025-05-05T18:03:46.475Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"5ad2065d-a5df-4393-a34f-27a469023f0d","timestamp":"2025-05-05T18:03:46.489Z","message":"/favicon.ico GET"}
+{"id":"1653b249-5603-4c18-a670-3dc617f9067e","timestamp":"2025-05-05T18:03:46.490Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"1338c33b-1ec3-4ffd-82c6-72adf6712019","timestamp":"2025-05-05T18:03:53.317Z","message":"/CSS/style.css GET"}
+{"id":"87edb32f-8e7d-42d9-8cf9-f1c2a35a786b","timestamp":"2025-05-05T18:03:53.319Z","message":"/CSS/style.css GET"}
+{"id":"ac46a0df-7469-4f8b-8316-c2be1caa9c11","timestamp":"2025-05-05T18:04:34.237Z","message":"/ GET"}
+{"id":"e8616749-c2c8-4702-a160-80b595850a26","timestamp":"2025-05-05T18:04:34.281Z","message":"/CSS/style.css GET"}
+{"id":"93450f29-5334-4315-a7b4-6e98e02e0881","timestamp":"2025-05-05T18:04:34.288Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"29c30d43-be5e-41f2-9ea9-74330f731a50","timestamp":"2025-05-05T18:04:34.307Z","message":"/favicon.ico GET"}
+{"id":"73fda5ec-4842-4a45-8da9-c5b008b1bf1d","timestamp":"2025-05-05T18:04:34.308Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"d31f30cd-fffc-4768-8274-a7894fa46123","timestamp":"2025-05-05T18:07:29.788Z","message":"/ GET"}
+{"id":"45b32e0b-13f5-4403-916a-164278e957af","timestamp":"2025-05-05T18:07:29.834Z","message":"/CSS/style.css GET"}
+{"id":"e3835928-fc98-4e7f-b219-844f3d12277c","timestamp":"2025-05-05T18:07:29.836Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"ac51bbc0-0f61-4c48-bb32-f9ee3772b3ff","timestamp":"2025-05-05T18:07:29.847Z","message":"/favicon.ico GET"}
+{"id":"8f221511-73bb-4497-9dd7-05db9e7d4d47","timestamp":"2025-05-05T18:07:29.847Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"cbbe4af7-e325-4e81-99b0-037da91daa3d","timestamp":"2025-05-05T18:30:46.417Z","message":"/ GET"}
+{"id":"ce33767b-fbf7-4951-aec2-858a771d05c1","timestamp":"2025-05-05T18:30:46.479Z","message":"/Styles/project.css GET"}
+{"id":"ab6efbd3-857f-4449-94fa-466cb61e0514","timestamp":"2025-05-05T18:30:46.483Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"67d720d7-4bb4-4fe5-896d-cd5a8fb4158d","timestamp":"2025-05-05T18:30:46.507Z","message":"/favicon.ico GET"}
+{"id":"935533fe-021a-491d-9ff0-17fdc49be19f","timestamp":"2025-05-05T18:30:46.508Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"a4f30182-75ad-4665-9b5c-8a915a677c2f","timestamp":"2025-05-05T18:30:47.549Z","message":"/ GET"}
+{"id":"643c0b54-dca1-4255-a96e-5e9ed56884e4","timestamp":"2025-05-05T18:30:47.582Z","message":"/Styles/project.css GET"}
+{"id":"decb9e9b-c2e0-4ca6-9e2e-09e2372d1aaa","timestamp":"2025-05-05T18:30:47.584Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"f26ca80a-bf42-4a60-b8aa-89f4f2ac9aeb","timestamp":"2025-05-05T18:31:53.489Z","message":"/ GET"}
+{"id":"61d4055b-2f6e-44ac-9b9e-f1637cbb4f7a","timestamp":"2025-05-05T18:31:53.535Z","message":"/Styles/project.css GET"}
+{"id":"8f71a731-a6b4-4fc5-a5f9-c4b653cc1b93","timestamp":"2025-05-05T18:31:53.544Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"85c0d0c5-66e8-4ed9-85ef-34f447d23aee","timestamp":"2025-05-05T18:33:01.321Z","message":"/ GET"}
+{"id":"78fd181d-231a-4fb7-851c-b1a9d548d6da","timestamp":"2025-05-05T18:33:01.366Z","message":"/Styles/project.css GET"}
+{"id":"00c84146-e6b4-44fa-9c7c-f1a1bfc9cb53","timestamp":"2025-05-05T18:33:01.382Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"90be2fcd-7691-4734-8963-e1daad837305","timestamp":"2025-05-05T18:33:10.014Z","message":"/ GET"}
+{"id":"1a2eec91-ac7f-4392-bf35-af94b9d953f6","timestamp":"2025-05-05T18:33:10.050Z","message":"/Styles/project.css GET"}
+{"id":"44d9ecae-56bd-47da-bcc5-8141e9f61f2e","timestamp":"2025-05-05T18:33:10.053Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"797029ae-f4fd-4c00-a9a4-233747bd65cf","timestamp":"2025-05-05T18:33:11.920Z","message":"/ GET"}
+{"id":"1201483c-2d14-4c62-bc4c-b30c050734bc","timestamp":"2025-05-05T18:33:11.948Z","message":"/Styles/project.css GET"}
+{"id":"98988a8d-8b79-4e6c-8fc6-22bd63195431","timestamp":"2025-05-05T18:33:11.951Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c0c736c0-6ba0-4659-9f0d-4914a56a6e56","timestamp":"2025-05-05T18:33:12.501Z","message":"/ GET"}
+{"id":"7214e02e-ee5b-4e3c-81e5-6336dfaa69e1","timestamp":"2025-05-05T18:33:12.530Z","message":"/Styles/project.css GET"}
+{"id":"cd53805a-97e5-4e7f-b345-42ea22ce93e1","timestamp":"2025-05-05T18:33:12.550Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"604350b9-4c61-4add-9f11-fdb457cfea30","timestamp":"2025-05-05T18:33:12.730Z","message":"/ GET"}
+{"id":"b9390c01-3dcc-46d1-9ae9-500be88972c1","timestamp":"2025-05-05T18:33:12.754Z","message":"/Styles/project.css GET"}
+{"id":"7f3440ce-0768-4cdc-a1de-07c208a4857f","timestamp":"2025-05-05T18:33:12.761Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c303ee2c-a5b3-48a7-99f4-bd2a28596505","timestamp":"2025-05-05T18:33:53.300Z","message":"/index.html GET"}
+{"id":"8c11a5e0-84c4-4ded-9b5a-49d60c8b1828","timestamp":"2025-05-05T18:33:56.031Z","message":"/ GET"}
+{"id":"c02e7b78-eaee-49aa-9257-b933c1ddd668","timestamp":"2025-05-05T18:33:56.082Z","message":"/Styles/project.css GET"}
+{"id":"1ef94d35-b935-4e93-9de1-e9f6041cc179","timestamp":"2025-05-05T18:33:56.150Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b6c05e0a-3915-464e-85eb-5a0c62022334","timestamp":"2025-05-05T18:43:41.227Z","message":"/ GET"}
+{"id":"68ee0ed6-71a7-4f4b-b01d-b06fe8c06424","timestamp":"2025-05-05T18:43:42.209Z","message":"/Styles/project.css GET"}
+{"id":"5b3a7766-5343-473e-81a8-cf87c8d5fd9b","timestamp":"2025-05-05T18:43:42.224Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"604698a0-998d-439b-a990-a1c7e18eb66e","timestamp":"2025-05-05T18:43:54.492Z","message":"/ GET"}
+{"id":"305a1a6d-0012-44ec-b2d3-fe44c16d327d","timestamp":"2025-05-05T18:43:54.539Z","message":"/Styles/project.css GET"}
+{"id":"6a028bf7-8965-402a-8888-218d92a25546","timestamp":"2025-05-05T18:43:54.542Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"ec87f2b8-13cf-4ee3-91a4-42e786de7ca9","timestamp":"2025-05-05T18:44:53.944Z","message":"/ GET"}
+{"id":"cb589119-15d4-4106-9271-b58dbd41bff0","timestamp":"2025-05-05T18:44:54.045Z","message":"/Styles/project.css GET"}
+{"id":"e323ff93-d773-4dfc-b1de-6aacc8ac086a","timestamp":"2025-05-05T18:44:54.125Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"2646c24a-0b45-465e-9038-0049070b4f1a","timestamp":"2025-05-05T18:44:55.201Z","message":"/ GET"}
+{"id":"9fc9889b-c4d8-4ba4-b884-c60798446e7e","timestamp":"2025-05-05T18:44:55.281Z","message":"/Styles/project.css GET"}
+{"id":"1bb13c1c-589d-495a-8897-25acc132220b","timestamp":"2025-05-05T18:44:55.351Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"81172c0a-4491-43c6-a3bd-05da151de9aa","timestamp":"2025-05-05T18:45:45.583Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"aa9d962a-dc05-4f53-a7aa-2980b52fd7ea","timestamp":"2025-05-05T18:45:45.587Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"0869622f-509e-49af-bb92-1731721177a1","timestamp":"2025-05-05T18:47:55.041Z","message":"/ GET"}
+{"id":"610a569a-855c-4b8b-af56-e4af5ec4b896","timestamp":"2025-05-05T18:47:55.110Z","message":"/Styles/project.css GET"}
+{"id":"47242477-dde7-4d56-96f0-3bea00c85468","timestamp":"2025-05-05T18:47:55.199Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7104cc1f-0e2a-4243-a23a-5503e754733b","timestamp":"2025-05-05T18:47:55.202Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"07fdc484-d730-47da-9bf6-719c42481dfd","timestamp":"2025-05-05T18:47:55.203Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"e28ffe2c-ce3f-463f-878f-b86709761e4f","timestamp":"2025-05-05T18:47:55.274Z","message":"/favicon.ico GET"}
+{"id":"91c91b6a-4e5e-4a9c-81e5-4dde049dccd1","timestamp":"2025-05-05T18:47:55.275Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"69f757b4-eb15-446c-80a5-d728cb96118a","timestamp":"2025-05-05T18:49:37.398Z","message":"/ GET"}
+{"id":"1d856233-2249-4209-9e5f-d0873d397e94","timestamp":"2025-05-05T18:49:37.538Z","message":"/Styles/project.css GET"}
+{"id":"7093800b-9c0e-4018-9588-90e9963a3e1f","timestamp":"2025-05-05T18:49:37.663Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"5c419bee-57eb-475a-aada-424ad8fb98d3","timestamp":"2025-05-05T18:49:37.733Z","message":"/favicon.ico GET"}
+{"id":"5e963600-767b-44cf-85db-75cc71012942","timestamp":"2025-05-05T18:49:37.734Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"3801efed-862b-4a45-aa4c-5a78545d7174","timestamp":"2025-05-05T18:49:47.478Z","message":"/ GET"}
+{"id":"16c133ea-700d-40b9-b1ec-63e29a1a55b3","timestamp":"2025-05-05T18:49:47.574Z","message":"/Styles/project.css GET"}
+{"id":"59c87cc7-5dd5-42fb-abe9-1adccc58b2fa","timestamp":"2025-05-05T18:49:47.587Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"90054a01-df7d-4869-8516-41f7866e5ba4","timestamp":"2025-05-05T18:50:42.139Z","message":"/ GET"}
+{"id":"671183db-f800-4538-a287-6ce1ce22f35c","timestamp":"2025-05-05T18:50:42.313Z","message":"/Styles/project.css GET"}
+{"id":"46b1a270-34bc-43b5-8e1b-1705cc00b3df","timestamp":"2025-05-05T18:50:42.392Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"8750bac8-6a98-4dbd-8ff5-28b4302e1612","timestamp":"2025-05-05T18:51:17.719Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"b091f070-d581-406e-b108-0363563187c7","timestamp":"2025-05-05T18:51:17.720Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"0cb50868-de04-46cc-b319-fdfc8bc133ff","timestamp":"2025-05-05T18:52:52.923Z","message":"/ GET"}
+{"id":"fe269268-eb1e-43e7-bfd8-d6b8c08726c0","timestamp":"2025-05-05T18:52:53.017Z","message":"/Styles/project.css GET"}
+{"id":"62905e29-2626-4fa1-856b-1d9de023ff02","timestamp":"2025-05-05T18:52:53.029Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"f25e08c6-a352-4b2b-abfe-fab6d83f2eae","timestamp":"2025-05-05T18:53:30.067Z","message":"/ GET"}
+{"id":"ddeb59db-ac1a-459f-b889-a5def82eac7e","timestamp":"2025-05-05T18:53:30.167Z","message":"/Styles/project.css GET"}
+{"id":"63087971-ae4e-4125-9974-f82742e040cf","timestamp":"2025-05-05T18:53:30.243Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"88fb3823-26c1-4168-ac03-90a10d808696","timestamp":"2025-05-05T18:53:39.014Z","message":"/Styles/project.css GET"}
+{"id":"698e46cd-b8d8-437c-9c14-1d818e20073c","timestamp":"2025-05-05T18:54:05.968Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"c98d5bec-e6bc-434b-8efc-7316a6c46453","timestamp":"2025-05-05T18:54:05.969Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"bfa8850d-c0d5-49b0-8771-f9134897b025","timestamp":"2025-05-05T18:56:03.939Z","message":"/ GET"}
+{"id":"12f9d42a-acb2-42c0-bb8f-bb903acbce26","timestamp":"2025-05-05T18:56:04.025Z","message":"/Styles/project.css GET"}
+{"id":"3ea7b706-4bab-40d7-bbab-63d1eb561f17","timestamp":"2025-05-05T18:56:04.035Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6006dd1f-9a0c-4a64-ba35-cff09fc645e8","timestamp":"2025-05-05T18:56:04.103Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"acd6eaf6-8403-4927-9e8f-f8a2de3e65f0","timestamp":"2025-05-05T18:56:04.104Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"9f717ac1-14d6-4ab5-aca5-22afcd597190","timestamp":"2025-05-05T18:56:04.194Z","message":"/favicon.ico GET"}
+{"id":"4623fa4c-ba25-4cf2-9492-f844e3781985","timestamp":"2025-05-05T18:56:04.194Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"fad99cfc-1eb9-42d2-91e5-230a5d45fbf2","timestamp":"2025-05-05T18:56:09.163Z","message":"/ GET"}
+{"id":"b6c52e26-dbb8-4b24-939f-8cd9bb621bd3","timestamp":"2025-05-05T18:56:09.219Z","message":"/Styles/project.css GET"}
+{"id":"016d1a44-3143-4639-9a10-1e94d961d6f2","timestamp":"2025-05-05T18:56:09.287Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"0913fd8c-3db3-4eda-ad31-d0002ebee440","timestamp":"2025-05-05T18:56:09.289Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"10bf166d-bf19-4867-b208-314c580bcc76","timestamp":"2025-05-05T18:56:09.290Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"d6d8616f-0907-4163-99cf-522c9ba3b9b8","timestamp":"2025-05-05T18:56:36.774Z","message":"/ GET"}
+{"id":"b02ca8f6-254b-40b4-93d2-be1630584761","timestamp":"2025-05-05T18:56:52.621Z","message":"/Styles/project.css GET"}
+{"id":"c300f086-7a8c-4e37-889c-e68bf6e278d5","timestamp":"2025-05-05T18:56:52.783Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6269a7d0-8e10-42cc-83b7-bfba90afd754","timestamp":"2025-05-05T18:56:52.785Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"5adfc6c0-0f29-4d66-9d6a-5498def7abe7","timestamp":"2025-05-05T18:56:52.785Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"69e3146a-96fe-4697-8998-e9f28681c1c4","timestamp":"2025-05-05T18:56:58.063Z","message":"/ GET"}
+{"id":"5efd65fb-dcdd-42a7-a7b1-a263b1a88363","timestamp":"2025-05-05T18:56:58.113Z","message":"/Styles/project.css GET"}
+{"id":"da72100b-9c8d-4de6-bb16-b5b05fda244e","timestamp":"2025-05-05T18:56:58.139Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"9bf37727-6ff0-480a-b783-23608e6e1e64","timestamp":"2025-05-05T18:56:58.141Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"dda9154d-bfa3-4125-89e0-07e12545a3cd","timestamp":"2025-05-05T18:56:58.141Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"61d2d813-8808-4d7b-a0b8-2ee24d73f632","timestamp":"2025-05-05T18:56:58.181Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"563819be-0fd2-4197-b6d6-30f4f4779810","timestamp":"2025-05-05T18:56:58.182Z","message":"User attempted to use unsupported extension: .ttf"}
+{"id":"bd4a0194-79e7-4e4f-ac7f-961c35256409","timestamp":"2025-05-05T18:57:02.885Z","message":"/ GET"}
+{"id":"2311b78b-ec96-4acb-8125-dc661b7fb941","timestamp":"2025-05-05T18:57:08.440Z","message":"/Styles/project.css GET"}
+{"id":"b5a450e9-aaa0-44be-8a82-e117e5123e4b","timestamp":"2025-05-05T18:57:55.341Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"681b9496-d2fd-4e9d-9deb-97fc520cbed4","timestamp":"2025-05-05T18:58:00.518Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1021743f-6a81-4c67-9726-feda3db5acee","timestamp":"2025-05-05T18:58:01.206Z","message":"/ GET"}
+{"id":"32c6507f-22db-4e06-b29a-781ee4d76b86","timestamp":"2025-05-05T18:58:01.825Z","message":"/Styles/project.css GET"}
+{"id":"678b5d65-ee3c-47a3-ba96-f96aa872243f","timestamp":"2025-05-05T18:58:02.600Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"cf0988a9-941b-4b4d-b596-0d4ddc4edaba","timestamp":"2025-05-05T18:58:03.264Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"4dd257d9-2601-4380-bac3-305109fb3284","timestamp":"2025-05-05T18:59:00.149Z","message":"/ GET"}
+{"id":"51ef272b-262f-4397-8613-28b76aca0483","timestamp":"2025-05-05T18:59:04.255Z","message":"/Styles/project.css GET"}
+{"id":"7be98af7-59e1-4902-b078-963feb365b9f","timestamp":"2025-05-05T18:59:04.293Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"a6812f1d-374b-4961-abeb-5ee79aa54f7d","timestamp":"2025-05-05T19:09:17.516Z","message":"/ GET"}
+{"id":"683287e3-d471-46a3-81e2-400e32e9d936","timestamp":"2025-05-05T19:09:17.578Z","message":"/Styles/project.css GET"}
+{"id":"bd6d272f-acc3-44a5-a7a9-992af7332d51","timestamp":"2025-05-05T19:09:17.591Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6090eb51-81ee-4f03-9977-600d48bd13fe","timestamp":"2025-05-05T19:09:17.608Z","message":"/favicon.ico GET"}
+{"id":"c37dc940-ac6f-4641-b0bb-2e2a1ca7c053","timestamp":"2025-05-05T19:09:17.609Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"0182a1bd-1985-4587-912e-0c1fc8cd78fc","timestamp":"2025-05-05T19:09:20.493Z","message":"/ GET"}
+{"id":"0a22bf0c-8869-4836-8c20-22d54c419940","timestamp":"2025-05-05T19:09:20.529Z","message":"/Styles/project.css GET"}
+{"id":"2b568c80-8cac-4cf2-aecf-56a3b41b01f6","timestamp":"2025-05-05T19:09:20.538Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1b06e4f3-ee49-4872-bf7e-04fa08b84ab7","timestamp":"2025-05-05T19:09:21.581Z","message":"/ GET"}
+{"id":"dff4f0a7-ef5f-4028-81ec-a3a7d4e77c79","timestamp":"2025-05-05T19:09:21.611Z","message":"/Styles/project.css GET"}
+{"id":"56bf4e8f-88d4-49a6-9487-c6e6e9c37f59","timestamp":"2025-05-05T19:09:21.616Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"a26b506a-72f1-4a39-839f-20e08a111543","timestamp":"2025-05-05T19:09:41.380Z","message":"/ GET"}
+{"id":"6d5b3846-9132-4756-9121-f6e5e0b33fff","timestamp":"2025-05-05T19:09:41.425Z","message":"/Styles/project.css GET"}
+{"id":"5adca465-018e-4568-b1fc-8d98d90a05ce","timestamp":"2025-05-05T19:09:41.438Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"268b1f9f-bfd6-4621-9540-b9057cd2e9c1","timestamp":"2025-05-05T19:09:47.759Z","message":"/ GET"}
+{"id":"07dafed1-d4c0-43d8-9caa-3eec35fd0065","timestamp":"2025-05-05T19:09:47.794Z","message":"/Styles/project.css GET"}
+{"id":"3146d707-7f1d-4690-8532-fa91c15b87f4","timestamp":"2025-05-05T19:09:47.797Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c558d99a-960b-4c89-8dfc-12d17614edf1","timestamp":"2025-05-05T19:10:19.995Z","message":"/ GET"}
+{"id":"3aa762a6-0186-409e-b1e2-b11672452600","timestamp":"2025-05-05T19:10:20.030Z","message":"/Styles/project.css GET"}
+{"id":"07559ee4-0a67-457d-bd36-dd9d9086d56c","timestamp":"2025-05-05T19:10:20.040Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"960b515b-5a47-4a63-a6ed-d62f5fd54049","timestamp":"2025-05-05T19:10:24.825Z","message":"/ GET"}
+{"id":"3d83e6de-5120-4639-9ede-2ce7a0e67a38","timestamp":"2025-05-05T19:10:24.860Z","message":"/Styles/project.css GET"}
+{"id":"f524360c-7bc9-4306-bbac-9eb61371a3cb","timestamp":"2025-05-05T19:10:24.863Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"595ac09b-a192-48e2-a0a5-9ef2c1d51411","timestamp":"2025-05-05T19:10:50.017Z","message":"/Logs/log.txt GET"}
+{"id":"66a4939a-dc4d-4309-88ca-3431b43328c2","timestamp":"2025-05-05T19:12:29.327Z","message":"/ GET"}
+{"id":"dbe7b027-266a-4bbe-bebf-6ceaee1dc6ca","timestamp":"2025-05-05T19:12:29.375Z","message":"/Styles/project.css GET"}
+{"id":"9ba0c29b-9821-49e6-88c1-ac2afe86a0f0","timestamp":"2025-05-05T19:12:29.378Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"3ab5cb33-d395-4db6-8bca-254e3e9a510b","timestamp":"2025-05-05T19:13:02.862Z","message":"/ GET"}
+{"id":"95d96269-08e8-46df-a013-55515cac39b0","timestamp":"2025-05-05T19:13:02.988Z","message":"/Styles/project.css GET"}
+{"id":"96c3bd1c-1453-4f05-be56-c03a1cef724e","timestamp":"2025-05-05T19:13:02.991Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"db0c1855-5ae2-4860-85f6-c488c4d58512","timestamp":"2025-05-05T19:13:21.113Z","message":"/ GET"}
+{"id":"9f688c77-0220-4e12-afe1-6fc49e1477ff","timestamp":"2025-05-05T19:13:21.198Z","message":"/Styles/project.css GET"}
+{"id":"93d67e3f-d960-46c1-bf79-6fa575172fb1","timestamp":"2025-05-05T19:13:21.295Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"832c3b82-5c82-4abb-8c03-babc058c6a0f","timestamp":"2025-05-05T19:18:01.071Z","message":"/ GET"}
+{"id":"e783f6a5-17b1-41c9-87ef-867302da6075","timestamp":"2025-05-05T19:18:01.331Z","message":"/Styles/project.css GET"}
+{"id":"dc5eefd9-40d9-4b9d-a266-d327ce152503","timestamp":"2025-05-05T19:18:01.516Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"374dddba-fda9-460a-956b-3709bb5d106f","timestamp":"2025-05-05T19:19:40.604Z","message":"/Styles/project.css GET"}
+{"id":"affef276-4d87-43fc-82f1-96449fa03bd7","timestamp":"2025-05-05T19:23:55.545Z","message":"/ GET"}
+{"id":"14535ac5-aa14-4d55-972d-49a4d4346d48","timestamp":"2025-05-05T19:23:55.705Z","message":"/Styles/project.css GET"}
+{"id":"29584935-3144-42c9-becb-fbb639d78f9d","timestamp":"2025-05-05T19:23:55.856Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b32d16d0-c3ae-4d76-b8d1-8ecbb5f561e3","timestamp":"2025-05-05T19:23:55.953Z","message":"/favicon.ico GET"}
+{"id":"253b63c8-88e9-4bb6-b30e-6983345324cb","timestamp":"2025-05-05T19:23:55.954Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"d4ce4ba6-a84e-4cf8-becf-a4f79f7cd06d","timestamp":"2025-05-05T19:24:31.431Z","message":"/ GET"}
+{"id":"2cd4dcc0-52d1-4aeb-b591-2dc617a9d761","timestamp":"2025-05-05T19:24:31.575Z","message":"/Styles/project.css GET"}
+{"id":"0f02ea3b-4607-4e5a-9138-04dd6df6089f","timestamp":"2025-05-05T19:24:31.637Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1f739609-1532-40a4-90f7-4a25503f4228","timestamp":"2025-05-05T19:25:16.789Z","message":"/ GET"}
+{"id":"4e0384e8-a698-442e-ba29-fcfe9a233ef3","timestamp":"2025-05-05T19:25:16.835Z","message":"/Styles/project.css GET"}
+{"id":"7ad975c4-20ab-484c-92b4-8360e6bf5647","timestamp":"2025-05-05T19:25:16.837Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"64469dc2-3c8a-47b9-835b-9aa276edb132","timestamp":"2025-05-05T19:32:08.311Z","message":"/ GET"}
+{"id":"0ef5ab8a-2d27-44a9-aeb8-83b165ceb2cd","timestamp":"2025-05-05T19:32:08.359Z","message":"/Styles/project.css GET"}
+{"id":"c56814a2-99ac-458d-b69f-dada864eec85","timestamp":"2025-05-05T19:32:08.388Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"e9f8c530-9adb-42ec-a0ac-2aac362df776","timestamp":"2025-05-05T19:32:08.410Z","message":"/favicon.ico GET"}
+{"id":"bb720d71-df8a-486b-ad7b-7692a61c0c71","timestamp":"2025-05-05T19:32:08.411Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"56c46893-e9e9-4dc3-99f8-a58a66d8af0f","timestamp":"2025-05-05T19:38:54.054Z","message":"/ GET"}
+{"id":"3360df7f-eb8e-46eb-bbf2-717275fc50b3","timestamp":"2025-05-05T19:38:54.105Z","message":"/Styles/project.css GET"}
+{"id":"67245a55-f2fd-4c75-8f5f-c293e23d91d9","timestamp":"2025-05-05T19:38:54.114Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"88f3b001-3e31-48a9-a05f-5069be7de340","timestamp":"2025-05-05T19:38:59.552Z","message":"/ GET"}
+{"id":"68abd3e2-917f-4b0f-a494-95a6b9cd9ef4","timestamp":"2025-05-05T19:38:59.588Z","message":"/Styles/project.css GET"}
+{"id":"d420de0d-9fda-4f15-9af9-d7a68bd3d592","timestamp":"2025-05-05T19:38:59.594Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b8f016b3-1f54-4fa7-9ee7-e60932ab8722","timestamp":"2025-05-05T19:45:20.293Z","message":"/ GET"}
+{"id":"f6155293-aa0c-4da5-92b3-6be42783af76","timestamp":"2025-05-05T19:45:20.358Z","message":"/Styles/project.css GET"}
+{"id":"14a6047c-1046-4eb1-b9a4-89ae7fb3da32","timestamp":"2025-05-05T19:45:20.375Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6ee6438b-0bf0-4b5b-93cd-63cc5e50617f","timestamp":"2025-05-05T19:45:20.414Z","message":"/favicon.ico GET"}
+{"id":"44829830-5d24-46ae-8d12-5239d34ba4c6","timestamp":"2025-05-05T19:45:20.416Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"25bb8ce1-cdf5-4dc0-9497-1b39553f48cf","timestamp":"2025-05-05T19:45:55.578Z","message":"/ GET"}
+{"id":"fb327569-5198-431b-8e26-4a4d8da07703","timestamp":"2025-05-05T19:45:55.652Z","message":"/Styles/project.css GET"}
+{"id":"87c745c9-2ee4-4e35-89f7-566dd1da1f6a","timestamp":"2025-05-05T19:45:55.657Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"bb0bcbdf-7a4b-4ab4-b86f-bd164af3c3c0","timestamp":"2025-05-05T19:46:30.210Z","message":"/ GET"}
+{"id":"48f80827-ef33-4ff7-902e-e43255919cbe","timestamp":"2025-05-05T19:46:30.252Z","message":"/Styles/project.css GET"}
+{"id":"6146811f-28dd-4702-909f-53c132034e9e","timestamp":"2025-05-05T19:46:30.255Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"96f93029-ec3b-4f1f-ba2f-6221949f4356","timestamp":"2025-05-05T19:55:53.053Z","message":"/ GET"}
+{"id":"a498af84-ebf2-45c5-a81c-eff6c6d728bd","timestamp":"2025-05-05T19:55:53.094Z","message":"/Styles/project.css GET"}
+{"id":"c8f61b3d-8628-4f93-a947-5f4159890ca5","timestamp":"2025-05-05T19:55:53.102Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"06f3ac51-7d5e-42b6-95c0-ef0bb4ce675c","timestamp":"2025-05-05T19:55:53.131Z","message":"/favicon.ico GET"}
+{"id":"9e5bfb68-64a4-4c02-8353-cf4569bd18dc","timestamp":"2025-05-05T19:55:53.132Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"ba509231-30c1-409c-a28a-e52e189dba79","timestamp":"2025-05-05T19:55:56.945Z","message":"/ GET"}
+{"id":"d08c2e0c-3870-4458-9e9e-c58f063e88e1","timestamp":"2025-05-05T19:55:57.014Z","message":"/Styles/project.css GET"}
+{"id":"673bdc7a-f113-493b-8639-83d8587c8638","timestamp":"2025-05-05T19:55:57.092Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7b4bf737-e365-47fa-8e11-2e168dcdcca8","timestamp":"2025-05-05T19:57:00.024Z","message":"/ GET"}
+{"id":"3b56ea27-5d9e-4466-bb18-dc6232e8e803","timestamp":"2025-05-05T19:57:00.172Z","message":"/Styles/project.css GET"}
+{"id":"4c4c9a3d-a93e-4818-a359-dbbcc5b4d2fe","timestamp":"2025-05-05T19:57:00.284Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1a5dc09b-78ee-4181-8c66-895e9e418433","timestamp":"2025-05-05T19:57:25.142Z","message":"/ GET"}
+{"id":"c50f17ca-85f6-4537-8fff-f03c12280fee","timestamp":"2025-05-05T19:57:25.261Z","message":"/Styles/project.css GET"}
+{"id":"8a8d8c3b-3f22-41e3-b772-78901ab4fbb1","timestamp":"2025-05-05T19:57:25.426Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c5ac1b82-d96f-4f2b-9e6b-1f0961c04b13","timestamp":"2025-05-05T19:57:28.215Z","message":"/ GET"}
+{"id":"620a07ea-b5a9-49d1-9276-5ba3b83effd2","timestamp":"2025-05-05T19:57:28.303Z","message":"/Styles/project.css GET"}
+{"id":"b053ff90-adfb-4947-b754-1b2c2defdfae","timestamp":"2025-05-05T19:57:28.341Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"64441997-e347-47d8-b06f-7d1fab281b0a","timestamp":"2025-05-05T19:57:53.458Z","message":"/ GET"}
+{"id":"4c1e03f4-6066-4c12-95b0-698658a910e0","timestamp":"2025-05-05T19:57:53.554Z","message":"/Styles/project.css GET"}
+{"id":"dda06f96-7cdb-4d40-a588-61eff5498bc8","timestamp":"2025-05-05T19:57:53.563Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"bdc35243-7510-4174-8724-b966660c4866","timestamp":"2025-05-05T19:58:24.492Z","message":"/ GET"}
+{"id":"7447751a-9650-4a9b-a61b-a83b5838f878","timestamp":"2025-05-05T19:58:24.635Z","message":"/Styles/project.css GET"}
+{"id":"2415a9b4-60ee-49b7-8264-04887e485839","timestamp":"2025-05-05T19:58:24.760Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7711ed0a-7d9a-4c04-b494-59deff5d71df","timestamp":"2025-05-05T20:01:34.294Z","message":"/ GET"}
+{"id":"aca92b79-d8d2-429b-9c23-aabbc0a9e012","timestamp":"2025-05-05T20:01:34.404Z","message":"/Styles/project.css GET"}
+{"id":"ddb52497-cced-4bf7-be20-d30b8689568d","timestamp":"2025-05-05T20:01:34.426Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"92f35d8d-29ea-4da5-ac49-48b90c662394","timestamp":"2025-05-05T20:01:39.814Z","message":"/ GET"}
+{"id":"dca0c3bb-81dc-4f40-b85a-8a7e45c897ac","timestamp":"2025-05-05T20:01:39.940Z","message":"/Styles/project.css GET"}
+{"id":"e9aba5c4-3e32-4bc6-94e0-dc20b3f2b2df","timestamp":"2025-05-05T20:01:40.057Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"ed361067-a06e-46ac-99b2-a3b27ef073c3","timestamp":"2025-05-05T20:06:12.914Z","message":"/ GET"}
+{"id":"40d60044-15c9-448d-a6a8-56b6f1c5fd28","timestamp":"2025-05-05T20:06:12.964Z","message":"/Styles/project.css GET"}
+{"id":"8ecb6d9b-de91-4d8f-b894-9733c68ba524","timestamp":"2025-05-05T20:06:12.969Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"5203032d-56e9-4c00-98b0-f488ed8827d6","timestamp":"2025-05-05T20:07:32.063Z","message":"/ GET"}
+{"id":"c91d279c-e7ab-4ddf-9d8f-8e4264517afd","timestamp":"2025-05-05T20:07:32.119Z","message":"/Styles/project.css GET"}
+{"id":"df93434c-c2fa-43cc-840c-0e037df97c3c","timestamp":"2025-05-05T20:07:32.122Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"00471a8e-da9a-4fb0-bee1-970dfed7093f","timestamp":"2025-05-05T20:07:32.144Z","message":"/favicon.ico GET"}
+{"id":"24b66472-c28f-49a3-9490-530f92a7af12","timestamp":"2025-05-05T20:07:32.145Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"367c59f6-9478-4070-90af-2ffe9520a141","timestamp":"2025-05-05T20:08:34.864Z","message":"/ GET"}
+{"id":"ac4dfe3b-947c-4624-bb67-0d1d342ae574","timestamp":"2025-05-05T20:08:34.921Z","message":"/Styles/project.css GET"}
+{"id":"8cf05857-bdd1-4b3b-bc39-dba90b213d9c","timestamp":"2025-05-05T20:08:34.926Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6470c3dd-a30f-4e0d-9199-e099c3c1830a","timestamp":"2025-05-05T20:08:38.189Z","message":"/ GET"}
+{"id":"758969c3-a035-4bcf-9224-6388f5d1c36d","timestamp":"2025-05-05T20:08:38.227Z","message":"/Styles/project.css GET"}
+{"id":"c119c79d-f746-4b46-b762-b4529edc038a","timestamp":"2025-05-05T20:08:38.234Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"a90308b9-06c9-422d-b9c4-f8d3b609bf22","timestamp":"2025-05-05T20:08:46.941Z","message":"/ GET"}
+{"id":"d3070d06-073e-4da5-b856-08780a9cc50d","timestamp":"2025-05-05T20:08:47.094Z","message":"/Styles/project.css GET"}
+{"id":"fe3e9557-2d6b-4c60-b8a0-7c964d45eeda","timestamp":"2025-05-05T20:08:47.110Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"d36a57e3-21ba-4441-821f-65fa287c9c9a","timestamp":"2025-05-05T20:08:59.096Z","message":"/ GET"}
+{"id":"5044f368-5830-48f8-a6bf-d40447af9b39","timestamp":"2025-05-05T20:08:59.138Z","message":"/Styles/project.css GET"}
+{"id":"e4cdbe4f-60f9-479e-a696-d2ae5891860f","timestamp":"2025-05-05T20:08:59.143Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"0a82dc39-0a2b-421e-b7a6-a36dd397eb5f","timestamp":"2025-05-05T20:09:19.850Z","message":"/ GET"}
+{"id":"8b1df41f-5221-4dcd-bec9-9b912f1c8939","timestamp":"2025-05-05T20:09:19.903Z","message":"/Styles/project.css GET"}
+{"id":"70389775-2fc5-4339-bc27-aefd3b1670cb","timestamp":"2025-05-05T20:09:19.908Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7d2bd43a-d51a-4029-bdcc-91c106669300","timestamp":"2025-05-05T20:09:20.869Z","message":"/ GET"}
+{"id":"177bff00-76f5-4cb6-9117-c1a93f191e46","timestamp":"2025-05-05T20:09:20.901Z","message":"/Styles/project.css GET"}
+{"id":"96ee8665-7696-4a44-9dee-e8c2c3f6bb1b","timestamp":"2025-05-05T20:09:20.907Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"6b620f84-0225-421a-a657-d32d73408a8d","timestamp":"2025-05-05T20:10:08.986Z","message":"/ GET"}
+{"id":"cc968eb4-f59e-4cda-ac1a-246113bae445","timestamp":"2025-05-05T20:10:09.049Z","message":"/Styles/project.css GET"}
+{"id":"e4857fa8-42bc-4a83-b057-1de8958a5b6a","timestamp":"2025-05-05T20:10:09.061Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"2c2286e6-1042-429a-928d-9171eb0811b9","timestamp":"2025-05-05T20:10:25.958Z","message":"/ GET"}
+{"id":"7d6a357c-a6a6-42ed-abb9-94d9f43cbb2a","timestamp":"2025-05-05T20:10:26.049Z","message":"/Styles/project.css GET"}
+{"id":"f85d7739-d046-4b6e-b962-7f46193858be","timestamp":"2025-05-05T20:10:26.054Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"24933ea0-ded4-4cdd-b600-eff0f06d4df6","timestamp":"2025-05-05T20:15:40.465Z","message":"/ GET"}
+{"id":"7abe6a05-946c-4b6d-9424-cc277ec590ee","timestamp":"2025-05-05T20:15:40.508Z","message":"/Styles/project.css GET"}
+{"id":"463dc7f2-c342-4231-8ed3-cb90983901af","timestamp":"2025-05-05T20:15:40.514Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"820a18e3-b125-4277-97a8-c5088969b8f4","timestamp":"2025-05-05T20:16:12.485Z","message":"/ GET"}
+{"id":"5318edb7-622d-4be5-9d52-65c08f3721c7","timestamp":"2025-05-05T20:16:12.543Z","message":"/Styles/project.css GET"}
+{"id":"363d236c-c2c1-415d-80fa-f4b285f60d5d","timestamp":"2025-05-05T20:16:12.553Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"355cedab-78b9-49b6-b607-087b6de74e53","timestamp":"2025-05-05T20:16:39.523Z","message":"/ GET"}
+{"id":"58bd8371-aa26-4067-8863-ff8e81ecf5e6","timestamp":"2025-05-05T20:16:39.662Z","message":"/Styles/project.css GET"}
+{"id":"606f57de-7a9a-48b1-bd1c-296e2078176b","timestamp":"2025-05-05T20:16:39.761Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"27753105-c6a3-421a-9786-470aa766e0df","timestamp":"2025-05-05T20:17:49.464Z","message":"/ GET"}
+{"id":"95e6c860-8f59-4f50-a0ff-b777463fc794","timestamp":"2025-05-05T20:17:49.584Z","message":"/Styles/project.css GET"}
+{"id":"31d378d8-fa6e-4397-aced-44f01c71d3ef","timestamp":"2025-05-05T20:17:49.612Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"2855f38b-0914-4cf7-9bd0-cbbe151419c3","timestamp":"2025-05-05T20:17:50.746Z","message":"/ GET"}
+{"id":"4646ecae-2fbe-40db-9375-478e0ab0a916","timestamp":"2025-05-05T20:17:50.843Z","message":"/Styles/project.css GET"}
+{"id":"59032ad7-05be-432b-98c8-ca212078497c","timestamp":"2025-05-05T20:17:50.934Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1788face-3a44-4031-a8f9-51e4478fb5a9","timestamp":"2025-05-05T20:18:32.684Z","message":"/ GET"}
+{"id":"38890a45-edec-42b8-b79d-35f79c597020","timestamp":"2025-05-05T20:18:32.855Z","message":"/Styles/project.css GET"}
+{"id":"f1036ece-5fbd-4efd-a164-ba4665f82917","timestamp":"2025-05-05T20:18:32.962Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"2244fadf-4f81-4433-a2e5-4d50e3415c4c","timestamp":"2025-05-05T20:19:30.527Z","message":"/ GET"}
+{"id":"36923006-fa84-42f5-a8bc-71016b121efe","timestamp":"2025-05-05T20:19:30.617Z","message":"/Styles/project.css GET"}
+{"id":"799792fb-7ef5-4c6f-9f77-dfcbc622eabc","timestamp":"2025-05-05T20:19:30.634Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"2b0ea6ea-4374-4cf4-a873-835a16a9dd59","timestamp":"2025-05-05T20:19:31.714Z","message":"/ GET"}
+{"id":"501b3519-8b56-41ec-bdbc-e0d7a988a87d","timestamp":"2025-05-05T20:19:31.764Z","message":"/Styles/project.css GET"}
+{"id":"43fff11b-ab1c-423d-afb5-11c618999734","timestamp":"2025-05-05T20:19:31.862Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"8fed2ad6-25e6-4be9-be1b-e713aa0b3332","timestamp":"2025-05-05T20:21:29.219Z","message":"/ GET"}
+{"id":"b6c047b6-5043-475f-aef5-d8adc16bdd67","timestamp":"2025-05-05T20:21:29.346Z","message":"/Styles/project.css GET"}
+{"id":"94aa96aa-90b1-43b8-b3fd-c81645792d7d","timestamp":"2025-05-05T20:21:29.446Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"327d6efa-8741-4c58-8c54-86d2b16180e0","timestamp":"2025-05-05T20:21:29.595Z","message":"/favicon.ico GET"}
+{"id":"e623e03a-c4c5-4594-9abc-f43aa21e9c30","timestamp":"2025-05-05T20:21:29.596Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"763bc0b2-10cf-406c-b4e7-dc631a9b59c1","timestamp":"2025-05-05T20:21:32.706Z","message":"/ GET"}
+{"id":"6645c2c2-7de0-4015-aa82-241876e4e8b2","timestamp":"2025-05-05T20:21:32.835Z","message":"/Styles/project.css GET"}
+{"id":"106cbc6c-374a-4f87-992b-83088e555979","timestamp":"2025-05-05T20:21:32.931Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"09ed5d2d-fd92-4825-bbb8-a740c226e395","timestamp":"2025-05-05T20:24:10.749Z","message":"/ GET"}
+{"id":"a69a7a1a-1899-4cab-879f-e297306924d2","timestamp":"2025-05-05T20:24:10.902Z","message":"/Styles/project.css GET"}
+{"id":"9929ff2e-ad0c-4709-bb4d-56d551ccdcaf","timestamp":"2025-05-05T20:24:10.997Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"9bc5e771-20c3-4b89-80ab-07e5183158a2","timestamp":"2025-05-05T20:24:32.378Z","message":"/ GET"}
+{"id":"8dbfbbd0-3778-48d3-adf6-58ec6fa9f786","timestamp":"2025-05-05T20:24:32.487Z","message":"/Styles/project.css GET"}
+{"id":"6e18d7e5-6a07-4fce-94ac-9e2f99b3fc40","timestamp":"2025-05-05T20:24:32.607Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"b7923d94-fc7e-49dc-a56b-6509baab56eb","timestamp":"2025-05-05T20:30:08.743Z","message":"/ GET"}
+{"id":"b2b3ceab-7afc-47f2-85ce-b003eebcc35a","timestamp":"2025-05-05T20:30:08.907Z","message":"/Styles/project.css GET"}
+{"id":"09b9203a-db50-42ef-a7e2-6730637065f9","timestamp":"2025-05-05T20:30:09.061Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"62a54602-555d-45a4-9529-efbb5774e481","timestamp":"2025-05-05T20:30:09.136Z","message":"/favicon.ico GET"}
+{"id":"649e476a-9276-4cac-a8d8-5e33a89fc8f6","timestamp":"2025-05-05T20:30:09.137Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"bcf51f86-3e51-49a2-85ba-7dfa21ed04d2","timestamp":"2025-05-05T20:31:47.171Z","message":"/ GET"}
+{"id":"5d690fd6-352e-4c20-a1f3-3f932a810d12","timestamp":"2025-05-05T20:31:47.288Z","message":"/Styles/project.css GET"}
+{"id":"038a9083-7e67-4b45-8ebd-04f9f3340f34","timestamp":"2025-05-05T20:31:47.404Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"54b95eed-3bc7-41eb-a4ba-bf1714c3408c","timestamp":"2025-05-05T20:32:04.842Z","message":"/ GET"}
+{"id":"fe08db22-4842-4357-9632-1e69bf44467a","timestamp":"2025-05-05T20:32:04.927Z","message":"/Styles/project.css GET"}
+{"id":"da2c7d11-9c22-40ba-ae74-3c3841174387","timestamp":"2025-05-05T20:32:05.013Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"3928ec13-05b2-4b55-b2d7-6532afbc27fd","timestamp":"2025-05-05T20:33:02.534Z","message":"/ GET"}
+{"id":"1111dccb-f8c5-4909-a444-5de000977f43","timestamp":"2025-05-05T20:33:02.679Z","message":"/Styles/project.css GET"}
+{"id":"c16642ed-6157-4806-b48d-10a2eeaaf844","timestamp":"2025-05-05T20:33:02.812Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"649eee4d-6452-4ee6-b3ae-49b136a2d1d3","timestamp":"2025-05-05T20:33:56.134Z","message":"/ GET"}
+{"id":"45af612d-7b4e-4944-b5ed-49720d70f619","timestamp":"2025-05-05T20:33:56.263Z","message":"/Styles/project.css GET"}
+{"id":"a66f062d-85fd-4b62-934b-2c20a1fca663","timestamp":"2025-05-05T20:33:56.380Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"e3bb1489-698d-4cd9-a575-7f21b60569e4","timestamp":"2025-05-05T20:34:19.646Z","message":"/ GET"}
+{"id":"adb59d3c-9264-4f73-ae40-5e450b68d3c6","timestamp":"2025-05-05T20:34:19.768Z","message":"/Styles/project.css GET"}
+{"id":"4e4d37e8-6ed3-4f39-940f-f9d274ab62a5","timestamp":"2025-05-05T20:34:19.816Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c6d81df9-c19a-4fc9-a98f-67107d7b6073","timestamp":"2025-05-05T20:34:52.011Z","message":"/ GET"}
+{"id":"e9470e23-f045-4f40-89af-fbb26431836b","timestamp":"2025-05-05T20:34:52.116Z","message":"/Styles/project.css GET"}
+{"id":"ca181bc0-8195-44e8-bd4d-6b66099d02a7","timestamp":"2025-05-05T20:34:52.273Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1fa95a9d-f628-4595-8fa9-84569412c97e","timestamp":"2025-05-05T20:35:10.911Z","message":"/ GET"}
+{"id":"091727b7-087b-4139-88e9-16ac20cd723b","timestamp":"2025-05-05T20:35:11.045Z","message":"/Styles/project.css GET"}
+{"id":"0f5fdcc9-d0a7-470b-8ba8-43fd34eb7b6e","timestamp":"2025-05-05T20:35:11.176Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"de0a1886-db93-4e93-85fd-b7ae81662a7d","timestamp":"2025-05-05T20:36:16.890Z","message":"/ GET"}
+{"id":"8883d9e6-0e26-4634-a341-1eb0778a9dfd","timestamp":"2025-05-05T20:36:16.978Z","message":"/Styles/project.css GET"}
+{"id":"eac2597b-d49c-4ccb-ba12-47b154438a73","timestamp":"2025-05-05T20:36:16.992Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1dce2545-1823-40de-a762-3fd5b129604e","timestamp":"2025-05-05T20:40:30.071Z","message":"/ GET"}
+{"id":"2da6629c-1e10-4ab8-bf04-c3c0381ee4c3","timestamp":"2025-05-05T20:40:30.104Z","message":"/Styles/project.css GET"}
+{"id":"127b2808-39e8-4efc-b0e2-8e81a62eb3d1","timestamp":"2025-05-05T20:40:30.115Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1000514a-34c9-4289-bc61-285ac1ea0704","timestamp":"2025-05-05T20:40:30.132Z","message":"/favicon.ico GET"}
+{"id":"35234256-35e9-4242-b89b-aacd168c011d","timestamp":"2025-05-05T20:40:30.132Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"ef7fd70d-369c-4ded-aca4-9e2706fdb8ef","timestamp":"2025-05-05T20:41:46.577Z","message":"/ GET"}
+{"id":"ae213e45-49f6-42be-a990-bc315454777c","timestamp":"2025-05-05T20:41:46.672Z","message":"/Styles/project.css GET"}
+{"id":"10558db6-c28d-4b19-8ed8-567eb9fc038f","timestamp":"2025-05-05T20:41:46.802Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"59e10a18-c305-4f85-9c9c-7164c31a5afd","timestamp":"2025-05-05T20:41:48.732Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"430aef3f-eccb-4bb9-a2a2-d9dd3c0e2393","timestamp":"2025-05-05T20:43:19.085Z","message":"/ GET"}
+{"id":"e586ce7c-5a8c-433c-92b2-d5d470274eed","timestamp":"2025-05-05T20:43:19.291Z","message":"/Styles/project.css GET"}
+{"id":"befd98dc-0083-4648-8056-36aec664ba07","timestamp":"2025-05-05T20:43:19.422Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"af1b53f1-babd-4612-8375-c6456653e35c","timestamp":"2025-05-05T20:44:07.775Z","message":"/ GET"}
+{"id":"d7df0c77-dde3-4b1a-8faf-f88a0affb906","timestamp":"2025-05-05T20:44:07.987Z","message":"/Styles/project.css GET"}
+{"id":"3c465f39-61e3-4044-9488-29bacdef1c84","timestamp":"2025-05-05T20:44:08.020Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"082a9609-f676-4aaa-ae5b-2de459f28aa1","timestamp":"2025-05-05T20:44:15.986Z","message":"/ GET"}
+{"id":"413c169d-e213-46bd-9e9a-6a2f4bd8af3a","timestamp":"2025-05-05T20:44:16.101Z","message":"/Styles/project.css GET"}
+{"id":"223174e3-50f1-4435-82e1-fea9f5474d76","timestamp":"2025-05-05T20:44:16.215Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"9c524479-4b12-4294-8683-939521cd65ea","timestamp":"2025-05-05T20:44:51.740Z","message":"/ GET"}
+{"id":"76ff8237-e53a-4baa-a44d-af86e9f15bf6","timestamp":"2025-05-05T20:44:51.958Z","message":"/Styles/project.css GET"}
+{"id":"21896cfb-2909-458f-bf69-2770566ab75d","timestamp":"2025-05-05T20:44:52.065Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"7eba4d62-5dde-472a-9650-d12556e61dd9","timestamp":"2025-05-05T20:46:53.906Z","message":"/ GET"}
+{"id":"3ce70016-b54f-4ad3-82e5-ed19a1dbbc2a","timestamp":"2025-05-05T20:46:54.012Z","message":"/Styles/project.css GET"}
+{"id":"7cd4ce9a-f166-4708-836f-4c2f2e366da4","timestamp":"2025-05-05T20:46:54.090Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"1e231d25-d55f-40bf-b79d-318174ca0dc6","timestamp":"2025-05-05T20:47:03.623Z","message":"/ GET"}
+{"id":"0cb7913c-235e-4a44-9472-4f57b5e1b014","timestamp":"2025-05-05T20:47:03.741Z","message":"/Styles/project.css GET"}
+{"id":"b662bd0c-a930-40e1-ab54-ddccf31cfdab","timestamp":"2025-05-05T20:47:03.870Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"a8fa171d-fd9c-4d7f-85b1-cdae4595db59","timestamp":"2025-05-05T21:40:22.183Z","message":"/ GET"}
+{"id":"ea5a7a73-2b70-417c-810f-37925b2c73ae","timestamp":"2025-05-05T21:40:22.237Z","message":"/Styles/project.css GET"}
+{"id":"59938580-8055-4757-a570-987b9b151939","timestamp":"2025-05-05T21:40:22.248Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"57f09f0e-19b5-4bb3-92a5-beef6e83217a","timestamp":"2025-05-05T21:40:22.267Z","message":"/favicon.ico GET"}
+{"id":"b6f47238-b068-4a0e-8fe9-72443652609c","timestamp":"2025-05-05T21:40:22.268Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"1418f29b-4f56-485e-842e-bdeb86a099b8","timestamp":"2025-05-05T21:40:22.278Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"1a3370bf-761e-47e8-9806-7afed78b84ff","timestamp":"2025-05-05T21:41:21.415Z","message":"/ GET"}
+{"id":"e0339b4e-0986-4ccb-84fd-bb9b256c108a","timestamp":"2025-05-05T21:41:21.484Z","message":"/Styles/project.css GET"}
+{"id":"ea9a06ff-1722-45ee-a33f-a9e3809a6de2","timestamp":"2025-05-05T21:41:21.497Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"c38643e4-0b8f-4dde-afbf-a73f36a5ae4f","timestamp":"2025-05-05T21:41:21.518Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"1f25d94a-7ac6-434c-a7d2-9a763e8a19aa","timestamp":"2025-05-08T03:27:32.622Z","message":"/ GET"}
+{"id":"29ba848f-1983-431c-a9f7-dde5364f2b84","timestamp":"2025-05-08T03:27:32.774Z","message":"/Styles/project.css GET"}
+{"id":"dfdd0cfe-11f6-451a-8fbb-6d3b4bfbb765","timestamp":"2025-05-08T03:27:32.795Z","message":"/Images/despicable-me-despicable-me-2-gru-despicable-me-wallpaper-preview.jpg GET"}
+{"id":"52c101a8-5430-47a7-9a17-e85e0959389e","timestamp":"2025-05-08T03:27:32.823Z","message":"/favicon.ico GET"}
+{"id":"8a75bd0a-15b5-4354-9a03-871a93ea9240","timestamp":"2025-05-08T03:27:32.826Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"147178a9-71bb-4c60-9863-3692bb7545d8","timestamp":"2025-05-08T03:27:32.829Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"b8527f7a-5598-4dbc-bf8d-ffe83a10f9eb","timestamp":"2025-05-08T03:27:54.970Z","message":"/Pages/homepage.md GET"}
+{"id":"70e2c38d-9490-4746-9859-dfe2b3d746dc","timestamp":"2025-05-08T03:31:59.884Z","message":"/Pages/homepage.md GET"}
+{"id":"6c0b39ed-5678-4898-b07c-62a443014d5c","timestamp":"2025-05-08T03:31:59.927Z","message":"/favicon.ico GET"}
+{"id":"e2e54faa-f476-4b30-a008-554ee7a00a3e","timestamp":"2025-05-08T03:31:59.934Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"bd8eba6e-acb4-42bb-838f-17ae5785773f","timestamp":"2025-05-08T03:32:02.673Z","message":"/ GET"}
+{"id":"97e63db2-76e0-42bd-8dd0-986e132c049e","timestamp":"2025-05-08T03:32:02.725Z","message":"/Styles/project.css GET"}
+{"id":"be3c8270-5602-42ae-aa79-7ef463882003","timestamp":"2025-05-08T03:32:02.727Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"1a148a14-32c5-4e26-96c5-62c1ebd59dba","timestamp":"2025-05-08T03:32:02.746Z","message":"/favicon.ico GET"}
+{"id":"338e5ebc-b6ea-4707-97df-c1c2b3ec2b60","timestamp":"2025-05-08T03:32:02.748Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"05de0c59-4487-4ab4-be53-01c4abe91357","timestamp":"2025-05-08T03:35:27.429Z","message":"/ GET"}
+{"id":"23c27cad-e82e-4379-a8cf-a2fffabe2c11","timestamp":"2025-05-08T03:35:27.477Z","message":"/Styles/project.css GET"}
+{"id":"e65786fa-f548-47ba-8f21-75fab6258f3c","timestamp":"2025-05-08T03:35:27.483Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c122c5f7-eb47-4aff-a2bd-c248739573ec","timestamp":"2025-05-08T03:35:27.497Z","message":"/favicon.ico GET"}
+{"id":"e8bd2943-9a1f-4c73-afb8-02e8d6712449","timestamp":"2025-05-08T03:35:27.502Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"393a662f-0379-41ed-8ccd-d8045d235bbe","timestamp":"2025-05-08T03:35:28.788Z","message":"/ GET"}
+{"id":"ae991adc-763c-4241-8b7b-69973039546a","timestamp":"2025-05-08T03:35:28.814Z","message":"/Styles/project.css GET"}
+{"id":"9e68a9aa-1d9a-4a55-a3ec-6a6349709c03","timestamp":"2025-05-08T03:35:28.816Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"a92126dc-fa11-4339-89a3-15a42a11b9a8","timestamp":"2025-05-08T03:35:28.837Z","message":"/favicon.ico GET"}
+{"id":"a5b9df03-d7e3-400a-b38c-28080214d365","timestamp":"2025-05-08T03:35:28.848Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"b6673fea-a238-4fb0-9f55-92db284acf2f","timestamp":"2025-05-08T03:40:10.140Z","message":"/ GET"}
+{"id":"5f8262fd-b464-4fa6-8dfc-cfdaab37fe55","timestamp":"2025-05-08T03:40:10.207Z","message":"/Styles/project.css GET"}
+{"id":"39778db8-c3fa-487e-93ff-c96c2a727c0c","timestamp":"2025-05-08T03:40:10.216Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"699b356b-c739-425c-a6c5-4e42210ea2bd","timestamp":"2025-05-08T03:40:10.237Z","message":"/favicon.ico GET"}
+{"id":"fad8e1ec-f8ec-4b57-84ae-b0ad11c045b1","timestamp":"2025-05-08T03:40:10.247Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"33113381-8ed8-49e9-880c-79059c4e9c49","timestamp":"2025-05-08T03:40:15.604Z","message":"/ GET"}
+{"id":"728bca36-0dd0-4e0e-9ce8-fde050a91dc3","timestamp":"2025-05-08T03:40:15.665Z","message":"/Styles/project.css GET"}
+{"id":"edd6efd2-5ec1-43dd-a773-09a39f257e08","timestamp":"2025-05-08T03:40:15.690Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"70fac9bb-b8ad-4675-8d80-e1ed5be3b821","timestamp":"2025-05-08T03:40:16.749Z","message":"/ GET"}
+{"id":"7067510a-5db1-45f1-96f6-f6bfe7bfeb75","timestamp":"2025-05-08T03:40:16.779Z","message":"/Styles/project.css GET"}
+{"id":"8ece02d6-7f48-447c-ade6-81c28c5c54f1","timestamp":"2025-05-08T03:40:16.782Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"b55e1762-1e1d-4a1f-8693-ccf583416292","timestamp":"2025-05-08T03:41:32.681Z","message":"/ GET"}
+{"id":"6cc8f1fe-22eb-4f85-a3f6-f114f5148edf","timestamp":"2025-05-08T03:41:32.731Z","message":"/Styles/project.css GET"}
+{"id":"50d7d9ce-023e-4ed0-93de-e4b61957941d","timestamp":"2025-05-08T03:41:32.735Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"bbc5123f-dc8c-468a-a6c3-76b14cc1498f","timestamp":"2025-05-08T03:41:32.764Z","message":"/favicon.ico GET"}
+{"id":"fdd795a5-5b1f-4583-a305-77282a45484c","timestamp":"2025-05-08T03:41:32.766Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"c44eff13-d74a-4126-85e4-8cf139e15d36","timestamp":"2025-05-08T03:42:11.107Z","message":"/ GET"}
+{"id":"4ed89747-ebbd-4520-970b-12a2afee9782","timestamp":"2025-05-08T03:42:11.231Z","message":"/Styles/project.css GET"}
+{"id":"fbebdc81-bede-4839-927d-041e3669ff18","timestamp":"2025-05-08T03:42:11.383Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"5dd8f095-9d5f-4954-9bf1-7c3c970b91dd","timestamp":"2025-05-08T03:43:07.490Z","message":"/ GET"}
+{"id":"6b925549-1c7e-4128-bf4c-d533661d7b67","timestamp":"2025-05-08T03:43:07.592Z","message":"/Styles/project.css GET"}
+{"id":"06a6e313-26c7-4e65-9d9c-13fbcb6d474f","timestamp":"2025-05-08T03:43:07.617Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"0c0d8606-81ab-491f-b1f1-dd059d42c763","timestamp":"2025-05-08T03:43:51.326Z","message":"/ GET"}
+{"id":"be0fa253-5a69-4b30-9f26-7d754a8675c0","timestamp":"2025-05-08T03:43:51.478Z","message":"/Styles/project.css GET"}
+{"id":"c6d104b3-2c4f-4c50-879f-913e96af4ec7","timestamp":"2025-05-08T03:43:51.508Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"80dcd015-84e9-4dab-b4fa-b66126d04604","timestamp":"2025-05-08T03:43:58.093Z","message":"/ GET"}
+{"id":"54addb6c-6516-4808-b707-68bc4042b9e6","timestamp":"2025-05-08T03:43:58.204Z","message":"/Styles/project.css GET"}
+{"id":"ac94eb83-beda-4525-a97a-6cdcdafafccb","timestamp":"2025-05-08T03:43:58.210Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"d2bc4ebb-832d-4ee1-a50f-9f481ba6b5a6","timestamp":"2025-05-23T02:21:37.023Z","message":"/ GET"}
+{"id":"2b35da18-4fea-4ca9-b519-2f94383d6262","timestamp":"2025-05-23T02:21:37.099Z","message":"/Styles/project.css GET"}
+{"id":"b653bc4b-dc12-47ba-a418-511d92d32cc5","timestamp":"2025-05-23T02:21:37.103Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"f96e4ea4-9a4e-41c9-92d6-7d19ed52f6eb","timestamp":"2025-05-23T02:21:37.139Z","message":"/favicon.ico GET"}
+{"id":"71a0e4a6-068c-4696-965e-c339e9dc0aca","timestamp":"2025-05-23T02:21:37.140Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"99e1b164-593e-43ff-b2fb-9fd0229a5bda","timestamp":"2025-05-23T02:21:37.144Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"8dd64f00-ef68-4790-8df9-30add795a9a3","timestamp":"2025-05-23T02:34:37.146Z","message":"/ GET"}
+{"id":"68c5b94a-b647-4816-8294-46676c3e964a","timestamp":"2025-05-23T02:34:37.228Z","message":"/Styles/project.css GET"}
+{"id":"def3fd7d-d853-49b0-ac0b-81e8df4e5384","timestamp":"2025-05-23T02:34:37.231Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"3da3d127-a2e4-4020-97d5-48fed9b71a6f","timestamp":"2025-05-23T02:34:37.244Z","message":"/favicon.ico GET"}
+{"id":"909ee691-84b7-4e5e-8175-7c7ebe1d53cc","timestamp":"2025-05-23T02:34:37.245Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"dbc84e69-899c-4bb4-abd1-d660abaa6563","timestamp":"2025-05-23T02:34:37.256Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"2be4eb30-126c-4ff2-871f-50d2137c6871","timestamp":"2025-05-23T02:34:57.387Z","message":"/Pages/homepage.html GET"}
+{"id":"c360e07b-b562-4c10-ac98-4fede6baf56b","timestamp":"2025-05-23T02:34:57.425Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"96241798-145d-49be-95f7-5c8ec3b21de7","timestamp":"2025-05-23T03:28:39.695Z","message":"/ GET"}
+{"id":"ab27ed04-5d74-42d4-a169-7eba9a5fca16","timestamp":"2025-05-23T03:28:39.756Z","message":"/Styles/project.css GET"}
+{"id":"77a11be0-b39c-4dc3-ac5c-631cdfb7c735","timestamp":"2025-05-23T03:28:39.759Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"37e6973f-b6d5-427a-bbb3-e4da19839b6a","timestamp":"2025-05-23T03:28:39.840Z","message":"/favicon.ico GET"}
+{"id":"d8488af4-3a81-40f5-bb3f-06a66f1f1f69","timestamp":"2025-05-23T03:28:39.841Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"6557d941-8896-436a-a742-504b0aefb250","timestamp":"2025-05-23T03:28:39.852Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"6acb43cf-d76a-4a0d-adff-61a5c0658ad3","timestamp":"2025-05-23T03:28:51.716Z","message":"/Pages/homepage.html GET"}
+{"id":"1c6781f7-9ecb-4137-b3e6-1470f8d84b86","timestamp":"2025-05-23T03:28:51.717Z","message":"User attempted to accesss unsupported file"}
+{"id":"820b6ca1-6654-4e96-a9b9-752565b9c935","timestamp":"2025-05-23T03:28:51.751Z","message":"/favicon.ico GET"}
+{"id":"a8d16bb4-6b48-444d-bf20-88aa2d77a476","timestamp":"2025-05-23T03:28:51.752Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"27004906-0e2e-42c8-93a8-388e47353c6d","timestamp":"2025-05-23T03:29:09.327Z","message":"/Blog/HTML/homepage.html GET"}
+{"id":"2e7433c2-4dc1-4328-81ec-6190511e7410","timestamp":"2025-05-23T03:29:09.360Z","message":"/Blog/Images/homepageMeme.jpg GET"}
+{"id":"eb0fa9e2-2ca5-4daf-ba80-5feccc911736","timestamp":"2025-05-23T03:29:09.361Z","message":"User attempted to accesss unsupported file"}
+{"id":"abd79327-b089-4446-9ddd-3fdf8a4769a4","timestamp":"2025-05-23T03:41:30.580Z","message":"/ GET"}
+{"id":"538b4fe0-d4c1-40d0-b1cf-0a7b099cb9c8","timestamp":"2025-05-23T03:41:30.659Z","message":"/Styles/project.css GET"}
+{"id":"d92ba7e2-d947-4d10-9299-f56ca46f5441","timestamp":"2025-05-23T03:41:30.663Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"b0c92a3c-0863-403d-898f-351a3e891147","timestamp":"2025-05-23T03:41:30.675Z","message":"/favicon.ico GET"}
+{"id":"16ce74c0-6b2a-4379-b7a3-005944a888fa","timestamp":"2025-05-23T03:41:30.676Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"886381a6-dd05-4357-8af8-97ad708b6715","timestamp":"2025-05-23T03:41:30.691Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"76f0e9c8-b59c-47ee-bb18-c2e3b0588ea7","timestamp":"2025-05-23T03:42:42.514Z","message":"/ GET"}
+{"id":"9fa3937b-d9e7-46e8-9fdc-3a2646c779ab","timestamp":"2025-05-23T03:42:42.609Z","message":"/Styles/project.css GET"}
+{"id":"421fc93f-0e49-49b1-92bb-2591de26e2a8","timestamp":"2025-05-23T03:42:42.611Z","message":"/Scripts/Entry.js GET"}
+{"id":"cba4b1ba-728b-4e2b-a32d-94b710b8b1ef","timestamp":"2025-05-23T03:42:42.704Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"2f569b6b-935f-4962-922f-277f6d07ceb1","timestamp":"2025-05-23T03:42:42.704Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"c8cef026-025a-434f-940d-e1292148c0d5","timestamp":"2025-05-23T03:42:42.739Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"d596464d-839a-4595-979d-21097791f56e","timestamp":"2025-05-23T03:44:07.510Z","message":"/Scripts/Entry.js GET"}
+{"id":"a79f72e2-a690-4d90-a8df-ad49befbc4cc","timestamp":"2025-05-23T03:46:07.097Z","message":"/ GET"}
+{"id":"1c1e09f6-73ec-44a4-834f-4a29d6554353","timestamp":"2025-05-23T03:46:07.169Z","message":"/Styles/project.css GET"}
+{"id":"8a915584-a39a-4d47-b9e4-4e74eba38dda","timestamp":"2025-05-23T03:46:07.172Z","message":"/Scripts/Entry.js GET"}
+{"id":"75084799-8f1c-43af-a9b8-e1b07c72aec9","timestamp":"2025-05-23T03:46:07.293Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"0119a905-a722-4225-a18d-3905e343dc30","timestamp":"2025-05-23T03:46:07.293Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"f78cea04-e5bb-42e7-99bd-796b950168f4","timestamp":"2025-05-23T03:46:07.325Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"d898cb12-0598-4d5e-aff5-d4a71765ce42","timestamp":"2025-05-23T03:46:07.418Z","message":"/favicon.ico GET"}
+{"id":"6c773fce-0d78-43c3-85ff-54b64cd96e64","timestamp":"2025-05-23T03:46:07.419Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"bba5cfd1-1bae-4939-9078-822591fc58c4","timestamp":"2025-05-23T03:46:36.257Z","message":"/ GET"}
+{"id":"c014da4a-1313-4b5d-9041-4bcc7a061e56","timestamp":"2025-05-23T03:46:36.339Z","message":"/Styles/project.css GET"}
+{"id":"a140ea82-482d-498c-a1be-e1e41e852383","timestamp":"2025-05-23T03:46:36.342Z","message":"/Scripts/Entry.js GET"}
+{"id":"81588527-abdf-4ebd-98af-4c36b0478446","timestamp":"2025-05-23T03:46:36.411Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"75436aa8-06eb-4502-999a-2b99f6c643b5","timestamp":"2025-05-23T03:46:36.410Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f07bd1c0-87e1-49b0-bebe-fd207cc8e08f","timestamp":"2025-05-23T03:46:36.491Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"43831b6e-e986-44e6-9e5b-96be2392908c","timestamp":"2025-05-23T04:11:48.750Z","message":"/ GET"}
+{"id":"8daab962-f93a-40b9-a48b-e4383d9dcf3a","timestamp":"2025-05-23T04:11:48.816Z","message":"/Styles/project.css GET"}
+{"id":"6774ccbe-a819-453d-86c0-1b5386f03d66","timestamp":"2025-05-23T04:11:48.830Z","message":"/Scripts/Entry.js GET"}
+{"id":"1c4aabf8-6457-4664-9ec5-9967c697e87e","timestamp":"2025-05-23T04:11:48.854Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"2db1a4e3-04ee-4cc1-b028-30cb6f5b55e4","timestamp":"2025-05-23T04:11:48.859Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"63d4cded-2809-43d0-952e-fa8deb7a12ea","timestamp":"2025-05-23T04:11:48.870Z","message":"/favicon.ico GET"}
+{"id":"bc40b59e-12cc-4b4f-ba17-054c05a14f2a","timestamp":"2025-05-23T04:11:48.870Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"b641154e-7730-492c-bce2-77399242364f","timestamp":"2025-05-23T04:11:52.237Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"31015826-917a-4760-9ed3-1ace4a819531","timestamp":"2025-05-23T04:11:52.237Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"1dea2186-c6df-4c14-8fc2-e9192ffd417e","timestamp":"2025-05-23T04:11:56.868Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"71f1622a-a311-4939-938c-5bc660f43503","timestamp":"2025-05-23T04:11:56.868Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"28e53f61-6dba-4af2-9d5f-5dc90e0a70f6","timestamp":"2025-05-23T04:18:54.778Z","message":"/ GET"}
+{"id":"3a6e18e1-1c44-4f40-9ebc-bec739c68e38","timestamp":"2025-05-23T04:18:54.832Z","message":"/Styles/project.css GET"}
+{"id":"a2d11275-96a8-4888-b785-df0d8aee20d0","timestamp":"2025-05-23T04:18:54.834Z","message":"/Scripts/Entry.js GET"}
+{"id":"7bbe1328-121e-4c7d-a2e9-368816a34b55","timestamp":"2025-05-23T04:18:54.842Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"4af312bd-ff93-45ff-aadd-b2adef9270b8","timestamp":"2025-05-23T04:18:54.896Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"5c48f321-bda1-489d-a7a0-297f7b06fd1c","timestamp":"2025-05-23T04:22:39.058Z","message":"/ GET"}
+{"id":"f9292885-d7a9-4188-a306-c5e9878b837a","timestamp":"2025-05-23T04:22:39.175Z","message":"/Styles/project.css GET"}
+{"id":"98e337a0-a923-44ff-b9e1-1ecc67586e0c","timestamp":"2025-05-23T04:22:39.176Z","message":"/Scripts/Entry.js GET"}
+{"id":"5b4149bc-4256-45f1-8695-b1794e97ef4b","timestamp":"2025-05-23T04:22:39.196Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"21fbe369-c606-448d-9182-1beb94c7967d","timestamp":"2025-05-23T04:22:39.199Z","message":"/Libraries/knockout.js GET"}
+{"id":"7dcc047f-d62e-442c-b790-357a1eec3844","timestamp":"2025-05-23T04:22:39.201Z","message":"/Scripts/PageModel.js GET"}
+{"id":"b8e4636f-8708-4ffb-9961-b6348a797e64","timestamp":"2025-05-23T04:23:25.752Z","message":"/ GET"}
+{"id":"83e5a463-0703-4824-9ba4-e807967b0d1c","timestamp":"2025-05-23T04:23:25.860Z","message":"/Styles/project.css GET"}
+{"id":"72591de5-abb6-466a-8488-b6b261c8218d","timestamp":"2025-05-23T04:23:25.862Z","message":"/Scripts/Entry.js GET"}
+{"id":"70770679-4b4a-4a55-b528-8c2638f8fd5a","timestamp":"2025-05-23T04:23:25.892Z","message":"/Libraries/knockout.js GET"}
+{"id":"5f8f39c0-fbcb-4ada-bc6e-f6afa7bec2f0","timestamp":"2025-05-23T04:23:25.895Z","message":"/Scripts/PageModel.js GET"}
+{"id":"c6248da5-9dbe-4044-bc3c-6da3320b8fea","timestamp":"2025-05-23T04:23:26.005Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"ca144142-0bbc-4a83-86fe-5c079eda5b7e","timestamp":"2025-05-23T04:23:28.606Z","message":"/ GET"}
+{"id":"68a388bd-893b-4369-b891-351d534c6581","timestamp":"2025-05-23T04:23:28.690Z","message":"/Styles/project.css GET"}
+{"id":"b3e3ece4-47b2-489e-9464-6c44f27f0bdc","timestamp":"2025-05-23T04:23:28.693Z","message":"/Scripts/Entry.js GET"}
+{"id":"2841e24d-d679-4e62-9b65-b0528ae69dac","timestamp":"2025-05-23T04:23:28.735Z","message":"/Libraries/knockout.js GET"}
+{"id":"2d752c73-0238-403b-943c-55861e4e73a7","timestamp":"2025-05-23T04:23:28.736Z","message":"/Scripts/PageModel.js GET"}
+{"id":"68a04a42-de27-4b2c-998c-90c8d4ebe14d","timestamp":"2025-05-23T04:23:28.805Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"46d78cfd-76f4-4f9f-800f-1435d8330bbb","timestamp":"2025-05-23T04:23:40.076Z","message":"/ GET"}
+{"id":"89308081-5235-41f9-94a0-2d4a1e59a4a1","timestamp":"2025-05-23T04:23:40.126Z","message":"/Styles/project.css GET"}
+{"id":"360447c4-8289-40db-839a-0e9d8a620be3","timestamp":"2025-05-23T04:23:40.129Z","message":"/Scripts/Entry.js GET"}
+{"id":"15003edc-e3dc-4ef7-8cb3-12eb0839109c","timestamp":"2025-05-23T04:23:40.157Z","message":"/Libraries/knockout.js GET"}
+{"id":"f080b6dc-f217-4098-843b-2bf4735c59e0","timestamp":"2025-05-23T04:23:40.158Z","message":"/Scripts/PageModel.js GET"}
+{"id":"cf91204d-c697-4305-aebe-919cc2641a56","timestamp":"2025-05-23T04:23:40.173Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"9f97470e-46f4-40b4-80fc-5494e6a7fb4f","timestamp":"2025-05-23T04:23:40.905Z","message":"/ GET"}
+{"id":"495798e8-1ffc-4084-b721-d219eadfd809","timestamp":"2025-05-23T04:23:40.955Z","message":"/Styles/project.css GET"}
+{"id":"44534bcb-4908-463f-a3f7-306da0957c36","timestamp":"2025-05-23T04:23:40.956Z","message":"/Scripts/Entry.js GET"}
+{"id":"d37be7bb-f3e1-48fd-b70a-b2356ec459cd","timestamp":"2025-05-23T04:23:40.985Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"b9e1e079-b0d4-49af-877e-39fb2796738c","timestamp":"2025-05-23T04:23:40.986Z","message":"/Libraries/knockout.js GET"}
+{"id":"8c3d9b9f-5dfa-43fe-8d16-94abdfc27cb7","timestamp":"2025-05-23T04:23:40.988Z","message":"/Scripts/PageModel.js GET"}
+{"id":"de054d86-10f0-454d-ac2b-95bd2b80b90e","timestamp":"2025-05-23T04:23:42.242Z","message":"/ GET"}
+{"id":"81f1b529-6e83-4dba-9aae-fded4af2c8e3","timestamp":"2025-05-23T04:23:42.324Z","message":"/Styles/project.css GET"}
+{"id":"53718a8c-23b4-469a-a36b-2d8087aeca06","timestamp":"2025-05-23T04:23:42.326Z","message":"/Scripts/Entry.js GET"}
+{"id":"cd7830ce-e1aa-4b91-8f24-c523b3eba125","timestamp":"2025-05-23T04:23:42.353Z","message":"/Libraries/knockout.js GET"}
+{"id":"c8ad2b9a-498d-48a4-94d1-57a5184f7ddc","timestamp":"2025-05-23T04:23:42.354Z","message":"/Scripts/PageModel.js GET"}
+{"id":"72eed311-5f21-43c1-ac80-f951af62d2cf","timestamp":"2025-05-23T04:23:42.358Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"3140d494-a871-4e54-9768-cb8571c9e054","timestamp":"2025-05-23T04:23:43.874Z","message":"/ GET"}
+{"id":"08b854c6-be46-41e5-8024-22a6aa4cfdb8","timestamp":"2025-05-23T04:23:43.921Z","message":"/Styles/project.css GET"}
+{"id":"24564e5b-d02d-4630-bd72-039e1e80af8c","timestamp":"2025-05-23T04:23:43.923Z","message":"/Scripts/Entry.js GET"}
+{"id":"be19415d-d9b5-4a04-b69a-fc67be1f1b7a","timestamp":"2025-05-23T04:23:43.951Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"5889ab92-38da-4bc4-8ed5-6c51683e353e","timestamp":"2025-05-23T04:23:43.952Z","message":"/Libraries/knockout.js GET"}
+{"id":"ff90553c-d1d7-48e0-89df-c0934731a4e4","timestamp":"2025-05-23T04:23:43.954Z","message":"/Scripts/PageModel.js GET"}
+{"id":"8167d12e-fbd5-45d5-ba5c-77ed5475a81e","timestamp":"2025-05-23T04:23:44.738Z","message":"/ GET"}
+{"id":"473fc8af-4a2b-4cea-a488-8ed9c95771c1","timestamp":"2025-05-23T04:23:44.783Z","message":"/Styles/project.css GET"}
+{"id":"b6c14cca-bf78-4098-949f-0ab6ae6abe3e","timestamp":"2025-05-23T04:23:44.784Z","message":"/Scripts/Entry.js GET"}
+{"id":"2f2ee290-9fe7-4969-bb02-4df8b8d1b5d7","timestamp":"2025-05-23T04:23:44.815Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"bb89d51d-8cbc-4f6c-9854-c8907a0dd04d","timestamp":"2025-05-23T04:23:44.817Z","message":"/Libraries/knockout.js GET"}
+{"id":"8ab0b434-b687-4856-933b-a9b2c6203898","timestamp":"2025-05-23T04:23:44.817Z","message":"/Scripts/PageModel.js GET"}
+{"id":"57817099-5c8b-4094-a52b-03f15003a55d","timestamp":"2025-05-23T04:27:53.631Z","message":"/ GET"}
+{"id":"acf1af3f-2664-4c17-bcfd-815cde1ab63d","timestamp":"2025-05-23T04:27:53.728Z","message":"/Styles/project.css GET"}
+{"id":"e7b4e9a4-d982-47ed-8105-fcc153c3f583","timestamp":"2025-05-23T04:27:53.730Z","message":"/Scripts/Entry.js GET"}
+{"id":"3536a5f3-29fa-4f06-8939-3df1fbdd2642","timestamp":"2025-05-23T04:27:53.759Z","message":"/Libraries/knockout.js GET"}
+{"id":"09727ac8-f3e5-4601-9237-d68d93f0e740","timestamp":"2025-05-23T04:27:53.761Z","message":"/Scripts/PageModel.js GET"}
+{"id":"5a7b85e9-a8f8-48f9-914d-d9ff708f6dc3","timestamp":"2025-05-23T04:27:53.768Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"e7897944-4234-46b8-b78a-da46733678c3","timestamp":"2025-05-23T04:27:53.899Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"4871e0ae-b81f-4d81-92da-f98f35ee8a5d","timestamp":"2025-05-23T04:27:53.899Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"fb2e1e03-dfb3-479f-b3a5-8b1086b35ea6","timestamp":"2025-05-23T04:27:59.598Z","message":"/ GET"}
+{"id":"b2c73155-f7cc-4b12-b401-1065bcca79e0","timestamp":"2025-05-23T04:27:59.699Z","message":"/Styles/project.css GET"}
+{"id":"e52a4b39-72da-4465-ba80-558720c03231","timestamp":"2025-05-23T04:27:59.701Z","message":"/Scripts/Entry.js GET"}
+{"id":"195fc184-d377-4737-b4ec-7ad1fb499ce8","timestamp":"2025-05-23T04:27:59.781Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c5aea0c6-4cd0-4328-95bf-83420c156ed8","timestamp":"2025-05-23T04:27:59.783Z","message":"/Libraries/knockout.js GET"}
+{"id":"a16ed08a-f603-458e-ba15-721df7b1f2a8","timestamp":"2025-05-23T04:27:59.784Z","message":"/Scripts/PageModel.js GET"}
+{"id":"c23daa27-3aea-4f35-b7b6-36101edc5c15","timestamp":"2025-05-23T04:27:59.862Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"a571cdc2-6906-4072-80b0-9a84150217d5","timestamp":"2025-05-23T04:27:59.863Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"64acac65-f4d6-45b6-b560-5371e11b0d6e","timestamp":"2025-05-27T00:43:16.057Z","message":"/ GET"}
+{"id":"c6f5f7bf-8b5a-4b64-860b-7231045db8b1","timestamp":"2025-05-27T00:43:16.122Z","message":"/Styles/project.css GET"}
+{"id":"4838d720-b8c3-4ac7-966b-6775cbf70982","timestamp":"2025-05-27T00:43:16.126Z","message":"/Scripts/Entry.js GET"}
+{"id":"62ac21fe-0757-4df2-8afa-2df53e6dc701","timestamp":"2025-05-27T00:43:16.144Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"33216a11-59bd-40d8-8196-8d77eb25fd0b","timestamp":"2025-05-27T00:43:16.148Z","message":"/Scripts/PageModel.js GET"}
+{"id":"1f3419c7-b31f-4105-964d-1017e8a3ff30","timestamp":"2025-05-27T00:43:16.147Z","message":"/Libraries/knockout.js GET"}
+{"id":"4ee48929-cbab-4a74-b12c-794e3bb91d46","timestamp":"2025-05-27T00:43:16.183Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"8e1c1926-73a4-46a6-ac83-54cc94d9f1a8","timestamp":"2025-05-27T00:43:16.266Z","message":"/favicon.ico GET"}
+{"id":"5c0c97b2-672e-4f74-8884-b35c485370f2","timestamp":"2025-05-27T00:43:16.267Z","message":"User attempted to use unsupported extension: .ico"}
+{"id":"6f35c28b-0870-4e39-aaf4-ee6b1154ca78","timestamp":"2025-05-27T00:44:32.223Z","message":"/ GET"}
+{"id":"bcf07e98-88b8-4a60-8c1c-af3c57a2cfe3","timestamp":"2025-05-27T00:44:32.225Z","message":"/Scripts/PageModel.js GET"}
+{"id":"4ce9b1c2-af17-4bea-84d1-0b7c0a03b1a6","timestamp":"2025-05-27T00:44:32.422Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"092a0c3a-ebdb-43fc-aed9-00d479610123","timestamp":"2025-05-27T00:44:32.423Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"22a44555-d8c9-48c3-b607-7d8d73f1600e","timestamp":"2025-05-27T00:44:32.821Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8ec4e85f-564d-4f79-be53-1491fb06119d","timestamp":"2025-05-27T00:44:32.822Z","message":"User attempted to use unsupported extension: .map"}
+{"id":"8cbf39e6-ada9-4b8e-b953-1bb27306e7cb","timestamp":"2025-05-27T00:44:40.069Z","message":"/Scripts/Entry.js GET"}
+{"id":"6541b961-a9e3-4fd4-aa94-cf4a117e7ae2","timestamp":"2025-05-27T00:48:28.713Z","message":"/ GET"}
+{"id":"0693d09d-6e91-4761-8c94-e931c1a0d361","timestamp":"2025-05-27T00:48:28.989Z","message":"/Styles/project.css GET"}
+{"id":"2bbef8a1-b6e6-41a2-a48a-0c4ac37a57cc","timestamp":"2025-05-27T00:48:28.992Z","message":"/Scripts/Entry.js GET"}
+{"id":"63725f81-aea8-4c5a-bfc9-1a59af093513","timestamp":"2025-05-27T00:48:29.084Z","message":"/Libraries/knockout.js GET"}
+{"id":"34cc18ac-d91b-4b08-9fad-6ee11bba9ec4","timestamp":"2025-05-27T00:48:29.086Z","message":"/Scripts/PageModel.js GET"}
+{"id":"3b0b8484-16e3-4277-bf81-f7e5df9c923d","timestamp":"2025-05-27T00:48:29.111Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"160ef3a6-30a1-4e96-b5bf-28898aa8eca7","timestamp":"2025-05-27T00:48:29.225Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"b5fb5467-fff3-4f13-82b1-deb80611586f","timestamp":"2025-05-27T00:48:29.235Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"fe4f59b9-adc4-4504-a50e-089ff81ac7ec","timestamp":"2025-05-27T00:48:29.237Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"0225efc9-6d7c-42e8-a24d-a9ed423da6b7","timestamp":"2025-05-27T00:54:55.698Z","message":"/ GET"}
+{"id":"7753c8c8-9d83-49a5-b547-77feabe0e835","timestamp":"2025-05-27T00:54:55.847Z","message":"/Styles/project.css GET"}
+{"id":"b57f36fc-efa7-4d22-92ff-6f980592ba34","timestamp":"2025-05-27T00:54:55.848Z","message":"/Scripts/Entry.js GET"}
+{"id":"d555ce3b-89dc-40be-9f38-a830b837712c","timestamp":"2025-05-27T00:54:55.951Z","message":"/Libraries/knockout.js GET"}
+{"id":"5170948e-9c7f-4d90-97df-92930138958e","timestamp":"2025-05-27T00:54:55.952Z","message":"/Scripts/PageModel.js GET"}
+{"id":"54d847f0-7912-44be-9ce4-9a4914c355f6","timestamp":"2025-05-27T00:54:56.129Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"bf787868-b1cb-42da-9565-1549444dd250","timestamp":"2025-05-27T00:54:56.183Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"30b1228a-67e5-4f8b-99ff-8b35641954c2","timestamp":"2025-05-27T00:54:56.185Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"b5df0747-ab66-4d67-8695-08ff5dd610f0","timestamp":"2025-05-27T00:54:56.215Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"15b749b9-8234-4afd-9f67-aa580fab8366","timestamp":"2025-05-27T00:56:13.163Z","message":"/ GET"}
+{"id":"51a3483f-43b1-43b0-a8d9-4cb513100d2e","timestamp":"2025-05-27T00:56:13.363Z","message":"/Scripts/Entry.js GET"}
+{"id":"49b6551f-f684-4224-ba56-025993cc149c","timestamp":"2025-05-27T00:56:13.365Z","message":"/Styles/project.css GET"}
+{"id":"4b7e4592-7fcf-4fdb-a37d-404930cf9785","timestamp":"2025-05-27T00:56:13.416Z","message":"/Libraries/knockout.js GET"}
+{"id":"2a839e90-ae6d-49f4-a5e1-dc9e63bda04e","timestamp":"2025-05-27T00:56:13.437Z","message":"/Scripts/PageModel.js GET"}
+{"id":"eb7de06e-7af4-4562-8c15-33c30f171b5d","timestamp":"2025-05-27T00:56:13.459Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c28c1327-e00c-4772-9578-4e143d44056e","timestamp":"2025-05-27T00:56:13.479Z","message":"/favicon.ico GET"}
+{"id":"7d7e1639-8ba9-48fb-b61c-f10d564499bd","timestamp":"2025-05-27T00:56:13.600Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"3715b7ce-4a35-4493-babf-4a7302ca8aa1","timestamp":"2025-05-27T00:56:13.615Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"ab07f4bd-5869-4121-958d-f00d1c7ce5c7","timestamp":"2025-05-27T00:56:13.617Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"89e47fb6-9f68-47dc-a204-0c54bfd9cc8e","timestamp":"2025-05-27T01:06:29.660Z","message":"/ GET"}
+{"id":"25a6d23b-eb96-432f-99e2-db1b4f1d352b","timestamp":"2025-05-27T01:06:29.665Z","message":"User attempted to accesss unsupported file"}
+{"id":"2a0b6529-6ec5-4c8a-a8d3-2128e601fb2b","timestamp":"2025-05-27T01:06:29.725Z","message":"/favicon.ico GET"}
+{"id":"715cdf11-5b97-4860-a73c-4ca1ef8c2938","timestamp":"2025-05-27T01:06:29.727Z","message":"User attempted to accesss unsupported file"}
+{"id":"7af3b2ee-a8f4-4b36-8284-1b65f592d504","timestamp":"2025-05-27T01:08:04.294Z","message":"/ GET"}
+{"id":"0561e811-57a3-4bb3-a112-fbc014a9e7f1","timestamp":"2025-05-27T01:08:04.297Z","message":"User attempted to accesss unsupported file"}
+{"id":"2308d814-4f7d-4317-872f-627575f7a24b","timestamp":"2025-05-27T01:08:04.327Z","message":"User attempted to accesss unsupported file"}
+{"id":"640dc9e9-b7c3-4f5c-821d-86dcb977c81a","timestamp":"2025-05-27T01:08:04.326Z","message":"/favicon.ico GET"}
+{"id":"d21886fd-f04e-408e-b065-08c7dd23ca38","timestamp":"2025-05-27T01:08:05.686Z","message":"/ GET"}
+{"id":"3b2dd719-40c7-41f6-a42f-986d821d1eed","timestamp":"2025-05-27T01:08:05.687Z","message":"User attempted to accesss unsupported file"}
+{"id":"2cbaf021-6974-43c6-aaf6-5d766c7cbf73","timestamp":"2025-05-27T01:08:05.711Z","message":"/favicon.ico GET"}
+{"id":"93058ff9-d81f-4574-8dee-443a08894766","timestamp":"2025-05-27T01:08:05.711Z","message":"User attempted to accesss unsupported file"}
+{"id":"028d5ab1-ead4-4bce-a6cc-4995500df8b9","timestamp":"2025-05-27T01:08:39.010Z","message":"/ GET"}
+{"id":"1a7db9a6-f8a7-4ff2-9652-470aad5f1a36","timestamp":"2025-05-27T01:09:04.711Z","message":"User attempted to accesss unsupported file"}
+{"id":"769d9f01-54d1-43e7-8f76-afeeef707245","timestamp":"2025-05-27T01:09:04.756Z","message":"/favicon.ico GET"}
+{"id":"a9282ce3-c0c7-466d-bbad-eb580e83fa3e","timestamp":"2025-05-27T01:09:04.756Z","message":"User attempted to accesss unsupported file"}
+{"id":"6b9ab368-993a-492b-9c11-ec20406aee14","timestamp":"2025-05-27T01:09:07.685Z","message":"/ GET"}
+{"id":"edeada66-10fe-40e2-a85a-b39a52e0d2c5","timestamp":"2025-05-27T01:09:17.879Z","message":"User attempted to accesss unsupported file"}
+{"id":"290f591a-3d25-41b6-8818-ba475b169048","timestamp":"2025-05-27T01:09:17.886Z","message":"/ GET"}
+{"id":"307e5705-50c3-4891-963f-0ed13754acd2","timestamp":"2025-05-27T01:09:20.062Z","message":"User attempted to accesss unsupported file"}
+{"id":"b5277f0f-1260-4557-a026-896479db94c1","timestamp":"2025-05-27T01:09:20.241Z","message":"/favicon.ico GET"}
+{"id":"23fe3e8b-b366-41ee-b0d9-a4192b7c155c","timestamp":"2025-05-27T01:09:20.242Z","message":"User attempted to accesss unsupported file"}
+{"id":"267aace1-7869-4fff-9250-7a919f9164b2","timestamp":"2025-05-27T01:09:43.645Z","message":"/ GET"}
+{"id":"1c60eb85-4b02-4290-b2dd-3a2ca70944c5","timestamp":"2025-05-27T01:09:43.647Z","message":"User attempted to accesss unsupported file"}
+{"id":"a0efd9c8-5559-4557-bc74-ff93324ef53d","timestamp":"2025-05-27T01:09:43.714Z","message":"/favicon.ico GET"}
+{"id":"b8abf9c3-ca8a-4c65-bd8b-4f21b9886c4e","timestamp":"2025-05-27T01:09:43.715Z","message":"User attempted to accesss unsupported file"}
+{"id":"2e170ac0-1ec0-47fb-bf04-4a057576f19a","timestamp":"2025-05-27T01:09:46.332Z","message":"/ GET"}
+{"id":"6fbb2601-84f5-4cf5-a442-3ebf4e90983b","timestamp":"2025-05-27T01:09:46.332Z","message":"User attempted to accesss unsupported file"}
+{"id":"ce6c5c85-1e13-4145-9caf-2998cf5366ba","timestamp":"2025-05-27T01:09:46.369Z","message":"/favicon.ico GET"}
+{"id":"2e7159b2-7218-412c-b5b5-cb1a090d832a","timestamp":"2025-05-27T01:09:46.370Z","message":"User attempted to accesss unsupported file"}
+{"id":"271a66da-25f8-4b5c-a16c-d7d82469e1a4","timestamp":"2025-05-27T01:11:00.950Z","message":"/ GET"}
+{"id":"1252be2e-e618-48de-a85b-224e51d72275","timestamp":"2025-05-27T01:11:01.034Z","message":"/Styles/project.css GET"}
+{"id":"dbf7e50a-f6e3-47f3-a495-9404b855463a","timestamp":"2025-05-27T01:11:01.035Z","message":"User attempted to accesss unsupported file"}
+{"id":"c57aab74-0cf5-4d4b-84ef-b10d9756f992","timestamp":"2025-05-27T01:11:01.037Z","message":"/Scripts/Entry.js GET"}
+{"id":"8c24b3d8-04f6-4cdd-9568-0cdfa13ef1b9","timestamp":"2025-05-27T01:11:01.042Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"0aab5764-ce55-4e31-94ac-047109476a13","timestamp":"2025-05-27T01:11:01.043Z","message":"User attempted to accesss unsupported file"}
+{"id":"3b1e5668-30ca-4b5e-8522-153945f27b34","timestamp":"2025-05-27T01:11:01.065Z","message":"/Libraries/knockout.js GET"}
+{"id":"44297131-b2a1-4961-8998-de5b5f2c9a5e","timestamp":"2025-05-27T01:11:01.067Z","message":"User attempted to accesss unsupported file"}
+{"id":"c146f59b-8624-4f65-a088-24d8d7ecaad0","timestamp":"2025-05-27T01:11:01.069Z","message":"/Scripts/PageModel.js GET"}
+{"id":"bb0a4d07-ad71-4453-80d5-6040f26b7493","timestamp":"2025-05-27T01:11:01.115Z","message":"/Images/favicon.ico GET"}
+{"id":"26512a0a-560d-497f-96af-3c75ecf711ed","timestamp":"2025-05-27T01:11:01.116Z","message":"User attempted to accesss unsupported file"}
+{"id":"37b94175-cfc0-4aa9-bcfb-015b2ce7471a","timestamp":"2025-05-27T01:13:19.138Z","message":"/ GET"}
+{"id":"c63e9dca-5b12-4583-b206-732938f44a26","timestamp":"2025-05-27T01:13:19.203Z","message":"/favicon.ico GET"}
+{"id":"6a13ecd7-81ad-4235-8c91-9464ed80477a","timestamp":"2025-05-27T01:13:19.205Z","message":"User attempted to use unsupported extension: .icoPublic"}
+{"id":"948bae55-2a34-49c3-a878-b3e3b76a102a","timestamp":"2025-05-27T01:13:20.429Z","message":"/ GET"}
+{"id":"e0e68072-7cbd-4743-8104-78441b80234f","timestamp":"2025-05-27T01:13:20.496Z","message":"/favicon.ico GET"}
+{"id":"d6aaaa05-fb3b-423f-bb65-ecaeeb1ac87c","timestamp":"2025-05-27T01:13:20.497Z","message":"User attempted to use unsupported extension: .icoPublic"}
+{"id":"b04013d1-87dc-496f-971c-9bc197b586dc","timestamp":"2025-05-27T01:14:22.146Z","message":"/ GET"}
+{"id":"c34c9988-853c-4ba1-9fc9-43464c2f36c7","timestamp":"2025-05-27T01:14:22.204Z","message":"/favicon.ico GET"}
+{"id":"7a918fac-b205-4d4f-a324-eee99ebc5c89","timestamp":"2025-05-27T01:14:22.204Z","message":"User attempted to use unsupported extension: .icoPublic"}
+{"id":"573a05cc-2bcc-4a16-9b8f-a50de0b120c5","timestamp":"2025-05-27T01:14:23.449Z","message":"/ GET"}
+{"id":"a35a9391-e368-490d-b0ef-1f1c6778d11a","timestamp":"2025-05-27T01:14:23.495Z","message":"/favicon.ico GET"}
+{"id":"16462931-7ddb-42f3-9418-1d603849a23a","timestamp":"2025-05-27T01:14:23.496Z","message":"User attempted to use unsupported extension: .icoPublic"}
+{"id":"eafb3923-7e82-472e-b638-b788b15f2873","timestamp":"2025-05-27T01:17:15.531Z","message":"/ GET"}
+{"id":"62a0715a-2f7b-442d-a34d-4832e43fc30c","timestamp":"2025-05-27T01:17:15.615Z","message":"/Styles/project.css GET"}
+{"id":"f261cbd8-cf57-4647-81bb-ceb54fcd2923","timestamp":"2025-05-27T01:17:15.618Z","message":"/Scripts/Entry.js GET"}
+{"id":"81b6aa1d-1028-4614-816e-d76a94cddc2e","timestamp":"2025-05-27T01:17:15.625Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"d18b5874-0e27-4806-9da6-f0be8ebc27b6","timestamp":"2025-05-27T01:17:15.651Z","message":"/Libraries/knockout.js GET"}
+{"id":"bbfa14f4-202a-46af-94b9-4adaac43dade","timestamp":"2025-05-27T01:17:15.654Z","message":"/Scripts/PageModel.js GET"}
+{"id":"b1c4e378-22da-4fe2-8e92-ca447cec6887","timestamp":"2025-05-27T01:17:15.705Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"e42ec556-5573-41ae-a45e-f61468871a78","timestamp":"2025-05-27T01:17:16.740Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"ded77aee-7519-4248-b9f1-623ff7e9d942","timestamp":"2025-05-27T01:17:16.743Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"1ab87a2e-4d28-4d07-a7c4-1bb0f413c932","timestamp":"2025-05-27T01:17:17.857Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"690bfef2-a6d2-4953-a15f-cd75f81e4acc","timestamp":"2025-05-27T01:17:20.455Z","message":"/ GET"}
+{"id":"d6f0b065-e627-4f87-9997-37f2996e3b48","timestamp":"2025-05-27T01:17:20.593Z","message":"/Styles/project.css GET"}
+{"id":"4cd85e03-61f7-4987-bc78-66a972fca60e","timestamp":"2025-05-27T01:17:20.594Z","message":"/Scripts/Entry.js GET"}
+{"id":"8324f0dd-d80b-4f1b-998b-565c83a69e2f","timestamp":"2025-05-27T01:17:20.664Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"e16ab19a-eba3-47f5-ac49-034b6c910b75","timestamp":"2025-05-27T01:17:20.665Z","message":"/Libraries/knockout.js GET"}
+{"id":"959ec04c-7c10-42f0-b5cd-c155fc3db3a0","timestamp":"2025-05-27T01:17:20.668Z","message":"/Scripts/PageModel.js GET"}
+{"id":"f034a13d-8f25-49c6-8c5a-d8d257825c93","timestamp":"2025-05-27T01:17:20.859Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"711f9c37-cc4a-43ee-be4e-6e7f8f427cf4","timestamp":"2025-05-27T01:17:20.923Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"e8b67adb-949c-490e-a317-e06ee45312c1","timestamp":"2025-05-27T01:17:20.925Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5347db45-d4a7-4370-bb7d-eda6258a4e89","timestamp":"2025-05-27T01:17:24.721Z","message":"/Images/favicon.ico GET"}
+{"id":"f43491e0-1390-427e-aed5-4d7d4695794e","timestamp":"2025-05-27T01:17:25.391Z","message":"/favicon.ico GET"}
+{"id":"a26e0ae6-70a2-4aed-94d3-06fa53a04520","timestamp":"2025-05-27T01:17:25.392Z","message":"User attempted to accesss unsupported file"}
+{"id":"fc4fc2d4-8567-45ea-b395-0ea5776f0dcd","timestamp":"2025-05-27T01:18:52.254Z","message":"/ GET"}
+{"id":"75186ecc-7133-48cd-81a9-4a0751b14511","timestamp":"2025-05-27T01:19:03.537Z","message":"/Styles/project.css GET"}
+{"id":"050f9dd3-9a0c-421a-8c45-2f2b797afdf5","timestamp":"2025-05-27T01:19:13.287Z","message":"/Scripts/Entry.js GET"}
+{"id":"63e1598a-c772-4460-897e-c91318e5c199","timestamp":"2025-05-27T01:19:16.171Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"73036333-2277-45c0-8141-cc55afae8e91","timestamp":"2025-05-27T01:19:18.723Z","message":"/Libraries/knockout.js GET"}
+{"id":"41945281-aadc-40fb-8fc7-121b351a44a6","timestamp":"2025-05-27T01:19:22.135Z","message":"/Scripts/PageModel.js GET"}
+{"id":"92707b25-e1b4-47c0-b8f4-f28dd60ed68c","timestamp":"2025-05-27T01:19:26.197Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"ba17d704-795f-4798-b3c7-3097accc78d5","timestamp":"2025-05-27T01:19:28.877Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"b950a824-f1aa-47bc-b698-ffb1b628f624","timestamp":"2025-05-27T01:19:34.061Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"b9792965-a4d2-437e-b44c-df992e5ef0a9","timestamp":"2025-05-27T01:25:26.892Z","message":"/ GET"}
+{"id":"9011d855-f899-4e6a-9724-39cb4f43ff16","timestamp":"2025-05-27T01:25:27.168Z","message":"/Styles/project.css GET"}
+{"id":"e0dce3ff-da7e-4119-9bb3-f3e997693fdb","timestamp":"2025-05-27T01:25:27.170Z","message":"/Scripts/Entry.js GET"}
+{"id":"cf5354c1-861d-430d-bd50-ac889ecbe445","timestamp":"2025-05-27T01:25:27.253Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"0d72cd85-83b6-4d9a-b588-d3443fc49224","timestamp":"2025-05-27T01:25:27.263Z","message":"/Libraries/knockout.js GET"}
+{"id":"c5df66ce-19a0-4810-b129-9c0e6017b79e","timestamp":"2025-05-27T01:25:27.264Z","message":"/Scripts/PageModel.js GET"}
+{"id":"89009fbe-3453-4c36-842f-873389967ac2","timestamp":"2025-05-27T01:25:27.304Z","message":"/Images/favicon.ico GET"}
+{"id":"8ff8c21c-a395-42e1-a517-7006a69cf517","timestamp":"2025-05-27T01:25:27.426Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"048f125e-1f87-440b-9339-dbff56e284d9","timestamp":"2025-05-27T01:25:27.447Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"64320115-00c7-461a-8be0-b7c25b5bde91","timestamp":"2025-05-27T01:25:27.452Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"0293e562-71d2-487b-a797-500b4ed72080","timestamp":"2025-05-27T01:25:34.335Z","message":"/ GET"}
+{"id":"f32fc822-f3e5-41ae-9fcf-613226252c42","timestamp":"2025-05-27T01:25:34.536Z","message":"/Styles/project.css GET"}
+{"id":"587e1695-c558-4f78-836b-84e252290303","timestamp":"2025-05-27T01:25:34.538Z","message":"/Scripts/Entry.js GET"}
+{"id":"5373ebe7-c8c1-42cc-a7d3-0fbaeefb2678","timestamp":"2025-05-27T01:25:34.583Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"eba09f93-ad48-4a22-9629-75604e8f14b8","timestamp":"2025-05-27T01:25:34.584Z","message":"/Libraries/knockout.js GET"}
+{"id":"eb021b53-1672-4521-b784-d6b68040af4a","timestamp":"2025-05-27T01:25:34.613Z","message":"/Scripts/PageModel.js GET"}
+{"id":"3f6c1022-5231-4794-afb8-c8e019b08d9e","timestamp":"2025-05-27T01:25:34.766Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"a5b193d7-a8fc-4c0a-bfe6-12c3f58de825","timestamp":"2025-05-27T01:25:34.780Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"63da9598-d4e2-4fb7-b44b-68b624256031","timestamp":"2025-05-27T01:25:34.784Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"429d08ba-ff5e-4fb3-9a34-27c0ce6d7128","timestamp":"2025-05-27T01:25:34.812Z","message":"/Scripts/Entry.ts GET"}
+{"id":"97ae6be4-eb6f-4c1a-9904-20cb7cecd300","timestamp":"2025-05-27T01:25:34.813Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"6847e4a3-1dd4-44ea-9437-79cb453a1e31","timestamp":"2025-05-27T01:28:26.814Z","message":"/ GET"}
+{"id":"f74294d0-955e-4c3f-90b9-56af63520cd7","timestamp":"2025-05-27T01:28:26.907Z","message":"/Styles/project.css GET"}
+{"id":"f9f62ff7-18d0-458f-97db-1a15aaba1d3b","timestamp":"2025-05-27T01:28:26.909Z","message":"/Scripts/Entry.js GET"}
+{"id":"bf9f04a9-c119-4f64-812c-e5bca24c17c7","timestamp":"2025-05-27T01:28:26.914Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"ac51a9be-84bd-4596-8d32-f9afaf97756c","timestamp":"2025-05-27T01:28:26.937Z","message":"/Libraries/knockout.js GET"}
+{"id":"9f2e26ea-7169-4ce9-84a7-284fa980f365","timestamp":"2025-05-27T01:28:26.943Z","message":"/Scripts/PageModel.js GET"}
+{"id":"477220dd-e4af-488a-94fa-1553b3831880","timestamp":"2025-05-27T01:28:27.127Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"293b867a-2394-40f6-a283-6768e7ad1dfa","timestamp":"2025-05-27T01:28:27.157Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"3abbbdc5-11fc-4ca8-a344-dcc26bfd9402","timestamp":"2025-05-27T01:28:27.159Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"89224ea8-2c70-401a-9a6e-e448e703873d","timestamp":"2025-05-27T01:28:27.192Z","message":"/Scripts/Entry.ts GET"}
+{"id":"272267ac-1909-40ca-956c-b2ea8d1f711c","timestamp":"2025-05-27T01:28:27.192Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"02d935b9-ce3f-4ab2-baeb-eb86be2984dc","timestamp":"2025-05-27T01:29:04.624Z","message":"/ GET"}
+{"id":"6d8b1f28-ea2c-47e2-9eeb-84d11e2673e9","timestamp":"2025-05-27T01:29:04.757Z","message":"/Styles/project.css GET"}
+{"id":"c7835d9b-b920-46c5-bafe-3a17d7a39ec3","timestamp":"2025-05-27T01:29:04.759Z","message":"/Scripts/Entry.js GET"}
+{"id":"8074ff2c-1cce-42b0-b7f9-a421c7268766","timestamp":"2025-05-27T01:29:04.830Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c14cf1fc-ab79-4241-9c48-260fb25c2d9a","timestamp":"2025-05-27T01:29:04.831Z","message":"/Libraries/knockout.js GET"}
+{"id":"0f6e22b3-defe-49c0-a94e-0061d14bee8a","timestamp":"2025-05-27T01:29:04.835Z","message":"/Scripts/PageModel.js GET"}
+{"id":"966ccf4a-e3fd-422f-8bd1-d431fbf7ffe3","timestamp":"2025-05-27T01:29:05.043Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5535a546-3e50-444b-8c72-888355fdb928","timestamp":"2025-05-27T01:29:05.048Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"0c32da4e-4f0a-4dab-9ef2-76a50062922b","timestamp":"2025-05-27T01:29:05.052Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"25b59f56-0a49-4565-9d2f-c44ed736ab71","timestamp":"2025-05-27T01:29:05.083Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"5ad1c713-7d75-4608-963d-a8ae5bb6b731","timestamp":"2025-05-27T01:29:05.082Z","message":"/Scripts/Entry.ts GET"}
+{"id":"1fa48805-40a5-4ac4-8ae2-ab90557d0a3f","timestamp":"2025-05-27T01:29:53.274Z","message":"/ GET"}
+{"id":"91fceb46-6a67-40f9-99f3-3b7ce17b853d","timestamp":"2025-05-27T01:29:53.370Z","message":"/Styles/project.css GET"}
+{"id":"b76fce56-a9c7-4830-876d-ce517b47f097","timestamp":"2025-05-27T01:29:53.372Z","message":"/Scripts/Entry.js GET"}
+{"id":"aa4fee06-958f-450e-b94f-86d5aaa51adc","timestamp":"2025-05-27T01:29:53.387Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"eddfd63c-2784-4cce-b7cb-39b258afd24e","timestamp":"2025-05-27T01:29:53.414Z","message":"/Libraries/knockout.js GET"}
+{"id":"25a2740b-f103-47e3-88ec-c483d6a61caf","timestamp":"2025-05-27T01:29:53.416Z","message":"/Scripts/PageModel.js GET"}
+{"id":"1cf5f0ea-f3db-4dd0-9820-40be33e9b26b","timestamp":"2025-05-27T01:29:53.592Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"31aa8617-025e-4614-b2d3-dd28914aa386","timestamp":"2025-05-27T01:29:53.610Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"1caed925-2bfa-46e4-9f7c-68e64efe67c2","timestamp":"2025-05-27T01:29:53.612Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"3f1d30d5-d66b-4ed0-85e7-cfb3a3d14444","timestamp":"2025-05-27T01:29:53.637Z","message":"/Scripts/Entry.ts GET"}
+{"id":"7b08f065-4471-4c4c-96ff-cbd35361cc23","timestamp":"2025-05-27T01:29:53.638Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"f62455c0-6829-4ec6-bf26-79ec4a284589","timestamp":"2025-05-27T01:30:56.891Z","message":"/ GET"}
+{"id":"41ddb25d-98af-42c2-9c06-3e21b9ede758","timestamp":"2025-05-27T01:30:57.088Z","message":"/Styles/project.css GET"}
+{"id":"93ffb122-3404-465b-84e2-cf9b09416b26","timestamp":"2025-05-27T01:30:57.090Z","message":"/Scripts/Entry.js GET"}
+{"id":"37262173-99e1-4bfc-8a5a-299044aa7f0d","timestamp":"2025-05-27T01:30:57.171Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"3b55b194-6eb6-4ff5-9673-025fb760549f","timestamp":"2025-05-27T01:30:57.196Z","message":"/Libraries/knockout.js GET"}
+{"id":"9e2b83b1-a1e0-41f1-9411-248724a9beca","timestamp":"2025-05-27T01:30:57.199Z","message":"/Scripts/PageModel.js GET"}
+{"id":"4c764c25-da7c-41de-a218-7a093af7088f","timestamp":"2025-05-27T01:30:57.315Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"fb0af6a0-0894-40cb-bc27-0463718910d2","timestamp":"2025-05-27T01:30:57.378Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"c0cbc8bb-8ccb-46a2-8a19-2f83b08bbabb","timestamp":"2025-05-27T01:30:57.379Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8f2ed8a2-d180-4e60-97e7-bcc051db98b2","timestamp":"2025-05-27T01:30:57.410Z","message":"/Scripts/Entry.ts GET"}
+{"id":"6ad01ae3-2f57-4175-a920-face3ac441bc","timestamp":"2025-05-27T01:30:57.411Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"5b8331ac-2455-4417-a44b-a58f7883d3f4","timestamp":"2025-05-27T01:31:22.377Z","message":"/ GET"}
+{"id":"df4977ca-b54a-4fc5-8024-cab6e08db66e","timestamp":"2025-05-27T01:31:22.565Z","message":"/Styles/project.css GET"}
+{"id":"048e3782-c3d5-4743-868e-d093cd92d010","timestamp":"2025-05-27T01:31:22.569Z","message":"/Scripts/Entry.js GET"}
+{"id":"2dc6fbb7-5d05-40fa-888f-bb835cd02737","timestamp":"2025-05-27T01:31:22.624Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"f0c229b0-f1e1-4b5e-b854-bd434b7bc45f","timestamp":"2025-05-27T01:31:22.626Z","message":"/Libraries/knockout.js GET"}
+{"id":"6273b231-0be0-4a9a-acb1-51430beca776","timestamp":"2025-05-27T01:31:22.629Z","message":"/Scripts/PageModel.js GET"}
+{"id":"34592ff5-4f4b-44c5-ae37-4e2f287396eb","timestamp":"2025-05-27T01:31:22.811Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"0a591c66-2932-40a4-8209-bc586d9c8dcd","timestamp":"2025-05-27T01:31:22.861Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"0bd80947-8501-49de-b052-f5fbf094d846","timestamp":"2025-05-27T01:31:22.862Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"bc4955d1-8f80-4288-9afb-0b0d909b6cf6","timestamp":"2025-05-27T01:31:23.945Z","message":"/Scripts/Entry.ts GET"}
+{"id":"0ce4792b-2b59-4a25-b7d8-e18d9ad21c94","timestamp":"2025-05-27T01:31:23.951Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"b55148ed-159d-4229-b530-4b3b90d89e45","timestamp":"2025-05-27T01:31:29.317Z","message":"/ GET"}
+{"id":"b50ffe1c-dc70-4010-b33d-b0188e378363","timestamp":"2025-05-27T01:31:29.532Z","message":"/Styles/project.css GET"}
+{"id":"162f1352-7ce4-4cd5-a58e-ff8e265d0a32","timestamp":"2025-05-27T01:31:29.535Z","message":"/Scripts/Entry.js GET"}
+{"id":"30872e2b-f81d-4f64-9c48-3615772e3bd9","timestamp":"2025-05-27T01:31:29.566Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"5014c950-96fd-4888-8488-6d585a3c6cc4","timestamp":"2025-05-27T01:31:29.578Z","message":"/Libraries/knockout.js GET"}
+{"id":"e3ba1e5b-16d7-4cff-8739-d84be2810e0c","timestamp":"2025-05-27T01:31:29.581Z","message":"/Scripts/PageModel.js GET"}
+{"id":"a9781683-6eb5-4f52-bccd-74ac28f64a93","timestamp":"2025-05-27T01:31:29.765Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"c871e4f5-9adc-45fb-a056-02adf58ea361","timestamp":"2025-05-27T01:31:29.779Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"4968929c-b31b-4df7-9e05-23bea60e7d66","timestamp":"2025-05-27T01:31:29.781Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8cc58a14-f3e0-42cb-a24d-ebc559e1cceb","timestamp":"2025-05-27T01:31:29.810Z","message":"/Scripts/Entry.ts GET"}
+{"id":"e1f64c5a-40c3-4acd-83e1-b210725f14e5","timestamp":"2025-05-27T01:31:29.810Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"b3f30585-5186-43cc-ad49-8679d1a2969f","timestamp":"2025-05-27T01:31:37.761Z","message":"/ GET"}
+{"id":"83903b7a-ab9b-47ac-899d-c713571a685a","timestamp":"2025-05-27T01:31:37.949Z","message":"/Styles/project.css GET"}
+{"id":"596d1552-0f0b-4426-919a-9594e1433608","timestamp":"2025-05-27T01:31:37.951Z","message":"/Scripts/Entry.js GET"}
+{"id":"cfc9b274-6d15-43f6-8cdb-e1eedad5a3d2","timestamp":"2025-05-27T01:31:38.016Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"737e2514-1792-4b3a-9747-cee5a4707097","timestamp":"2025-05-27T01:31:38.017Z","message":"/Libraries/knockout.js GET"}
+{"id":"1d5af454-68bf-4dc1-a953-1fa8694e24b2","timestamp":"2025-05-27T01:31:38.019Z","message":"/Scripts/PageModel.js GET"}
+{"id":"6bbb8d69-1991-4858-ac14-b255805d91a1","timestamp":"2025-05-27T01:31:38.179Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"da966851-9f6f-490c-b715-fccbcfd9578c","timestamp":"2025-05-27T01:31:38.192Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"d31c4c44-72fe-471b-b0c8-e541e4608ba5","timestamp":"2025-05-27T01:31:38.197Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"67486e3b-c325-495e-a023-a2cff07e01d1","timestamp":"2025-05-27T01:31:38.236Z","message":"/Scripts/Entry.ts GET"}
+{"id":"724d84b9-5b78-49da-9ecf-6fcdb10e2a98","timestamp":"2025-05-27T01:31:38.237Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"77e9c9b8-7097-4bbb-a19a-e92da7762285","timestamp":"2025-05-27T01:33:07.744Z","message":"/ GET"}
+{"id":"8ca5d122-63e5-40c6-8a21-fff3c02e88c6","timestamp":"2025-05-27T01:33:07.954Z","message":"/Styles/project.css GET"}
+{"id":"8d8bca40-4eba-48e6-83e0-1f90e8505deb","timestamp":"2025-05-27T01:33:07.959Z","message":"/Scripts/Entry.js GET"}
+{"id":"59a3432b-cf7c-46c0-9291-1009c08bb698","timestamp":"2025-05-27T01:33:08.058Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"34396302-f166-4895-add6-d36b0457e51e","timestamp":"2025-05-27T01:33:08.061Z","message":"/Libraries/knockout.js GET"}
+{"id":"9f3e9330-906f-4515-bd68-ac9e503208c6","timestamp":"2025-05-27T01:33:08.062Z","message":"/Scripts/PageModel.js GET"}
+{"id":"8229b687-813e-49e1-9142-e8d88445bd65","timestamp":"2025-05-27T01:33:08.393Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"66476aca-9cb4-4647-a2ed-8939232cbd3f","timestamp":"2025-05-27T01:33:08.394Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"285aaa89-d90c-450e-8f17-105f050bfaf7","timestamp":"2025-05-27T01:33:08.491Z","message":"/Scripts/Entry.ts GET"}
+{"id":"674317cd-97ef-4063-92d9-07415f73b7ab","timestamp":"2025-05-27T01:33:08.492Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"3dc9d1a1-17f4-4e27-80cc-df9c1bfe4543","timestamp":"2025-05-27T01:33:13.808Z","message":"/HTML/homepage.html GET"}
+{"id":"79bed048-c27c-4dab-977c-10f600568427","timestamp":"2025-05-27T01:33:13.989Z","message":"/HTML/homepage.html GET"}
+{"id":"92641f4b-79f5-40f9-8134-2f33e4f47c20","timestamp":"2025-05-27T01:33:14.407Z","message":"/HTML/homepage.html GET"}
+{"id":"b49b0fb3-acb6-4af9-a176-565d65ff622d","timestamp":"2025-05-27T01:33:15.006Z","message":"/HTML/homepage.html GET"}
+{"id":"d4b0ef2a-c0f0-4d34-8e00-b532f6e47beb","timestamp":"2025-05-27T01:33:16.133Z","message":"/HTML/homepage.html GET"}
+{"id":"9a5c2b8d-33aa-4473-89e4-d6d6da7a5f90","timestamp":"2025-05-27T01:33:18.243Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"61fcac73-2759-4607-8220-84a3841e48ca","timestamp":"2025-05-27T01:39:43.133Z","message":"/ GET"}
+{"id":"99715210-457b-493b-b1e9-dfe88edf7768","timestamp":"2025-05-27T01:39:43.349Z","message":"/Styles/project.css GET"}
+{"id":"cf58032c-ee57-4916-ac48-640e09f6c48f","timestamp":"2025-05-27T01:39:43.353Z","message":"/Scripts/Entry.js GET"}
+{"id":"81cf33b6-8866-4fe8-94c9-5b91417940e6","timestamp":"2025-05-27T01:39:43.452Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"fdecf30d-c63b-450f-8d6f-d38c84b87548","timestamp":"2025-05-27T01:39:43.459Z","message":"/Libraries/knockout.js GET"}
+{"id":"52a0871d-4b79-40fc-ad75-670605994ede","timestamp":"2025-05-27T01:39:43.461Z","message":"/Scripts/PageModel.js GET"}
+{"id":"2c47c6d4-85f8-408b-9837-090b320e64fe","timestamp":"2025-05-27T01:39:43.897Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"7fcce6f2-7af5-4ade-9d8d-72e61822dc9f","timestamp":"2025-05-27T01:39:43.899Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"a8be7a41-3c5e-4240-9e24-887a481b9f6a","timestamp":"2025-05-27T01:39:43.994Z","message":"/Scripts/Entry.ts GET"}
+{"id":"26751560-4e84-438d-8dd8-637d9f204546","timestamp":"2025-05-27T01:39:43.994Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"771b83cf-0fea-4cdb-93d8-f4172235d137","timestamp":"2025-05-27T01:39:54.276Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5b42d137-4bbf-41ba-9691-58603c780204","timestamp":"2025-05-27T01:40:11.715Z","message":"/ GET"}
+{"id":"39014c5e-99d7-438f-82a1-58fc8408961d","timestamp":"2025-05-27T01:40:11.803Z","message":"/Styles/project.css GET"}
+{"id":"d32c1df3-da67-41ec-860a-71a1fc6f4008","timestamp":"2025-05-27T01:40:11.808Z","message":"/Scripts/Entry.js GET"}
+{"id":"7c5c591a-d9b4-464d-887d-a7fdf9b55931","timestamp":"2025-05-27T01:40:11.829Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c84c48ae-f335-459a-a1d6-c074061b8f9e","timestamp":"2025-05-27T01:40:11.842Z","message":"/Libraries/knockout.js GET"}
+{"id":"b8dd3a0f-9393-44bb-9ff7-37203410b6c0","timestamp":"2025-05-27T01:40:11.844Z","message":"/Scripts/PageModel.js GET"}
+{"id":"6e0a6232-4960-467e-a51f-e006293343ed","timestamp":"2025-05-27T01:40:12.026Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"a8d751cc-1f00-407c-8b7d-65c6239d8d71","timestamp":"2025-05-27T01:40:12.032Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"cee20bcf-eddc-41df-8666-7ae78b15adf5","timestamp":"2025-05-27T01:40:12.034Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8494c45e-787d-4c8c-ba10-ad1c9c75f5ff","timestamp":"2025-05-27T01:40:12.067Z","message":"/Scripts/Entry.ts GET"}
+{"id":"3cec5ae5-998f-4431-986c-c767d7cb7931","timestamp":"2025-05-27T01:40:12.067Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"8f7458fe-3566-4c0b-926d-799e456dd008","timestamp":"2025-05-27T01:44:16.839Z","message":"/ GET"}
+{"id":"c0b6be2f-6f77-488b-b192-85c5500263c5","timestamp":"2025-05-27T01:44:16.903Z","message":"/Styles/project.css GET"}
+{"id":"bdfa6729-2892-43d7-9b59-1a25cf145bca","timestamp":"2025-05-27T01:44:16.905Z","message":"/Scripts/Entry.js GET"}
+{"id":"58df5212-8a3f-4be4-9612-df00c30d9918","timestamp":"2025-05-27T01:44:16.912Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"8339c200-2f3f-4d93-b5b4-694d8a930175","timestamp":"2025-05-27T01:44:16.945Z","message":"/Libraries/knockout.js GET"}
+{"id":"361e159c-1f19-4de4-ba0d-cf2de9626fd1","timestamp":"2025-05-27T01:44:16.946Z","message":"/Scripts/Main.js GET"}
+{"id":"ea153714-d359-46dc-9c24-c1cfff82c588","timestamp":"2025-05-27T01:44:16.952Z","message":"/Scripts/PageModel.js GET"}
+{"id":"c4611eda-cac0-4de8-b890-0be803bf436b","timestamp":"2025-05-27T01:44:16.969Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"24dde2d0-f018-458c-aac7-3890b9cda484","timestamp":"2025-05-27T01:44:19.443Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"22f7a9d9-a021-4fa5-946b-70a433e6d971","timestamp":"2025-05-27T01:44:19.447Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"fbf7b6e4-bb50-449b-831a-6b74a2395704","timestamp":"2025-05-27T01:44:19.450Z","message":"/Scripts/Main.js.map GET"}
+{"id":"785ced3a-6aae-47db-9e62-be3becfcbe56","timestamp":"2025-05-27T01:44:19.498Z","message":"/Scripts/Entry.ts GET"}
+{"id":"4b251247-fd39-4833-893c-00b90386816e","timestamp":"2025-05-27T01:44:19.498Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"a4dc04c8-0325-4715-96d5-17aa80ddf7f3","timestamp":"2025-05-27T01:44:19.820Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5faf8fbe-d656-4c96-bc0a-2262d3ad8a9d","timestamp":"2025-05-27T01:44:31.475Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"f0c0214c-4dab-4eb3-bdd8-81d738d0bcda","timestamp":"2025-05-27T01:45:39.070Z","message":"/ GET"}
+{"id":"1e138cb2-d4ef-4b4b-aec1-20e756f14544","timestamp":"2025-05-27T01:45:39.309Z","message":"/Styles/project.css GET"}
+{"id":"585e9327-fa9b-4b5d-8d0c-cebf437f1429","timestamp":"2025-05-27T01:45:39.311Z","message":"/Scripts/Entry.js GET"}
+{"id":"690c48f0-f098-4cfe-a20d-0867b750eaa5","timestamp":"2025-05-27T01:45:39.343Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"eebb0eac-e85e-4d45-a5de-2fa69fb9fd87","timestamp":"2025-05-27T01:45:39.344Z","message":"/Libraries/knockout.js GET"}
+{"id":"4bf83361-6b55-482c-a1f7-ed6376397acd","timestamp":"2025-05-27T01:45:39.347Z","message":"/Scripts/Main.js GET"}
+{"id":"6da5cbf8-5c58-494d-9d61-d2b136cf234e","timestamp":"2025-05-27T01:45:39.348Z","message":"/Scripts/PageModel.js GET"}
+{"id":"db24e38e-0edc-4bc2-a62f-c5258a4ba17d","timestamp":"2025-05-27T01:45:39.556Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"ee8e7822-854d-4b85-bdc0-99587357f243","timestamp":"2025-05-27T01:45:39.570Z","message":"/Scripts/Main.js.map GET"}
+{"id":"6ee94375-0ecd-41b3-bac4-ca3746964def","timestamp":"2025-05-27T01:45:39.573Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"fbbd12e7-9cfd-485e-86df-796845e1ef68","timestamp":"2025-05-27T01:45:39.575Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"c1fb9a03-d6b8-4345-83c5-05b46bd36edf","timestamp":"2025-05-27T01:45:39.619Z","message":"/Scripts/Entry.ts GET"}
+{"id":"f849ceaa-13d1-48a2-9f31-e4d58b1dfaa5","timestamp":"2025-05-27T01:45:39.619Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"13ff901b-283f-4b08-8ff6-b7102787af43","timestamp":"2025-05-27T02:14:59.312Z","message":"/ GET"}
+{"id":"3c0fcea7-324a-469d-960e-f6b5274616df","timestamp":"2025-05-27T02:14:59.363Z","message":"/Styles/project.css GET"}
+{"id":"c872f4bc-3a40-4af7-9bce-1dbc0964e386","timestamp":"2025-05-27T02:14:59.365Z","message":"/Scripts/Entry.js GET"}
+{"id":"8097266a-f899-47b6-88a6-5a3432c53ac9","timestamp":"2025-05-27T02:14:59.372Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"3de33106-3668-40c9-995d-af600cf039cb","timestamp":"2025-05-27T02:14:59.389Z","message":"/Libraries/knockout.js GET"}
+{"id":"24ecfca6-601f-49d4-8c91-72497ff2a149","timestamp":"2025-05-27T02:14:59.391Z","message":"/Scripts/Main.js GET"}
+{"id":"a9a38a03-9b3d-47b9-8aa7-521c6468ffd6","timestamp":"2025-05-27T02:14:59.395Z","message":"/Scripts/PageModel.js GET"}
+{"id":"35f4ab60-9021-4180-bb2b-a7bbda9cae81","timestamp":"2025-05-27T02:14:59.413Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"c07f279d-1414-4bc5-a9b8-4c3bd4eb2cad","timestamp":"2025-05-27T02:14:59.449Z","message":"/Images/favicon.ico GET"}
+{"id":"3a9fa17a-a02b-4c0f-b6d4-df5ed269e1e4","timestamp":"2025-05-27T02:15:21.267Z","message":"/Scripts/PageModel.js GET"}
+{"id":"a7be7f37-c36c-4e0c-a988-3c85e5614b08","timestamp":"2025-05-27T02:15:21.425Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"0051e230-e648-443e-8783-7a5e3d3e6a7e","timestamp":"2025-05-27T02:15:21.427Z","message":"/Scripts/Main.js.map GET"}
+{"id":"6b167306-f4a9-4a41-8f0d-b46e9f4847f4","timestamp":"2025-05-27T02:15:21.470Z","message":"/Scripts/Entry.ts GET"}
+{"id":"5bd90d4a-4f87-467c-9e9f-d579cea1de4f","timestamp":"2025-05-27T02:15:21.471Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"f2cee2c8-93f1-41e9-9563-1725fb5c60d2","timestamp":"2025-05-27T02:15:21.727Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"c278bd83-4a52-4acd-8a17-76499c852bb1","timestamp":"2025-05-27T02:16:38.660Z","message":"/ GET"}
+{"id":"f50cd12a-ac8f-4f66-acdb-54c4448e72ed","timestamp":"2025-05-27T02:16:38.876Z","message":"/Styles/project.css GET"}
+{"id":"344393d6-bf11-42f5-9391-fecc08e12f62","timestamp":"2025-05-27T02:16:38.879Z","message":"/Scripts/Entry.js GET"}
+{"id":"2ab08010-ea82-4a41-bd73-773ddeae1482","timestamp":"2025-05-27T02:16:38.925Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"349ccad5-c4f6-4475-aa0c-67f77c28c48b","timestamp":"2025-05-27T02:16:38.926Z","message":"/Libraries/knockout.js GET"}
+{"id":"883eb5eb-bf64-4cb8-9794-e154d89ae23e","timestamp":"2025-05-27T02:16:38.955Z","message":"/Scripts/Main.js GET"}
+{"id":"13dcbf9c-e011-4948-b931-5dba1ecba590","timestamp":"2025-05-27T02:16:38.960Z","message":"/Scripts/PageModel.js GET"}
+{"id":"a4e806f9-7c3d-4954-badd-abfcbe891eda","timestamp":"2025-05-27T02:16:39.118Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"bc037a50-eb44-4ac1-9b13-9d57b0ae3e56","timestamp":"2025-05-27T02:16:39.119Z","message":"User attempted to accesss unsupported file"}
+{"id":"59c127a8-e088-4dca-92ea-d11bc4180c1d","timestamp":"2025-05-27T02:16:39.162Z","message":"/Scripts/Public/Main.js.map GET"}
+{"id":"bd14b11e-27da-4aa8-b66e-16daa3220386","timestamp":"2025-05-27T02:16:39.163Z","message":"User attempted to accesss unsupported file"}
+{"id":"ae18ffb7-0816-4bd9-a674-368d42eb7f9c","timestamp":"2025-05-27T02:16:39.168Z","message":"/Scripts/Public/PageModel.js.map GET"}
+{"id":"fd2267c9-bc91-4085-b171-89fa3aa84550","timestamp":"2025-05-27T02:16:39.170Z","message":"User attempted to accesss unsupported file"}
+{"id":"f323eb06-1fff-4954-961d-172fe6947860","timestamp":"2025-05-27T02:16:39.172Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"a86de9ad-132b-45f7-8f19-1746dd87f975","timestamp":"2025-05-27T02:16:39.172Z","message":"User attempted to accesss unsupported file"}
+{"id":"9139ab23-fa1f-4f6d-a29e-3c301083e114","timestamp":"2025-05-27T02:18:18.092Z","message":"/ GET"}
+{"id":"fc40ad19-f829-470d-b3b1-3e0cc3f66a3e","timestamp":"2025-05-27T02:18:18.189Z","message":"/Styles/project.css GET"}
+{"id":"0ecae1c1-116f-411c-bf22-5798ade804f8","timestamp":"2025-05-27T02:18:18.191Z","message":"/Scripts/Entry.js GET"}
+{"id":"b4f9b785-fdbb-4596-b976-758d151030c1","timestamp":"2025-05-27T02:18:18.196Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"18323043-59cb-4937-aca0-f7898bc880c7","timestamp":"2025-05-27T02:18:18.237Z","message":"/Libraries/knockout.js GET"}
+{"id":"5da865d4-18e3-40e4-8604-b403dd8be576","timestamp":"2025-05-27T02:18:18.239Z","message":"/Scripts/Main.js GET"}
+{"id":"0704b895-b13c-4472-9c20-99b1a0128b15","timestamp":"2025-05-27T02:18:18.242Z","message":"/Scripts/PageModel.js GET"}
+{"id":"f41d576c-f856-46a3-92de-335c461793ae","timestamp":"2025-05-27T02:18:18.479Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"aa2db678-4fac-4ed0-b6a4-31e1a5d0a41a","timestamp":"2025-05-27T02:18:18.480Z","message":"User attempted to accesss unsupported file"}
+{"id":"76e073f7-7d49-4e80-b442-198486c60bba","timestamp":"2025-05-27T02:18:18.542Z","message":"/Scripts/Public/Main.js.map GET"}
+{"id":"994ba7f6-eaa6-4caa-8a1b-e53af03da36c","timestamp":"2025-05-27T02:18:18.542Z","message":"User attempted to accesss unsupported file"}
+{"id":"0007e3fb-396b-4ffe-90de-f9ec4885e23c","timestamp":"2025-05-27T02:18:18.544Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"1e57bdab-6db7-4fc8-8da2-cb207159f5b7","timestamp":"2025-05-27T02:18:18.544Z","message":"User attempted to accesss unsupported file"}
+{"id":"0a390100-93cb-49bb-b989-71e9540caf1e","timestamp":"2025-05-27T02:18:18.547Z","message":"/Scripts/Public/PageModel.js.map GET"}
+{"id":"d93a7bd4-6f58-4f73-ba8a-9d1af7c2fd76","timestamp":"2025-05-27T02:18:18.549Z","message":"User attempted to accesss unsupported file"}
+{"id":"c4a1dcfb-0926-4e0f-84d0-864b5de5777f","timestamp":"2025-05-27T02:18:31.066Z","message":"/ GET"}
+{"id":"4bd22338-12bb-4de2-8238-08d998862b06","timestamp":"2025-05-27T02:18:31.211Z","message":"/Styles/project.css GET"}
+{"id":"9fc2cdd4-60c9-45be-bccf-44737cd3ca11","timestamp":"2025-05-27T02:18:31.212Z","message":"/Scripts/Entry.js GET"}
+{"id":"1a7c1d60-a55f-4c24-ae72-aa0e478d1d75","timestamp":"2025-05-27T02:18:31.246Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"24ecaf48-72db-4541-bf93-e955817c3d31","timestamp":"2025-05-27T02:18:31.297Z","message":"/Libraries/knockout.js GET"}
+{"id":"35bb15c2-6315-4fb2-954d-afac8d29ee02","timestamp":"2025-05-27T02:18:31.313Z","message":"/Scripts/PageModel.js GET"}
+{"id":"9071d0f0-0a4e-4c48-9c71-2bbcb5730af9","timestamp":"2025-05-27T02:18:31.312Z","message":"/Scripts/Main.js GET"}
+{"id":"7431c494-7dba-4e02-ac17-81f4d13ef9a2","timestamp":"2025-05-27T02:18:31.594Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"ba09081b-3664-4575-b5c6-0f70f386b544","timestamp":"2025-05-27T02:18:31.595Z","message":"User attempted to accesss unsupported file"}
+{"id":"195ca3e5-6cf8-4d6a-ada1-7f36b67bf73a","timestamp":"2025-05-27T02:18:31.682Z","message":"/Scripts/Public/Main.js.map GET"}
+{"id":"e4d95789-ee02-45e2-8e90-f8e6f235756d","timestamp":"2025-05-27T02:18:31.683Z","message":"User attempted to accesss unsupported file"}
+{"id":"dd7ec2bc-0869-492f-a9cf-0a1f0b3fa628","timestamp":"2025-05-27T02:18:31.688Z","message":"/Scripts/Public/PageModel.js.map GET"}
+{"id":"58babc9d-3f91-4a1a-807d-04f8d3a5d260","timestamp":"2025-05-27T02:18:31.689Z","message":"User attempted to accesss unsupported file"}
+{"id":"cbbca8af-0c8e-4737-b593-0481f3c270aa","timestamp":"2025-05-27T02:18:31.692Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"bd0e37a1-da1f-4b5a-a233-490dd5bc110c","timestamp":"2025-05-27T02:18:31.692Z","message":"User attempted to accesss unsupported file"}
+{"id":"81599245-7d03-401e-a576-8811ad8a2e4d","timestamp":"2025-05-27T02:18:33.661Z","message":"/ GET"}
+{"id":"b0056954-6b39-4194-bd0d-840d266337bf","timestamp":"2025-05-27T02:18:33.745Z","message":"/Styles/project.css GET"}
+{"id":"97062c7b-4b2d-4714-83ec-6ffd22974d31","timestamp":"2025-05-27T02:18:33.746Z","message":"/Scripts/Entry.js GET"}
+{"id":"230edbd8-30b9-469b-a69f-8fad99812efe","timestamp":"2025-05-27T02:18:33.774Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"1bb5b11f-9789-48fd-bec6-a9dd7fc71c20","timestamp":"2025-05-27T02:18:33.781Z","message":"/Libraries/knockout.js GET"}
+{"id":"5905084d-88a3-47fb-8a7b-46d27159ea8f","timestamp":"2025-05-27T02:18:33.784Z","message":"/Scripts/Main.js GET"}
+{"id":"0fe8792b-cda6-4bc5-960d-55f9a51d38f8","timestamp":"2025-05-27T02:18:33.786Z","message":"/Scripts/PageModel.js GET"}
+{"id":"23fa555c-7c24-4595-8af2-5f9dbcd1023f","timestamp":"2025-05-27T02:18:34.012Z","message":"/Scripts/Entry.ts GET"}
+{"id":"18a0f3a5-9f69-471d-945c-6bd9eba88b1d","timestamp":"2025-05-27T02:18:34.013Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"bd8fab6a-d1be-4dc0-8956-db2f896dad32","timestamp":"2025-05-27T02:22:25.749Z","message":"/ GET"}
+{"id":"57a5c768-c9f9-414b-9460-9c782d95b992","timestamp":"2025-05-27T02:22:25.934Z","message":"/Styles/project.css GET"}
+{"id":"f8bac1d5-9b4a-44dc-8ed0-51e1d4341a5f","timestamp":"2025-05-27T02:22:25.936Z","message":"/Scripts/Entry.js GET"}
+{"id":"28d3f0ba-0544-49e8-88db-3a110f5ffda3","timestamp":"2025-05-27T02:22:25.970Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"ed81bfb3-899b-43df-a060-de1e59c854e1","timestamp":"2025-05-27T02:22:26.002Z","message":"/Libraries/knockout.js GET"}
+{"id":"42d1385a-09c7-4274-a138-36d21296a48b","timestamp":"2025-05-27T02:22:26.011Z","message":"/Scripts/Main.js GET"}
+{"id":"4e20793b-87d8-495d-94fc-56e8feeaacc2","timestamp":"2025-05-27T02:22:26.012Z","message":"/Scripts/PageModel.js GET"}
+{"id":"2f3b7da1-103e-4a3d-a082-913eabdbf376","timestamp":"2025-05-27T02:22:26.167Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"58e6a088-d09f-4312-80d2-015115dcbaaa","timestamp":"2025-05-27T02:22:26.168Z","message":"User attempted to accesss unsupported file"}
+{"id":"439eab5a-eb50-4d19-bc7a-3371fe163f15","timestamp":"2025-05-27T02:22:26.198Z","message":"/Scripts/Public/Scripts/Main.js.map GET"}
+{"id":"6fb594f0-c4b4-4790-bd3e-48311f4628f8","timestamp":"2025-05-27T02:22:26.199Z","message":"User attempted to accesss unsupported file"}
+{"id":"2dfca888-0695-493d-bd3a-b2702bd1d102","timestamp":"2025-05-27T02:22:26.203Z","message":"/Scripts/Public/Scripts/PageModel.js.map GET"}
+{"id":"12173568-c2fe-48cd-99ac-e3d3abf5e3bc","timestamp":"2025-05-27T02:22:26.204Z","message":"User attempted to accesss unsupported file"}
+{"id":"bfdf8a1c-28cc-4d38-ae2b-f753b1ce9ace","timestamp":"2025-05-27T02:22:26.207Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"b78b32f4-d7a6-4341-8464-768a411b1828","timestamp":"2025-05-27T02:22:26.207Z","message":"User attempted to accesss unsupported file"}
+{"id":"50f8a51e-d171-47c5-b81c-53bf7421c0c7","timestamp":"2025-05-27T02:25:44.838Z","message":"/ GET"}
+{"id":"ff860192-8cf6-4929-b381-21b57afff215","timestamp":"2025-05-27T02:25:45.039Z","message":"/Styles/project.css GET"}
+{"id":"07ba71bc-c0a0-43f7-9332-9bde3c130883","timestamp":"2025-05-27T02:25:45.041Z","message":"/Scripts/Entry.js GET"}
+{"id":"1a4abb62-366a-4bd1-9189-c1efe618aba6","timestamp":"2025-05-27T02:25:45.109Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c7f4248e-aeda-4272-8386-641751440825","timestamp":"2025-05-27T02:25:45.128Z","message":"/Libraries/knockout.js GET"}
+{"id":"23b90664-78b1-425a-9271-c0bf7ca540c1","timestamp":"2025-05-27T02:25:45.131Z","message":"/Scripts/Main.js GET"}
+{"id":"611c1680-023e-45d0-a68c-60a8271ca4d0","timestamp":"2025-05-27T02:25:45.134Z","message":"/Scripts/PageModel.js GET"}
+{"id":"a9913397-d35b-4971-9462-970d5d6adda9","timestamp":"2025-05-27T02:25:45.323Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"6080540c-ac6a-4926-9dfa-027be8dc6be6","timestamp":"2025-05-27T02:25:45.324Z","message":"User attempted to accesss unsupported file"}
+{"id":"b3717698-73b1-42aa-b907-94cf27a5186b","timestamp":"2025-05-27T02:25:45.459Z","message":"/Scripts/Public/Scripts/Main.js.map GET"}
+{"id":"924074a7-7423-49e1-bbca-a3341e67ba96","timestamp":"2025-05-27T02:25:45.460Z","message":"User attempted to accesss unsupported file"}
+{"id":"85d6955e-bcc1-4254-9863-4333147081c9","timestamp":"2025-05-27T02:25:45.465Z","message":"User attempted to accesss unsupported file"}
+{"id":"9f5982a9-60fa-48f9-844b-9bc58a884d78","timestamp":"2025-05-27T02:25:45.464Z","message":"/Scripts/Public/Scripts/PageModel.js.map GET"}
+{"id":"f04eb87c-d755-4fa3-a39c-bd19c7ca73c5","timestamp":"2025-05-27T02:25:45.474Z","message":"User attempted to accesss unsupported file"}
+{"id":"63bebb67-278c-45be-93ef-5b0d5cbedb09","timestamp":"2025-05-27T02:25:45.473Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"883815bc-ffb7-4953-b7f3-b6d737de5d8e","timestamp":"2025-05-27T02:26:01.258Z","message":"/ GET"}
+{"id":"16fabc85-938d-44d0-815c-c213da5f3843","timestamp":"2025-05-27T02:26:01.345Z","message":"/Styles/project.css GET"}
+{"id":"9c6d0d67-d9d9-44f6-ac98-c3eb9ae0b64d","timestamp":"2025-05-27T02:26:01.348Z","message":"/Scripts/Entry.js GET"}
+{"id":"8e73801b-b1b8-4c7d-8f1c-e96c1f40944a","timestamp":"2025-05-27T02:26:01.371Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"28cb71d3-77f0-49f7-b06b-3a59697cbcbf","timestamp":"2025-05-27T02:26:01.380Z","message":"/Libraries/knockout.js GET"}
+{"id":"f76ec6a4-9412-402e-8029-f6783274cede","timestamp":"2025-05-27T02:26:01.382Z","message":"/Scripts/Main.js GET"}
+{"id":"090c990a-28a8-4399-af95-032cc9855119","timestamp":"2025-05-27T02:26:01.386Z","message":"/Scripts/PageModel.js GET"}
+{"id":"5271f521-31fe-4917-b959-37254bfb5222","timestamp":"2025-05-27T02:26:01.570Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f099e420-d8d6-408f-923c-5dd3a3f5f6c1","timestamp":"2025-05-27T02:26:01.588Z","message":"/Scripts/Main.js.map GET"}
+{"id":"5bb71e4b-a744-4554-9f60-83cbc1bdb6d8","timestamp":"2025-05-27T02:26:01.591Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"b2cec28a-6e04-49f7-9d11-9c41a949d7b8","timestamp":"2025-05-27T02:26:01.592Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"7e30d9db-745d-4f57-9bd3-6894b7b2256b","timestamp":"2025-05-27T02:26:01.639Z","message":"/Scripts/Entry.ts GET"}
+{"id":"b45855bc-8cb4-4821-a74a-e2a326f76ef1","timestamp":"2025-05-27T02:26:01.640Z","message":"User attempted to use unsupported extension: .ts"}
+{"id":"c20bbbc0-f21c-4593-a9bc-4b7f01e8b578","timestamp":"2025-05-27T02:32:26.018Z","message":"/ GET"}
+{"id":"42fb31ea-fbb6-45f0-a239-dabd2bda3916","timestamp":"2025-05-27T02:32:26.134Z","message":"/Styles/project.css GET"}
+{"id":"f0db9686-d31a-46e7-b9f6-8da1eeb1b068","timestamp":"2025-05-27T02:32:26.137Z","message":"/Scripts/Entry.js GET"}
+{"id":"cbd1365c-7037-46b8-8474-26c4e9fc774f","timestamp":"2025-05-27T02:32:26.164Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"3f4b0091-18e5-496e-a042-e0f78dc119f5","timestamp":"2025-05-27T02:32:26.166Z","message":"/Libraries/knockout.js GET"}
+{"id":"15001c03-7012-4142-a224-af72ec1ce055","timestamp":"2025-05-27T02:32:26.168Z","message":"/Scripts/Main.js GET"}
+{"id":"251fcf00-d597-428f-a092-147409029480","timestamp":"2025-05-27T02:32:26.170Z","message":"/Scripts/PageModel.js GET"}
+{"id":"ded2539c-8f07-4085-9dd1-6b56661506cc","timestamp":"2025-05-27T02:32:26.242Z","message":"/Images/favicon.ico GET"}
+{"id":"536d8ccc-9f43-4e8f-a169-05810083b07e","timestamp":"2025-05-27T02:32:26.434Z","message":"/Scripts/Main.js.map GET"}
+{"id":"9d07f18a-987d-48bf-b861-1d693fccf7b1","timestamp":"2025-05-27T02:32:26.436Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"e45c6b41-1c6f-43ed-9de9-aed62aabbd81","timestamp":"2025-05-27T02:32:26.437Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"d6872fe5-9b99-4050-8bc4-faa52bf3ebfe","timestamp":"2025-05-27T02:32:26.502Z","message":"/Scripts/Entry.ts GET"}
+{"id":"c455601e-5ea5-4556-bc2d-250f973d73b8","timestamp":"2025-05-27T02:42:50.093Z","message":"/ GET"}
+{"id":"bab5f133-00f3-4ce7-bded-3f2503c0ac81","timestamp":"2025-05-27T02:42:50.180Z","message":"/Styles/project.css GET"}
+{"id":"200fb9a3-9f4f-4d89-995f-827417effe3a","timestamp":"2025-05-27T02:42:50.186Z","message":"/Scripts/Entry.js GET"}
+{"id":"343e360e-9022-4a33-9327-723fe7b6e93b","timestamp":"2025-05-27T02:42:50.229Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"a4b2c0c2-fdcb-4aa3-ad18-0467a2022085","timestamp":"2025-05-27T02:42:50.231Z","message":"/Libraries/knockout.js GET"}
+{"id":"1e18aee1-2cd3-4b74-8cde-a4c900e4ea4f","timestamp":"2025-05-27T02:42:50.237Z","message":"/Scripts/Main.js GET"}
+{"id":"6d9ef1c5-c09d-498c-a86a-d3f7531365e7","timestamp":"2025-05-27T02:42:50.238Z","message":"/Scripts/PageModel.js GET"}
+{"id":"f8c77f0a-2b3d-4f36-ac53-7e3c31947542","timestamp":"2025-05-27T02:42:50.261Z","message":"/Fonts/Knewave-Regular.ttf GET"}
+{"id":"5555c2dd-f7fe-419d-859c-e925b5ea0a00","timestamp":"2025-05-27T02:42:54.476Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"a33eb02e-0444-4d77-bd33-9449bd19812f","timestamp":"2025-05-27T02:42:54.478Z","message":"/Scripts/Main.js.map GET"}
+{"id":"09af2433-9f4f-4774-9d9e-415b56a74f45","timestamp":"2025-05-27T02:42:54.479Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5321e9f9-25bc-4907-9aa8-dfa47932db3c","timestamp":"2025-05-27T02:42:54.553Z","message":"/Scripts/Entry.ts GET"}
+{"id":"3dbed78a-d08d-44da-a61f-fa0b41a9a9fa","timestamp":"2025-05-27T02:43:10.646Z","message":"/Scripts/Main.ts GET"}
+{"id":"b81c30e0-8c58-4e79-9eb6-694537f623c2","timestamp":"2025-05-27T02:47:15.504Z","message":"/ GET"}
+{"id":"5f0f3f70-90bc-4065-aa3a-5e94fedaaaad","timestamp":"2025-05-27T02:47:15.686Z","message":"/Styles/project.css GET"}
+{"id":"bbe414cd-412f-46e4-91dd-e86d7e2a3380","timestamp":"2025-05-27T02:47:15.688Z","message":"/Scripts/Entry.js GET"}
+{"id":"ee650ee3-a477-45e4-ad96-92b4925e83af","timestamp":"2025-05-27T02:47:15.777Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"a46a558b-713f-4bbe-9458-7f0c6e3cbf09","timestamp":"2025-05-27T02:47:15.780Z","message":"/Libraries/knockout.js GET"}
+{"id":"2000e65e-f0a1-4c21-b521-71e19ae2feab","timestamp":"2025-05-27T02:47:15.781Z","message":"/Scripts/Main.js GET"}
+{"id":"86b693ba-99fa-4a84-bb29-ea9dac42671b","timestamp":"2025-05-27T02:47:15.786Z","message":"/Scripts/PageModel.js GET"}
+{"id":"9aa78f5d-fbe5-4f31-9bab-a74d548e640e","timestamp":"2025-05-27T02:47:15.953Z","message":"/Scripts/Public/Main.js.map GET"}
+{"id":"3259030c-5afc-4ebb-86d0-f6e4eeced4f5","timestamp":"2025-05-27T02:47:15.953Z","message":"User attempted to accesss unsupported file"}
+{"id":"c085bf0b-ba4c-4ec2-96a4-c7da6ba6ac2c","timestamp":"2025-05-27T02:47:15.957Z","message":"/Scripts/Public/PageModel.js.map GET"}
+{"id":"0e8719a0-a766-4de0-bd00-a15f571638de","timestamp":"2025-05-27T02:47:15.957Z","message":"User attempted to accesss unsupported file"}
+{"id":"92b1db6c-5c09-4ac1-9f0d-89dcbd80796c","timestamp":"2025-05-27T02:47:15.959Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"37c3024d-7bb0-46b6-bc1e-dfdb801ba8f6","timestamp":"2025-05-27T02:47:15.960Z","message":"User attempted to accesss unsupported file"}
+{"id":"1189c1a5-c1e7-4e92-a00c-023cc10d25ca","timestamp":"2025-05-27T02:47:36.262Z","message":"/ GET"}
+{"id":"fe0514ba-ac55-4860-8469-3af4c9dae6ee","timestamp":"2025-05-27T02:47:36.344Z","message":"/Styles/project.css GET"}
+{"id":"952de7e1-e5f8-495f-b61e-615a8b22e44e","timestamp":"2025-05-27T02:47:36.345Z","message":"/Scripts/Entry.js GET"}
+{"id":"507b4e9e-9b2c-45c3-bcf2-c29a92b08569","timestamp":"2025-05-27T02:47:36.350Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"31b5a16a-0a7b-4e29-aede-5abedea883b1","timestamp":"2025-05-27T02:47:36.373Z","message":"/Libraries/knockout.js GET"}
+{"id":"c2069779-38c7-44fe-8e99-3838b904f6ca","timestamp":"2025-05-27T02:47:36.375Z","message":"/Scripts/Main.js GET"}
+{"id":"1beae77a-db7a-48b8-89c5-5ed2f68bc03c","timestamp":"2025-05-27T02:47:36.378Z","message":"/Scripts/PageModel.js GET"}
+{"id":"b6ef513a-06da-4977-94d6-3308178fbe3d","timestamp":"2025-05-27T02:47:36.500Z","message":"/Scripts/Public/Main.js.map GET"}
+{"id":"9abf5eb6-12f2-4061-a067-61b4339ede5f","timestamp":"2025-05-27T02:47:36.502Z","message":"User attempted to accesss unsupported file"}
+{"id":"45143c48-8f5c-4b07-b96c-30962b3add27","timestamp":"2025-05-27T02:47:36.506Z","message":"/Scripts/Public/Entry.js.map GET"}
+{"id":"c0d8b3c3-485e-46ba-959f-edc4b810fb35","timestamp":"2025-05-27T02:47:36.507Z","message":"User attempted to accesss unsupported file"}
+{"id":"b3139b80-518b-435b-b9bb-3c0344b2efdf","timestamp":"2025-05-27T02:47:36.505Z","message":"User attempted to accesss unsupported file"}
+{"id":"099d7a7a-c3b8-4e78-a429-da4fc90258c9","timestamp":"2025-05-27T02:47:36.504Z","message":"/Scripts/Public/PageModel.js.map GET"}
+{"id":"6404af9b-f14f-4ea8-b26e-bb54d4cfb6f1","timestamp":"2025-05-27T02:47:55.809Z","message":"/ GET"}
+{"id":"e8fab35d-49b5-42e9-8731-2ce514434b1b","timestamp":"2025-05-27T02:47:55.892Z","message":"/Styles/project.css GET"}
+{"id":"b8d0d93b-3b0c-4e10-84dd-96e0474e3de9","timestamp":"2025-05-27T02:47:55.893Z","message":"/Scripts/Entry.js GET"}
+{"id":"05dec132-b687-4a72-9a67-94899e475e66","timestamp":"2025-05-27T02:47:55.898Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"db17243a-71ac-4c49-8ceb-bbff8c8cfc01","timestamp":"2025-05-27T02:47:55.931Z","message":"/Libraries/knockout.js GET"}
+{"id":"c8b50877-75ae-4a16-a33f-a3cc776e3f9c","timestamp":"2025-05-27T02:47:55.932Z","message":"/Scripts/Main.js GET"}
+{"id":"26969548-0ca6-4b3c-b7b7-d42b5e2450c6","timestamp":"2025-05-27T02:47:55.938Z","message":"/Scripts/PageModel.js GET"}
+{"id":"163ab222-07ea-4b6d-b97d-1ac2ed838a72","timestamp":"2025-05-27T02:47:56.059Z","message":"/Scripts/Public/Scripts/Main.js.map GET"}
+{"id":"1bf33698-44ed-4511-b85f-49cf48256f62","timestamp":"2025-05-27T02:47:56.060Z","message":"User attempted to accesss unsupported file"}
+{"id":"ba607b8d-b8a7-45eb-986e-0cc7735f80e9","timestamp":"2025-05-27T02:47:56.062Z","message":"/Scripts/Public/Scripts/PageModel.js.map GET"}
+{"id":"5c4e365c-dae5-4cf2-b5bd-5a0dbd1b42d0","timestamp":"2025-05-27T02:47:56.063Z","message":"User attempted to accesss unsupported file"}
+{"id":"eb8454bc-066e-4dc4-bb1f-09849230ed05","timestamp":"2025-05-27T02:47:56.064Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"941115d6-b5b0-4dcf-a5f3-809dce907342","timestamp":"2025-05-27T02:47:56.064Z","message":"User attempted to accesss unsupported file"}
+{"id":"72e9beda-7589-46e2-be82-8d73f3ecce79","timestamp":"2025-05-27T02:48:14.495Z","message":"/ GET"}
+{"id":"a5e9f49b-e5d2-4ac8-87b4-acf81d14baa2","timestamp":"2025-05-27T02:48:14.600Z","message":"/Styles/project.css GET"}
+{"id":"4010e73d-cecf-435f-bd21-d0a6d3667256","timestamp":"2025-05-27T02:48:14.604Z","message":"/Scripts/Entry.js GET"}
+{"id":"71009639-a7fb-48f4-a791-871144272956","timestamp":"2025-05-27T02:48:14.678Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"a6af42c6-dd2a-4b57-bc29-ec32b318e909","timestamp":"2025-05-27T02:48:14.679Z","message":"/Libraries/knockout.js GET"}
+{"id":"b1340adf-3ae6-4f72-98dd-28e2bf7f55cf","timestamp":"2025-05-27T02:48:14.681Z","message":"/Scripts/Main.js GET"}
+{"id":"387bf368-9418-4720-acfd-10984eec30cc","timestamp":"2025-05-27T02:48:14.691Z","message":"/Scripts/PageModel.js GET"}
+{"id":"7bb81173-a44e-4db7-9953-d088f4cb1d2e","timestamp":"2025-05-27T02:48:14.842Z","message":"/Scripts/Public/Scripts/Main.js.map GET"}
+{"id":"2c7d6b37-175a-40ab-bd83-3df083e628a3","timestamp":"2025-05-27T02:48:14.842Z","message":"User attempted to accesss unsupported file"}
+{"id":"0a611906-f3e0-4e52-b4d0-1022698d1dcb","timestamp":"2025-05-27T02:48:14.845Z","message":"/Scripts/Public/Scripts/PageModel.js.map GET"}
+{"id":"ce373fe5-cb80-431b-8a50-45630839b0fd","timestamp":"2025-05-27T02:48:14.846Z","message":"User attempted to accesss unsupported file"}
+{"id":"b0eff018-245c-4ec5-a5ca-c157a7410d0b","timestamp":"2025-05-27T02:48:14.848Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"b06cafbc-4160-4817-89bc-3c902c582848","timestamp":"2025-05-27T02:48:14.849Z","message":"User attempted to accesss unsupported file"}
+{"id":"d3869154-c650-426e-8151-3047f8d710bd","timestamp":"2025-05-27T02:48:24.915Z","message":"/ GET"}
+{"id":"add0cf28-d748-45de-894f-86382d403baa","timestamp":"2025-05-27T02:48:24.992Z","message":"/Styles/project.css GET"}
+{"id":"c8aab911-c1d1-4f58-921f-1900376e9dd3","timestamp":"2025-05-27T02:48:24.993Z","message":"/Scripts/Entry.js GET"}
+{"id":"3fab4874-31c6-4c01-a4f2-7ecf6755b0b4","timestamp":"2025-05-27T02:48:24.997Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"54c7a9d7-331e-4ac8-bba1-22fe2af9fd56","timestamp":"2025-05-27T02:48:25.017Z","message":"/Libraries/knockout.js GET"}
+{"id":"23e20ff6-b10d-4527-9aed-dc12b375dfa2","timestamp":"2025-05-27T02:48:25.018Z","message":"/Scripts/Main.js GET"}
+{"id":"01b4be4f-d2a8-41bb-9f16-338dda68cf78","timestamp":"2025-05-27T02:48:25.020Z","message":"/Scripts/PageModel.js GET"}
+{"id":"d2e472d7-8a9a-4dbc-91d6-564866d771f9","timestamp":"2025-05-27T02:48:25.181Z","message":"/Scripts/Public/Scripts/Main.js.map GET"}
+{"id":"4dfcc029-4c0b-4424-9be2-db5da2d49ba6","timestamp":"2025-05-27T02:48:25.182Z","message":"User attempted to accesss unsupported file"}
+{"id":"b977b093-884d-4b29-b9d5-632879a68c7b","timestamp":"2025-05-27T02:48:25.183Z","message":"/Scripts/Public/Scripts/PageModel.js.map GET"}
+{"id":"ec4df93d-aaba-4509-9e06-aca48e703c89","timestamp":"2025-05-27T02:48:25.184Z","message":"User attempted to accesss unsupported file"}
+{"id":"d3b5f554-18da-496c-aecf-3f69bbe15872","timestamp":"2025-05-27T02:48:25.186Z","message":"/Scripts/Public/Scripts/Entry.js.map GET"}
+{"id":"d4c2f83e-a8c2-4c1b-a553-50ebcda77568","timestamp":"2025-05-27T02:48:25.186Z","message":"User attempted to accesss unsupported file"}
+{"id":"6e82fe21-c7e3-4bc2-a1a4-483b5c4be51a","timestamp":"2025-05-27T02:48:30.613Z","message":"/ GET"}
+{"id":"a1f7c991-47a4-4fbd-a02e-72d3884c0878","timestamp":"2025-05-27T02:48:30.686Z","message":"/Styles/project.css GET"}
+{"id":"2d8eee7f-b2dc-4fa6-a2fc-9e0eb50244d6","timestamp":"2025-05-27T02:48:30.689Z","message":"/Scripts/Entry.js GET"}
+{"id":"09efa337-7160-45aa-aad0-eb28ffe98fd1","timestamp":"2025-05-27T02:48:30.696Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"adde0b96-3f7f-4409-8c0a-c10207dfc5d8","timestamp":"2025-05-27T02:48:30.715Z","message":"/Libraries/knockout.js GET"}
+{"id":"64d01a7d-47f6-417c-8905-bf713e3e50a8","timestamp":"2025-05-27T02:48:30.716Z","message":"/Scripts/Main.js GET"}
+{"id":"94082a24-b7b3-4d13-97ca-d89d4fc16414","timestamp":"2025-05-27T02:48:30.718Z","message":"/Scripts/PageModel.js GET"}
+{"id":"db97f40c-d424-44ed-9a60-b65133ec1bab","timestamp":"2025-05-27T02:48:30.862Z","message":"/Scripts/Main.js.map GET"}
+{"id":"a7b7fd20-abde-4e2b-9521-c4e02a2eb1f0","timestamp":"2025-05-27T02:48:30.864Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"c7ecdfa5-639e-49a9-8f4a-8c06ce021a64","timestamp":"2025-05-27T02:48:30.866Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"d21dfba4-1ccc-4df0-adc6-50bfe30d56a3","timestamp":"2025-05-27T02:48:44.999Z","message":"/ GET"}
+{"id":"bb1595c7-b8e5-403a-bb1a-f480f3f61c8f","timestamp":"2025-05-27T02:48:45.211Z","message":"/Styles/project.css GET"}
+{"id":"32095aa6-d06f-430e-ae62-b8c645f10713","timestamp":"2025-05-27T02:48:45.212Z","message":"/Scripts/Entry.js GET"}
+{"id":"6c833954-3c5d-4a1b-98c2-26449b5f101d","timestamp":"2025-05-27T02:48:45.362Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"141fcbb2-ca4d-4b1d-b5ee-5bc9adde166c","timestamp":"2025-05-27T02:48:45.363Z","message":"/Libraries/knockout.js GET"}
+{"id":"afbad98f-6ec2-475a-b0ff-4f1a0d0ad58a","timestamp":"2025-05-27T02:48:45.366Z","message":"/Scripts/Main.js GET"}
+{"id":"cb6f7c47-7518-431a-b531-8ce046a67573","timestamp":"2025-05-27T02:48:45.367Z","message":"/Scripts/PageModel.js GET"}
+{"id":"10bb770c-7636-4a91-9959-d92e81d2df53","timestamp":"2025-05-27T02:48:45.514Z","message":"/Scripts/Main.js.map GET"}
+{"id":"a133e616-2458-4b56-8604-dc80c0c606c9","timestamp":"2025-05-27T02:48:45.516Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"b29c8ef8-4ee5-4948-bf8a-8d976a975599","timestamp":"2025-05-27T02:48:45.517Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"c791cd12-7f00-44c4-9069-9e4d910d526c","timestamp":"2025-05-27T02:55:11.519Z","message":"/ GET"}
+{"id":"c7b3de1f-d852-4042-972a-439d6bdc4d06","timestamp":"2025-05-27T02:55:11.683Z","message":"/Styles/project.css GET"}
+{"id":"05d7209f-687a-43b4-922f-dd8010643cd0","timestamp":"2025-05-27T02:55:11.686Z","message":"/Scripts/Entry.js GET"}
+{"id":"d81a0f01-9b1a-4022-bbb5-ba84a1dc0b78","timestamp":"2025-05-27T02:55:11.754Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"b29b1976-bdfb-4e5e-b2ce-22f1e98ec9d0","timestamp":"2025-05-27T02:55:11.756Z","message":"/Libraries/knockout.js GET"}
+{"id":"8c2bb008-15bf-4e30-a09b-2c434179ac70","timestamp":"2025-05-27T02:55:11.794Z","message":"/Scripts/Main.js GET"}
+{"id":"bd0b77df-22df-4683-b35c-58bd60a2485c","timestamp":"2025-05-27T02:55:11.796Z","message":"/Scripts/PageModel.js GET"}
+{"id":"3a8d4f26-ea15-430d-b85e-46af0d2a047b","timestamp":"2025-05-27T02:55:11.961Z","message":"/Images/favicon.ico GET"}
+{"id":"e9f9377a-cd57-417d-b397-87e8ffa0ba1c","timestamp":"2025-05-27T02:55:11.981Z","message":"/Scripts/Main.js.map GET"}
+{"id":"a04e580f-9f8e-4247-b2f8-be6dc09aaeb8","timestamp":"2025-05-27T02:55:11.983Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"cd304182-ec92-41e8-b52f-dd5a6d32e8f8","timestamp":"2025-05-27T02:55:11.984Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"9eb700ed-1f8a-439e-8211-d1a7277e4364","timestamp":"2025-05-27T02:55:29.755Z","message":"/ GET"}
+{"id":"520bfd1b-28fd-4327-9812-347f6f0742cb","timestamp":"2025-05-27T02:55:29.837Z","message":"/Styles/project.css GET"}
+{"id":"a12fd593-45df-464f-98b2-a8ad231ffa71","timestamp":"2025-05-27T02:55:29.840Z","message":"/Scripts/Entry.js GET"}
+{"id":"f5537227-7eaa-47e7-a86f-56edfca0a08f","timestamp":"2025-05-27T02:55:29.852Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"1916258a-ff13-41b7-925b-8aff658ae4c8","timestamp":"2025-05-27T02:55:29.870Z","message":"/Libraries/knockout.js GET"}
+{"id":"80e78502-d47b-4db9-b205-9f3c70d47838","timestamp":"2025-05-27T02:55:29.871Z","message":"/Scripts/Main.js GET"}
+{"id":"88a14d02-d7c8-45ba-b25d-1bc2bd093753","timestamp":"2025-05-27T02:55:29.874Z","message":"/Scripts/PageModel.js GET"}
+{"id":"8aa38d1b-d99e-4aa7-9acc-ead0125b67c9","timestamp":"2025-05-27T02:55:30.051Z","message":"/Scripts/Main.js.map GET"}
+{"id":"7ad9fcc9-502e-4a72-9ad7-1123a81f68bc","timestamp":"2025-05-27T02:55:30.053Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"733b913a-9f70-4e54-ba0e-84d63c81bc51","timestamp":"2025-05-27T02:55:30.053Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"527f34c2-60a9-4da2-ab89-90a4caf33593","timestamp":"2025-05-27T02:55:30.084Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"5d7895c7-9cc3-4c32-9b9e-6f46932af8fa","timestamp":"2025-05-27T02:55:30.085Z","message":"User attempted to accesss unsupported file"}
+{"id":"1315a36a-8767-461b-aaf0-327dfb870f38","timestamp":"2025-05-27T02:56:29.977Z","message":"/ GET"}
+{"id":"9ff61432-99ad-45d9-b090-2e4b3508f9e7","timestamp":"2025-05-27T02:56:30.057Z","message":"/Styles/project.css GET"}
+{"id":"4ac4a818-3158-45d2-bfcc-1127692810bd","timestamp":"2025-05-27T02:56:30.061Z","message":"/Scripts/Entry.js GET"}
+{"id":"c01cd43c-7d06-4bab-a0ca-1ec991e0ced3","timestamp":"2025-05-27T02:56:30.066Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"500a0f09-6ba8-4f96-ae0c-89290219f62c","timestamp":"2025-05-27T02:56:30.135Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"d9ed5cd5-942c-46e5-a014-3698cba6260d","timestamp":"2025-05-27T02:56:30.166Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"6fffddb3-d789-4135-a7ea-b3adc7452d72","timestamp":"2025-05-27T02:56:30.184Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"88a7158c-a156-4105-97af-535a39308f8f","timestamp":"2025-05-27T02:56:30.185Z","message":"User attempted to accesss unsupported file"}
+{"id":"cd6acc36-ec94-4baa-a792-362840878ea2","timestamp":"2025-05-27T02:56:43.937Z","message":"/ GET"}
+{"id":"8df72430-73bb-44a6-af40-1c4c97530853","timestamp":"2025-05-27T02:56:44.077Z","message":"/Styles/project.css GET"}
+{"id":"8269bd3c-4c57-4c21-ab70-9bfae6319353","timestamp":"2025-05-27T02:56:44.080Z","message":"/Scripts/Entry.js GET"}
+{"id":"4e75d944-1327-45d0-abf2-9d79df6ed42b","timestamp":"2025-05-27T02:56:44.152Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"75895c3a-c7b8-4f3e-93f7-215e51e10125","timestamp":"2025-05-27T02:56:44.280Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"08a39fca-6364-402c-a500-2c5834d8b5fe","timestamp":"2025-05-27T02:56:44.304Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"69b2a019-c4aa-47d7-b574-8537c441c0f2","timestamp":"2025-05-27T02:56:44.304Z","message":"User attempted to accesss unsupported file"}
+{"id":"7bdf7f17-568b-4135-ac31-053ed8fc7512","timestamp":"2025-05-27T02:59:18.227Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f71feadf-d64e-44d1-9b8e-0dabff2cbdda","timestamp":"2025-05-27T02:59:20.495Z","message":"/ GET"}
+{"id":"2dd4b9bb-e211-4f2c-941d-138261c6db43","timestamp":"2025-05-27T02:59:20.615Z","message":"/Styles/project.css GET"}
+{"id":"fc162956-79cc-4149-8b56-6aa72025b6d3","timestamp":"2025-05-27T02:59:20.618Z","message":"/Scripts/Entry.js GET"}
+{"id":"d6b9d4c6-9bef-45a3-8154-152f1b77d355","timestamp":"2025-05-27T02:59:20.788Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"e6fe91aa-9860-4b15-8ac6-d5bd54462392","timestamp":"2025-05-27T02:59:20.853Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8865b1bc-cb4a-4466-a077-80c2c30a6b35","timestamp":"2025-05-27T02:59:20.899Z","message":"User attempted to accesss unsupported file"}
+{"id":"d22dba3a-23d7-4786-93d6-073a1d23b5c1","timestamp":"2025-05-27T02:59:20.898Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"84ea105f-bbe9-402d-9071-8b15132dd4e8","timestamp":"2025-05-27T02:59:21.004Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"092ce15b-9375-4c85-9a41-34592153a756","timestamp":"2025-05-27T02:59:21.021Z","message":"/Images/favicon.ico GET"}
+{"id":"1ae05ed6-cfc8-4ebd-a479-81605b4174bd","timestamp":"2025-05-27T02:59:48.722Z","message":"/ GET"}
+{"id":"debcffae-45cd-4889-9082-94024fc16206","timestamp":"2025-05-27T02:59:48.887Z","message":"/Styles/project.css GET"}
+{"id":"d7ce37f7-ccc5-4d6a-abb4-fb78f543a877","timestamp":"2025-05-27T02:59:48.889Z","message":"/Scripts/Entry.js GET"}
+{"id":"1d9b0a75-2ecc-4f28-b267-07cdd55db1d7","timestamp":"2025-05-27T02:59:48.904Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"84b1feaf-0fbd-4108-a3a2-e714813f43b4","timestamp":"2025-05-27T02:59:48.975Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f18e1f5f-cd39-465b-bf78-b1181c170557","timestamp":"2025-05-27T02:59:49.023Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"7e3b2a12-ef97-4726-9646-7481cac1f8cc","timestamp":"2025-05-27T03:00:11.119Z","message":"/ GET"}
+{"id":"8fab6a2e-77a8-4870-870d-a66b83f20c52","timestamp":"2025-05-27T03:00:11.201Z","message":"/Styles/project.css GET"}
+{"id":"96d27064-6c1c-43c9-9410-be5e4506ad80","timestamp":"2025-05-27T03:00:11.203Z","message":"/Scripts/Entry.js GET"}
+{"id":"44154be6-155c-418f-8b61-a444e415c926","timestamp":"2025-05-27T03:00:11.215Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"439dc18f-6618-44e3-9a05-21a765817c45","timestamp":"2025-05-27T03:00:11.309Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"5e0a47a7-240c-442e-ac5f-37862bc37812","timestamp":"2025-05-27T03:00:11.371Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"380dcd10-2a2f-40b6-81f2-455836bbd703","timestamp":"2025-05-27T03:00:11.398Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"804724af-7464-4b92-96d1-7d309ff02c26","timestamp":"2025-05-27T03:00:11.399Z","message":"User attempted to accesss unsupported file"}
+{"id":"f0262c80-eb01-40c4-a358-844b019d379f","timestamp":"2025-05-27T03:00:28.223Z","message":"/ GET"}
+{"id":"c884ae0c-bc55-4c1e-98ee-538c67279b5c","timestamp":"2025-05-27T03:00:28.372Z","message":"/Styles/project.css GET"}
+{"id":"9b864916-ba64-4f07-b613-33ca90dfc349","timestamp":"2025-05-27T03:00:28.376Z","message":"/Scripts/Entry.js GET"}
+{"id":"ebec4c1b-0e09-49f8-996b-ff52a015f899","timestamp":"2025-05-27T03:00:28.501Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"068e765e-9615-4cb5-a414-23ba8e1873d5","timestamp":"2025-05-27T03:00:28.573Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"c9803855-a3f9-4ffd-bba2-b8d5770ba04b","timestamp":"2025-05-27T03:00:28.636Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"7584d27a-adaa-4f4f-9f6e-c8cbbab3dbf9","timestamp":"2025-05-27T03:00:38.366Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"0232053c-f7a2-45fe-a614-2a4235effd0b","timestamp":"2025-05-27T03:00:38.366Z","message":"User attempted to accesss unsupported file"}
+{"id":"77102b01-d08b-40e0-bec4-79938d3eb786","timestamp":"2025-05-27T03:01:34.352Z","message":"/ GET"}
+{"id":"91ed75af-3498-46f6-a690-0480be6bf05c","timestamp":"2025-05-27T03:01:34.613Z","message":"/Styles/project.css GET"}
+{"id":"dd3e3773-d53a-4df1-87a8-08b874731623","timestamp":"2025-05-27T03:01:34.615Z","message":"/Scripts/Entry.js GET"}
+{"id":"946781e8-723b-4529-827b-4b7bcbeb0a98","timestamp":"2025-05-27T03:01:34.647Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"9ff91c62-436f-44ac-9d0f-b5dd5deb4348","timestamp":"2025-05-27T03:01:34.806Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"43c2661b-ba93-4bf1-8f53-095ae6d796dc","timestamp":"2025-05-27T03:01:34.936Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"2529731c-fc11-47b6-95e5-74b14e4536a5","timestamp":"2025-05-27T03:01:34.989Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"4c59115a-1bc0-4db3-bef5-18b1bc8e3863","timestamp":"2025-05-27T03:01:34.990Z","message":"User attempted to accesss unsupported file"}
+{"id":"540479ee-c76f-4a35-b346-72533f692388","timestamp":"2025-05-27T03:04:53.725Z","message":"/ GET"}
+{"id":"0f02c627-a025-4782-a2fc-6fea33cde328","timestamp":"2025-05-27T03:04:53.864Z","message":"/Styles/project.css GET"}
+{"id":"a4b05a4e-bbc3-4c90-a700-c4eefb64f52b","timestamp":"2025-05-27T03:04:53.867Z","message":"/Scripts/Entry.js GET"}
+{"id":"3232eda4-384f-457d-937a-2d893604168c","timestamp":"2025-05-27T03:04:53.938Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"e1e101e2-fd1d-473e-8ec9-e77edc1d5f75","timestamp":"2025-05-27T03:04:53.939Z","message":"/Libraries/knockout.js GET"}
+{"id":"c12fc3cf-c97b-4ae8-9e3e-9e273652e122","timestamp":"2025-05-27T03:04:53.952Z","message":"/Scripts/Main.js GET"}
+{"id":"ffeec0fd-6ef4-4d31-9a4c-99d183d27372","timestamp":"2025-05-27T03:04:53.975Z","message":"/Scripts/PageModel.js GET"}
+{"id":"2a19888b-4e3a-4783-9fdd-10f445f18328","timestamp":"2025-05-27T03:04:54.175Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"689daf26-c160-4edb-86fb-1995251147f9","timestamp":"2025-05-27T03:04:54.275Z","message":"/Scripts/Main.js.map GET"}
+{"id":"8e3115b4-fc3c-40bd-bf52-1e91c3ada596","timestamp":"2025-05-27T03:04:54.338Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"14128fa5-c436-48f4-ae08-885441e360c4","timestamp":"2025-05-27T03:04:54.342Z","message":"/Scripts/Main.js.map GET"}
+{"id":"3233caa2-1353-4788-99d6-675597a51244","timestamp":"2025-05-27T03:04:54.345Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"5122e138-64eb-42e4-8e1a-693814460b98","timestamp":"2025-05-27T03:04:54.473Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"2c8bcf46-a269-41c1-b19d-d297d66bc9ad","timestamp":"2025-05-27T03:04:54.473Z","message":"User attempted to accesss unsupported file"}
+{"id":"e43b830b-a8da-49e5-b483-4e9e28f2bb8d","timestamp":"2025-05-27T03:04:54.611Z","message":"/HTML/test.html GET"}
+{"id":"4aa45500-595b-4287-bd3d-9b5c8fd1468e","timestamp":"2025-05-27T03:04:54.639Z","message":"/Images/favicon.ico GET"}
+{"id":"5b8c8e4e-9db0-4a00-aa8a-5c2541f93b10","timestamp":"2025-05-27T03:05:37.757Z","message":"/ GET"}
+{"id":"5f73f9bd-a8c8-492d-ae83-5ba823fd3afd","timestamp":"2025-05-27T03:05:37.987Z","message":"/Styles/project.css GET"}
+{"id":"f042ce2e-891d-45ce-b67a-4ac67bb8be3f","timestamp":"2025-05-27T03:05:37.990Z","message":"/Scripts/Entry.js GET"}
+{"id":"57d96a1a-2f75-4c87-a704-98f9d3ad2919","timestamp":"2025-05-27T03:05:38.088Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"aa0ee82f-d327-4cb8-87fc-f74406640374","timestamp":"2025-05-27T03:05:38.089Z","message":"/Libraries/knockout.js GET"}
+{"id":"b63f42e3-2162-4528-a024-cfaf1e797593","timestamp":"2025-05-27T03:05:38.091Z","message":"/Scripts/Main.js GET"}
+{"id":"c4a8df1e-e1ef-4f16-8746-23430c44f1b5","timestamp":"2025-05-27T03:05:38.094Z","message":"/Scripts/PageModel.js GET"}
+{"id":"e064d4b1-288d-49d0-8e35-c5b60190eb11","timestamp":"2025-05-27T03:05:38.220Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"eddd5772-4c58-4cf7-92dd-6141997080ec","timestamp":"2025-05-27T03:05:38.354Z","message":"/Scripts/Main.js.map GET"}
+{"id":"9c621c15-1729-4fb9-bc67-56dabf32a814","timestamp":"2025-05-27T03:05:38.357Z","message":"/Scripts/PageModel.js.map GET"}
+{"id":"6d5d4b90-811d-4bd5-b3f8-9e005725cbb6","timestamp":"2025-05-27T03:05:38.360Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"21b3a468-97c5-45e8-9c10-e85e480857d0","timestamp":"2025-05-27T03:05:38.508Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"76e7b475-85c6-417a-be2e-50240d9ebae7","timestamp":"2025-05-27T03:05:38.510Z","message":"User attempted to accesss unsupported file"}
+{"id":"0e219bcf-ea82-48df-a604-f944c6bcb107","timestamp":"2025-05-27T03:06:01.059Z","message":"/Scripts/Public/Main.ts GET"}
+{"id":"bcae496e-e03a-4e4f-b28d-6ee7e160eb7d","timestamp":"2025-05-27T03:06:01.059Z","message":"User attempted to accesss unsupported file"}
+{"id":"325764d7-819c-4c37-a9e7-72952406fb41","timestamp":"2025-05-27T03:06:03.086Z","message":"/HTML/test.html GET"}
+{"id":"e25302a6-8da6-4252-937f-cc644877a8b0","timestamp":"2025-05-27T03:06:03.251Z","message":"/Scripts/Main.js.map GET"}
+{"id":"e8f33205-8790-4ce7-8a35-4b3d428dee86","timestamp":"2025-05-27T03:06:08.081Z","message":"/HTML/test.html GET"}
+{"id":"68b14c08-ea88-4e96-abcf-56cfd6886f36","timestamp":"2025-05-27T03:07:19.427Z","message":"/ GET"}
+{"id":"5240c937-9012-4ce5-8b83-7761b4f21559","timestamp":"2025-05-27T03:07:19.548Z","message":"/Styles/project.css GET"}
+{"id":"23d0526b-5ec3-4ff2-bf60-cdcea742f1ed","timestamp":"2025-05-27T03:07:19.552Z","message":"/Scripts/Entry.js GET"}
+{"id":"cdf7e0af-e1cd-42e1-86bd-7c613941c4fb","timestamp":"2025-05-27T03:07:19.676Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"47e3f21e-cc84-4feb-b6b8-91b3504283df","timestamp":"2025-05-27T03:07:19.696Z","message":"/Scripts/Main.js GET"}
+{"id":"d32295e9-0511-44e8-bbcc-82d2beaa743e","timestamp":"2025-05-27T03:07:19.891Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"8658015b-5e6d-4da5-87f7-a9264935a51c","timestamp":"2025-05-27T03:07:19.893Z","message":"/Scripts/Main.js.map GET"}
+{"id":"654ec1a5-6264-4d2c-a9ba-43e2cd1b73b4","timestamp":"2025-05-27T03:07:19.976Z","message":"/Scripts/Main.js.map GET"}
+{"id":"4f68d05f-2755-4b30-86cb-3b238af60dac","timestamp":"2025-05-27T03:07:19.979Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"a1a8a8c6-fcd0-4d0d-893d-660e751d0f31","timestamp":"2025-05-27T03:07:20.010Z","message":"/Scripts/Public/Entry.ts GET"}
+{"id":"9050e6e1-ea23-43f7-9e7a-23ed561ccaee","timestamp":"2025-05-27T03:07:20.012Z","message":"User attempted to accesss unsupported file"}
+{"id":"e6eb271e-da34-4064-ab6a-71f8667fd950","timestamp":"2025-05-27T03:07:20.054Z","message":"/HTML/test.html GET"}
+{"id":"38f1aea4-c4fc-43ab-9fde-e5a9fd73bd2b","timestamp":"2025-05-27T03:08:30.908Z","message":"/ GET"}
+{"id":"c96ea031-008f-4d55-863a-7b8f3d184715","timestamp":"2025-05-27T03:08:31.185Z","message":"/Styles/project.css GET"}
+{"id":"3c82f5af-dc7b-4f05-92da-006c7c374673","timestamp":"2025-05-27T03:08:31.188Z","message":"/Scripts/Entry.js GET"}
+{"id":"abd8250d-777d-4106-9918-60ddd1a6ff96","timestamp":"2025-05-27T03:08:31.216Z","message":"/Scripts/Main.js GET"}
+{"id":"e605489c-a717-4a75-8000-b5dad6c0b1f0","timestamp":"2025-05-27T03:08:31.324Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f39eb5d1-1a29-41a6-8356-81c22673943b","timestamp":"2025-05-27T03:08:31.375Z","message":"/Scripts/Main.js.map GET"}
+{"id":"83c9fcf7-8ba8-4a41-b42c-132ac56519eb","timestamp":"2025-05-27T03:08:31.378Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"16996164-a582-418c-86fb-a8bf7b882a9c","timestamp":"2025-05-27T03:08:31.403Z","message":"/Scripts/Main.js.map GET"}
+{"id":"4cd48cc7-4edc-4ba1-9839-13d4244f38b6","timestamp":"2025-05-27T03:08:31.426Z","message":"/HTML/test.html GET"}
+{"id":"08d0df33-c75c-4801-a45a-a9b77705dfa0","timestamp":"2025-05-27T03:09:51.169Z","message":"/ GET"}
+{"id":"70fdff08-8bfa-4831-8ada-4824b28691ef","timestamp":"2025-05-27T03:09:51.270Z","message":"/Styles/project.css GET"}
+{"id":"7b0a738d-263d-428c-aaa0-333a6e7e1e5e","timestamp":"2025-05-27T03:09:51.272Z","message":"/Scripts/Entry.js GET"}
+{"id":"ed6c2628-fc51-4368-a237-d03df308dc5d","timestamp":"2025-05-27T03:09:51.306Z","message":"/Scripts/Main.js GET"}
+{"id":"30d101e8-e7cb-416d-95d7-6f1ad3d9f71a","timestamp":"2025-05-27T03:09:51.386Z","message":"/HTML/test.html GET"}
+{"id":"4d5ab6fc-bf6b-472d-96ac-c0144142002e","timestamp":"2025-05-27T03:10:29.122Z","message":"/ GET"}
+{"id":"a12ceeb9-9f98-426c-a3c0-587889c9c44f","timestamp":"2025-05-27T03:10:29.204Z","message":"/Scripts/Entry.js GET"}
+{"id":"b70429b8-d87c-4ca4-a800-aa0b0eec340b","timestamp":"2025-05-27T03:10:29.207Z","message":"/Styles/project.css GET"}
+{"id":"79edbf99-36b0-49fb-9cc6-699fae3d9e19","timestamp":"2025-05-27T03:10:29.231Z","message":"/Scripts/Main.js GET"}
+{"id":"6c4fb7be-fcef-4bf0-8f34-d6bed427fb89","timestamp":"2025-05-27T03:10:29.282Z","message":"/HTML/homepage.html GET"}
+{"id":"9b2aab3f-e47f-4256-b47b-03f7492d5098","timestamp":"2025-05-27T03:10:29.322Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"dd53b5b8-cf37-474e-ae0d-ef4a102b150f","timestamp":"2025-05-27T03:12:26.276Z","message":"/ GET"}
+{"id":"208ebeee-7679-4483-801f-7aaa66eb544d","timestamp":"2025-05-27T03:12:26.337Z","message":"/Scripts/Entry.js GET"}
+{"id":"dc46f200-d944-410c-a7d8-3faaf989e950","timestamp":"2025-05-27T03:12:26.340Z","message":"/Styles/project.css GET"}
+{"id":"af27b82f-c809-4cd1-8b26-6b967dcfde31","timestamp":"2025-05-27T03:12:26.353Z","message":"/Scripts/Main.js GET"}
+{"id":"597efddd-501d-4810-9824-2e8bdf3cbee6","timestamp":"2025-05-27T03:12:26.354Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"e515a76d-c0da-4e46-9754-da98439d08e1","timestamp":"2025-05-27T03:12:26.388Z","message":"/HTML/homepage.html GET"}
+{"id":"48f44072-c264-4ee6-9e04-cbbed721be99","timestamp":"2025-05-27T03:12:26.406Z","message":"/Images/favicon.ico GET"}
+{"id":"f76d273e-cab6-4b09-b81d-eb00d56a2ae0","timestamp":"2025-05-27T03:12:46.279Z","message":"/ GET"}
+{"id":"dbc07523-cae2-485d-8143-455d4922fce8","timestamp":"2025-05-27T03:12:46.356Z","message":"/Styles/project.css GET"}
+{"id":"419ddf22-c7f6-4b8c-9087-0c1fb7532087","timestamp":"2025-05-27T03:12:46.358Z","message":"/Scripts/Entry.js GET"}
+{"id":"37cc369d-80ea-4253-a2be-5b0f4ecb779e","timestamp":"2025-05-27T03:12:46.378Z","message":"/Scripts/Main.js GET"}
+{"id":"f3c6fe64-383d-479c-aa8c-7a8a2a3d80c5","timestamp":"2025-05-27T03:12:46.449Z","message":"/HTML/homepage.html GET"}
+{"id":"5918f732-0f40-4043-8318-72c3e0e4d35a","timestamp":"2025-05-27T03:12:46.489Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"ce279654-9a9b-40fe-b79e-63432909c4a6","timestamp":"2025-05-27T03:13:27.552Z","message":"/ GET"}
+{"id":"0c216618-5f88-46aa-8837-dda3c88a159c","timestamp":"2025-05-27T03:13:27.700Z","message":"/Styles/project.css GET"}
+{"id":"b77f2a54-05c6-4112-8be4-2792a9aa1824","timestamp":"2025-05-27T03:13:27.706Z","message":"/Scripts/Entry.js GET"}
+{"id":"a0aeb566-c923-4ccc-a62d-e2f517793117","timestamp":"2025-05-27T03:13:27.753Z","message":"/Scripts/Main.js GET"}
+{"id":"91e28a28-497b-4137-8e97-46c1e4566521","timestamp":"2025-05-27T03:13:27.887Z","message":"/HTML/homepage.html GET"}
+{"id":"f6cb337b-604c-4b9d-8fad-bd15c12ee46d","timestamp":"2025-05-27T03:13:27.940Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"0382955f-c14e-4d8f-be66-896cf17cb55b","timestamp":"2025-05-27T03:13:30.140Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"78e83971-5811-43ba-bfc2-d54e3604308a","timestamp":"2025-05-27T03:13:42.021Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"87b2a7cd-c328-4ed5-a88c-bcda09f74dba","timestamp":"2025-05-27T03:13:42.026Z","message":"/Scripts/Main.js.map GET"}
+{"id":"069190f4-9b1b-4e2c-9c4e-6849dd940ddd","timestamp":"2025-05-27T03:15:23.999Z","message":"/ GET"}
+{"id":"e8ee918a-f2db-413b-bf4b-3562db160ef5","timestamp":"2025-05-27T03:15:24.155Z","message":"/Styles/project.css GET"}
+{"id":"388d2508-dabb-45dd-af5a-ba35501d277d","timestamp":"2025-05-27T03:15:24.158Z","message":"/Scripts/Entry.js GET"}
+{"id":"92e266c1-8ec2-4a39-9e6e-40e2cf3e0634","timestamp":"2025-05-27T03:15:24.259Z","message":"/Scripts/Main.js GET"}
+{"id":"a9470b40-cded-4717-9964-70b0d089e9a4","timestamp":"2025-05-27T03:15:24.371Z","message":"/Scripts/Main.js.map GET"}
+{"id":"25d2acdd-23ff-4027-9338-df7eafc4036f","timestamp":"2025-05-27T03:15:24.373Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"1f79b591-3028-4923-99e9-2fe609301ea4","timestamp":"2025-05-27T03:15:24.393Z","message":"/HTML/homepage.html GET"}
+{"id":"371d66db-866c-43a3-b3be-4dd962a9a092","timestamp":"2025-05-27T03:15:24.410Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"f459ba5f-1c39-400e-9794-7b617317d5a6","timestamp":"2025-05-27T03:15:24.522Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"d0c34a6a-201d-43f9-8ad3-1ccbfe709911","timestamp":"2025-05-27T03:15:33.708Z","message":"/ GET"}
+{"id":"4dcbccff-ae9e-46dd-bbac-e3ac2468b07e","timestamp":"2025-05-27T03:15:33.919Z","message":"/Styles/project.css GET"}
+{"id":"4feb0078-d449-43cc-9404-ed5e166084ff","timestamp":"2025-05-27T03:15:33.921Z","message":"/Scripts/Entry.js GET"}
+{"id":"ac7de614-dbd6-44b6-9d03-4ae5cbb3e5e3","timestamp":"2025-05-27T03:15:34.023Z","message":"/Scripts/Main.js GET"}
+{"id":"00717d15-3243-44c9-b4db-702052fbb4da","timestamp":"2025-05-27T03:15:34.076Z","message":"/Scripts/Main.js.map GET"}
+{"id":"ed8a445f-2c0c-432c-a48e-664c49fb21c6","timestamp":"2025-05-27T03:15:34.080Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"058e151c-933e-4dc6-970d-c9bfcb1fd032","timestamp":"2025-05-27T03:15:34.105Z","message":"/HTML/homepage.html GET"}
+{"id":"da2ee6b0-2fbf-4c9d-a9ca-7daf37c0a4a8","timestamp":"2025-05-27T03:15:34.139Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"4c583a27-a922-48a3-9a47-c99381928047","timestamp":"2025-05-27T03:15:34.202Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"c223e970-1792-4b8d-991b-ec6b7f41ab16","timestamp":"2025-05-27T03:19:02.588Z","message":"/ GET"}
+{"id":"e3f80432-29d1-4124-b975-2ae8b2919c49","timestamp":"2025-05-27T03:19:02.671Z","message":"/Styles/project.css GET"}
+{"id":"24fe7dd4-4df3-4a46-bc97-d2629a178537","timestamp":"2025-05-27T03:19:02.673Z","message":"/Scripts/Entry.js GET"}
+{"id":"dc4fda89-415e-4f75-bad7-555568b99b5d","timestamp":"2025-05-27T03:19:02.721Z","message":"/Scripts/Main.js GET"}
+{"id":"985c6d78-c059-4ef4-a903-c05a1e1db3c9","timestamp":"2025-05-27T03:19:02.827Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"4f5b894f-3761-459b-bdf6-338038f37ddf","timestamp":"2025-05-27T03:19:02.836Z","message":"/Scripts/Main.js.map GET"}
+{"id":"7cb5b777-1fc8-4e77-9ec6-7f6de60be7b4","timestamp":"2025-05-27T03:19:02.840Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"7849c35e-171e-43b6-a602-d0f86a95d402","timestamp":"2025-05-27T03:19:02.892Z","message":"/HTML/homepage.html GET"}
+{"id":"0f2c28cb-cfa6-425f-92ab-56727533eadc","timestamp":"2025-05-27T03:19:02.953Z","message":"/Images/homepageMeme.jpg GET"}
+{"id":"2ed94952-2a6a-415d-825e-a1c8ed1628c6","timestamp":"2025-05-27T03:19:47.808Z","message":"/ GET"}
+{"id":"ed9c5657-92e4-468b-9b8d-ca19d62dece3","timestamp":"2025-05-27T03:19:47.989Z","message":"/Styles/project.css GET"}
+{"id":"a424678e-babd-4f5e-9a93-bef0d5a1c20f","timestamp":"2025-05-27T03:19:47.991Z","message":"/Scripts/Entry.js GET"}
+{"id":"44e81658-4668-4a89-98e7-bdb3924156d2","timestamp":"2025-05-27T03:19:48.087Z","message":"/Scripts/Main.js GET"}
+{"id":"658c54b4-2a51-42bf-9154-0054a9d42ab7","timestamp":"2025-05-27T03:19:48.204Z","message":"/HTML/homepage.html GET"}
+{"id":"c4ec16a9-e954-40a6-9738-9990b07bb03a","timestamp":"2025-05-27T03:19:48.239Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"d1af1e74-9977-43a6-b7ea-8760c99110c7","timestamp":"2025-05-27T03:19:48.272Z","message":"/Scripts/Main.js.map GET"}
+{"id":"bf3df40d-33f4-4700-8fc4-e83386305c47","timestamp":"2025-05-27T03:19:48.274Z","message":"/Scripts/Entry.js.map GET"}
+{"id":"329254a5-8a4e-4f8a-be69-aeaa532e705f","timestamp":"2025-05-27T03:19:48.324Z","message":"/Images/homepageMeme.jpg GET"}

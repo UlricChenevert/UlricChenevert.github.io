@@ -5,7 +5,7 @@
     "tasks": [
       {
         "label":"Compile files",
-        "dependsOn":["Build Lessc Files", "Build Typescript Files"],
+        "dependsOn":["Build Lessc Files", "Build Typescript Files Frontend", "Build Typescript Files Backend", "Build Blog Files"],
         "group": {
           "kind": "build"
         }
@@ -13,17 +13,36 @@
       {
         "label":"Build Lessc Files",
         "type": "shell",
-        "command": "lessc ./Styles/project.less ./Styles/project.css",
+        "command": "lessc ./Public/Styles/project.less ./Public/Styles/project.css",
         "group": {
           "kind": "build",
           "isDefault": true
         }
       },
       {
-        "label":"Build Typescript Files",
+        "label":"Build Typescript Files Frontend",
         "type": "typescript",
-        "tsconfig": "tsconfig.json",
+        "tsconfig": "./Public/tsconfig.json",
         "problemMatcher": ["$tsc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label":"Build Typescript Files Backend",
+        "type": "typescript",
+        "tsconfig": "./Backend/tsconfig.json",
+        "problemMatcher": ["$tsc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label":"Build Blog Files",
+        "type": "shell",
+        "command": "./Tools/Build-Pages.ps1 './Blog' './Public/HTML/'",
         "group": {
           "kind": "build",
           "isDefault": true

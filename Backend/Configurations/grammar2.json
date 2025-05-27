@@ -1,0 +1,142 @@
+{
+    "character-background": [
+        ["race-desc", "class-desc", "origin-desc", "motivation-desc", "personality-desc"],
+        ["race-desc", "class-desc", "origin-desc", "personality-desc", "motivation-desc"],
+        ["race-desc", "origin-desc", "class-desc", "motivation-desc", "personality-desc"]
+    ],
+    
+    "race-desc": [
+        ["A", "race-adj", "race", "who", "race-trait", ". "]
+    ],
+    "race": [
+        ["human"], ["dwarf"], ["elf"], ["half-elf"], ["half-orc"], ["tiefling"], 
+        ["dragonborn"], ["gnome"], ["halfling"], ["aasimar"], ["genasi"], ["tabaxi"]
+    ],
+    "race-adj": [
+        ["sturdy"], ["cunning"], ["elegant"], ["mysterious"], ["fierce"], ["ancient"], 
+        ["noble"], ["wise"], ["hardy"], ["nimble"], ["proud"], ["reclusive"]
+    ],
+    "race-trait": [
+        ["bears the marks of their celestial heritage"],
+        ["carries the traditions of the mountains"],
+        ["moves with unnatural grace"],
+        ["possesses keen senses honed in the wilderness"],
+        ["still maintains connections to the Feywild"],
+        ["has eyes that reflect the eternal flames of the Nine Hells"],
+        ["is covered in distinctive tribal markings"],
+        ["stands tall among their kin"],
+        ["bears ancestral runes etched into their skin"],
+        ["has a natural affinity for magic"]
+    ],
+    
+    "class-desc": [
+        ["As a", "class-adj", "class", "they", "class-ability", ". "]
+    ],
+    "class": [
+        ["wizard"], ["cleric"], ["fighter"], ["rogue"], ["ranger"], ["paladin"],
+        ["barbarian"], ["monk"], ["warlock"], ["sorcerer"], ["druid"], ["bard"], ["artificer"]
+    ],
+    "class-adj": [
+        ["skilled"], ["disciplined"], ["devoted"], ["cunning"], ["battle-hardened"],
+        ["enigmatic"], ["resourceful"], ["determined"], ["charismatic"], ["intuitive"]
+    ],
+    "class-ability": [
+        ["can channel divine energy to heal the wounded"],
+        ["has mastered arcane secrets forbidden to most"],
+        ["moves like a shadow when stalking prey"],
+        ["wields their blade with unmatched precision"],
+        ["communes with nature spirits for guidance"],
+        ["draws power from an otherworldly patron"],
+        ["harnesses the raw energy flowing through their bloodline"],
+        ["can enter a trance-like state of focused combat"],
+        ["crafts magical items of remarkable ingenuity"],
+        ["weaves magic through song and performance"],
+        ["has taken sacred oaths to protect the innocent"],
+        ["can tap into primal fury when threatened"]
+    ],
+    
+    "origin-desc": [
+        ["Born", "origin-place", "they", "origin-history", ". "]
+    ],
+    "origin-place": [
+        ["in a bustling port city"], 
+        ["among the peaks of the Iron Mountains"],
+        ["in a small farming village on the frontier"],
+        ["in the shadows of ancient ruins"],
+        ["to a noble family in decline"],
+        ["in a secluded monastery"],
+        ["deep within an enchanted forest"],
+        ["on the streets of the capital"],
+        ["to traveling merchants of the Silver Road"],
+        ["in a coastal fishing town"],
+        ["under the eternal twilight of the Shadowfell"],
+        ["near the borders of a fey crossing"]
+    ],
+    "origin-history": [
+        ["learned early that survival requires cunning and wit"],
+        ["grew up surrounded by ancient tomes of knowledge"],
+        ["trained from childhood in the martial traditions"],
+        ["witnessed a tragedy that forever shaped their destiny"],
+        ["discovered their innate talents after a strange encounter"],
+        ["was apprenticed to a legendary master"],
+        ["fled from a dark past that still haunts them"],
+        ["was chosen by prophecy for a greater purpose"],
+        ["inherited an ancestral legacy and its burdens"],
+        ["survived when others perished in a calamity"]
+    ],
+    
+    "motivation-desc": [
+        ["Now they", "seek-verb", "motivation-goal", "because", "motivation-reason", ". "]
+    ],
+    "seek-verb": [
+        ["seek"], ["hunt for"], ["are determined to find"], ["are searching for"], 
+        ["pursue"], ["are driven to obtain"], ["quest for"], ["strive for"]
+    ],
+    "motivation-goal": [
+        ["revenge against those who wronged them"],
+        ["a legendary artifact of immense power"],
+        ["knowledge forbidden to mortals"],
+        ["redemption for past failures"],
+        ["a way to break an ancient curse"],
+        ["the truth about their mysterious origins"],
+        ["a cure for an afflicted loved one"],
+        ["glory and recognition among their peers"],
+        ["a place to call home after years of wandering"],
+        ["the means to restore their fallen house"],
+        ["a path to transcend their mortal limitations"]
+    ],
+    "motivation-reason": [
+        ["it is the only way to restore balance"],
+        ["a prophecy foretold their role in coming events"],
+        ["they made a sacred oath that cannot be broken"],
+        ["the voices in their dreams demand it"],
+        ["they have nothing left to lose"],
+        ["it may be the only way to save their homeland"],
+        ["a debt of honor must be repaid"],
+        ["they seek to prove their worth"],
+        ["forgotten gods have marked them for this purpose"],
+        ["they carry the hopes of those who cannot fight for themselves"]
+    ],
+    "personality-desc": [
+        ["personality-adj", "and", "personality-adj", ", they", "personality-quirk", "."]
+    ],
+    "personality-adj": [
+        ["stoic"], ["quick-witted"], ["compassionate"], ["mysterious"], ["honorable"],
+        ["cynical"], ["optimistic"], ["calculating"], ["unpredictable"], ["loyal"],
+        ["reckless"], ["cautious"], ["brooding"], ["charismatic"], ["scholarly"]
+    ],
+    "personality-quirk": [
+        ["never sleep more than a few hours at a time"],
+        ["collect trinkets from every place they visit"],
+        ["speak in riddles when nervous"],
+        ["trust animals more than people"],
+        ["always keep one hand free during meals"],
+        ["recite poetry before entering battle"],
+        ["refuse to cross running water at night"],
+        ["bear scars they hide from all but their closest allies"],
+        ["carry a memento of their first adventure"],
+        ["never remove a particular piece of jewelry"],
+        ["tell elaborate tales of dubious authenticity"],
+        ["whisper to their weapons before using them"]
+    ]
+}
