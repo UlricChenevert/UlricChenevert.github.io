@@ -2,9 +2,24 @@
 import { injectHTMLFromFile } from "./modularHTML.js"
 
 const pageElement = <HTMLElement>document.getElementById("custom-article")
+const ko = window.ko
+
 
 document.addEventListener("DOMContentLoaded", (e)=> {
+    const viewModel = new ViewModel()
+
     injectHTMLFromFile(new URL(window.location.origin + '/HTML/homepage.html'), pageElement)
 
-    window.ko.applyBindings({name: "William"})
+    viewModel.currentPage.subscribe((newValue)=>injectHTMLFromFile(new URL(window.location.origin + `/HTML/${newValue}.html`), pageElement))
+
+    ko.applyBindings(viewModel)
 })
+
+
+class ViewModel {
+    currentPage : ko.Observable
+
+    constructor() {
+        this.currentPage = ko.observable("homepage")
+    }
+}

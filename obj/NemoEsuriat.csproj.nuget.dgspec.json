@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj": {}
+    "e:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj": {}
   },
   "projects": {
-    "E:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj": {
+    "e:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj",
+        "projectUniqueName": "e:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj",
         "projectName": "NemoEsuriat",
-        "projectPath": "E:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj",
+        "projectPath": "e:\\Coding\\Projects\\nemoesuriat\\NemoEsuriat.csproj",
         "packagesPath": "C:\\Users\\WUlri\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Projects\\nemoesuriat\\obj\\",
+        "outputPath": "e:\\Coding\\Projects\\nemoesuriat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WUlri\\AppData\\Roaming\\NuGet\\NuGet.Config"

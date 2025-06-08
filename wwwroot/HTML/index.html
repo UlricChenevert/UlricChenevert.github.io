@@ -15,17 +15,15 @@
         <span class="logo">Nemo Esuriat</span>
       </div>
       <div class="nav-elements">
-          <a class="link">Home</a>
+          <a class="link" data-bind="click: function() { currentPage('Home') } ">Home</a>
           <span class="dividers">|</span> 
-          <a class="link">Unknown</a>
+          <a class="link" data-bind="click: function() { currentPage('Unknown') } ">Unknown</a>
           <span class="dividers">|</span> 
-          <a class="link">Minecraft Projects</a>
+          <a class="link" data-bind="click: function() { currentPage('Minecraft Projects') } ">Minecraft Projects</a>
           <span class="dividers">|</span> 
-          <a class="link">Space Engineers Research</a>
+          <a class="link" data-bind="click: function() { currentPage('Space Engineers Research') } ">Space Engineers Research</a>
       </div>
     </nav>
-
-    <!-- <div data-bind="text: name"></div> -->
 
     <div id="custom-article"></div>
     

@@ -51,13 +51,8 @@ E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\NemoEsuriat.sourcelink.json
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\scopedcss\bundle\NemoEsuriat.styles.css
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\w5gjn0dqld-jn08oeg4lo.gz
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\jkmz6zjcgo-2wzmqh8oxy.gz
-E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\4c7nlqzo4v-xdze93532t.gz
-E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\brtm8l7opf-52ozjczhvb.gz
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\6vlpc9by7l-agc21xwtj1.gz
-E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\1apwqan2rx-lehy9h4zi5.gz
-E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\zt043f1gjv-lyzbporqds.gz
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\ra8v9e8vyk-y0y9igiib7.gz
-E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\jerih8oba9-6mxww618xd.gz
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\staticwebassets.build.json
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\staticwebassets.build.json.cache
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\staticwebassets.development.json
@@ -67,3 +62,12 @@ E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\refint\NemoEsuriat.dll
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\NemoEsuriat.pdb
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\NemoEsuriat.genruntimeconfig.cache
 E:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\ref\NemoEsuriat.dll
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\14hon37hla-52ozjczhvb.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\r65ih4vdkv-2wzmqh8oxy.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\j6kiinlfz4-2k1u2o230o.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\f83cho82zr-2k1u2o230o.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\asrcn6e5pt-52ozjczhvb.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\4c7nlqzo4v-df4ya5e0hy.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\zt043f1gjv-lyzbporqds.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\jerih8oba9-6mxww618xd.gz
+e:\Coding\Projects\nemoesuriat\obj\Debug\net9.0\compressed\1apwqan2rx-ne67k535v2.gz
