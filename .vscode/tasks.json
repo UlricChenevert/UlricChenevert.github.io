@@ -13,26 +13,16 @@
       {
         "label":"Build Lessc Files",
         "type": "shell",
-        "command": "lessc ./Public/Styles/project.less ./Public/Styles/project.css",
+        "command": "lessc ./Client/Styles/project.less ./wwwroot/CSS/project.css",
         "group": {
           "kind": "build",
           "isDefault": true
         }
       },
       {
-        "label":"Build Typescript Files Frontend",
+        "label":"Build Typescript Files",
         "type": "typescript",
-        "tsconfig": "./Public/tsconfig.json",
-        "problemMatcher": ["$tsc"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      },
-      {
-        "label":"Build Typescript Files Backend",
-        "type": "typescript",
-        "tsconfig": "./Backend/tsconfig.json",
+        "tsconfig": "tsconfig.json",
         "problemMatcher": ["$tsc"],
         "group": {
           "kind": "build",
@@ -42,7 +32,7 @@
       {
         "label":"Build Blog Files",
         "type": "shell",
-        "command": "./Tools/Build-Pages.ps1 './Blog' './Public/HTML/'",
+        "command": "..\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\' .\\wwwroot\\HTML\\",
         "group": {
           "kind": "build",
           "isDefault": true

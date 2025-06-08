@@ -5,40 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "firefox",
+            "name": "C#: Nemo Esuriat Debug",
+            "type": "dotnet",
             "request": "launch",
-            "reAttach": true,
-            "name": "Launch localhost",
-            "url": "http://localhost/",
-            "webRoot": "${workspaceFolder}",
-            "port": 3001
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Run singleton",
-            "program":"${fileDirname}/${fileBasenameNoExtension}.js",
-            "cwd": "${workspaceFolder}",
-            "sourceMaps": true,
-            "smartStep":true,
-            "restart": true,
-            "args": [],
-            "console":"integratedTerminal",
-            "preLaunchTask": "Build Typescript Files",
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "restart": true,
-            "name": "Launch Server",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\Backend\\server.js",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ],
-            "preLaunchTask": "Compile files"
+            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj"
         }
     ]
 }
