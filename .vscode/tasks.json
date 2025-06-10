@@ -4,8 +4,8 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label":"Compile files",
-        "dependsOn":["Build Lessc Files", "Build Typescript Files Frontend", "Build Typescript Files Backend", "Build Blog Files"],
+        "label":"Compile frontend files",
+        "dependsOn":["Build Lessc Files", "Build Typescript Files"],
         "group": {
           "kind": "build"
         }

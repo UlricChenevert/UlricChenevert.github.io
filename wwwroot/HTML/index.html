@@ -10,25 +10,8 @@
     <script type="module" src="/Scripts/Entry.js"></script>
   </head>
   <body>
-    <nav id="nav-bar">
-      <div class="nav-elements">
-        <span class="logo">Nemo Esuriat</span>
-      </div>
-      <div class="nav-elements">
-          <a class="link" data-bind="click: function() { currentPage('Home') } ">Home</a>
-          <span class="dividers">|</span> 
-          <a class="link" data-bind="click: function() { currentPage('Unknown') } ">Unknown</a>
-          <span class="dividers">|</span> 
-          <a class="link" data-bind="click: function() { currentPage('Minecraft Projects') } ">Minecraft Projects</a>
-          <span class="dividers">|</span> 
-          <a class="link" data-bind="click: function() { currentPage('Space Engineers Research') } ">Space Engineers Research</a>
-      </div>
-    </nav>
-
-    <div id="custom-article"></div>
-    
-    <footer style="background-color: rgb(223, 223, 223);">
-      Links in bio
-    </footer>
+    <div id="nav-bar" data-bind="fragmentBinding: headerViewModel"></div>
+    <div id="custom-article" data-bind="fragmentBinding: articleViewModel"></div>
+    <div id="footer", data-bind="fragmentBinding: footerViewModel"></div>
   </body>
 </html>

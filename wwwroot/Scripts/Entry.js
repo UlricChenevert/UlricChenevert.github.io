@@ -1,16 +1,25 @@
-// import ko from "./Libraries/knockout.js"
-import { injectHTMLFromFile } from "./modularHTML.js";
-const pageElement = document.getElementById("custom-article");
-const ko = window.ko;
-document.addEventListener("DOMContentLoaded", (e) => {
-    const viewModel = new ViewModel();
-    injectHTMLFromFile(new URL(window.location.origin + '/HTML/homepage.html'), pageElement);
-    viewModel.currentPage.subscribe((newValue) => injectHTMLFromFile(new URL(window.location.origin + `/HTML/${newValue}.html`), pageElement));
-    ko.applyBindings(viewModel);
+import { createKOFragmentBinding, HTMLFragement, injectHTMLFromFragment } from "./ModularHTML.js";
+import { ko } from "./Libraries/ImportableKnockout.js";
+import { RegisteredHTMLComponents } from "./ComponentRegistry.js";
+import { ArticleViewModel, FooterViewModel, HeaderViewModel, PageModel } from "./ViewModels.js";
+createKOFragmentBinding(ko);
+const headerViewModel = new HeaderViewModel();
+const articleViewModel = new ArticleViewModel();
+const footerViewModel = new FooterViewModel();
+const pageViewModel = new PageModel(headerViewModel, articleViewModel, footerViewModel);
+headerViewModel.lastClickedOnPage.subscribe((htmlComponent) => {
+    // articleFragment.htmlComponent = htmlComponent
+    // injectHTMLFromFragment(headerFragment)
+    console.log(htmlComponent);
 });
-class ViewModel {
-    currentPage;
-    constructor() {
-        this.currentPage = ko.observable("homepage");
-    }
-}
+document.addEventListener("DOMContentLoaded", (e) => {
+    const headerFragment = new HTMLFragement(document.getElementById("nav-bar"), headerViewModel, RegisteredHTMLComponents.Header);
+    const articleFragment = new HTMLFragement(document.getElementById("custom-article"), articleViewModel, RegisteredHTMLComponents.Home);
+    const footerFragment = new HTMLFragement(document.getElementById("footer"), footerViewModel, RegisteredHTMLComponents.Footer);
+    Promise.all([
+        injectHTMLFromFragment(headerFragment),
+        injectHTMLFromFragment(articleFragment),
+        injectHTMLFromFragment(footerFragment)
+    ])
+        .then(() => { ko.applyBindings(pageViewModel); });
+});

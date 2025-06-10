@@ -1,0 +1,9 @@
+<nav>
+    <div class="nav-elements">
+        <span class="logo">Nemo Esuriat</span>
+    </div>
+    <div class="nav-elements" data-bind="foreach: pages">
+        <a class="link" data-bind="text: $data,click: $parent.lastClickedOnPage($data)">Link</a>
+        <span data-bind="if: $parent.showDivider()" class="dividers">|</span> 
+    </div>
+</nav>
