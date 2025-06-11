@@ -15,19 +15,19 @@ export class PageModel {
 
 export class HeaderViewModel {
     logo: string;
-    pages: ko.ObservableArray<RegisteredHTMLComponents>;
+    views: ko.ObservableArray<RegisteredHTMLComponents>;
     dividers: number;
-    lastClickedOnPage: ko.Observable<RegisteredHTMLComponents>;
+    lastClickedOnView: ko.Observable<RegisteredHTMLComponents>;
     constructor() {
         this.logo = "Nemo Esuriat",
-        this.lastClickedOnPage = ko.observable<RegisteredHTMLComponents>(RegisteredHTMLComponents.Home)
-        this.pages = ko.observableArray([
+        this.lastClickedOnView = ko.observable<RegisteredHTMLComponents>(RegisteredHTMLComponents.Home)
+        this.views = ko.observableArray([
             RegisteredHTMLComponents.Home, 
             RegisteredHTMLComponents.Unknown,
             RegisteredHTMLComponents.Minecraft, 
-            RegisteredHTMLComponents["Space Engineers"]
+            RegisteredHTMLComponents["Space Engineers Research"]
         ] as RegisteredHTMLComponents[] ),
-        this.dividers = this.pages().length
+        this.dividers = this.views().length
     }
     
     showDivider () {

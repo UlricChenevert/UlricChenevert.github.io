@@ -12,19 +12,19 @@ export class PageModel {
 }
 export class HeaderViewModel {
     logo;
-    pages;
+    views;
     dividers;
-    lastClickedOnPage;
+    lastClickedOnView;
     constructor() {
         this.logo = "Nemo Esuriat",
-            this.lastClickedOnPage = ko.observable(RegisteredHTMLComponents.Home);
-        this.pages = ko.observableArray([
+            this.lastClickedOnView = ko.observable(RegisteredHTMLComponents.Home);
+        this.views = ko.observableArray([
             RegisteredHTMLComponents.Home,
             RegisteredHTMLComponents.Unknown,
             RegisteredHTMLComponents.Minecraft,
-            RegisteredHTMLComponents["Space Engineers"]
+            RegisteredHTMLComponents["Space Engineers Research"]
         ]),
-            this.dividers = this.pages().length;
+            this.dividers = this.views().length;
     }
     showDivider() {
         this.dividers--;

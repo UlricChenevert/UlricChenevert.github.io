@@ -29,7 +29,7 @@
   .nav-elements {
     flex-direction: column;
     height: auto;
-    font-size: calc(16px / 2);
+    font-size: calc(20px / 2);
   }
   .dividers {
     display: none;
@@ -38,20 +38,17 @@
 .logo {
   font-family: 'Knewave-Regular', Arial;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 50px;
 }
 @font-face {
   font-family: "Knewave-Regular";
-  font-style: normal;
-  font-weight: 400;
   src: url(../Fonts/Knewave-Regular.ttf) format("truetype");
 }
 #custom-article {
   background-color: white;
-  width: 70vw;
-  margin-left: 15vw;
+  margin: 0 15%;
   min-height: 100vh;
-  padding: 2em;
+  padding: calc(6em / 2) 6em;
 }
 #custom-article figure {
   display: flex;
@@ -60,9 +57,12 @@
   justify-content: center;
   margin: 0.5em;
 }
+#custom-article p {
+  margin: 0.5em;
+}
 body {
   background-color: rgba(80, 2, 73, 0.658);
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
 }
 img {

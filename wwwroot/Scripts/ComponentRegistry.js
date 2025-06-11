@@ -3,7 +3,7 @@ export var RegisteredHTMLComponents;
     RegisteredHTMLComponents["Header"] = "Header";
     RegisteredHTMLComponents["Home"] = "Home";
     RegisteredHTMLComponents["Minecraft"] = "Minecraft";
-    RegisteredHTMLComponents["Space Engineers"] = "Space Engineers";
+    RegisteredHTMLComponents["Space Engineers Research"] = "Space Engineers Research";
     RegisteredHTMLComponents["Unknown"] = "Unknown";
     RegisteredHTMLComponents["Footer"] = "Footer";
 })(RegisteredHTMLComponents || (RegisteredHTMLComponents = {}));

@@ -32,7 +32,7 @@
       {
         "label":"Build Blog Files",
         "type": "shell",
-        "command": "..\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\' .\\wwwroot\\HTML\\",
+        "command": "..\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\",
         "group": {
           "kind": "build",
           "isDefault": true
