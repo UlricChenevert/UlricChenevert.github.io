@@ -1,72 +1,41 @@
-# WASD Gravity Drive
-
-## Premise
-
-Artificial gravity fields work on an **artificial mass**, which can be used for a myriad of uses, including but not limited to anti-character shield, launch tubes, gravity cannons, and of course gravity drives.
-
-Gravity Drives are on mass block and a gravity generator on the same grid, which create a "reactionless drive" with monstrous acceleration at a large PCU cost.
+# WASD Gravity Drive 
 
 ---
 
-## Drive Costs
+### Premise
+Antifical gravity fielas work an artifical mass, which can be used for a myraid of uses, including but not limited to anti-character shield, launch tubes, gravity cannons, and of course Granity drives. 
 
-* **Mass Block:**
-    * PCU: 25
-* **Gravity Generator:**
-    * PCU: 188
-* **Example Calculation:**
-    * 1g = 9.8 m/s²
-    * 1kg = 9.8N
-    * (kg: 3,532kg mentioned in diagram)
-* **Symmetric Ship:**
-    * ≤ 210 PCU per thruster (Note: This seems to be a comparative cost or related to a different system, as the gravity drive itself is reactionless.)
+Gravity Drives consist of an mass block and a gravity generator on the same grid, which creates a "reactionless drive" with monstrous aceleration at a large PCU cost and design complexity.
 
----
+![Gravity Drive Diagram](../Images/GravityDriveDiagram.jpg)
 
-## Integrating The Drive To WASD
+### Drive Cost
+- Wieght Symmetric Ship
+- < 210 PCU per thruster
 
-Press key ➡️ Controllable object ➡️ Detect change ➡️ Control Drive
+### Intergrating the Drive with WASD 
 
-* **W, A, S, D:**
-    * ↳ 4 Thrusters (Likely conceptual directions, not physical thrusters for this drive)
-    * ↳ Wheels (Role not fully detailed, perhaps an alternative control aspect)
-    * ↳ Event controllers ➡️ Control thrust
-    * ↳ Scripts ➡️ Constant Stop
+**Core Events**  
+1. Press key (W, A, S, D)  
+2. Influences controllable Object (Thruster, Wheels)  
+3. Detect Change (Event controllers, Scripts)  
+4. Drive Control (Control thrust, Control Stop) 
 
----
+#### Steps For Multiplayer / Scriptless Worlds
 
-## Logic & Reasoning
+| Function | Avenue | Notes |
+|---|---|---|
+| Detect  100% thrust for direction | Event in Event Controller | WASD input creates a detectable 100% thrust  | 
+| Ensure gravity drives 9.8 m/s | **20x** increase acceleration commands to gravity generator group from a timer block (20 commands because each command increases / decreases by 1 m/s^2 and covers the -9.8 m/s^2 to 9.8m/s^2 case).    | Use one array of gravity drives per direction. It will increase more accleration per PCU and simplifies set up work. You can trigger 9 groups of the same blocks per page. |
+ If speed less than 5m/s: turn off gravity blocks, else: turn on | With inertia dampers, drive will be stuck in a infinite loop of thrust over compenstation causing extreme pulsing. This also means that basic thrusters must be used to achieve speed chanmge >5 for gravitry drive to start. Either way I would recommend a kill switch in cockpit. | Effectiviness of this logic dependent on thrust to wieght ratio. |
+| If accleration less than 0: stop artifical mass, else: start artifical mass | No necessary but fucking sick to look at. |   |
+**For each direction**
 
-Focusing on the detecting change and control drive aspects of the drive, many interesting design choices emerge. The script option is more robust and compact solution; however, it is not allowed on keen servers. Below is the design choices made and reasoning:
+## Tips 
 
-| Logic                                       | Reason                                                                                                                               |
-| :------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- |
-| **For each direction** |                                                                                                                                      |
-| ↳ Detect 100% thrust                        | ⬅️ Ward input creates 100% thrust                                                                                                    |
-| ↳ Ensure gravity drives 9.8m/s²             | ⬅️ It saves PCU and increases acceleration                                                                                           |
-| ↳ Trigger accelerate x20                    | (For more complex logic) if you combine generators in one direction and just control direction                                     |
-| **Stopping** |                                                                                                                                      |
-| ↳ ⬇️ continued                            | Each increase action only increases my 1m/s². Some control this with loops, but it is logistically easier to just create 10 groups and trigger that across 2x pages. |
+--- 
 
----
-
-## Stopping Continued
-
-* **IF speed less than 5 m/s** (dependent on thrust-to-weight ratio)
-    * Stop gravity drive
-    * *Reason:* Drive will get into pulsating state above it once it cannot slow down any less.
-* **Else**
-    * Start gravity drives (Note: This might be a typo or refer to engaging reverse gravity for braking)
-* **IF speed change < 0**
-    * Stop artificial mass
-    * *Reason:* This also means that basic thrusters must achieve speed change < 0 for gravity drive to start. Filter may. I would recommend a kill switch in cockpit.
-* **Else**
-    * Start artificial mass
-    * *Note:* Not necessary but fucking sick to look at.
-
----
-
-## Bugs to look out for
-
-* **Gravity drives are on/triggered but nothing is happening.**
-    * ➡️ Check if your other side is counteracting the field/acceleration.
+- Gravity drives ore on on/triggered but nothing to happening: Check out if your other side is counter acting the field acceleration
+- Test on small one direction craft first, then start on an actual craft
+- Use an antenna when building to debug if you are creating the groups correctly
+- Check the gravity field twice before turnning on any artifical blocks

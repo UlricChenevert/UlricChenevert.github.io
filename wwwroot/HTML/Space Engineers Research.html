@@ -1,135 +1,98 @@
-<h1 id="wasd-gravity-drive">WASD Gravity Drive</h1>
-<h2 id="premise">Premise</h2>
-<p>Artificial gravity fields work on an <strong>artificial
-mass</strong>, which can be used for a myriad of uses, including but not
-limited to anti-character shield, launch tubes, gravity cannons, and of
-course gravity drives.</p>
-<p>Gravity Drives are on mass block and a gravity generator on the same
-grid, which create a “reactionless drive” with monstrous acceleration at
-a large PCU cost.</p>
+<section id="wasd-gravity-drive" class="level1">
+<h1>WASD Gravity Drive</h1>
 <hr />
-<h2 id="drive-costs">Drive Costs</h2>
+<section id="premise" class="level3">
+<h3>Premise</h3>
+<p>Antifical gravity fielas work an artifical mass, which can be used
+for a myraid of uses, including but not limited to anti-character
+shield, launch tubes, gravity cannons, and of course Granity drives.</p>
+<p>Gravity Drives consist of an mass block and a gravity generator on
+the same grid, which creates a “reactionless drive” with monstrous
+aceleration at a large PCU cost and design complexity.</p>
+<figure>
+<img src="../Images/GravityDriveDiagram.jpg"
+alt="Gravity Drive Diagram" />
+<figcaption aria-hidden="true">Gravity Drive Diagram</figcaption>
+</figure>
+</section>
+<section id="drive-cost" class="level3">
+<h3>Drive Cost</h3>
 <ul>
-<li><strong>Mass Block:</strong>
-<ul>
-<li>PCU: 25</li>
-</ul></li>
-<li><strong>Gravity Generator:</strong>
-<ul>
-<li>PCU: 188</li>
-</ul></li>
-<li><strong>Example Calculation:</strong>
-<ul>
-<li>1g = 9.8 m/s²</li>
-<li>1kg = 9.8N</li>
-<li>(kg: 3,532kg mentioned in diagram)</li>
-</ul></li>
-<li><strong>Symmetric Ship:</strong>
-<ul>
-<li>≤ 210 PCU per thruster (Note: This seems to be a comparative cost or
-related to a different system, as the gravity drive itself is
-reactionless.)</li>
-</ul></li>
+<li>Wieght Symmetric Ship</li>
+<li>&lt; 210 PCU per thruster</li>
 </ul>
-<hr />
-<h2 id="integrating-the-drive-to-wasd">Integrating The Drive To
-WASD</h2>
-<p>Press key ➡️ Controllable object ➡️ Detect change ➡️ Control
-Drive</p>
-<ul>
-<li><strong>W, A, S, D:</strong>
-<ul>
-<li>↳ 4 Thrusters (Likely conceptual directions, not physical thrusters
-for this drive)</li>
-<li>↳ Wheels (Role not fully detailed, perhaps an alternative control
-aspect)</li>
-<li>↳ Event controllers ➡️ Control thrust</li>
-<li>↳ Scripts ➡️ Constant Stop</li>
-</ul></li>
-</ul>
-<hr />
-<h2 id="logic-reasoning">Logic &amp; Reasoning</h2>
-<p>Focusing on the detecting change and control drive aspects of the
-drive, many interesting design choices emerge. The script option is more
-robust and compact solution; however, it is not allowed on keen servers.
-Below is the design choices made and reasoning:</p>
+</section>
+<section id="intergrating-the-drive-with-wasd" class="level3">
+<h3>Intergrating the Drive with WASD</h3>
+<p><strong>Core Events</strong><br />
+1. Press key (W, A, S, D)<br />
+2. Influences controllable Object (Thruster, Wheels)<br />
+3. Detect Change (Event controllers, Scripts)<br />
+4. Drive Control (Control thrust, Control Stop)</p>
+<section id="steps-for-multiplayer-scriptless-worlds" class="level4">
+<h4>Steps For Multiplayer / Scriptless Worlds</h4>
 <table>
 <colgroup>
-<col style="width: 24%" />
-<col style="width: 75%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">Logic</th>
-<th style="text-align: left;">Reason</th>
+<th>Function</th>
+<th>Avenue</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>For each direction</strong></td>
-<td style="text-align: left;"></td>
+<td>Detect 100% thrust for direction</td>
+<td>Event in Event Controller</td>
+<td>WASD input creates a detectable 100% thrust</td>
 </tr>
 <tr>
-<td style="text-align: left;">↳ Detect 100% thrust</td>
-<td style="text-align: left;">⬅️ Ward input creates 100% thrust</td>
+<td>Ensure gravity drives 9.8 m/s</td>
+<td><strong>20x</strong> increase acceleration commands to gravity
+generator group from a timer block (20 commands because each command
+increases / decreases by 1 m/s^2 and covers the -9.8 m/s^2 to 9.8m/s^2
+case).</td>
+<td>Use one array of gravity drives per direction. It will increase more
+accleration per PCU and simplifies set up work. You can trigger 9 groups
+of the same blocks per page.</td>
 </tr>
 <tr>
-<td style="text-align: left;">↳ Ensure gravity drives 9.8m/s²</td>
-<td style="text-align: left;">⬅️ It saves PCU and increases
-acceleration</td>
+<td>If speed less than 5m/s: turn off gravity blocks, else: turn on</td>
+<td>With inertia dampers, drive will be stuck in a infinite loop of
+thrust over compenstation causing extreme pulsing. This also means that
+basic thrusters must be used to achieve speed chanmge &gt;5 for gravitry
+drive to start. Either way I would recommend a kill switch in
+cockpit.</td>
+<td>Effectiviness of this logic dependent on thrust to wieght
+ratio.</td>
 </tr>
 <tr>
-<td style="text-align: left;">↳ Trigger accelerate x20</td>
-<td style="text-align: left;">(For more complex logic) if you combine
-generators in one direction and just control direction</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Stopping</strong></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">↳ ⬇️ continued</td>
-<td style="text-align: left;">Each increase action only increases my
-1m/s². Some control this with loops, but it is logistically easier to
-just create 10 groups and trigger that across 2x pages.</td>
+<td>If accleration less than 0: stop artifical mass, else: start
+artifical mass</td>
+<td>No necessary but fucking sick to look at.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p><strong>For each direction</strong></p>
+</section>
+</section>
+<section id="tips" class="level2">
+<h2>Tips</h2>
 <hr />
-<h2 id="stopping-continued">Stopping Continued</h2>
 <ul>
-<li><strong>IF speed less than 5 m/s</strong> (dependent on
-thrust-to-weight ratio)
-<ul>
-<li>Stop gravity drive</li>
-<li><em>Reason:</em> Drive will get into pulsating state above it once
-it cannot slow down any less.</li>
-</ul></li>
-<li><strong>Else</strong>
-<ul>
-<li>Start gravity drives (Note: This might be a typo or refer to
-engaging reverse gravity for braking)</li>
-</ul></li>
-<li><strong>IF speed change &lt; 0</strong>
-<ul>
-<li>Stop artificial mass</li>
-<li><em>Reason:</em> This also means that basic thrusters must achieve
-speed change &lt; 0 for gravity drive to start. Filter may. I would
-recommend a kill switch in cockpit.</li>
-</ul></li>
-<li><strong>Else</strong>
-<ul>
-<li>Start artificial mass</li>
-<li><em>Note:</em> Not necessary but fucking sick to look at.</li>
-</ul></li>
+<li>Gravity drives ore on on/triggered but nothing to happening: Check
+out if your other side is counter acting the field acceleration</li>
+<li>Test on small one direction craft first, then start on an actual
+craft</li>
+<li>Use an antenna when building to debug if you are creating the groups
+correctly</li>
+<li>Check the gravity field twice before turnning on any artifical
+blocks</li>
 </ul>
-<hr />
-<h2 id="bugs-to-look-out-for">Bugs to look out for</h2>
-<ul>
-<li><strong>Gravity drives are on/triggered but nothing is
-happening.</strong>
-<ul>
-<li>➡️ Check if your other side is counteracting the
-field/acceleration.</li>
-</ul></li>
-</ul>
+</section>
+</section>

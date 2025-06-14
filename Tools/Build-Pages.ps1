@@ -20,7 +20,7 @@ foreach ($mdfile in $mdFiles) {
 
     # Excute pandoc on them
     # Place in other directory
-    pandoc $mdFilePath -f markdown -t html -o $htmlFilePath
+    pandoc $mdFilePath -f markdown -t html -o $htmlFilePath --section-divs 
 
     $count++
 }

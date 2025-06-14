@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NemoEsuriat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7fb48b9a5511e7b0d8f6be3771b543dead3bf44c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed74532eaa19669e57ef0e9b7d185c71f5bdd47c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NemoEsuriat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NemoEsuriat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

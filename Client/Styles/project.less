@@ -6,6 +6,9 @@
 
 body {
     background-color: @background-color;
+    
+    @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
+
     font-size: @body-font-size;
     font-family: 'Courier New', Courier, monospace;
 }

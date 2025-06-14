@@ -29,7 +29,6 @@
   .nav-elements {
     flex-direction: column;
     height: auto;
-    font-size: calc(20px / 2);
   }
   .dividers {
     display: none;
@@ -45,25 +44,59 @@
   src: url(../Fonts/Knewave-Regular.ttf) format("truetype");
 }
 #custom-article {
-  background-color: white;
   margin: 0 15%;
+  padding: 1em 3em;
+  background-color: white;
   min-height: 100vh;
-  padding: calc(6em / 2) 6em;
 }
-#custom-article figure {
+@media (width <= 500px) {
+  #custom-article {
+    margin: 0;
+  }
+}
+#custom-article section {
+  overflow-x: auto;
+}
+@media (width <= 500px) {
+  #custom-article section {
+    padding: 0;
+  }
+}
+#custom-article section figure {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 0.5em;
 }
-#custom-article p {
-  margin: 0.5em;
+#custom-article section p,
+#custom-article section ul,
+#custom-article section li,
+#custom-article section table,
+#custom-article section figure,
+#custom-article section section {
+  margin: 1em;
+}
+#custom-article section h {
+  margin: 0 calc(1em / 2);
+}
+#custom-article section table {
+  border-collapse: collapse;
+}
+#custom-article section tr {
+  border-bottom: 1px solid;
+}
+#custom-article section td {
+  padding: 0.5em;
 }
 body {
   background-color: rgba(80, 2, 73, 0.658);
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
+}
+@media (width <= 500px) {
+  body {
+    font-size: calc(20px / 2);
+  }
 }
 img {
   max-width: 100%;
