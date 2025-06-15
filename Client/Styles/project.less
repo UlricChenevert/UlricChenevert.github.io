@@ -1,0 +1,23 @@
+@import "./links.less";
+@import "./navigation.less";
+@import "./fonts.less";
+@import "./variables.less";
+@import "./article.less";
+
+body {
+    background-color: @background-color;
+    
+    @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
+
+    font-size: @body-font-size;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+img {
+    max-width: 100%;
+}
+
+* {
+    padding: 0; 
+    margin: 0;
+}

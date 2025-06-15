@@ -1,11 +1,12 @@
 {
     "files.exclude": {
-        "**/*.js.map": true,
-        "**/*.js": { "when": "$(basename).ts" },
-        // "**/*.d.ts": { "when": "$(basename).ts"}
-    },
-    "cSpell.words": [
+    // "**/*.js": true,
+    "**/*.js.map": true,
+    // "**/*.css": true,
+    "package.json":true,
+    "package-lock.json":true
+},
+"cSpell.words": [
         "Perlin"
-    ],
-    "liveServer.settings.port": 5501
+],
 }

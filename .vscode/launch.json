@@ -5,11 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Main",
-            "type": "debugpy",
+            "name": "Update frontend",
+            "type": "firefox",
             "request": "launch",
-            "program": "${workspaceFolder}/Main.py",
-            "console": "integratedTerminal"
-        }
+            "preLaunchTask": "Compile frontend files"
+        },
+        {
+            "name": "C#: Nemo Esuriat Full Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj"
+        },
     ]
 }
