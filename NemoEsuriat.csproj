@@ -10,10 +10,10 @@
      <Message Text="Compiling Typescript..." Importance="low" />
          <Exec Command="tsc" /> 
   </Target>
-<!-- 
-  <Target Name="Compile Blog Files" BeforeTargets="Build">
+
+  <!-- <Target Name="Compile Blog Files" BeforeTargets="Build">
      <Message Text="Compiling Blog..." Importance="low" />
-     <Exec Command=".\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\" /> 
+     <Exec Command=".\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\"/> 
   </Target> -->
 
 </Project>

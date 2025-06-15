@@ -1,5 +1,17 @@
 import { RegisteredHTMLComponents } from "./ComponentRegistry.js";
 import { ko } from "../Libraries/ImportableKnockout.js"
+import { OnGameLoad } from "../Unknown/UI/entry.js";
+
+
+export function AttachNewViewModel(currentViewModel : IDynamicArticleModel, component : RegisteredHTMLComponents) {
+    switch(component) {
+        case RegisteredHTMLComponents.Unknown:
+            const newKey = RegisteredHTMLComponents.Unknown.toString()
+            currentViewModel[newKey] = new GameViewModel()
+            break;
+    }
+}
+
 
 export class PageModel {
     headerViewModel: HeaderViewModel;
@@ -36,11 +48,19 @@ export class HeaderViewModel {
     }
 }
 
-export class ArticleViewModel {
+export class ArticleViewModel implements IDynamicArticleModel {
     currentPage: string;
+    [key: string]: Object;
     
     constructor() {
         this.currentPage = "Home"
+    }
+    
+}
+
+export class GameViewModel {
+    constructor() {
+        OnGameLoad()
     }
 }
 
@@ -58,4 +78,9 @@ export class Link {
         this.name = name
         this.url = url
     }
+}
+
+export interface IDynamicArticleModel {
+    currentPage: string;
+    [key: string]: Object;
 }

@@ -6,8 +6,6 @@ export var RegisteredHTMLComponents;
     RegisteredHTMLComponents["Space Engineers Research"] = "Space Engineers Research";
     RegisteredHTMLComponents["Unknown"] = "Unknown";
     RegisteredHTMLComponents["Footer"] = "Footer";
+    RegisteredHTMLComponents["Page"] = "Page";
+    RegisteredHTMLComponents["Article"] = "Article";
 })(RegisteredHTMLComponents || (RegisteredHTMLComponents = {}));
-export var CustomEvents;
-(function (CustomEvents) {
-    CustomEvents[CustomEvents["PageUpdate"] = 0] = "PageUpdate";
-})(CustomEvents || (CustomEvents = {}));

@@ -47,7 +47,7 @@
   margin: 0 15%;
   padding: 1em 3em;
   background-color: white;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 @media (width <= 500px) {
   #custom-article {
@@ -87,6 +87,37 @@
 }
 #custom-article section td {
   padding: 0.5em;
+}
+#Game {
+  background-color: #d2c297;
+  overflow: hidden;
+  color: #000000;
+  letter-spacing: calc(var(--game-width)/50 - 1ch);
+  font-size: calc(var(--game-height) / 50);
+  line-height: 1;
+  font-family: "DejaVuSansMono", monospace;
+  text-wrap: nowrap;
+  white-space: pre;
+}
+/* Background : {red: 0, green: 0, blue: 0},
+        Player : {red: 255, green: 0, blue: 0},
+        Villages : {red: 0, green: 255, blue: 0},
+        NPC : {red: 100, green: 255, blue: 100} */
+.color-0-0-0 {
+  color: #000000;
+}
+.color-255-0-0 {
+  color: #ff0000;
+}
+.color-0-255-0 {
+  color: #00ff00;
+}
+.color-28-92-28 {
+  color: #1c5c1c;
+}
+@font-face {
+  font-family: "DejaVuSansMono";
+  src: url("../Fonts/DejaVuSansMono/DejaVuSansMono.ttf") format('truetype');
 }
 body {
   background-color: rgba(80, 2, 73, 0.658);

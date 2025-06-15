@@ -1,7 +1,7 @@
 import { createKOFragmentBinding, HTMLFragement, injectHTMLFromFragment } from "./ModularHTML.js"
 import { ko } from "../Libraries/ImportableKnockout.js"
 import { RegisteredHTMLComponents } from "./ComponentRegistry.js"
-import { ArticleViewModel, FooterViewModel, HeaderViewModel, PageModel } from "./ViewModels.js";
+import { ArticleViewModel, AttachNewViewModel, FooterViewModel, HeaderViewModel, IDynamicArticleModel, PageModel } from "./ViewModels.js";
 
 createKOFragmentBinding(ko)
 
@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", (e)=> {
     headerViewModel.lastClickedOnView.subscribe((htmlComponent)=>{
         articleFragment.htmlComponent = htmlComponent
         injectHTMLFromFragment(articleFragment)
-        console.log(htmlComponent)
+        .then(()=>{AttachNewViewModel(<IDynamicArticleModel>articleFragment.viewModel, htmlComponent)})
+        
     })
 
     Promise.all([

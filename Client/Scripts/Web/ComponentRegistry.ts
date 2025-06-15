@@ -5,8 +5,6 @@ export enum RegisteredHTMLComponents {
     'Space Engineers Research' = "Space Engineers Research",
     Unknown = "Unknown",
     Footer = "Footer",
-}
-
-export enum CustomEvents {
-    PageUpdate
+    Page = "Page",
+    Article = "Article"
 }

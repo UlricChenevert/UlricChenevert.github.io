@@ -1,5 +1,14 @@
 import { RegisteredHTMLComponents } from "./ComponentRegistry.js";
 import { ko } from "../Libraries/ImportableKnockout.js";
+import { OnGameLoad } from "../Unknown/UI/entry.js";
+export function AttachNewViewModel(currentViewModel, component) {
+    switch (component) {
+        case RegisteredHTMLComponents.Unknown:
+            const newKey = RegisteredHTMLComponents.Unknown.toString();
+            currentViewModel[newKey] = new GameViewModel();
+            break;
+    }
+}
 export class PageModel {
     headerViewModel;
     articleViewModel;
@@ -35,6 +44,11 @@ export class ArticleViewModel {
     currentPage;
     constructor() {
         this.currentPage = "Home";
+    }
+}
+export class GameViewModel {
+    constructor() {
+        OnGameLoad();
     }
 }
 export class FooterViewModel {

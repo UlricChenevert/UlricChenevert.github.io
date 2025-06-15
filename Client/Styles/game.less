@@ -1,0 +1,37 @@
+@import "./variables.less";
+
+#Game { 
+    background-color: rgb(210, 194, 151); 
+    overflow: hidden; 
+    color: #000000;
+    letter-spacing: calc(var(--game-width)/@video-game-character-amount - 1ch);
+    font-size: calc(var(--game-height) /@video-game-character-amount);
+    line-height: 1;
+    font-family: "DejaVuSansMono", monospace; 
+    text-wrap: nowrap;
+    white-space: pre;
+}
+/* Background : {red: 0, green: 0, blue: 0},
+        Player : {red: 255, green: 0, blue: 0},
+        Villages : {red: 0, green: 255, blue: 0},
+        NPC : {red: 100, green: 255, blue: 100} */
+.color-0-0-0 {
+    color: rgb(0, 0, 0);
+}
+
+.color-255-0-0 {
+    color: rgb(255, 0, 0);
+}
+
+.color-0-255-0 {
+    color: rgb(0, 255, 0);
+}
+
+.color-28-92-28 {
+    color: rgb(28, 92, 28);
+}
+
+@font-face {
+    font-family: "DejaVuSansMono";
+    src: url("../Fonts/DejaVuSansMono/DejaVuSansMono.ttf") format('truetype');
+}
