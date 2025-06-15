@@ -1,5 +1,5 @@
 import { createKOFragmentBinding, HTMLFragement, injectHTMLFromFragment } from "./ModularHTML.js"
-import { ko } from "./Libraries/ImportableKnockout.js"
+import { ko } from "../Libraries/ImportableKnockout.js"
 import { RegisteredHTMLComponents } from "./ComponentRegistry.js"
 import { ArticleViewModel, FooterViewModel, HeaderViewModel, PageModel } from "./ViewModels.js";
 

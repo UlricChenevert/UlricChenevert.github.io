@@ -1,5 +1,5 @@
 import { RegisteredHTMLComponents } from "./ComponentRegistry.js";
-import { ko } from "./Libraries/ImportableKnockout.js";
+import { ko } from "../Libraries/ImportableKnockout.js";
 export class PageModel {
     headerViewModel;
     articleViewModel;
