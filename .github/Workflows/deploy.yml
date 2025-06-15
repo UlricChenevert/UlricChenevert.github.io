@@ -17,29 +17,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Setup .NET SDK
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x' # Specify your .NET SDK version (e.g., '8.0.x', '6.0.x')
-
-      # Restore .NET dependencies for your MVC project
-      - name: Restore Dependencies
-        run: dotnet restore NemoEsuriat.csproj
-
-      # Publish the .NET MVC application.
-      # This command will build your project and collect all static assets from its wwwroot folder
-      # into the 'publish/wwwroot' directory in the runner's workspace.
-      - name: Publish MVC App
-        run: dotnet publish NemoEsuriat.csproj -c Release -o publish --nologo
-
       # Deploy the 'publish' directory to GitHub Pages.
       # This action pushes the content to the 'gh-pages' branch.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4 # Use the peaceiris/actions-gh-pages action
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Automatically provided token for GitHub Actions
-          publish_dir: ./publish # The directory containing the static files to publish
+          publish_dir: ./wwwroot # The directory containing the static files to publish
           publish_branch: gh-pages # The branch to publish to (this will be created if it doesn't exist)
           user_name: 'github-actions[bot]' # User for the commit
           user_email: 'github-actions[bot]@users.noreply.github.com' # Email for the commit
