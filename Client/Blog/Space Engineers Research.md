@@ -26,9 +26,9 @@ Gravity Drives consist of an mass block and a gravity generator on the same grid
 | Function | Avenue | Notes |
 |---|---|---|
 | Detect  100% thrust for direction | Event in Event Controller | WASD input creates a detectable 100% thrust  | 
-| Ensure gravity drives 9.8 m/s | **20x** increase acceleration commands to gravity generator group from a timer block (20 commands because each command increases / decreases by 1 m/s^2 and covers the -9.8 m/s^2 to 9.8m/s^2 case).    | Use one array of gravity drives per direction. It will increase more accleration per PCU and simplifies set up work. You can trigger 9 groups of the same blocks per page. |
- If speed less than 5m/s: turn off gravity blocks, else: turn on | With inertia dampers, drive will be stuck in a infinite loop of thrust over compenstation causing extreme pulsing. This also means that basic thrusters must be used to achieve speed chanmge >5 for gravitry drive to start. Either way I would recommend a kill switch in cockpit. | Effectiviness of this logic dependent on thrust to wieght ratio. |
-| If accleration less than 0: stop artifical mass, else: start artifical mass | No necessary but fucking sick to look at. |   |
+| Ensure gravity drives 9.8 m/s | **20x** increase acceleration commands to gravity generator group from a timer block (20 commands because each command increases / decreases by 1 m/s^2 and covers the -9.8 m/s^2 to 9.8m/s^2 case).    | Use one array of gravity drives per direction. It will increase more acceleration per PCU and simplifies set up work. You can trigger 9 groups of the same blocks per page. |
+ If speed less than 5m/s: turn off gravity blocks, else: turn on | With inertia dampers, drive will be stuck in a infinite loop of thrust over compensation causing extreme pulsing. This also means that basic thrusters must be used to achieve speed change >5 for gravity drive to start. Either way I would recommend a kill switch in cockpit. | Effectiveness of this logic dependent on thrust to weight ratio. |
+| If acceleration less than 0: stop artificial mass, else: start artificial mass | No necessary but fucking sick to look at. |   |
 **For each direction**
 
 ## Tips 
@@ -38,4 +38,4 @@ Gravity Drives consist of an mass block and a gravity generator on the same grid
 - Gravity drives ore on on/triggered but nothing to happening: Check out if your other side is counter acting the field acceleration
 - Test on small one direction craft first, then start on an actual craft
 - Use an antenna when building to debug if you are creating the groups correctly
-- Check the gravity field twice before turnning on any artifical blocks
+- Check the gravity field twice before turning on any artificial blocks

@@ -21,7 +21,7 @@ export class HeaderViewModel {
         this.views = ko.observableArray([
             RegisteredHTMLComponents.Home,
             RegisteredHTMLComponents.Unknown,
-            RegisteredHTMLComponents.Minecraft,
+            RegisteredHTMLComponents["Minecraft Projects"],
             RegisteredHTMLComponents["Space Engineers Research"]
         ]),
             this.dividers = this.views().length;

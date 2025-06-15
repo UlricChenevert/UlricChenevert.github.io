@@ -1,7 +1,7 @@
 export enum RegisteredHTMLComponents {
     Header = "Header",
     Home = "Home",
-    Minecraft = "Minecraft",
+    'Minecraft Projects' = "Minecraft Projects",
     'Space Engineers Research' = "Space Engineers Research",
     Unknown = "Unknown",
     Footer = "Footer",
