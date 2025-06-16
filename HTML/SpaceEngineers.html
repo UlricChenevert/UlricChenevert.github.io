@@ -1,0 +1,135 @@
+<h1 id="wasd-gravity-drive">WASD Gravity Drive</h1>
+<h2 id="premise">Premise</h2>
+<p>Artificial gravity fields work on an <strong>artificial
+mass</strong>, which can be used for a myriad of uses, including but not
+limited to anti-character shield, launch tubes, gravity cannons, and of
+course gravity drives.</p>
+<p>Gravity Drives are on mass block and a gravity generator on the same
+grid, which create a “reactionless drive” with monstrous acceleration at
+a large PCU cost.</p>
+<hr />
+<h2 id="drive-costs">Drive Costs</h2>
+<ul>
+<li><strong>Mass Block:</strong>
+<ul>
+<li>PCU: 25</li>
+</ul></li>
+<li><strong>Gravity Generator:</strong>
+<ul>
+<li>PCU: 188</li>
+</ul></li>
+<li><strong>Example Calculation:</strong>
+<ul>
+<li>1g = 9.8 m/s²</li>
+<li>1kg = 9.8N</li>
+<li>(kg: 3,532kg mentioned in diagram)</li>
+</ul></li>
+<li><strong>Symmetric Ship:</strong>
+<ul>
+<li>≤ 210 PCU per thruster (Note: This seems to be a comparative cost or
+related to a different system, as the gravity drive itself is
+reactionless.)</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="integrating-the-drive-to-wasd">Integrating The Drive To
+WASD</h2>
+<p>Press key ➡️ Controllable object ➡️ Detect change ➡️ Control
+Drive</p>
+<ul>
+<li><strong>W, A, S, D:</strong>
+<ul>
+<li>↳ 4 Thrusters (Likely conceptual directions, not physical thrusters
+for this drive)</li>
+<li>↳ Wheels (Role not fully detailed, perhaps an alternative control
+aspect)</li>
+<li>↳ Event controllers ➡️ Control thrust</li>
+<li>↳ Scripts ➡️ Constant Stop</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="logic-reasoning">Logic &amp; Reasoning</h2>
+<p>Focusing on the detecting change and control drive aspects of the
+drive, many interesting design choices emerge. The script option is more
+robust and compact solution; however, it is not allowed on keen servers.
+Below is the design choices made and reasoning:</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Logic</th>
+<th style="text-align: left;">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>For each direction</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ Detect 100% thrust</td>
+<td style="text-align: left;">⬅️ Ward input creates 100% thrust</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ Ensure gravity drives 9.8m/s²</td>
+<td style="text-align: left;">⬅️ It saves PCU and increases
+acceleration</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ Trigger accelerate x20</td>
+<td style="text-align: left;">(For more complex logic) if you combine
+generators in one direction and just control direction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stopping</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ ⬇️ continued</td>
+<td style="text-align: left;">Each increase action only increases my
+1m/s². Some control this with loops, but it is logistically easier to
+just create 10 groups and trigger that across 2x pages.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="stopping-continued">Stopping Continued</h2>
+<ul>
+<li><strong>IF speed less than 5 m/s</strong> (dependent on
+thrust-to-weight ratio)
+<ul>
+<li>Stop gravity drive</li>
+<li><em>Reason:</em> Drive will get into pulsating state above it once
+it cannot slow down any less.</li>
+</ul></li>
+<li><strong>Else</strong>
+<ul>
+<li>Start gravity drives (Note: This might be a typo or refer to
+engaging reverse gravity for braking)</li>
+</ul></li>
+<li><strong>IF speed change &lt; 0</strong>
+<ul>
+<li>Stop artificial mass</li>
+<li><em>Reason:</em> This also means that basic thrusters must achieve
+speed change &lt; 0 for gravity drive to start. Filter may. I would
+recommend a kill switch in cockpit.</li>
+</ul></li>
+<li><strong>Else</strong>
+<ul>
+<li>Start artificial mass</li>
+<li><em>Note:</em> Not necessary but fucking sick to look at.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="bugs-to-look-out-for">Bugs to look out for</h2>
+<ul>
+<li><strong>Gravity drives are on/triggered but nothing is
+happening.</strong>
+<ul>
+<li>➡️ Check if your other side is counteracting the
+field/acceleration.</li>
+</ul></li>
+</ul>

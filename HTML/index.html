@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemo Esuriat</title>
+    <link rel="stylesheet" href="/CSS/project.css">
+    <link rel="icon" type="image/png" href="/Images/favicon.ico"/>
+    <script type='text/javascript' src="/Scripts/Libraries/knockout.js"></script>
+    <script type="module" src="/Scripts/Web/Entry.js"></script>
+  </head>
+  <body>
+    <div id="nav-bar" data-bind="fragmentBinding: headerViewModel"></div>
+    <div id="custom-article" data-bind="fragmentBinding: articleViewModel"></div>
+    <div id="footer", data-bind="fragmentBinding: footerViewModel"></div>
+  </body>
+</html>
