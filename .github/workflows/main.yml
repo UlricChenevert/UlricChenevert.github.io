@@ -23,7 +23,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4 # Use the peaceiris/actions-gh-pages action
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Automatically provided token for GitHub Actions
-          publish_dir: ./wwwroot # The directory containing the static files to publish
+          publish_dir: ./wwwroot # The directory containing the static files to publish.
+                                 # IMPORTANT: The *contents* of this directory will be
+                                 # placed at the root of your gh-pages branch.
           publish_branch: gh-pages # The branch to publish to (this will be created if it doesn't exist)
           user_name: 'github-actions[bot]' # User for the commit
           user_email: 'github-actions[bot]@users.noreply.github.com' # Email for the commit
