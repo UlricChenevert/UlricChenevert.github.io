@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="/CSS/project.css">
     <link rel="icon" type="image/png" href="/Images/favicon.ico"/>
     <script type='text/javascript' src="/Scripts/Libraries/knockout.js"></script>
-    <script type="module" src="/Scripts/Web/Entry.js"></script>
+    <script type="module" src="/Scripts/WebCore/Entry.js"></script>
   </head>
   <body>
-    <div id="nav-bar" data-bind="fragmentBinding: headerViewModel"></div>
-    <div id="custom-article" data-bind="fragmentBinding: articleViewModel"></div>
-    <div id="footer", data-bind="fragmentBinding: footerViewModel"></div>
+    <div data-bind="PartialView: main"></div>
   </body>
 </html>

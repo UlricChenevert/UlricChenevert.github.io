@@ -1,0 +1,205 @@
+// DnD Character Creator Styles
+.pop-content {
+    box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.1);
+}
+
+.wizard-container {
+    background: linear-gradient(120deg, @article-color, 60%, @fade-background-color);
+    border-radius: 0.4em;
+    
+    padding: @article-top-padding @article-side-padding;
+    margin: @margin-size auto;
+    max-width: 40em;
+    font-size: 1em;
+
+    min-width: 50vw;
+}
+
+.wizard-header {
+    font-size: @title-font-size;
+    margin-bottom: @header-margin-size;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid fade(@pop-color, 20%);
+    padding-bottom: 0.3em;
+}
+
+.wizard-panel {
+    background-color: @article-color;
+    border-radius: 0.2em;
+    padding: @standard-padding;
+    margin-bottom: @margin-size;
+    border: 1px solid fade(@pop-color, 10%);
+}
+
+.wizard-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: @margin-size;
+}
+
+.wizard-button-icon {
+    aspect-ratio: 1;
+    width: 2em;
+    transition: transform 0.3s ease-in-out;
+    font-size: initial;
+}
+
+.wizard-button {
+    background: @pop-color;
+    color: @text-color;
+
+    border: 1px solid fade(@pop-color, 30%);
+    border-radius: 0.2em;
+
+    padding: @standard-padding @standard-padding;
+
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s, transform 0.18s;
+    animation: button-fadein 0.5s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform, box-shadow;
+    
+    position: relative;
+    opacity: 1;
+    outline: none;
+    max-width: 12em;
+    min-width: 2.5em;
+    white-space: nowrap;
+}
+
+.fill-row {
+    flex-grow: 1;
+}
+
+.random-button:hover {
+    animation: shake 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.wizard-button:focus, .wizard-button:hover, .wizard-button-icon:focus, .wizard-button-icon:hover {
+    transform: scale(1.10);
+    cursor: pointer;
+}
+
+.wizard-button:hover, .wizard-button:focus {
+    background: @hover-color;
+}   
+
+.selected-button {
+    background: @hover-color;
+}
+
+@keyframes button-fadein {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+.standard-wizard-styles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: @margin-size;
+    padding: @standard-padding;
+
+    .image {
+        display: block;
+        margin-bottom: @standard-padding;
+        border: 1px solid fade(@pop-color, 10%);
+    }
+
+    .description {
+        border-radius: 0.2em;
+        padding: @standard-padding;
+        margin-bottom: @margin-size;
+        border: 1px solid fade(@pop-color, 8%);
+    }
+}
+
+// Propensity View
+.propensity-view {
+    .dispositions {
+        display: flex;
+        flex-direction: column;
+        gap: @standard-padding;
+        align-items: center;
+    }
+
+    .propensity-dispositions-row {
+        display: flex;
+        gap: @standard-padding;
+        margin-top: @standard-padding;
+    }
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    flex-direction: column;
+}
+
+.wizard-select { 
+    appearance: none;
+    background: @pop-color;
+    border: 1px solid fade(@pop-color, 30%);
+    border-radius: 0.2em;
+    padding: @standard-padding (@standard-padding * 2);
+    cursor: pointer;
+    min-width: 10em;
+    text-align: center;
+    transition: all 0.2s ease;
+    
+    background-image: linear-gradient(45deg, transparent 50%, @text-color 50%),
+                      linear-gradient(135deg, @text-color 50%, transparent 50%);
+    background-position: calc(100% - 1.25em) 50%,
+                        calc(100% - 1em) 50%;
+    background-size: 0.3em 0.3em;
+    background-repeat: no-repeat;
+
+    &:hover, &:focus {
+        background-color: @hover-color;
+        outline: none;
+        transform: scale(1.02);
+    }
+
+    option {
+        color: @text-color;
+        padding: @standard-padding;
+        cursor: pointer;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: @standard-padding;
+    font-size: 1.2em;
+    margin-bottom: @header-margin-size;
+    border-bottom: 1px solid fade(@pop-color, 15%);
+    padding-bottom: 0.2em;
+}
+
+
+// Responsive tweaks
+@media (width <= @max-size-before-element-reaction) {
+    .wizard-container {
+        padding: @standard-padding;
+        font-size: 0.95em;
+    }
+    .wizard-header {
+        font-size: 1.3em;
+    }
+    .propensity-header {
+        font-size: 1em;
+    }
+    .propensity-image {
+        max-width: 7em;
+    }
+}

@@ -1,0 +1,40 @@
+.carousel {
+    display: flex;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    flex-direction: row;
+    justify-content: space-around;
+
+    padding: @standard-padding 0;
+
+    scrollbar-color: transparent transparent;
+
+    *::-webkit-scrollbar {
+        width: 0;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background: transparent;
+        border: none;
+    }
+
+    * {
+        -ms-overflow-style: none;
+    }
+}
+
+.carousel-item {
+    scroll-snap-align: start;
+
+    flex: 0 0 100%;
+
+    transform: translateX(0%);
+    transition: transform 1.0s;
+    transform-origin: center center;
+}

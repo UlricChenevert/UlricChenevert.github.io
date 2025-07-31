@@ -10,8 +10,8 @@ Gravity Drives consist of an mass block and a gravity generator on the same grid
 ![Gravity Drive Diagram](../Images/GravityDriveDiagram.jpg)
 
 ### Drive Cost
-- Wieght Symmetric Ship
-- < 210 PCU per thruster
+- Simple: 1 mass generators : 1 gravity generator = 210 PCU (0.68x large hydrogen thrust)
+- Server PCU optimized: 32 mass generators : 1 gravity generator = 1k PCU (21.8x large hydrogen thrust)
 
 ### Intergrating the Drive with WASD 
 

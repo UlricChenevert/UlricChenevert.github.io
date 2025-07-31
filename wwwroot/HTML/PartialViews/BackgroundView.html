@@ -1,0 +1,14 @@
+<div class="background-view standard-wizard-styles">
+    <div class="header">
+        <span data-bind="text: FriendlyName"></span>
+        <button class="pop-content wizard-button-icon random-button centered" data-bind="click: Randomize">
+            <img src="/Images/dice-icon.svg" alt="Randomize" />
+        </button>
+    </div>
+    <div>
+        <div class="centered">
+            <div>Age</div>
+            <div><select class="wizard-select pop-content" data-bind="options: PossibleAges, value: ChosenAge"></select></div>
+        </div>
+    </div>
+</div>
