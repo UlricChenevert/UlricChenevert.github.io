@@ -12,9 +12,6 @@ export class Wizard {
         this.currentPanelIndex.subscribe((newIndex) => {
             this.currentTranslation(`translateX(${newIndex * -100}%)`);
         });
-        this.currentTranslation.subscribe((newTranslation) => {
-            console.log("Translation changed to: " + newTranslation);
-        });
     }
     init() {
         return Promise.all(this.panels.map((panelViewModel) => { return panelViewModel.Model.init(); }));
@@ -27,6 +24,7 @@ export class Wizard {
     }
     next() {
         console.log("Next");
+        this.panels[this.currentPanelIndex()].Model.Evaluate();
         const nextIndex = this.currentPanelIndex() + 1;
         if (nextIndex == this.panels.length)
             return;
@@ -34,6 +32,7 @@ export class Wizard {
     }
     previous() {
         console.log("Previous");
+        this.panels[this.currentPanelIndex()].Model.Evaluate();
         const previousIndex = this.currentPanelIndex() - 1;
         if (previousIndex < 0)
             return;
@@ -50,7 +49,7 @@ export class Wizard {
         this.currentPanelIndex(0);
     }
     finish() {
-        this.evaluate();
+        this.panels[this.currentPanelIndex()].Model.Evaluate();
         this.cancel();
     }
 }

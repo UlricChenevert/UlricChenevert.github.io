@@ -235,6 +235,11 @@
   margin-bottom: 1em;
   border: 1px solid rgba(152, 161, 188, 0.08);
 }
+hr {
+  width: 85%;
+  opacity: 10%;
+  color: #98a1bc;
+}
 .propensity-view .dispositions {
   display: flex;
   flex-direction: column;
@@ -253,6 +258,9 @@
   gap: 0.5em;
   flex-direction: column;
 }
+.largeText {
+  width: 70%;
+}
 .wizard-select {
   appearance: none;
   background: #98a1bc;
@@ -260,7 +268,7 @@
   border-radius: 0.2em;
   padding: 0.5em 1em;
   cursor: pointer;
-  min-width: 10em;
+  min-width: 12em;
   text-align: center;
   transition: all 0.2s ease;
   background-image: linear-gradient(45deg, transparent 50%, #505050 50%), linear-gradient(135deg, #505050 50%, transparent 50%);

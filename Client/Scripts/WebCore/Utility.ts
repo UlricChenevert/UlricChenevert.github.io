@@ -26,4 +26,36 @@ export namespace Utility {
     export function RandomElement<T> (aList : T[]) {
         return aList[Math.floor(Math.random()*aList.length)]
     }
+
+    class UniqueID {
+        id = 0
+        newID = () => {
+            this.id ++
+            return this.id
+        }
+    }
+
+    export const idGenerator = new UniqueID()
+
+    export class StringMatcher {
+        position : number
+
+        constructor (public the_string : string) {
+            this.position = 0
+        }
+
+        Match (character : string) : boolean {
+            const isMatched = this.the_string[this.position] == character[0]
+
+            this.position = (isMatched)? this.position + 1 : 0
+
+            const isEndOfString = this.the_string.length == this.position
+
+            return isEndOfString 
+        }
+    }
+
+    export function capitalize (str : string) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 }

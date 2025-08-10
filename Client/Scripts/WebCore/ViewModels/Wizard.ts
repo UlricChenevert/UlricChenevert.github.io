@@ -17,10 +17,6 @@ export class Wizard implements IEvaluatable, IHTMLInjectable {
         this.currentPanelIndex.subscribe((newIndex) => {
             this.currentTranslation(`translateX(${newIndex * -100}%)`);
         })
-
-        this.currentTranslation.subscribe((newTranslation) => {
-            console.log("Translation changed to: " + newTranslation);
-        })
     }
 
     init() {
@@ -38,6 +34,8 @@ export class Wizard implements IEvaluatable, IHTMLInjectable {
     next () {
         console.log("Next")
 
+        this.panels[this.currentPanelIndex()].Model.Evaluate()
+
         const nextIndex = this.currentPanelIndex() + 1
 
         if (nextIndex == this.panels.length) return
@@ -47,6 +45,8 @@ export class Wizard implements IEvaluatable, IHTMLInjectable {
 
     previous () {
         console.log("Previous")
+
+        this.panels[this.currentPanelIndex()].Model.Evaluate()
 
         const previousIndex = this.currentPanelIndex() - 1
 
@@ -69,7 +69,7 @@ export class Wizard implements IEvaluatable, IHTMLInjectable {
     }
 
     finish () {
-        this.evaluate() 
+        this.panels[this.currentPanelIndex()].Model.Evaluate()
         this.cancel()
     }
     

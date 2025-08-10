@@ -11,4 +11,29 @@
             <div><select class="wizard-select pop-content" data-bind="options: PossibleAges, value: ChosenAge"></select></div>
         </div>
     </div>
+
+    <hr>
+
+    <div class="centered largeText">
+        <div>Childhood Background</div>
+        <div><select class="wizard-select pop-content" data-bind="options: possibleChildhoodBackgrounds,  optionsText: 'Name', value: ChosenChildhoodStory"></select></div>
+        <div data-bind="text: ChosenChildhoodBackground()"></div>
+    </div>
+
+    <hr>
+
+    <div class="centered largeText" data-bind="if: canShowAdultChoices">
+        <div>Adult Background</div>
+        <div><select class="wizard-select pop-content" data-bind="options: possibleAdultBackgrounds,  optionsText: 'Name', value: ChosenAdulthoodStory"></select></div>
+        <div data-bind="text: ChosenAdultBackground()"></div>
+    </div>
+
+    <hr>
+
+    <div class="centered largeText" data-bind="if: canShowElderChoices">
+        <div>Elder Background</div>
+        <div><select class="wizard-select pop-content" data-bind="options: possibleElderBackgrounds,  optionsText: 'Name', value: ChosenElderStory"></select></div>
+        <div data-bind="text: ChosenElderBackground()"></div>
+    </div>
+
 </div>

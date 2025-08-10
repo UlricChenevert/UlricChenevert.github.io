@@ -2,8 +2,9 @@ import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModel
 import {ko} from "../../../Libraries/ko.js"
 import { IHTMLInjectable } from "../../../Framework/IPartialViewModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
-import { EconomicClassType, MoralityTypes, OrderTypes, RaceType, TaggedData } from "../Contracts/TaggedData.js";
-import { DescriptionModel, EconomicClassDescriptions, EconomicClasses, Moralities, Order, PictureModel, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
+import { DescriptionModel, DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, PictureModel, RaceType, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
+import {DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
+import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 
 export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInjectable {
     ViewUrl = "PartialViews/PropensityView.html"
@@ -11,7 +12,7 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
     FriendlyName = "Propensity"
     
     ChosenRace : ko.Observable<RaceType>
-    ChosenEconomicClass : ko.Observable<EconomicClassType>
+    ChosenEconomicClass : ko.Observable<DevelopmentalEnvironmentType>
     ChosenMorality : ko.Observable<MoralityTypes> 
     ChosenOrder : ko.Observable<OrderTypes>
     
@@ -23,19 +24,20 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
     PossibleRaces = Races
     PossibleMoralities = Moralities
     PossibleOrders = Order
-    PossibleEconomicClasses = EconomicClasses
+    PossibleEconomicClasses = DevelopmentalEnvironments
 
-    constructor () {
-        const chosenRace : RaceType = Races[0]
-        const chosenClass : EconomicClassType = EconomicClasses[0]
+    constructor (public GlobalCharacterData : IConfiguredCharacterData) {
+
+        const chosenRace : RaceType = GlobalCharacterData.Race()
+        const chosenClass : DevelopmentalEnvironmentType = GlobalCharacterData.EconomicBackground()
         
         this.ChosenRace = ko.observable(chosenRace)
         this.ChosenEconomicClass = ko.observable(chosenClass)
         
-        this.ChosenMorality = ko.observable(Moralities[1])
-        this.ChosenOrder = ko.observable(Order[1])
+        this.ChosenMorality = ko.observable(GlobalCharacterData.Morality())
+        this.ChosenOrder = ko.observable(GlobalCharacterData.Order())
 
-        const raceData = this.GetRaceData ()
+        const raceData = this.GetRaceData()
         this.PictureUrl = ko.observable(raceData.PictureUrl)
         this.RaceDescription = ko.observable(raceData.Description)
 
@@ -62,7 +64,10 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
     }
 
     Evaluate () {
-        return {RaceChoice: this.ChosenRace(), Disposition: {Morality: this.ChosenMorality, Order: this.ChosenOrder}}
+        this.GlobalCharacterData.Race(this.ChosenRace())
+        this.GlobalCharacterData.Morality(this.ChosenMorality())
+        this.GlobalCharacterData.Order(this.ChosenOrder())
+        this.GlobalCharacterData.EconomicBackground(this.ChosenEconomicClass())
     }
 
     Randomize () {
@@ -70,14 +75,12 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
         this.ChosenRace(Utility.RandomElement(Races)) 
         this.ChosenMorality (Utility.RandomElement(Moralities))
         this.ChosenOrder(Utility.RandomElement(Order))
-        this.ChosenEconomicClass(Utility.RandomElement(EconomicClasses))
+        this.ChosenEconomicClass(Utility.RandomElement(DevelopmentalEnvironments))
     }
 
     private GetRaceData () : PictureModel {
-        const taggedRaceData: TaggedData<PictureModel> | undefined = RaceDescriptions
-            .find((taggedData)=>{return taggedData.Tags
-                .some((tag)=>{return tag.Type == "Race" && tag.Race == this.ChosenRace()})
-            })
+        const taggedRaceData: TaggedCharacterData<PictureModel> | undefined = RaceDescriptions
+            .find((taggedData)=>{ return taggedData.Tags.Race?.Race == this.ChosenRace()})
 
         if (taggedRaceData == undefined) throw Error(this.ChosenRace() + " config not found")
         
@@ -85,11 +88,9 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
     }
 
     private GetEconomicData () : DescriptionModel {
-        const taggedEconomicDescription: TaggedData<DescriptionModel> | undefined = EconomicClassDescriptions
-            .find((taggedData)=>{return taggedData.Tags
-                .some((tag)=>{return tag.Type == "EconomicClass" && tag.Class == this.ChosenEconomicClass()})
-            })
-
+        const taggedEconomicDescription: TaggedCharacterData<DescriptionModel> | undefined = DevelopmentalEnvironmentDescriptions
+            .find((taggedData)=>{return taggedData.Tags.DevelopmentalEnvironment?.Class == this.ChosenEconomicClass()})
+            
         if (taggedEconomicDescription == undefined) throw Error(this.ChosenEconomicClass() + " config not found")
 
         return taggedEconomicDescription?.Payload

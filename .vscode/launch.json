@@ -16,5 +16,12 @@
             "request": "launch",
             "projectPath": "${workspaceFolder}/NemoEsuriat.csproj"
         },
+        {
+            "name": "Launch node",
+            "type": "node",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+        }
     ]
 }
