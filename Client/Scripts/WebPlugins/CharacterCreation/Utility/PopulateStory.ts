@@ -1,58 +1,78 @@
+import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { GenerationType } from "../Configuration/NameData.js";
-import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
+import { NameGeneratorSettings, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { NameUtility } from "./NameUtility.js";
+import { ReplaceString } from "./StringManipulation.js";
 
-export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>): TaggedCharacterData<StoryModel> {
+export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>, characterData : IConfiguredCharacterData): TaggedCharacterData<StoryModel> {
 
     const storyPayloadReference = taggedStory.Payload;
 
-    if (storyPayloadReference.Items) {
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "An Item"}})
+    const returnTaggedStory : TaggedCharacterData<StoryModel> = {Tags: taggedStory.Tags, Payload: {Name: storyPayloadReference.Name, Story: storyPayloadReference.Story}}
+    const returnPayloadReference = returnTaggedStory.Payload
 
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
+    if (storyPayloadReference.Items) {
+        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, [], ()=>{return {Name: "an unusual item"}})
+
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
     }
 
     if (storyPayloadReference.PeopleNames) {
+        const generationSettings : NameGeneratorSettings = {NameType: "Person"}
+        if (taggedStory.Tags.Race !== undefined) generationSettings.Race = taggedStory.Tags.Race.Race
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, ()=>{ return NameUtility.GeneratePersonName() })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, [], ()=>{ return NameUtility.GeneratePersonName(generationSettings) })
 
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.PersonName, ()=>getNewOrAddNew.next().name)
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, ()=>getNewOrAddNew.next().name)
     }
 
     if (storyPayloadReference.PlaceNames) {
+        const generationSettings : NameGeneratorSettings & { NameType: "Place" } = {NameType: "Place"}
+        
+        generationSettings.Race = characterData.Race()
+        if (taggedStory.Tags.PrestigeLevel) generationSettings.Prestige = taggedStory.Tags.PrestigeLevel.Prestige
+        if (taggedStory.Tags.PhysicalFeatures) generationSettings.Geography = taggedStory.Tags.PhysicalFeatures.Geography
+        if (taggedStory.Tags.Religion) generationSettings.God = taggedStory.Tags.Religion.God
+        if (taggedStory.Tags.Alignment) generationSettings.Goal = taggedStory.Tags.Alignment?.Morality
+        if (taggedStory.Tags.DevelopmentalEnvironment) generationSettings.PowerBase = taggedStory.Tags.DevelopmentalEnvironment.Class
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, ()=>{ return NameUtility.GeneratePlaceName() })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, [], ()=>{ return NameUtility.GeneratePlaceName(generationSettings) })
 
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.PlaceName, ()=>getNewOrAddNew.next().name)
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, ()=>getNewOrAddNew.next().name)
     }
 
     if (storyPayloadReference.OrganizationNames) {
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, ()=>{ return NameUtility.GenerateOrganizationName() })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, [], ()=>{ return NameUtility.GenerateOrganizationName() })
 
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.OrganizationName, ()=>getNewOrAddNew.next().name)
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, ()=>getNewOrAddNew.next().name)
+    }
+
+    if (storyPayloadReference.Items) {
+        returnPayloadReference.Items = storyPayloadReference.Items
     }
     
-    return taggedStory;
+    return returnTaggedStory
 }
 
 class GetNextOrGenerateNew<T> {
     index : number
-    constructor(public a_list : T[], public generateNew : (index : number) => T, public customLogic? : (element : T)=>boolean) {
+    constructor(public readonly alreadyGeneratedData : T[], public newlyGeneratedData : T[], public generateNew : (index : number) => T, public customLogic? : (element : T)=>boolean) {
+        this.newlyGeneratedData = alreadyGeneratedData.map(x=>x)
         this.index = 0
     }
 
     next() {
-        if (this.isUsingDefault() || Boolean(this.customLogic?(this.a_list[this.index]) : Boolean)) {
-            this.a_list.push(this.generateNew(this.index))
+        if (this.isUsingDefault() || Boolean(this.customLogic?(this.newlyGeneratedData[this.index]) : Boolean)) {
+            this.newlyGeneratedData.push(this.generateNew(this.index))
         }
  
-        const value = this.a_list[this.index]
+        const value = this.newlyGeneratedData[this.index]
 
         this.index++
 
         return value
     }
 
-    isUsingDefault() {return this.index == this.a_list.length}
+    isUsingDefault() {return this.index == this.newlyGeneratedData.length}
 }

@@ -1,6 +1,6 @@
-import { IHTMLInjectable, IPartialViewModel } from "../Framework/IPartialViewModel.js";
+import { IHTMLInjectable, IPartialViewModel } from "../Framework/Contracts/ViewModel.js";
 import { Utility } from "./Utility.js";
-import { ko } from "../Libraries/ko.js"
+import { ko } from "../Framework/Knockout/ko.js"
 
 export namespace KnockoutBindings {
     export function initializePartialView () {
@@ -8,8 +8,8 @@ export namespace KnockoutBindings {
             init: function(element, valueAccessor) {
                 return { controlsDescendantBindings: true };
             },
-            update: function(element : HTMLElement, valueAccessor) {
-                const bindingModel = valueAccessor() as IPartialViewModel<IHTMLInjectable>
+            update: function<T>(element : HTMLElement, valueAccessor : ()=>IPartialViewModel<IHTMLInjectable<T>>) {
+                const bindingModel = valueAccessor()
                 
                 const childrenElements = element.getElementsByTagName("*")
                 
@@ -17,9 +17,12 @@ export namespace KnockoutBindings {
                     ko.cleanNode(childrenElements[i])
                 }
 
-                bindingModel.Model.init()
+                bindingModel.Model.isLoading(true)
+
+                bindingModel.Model.Init()
                 .then(()=>{return Utility.injectHTML(element, Utility.getBaseHTMLUrl(bindingModel.ViewUrl))})
                 .then(()=>ko.applyBindingsToDescendants(bindingModel.Model, element))
+                .then(()=>bindingModel.Model.isLoading(false))
                 
             }
         }

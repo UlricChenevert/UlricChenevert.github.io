@@ -1,8 +1,8 @@
 
 import { buildCommand } from "../Command/DependencyInjection.js";
 import { buildLayer } from "../Layer/DependencyInjection.js";
-import { buildLibraries } from "../Libraries/DependencyInjection.js";
-import { DependencyInjection } from "../Libraries/Injection.js";
+import { buildLibraries } from "../../Framework/IOC/DependencyInjection.js";
+import { DependencyInjection } from "../../Framework/DependencyInjection/DependencyInjection.js";
 import { buildMode } from "../Mode/DependencyInjection.js";
 
 import { ModeHandler } from "../Mode/ModeHandler.js";

@@ -1,0 +1,12 @@
+<div class="standard-wizard-styles centered" style="height: 100%;">
+
+    <div class="header">
+        <span data-bind="text: FriendlyName"></span>
+    </div>
+
+    <div><button class="wizard-button pop-content" data-bind="click: nextPanel">Blank</button></div>
+
+    <div data-bind="PartialView: RaceDropDownViewModel"></div>
+
+    <div><button class="wizard-button pop-content" data-bind="click: Randomize">Random</button></div>
+</div>

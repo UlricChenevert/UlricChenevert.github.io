@@ -1,22 +1,25 @@
-import { ko } from "../../Libraries/ko.js";
-import { Utility } from "../Utility.js";
+import { ko } from "../../Framework/Knockout/ko.js";
 export class Wizard {
+    FriendlyName;
     ViewUrl = '/PartialViews/WizardView.html';
+    isLoading;
     panels;
     currentPanelIndex;
     currentTranslation = ko.observable("");
-    constructor(panelModels) {
-        this.panels = panelModels.map((panelModel) => { return Utility.BundleViewAndModel(panelModel); });
+    constructor(panelModels, FriendlyName) {
+        this.FriendlyName = FriendlyName;
+        this.isLoading = ko.observable(true);
+        this.panels = panelModels;
         this.currentPanelIndex = ko.observable(0);
         this.currentTranslation = ko.observable("translateX(0%)");
         this.currentPanelIndex.subscribe((newIndex) => {
             this.currentTranslation(`translateX(${newIndex * -100}%)`);
         });
     }
-    init() {
-        return Promise.all(this.panels.map((panelViewModel) => { return panelViewModel.Model.init(); }));
+    Init() {
+        return Promise.all(this.panels.map((panelViewModel) => { return panelViewModel.Model.Init(); }));
     }
-    evaluate() {
+    Evaluate() {
         return "YO";
     }
     isPanelVisible(index) {

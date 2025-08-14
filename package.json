@@ -1,0 +1,26 @@
+{
+  "name": "ulricchenevert.github.io",
+  "version": "1.0.0",
+  "description": "Website for all of my machinations!",
+  "homepage": "https://github.com/UlricChenevert/UlricChenevert.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/UlricChenevert/UlricChenevert.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlricChenevert/UlricChenevert.github.io.git"
+  },
+  "license": "ISC",
+  "author": "Ulric Chenevert",
+  "type": "es6",
+  "main": "Entry.js",
+  "scripts": {
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^3.2.4",
+    "happy-dom": "^18.0.1",
+    "vitest": "^3.2.4"
+  }
+}

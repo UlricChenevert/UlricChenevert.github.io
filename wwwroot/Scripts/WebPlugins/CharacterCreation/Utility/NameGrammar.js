@@ -1,5 +1,6 @@
 import { Utility } from "../../../WebCore/Utility.js";
 import { taggedNouns, taggedAdjectives, taggedVerb } from "../Configuration/NameData.js";
+import { isMatchingIfExists } from "./General.js";
 import { NameUtility } from "./NameUtility.js";
 export class NameGrammar {
     maxLength;
@@ -12,7 +13,7 @@ export class NameGrammar {
         this.currentLength = 0;
         this.nounRules = [
             this.createCompoundNoun.bind(this),
-            this.combineNounAndVerb.bind(this),
+            // this.combineNounAndVerb.bind(this),
             this.createNoun.bind(this),
         ];
     }
@@ -28,11 +29,11 @@ export class NameGrammar {
         this.currentLength++;
         return NameUtility.GeneratePersonName(this.settings).name + "'s " + Utility.capitalize(this.selectRandomNounRule());
     }
-    combineNounAndVerb() {
-        this.currentLength++;
-        const isNounFirst = Math.random() > 0.5;
-        return (isNounFirst) ? Utility.capitalize(this.createNoun()) + this.createVerb() : Utility.capitalize(this.createVerb()) + this.createNoun();
-    }
+    // combineNounAndVerb() {
+    //     this.currentLength++;
+    //     const isNounFirst = Math.random() > 0.5;
+    //     return (isNounFirst) ? Utility.capitalize(this.createNoun()) + this.createVerb() : Utility.capitalize(this.createVerb()) + this.createNoun();
+    // }
     selectRandomNounRule() {
         return (this.maxLength - 1 == this.currentLength) ? this.createNoun() : Utility.RandomElement(this.nounRules)();
     }
@@ -56,7 +57,4 @@ export class NameGrammar {
                 || isMatchingIfExists(taggedData.Tags.NameType, this.settings?.NameType);
         })).Payload.PartOfSpeech;
     }
-}
-function isMatchingIfExists(testProperty, comparisonProperty) {
-    return testProperty == undefined || comparisonProperty == undefined || testProperty == comparisonProperty;
 }

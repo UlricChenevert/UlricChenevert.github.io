@@ -1,4 +1,5 @@
-import { DescriptionModel, DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, PictureModel, RaceType, TaggedCharacterData } from "../Contracts/TaggedData"
+import { DescriptionModel, PictureModel, TaggedCharacterData } from "../Contracts/TaggedData"
+import { DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, RaceType } from "../Contracts/StringTypes"
 
 export const Races : RaceType[] = ["Human", "Orc", "Elf", "Halfling", "Dwarf"]
 export const Moralities : MoralityTypes[] = ["Good", "Neutral", "Evil"]

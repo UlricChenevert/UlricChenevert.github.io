@@ -1,0 +1,15 @@
+<div class="dropdown-button" >
+    <div class="wizard-select pop-content centered space-between" data-bind="css: { 'selected-button': isDropdownVisible() }">
+        <div class="wizard-button" data-bind="click: defaultClick">
+            <span class="button-text" data-bind="text: FirstOptionName"></span>
+        </div>
+
+        <div class="wizard-button-icon centered" data-bind="click: toggleDropdown">
+            <img class="wizard-button-icon centered" src="/Images/dropdown.svg" alt="Race Options" />
+        </div>
+    </div>
+
+    <ul class="wizard-option-container" data-bind="foreach: buttonOptions, visible: isDropdownVisible">
+        <li class="wizard-option" data-bind="click: clickFunction, text: Name"></li>
+    </ul>
+</div>

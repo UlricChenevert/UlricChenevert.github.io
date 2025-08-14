@@ -1,4 +1,4 @@
-import { ko } from "../Libraries/ko.js"
+import { ko } from "../Framework/Knockout/ko.js"
 import { KnockoutBindings } from "./KnockoutBindings.js"
 import { Utility } from "./Utility.js"
 import { CharacterWizardModel } from "../WebPlugins/CharacterCreation/VIewModels/CharacterWizardModel.js"

@@ -1,16 +1,18 @@
-import { IHTMLInjectable } from "../../../Framework/IPartialViewModel.js"
+import { IHTMLInjectable } from "../../../Framework/Contracts/ViewModel.js"
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js"
-import { AdultBackgroundsTypes, AgeType, ChildhoodBackgroundsTypes, ElderBackgroundsTypes, StoryModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js"
-import {ko} from "../../../Libraries/ko.js"
+import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js"
+import { AgeType } from "../Contracts/StringTypes.js"
+import {ko} from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
-import { NameUtility } from "../Utility/NameUtility.js"
 import { PopulateBackground } from "../Utility/PopulateStory.js"
+import { Observable, ObservableArrayFunctions } from "../../../Framework/Knockout/knockout.js"
+import { getPossibleBackground } from "../Utility/General.js"
 
-export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInjectable {
+export class BackgroundViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/BackgroundView.html"
-
+    isLoading: Observable<boolean>
     FriendlyName = "Background"
 
     ChosenAge : ko.Observable<AgeType>
@@ -34,9 +36,10 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
     PossibleAges = Ages
 
     constructor(public GlobalCharacterData : IConfiguredCharacterData) {
+        this.isLoading = ko.observable(true)
         this.ChosenAge = ko.observable(GlobalCharacterData.Age())
 
-        this.possibleChildhoodBackgrounds = ko.observableArray(this.getPossibleBackground(ChildhoodBackgrounds))
+        this.possibleChildhoodBackgrounds = ko.observableArray(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData))
 
         const useGlobalChildStory = this.checkGlobalStory(this.possibleChildhoodBackgrounds(), GlobalCharacterData.ChildhoodBackground())
 
@@ -44,7 +47,7 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
         this.ChosenChildhoodBackground = ko.observable(this.ChosenChildhoodStory().Story)
 
 
-        this.possibleAdultBackgrounds = ko.observableArray(this.getPossibleBackground(AdultBackgrounds))
+        this.possibleAdultBackgrounds = ko.observableArray(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData))
         
         const useGlobalAdultStory = this.checkGlobalStory(this.possibleAdultBackgrounds(), GlobalCharacterData.AdultBackground())
 
@@ -53,7 +56,7 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
         this.canShowAdultChoices = ko.observable(this.ChosenAge() == "Adult" || this.ChosenAge() == "Elder")
 
 
-        this.possibleElderBackgrounds = ko.observableArray(this.getPossibleBackground(ElderBackgrounds))
+        this.possibleElderBackgrounds = ko.observableArray(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData))
 
         const useGlobalElderStory = this.checkGlobalStory(this.possibleElderBackgrounds(), GlobalCharacterData.ElderBackground())
 
@@ -68,27 +71,27 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
         })
 
         this.GlobalCharacterData.Race.subscribe(()=>{
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds))
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds))
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds))
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData))
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData))
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData))
         })
 
         this.GlobalCharacterData.EconomicBackground.subscribe(()=>{
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds))
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds))
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds))
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData))
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData))
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData))
         })
 
         this.GlobalCharacterData.Morality.subscribe(()=>{
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds))
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds))
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds))
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData))
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData))
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData))
         })
 
         this.GlobalCharacterData.Order.subscribe(()=>{
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds))
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds))
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds))
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData))
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData))
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData))
         })
         
         this.possibleChildhoodBackgrounds.subscribe((newBackgrounds)=>{this.ChosenChildhoodStory(newBackgrounds[0])})
@@ -109,17 +112,6 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
         if (this.canShowElderChoices()) this.ChosenElderStory(Utility.RandomElement(this.possibleElderBackgrounds()))
     }
 
-    getPossibleBackground (source : TaggedCharacterData<StoryModel>[]) {
-        return source
-            .filter((taggedData)=>{
-                return (taggedData.Tags.Race === undefined || taggedData.Tags.Race.Race == this.GlobalCharacterData.Race()) &&
-                        (taggedData.Tags.DevelopmentalEnvironment === undefined || taggedData.Tags.DevelopmentalEnvironment.Class == this.GlobalCharacterData.EconomicBackground()) &&
-                        (taggedData.Tags.Alignment === undefined || taggedData.Tags.Alignment.Morality == this.GlobalCharacterData.Morality()) &&
-                        (taggedData.Tags.Alignment === undefined || taggedData.Tags.Alignment.Order == this.GlobalCharacterData.Order())
-            })
-            .map((taggedData)=>{return PopulateBackground(taggedData).Payload}) 
-    }
-
     checkGlobalStory(sourceOfTruth : StoryModel[], check : StoryModel) {
         return sourceOfTruth.some((story)=>{return story.Name == check.Name})
     }
@@ -128,14 +120,30 @@ export class BackgroundViewModel implements ICharacterWizardViewModel, IHTMLInje
         this.GlobalCharacterData.ChildhoodBackground(this.ChosenChildhoodStory())
         this.GlobalCharacterData.AdultBackground(this.ChosenAdulthoodStory())
         this.GlobalCharacterData.ElderBackground(this.ChosenElderStory())
+        
+        const childhoodItems = this.ChosenChildhoodStory().Items
+        const adulthoodItems = this.ChosenAdulthoodStory().Items
+        const elderItems = this.ChosenElderStory().Items
+
+        if (childhoodItems !== undefined)
+            childhoodItems.forEach((item)=>this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items))
+
+        if (adulthoodItems !== undefined && this.canShowAdultChoices()) 
+            adulthoodItems.forEach((item)=>this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items))
+
+        if (elderItems !== undefined && this.canShowElderChoices()) 
+            elderItems.forEach((item)=>this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items))
     }
 
-    init(): Promise<any> {
+    _onlyPushUniqueItem<T>(element : T, aList : ko.ObservableArray<T>) {
+        const isNotUnique = aList().some((value)=>{return value == element})
+
+        if (isNotUnique) return
+        
+        aList.push(element)
+    }
+
+    Init(): Promise<any> {
         return Promise.resolve()
     }
-}
-
-interface BackgroundQueryResult<T> {
-    Labels: T[],
-    Stories: string[],
 }

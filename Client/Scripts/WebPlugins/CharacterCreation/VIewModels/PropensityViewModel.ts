@@ -1,14 +1,16 @@
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
-import {ko} from "../../../Libraries/ko.js"
-import { IHTMLInjectable } from "../../../Framework/IPartialViewModel.js";
+import {ko} from "../../../Framework/Knockout/ko.js"
+import { IHTMLInjectable } from "../../../Framework/Contracts/ViewModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
-import { DescriptionModel, DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, PictureModel, RaceType, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
+import { DescriptionModel, PictureModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
+import { DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, RaceType } from "../Contracts/StringTypes.js";
 import {DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
 import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { Observable } from "../../../Framework/Knockout/knockout.js";
 
-export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInjectable {
+export class PropensityViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/PropensityView.html"
-
+    isLoading: Observable<boolean>;
     FriendlyName = "Propensity"
     
     ChosenRace : ko.Observable<RaceType>
@@ -57,9 +59,16 @@ export class PropensityViewModel implements ICharacterWizardViewModel, IHTMLInje
             
             this.EconomicClassDescription(economicData.Description)
         })
+
+        this.GlobalCharacterData.Race.subscribe((value)=>{this.ChosenRace(value) })
+        this.GlobalCharacterData.EconomicBackground.subscribe((value)=>{this.ChosenEconomicClass(value) })
+        this.GlobalCharacterData.Morality.subscribe((value)=>{this.ChosenMorality(value) })
+        this.GlobalCharacterData.Order.subscribe((value)=>{this.ChosenOrder(value) })
+
+        this.isLoading = ko.observable(true)
     }
 
-    init () : Promise<any> {
+    Init () : Promise<void> {
         return Promise.resolve()
     }
 

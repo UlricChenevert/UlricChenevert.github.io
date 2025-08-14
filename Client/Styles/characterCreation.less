@@ -63,13 +63,18 @@
     position: relative;
     opacity: 1;
     outline: none;
-    max-width: 12em;
-    min-width: 2.5em;
+    min-width: 12em;
+    // min-width: 2.5em;
+    display: inline;
     white-space: nowrap;
 }
 
 .fill-row {
     flex-grow: 1;
+}
+
+.x-y-centered {
+    
 }
 
 .random-button:hover {
@@ -86,7 +91,7 @@
 }   
 
 .selected-button {
-    background: @hover-color;
+    background: @hover-color !important; 
 }
 
 @keyframes button-fadein {
@@ -151,12 +156,98 @@ hr {
     flex-direction: column;
 }
 
+// .two-button-container {
+//     display: flex;
+//     flex-direction: row;
+//     background: @pop-color;
+//     gap: 0.5em; /* Ensures the buttons are directly next to each other */
+//     position: relative;
+//     padding: 0.5em 0.5em;
+//     min-width: 12em;
+// }
+
+// /* Style the main part of the button */
+// .two-button-container .wizard-button {
+//     border-top-right-radius: 0;
+//     border-bottom-right-radius: 0;
+//     border-right: 1px solid fade(@pop-color, 30%); /* Creates a subtle dividing line */
+//     padding: @standard-padding;
+//     display: flex;
+//     padding: 0;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// /* Style the dropdown icon part of the button */
+// .two-button-container .wizard-button-icon {
+//     border-top-left-radius: 0;
+//     border-bottom-left-radius: 0;
+//     border-left: none; /* Merges the borders */
+//     background: @pop-color;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: background 0.18s, transform 0.18s;
+// }
+
+// .two-button-container .wizard-button-icon:hover {
+//     background: @hover-color;
+//     transform: none; /* Prevent the icon part from scaling on its own */
+// }
+
+// /* Style the dropdown menu */
+// .dropdown-button {
+//     position: relative;
+//     display: inline-block;
+// }
+
+// .dropdown-menu {
+//     position: absolute;
+//     top: 100%;
+//     left: 0;
+//     z-index: 5;
+//     min-width: 100%;
+//     background: @pop-color;
+//     border: 1px solid fade(@pop-color, 30%);
+//     border-radius: 0.2em;
+//     padding: 0;
+//     margin: 0.1em 0 0 0;
+//     box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.1);
+//     list-style-type: none;
+//     // Align menu to the same width as the button
+//     box-sizing: border-box;
+// }
+
+// // The individual dropdown items
+// .dropdown-menu li {
+//     padding: @standard-padding;
+//     cursor: pointer;
+//     white-space: nowrap;
+//     display: block;
+//     // Use the same text color as the main buttons
+//     color: @text-color; 
+//     // Ensure smooth transitions on hover
+//     transition: background 0.18s;
+// }
+
+// // Add the selected state style to the list item
+// .dropdown-menu li.selected-option {
+//     .selected-button(); // Inherit styles from the selected-button class
+//     // Override any conflicting styles if necessary
+// }
+
+// // Hover state for the dropdown items
+// .dropdown-menu li:hover {
+//     background: @hover-color;
+// }
+
 .largeText {
     width: 70%;
 }
 
 .wizard-select { 
-    appearance: none;
+    // appearance: none;
     background: @pop-color;
     border: 1px solid fade(@pop-color, 30%);
     border-radius: 0.2em;
@@ -166,12 +257,12 @@ hr {
     text-align: center;
     transition: all 0.2s ease;
     
-    background-image: linear-gradient(45deg, transparent 50%, @text-color 50%),
-                      linear-gradient(135deg, @text-color 50%, transparent 50%);
-    background-position: calc(100% - 1.25em) 50%,
-                        calc(100% - 1em) 50%;
-    background-size: 0.3em 0.3em;
-    background-repeat: no-repeat;
+    // background-image: linear-gradient(45deg, transparent 50%, @text-color 50%),
+    //                   linear-gradient(135deg, @text-color 50%, transparent 50%);
+    // background-position: calc(100% - 1.25em) 50%,
+    //                     calc(100% - 1em) 50%;
+    // background-size: 0.3em 0.3em;
+    // background-repeat: no-repeat;
 
     &:hover, &:focus {
         background-color: @hover-color;
@@ -179,11 +270,39 @@ hr {
         transform: scale(1.02);
     }
 
-    option {
-        color: @text-color;
-        padding: @standard-padding;
-        cursor: pointer;
-    }
+    option{.wizard-option();}
+
+    .wizard-button {background-color: transparent; padding: 0;}
+
+    .wizard-button-icon {display: inline-flex;}
+
+}
+
+.wizard-option {
+    color: @text-color;
+    padding: @standard-padding;
+    cursor: pointer;
+    border-radius: 0.2em;
+    // background: @pop-color;
+    // border: 1px solid fade(@pop-color, 30%);
+    margin: 0.5em 0;
+}
+
+.wizard-option-container {
+    padding: 0.1em 0.5em;
+    background: @hover-color;
+    border-radius: 0.2em;
+    list-style-type: none;
+}
+
+.wizard-option:hover {
+    background: white
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .header {

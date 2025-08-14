@@ -1,16 +1,20 @@
-import { ko } from "../../Libraries/ko.js";
-import { IHTMLInjectable, IPartialViewModel, IWizardModel } from "../../Framework/IPartialViewModel.js";
+import { ko } from "../../Framework/Knockout/ko.js";
+import { IEvaluatable, IHTMLInjectable, IPartialViewModel, IWizardModel } from "../../Framework/Contracts/ViewModel.js";
 import { Utility } from "../Utility.js";
+import { Observable } from "../../Framework/Knockout/knockout.js";
 
-export class Wizard implements IEvaluatable, IHTMLInjectable {
+export class Wizard implements IWizardModel<void[], string> {
     ViewUrl: string = '/PartialViews/WizardView.html'
+    isLoading: Observable<boolean>;
 
-    panels : IPartialViewModel<IWizardModel>[]
+    panels : IPartialViewModel<IWizardModel<void, void>>[]
     currentPanelIndex : ko.Observable<number>
     currentTranslation : ko.Observable<string> = ko.observable("")
     
-    constructor(panelModels : IWizardModel[]) {
-        this.panels = panelModels.map((panelModel)=>{return Utility.BundleViewAndModel(panelModel)})
+    constructor(panelModels : IPartialViewModel<IWizardModel<void, void>>[], public FriendlyName : string) {
+        this.isLoading = ko.observable(true)
+
+        this.panels = panelModels
         this.currentPanelIndex = ko.observable(0);
         this.currentTranslation = ko.observable("translateX(0%)");
 
@@ -18,12 +22,12 @@ export class Wizard implements IEvaluatable, IHTMLInjectable {
             this.currentTranslation(`translateX(${newIndex * -100}%)`);
         })
     }
-
-    init() {
-        return Promise.all(this.panels.map((panelViewModel)=>{return panelViewModel.Model.init()}))
+    
+    Init() {
+        return Promise.all(this.panels.map((panelViewModel)=>{return panelViewModel.Model.Init()}))
     }
 
-    evaluate () {
+    Evaluate () {
         return "YO"
     }
 

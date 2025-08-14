@@ -45,7 +45,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Farm Boy",
-            Story: "You grew up on a remote farm, " + GenerationType.PlaceName + ", spending your days tending to crops and livestock. Your nights were filled with stories of heroes and adventures told by traveling merchants, igniting a desire for something more than rural life."
+            Story: "You grew up on a remote farm, " + GenerationType.PlaceName + ", spending your days tending to crops and livestock. Your nights were filled with stories of heroes and adventures told by traveling merchants, igniting a desire for something more than rural life.",
+            PlaceNames: []
         }
     },
     {
@@ -68,7 +69,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Temple Ward",
-            Story: "Your early years were spent in an ancient elven temple, " + GenerationType.PlaceName + ", studying ancient texts and learning the mystical arts. The temple's serene gardens and magical wards were your playground, and the elder priests your mentors."
+            Story: "Your early years were spent in an ancient elven temple, " + GenerationType.PlaceName + ", studying ancient texts and learning the mystical arts. The temple's serene gardens and magical wards were your playground, and the elder priests your mentors.",
+            PlaceNames: []
         }
     },
     {
@@ -79,7 +81,9 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Tunnel-Born",
-            Story: "Born into the clan " + GenerationType.OrganizationName + ", you learned to navigate the dark passages beneath the mountains of " + GenerationType.PlaceName + " before you could walk. The rhythmic sound of hammer on anvil was your lullaby, and your toys were miniature weapons."
+            Story: "Born into the clan " + GenerationType.OrganizationName + ", you learned to navigate the dark passages beneath the mountains of " + GenerationType.PlaceName + " before you could walk. The rhythmic sound of hammer on anvil was your lullaby, and your toys were miniature weapons.",
+            OrganizationNames: [],
+            PlaceNames: []
         }
     },
     {
@@ -90,7 +94,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Tavern Child",
-            Story: "Your family ran a bustling tavern in a crossroads town, " + GenerationType.PlaceName + ", where you learned the art of conversation and trade from countless travelers. Your small size made you perfect for sneaking extra treats from the kitchen."
+            Story: "Your family ran a bustling tavern in a crossroads town, " + GenerationType.PlaceName + ", where you learned the art of conversation and trade from countless travelers. Your small size made you perfect for sneaking extra treats from the kitchen.",
+            PlaceNames: []
         }
     },
     {
@@ -101,7 +106,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Garrison Ward",
-            Story: "Orphaned by border skirmishes, you were raised by the local garrison of " + GenerationType.PlaceName + ". The soldiers became your family, teaching you combat drills instead of nursery rhymes, and discipline instead of childhood games."
+            Story: "Orphaned by border skirmishes, you were raised by the local garrison of " + GenerationType.PlaceName + ". The soldiers became your family, teaching you combat drills instead of nursery rhymes, and discipline instead of childhood games.",
+            PlaceNames: []
         }
     },
     {
@@ -112,7 +118,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Highborn Scion",
-            Story: "Your childhood was spent in the highest branches of the elven city, " + GenerationType.PlaceName + ", among the noble houses. You were schooled in ancient lore, courtly etiquette, and the subtle art of political intrigue from your first steps."
+            Story: "Your childhood was spent in the highest branches of the elven city, " + GenerationType.PlaceName + ", among the noble houses. You were schooled in ancient lore, courtly etiquette, and the subtle art of political intrigue from your first steps.",
+            PlaceNames: []
         }
     },
     {
@@ -123,7 +130,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Gem Apprentice",
-            Story: "Your parents " + GenerationType.PersonName + " and " + GenerationType.PersonName + " were renowned gem merchants, and you spent your youth learning to identify precious stones by touch alone. The great trading halls of the mountain kingdoms were your schoolroom."
+            Story: "Your parents " + GenerationType.PersonName + " and " + GenerationType.PersonName + " were renowned gem merchants, and you spent your youth learning to identify precious stones by touch alone. The great trading halls of the mountain kingdoms were your schoolroom.",
+            PeopleNames: []
         }
     },
     {
@@ -134,14 +142,16 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Wandering Acolyte",
-            Story: "Taken in by a wandering order of priests, called " + GenerationType.OrganizationName + ", you traveled from village to village in their caravan of tiny wagons. You learned healing herbs, sacred rites, and the joy of bringing comfort to those in need."
+            Story: "Taken in by a wandering order of priests, called " + GenerationType.OrganizationName + ", you traveled from village to village in their caravan of tiny wagons. You learned healing herbs, sacred rites, and the joy of bringing comfort to those in need.",
+            OrganizationNames: []
         }
     },
     {
         Tags: { Background: { Type: 'Background', BackgroundType: "Childhood" } },
         Payload: {
             Name: "Cult Escapee",
-            Story: "You were kidnapped as a child into a mysterious cult " + GenerationType.OrganizationName + ". They trained you in the art of the blade and the true meaning of pain. Excluded from the inner circle, you became disenfranchised with their teachings and escaped one dark and stormy night."
+            Story: "You were kidnapped as a child into a mysterious cult " + GenerationType.OrganizationName + ". They trained you in the art of the blade and the true meaning of pain. Excluded from the inner circle, you became disenfranchised with their teachings and escaped one dark and stormy night.",
+            OrganizationNames: []
         }
     },
     {
@@ -151,7 +161,9 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Street Urchin",
-            Story: "The bustling streets of the capital " + GenerationType.PlaceName + " were both your playground and your battlefield for survival. You learned to read people as easily as nobles read books, knowing which marks were safe to pickpocket and which to avoid. Your real education came from the thieves' guild " + GenerationType.OrganizationName + " that eventually took you in, teaching you that even in the darkest allies, family can be found."
+            Story: "The bustling streets of the capital " + GenerationType.PlaceName + " were both your playground and your battlefield for survival. You learned to read people as easily as nobles read books, knowing which marks were safe to pickpocket and which to avoid. Your real education came from the thieves' guild " + GenerationType.OrganizationName + " that eventually took you in, teaching you that even in the darkest allies, family can be found.",
+            PlaceNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -161,31 +173,35 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Hostage Ward",
-            Story: "As a child of diplomatic arrangements, you were sent to live with another noble family in " + GenerationType.PlaceName + " as a 'guest' to ensure peace between realms. Though treated well, you learned early the delicate dance of politics and the price of power. Your letters home were always carefully worded, knowing they would be read by multiple pairs of eyes before reaching their destination of " + GenerationType.PlaceName + "."
+            Story: "As a child of diplomatic arrangements, you were sent to live with another noble family in " + GenerationType.PlaceName + " as a 'guest' to ensure peace between realms. Though treated well, you learned early the delicate dance of politics and the price of power. Your letters home were always carefully worded, knowing they would be read by multiple pairs of eyes before reaching their destination of " + GenerationType.PlaceName + ".",
+            PlaceNames: []
         }
     },
     {
         Tags: { Background: { Type: 'Background', BackgroundType: "Childhood" } },
         Payload: {
             Name: "Lost Heir",
-            Story: "Found as an infant in the ruins of a forgotten city, you were raised by a traveling scholar " + GenerationType.PersonName + " who discovered ancient texts alongside your cradle. The writings hinted at a grand destiny, though their meaning remains unclear to this day. As you've grown, strange coincidences and prophetic dreams have followed you, suggesting your true heritage may be more significant than anyone suspected."
+            Story: "Found as an infant in the ruins of a forgotten city, you were raised by a traveling scholar " + GenerationType.PersonName + " who discovered ancient texts alongside your cradle. The writings hinted at a grand destiny, though their meaning remains unclear to this day. As you've grown, strange coincidences and prophetic dreams have followed you, suggesting your true heritage may be more significant than anyone suspected.",
+            PeopleNames: []
         }
     },
     {
         Tags: { Background: { Type: 'Background', BackgroundType: "Childhood" } },
         Payload: {
             Name: "Wild Child",
-            Story: "After a magical beast attack left you orphaned, you were raised by a circle of druids called " + GenerationType.OrganizationName + " who found you wandering the wilds. You learned to speak with animals before mastering common speech, and the forest's shadows feel more like home than any city walls. Even now, you can sense approaching storms and find your way through trackless wilderness by reading the patterns of bark and stars."
+            Story: "After a magical beast attack left you orphaned, you were raised by a circle of druids called " + GenerationType.OrganizationName + " who found you wandering the wilds. You learned to speak with animals before mastering common speech, and the forest's shadows feel more like home than any city walls. Even now, you can sense approaching storms and find your way through trackless wilderness by reading the patterns of bark and stars.",
+            OrganizationNames: []
         }
     },
     {
         Tags: {
             Background: { Type: 'Background', BackgroundType: "Childhood" },
-            DevelopmentalEnvironment: { Type: "DevelopmentalEnvironment", Class: "Clergy" }
+            DevelopmentalEnvironment: { Type: "DevelopmentalEnvironment", Class: "Clergy" },
         },
         Payload: {
             Name: "Crypt Keeper's Ward",
-            Story: "Your parents served as caretakers of an ancient necropolis " + GenerationType.PlaceName + ", and you spent your childhood playing hide-and-seek among the tombs. The whispers of the dead became your lullabies, and you learned to read epitaphs before children's books. Your unusual upbringing taught you that death is merely another state of being, though your casual acceptance of the macabre tends to unsettle others."
+            Story: "Your parents served as caretakers of an ancient necropolis " + GenerationType.PlaceName + ", and you spent your childhood playing hide-and-seek among the tombs. The whispers of the dead became your lullabies, and you learned to read epitaphs before children's books. Your unusual upbringing taught you that death is merely another state of being, though your casual acceptance of the macabre tends to unsettle others.",
+            PlaceNames: []
         }
     },
     {
@@ -195,7 +211,8 @@ export const ChildhoodBackgrounds = [
         },
         Payload: {
             Name: "Carnival Prodigy",
-            Story: "Born into a traveling carnival " + GenerationType.OrganizationName + ", you learned to juggle daggers before you could walk and mastered the art of illusion before your tenth winter. Each night brought new towns and fresh marks, while days were filled with rigorous training in acrobatics and sleight of hand. The carnival's mysterious disappearance left you with questions about your past and an uncanny ability to spot magical deceptions."
+            Story: "Born into a traveling carnival " + GenerationType.OrganizationName + ", you learned to juggle daggers before you could walk and mastered the art of illusion before your tenth winter. Each night brought new towns and fresh marks, while days were filled with rigorous training in acrobatics and sleight of hand. The carnival's mysterious disappearance left you with questions about your past and an uncanny ability to spot magical deceptions.",
+            OrganizationNames: []
         }
     },
     {
@@ -254,7 +271,9 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Map Hunter",
-            Story: "Your trading caravan discovered an ancient map in " + GenerationType.PlaceName + ". Now you seek the legendary treasures it promises in " + GenerationType.PlaceName + ", using your mercantile connections in " + GenerationType.OrganizationName + " to gather resources and information."
+            Story: "Your trading caravan discovered an ancient map in " + GenerationType.PlaceName + ". Now you seek the legendary treasures it promises in " + GenerationType.PlaceName + ", using your mercantile connections in " + GenerationType.OrganizationName + " to gather resources and information.",
+            PlaceNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -265,7 +284,10 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Betrayed Captain",
-            Story: "After years as a successful mercenary captain in " + GenerationType.OrganizationName + ", a betrayal by " + GenerationType.PersonName + " left you with a scarred face and a burning desire for revenge. Your old company's tactics are no secret to you, and your network in " + GenerationType.PlaceName + " still provides valuable intelligence."
+            Story: "After years as a successful mercenary captain in " + GenerationType.OrganizationName + ", a betrayal by " + GenerationType.PersonName + " left you with a scarred face and a burning desire for revenge. Your old company's tactics are no secret to you, and your network in " + GenerationType.PlaceName + " still provides valuable intelligence.",
+            OrganizationNames: [],
+            PeopleNames: [],
+            PlaceNames: []
         }
     },
     {
@@ -276,7 +298,9 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Court Intriguer",
-            Story: "A diplomatic mission to " + GenerationType.PlaceName + " revealed a plot against your house by " + GenerationType.OrganizationName + ". Now you walk a delicate line between courtly intrigue and outright warfare, gathering allies in " + GenerationType.PlaceName + " for the coming storm."
+            Story: "A diplomatic mission to " + GenerationType.PlaceName + " revealed a plot against your house by " + GenerationType.OrganizationName + ". Now you walk a delicate line between courtly intrigue and outright warfare, gathering allies in " + GenerationType.PlaceName + " for the coming storm.",
+            PlaceNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -287,7 +311,10 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Deep Survivor",
-            Story: "Your forge-temple in " + GenerationType.PlaceName + " was attacked by aberrations from the deep earth. As the sole survivor of " + GenerationType.OrganizationName + ", you seek to understand the threat and prevent it from reaching other dwarven strongholds. The markings left by the creatures match ancient warnings in the texts of " + GenerationType.PersonName + ", suggesting this attack was only the beginning."
+            Story: "Your forge-temple in " + GenerationType.PlaceName + " was attacked by aberrations from the deep earth. As the sole survivor of " + GenerationType.OrganizationName + ", you seek to understand the threat and prevent it from reaching other dwarven strongholds. The markings left by the creatures match ancient warnings in the texts of " + GenerationType.PersonName + ", suggesting this attack was only the beginning.",
+            PlaceNames: [],
+            OrganizationNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -298,7 +325,10 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Artifact Finder",
-            Story: "Your quiet life as a farmer in " + GenerationType.PlaceName + " was interrupted when you discovered " + GenerationType.ItemName + " while plowing your field. Now strange visitors from " + GenerationType.OrganizationName + " arrive seeking it, and you've had to learn quickly about the wider world. The artifact's powers have begun to manifest in unexpected ways, drawing both wonder and fear from those around you."
+            Story: "Your quiet life as a farmer in " + GenerationType.PlaceName + " was interrupted when you discovered " + GenerationType.ItemName + " while plowing your field. Now strange visitors from " + GenerationType.OrganizationName + " arrive seeking it, and you've had to learn quickly about the wider world. The artifact's powers have begun to manifest in unexpected ways, drawing both wonder and fear from those around you.",
+            PlaceNames: [],
+            Items: [{ Name: "an intricately carved amulet, veiny gold emanating from a single oval emerald" }],
+            OrganizationNames: []
         }
     },
     {
@@ -308,7 +338,7 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Noble Exile",
-            Story: "After uncovering corruption in " + GenerationType.OrganizationName + "'s dealings with your family in " + GenerationType.PlaceName + ", you chose exile over complicity. Your title means little now in " + GenerationType.PlaceName + ", but your training in leadership and diplomacy serves you well in your new life. The secrets you discovered continue to haunt you, as agents of your former house seek to ensure your silence.",
+            Story: "After uncovering corruption within your family in " + GenerationType.PlaceName + ", you chose exile over complicity. Your title means little now in " + GenerationType.PlaceName + ", but your training in leadership and diplomacy serves you well in your new life. The secrets you discovered continue to haunt you, as agents of your former house seek to ensure your silence.",
             PlaceNames: [],
             OrganizationNames: []
         }
@@ -321,7 +351,9 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Frontier Trader",
-            Story: "You've built a reputation from " + GenerationType.PlaceName + " to " + GenerationType.PlaceName + " as a fair but fierce trader along the frontier, dealing in exotic goods and information. Your network of contacts in " + GenerationType.OrganizationName + " spans multiple races and kingdoms. Recent raids by unknown forces have disrupted your trade routes, suggesting someone is deliberately targeting your operations."
+            Story: "You've built a reputation from " + GenerationType.PlaceName + " to " + GenerationType.PlaceName + " as a fair but fierce trader along the frontier, dealing in exotic goods and information. Your network of contacts in " + GenerationType.OrganizationName + " spans multiple races and kingdoms. Recent raids by unknown forces have disrupted your trade routes, suggesting someone is deliberately targeting your operations.",
+            PlaceNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -332,7 +364,9 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Forest Warden",
-            Story: "Centuries of patrolling the borders of " + GenerationType.PlaceName + " left you with an unmatched knowledge of wilderness survival and monster hunting. Now you track more dangerous prey through " + GenerationType.PlaceName + ": those who would threaten the ancient forests. Your latest quarry, " + GenerationType.PersonName + ", seems to be part of a larger conspiracy against the natural order."
+            Story: "Centuries of patrolling the borders of " + GenerationType.PlaceName + " left you with an unmatched knowledge of wilderness survival and monster hunting. Now you track more dangerous prey through " + GenerationType.PlaceName + ": those who would threaten the ancient forests. Your latest quarry, " + GenerationType.PersonName + ", seems to be part of a larger conspiracy against the natural order.",
+            PlaceNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -343,14 +377,21 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Relic Keeper",
-            Story: "As the keeper of " + GenerationType.OrganizationName + "'s ancestral weapons in " + GenerationType.PlaceName + ", you travel to recover lost artifacts and maintain diplomatic ties with other dwarven holds. Each recovered piece adds to your family's honor and the collection of " + GenerationType.ItemName + ". The recent theft of a particularly powerful relic by " + GenerationType.PersonName + " has set you on a dangerous path of recovery."
+            Story: "As the keeper of " + GenerationType.OrganizationName + "'s ancestral weapons in " + GenerationType.PlaceName + ", you travel to recover lost artifacts and maintain diplomatic ties with other dwarven holds, but a recent theft of a particularly powerful relic by " + GenerationType.PersonName + " has set you on a dangerous path of recovery.",
+            OrganizationNames: [],
+            PlaceNames: [],
+            PeopleNames: []
         }
     },
     {
         Tags: { Background: { Type: 'Background', BackgroundType: "Adult" } },
         Payload: {
             Name: "Ring Bearer",
-            Story: "You inherited " + GenerationType.ItemName + " from your uncle " + GenerationType.PersonName + " on his 111th birthday in " + GenerationType.PlaceName + ". Since then, you've discovered it holds powers beyond imagination, and dark forces from " + GenerationType.OrganizationName + " seem drawn to its presence. The ring's influence grows stronger each day, revealing both its power and the danger it represents."
+            Story: "You inherited " + GenerationType.ItemName + " from your uncle " + GenerationType.PersonName + " on his 111th birthday in " + GenerationType.PlaceName + ". Since then, you've discovered it holds powers beyond imagination, and dark forces from " + GenerationType.OrganizationName + " seem drawn to its presence. The ring's influence grows stronger each day, revealing both its power and the danger it represents.",
+            Items: [{ Name: "an unusual ring inscribed with a strange language" }],
+            PeopleNames: [],
+            PlaceNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -417,7 +458,8 @@ export const AdultBackgrounds = [
         },
         Payload: {
             Name: "Undercity Guide",
-            Story: "You make your living guiding merchants and adventurers through the treacherous maze of sewers and catacombs beneath the city. Years of mapping forgotten passages and avoiding territorial monsters have made you the most reliable guide in the undercity. A recent earthquake revealed a previously unknown level of ancient ruins, and the artifacts emerging from these depths have attracted dangerous attention from powerful factions."
+            Story: "You make your living guiding merchants and adventurers through the treacherous maze of sewers and catacombs beneath the city " + GenerationType.PlaceName + ". Years of mapping forgotten passages and avoiding territorial monsters have made you the most reliable guide in the undercity. A recent earthquake revealed a previously unknown level of ancient ruins, and the artifacts emerging from these depths have attracted dangerous attention from powerful factions.",
+            PlaceNames: []
         }
     },
     {
@@ -475,7 +517,9 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Veteran Commander",
-            Story: "Decades of commanding the armies of " + GenerationType.OrganizationName + " have left you with countless scars and even more stories. Your final campaign takes you to " + GenerationType.PlaceName + ", not for glory, but to secure peace for the next generation against the rising threat of " + GenerationType.OrganizationName + "."
+            Story: "Decades of commanding the armies of " + GenerationType.OrganizationName + " have left you with countless scars and even more stories. Your final campaign takes you to " + GenerationType.PlaceName + ", not for glory, but to secure peace for the next generation against the rising threat of " + GenerationType.OrganizationName + ".",
+            OrganizationNames: [],
+            PlaceNames: []
         }
     },
     {
@@ -486,7 +530,9 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Elder Shaman",
-            Story: "You've served as your clan's shaman in " + GenerationType.PlaceName + " for three generations, guiding them through war and peace. A dark vision sent by " + GenerationType.PersonName + " now drives you to seek answers beyond your tribal lands in the cursed region of " + GenerationType.PlaceName + "."
+            Story: "You've served as your clan's shaman in " + GenerationType.PlaceName + " for three generations, guiding them through war and peace. A dark vision sent by " + GenerationType.PersonName + " now drives you to seek answers beyond your tribal lands in the cursed region of " + GenerationType.PlaceName + ".",
+            PlaceNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -519,7 +565,10 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Tiny Master",
-            Story: "Your small stature never hindered your martial prowess in the defense of " + GenerationType.PlaceName + ", and you've trained generations of defenders in " + GenerationType.OrganizationName + ". A new threat to your homeland has drawn you from retirement for one last adventure, as the signs match ancient warnings passed down by " + GenerationType.PersonName + " about the return of an ancient evil."
+            Story: "Your small stature never hindered your martial prowess in the defense of " + GenerationType.PlaceName + ", and you've trained generations of defenders in " + GenerationType.OrganizationName + ". A new threat to your homeland has drawn you from retirement for one last adventure, as the signs match ancient warnings passed down by " + GenerationType.PersonName + " about the return of an ancient evil.",
+            PlaceNames: [],
+            OrganizationNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -530,7 +579,10 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Heretical Scholar",
-            Story: "After a lifetime of religious service in " + GenerationType.PlaceName + ", you've begun to question the ancient texts of " + GenerationType.OrganizationName + ". Your research in the forbidden archives of " + GenerationType.PlaceName + " suggests a different interpretation of the prophecies, one that your superiors refuse to acknowledge. The recent disappearance of " + GenerationType.PersonName + ", who shared your theories, suggests you may be closer to the truth than anyone realizes."
+            Story: "After a lifetime of religious service in " + GenerationType.PlaceName + ", you've begun to question the ancient texts of " + GenerationType.OrganizationName + ". Your research in the forbidden archives of " + GenerationType.PlaceName + " suggests a different interpretation of the prophecies, one that your superiors refuse to acknowledge. The recent disappearance of " + GenerationType.PersonName + ", who shared your theories, suggests you may be closer to the truth than anyone realizes.",
+            PlaceNames: [],
+            OrganizationNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -541,7 +593,10 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Tribal Unifier",
-            Story: "You've led the " + GenerationType.OrganizationName + " through decades of change, adapting ancient traditions to new realities in " + GenerationType.PlaceName + ". Now you seek to unite the scattered orc clans against a prophecied calamity foretold by the ancient seer " + GenerationType.PersonName + ". Your vision of unity faces opposition from traditionalists, but the signs of approaching doom grow stronger each day."
+            Story: "You've led the " + GenerationType.OrganizationName + " through decades of change, adapting ancient traditions to new realities in " + GenerationType.PlaceName + ". Now you seek to unite the scattered orc clans against a prophecied calamity foretold by the ancient seer " + GenerationType.PersonName + ". Your vision of unity faces opposition from traditionalists, but the signs of approaching doom grow stronger each day.",
+            OrganizationNames: [],
+            PlaceNames: [],
+            PeopleNames: []
         }
     },
     {
@@ -552,7 +607,10 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Arcane Sage",
-            Story: "Your centuries of studying ancient magic in the libraries of " + GenerationType.PlaceName + " have revealed disturbing patterns in the world's arcane fabric. The forgotten writings of " + GenerationType.PersonName + " confirm your worst fears about the stability of magic itself. You now travel to gather allies from " + GenerationType.OrganizationName + " who can help prevent the coming magical catastrophe."
+            Story: "Your centuries of studying ancient magic in the libraries of " + GenerationType.PlaceName + " have revealed disturbing patterns in the world's arcane fabric. The forgotten writings of " + GenerationType.PersonName + " confirm your worst fears about the stability of magic itself. You now travel to gather allies from " + GenerationType.OrganizationName + " who can help prevent the coming magical catastrophe.",
+            PlaceNames: [],
+            PeopleNames: [],
+            OrganizationNames: []
         }
     },
     {
@@ -563,14 +621,20 @@ export const ElderBackgrounds = [
         },
         Payload: {
             Name: "Secret Seeker",
-            Story: "Your trading empire spans from " + GenerationType.PlaceName + " to " + GenerationType.PlaceName + ", but wealth no longer motivates you since finding the prophecies of " + GenerationType.PersonName + ". Instead, you use your resources and connections with " + GenerationType.OrganizationName + " to support young adventurers while secretly investigating an ancient dwarven prophecy. Each piece of evidence suggests a convergence of events that hasn't occurred since the founding of the first dwarven holds."
+            Story: "Your trading empire spans from " + GenerationType.PlaceName + " to " + GenerationType.PlaceName + ", but wealth no longer motivates you since finding the prophecies of " + GenerationType.PersonName + ". Instead, you use your resources and connections with " + GenerationType.OrganizationName + " to support young adventurers while secretly investigating an ancient dwarven prophecy. Each piece of evidence suggests a convergence of events that hasn't occurred since the founding of the first dwarven holds.",
+            PlaceNames: [],
+            PeopleNames: [],
+            OrganizationNames: []
         }
     },
     {
         Tags: { Background: { Type: 'Background', BackgroundType: "Elder" } },
         Payload: {
             Name: "Artifact Scholar",
-            Story: "You've spent a lifetime collecting and studying artifacts of power in " + GenerationType.PlaceName + ". Recently, you've discovered connections between " + GenerationType.ItemName + " and ancient texts from " + GenerationType.OrganizationName + " that suggest a greater purpose, one that could change the fate of all realms."
+            Story: "You've spent a lifetime collecting and studying artifacts of power in " + GenerationType.PlaceName + ". Recently, you've discovered connections between " + GenerationType.ItemName + " and ancient texts from " + GenerationType.OrganizationName + " that suggest a greater purpose, one that could change the fate of all realms.",
+            PlaceNames: [],
+            Items: [{ Name: "Golb's Dagger" }],
+            OrganizationNames: []
         }
     },
     {

@@ -1,3 +1,0 @@
-interface IEvaluatable {
-    evaluate : Function
-}

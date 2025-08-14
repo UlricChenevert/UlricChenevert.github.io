@@ -1,43 +1,67 @@
 import { GenerationType } from "../Configuration/NameData.js";
 import { NameUtility } from "./NameUtility.js";
-export function PopulateBackground(taggedStory) {
+import { ReplaceString } from "./StringManipulation.js";
+export function PopulateBackground(taggedStory, characterData) {
     const storyPayloadReference = taggedStory.Payload;
+    const returnTaggedStory = { Tags: taggedStory.Tags, Payload: { Name: storyPayloadReference.Name, Story: storyPayloadReference.Story } };
+    const returnPayloadReference = returnTaggedStory.Payload;
     if (storyPayloadReference.Items) {
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, () => { return { Name: "An Item" }; });
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.ItemName, () => getNewOrDefault.next().Name);
+        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, [], () => { return { Name: "an unusual item" }; });
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, () => getNewOrDefault.next().Name);
     }
     if (storyPayloadReference.PeopleNames) {
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, () => { return NameUtility.GeneratePersonName(); });
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.PersonName, () => getNewOrAddNew.next().name);
+        const generationSettings = { NameType: "Person" };
+        if (taggedStory.Tags.Race !== undefined)
+            generationSettings.Race = taggedStory.Tags.Race.Race;
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, [], () => { return NameUtility.GeneratePersonName(generationSettings); });
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, () => getNewOrAddNew.next().name);
     }
     if (storyPayloadReference.PlaceNames) {
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, () => { return NameUtility.GeneratePlaceName(); });
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.PlaceName, () => getNewOrAddNew.next().name);
+        const generationSettings = { NameType: "Place" };
+        generationSettings.Race = characterData.Race();
+        if (taggedStory.Tags.PrestigeLevel)
+            generationSettings.Prestige = taggedStory.Tags.PrestigeLevel.Prestige;
+        if (taggedStory.Tags.PhysicalFeatures)
+            generationSettings.Geography = taggedStory.Tags.PhysicalFeatures.Geography;
+        if (taggedStory.Tags.Religion)
+            generationSettings.God = taggedStory.Tags.Religion.God;
+        if (taggedStory.Tags.Alignment)
+            generationSettings.Goal = taggedStory.Tags.Alignment?.Morality;
+        if (taggedStory.Tags.DevelopmentalEnvironment)
+            generationSettings.PowerBase = taggedStory.Tags.DevelopmentalEnvironment.Class;
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, [], () => { return NameUtility.GeneratePlaceName(generationSettings); });
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, () => getNewOrAddNew.next().name);
     }
     if (storyPayloadReference.OrganizationNames) {
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, () => { return NameUtility.GenerateOrganizationName(); });
-        storyPayloadReference.Story = NameUtility.ReplaceString(storyPayloadReference.Story, GenerationType.OrganizationName, () => getNewOrAddNew.next().name);
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, [], () => { return NameUtility.GenerateOrganizationName(); });
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, () => getNewOrAddNew.next().name);
     }
-    return taggedStory;
+    if (storyPayloadReference.Items) {
+        returnPayloadReference.Items = storyPayloadReference.Items;
+    }
+    return returnTaggedStory;
 }
 class GetNextOrGenerateNew {
-    a_list;
+    alreadyGeneratedData;
+    newlyGeneratedData;
     generateNew;
     customLogic;
     index;
-    constructor(a_list, generateNew, customLogic) {
-        this.a_list = a_list;
+    constructor(alreadyGeneratedData, newlyGeneratedData, generateNew, customLogic) {
+        this.alreadyGeneratedData = alreadyGeneratedData;
+        this.newlyGeneratedData = newlyGeneratedData;
         this.generateNew = generateNew;
         this.customLogic = customLogic;
+        this.newlyGeneratedData = alreadyGeneratedData.map(x => x);
         this.index = 0;
     }
     next() {
-        if (this.isUsingDefault() || Boolean(this.customLogic ? (this.a_list[this.index]) : Boolean)) {
-            this.a_list.push(this.generateNew(this.index));
+        if (this.isUsingDefault() || Boolean(this.customLogic ? (this.newlyGeneratedData[this.index]) : Boolean)) {
+            this.newlyGeneratedData.push(this.generateNew(this.index));
         }
-        const value = this.a_list[this.index];
+        const value = this.newlyGeneratedData[this.index];
         this.index++;
         return value;
     }
-    isUsingDefault() { return this.index == this.a_list.length; }
+    isUsingDefault() { return this.index == this.newlyGeneratedData.length; }
 }

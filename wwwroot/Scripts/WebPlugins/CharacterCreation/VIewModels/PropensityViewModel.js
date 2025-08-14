@@ -1,9 +1,10 @@
-import { ko } from "../../../Libraries/ko.js";
+import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
 export class PropensityViewModel {
     GlobalCharacterData;
     ViewUrl = "PartialViews/PropensityView.html";
+    isLoading;
     FriendlyName = "Propensity";
     ChosenRace;
     ChosenEconomicClass;
@@ -39,8 +40,13 @@ export class PropensityViewModel {
             const economicData = this.GetEconomicData();
             this.EconomicClassDescription(economicData.Description);
         });
+        this.GlobalCharacterData.Race.subscribe((value) => { this.ChosenRace(value); });
+        this.GlobalCharacterData.EconomicBackground.subscribe((value) => { this.ChosenEconomicClass(value); });
+        this.GlobalCharacterData.Morality.subscribe((value) => { this.ChosenMorality(value); });
+        this.GlobalCharacterData.Order.subscribe((value) => { this.ChosenOrder(value); });
+        this.isLoading = ko.observable(true);
     }
-    init() {
+    Init() {
         return Promise.resolve();
     }
     Evaluate() {

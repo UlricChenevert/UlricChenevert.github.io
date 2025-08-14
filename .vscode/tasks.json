@@ -30,6 +30,16 @@
         }
       },
       {
+        "label":"Watch Typescript Files",
+        "type": "shell",
+        "problemMatcher": ["$tsc"],
+         "command": "tsc --watch",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
         "label":"Build Blog Files",
         "type": "shell",
         "command": "..\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\",

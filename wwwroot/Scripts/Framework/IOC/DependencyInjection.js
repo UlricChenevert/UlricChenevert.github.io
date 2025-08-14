@@ -1,0 +1,14 @@
+import { GraphicsConfig } from "../../Unknown/State/Config/GraphicsConfig.js";
+import { DependencyInjection } from "../DependencyInjection/DependencyInjection.js";
+import { Perlin } from "../RandomGeneration/PerlinNoise.js";
+import { RandomGenerator } from "../RandomGeneration/RandomGenerator.js";
+export function buildLibraries() {
+    DependencyInjection.register(RandomGenerator, [GraphicsConfig.Generation.Seed], false);
+    DependencyInjection.register(Perlin, [RandomGenerator, {
+            maximumX: GraphicsConfig.Generation.WorldBorder,
+            maximumY: GraphicsConfig.Generation.WorldBorder,
+            minimumX: -1 * GraphicsConfig.Generation.WorldBorder,
+            minimumY: -1 * GraphicsConfig.Generation.WorldBorder,
+            gradientGridWidth: GraphicsConfig.Generation.resolution
+        }], true);
+}

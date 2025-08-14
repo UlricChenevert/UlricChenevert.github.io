@@ -1,6 +1,7 @@
 import { Utility } from "../../../WebCore/Utility.js";
 import { taggedNouns, taggedAdjectives, taggedVerb } from "../Configuration/NameData.js";
-import { NameGeneratorTag, PartOfSpeechModel, TaggedData } from "../Contracts/TaggedData.js";
+import { NameGeneratorSettings, NameGeneratorTag, PartOfSpeechModel, TaggedData } from "../Contracts/TaggedData.js";
+import { isMatchingIfExists } from "./General.js";
 import { NameUtility } from "./NameUtility.js";
 
 type GrammarRule = ()=>string
@@ -9,11 +10,11 @@ export class NameGrammar {
     currentLength: number;
     nounRules: GrammarRule[];
 
-    constructor(public maxLength: number, public settings?: NameGeneratorTag) {
+    constructor(public maxLength: number, public settings?: NameGeneratorSettings) {
         this.currentLength = 0;
         this.nounRules = [
             this.createCompoundNoun.bind(this),
-            this.combineNounAndVerb.bind(this),
+            // this.combineNounAndVerb.bind(this),
             this.createNoun.bind(this),
         ];
     }
@@ -35,13 +36,13 @@ export class NameGrammar {
         return NameUtility.GeneratePersonName(this.settings).name + "'s " + Utility.capitalize(this.selectRandomNounRule());
     }
 
-    combineNounAndVerb() {
-        this.currentLength++;
+    // combineNounAndVerb() {
+    //     this.currentLength++;
 
-        const isNounFirst = Math.random() > 0.5;
+    //     const isNounFirst = Math.random() > 0.5;
 
-        return (isNounFirst) ? Utility.capitalize(this.createNoun()) + this.createVerb() : Utility.capitalize(this.createVerb()) + this.createNoun();
-    }
+    //     return (isNounFirst) ? Utility.capitalize(this.createNoun()) + this.createVerb() : Utility.capitalize(this.createVerb()) + this.createNoun();
+    // }
 
     selectRandomNounRule() {
         return (this.maxLength - 1 == this.currentLength) ? this.createNoun() : Utility.RandomElement(this.nounRules)();
@@ -74,6 +75,4 @@ export class NameGrammar {
     }
 }
 
-function isMatchingIfExists(testProperty: unknown, comparisonProperty: unknown) {
-    return testProperty == undefined || comparisonProperty == undefined || testProperty == comparisonProperty;
-}
+

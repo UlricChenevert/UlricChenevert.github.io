@@ -171,8 +171,8 @@
   position: relative;
   opacity: 1;
   outline: none;
-  max-width: 12em;
-  min-width: 2.5em;
+  min-width: 12em;
+  display: inline;
   white-space: nowrap;
 }
 .fill-row {
@@ -193,7 +193,7 @@
   background: #7985a8;
 }
 .selected-button {
-  background: #7985a8;
+  background: #7985a8 !important;
 }
 @keyframes button-fadein {
   from {
@@ -262,7 +262,6 @@ hr {
   width: 70%;
 }
 .wizard-select {
-  appearance: none;
   background: #98a1bc;
   border: 1px solid rgba(152, 161, 188, 0.3);
   border-radius: 0.2em;
@@ -271,10 +270,6 @@ hr {
   min-width: 12em;
   text-align: center;
   transition: all 0.2s ease;
-  background-image: linear-gradient(45deg, transparent 50%, #505050 50%), linear-gradient(135deg, #505050 50%, transparent 50%);
-  background-position: calc(100% - 1.25em) 50%, calc(100% - 1em) 50%;
-  background-size: 0.3em 0.3em;
-  background-repeat: no-repeat;
 }
 .wizard-select:hover,
 .wizard-select:focus {
@@ -286,6 +281,36 @@ hr {
   color: #505050;
   padding: 0.5em;
   cursor: pointer;
+  border-radius: 0.2em;
+  margin: 0.5em 0;
+}
+.wizard-select .wizard-button {
+  background-color: transparent;
+  padding: 0;
+}
+.wizard-select .wizard-button-icon {
+  display: inline-flex;
+}
+.wizard-option {
+  color: #505050;
+  padding: 0.5em;
+  cursor: pointer;
+  border-radius: 0.2em;
+  margin: 0.5em 0;
+}
+.wizard-option-container {
+  padding: 0.1em 0.5em;
+  background: #7985a8;
+  border-radius: 0.2em;
+  list-style-type: none;
+}
+.wizard-option:hover {
+  background: white;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 .header {
   display: flex;

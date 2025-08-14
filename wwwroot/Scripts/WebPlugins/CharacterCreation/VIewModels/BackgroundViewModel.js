@@ -1,10 +1,11 @@
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js";
-import { ko } from "../../../Libraries/ko.js";
+import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
-import { PopulateBackground } from "../Utility/PopulateStory.js";
+import { getPossibleBackground } from "../Utility/General.js";
 export class BackgroundViewModel {
     GlobalCharacterData;
     ViewUrl = "PartialViews/BackgroundView.html";
+    isLoading;
     FriendlyName = "Background";
     ChosenAge;
     ChosenChildhoodStory;
@@ -21,17 +22,18 @@ export class BackgroundViewModel {
     PossibleAges = Ages;
     constructor(GlobalCharacterData) {
         this.GlobalCharacterData = GlobalCharacterData;
+        this.isLoading = ko.observable(true);
         this.ChosenAge = ko.observable(GlobalCharacterData.Age());
-        this.possibleChildhoodBackgrounds = ko.observableArray(this.getPossibleBackground(ChildhoodBackgrounds));
+        this.possibleChildhoodBackgrounds = ko.observableArray(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData));
         const useGlobalChildStory = this.checkGlobalStory(this.possibleChildhoodBackgrounds(), GlobalCharacterData.ChildhoodBackground());
         this.ChosenChildhoodStory = ko.observable((useGlobalChildStory) ? GlobalCharacterData.ChildhoodBackground() : this.possibleChildhoodBackgrounds()[0]);
         this.ChosenChildhoodBackground = ko.observable(this.ChosenChildhoodStory().Story);
-        this.possibleAdultBackgrounds = ko.observableArray(this.getPossibleBackground(AdultBackgrounds));
+        this.possibleAdultBackgrounds = ko.observableArray(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData));
         const useGlobalAdultStory = this.checkGlobalStory(this.possibleAdultBackgrounds(), GlobalCharacterData.AdultBackground());
         this.ChosenAdulthoodStory = ko.observable((useGlobalAdultStory) ? GlobalCharacterData.AdultBackground() : this.possibleAdultBackgrounds()[0]);
         this.ChosenAdultBackground = ko.observable(this.ChosenAdulthoodStory().Story);
         this.canShowAdultChoices = ko.observable(this.ChosenAge() == "Adult" || this.ChosenAge() == "Elder");
-        this.possibleElderBackgrounds = ko.observableArray(this.getPossibleBackground(ElderBackgrounds));
+        this.possibleElderBackgrounds = ko.observableArray(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData));
         const useGlobalElderStory = this.checkGlobalStory(this.possibleElderBackgrounds(), GlobalCharacterData.ElderBackground());
         this.ChosenElderStory = ko.observable((useGlobalElderStory) ? GlobalCharacterData.ElderBackground() : this.possibleElderBackgrounds()[0]);
         this.ChosenElderBackground = ko.observable(this.ChosenElderStory().Story);
@@ -41,24 +43,24 @@ export class BackgroundViewModel {
             this.canShowElderChoices(newAge == "Elder");
         });
         this.GlobalCharacterData.Race.subscribe(() => {
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds));
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds));
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds));
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData));
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData));
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData));
         });
         this.GlobalCharacterData.EconomicBackground.subscribe(() => {
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds));
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds));
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds));
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData));
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData));
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData));
         });
         this.GlobalCharacterData.Morality.subscribe(() => {
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds));
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds));
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds));
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData));
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData));
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData));
         });
         this.GlobalCharacterData.Order.subscribe(() => {
-            this.possibleChildhoodBackgrounds(this.getPossibleBackground(ChildhoodBackgrounds));
-            this.possibleAdultBackgrounds(this.getPossibleBackground(AdultBackgrounds));
-            this.possibleElderBackgrounds(this.getPossibleBackground(ElderBackgrounds));
+            this.possibleChildhoodBackgrounds(getPossibleBackground(ChildhoodBackgrounds, this.GlobalCharacterData));
+            this.possibleAdultBackgrounds(getPossibleBackground(AdultBackgrounds, this.GlobalCharacterData));
+            this.possibleElderBackgrounds(getPossibleBackground(ElderBackgrounds, this.GlobalCharacterData));
         });
         this.possibleChildhoodBackgrounds.subscribe((newBackgrounds) => { this.ChosenChildhoodStory(newBackgrounds[0]); });
         this.ChosenChildhoodStory.subscribe((newStory) => { this.ChosenChildhoodBackground(newStory.Story); });
@@ -75,16 +77,6 @@ export class BackgroundViewModel {
         if (this.canShowElderChoices())
             this.ChosenElderStory(Utility.RandomElement(this.possibleElderBackgrounds()));
     }
-    getPossibleBackground(source) {
-        return source
-            .filter((taggedData) => {
-            return (taggedData.Tags.Race === undefined || taggedData.Tags.Race.Race == this.GlobalCharacterData.Race()) &&
-                (taggedData.Tags.DevelopmentalEnvironment === undefined || taggedData.Tags.DevelopmentalEnvironment.Class == this.GlobalCharacterData.EconomicBackground()) &&
-                (taggedData.Tags.Alignment === undefined || taggedData.Tags.Alignment.Morality == this.GlobalCharacterData.Morality()) &&
-                (taggedData.Tags.Alignment === undefined || taggedData.Tags.Alignment.Order == this.GlobalCharacterData.Order());
-        })
-            .map((taggedData) => { return PopulateBackground(taggedData).Payload; });
-    }
     checkGlobalStory(sourceOfTruth, check) {
         return sourceOfTruth.some((story) => { return story.Name == check.Name; });
     }
@@ -92,8 +84,23 @@ export class BackgroundViewModel {
         this.GlobalCharacterData.ChildhoodBackground(this.ChosenChildhoodStory());
         this.GlobalCharacterData.AdultBackground(this.ChosenAdulthoodStory());
         this.GlobalCharacterData.ElderBackground(this.ChosenElderStory());
+        const childhoodItems = this.ChosenChildhoodStory().Items;
+        const adulthoodItems = this.ChosenAdulthoodStory().Items;
+        const elderItems = this.ChosenElderStory().Items;
+        if (childhoodItems !== undefined)
+            childhoodItems.forEach((item) => this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items));
+        if (adulthoodItems !== undefined && this.canShowAdultChoices())
+            adulthoodItems.forEach((item) => this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items));
+        if (elderItems !== undefined && this.canShowElderChoices())
+            elderItems.forEach((item) => this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items));
     }
-    init() {
+    _onlyPushUniqueItem(element, aList) {
+        const isNotUnique = aList().some((value) => { return value == element; });
+        if (isNotUnique)
+            return;
+        aList.push(element);
+    }
+    Init() {
         return Promise.resolve();
     }
 }

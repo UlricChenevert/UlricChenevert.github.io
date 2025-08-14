@@ -1,4 +1,4 @@
-import { IHTMLInjectable, IPartialViewModel } from "../Framework/IPartialViewModel.js"
+import { IHTMLInjectable, IPartialViewModel } from "../Framework/Contracts/ViewModel.js";
 
 export namespace Utility {
     export const getBaseHTMLUrl = (htmlPath : string) => {
@@ -19,7 +19,7 @@ export namespace Utility {
             )
     }
 
-    export function BundleViewAndModel<T> (model : IHTMLInjectable & T) : IPartialViewModel<T> {
+    export function BundleViewAndModel<T, Y> (model : IHTMLInjectable<T> & Y) : IPartialViewModel<Y> {
         return {ViewUrl: model.ViewUrl, Model : model}
     }
     
