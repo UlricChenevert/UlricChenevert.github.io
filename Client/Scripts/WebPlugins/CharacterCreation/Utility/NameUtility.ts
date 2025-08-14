@@ -20,8 +20,6 @@ export namespace NameUtility {
 
         const placeName = new NameGrammar(2, settings).getRandomName();
 
-        console.log(placeName);
-
         return { id: Utility.idGenerator.newID(), name: placeName };
     }
 

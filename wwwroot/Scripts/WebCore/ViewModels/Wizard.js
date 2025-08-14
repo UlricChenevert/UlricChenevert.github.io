@@ -26,7 +26,6 @@ export class Wizard {
         return this.currentPanelIndex() == index;
     }
     next() {
-        console.log("Next");
         this.panels[this.currentPanelIndex()].Model.Evaluate();
         const nextIndex = this.currentPanelIndex() + 1;
         if (nextIndex == this.panels.length)
@@ -34,7 +33,6 @@ export class Wizard {
         this.currentPanelIndex(nextIndex);
     }
     previous() {
-        console.log("Previous");
         this.panels[this.currentPanelIndex()].Model.Evaluate();
         const previousIndex = this.currentPanelIndex() - 1;
         if (previousIndex < 0)
@@ -48,7 +46,6 @@ export class Wizard {
         return this.currentPanelIndex() == this.panels.length - 1;
     }
     cancel() {
-        console.log("cancel");
         this.currentPanelIndex(0);
     }
     finish() {

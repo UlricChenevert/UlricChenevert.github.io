@@ -17,8 +17,7 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
     constructor (
         public FriendlyName : string, 
         public GlobalCharacterData : IConfiguredCharacterData, 
-        public PossibleBackgrounds : TaggedCharacterData<StoryModel>[], 
-        public CharacterPropertyKey : string
+        public PossibleBackgrounds : TaggedCharacterData<StoryModel>[]
     ) {
         this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
         

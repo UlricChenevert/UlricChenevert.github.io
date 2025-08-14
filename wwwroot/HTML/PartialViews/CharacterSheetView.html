@@ -1,0 +1,15 @@
+<div class="standard-wizard-styles ">
+
+    <div class="header">
+        <span data-bind="text: FriendlyName"></span>
+    </div>
+
+    <div>
+        YO MR. WHITE
+    </div>
+
+    <button class="wizard-button" data-bind="click: exportAsJson">Export As JSON</button>
+    <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>
+    
+    <div data-bind="if: showOutput"><div data-bind="text: jsonText"></div></div>
+</div>

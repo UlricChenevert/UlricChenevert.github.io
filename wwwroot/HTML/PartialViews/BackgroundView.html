@@ -14,26 +14,15 @@
 
     <hr>
 
-    <div class="centered largeText">
-        <div>Childhood Background</div>
-        <div><select class="wizard-select pop-content" data-bind="options: possibleChildhoodBackgrounds,  optionsText: 'Name', value: ChosenChildhoodStory"></select></div>
-        <div data-bind="text: ChosenChildhoodBackground()"></div>
-    </div>
+    <div class="centered" data-bind="PartialView: ChildBackgroundPicker"></div>
 
     <hr>
 
-    <div class="centered largeText" data-bind="if: canShowAdultChoices">
-        <div>Adult Background</div>
-        <div><select class="wizard-select pop-content" data-bind="options: possibleAdultBackgrounds,  optionsText: 'Name', value: ChosenAdulthoodStory"></select></div>
-        <div data-bind="text: ChosenAdultBackground()"></div>
-    </div>
+    <div data-bind="if: canShowAdultChoices"><div class="centered" data-bind=" PartialView: AdultBackgroundPicker"></div></div> 
 
     <hr>
 
-    <div class="centered largeText" data-bind="if: canShowElderChoices">
-        <div>Elder Background</div>
-        <div><select class="wizard-select pop-content" data-bind="options: possibleElderBackgrounds,  optionsText: 'Name', value: ChosenElderStory"></select></div>
-        <div data-bind="text: ChosenElderBackground()"></div>
-    </div>
+    <div data-bind="if: canShowElderChoices"><div class="centered" data-bind="PartialView: ElderBackgroundPicker"> </div></div>
+
 
 </div>

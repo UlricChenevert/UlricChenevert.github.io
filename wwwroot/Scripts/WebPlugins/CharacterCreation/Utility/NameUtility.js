@@ -13,7 +13,6 @@ export var NameUtility;
     NameUtility.GeneratePersonName = GeneratePersonName;
     function GeneratePlaceName(settings) {
         const placeName = new NameGrammar(2, settings).getRandomName();
-        console.log(placeName);
         return { id: Utility.idGenerator.newID(), name: placeName };
     }
     NameUtility.GeneratePlaceName = GeneratePlaceName;

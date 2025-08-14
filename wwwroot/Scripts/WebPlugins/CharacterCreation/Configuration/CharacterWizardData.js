@@ -13,7 +13,9 @@ export class ConfiguredCharacterData {
     AdultBackground;
     ElderBackground;
     Items;
-    Relationships;
+    People;
+    Places;
+    Organizations;
     constructor() {
         this.Race = ko.observable(Races[0]);
         this.Morality = ko.observable(Moralities[1]);
@@ -24,7 +26,9 @@ export class ConfiguredCharacterData {
         this.AdultBackground = ko.observable(AdultBackgrounds[0].Payload);
         this.ElderBackground = ko.observable(ElderBackgrounds[0].Payload);
         this.Items = ko.observableArray([]);
-        this.Relationships = ko.observableArray([]);
+        this.People = ko.observableArray([]);
+        this.Organizations = ko.observableArray([]);
+        this.Places = ko.observableArray([]);
     }
 }
 export function RandomizeGlobalCharacterData(configuredCharacterData) {

@@ -5,17 +5,15 @@ export class BackgroundStoryPickerModel {
     FriendlyName;
     GlobalCharacterData;
     PossibleBackgrounds;
-    CharacterPropertyKey;
     ViewUrl = "PartialViews/BackgroundStoryPicker.html";
     isLoading;
     ChosenBackground;
     ChosenStory;
     SelectableBackgrounds;
-    constructor(FriendlyName, GlobalCharacterData, PossibleBackgrounds, CharacterPropertyKey) {
+    constructor(FriendlyName, GlobalCharacterData, PossibleBackgrounds) {
         this.FriendlyName = FriendlyName;
         this.GlobalCharacterData = GlobalCharacterData;
         this.PossibleBackgrounds = PossibleBackgrounds;
-        this.CharacterPropertyKey = CharacterPropertyKey;
         this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData));
         const useGlobalChildStory = this.checkGlobalStory(this.SelectableBackgrounds(), GlobalCharacterData.ChildhoodBackground());
         this.ChosenStory = ko.observable((useGlobalChildStory) ? GlobalCharacterData.ChildhoodBackground() : this.SelectableBackgrounds()[0]);

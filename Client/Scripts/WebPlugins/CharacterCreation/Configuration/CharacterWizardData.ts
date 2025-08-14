@@ -20,7 +20,9 @@ export interface IConfiguredCharacterData {
     ElderBackground : ko.Observable<StoryModel>
 
     Items : ObservableArray<Item>
-    Relationships : ObservableArray<RelationshipModel>
+    People : ObservableArray<RelationshipModel>
+    Places : ObservableArray<RelationshipModel>
+    Organizations : ObservableArray<RelationshipModel>
 }
 
 export class ConfiguredCharacterData implements IConfiguredCharacterData {
@@ -36,8 +38,9 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
     ElderBackground: Observable<StoryModel>
 
     Items : ObservableArray<Item>
-    Relationships : ObservableArray<RelationshipModel>
-    
+    People : ObservableArray<RelationshipModel>
+    Places : ObservableArray<RelationshipModel>
+    Organizations : ObservableArray<RelationshipModel>
 
     constructor () {
         this.Race = ko.observable(Races[0])
@@ -51,7 +54,9 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
         this.ElderBackground = ko.observable(ElderBackgrounds[0].Payload)
 
         this.Items = ko.observableArray([] as Item[])
-        this.Relationships = ko.observableArray([] as RelationshipModel[])
+        this.People = ko.observableArray([] as RelationshipModel[])
+        this.Organizations = ko.observableArray([] as RelationshipModel[])
+        this.Places = ko.observableArray([] as RelationshipModel[])
     }
 }
 

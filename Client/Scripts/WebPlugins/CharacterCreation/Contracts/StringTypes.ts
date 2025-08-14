@@ -7,7 +7,7 @@ export type ItemTypes = "Unusual Ring";
 
 export type RelationshipType = "Colleagues" | "Family" | "Local Authorities" | "Local Religious Authorities" | "Master" | "Neighbors" | "Shadow Groups";
 
-export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disinterested" | "Receptive" | "Friendly";
+export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disinterested" | "Receptive" | "Friendly" | "Unknown";
 
 export type PrestigeType = "Prestigious" | "Insignificant" | "Secretive";
 

@@ -36,7 +36,6 @@ export class Wizard implements IWizardModel<void[], string> {
     }
 
     next () {
-        console.log("Next")
 
         this.panels[this.currentPanelIndex()].Model.Evaluate()
 
@@ -48,7 +47,6 @@ export class Wizard implements IWizardModel<void[], string> {
     }
 
     previous () {
-        console.log("Previous")
 
         this.panels[this.currentPanelIndex()].Model.Evaluate()
 
@@ -68,7 +66,6 @@ export class Wizard implements IWizardModel<void[], string> {
     }
 
     cancel () {
-        console.log("cancel")
         this.currentPanelIndex(0)
     }
 

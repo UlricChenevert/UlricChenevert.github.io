@@ -30,13 +30,13 @@ export type StoryModel = {
     Items? : Item[]
 
     PeopleNames? : PronounType[]
-    PeopleRelations? : number[]
+    PeopleRelations? : DispositionType[]
 
     OrganizationNames? : PronounType[]
-    OrganizationRelations? : number[]
+    OrganizationRelations? : DispositionType[]
 
     PlaceNames? : PronounType[]
-    Settings? : {RandomizeFromList : boolean}
+    PlaceRelationships? : DispositionType[]
 }
 
 export type SyllableModel = {

@@ -1,5 +1,5 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
-export class ItemModel {
+export class ItemConfigModel {
     GlobalCharacterData;
     FriendlyName = "Items";
     ViewUrl = "PartialViews/ItemsView.html";

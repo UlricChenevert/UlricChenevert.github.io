@@ -4,7 +4,7 @@ import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModel
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Item } from "../Contracts/TaggedData.js";
 
-export class ItemModel implements ICharacterWizardViewModel<void, void> {
+export class ItemConfigModel implements ICharacterWizardViewModel<void, void> {
     readonly FriendlyName = "Items";
     readonly ViewUrl = "PartialViews/ItemsView.html";
     isLoading: Observable<boolean>;
