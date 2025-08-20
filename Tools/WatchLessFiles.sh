@@ -1,0 +1,1 @@
+nodemon --watch "./**/*.less" --ext less --exec "lessc "./Client/Styles/project.less" "./wwwroot/CSS/project.css""

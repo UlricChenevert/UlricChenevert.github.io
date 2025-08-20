@@ -9,11 +9,26 @@
     
     padding: @article-top-padding @article-side-padding;
     margin: @margin-size auto;
-    max-width: 40em;
     font-size: 1em;
+    
+    width: 80em;
+    // min-width: 50vw;
 
-    min-width: 50vw;
+    display: flex;
+    flex-direction: column;
 }
+
+.retain-height {
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+.grow-height-as-much-as-possible {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
 
 .wizard-header {
     font-size: @title-font-size;
@@ -24,6 +39,8 @@
     justify-content: space-between;
     border-bottom: 1px solid fade(@pop-color, 20%);
     padding-bottom: 0.3em;
+
+
 }
 
 .wizard-panel {
@@ -42,9 +59,9 @@
 
 .wizard-button-icon {
     aspect-ratio: 1;
-    width: 2em;
+    max-height: 1.5em;    
     transition: transform 0.3s ease-in-out;
-    font-size: initial;
+    // font-size: initial;
 }
 
 .wizard-button {

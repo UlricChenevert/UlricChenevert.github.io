@@ -7,6 +7,8 @@ public class HomeController : Controller
     [Route("")]
     public IActionResult Index()
     {
-        return PhysicalFile(Directory.GetCurrentDirectory() + "\\wwwroot\\HTML\\index.html", "text/html");
+        var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HTML", "index.html");
+
+        return PhysicalFile(fullPath, "text/html");
     }
 }

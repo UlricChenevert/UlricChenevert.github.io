@@ -16,6 +16,8 @@ body {
     @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
 
     font-size: @body-font-size;
+
+    min-height: 100vh;
 }
 
 img {
@@ -35,4 +37,10 @@ img {
 
     font-family: inherit;
     font-size: inherit;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }

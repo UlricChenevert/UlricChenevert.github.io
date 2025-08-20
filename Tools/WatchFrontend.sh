@@ -1,0 +1,2 @@
+./WatchLessFiles.sh
+tsc --watch

@@ -127,9 +127,19 @@
   border-radius: 0.4em;
   padding: 1em 3em;
   margin: 1em auto;
-  max-width: 40em;
   font-size: 1em;
-  min-width: 50vw;
+  width: 80em;
+  display: flex;
+  flex-direction: column;
+}
+.retain-height {
+  flex-shrink: 1;
+  flex-grow: 0;
+  flex-basis: auto;
+}
+.grow-height-as-much-as-possible {
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 .wizard-header {
   font-size: 15px;
@@ -155,9 +165,8 @@
 }
 .wizard-button-icon {
   aspect-ratio: 1;
-  width: 2em;
+  max-height: 1.5em;
   transition: transform 0.3s ease-in-out;
-  font-size: initial;
 }
 .wizard-button {
   background: #98a1bc;
@@ -370,6 +379,7 @@ body {
   color: #505050;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 10px;
+  min-height: 100vh;
 }
 @media (width <= 500px) {
   body {
@@ -390,4 +400,9 @@ img {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
+}
+.main-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
