@@ -35,43 +35,65 @@ export class BackgroundViewModel {
         this.ElderBackgroundPicker.Model.Randomize();
     }
     Evaluate() {
+        // Get data from children
         const childEvaluation = this.ChildBackgroundPicker.Model.Evaluate();
-        const adultEvaluation = this.AdultBackgroundPicker.Model.Evaluate();
-        const elderEvaluation = this.ElderBackgroundPicker.Model.Evaluate();
+        const adultEvaluation = this.canShowAdultChoices() ? this.AdultBackgroundPicker.Model.Evaluate() : undefined;
+        const elderEvaluation = this.canShowElderChoices() ? this.ElderBackgroundPicker.Model.Evaluate() : undefined;
+        // Update global
         this.GlobalCharacterData.ChildhoodBackground(childEvaluation);
         this.GlobalCharacterData.AdultBackground(adultEvaluation);
         this.GlobalCharacterData.ElderBackground(elderEvaluation);
-        this._addItems(childEvaluation);
-        this._addItems(adultEvaluation);
-        this._addItems(elderEvaluation);
-        this._addRelationships(childEvaluation);
-        this._addRelationships(adultEvaluation);
-        this._addRelationships(elderEvaluation);
+        this._setAllItems(childEvaluation, adultEvaluation, elderEvaluation);
+        this._setAllRelationships(childEvaluation, adultEvaluation, elderEvaluation);
     }
-    _onlyPushUniqueItem(element, aList) {
-        const isNotUnique = aList().some((value) => { return value == element; });
-        if (isNotUnique)
+    // _onlyPushUniqueItem<T>(element : T, aList : T[]) {
+    //     const isNotUnique = aList().some((value)=>{return value == element})
+    //     if (isNotUnique) return
+    //     aList.push(element)
+    // }
+    _setAllItems(childBackground, adultBackground, elderBackground) {
+        const filteredBackgroundItems = this.GlobalCharacterData.Items().filter((item) => { return !(item.Source == "Background"); });
+        this._addItems(childBackground, filteredBackgroundItems);
+        this._addItems(adultBackground, filteredBackgroundItems);
+        this._addItems(elderBackground, filteredBackgroundItems);
+        this.GlobalCharacterData.Items(filteredBackgroundItems);
+    }
+    _addItems(evaluationModel, workingItemsRef) {
+        if (evaluationModel === undefined)
             return;
-        aList.push(element);
+        if (evaluationModel.Items === undefined)
+            return;
+        workingItemsRef.push(...evaluationModel.Items);
     }
-    _addItems(evaluationModel) {
-        const items = evaluationModel.Items;
-        if (items !== undefined)
-            items.forEach((item) => this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items));
+    _setAllRelationships(childBackground, adultBackground, elderBackground) {
+        const filteredPeople = this.GlobalCharacterData.People().filter((people) => { return !(people.Source == "Background"); });
+        const filteredPlaces = this.GlobalCharacterData.Places().filter((place) => { return !(place.Source == "Background"); });
+        const filteredOrganizations = this.GlobalCharacterData.Organizations().filter((organization) => { return !(organization.Source == "Background"); });
+        this._addRelationships(childBackground, filteredPeople, filteredPlaces, filteredOrganizations);
+        this._addRelationships(adultBackground, filteredPeople, filteredPlaces, filteredOrganizations);
+        this._addRelationships(elderBackground, filteredPeople, filteredPlaces, filteredOrganizations);
+        this.GlobalCharacterData.People(filteredPeople);
+        this.GlobalCharacterData.Places(filteredPlaces);
+        this.GlobalCharacterData.Organizations(filteredOrganizations);
     }
-    _addRelationships(evaluationModel) {
-        this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, this.GlobalCharacterData.Organizations);
-        this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, this.GlobalCharacterData.People);
-        this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, this.GlobalCharacterData.Places);
+    _addRelationships(evaluationModel, workingPeopleRef, workingPlacesRef, workingOrganizationsRef) {
+        if (evaluationModel === undefined)
+            return;
+        if (evaluationModel.OrganizationNames !== undefined)
+            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, workingOrganizationsRef);
+        if (evaluationModel.PeopleNames !== undefined)
+            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, workingPeopleRef);
+        if (evaluationModel.PlaceNames !== undefined)
+            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, workingPlacesRef);
     }
-    _addRelationshipModel(names, relationships, characterDataRelationshipReference) {
-        if (names) {
-            names.forEach((name, index) => {
-                const providedDisposition = relationships?.[index];
-                const disposition = (providedDisposition) ? providedDisposition : "Unknown";
-                this._onlyPushUniqueItem({ Name: name, Disposition: disposition }, characterDataRelationshipReference);
-            });
-        }
+    _addRelationshipModel(names, relationships, workingRelationshipsRef) {
+        if (!names)
+            return;
+        names.forEach((name, index) => {
+            const providedDisposition = relationships?.[index];
+            const disposition = (providedDisposition) ? providedDisposition : "Unknown";
+            workingRelationshipsRef.push({ Name: name, Disposition: disposition, Source: "Background" });
+        });
     }
     Init() {
         return Promise.resolve();

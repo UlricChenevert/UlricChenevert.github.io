@@ -1,6 +1,6 @@
 import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { GenerationType } from "../Configuration/NameData.js";
-import { PronounType } from "../Contracts/StringTypes.js";
+import { BackgroundType, PronounType, SourceTypes } from "../Contracts/StringTypes.js";
 import { Item, NameGeneratorSettings, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { NameUtility } from "./NameUtility.js";
 import { ReplaceString } from "./StringManipulation.js";
@@ -14,7 +14,7 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
 
     if (storyPayloadReference.Items) {
 
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "an unusual item"}})
+        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "an unusual item", Source: "Background" as SourceTypes}})
 
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
 
@@ -31,6 +31,8 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, ()=>getNewOrAddNew.next().name)
 
         returnPayloadReference.PeopleNames = getNewOrAddNew.usedData
+
+        returnPayloadReference.PeopleRelations = storyPayloadReference.PeopleRelations
     }
 
     if (storyPayloadReference.PlaceNames) {
@@ -48,6 +50,8 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, ()=>getNewOrAddNew.next().name)
 
         returnPayloadReference.PlaceNames = getNewOrAddNew.usedData
+
+        returnPayloadReference.PlaceRelationships = storyPayloadReference.PlaceRelationships
     }
 
     if (storyPayloadReference.OrganizationNames) {
@@ -57,6 +61,8 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, ()=>getNewOrAddNew.next().name)
 
         returnPayloadReference.OrganizationNames = getNewOrAddNew.usedData
+
+        returnPayloadReference.OrganizationRelations = storyPayloadReference.OrganizationRelations
     }
     
     return returnTaggedStory
@@ -64,12 +70,16 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
 
 class GetNextOrGenerateNew<T> {
     index : number
-    constructor(public readonly usedData : T[], public generateNew : (index : number) => T, public customLogic? : (element : T)=>boolean) {
+    usedData : T[]
+    constructor(usedData : T[], public generateNew : (index : number) => T, public customLogic? : (element : T)=>boolean) {
+        this.usedData = usedData.map(x=>x)
         this.index = 0
     }
 
     next() {
-        if (this.isUsingDefault() || Boolean(this.customLogic?(this.usedData[this.index]) : Boolean)) {
+        const needNewItemByCustomLogic : boolean | undefined = this.customLogic?.(this.usedData[this.index])
+
+        if (this.needToGenerateNew() || needNewItemByCustomLogic) {
             this.usedData.push(this.generateNew(this.index))
         }
  
@@ -80,5 +90,5 @@ class GetNextOrGenerateNew<T> {
         return value
     }
 
-    isUsingDefault() {return this.index == this.usedData.length}
+    needToGenerateNew() {return this.index >= this.usedData.length}
 }

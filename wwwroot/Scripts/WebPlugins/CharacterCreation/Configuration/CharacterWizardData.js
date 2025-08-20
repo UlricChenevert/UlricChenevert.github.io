@@ -24,7 +24,7 @@ export class ConfiguredCharacterData {
         this.Age = ko.observable(Ages[1]);
         this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload);
         this.AdultBackground = ko.observable(AdultBackgrounds[0].Payload);
-        this.ElderBackground = ko.observable(ElderBackgrounds[0].Payload);
+        this.ElderBackground = ko.observable(undefined);
         this.Items = ko.observableArray([]);
         this.People = ko.observableArray([]);
         this.Organizations = ko.observableArray([]);
@@ -38,6 +38,8 @@ export function RandomizeGlobalCharacterData(configuredCharacterData) {
     configuredCharacterData.EconomicBackground(Utility.RandomElement(DevelopmentalEnvironments));
     configuredCharacterData.Age(Utility.RandomElement(Ages));
     configuredCharacterData.ChildhoodBackground(Utility.RandomElement(getPossibleBackground(ChildhoodBackgrounds, configuredCharacterData)));
-    configuredCharacterData.AdultBackground(Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)));
-    configuredCharacterData.ElderBackground(Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)));
+    configuredCharacterData.AdultBackground((configuredCharacterData.Age() == 'Adult' || configuredCharacterData.Age() == 'Elder') ?
+        Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)) : undefined);
+    configuredCharacterData.ElderBackground((configuredCharacterData.Age() == 'Elder') ?
+        Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)) : undefined);
 }

@@ -23,6 +23,8 @@ export type BackgroundType = 'Childhood' | 'Adult' | 'Elder';
 
 export type GeographyType = "Water" | "Landform";
 
+export type SourceTypes = "Background" | "Disposition" | "Custom"
+
 export type OrganizationType = "";
 
 export type ChildhoodBackgroundsTypes =

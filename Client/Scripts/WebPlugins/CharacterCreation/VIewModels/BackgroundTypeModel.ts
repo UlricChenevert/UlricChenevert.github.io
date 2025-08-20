@@ -58,6 +58,8 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
     }
 
     Randomize () {
+        
+
         this.ChosenStory(Utility.RandomElement(this.SelectableBackgrounds()))
     }
 

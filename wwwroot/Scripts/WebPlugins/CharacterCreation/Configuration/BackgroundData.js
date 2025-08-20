@@ -151,7 +151,8 @@ export const ChildhoodBackgrounds = [
         Payload: {
             Name: "Cult Escapee",
             Story: "You were kidnapped as a child into a mysterious cult " + GenerationType.OrganizationName + ". They trained you in the art of the blade and the true meaning of pain. Excluded from the inner circle, you became disenfranchised with their teachings and escaped one dark and stormy night.",
-            OrganizationNames: []
+            OrganizationNames: [],
+            OrganizationRelations: ["Hostile"]
         }
     },
     {
@@ -182,7 +183,8 @@ export const ChildhoodBackgrounds = [
         Payload: {
             Name: "Lost Heir",
             Story: "Found as an infant in the ruins of a forgotten city, you were raised by a traveling scholar " + GenerationType.PersonName + " who discovered ancient texts alongside your cradle. The writings hinted at a grand destiny, though their meaning remains unclear to this day. As you've grown, strange coincidences and prophetic dreams have followed you, suggesting your true heritage may be more significant than anyone suspected.",
-            PeopleNames: []
+            PeopleNames: [],
+            PeopleRelations: ["Friendly"]
         }
     },
     {
@@ -327,7 +329,7 @@ export const AdultBackgrounds = [
             Name: "Artifact Finder",
             Story: "Your quiet life as a farmer in " + GenerationType.PlaceName + " was interrupted when you discovered " + GenerationType.ItemName + " while plowing your field. Now strange visitors from " + GenerationType.OrganizationName + " arrive seeking it, and you've had to learn quickly about the wider world. The artifact's powers have begun to manifest in unexpected ways, drawing both wonder and fear from those around you.",
             PlaceNames: [],
-            Items: [{ Name: "an intricately carved amulet, veiny gold emanating from a single oval emerald" }],
+            Items: [{ Name: "an intricately carved amulet, veiny gold emanating from a single oval emerald", Source: "Background" }],
             OrganizationNames: []
         }
     },
@@ -339,8 +341,7 @@ export const AdultBackgrounds = [
         Payload: {
             Name: "Noble Exile",
             Story: "After uncovering corruption within your family in " + GenerationType.PlaceName + ", you chose exile over complicity. Your title means little now in " + GenerationType.PlaceName + ", but your training in leadership and diplomacy serves you well in your new life. The secrets you discovered continue to haunt you, as agents of your former house seek to ensure your silence.",
-            PlaceNames: [],
-            OrganizationNames: []
+            PlaceNames: []
         }
     },
     {
@@ -388,7 +389,7 @@ export const AdultBackgrounds = [
         Payload: {
             Name: "Ring Bearer",
             Story: "You inherited " + GenerationType.ItemName + " from your uncle " + GenerationType.PersonName + " on his 111th birthday in " + GenerationType.PlaceName + ". Since then, you've discovered it holds powers beyond imagination, and dark forces from " + GenerationType.OrganizationName + " seem drawn to its presence. The ring's influence grows stronger each day, revealing both its power and the danger it represents.",
-            Items: [{ Name: "an unusual ring inscribed with a strange language" }],
+            Items: [{ Name: "an unusual ring inscribed with a strange language", Source: "Background" }],
             PeopleNames: [],
             PlaceNames: [],
             OrganizationNames: []
@@ -633,7 +634,7 @@ export const ElderBackgrounds = [
             Name: "Artifact Scholar",
             Story: "You've spent a lifetime collecting and studying artifacts of power in " + GenerationType.PlaceName + ". Recently, you've discovered connections between " + GenerationType.ItemName + " and ancient texts from " + GenerationType.OrganizationName + " that suggest a greater purpose, one that could change the fate of all realms.",
             PlaceNames: [],
-            Items: [{ Name: "Golb's Dagger" }],
+            Items: [{ Name: "Golb's Dagger", Source: "Background" }],
             OrganizationNames: []
         }
     },

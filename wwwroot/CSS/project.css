@@ -383,7 +383,7 @@ body {
 }
 @media (width <= 500px) {
   body {
-    font-size: calc(10px / 2);
+    font-size: calc(10px * 2);
   }
 }
 img {

@@ -16,8 +16,8 @@ export interface IConfiguredCharacterData {
     Age : ko.Observable<AgeType>
 
     ChildhoodBackground : ko.Observable<StoryModel>
-    AdultBackground : ko.Observable<StoryModel>
-    ElderBackground : ko.Observable<StoryModel>
+    AdultBackground : ko.Observable<StoryModel | undefined>
+    ElderBackground : ko.Observable<StoryModel | undefined>
 
     Items : ObservableArray<Item>
     People : ObservableArray<RelationshipModel>
@@ -34,8 +34,8 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
 
     EconomicBackground: Observable<DevelopmentalEnvironmentType>
     ChildhoodBackground: Observable<StoryModel>
-    AdultBackground: Observable<StoryModel>
-    ElderBackground: Observable<StoryModel>
+    AdultBackground: Observable<StoryModel | undefined>
+    ElderBackground: Observable<StoryModel | undefined>
 
     Items : ObservableArray<Item>
     People : ObservableArray<RelationshipModel>
@@ -50,8 +50,8 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
         
         this.Age = ko.observable(Ages[1])
         this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload)
-        this.AdultBackground = ko.observable(AdultBackgrounds[0].Payload)
-        this.ElderBackground = ko.observable(ElderBackgrounds[0].Payload)
+        this.AdultBackground = ko.observable<StoryModel | undefined>(AdultBackgrounds[0].Payload)
+        this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
 
         this.Items = ko.observableArray([] as Item[])
         this.People = ko.observableArray([] as RelationshipModel[])
@@ -68,6 +68,11 @@ export function RandomizeGlobalCharacterData(configuredCharacterData : Configure
     
     configuredCharacterData.Age(Utility.RandomElement(Ages))
     configuredCharacterData.ChildhoodBackground(Utility.RandomElement(getPossibleBackground(ChildhoodBackgrounds, configuredCharacterData)))
-    configuredCharacterData.AdultBackground(Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)))
-    configuredCharacterData.ElderBackground(Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)))
+    
+    configuredCharacterData.AdultBackground(
+        (configuredCharacterData.Age() == 'Adult' || configuredCharacterData.Age() == 'Elder' )? 
+            Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)) : undefined)
+
+    configuredCharacterData.ElderBackground((configuredCharacterData.Age() == 'Elder' )? 
+            Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)) : undefined)
 }

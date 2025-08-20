@@ -1,4 +1,4 @@
-import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes } from "./StringTypes";
+import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes } from "./StringTypes";
 
 export interface TaggedData<T, Y> {
     Tags : Y,
@@ -43,9 +43,9 @@ export type SyllableModel = {
     Syllable : string
 }
 
-export type Item = {Name: string}
+export type Item = {Name: string, Source: SourceTypes}
 
-export type RelationshipModel = {Name?: PronounType, Disposition : DispositionType}
+export type RelationshipModel = {Name?: PronounType, Disposition : DispositionType, Source : SourceTypes}
 
 export interface BaseTag {
     Type?: TagType;

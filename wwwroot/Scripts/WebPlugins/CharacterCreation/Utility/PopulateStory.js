@@ -6,7 +6,7 @@ export function PopulateBackground(taggedStory, characterData) {
     const returnTaggedStory = { Tags: taggedStory.Tags, Payload: { Name: storyPayloadReference.Name, Story: storyPayloadReference.Story } };
     const returnPayloadReference = returnTaggedStory.Payload;
     if (storyPayloadReference.Items) {
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, () => { return { Name: "an unusual item" }; });
+        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, () => { return { Name: "an unusual item", Source: "Background" }; });
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, () => getNewOrDefault.next().Name);
         returnPayloadReference.Items = getNewOrDefault.usedData;
     }
@@ -17,6 +17,7 @@ export function PopulateBackground(taggedStory, characterData) {
         const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, () => { return NameUtility.GeneratePersonName(generationSettings); });
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, () => getNewOrAddNew.next().name);
         returnPayloadReference.PeopleNames = getNewOrAddNew.usedData;
+        returnPayloadReference.PeopleRelations = storyPayloadReference.PeopleRelations;
     }
     if (storyPayloadReference.PlaceNames) {
         const generationSettings = { NameType: "Place" };
@@ -34,32 +35,35 @@ export function PopulateBackground(taggedStory, characterData) {
         const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, () => { return NameUtility.GeneratePlaceName(generationSettings); });
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, () => getNewOrAddNew.next().name);
         returnPayloadReference.PlaceNames = getNewOrAddNew.usedData;
+        returnPayloadReference.PlaceRelationships = storyPayloadReference.PlaceRelationships;
     }
     if (storyPayloadReference.OrganizationNames) {
         const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, () => { return NameUtility.GenerateOrganizationName(); });
         returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, () => getNewOrAddNew.next().name);
         returnPayloadReference.OrganizationNames = getNewOrAddNew.usedData;
+        returnPayloadReference.OrganizationRelations = storyPayloadReference.OrganizationRelations;
     }
     return returnTaggedStory;
 }
 class GetNextOrGenerateNew {
-    usedData;
     generateNew;
     customLogic;
     index;
+    usedData;
     constructor(usedData, generateNew, customLogic) {
-        this.usedData = usedData;
         this.generateNew = generateNew;
         this.customLogic = customLogic;
+        this.usedData = usedData.map(x => x);
         this.index = 0;
     }
     next() {
-        if (this.isUsingDefault() || Boolean(this.customLogic ? (this.usedData[this.index]) : Boolean)) {
+        const needNewItemByCustomLogic = this.customLogic?.(this.usedData[this.index]);
+        if (this.needToGenerateNew() || needNewItemByCustomLogic) {
             this.usedData.push(this.generateNew(this.index));
         }
         const value = this.usedData[this.index];
         this.index++;
         return value;
     }
-    isUsingDefault() { return this.index == this.usedData.length; }
+    needToGenerateNew() { return this.index >= this.usedData.length; }
 }

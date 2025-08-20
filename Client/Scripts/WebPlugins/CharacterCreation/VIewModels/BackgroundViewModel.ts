@@ -7,7 +7,7 @@ import { Utility } from "../../../WebCore/Utility.js"
 import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { BackgroundStoryPickerModel } from "./BackgroundTypeModel.js"
-import { RelationshipModel, StoryModel } from "../Contracts/TaggedData.js"
+import { Item, RelationshipModel, StoryModel } from "../Contracts/TaggedData.js"
 
 export class BackgroundViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/BackgroundView.html"
@@ -49,57 +49,83 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
     }
     
     Evaluate () {
-
+        // Get data from children
         const childEvaluation = this.ChildBackgroundPicker.Model.Evaluate()
-        const adultEvaluation = this.AdultBackgroundPicker.Model.Evaluate()
-        const elderEvaluation = this.ElderBackgroundPicker.Model.Evaluate()
+        const adultEvaluation = this.canShowAdultChoices()? this.AdultBackgroundPicker.Model.Evaluate() : undefined
+        const elderEvaluation = this.canShowElderChoices()? this.ElderBackgroundPicker.Model.Evaluate() : undefined
 
+        // Update global
         this.GlobalCharacterData.ChildhoodBackground(childEvaluation)
         this.GlobalCharacterData.AdultBackground(adultEvaluation)
         this.GlobalCharacterData.ElderBackground(elderEvaluation)
-
-        this._addItems(childEvaluation)
-        this._addItems(adultEvaluation)
-        this._addItems(elderEvaluation)
-
-        this._addRelationships(childEvaluation)
-        this._addRelationships(adultEvaluation)
-        this._addRelationships(elderEvaluation)
-    }
-
-    _onlyPushUniqueItem<T>(element : T, aList : ko.ObservableArray<T>) {
-        const isNotUnique = aList().some((value)=>{return value == element})
-
-        if (isNotUnique) return
         
-        aList.push(element)
+        this._setAllItems(childEvaluation, adultEvaluation, elderEvaluation)
+        this._setAllRelationships(childEvaluation, adultEvaluation, elderEvaluation)
     }
 
-    _addItems(evaluationModel : StoryModel) {
-        const items = evaluationModel.Items
+    // _onlyPushUniqueItem<T>(element : T, aList : T[]) {
+    //     const isNotUnique = aList().some((value)=>{return value == element})
 
-        if (items !== undefined)
-            items.forEach((item)=>this._onlyPushUniqueItem(item, this.GlobalCharacterData.Items))
+    //     if (isNotUnique) return
+        
+    //     aList.push(element)
+    // }
+
+    _setAllItems (childBackground : StoryModel, adultBackground? : StoryModel, elderBackground? : StoryModel) {
+        const filteredBackgroundItems = this.GlobalCharacterData.Items().filter((item)=>{return !(item.Source == "Background")})
+
+        this._addItems(childBackground, filteredBackgroundItems)
+        this._addItems(adultBackground, filteredBackgroundItems)
+        this._addItems(elderBackground, filteredBackgroundItems)
+
+        this.GlobalCharacterData.Items(filteredBackgroundItems)
     }
 
-    _addRelationships(evaluationModel : StoryModel) {
-        this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, this.GlobalCharacterData.Organizations)
-        this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, this.GlobalCharacterData.People)
-        this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, this.GlobalCharacterData.Places)
+    _addItems(evaluationModel : StoryModel | undefined, workingItemsRef : Item[]) {
+        if (evaluationModel === undefined) return
+        if (evaluationModel.Items === undefined) return
+        
+        workingItemsRef.push(...evaluationModel.Items)
     }
 
-    _addRelationshipModel(names : PronounType[] | undefined, relationships : DispositionType[] | undefined, characterDataRelationshipReference : ObservableArray<RelationshipModel>) {
-        if (names) {
-            names.forEach((name, index)=>{
+    _setAllRelationships (childBackground : StoryModel, adultBackground : StoryModel | undefined, elderBackground? : StoryModel | undefined) {
+        const filteredPeople = this.GlobalCharacterData.People().filter((people)=>{return !(people.Source == "Background")})
+        const filteredPlaces = this.GlobalCharacterData.Places().filter((place)=>{return !(place.Source == "Background")})
+        const filteredOrganizations = this.GlobalCharacterData.Organizations().filter((organization)=>{return !(organization.Source == "Background")})
 
-                const providedDisposition = relationships?.[index]
+        this._addRelationships(childBackground, filteredPeople, filteredPlaces, filteredOrganizations)
+        this._addRelationships(adultBackground, filteredPeople, filteredPlaces, filteredOrganizations)
+        this._addRelationships(elderBackground, filteredPeople, filteredPlaces, filteredOrganizations)
 
-                const disposition : DispositionType = (providedDisposition)? providedDisposition : "Unknown"
+        this.GlobalCharacterData.People(filteredPeople)
+        this.GlobalCharacterData.Places(filteredPlaces)
+        this.GlobalCharacterData.Organizations(filteredOrganizations)
+    }
 
-                this._onlyPushUniqueItem({Name: name, Disposition: disposition}, characterDataRelationshipReference)
-                
-            })
-        }
+    _addRelationships(evaluationModel : StoryModel | undefined, workingPeopleRef : RelationshipModel[], workingPlacesRef : RelationshipModel[], workingOrganizationsRef : RelationshipModel[]) {
+        if (evaluationModel === undefined) return
+        
+        if (evaluationModel.OrganizationNames !== undefined)
+            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, workingOrganizationsRef)
+
+        if (evaluationModel.PeopleNames !== undefined)
+            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, workingPeopleRef)
+
+
+        if (evaluationModel.PlaceNames !== undefined)
+            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, workingPlacesRef)
+    }
+
+    _addRelationshipModel(names : PronounType[] | undefined, relationships : DispositionType[] | undefined, workingRelationshipsRef : RelationshipModel[]) {
+        if (!names) return
+
+        names.forEach((name, index)=>{
+            const providedDisposition = relationships?.[index]
+
+            const disposition : DispositionType = (providedDisposition)? providedDisposition : "Unknown"
+
+            workingRelationshipsRef.push({Name: name, Disposition: disposition, Source: "Background"})
+        })
     }
 
     Init(): Promise<any> {
