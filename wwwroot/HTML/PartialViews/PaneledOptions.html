@@ -1,0 +1,9 @@
+<div>
+    <div data-bind="visible: canGoUp">^</div>
+    <div data-bind="foreach: Panel">
+        <div data-bind="if: canShowPanel()">
+
+        </div>
+    </div>
+    <div data-bind="visible: canGoDown">v</div>
+</div>

@@ -2,6 +2,7 @@ import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { BackgroundStoryPickerModel } from "./BackgroundTypeModel.js";
+import { HelpIconModel } from "../../../WebCore/ViewModels/HelpIcon.js";
 export class BackgroundViewModel {
     GlobalCharacterData;
     ViewUrl = "PartialViews/BackgroundView.html";
@@ -11,6 +12,7 @@ export class BackgroundViewModel {
     canShowAdultChoices;
     canShowElderChoices;
     ChildBackgroundPicker;
+    ChildHelp = Utility.BundleViewAndModel(new HelpIconModel("SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. "));
     AdultBackgroundPicker;
     ElderBackgroundPicker;
     PossibleAges = Ages;

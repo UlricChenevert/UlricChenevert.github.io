@@ -374,6 +374,14 @@ hr {
   transition: transform 1s;
   transform-origin: center center;
 }
+.toolTip {
+  position: absolute;
+  padding: 0.5em 0.5em;
+  background-color: #98a1bc;
+  z-index: 999;
+  max-width: 20em;
+  display: inline-block;
+}
 body {
   background-color: #555879;
   color: #505050;
@@ -388,6 +396,11 @@ body {
 }
 img {
   max-width: 80%;
+}
+.icon {
+  aspect-ratio: 1;
+  max-height: 1.5em;
+  transition: transform 0.3s ease-in-out;
 }
 .image-container {
   display: flex;

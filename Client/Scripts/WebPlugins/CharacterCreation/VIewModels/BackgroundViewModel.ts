@@ -8,6 +8,7 @@ import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.j
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { BackgroundStoryPickerModel } from "./BackgroundTypeModel.js"
 import { Item, RelationshipModel, StoryModel } from "../Contracts/TaggedData.js"
+import { HelpIconModel } from "../../../WebCore/ViewModels/HelpIcon.js"
 
 export class BackgroundViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/BackgroundView.html"
@@ -19,6 +20,8 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
     canShowElderChoices : ko.Observable<boolean>
 
     ChildBackgroundPicker : IPartialViewModel<BackgroundStoryPickerModel>
+    ChildHelp = Utility.BundleViewAndModel(new HelpIconModel("SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. SOME TEXT HERE. "))
+
     AdultBackgroundPicker : IPartialViewModel<BackgroundStoryPickerModel>
     ElderBackgroundPicker : IPartialViewModel<BackgroundStoryPickerModel>
 

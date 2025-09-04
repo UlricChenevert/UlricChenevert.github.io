@@ -16,3 +16,9 @@ export interface IWizardModel<ResolveType, EvaluateType> extends IHTMLInjectable
 interface IEvaluatable<EvaluateType> {
     Evaluate : ()=>EvaluateType
 }
+
+interface IOptionModel<OptionValue> {
+    PreviewName : string
+    DescriptionModel : IPartialViewModel
+    Value : OptionValue
+}

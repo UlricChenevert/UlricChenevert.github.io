@@ -6,6 +6,8 @@
 @import "./game.less";
 @import "./characterCreation.less";
 @import "./carousel.less";
+@import "./toolTip.less";
+@import "./paneledOptions.less";
 
 
 body {
@@ -22,6 +24,12 @@ body {
 
 img {
     max-width: 80%;
+}
+
+.icon {
+    aspect-ratio: 1;
+    max-height: 1.5em;    
+    transition: transform 0.3s ease-in-out;
 }
 
 .image-container {
