@@ -1,9 +1,8 @@
 import { ko } from "../../Framework/Knockout/ko.js";
-import { IEvaluatable, IHTMLInjectable, IPartialViewModel, IWizardModel } from "../../Framework/Contracts/ViewModel.js";
-import { Utility } from "../Utility.js";
+import { IPartialViewModel, IWizardModel } from "../../Framework/Contracts/ViewModel.js";
 import { Observable } from "../../Framework/Knockout/knockout.js";
 
-export class Wizard implements IWizardModel<void[], string> {
+export class Wizard implements IWizardModel<void, string> {
     ViewUrl: string = '/PartialViews/WizardView.html'
     isLoading: Observable<boolean>;
 
@@ -24,7 +23,7 @@ export class Wizard implements IWizardModel<void[], string> {
     }
     
     Init() {
-        return Promise.all(this.panels.map((panelViewModel)=>{return panelViewModel.Model.Init()}))
+        return Promise.all(this.panels.map((panelViewModel)=>{return panelViewModel.Model.Init()})).then(()=>Promise.resolve())
     }
 
     Evaluate () {

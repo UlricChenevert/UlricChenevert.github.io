@@ -1,0 +1,8 @@
+import { constructHomeViewModel, constructMinecraftProjectsViewModel, constructSpaceEngineersViewModel } from "../../WebPlugins/Blog/Utility/ConfiguredViewModels.js";
+import { constructCharacterViewModel } from "./ConfiguredViewModels.js";
+export const naviagationOptions = [
+    { FriendlyName: "Home", pageKey: "Home", modelConstructor: constructHomeViewModel },
+    { FriendlyName: "Minecraft", pageKey: "Minecraft", modelConstructor: constructMinecraftProjectsViewModel },
+    { FriendlyName: "Character Creator", pageKey: "CharacterCreator", modelConstructor: constructCharacterViewModel },
+    { FriendlyName: "Space Engineers", pageKey: "SpaceEngineers", modelConstructor: constructSpaceEngineersViewModel },
+];

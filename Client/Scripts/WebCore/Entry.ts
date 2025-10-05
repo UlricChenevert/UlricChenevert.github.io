@@ -1,19 +1,15 @@
 import { ko } from "../Framework/Knockout/ko.js"
 import { KnockoutBindings } from "./KnockoutBindings.js"
 import { Utility } from "./Utility.js"
-import { CharacterWizardModel } from "../WebPlugins/CharacterCreation/VIewModels/CharacterWizardModel.js"
+import { WebPageController } from "./ViewModels/WebPage.js"
+import { naviagationOptions } from "./Utility/ConfiguredNavigationOptions.js"
 
 KnockoutBindings.initializePartialView()
 
+document.addEventListener("DOMContentLoaded", initialization)
 
-document.addEventListener("DOMContentLoaded", playgroundInitialization)
-
-function playgroundInitialization (this: Document) {
+function initialization (this: Document) {
     ko.applyBindings({main: Utility.BundleViewAndModel(
-        new CharacterWizardModel()
+        new WebPageController(naviagationOptions)
     )})
-}
-
-function productionInitialization (this: Document) {
-
 }
