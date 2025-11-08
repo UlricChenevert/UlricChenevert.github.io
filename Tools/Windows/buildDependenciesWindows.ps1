@@ -24,3 +24,5 @@ npm install -g nodemon
 npm install -g vitest
 
 npm install
+
+code --install-extension SanaAjani.taskrunnercode

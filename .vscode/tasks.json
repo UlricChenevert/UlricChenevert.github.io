@@ -4,49 +4,37 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label":"Compile frontend files",
-        "dependsOn":["Build Lessc Files", "Build Typescript Files"],
-        "group": {
-          "kind": "build"
-        }
-      },
-      {
-        "label":"Build Lessc Files",
+        "label": "Watch Less",
         "type": "shell",
-        "command": "lessc ./Client/Styles/project.less ./wwwroot/CSS/project.css",
-        "group": {
-          "kind": "build",
-          "isDefault": true
+        "command": "powershell -NoExit -File ${workspaceFolder}\\Tools\\Windows\\WatchLessFiles.ps1",
+        "isBackground": true,
+        "presentation": 
+        {
+          "reveal": "silent",
+          "panel": "dedicated",
         }
       },
       {
-        "label":"Build Typescript Files",
-        "type": "typescript",
-        "tsconfig": "tsconfig.json",
-        "problemMatcher": ["$tsc"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      },
-      {
-        "label":"Watch Typescript Files",
+        "label": "Watch Typescript",
         "type": "shell",
-        "problemMatcher": ["$tsc"],
-         "command": "tsc --watch",
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
+        "command": "powershell -NoExit -File ${workspaceFolder}\\Tools\\Windows\\WatchTypescript.ps1",
+        "isBackground": true,
+        "presentation": 
+        {
+          "reveal": "silent",
+          "panel": "dedicated",
+        },
       },
       {
-        "label":"Build Blog Files",
+        "label": "Build Blog",
         "type": "shell",
-        "command": "..\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\",
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
+        "command": "powershell -NoExit -File  ${workspaceFolder}\\Tools\\Windows\\Build-Pages.ps1 '${workspaceFolder}\\Client\\Blog\\' '${workspaceFolder}\\wwwroot\\HTML\\'",
+        "isBackground": true,
+        "presentation": 
+        {
+            "reveal": "silent",
+            "panel": "dedicated",
+        },
       }
     ]
   }

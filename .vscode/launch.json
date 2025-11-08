@@ -5,23 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Update frontend",
-            "type": "firefox",
-            "request": "launch",
-            "preLaunchTask": "Compile frontend files"
-        },
-        {
             "name": "C#: Nemo Esuriat Full Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj"
+            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj",
+            "preLaunchTask": "Watch Front End"
         },
         {
-            "name": "Launch node",
+            "name": "Debug one ts file",
             "type": "node",
             "request": "launch",
             "program": "${file}",
             "cwd": "${workspaceFolder}",
-        }
+        },
+    
     ]
 }

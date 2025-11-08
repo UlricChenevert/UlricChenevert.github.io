@@ -24,6 +24,7 @@ code --install-extension ms-dotnettools.csharp
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension ms-vscode.vscode-typescript-next
 code --install-extension ecmel.vscode-html-css
+code --install-extension SanaAjani.taskrunnercode
 
 sudo npm install -g vitest
 

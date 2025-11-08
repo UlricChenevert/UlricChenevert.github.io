@@ -1,2 +1,2 @@
 ./WatchLessFiles.sh
-tsc --watch
+./WatchTypescript.sh
