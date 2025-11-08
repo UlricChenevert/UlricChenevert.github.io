@@ -10,7 +10,7 @@ export class PaneledOptions<T> implements IHTMLInjectable<void>, IEvaluatable<T>
 
     selectedPanelIndex : Observable<number>
 
-    displayedPanels : ObservableArray<IOptionModel<T>[]>
+    displayedPanels : ObservableArray<IOptionModel<T>>
 
     canGoUp : Observable<boolean>;
     canGoDown : Observable<boolean>;
@@ -18,6 +18,8 @@ export class PaneledOptions<T> implements IHTMLInjectable<void>, IEvaluatable<T>
     constructor (public Options : IOptionModel<T>[], selectedIndex : number, public rowAmount = 2, public visibleRows = 2) {
         this.currentPanelIndex = ko.observable(0);
         this.selectedPanelIndex = ko.observable(selectedIndex)
+
+        this.displayedPanels = ko.observableArray<IOptionModel<T>>([])
 
         this.canGoUp = ko.observable(this.determineIfCanGoUp())
         this.canGoDown = ko.observable(this.determineIfCanGoDown())

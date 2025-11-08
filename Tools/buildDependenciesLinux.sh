@@ -17,3 +17,7 @@ sudo npm install -g typescript
 sudo npm install -g less
 
 sudo npm install -g nodemon
+
+sudo npm install -g vitest
+
+sudo npm install
