@@ -17,7 +17,7 @@ export class Wizard {
         });
     }
     Init() {
-        return Promise.all(this.panels.map((panelViewModel) => { return panelViewModel.Model.Init(); }));
+        return Promise.all(this.panels.map((panelViewModel) => { return panelViewModel.Model.Init(); })).then(() => Promise.resolve());
     }
     Evaluate() {
         return "YO";

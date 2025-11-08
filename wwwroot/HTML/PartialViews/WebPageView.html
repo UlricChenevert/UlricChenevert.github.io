@@ -1,0 +1,16 @@
+<div>
+    <nav>
+        <div class="nav-elements">
+            <span class="logo">Nemo Esuriat</span>
+        </div>
+        <div class="nav-elements" data-bind="foreach: NaviagationOptions">
+            <!-- <a class="link" data-bind="text: $data, click: $parent.lastClickedOnView">Link</a> -->
+            <button data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+            <!-- <span data-bind="if: $parent.showDivider()" class="dividers">|</span>  -->
+        </div>
+    </nav>
+
+    <div data-bind="PartialView: CurrentPage()"></div>
+
+    <footer style="background-color: rgb(223, 223, 223)"> Links in bio</footer>
+</div>

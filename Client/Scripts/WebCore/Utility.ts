@@ -19,7 +19,7 @@ export namespace Utility {
             )
     }
 
-    export function BundleViewAndModel<T, Y> (model : IHTMLInjectable<T> & Y) : IPartialViewModel<Y> {
+    export function BundleViewAndModel<ResolveType, ModelType> (model : IHTMLInjectable<ResolveType> & ModelType) : IPartialViewModel<ModelType> {
         return {ViewUrl: model.ViewUrl, Model : model}
     }
     
