@@ -8,8 +8,7 @@
             "name": "C#: Nemo Esuriat Full Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj",
-            "preLaunchTask": "Watch Front End"
+            "projectPath": "${workspaceFolder}/NemoEsuriat.csproj"
         },
         {
             "name": "Debug one ts file",
