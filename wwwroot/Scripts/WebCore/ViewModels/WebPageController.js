@@ -17,13 +17,14 @@ export class WebPageController {
         if (urlParts.length == 0)
             return Promise.resolve();
         const selectedPageOption = this.NavigationOptions.find((testOption) => { return testOption.pageKey == urlParts[0]; });
-        if (selectedPageOption === undefined)
-            throw "Invalid url state!";
-        this.CurrentPage(selectedPageOption.modelConstructor());
-        return Promise.resolve();
+        return this.UpdatePage(selectedPageOption);
     }
-    UpdatePage(selectedOption) {
+    async UpdatePage(selectedOption) {
+        if (selectedOption === undefined)
+            throw "Invalid url state!";
         // history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`)
-        this.CurrentPage(selectedOption.modelConstructor());
+        const pageViewModel = selectedOption.modelConstructor();
+        this.CurrentPage(pageViewModel);
+        return pageViewModel.Model.Init().then(() => this.isLoading(false));
     }
 }

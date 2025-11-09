@@ -1,4 +1,4 @@
-import { IHTMLInjectable } from "../../../Framework/Contracts/ViewModel.js";
+
 import { Observable } from "../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 

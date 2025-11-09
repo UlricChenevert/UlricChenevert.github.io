@@ -1,5 +1,3 @@
-import { constructorType, dependencyTypes, IClassRecipe, IInjector } from "../Contracts/Library"
-
 export class ClassRecipe implements IClassRecipe {
     tag : string
     classReference : constructorType
@@ -14,7 +12,7 @@ export class ClassRecipe implements IClassRecipe {
     }
 }
 
-class Injector implements IInjector {
+export class Injector implements IInjector {
     instancesContainer : Map<constructorType, Object>
     recipesContainer : Map<constructorType, IClassRecipe>
     

@@ -1,7 +1,6 @@
 import { Coordinate } from "../DTO/Coordinate.js"
 import { GraphicsConfig } from "../Config/GraphicsConfig.js"
 import { TileComponent } from "./TileComponent.js"
-import { IPerlin } from "../../Libraries/interfaces.js"
 
 export class CellComponent {
     tileGrid : Array<Array<TileComponent>>

@@ -1,4 +1,3 @@
-import { IEvaluatable, IHTMLInjectable, IOptionModel, IPartialViewModel } from "../../Framework/Contracts/ViewModel";
 import { Observable, ObservableArray } from "../../Framework/Knockout/knockout";
 import { ko } from "../../Framework/Knockout/ko";
 

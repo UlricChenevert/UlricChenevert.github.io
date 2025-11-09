@@ -14,9 +14,8 @@ import { FrameBundler } from "../../State/Bundler/FrameBundler.js";
 import { CellComponent } from "../../State/Component/CellComponent.js";
 import { CellManagerSystem } from "../Systems/CellManagerSystem.js";
 import { PhysicalRenderSystem } from "../Systems/PhysicalRenderSystem.js";
-import { IPerlin } from "../../Libraries/interfaces.js";
 
-export class StartupEventCommand {
+export class LifeCycleEventCommand {
     physicalComponentBundler : IComponentBundler<IDisplayableComponent>
     beingComponentBundler : IComponentBundler<BeingComponent>
     entityDirectory : IEntityDirectory // Idk if this is necessary
@@ -84,6 +83,12 @@ export class StartupEventCommand {
             // IDK just for fun
             this.createNPC()
         })
+    }
+
+    async handleTearDown () {
+        this.physicalComponentBundler.entityBundle.clear()
+        this.gameSceneCommands.stepSystem = []
+        this.gameSceneCommands.renderSystem = []
     }
 
     createPlayer() {

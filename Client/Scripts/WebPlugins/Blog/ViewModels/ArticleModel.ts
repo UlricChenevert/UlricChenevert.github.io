@@ -1,6 +1,5 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { IHTMLInjectable, IPartialViewModel } from "../../../Framework/Contracts/ViewModel.js";
 import { BlogModel } from "./BlogModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
 

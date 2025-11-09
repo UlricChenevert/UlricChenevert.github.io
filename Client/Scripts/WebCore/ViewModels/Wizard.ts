@@ -1,5 +1,4 @@
 import { ko } from "../../Framework/Knockout/ko.js";
-import { IPartialViewModel, IWizardModel } from "../../Framework/Contracts/ViewModel.js";
 import { Observable } from "../../Framework/Knockout/knockout.js";
 
 export class Wizard implements IWizardModel<void, string> {

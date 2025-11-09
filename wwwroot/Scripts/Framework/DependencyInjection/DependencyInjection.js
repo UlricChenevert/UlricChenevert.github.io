@@ -10,7 +10,7 @@ export class ClassRecipe {
         this.isSingleInstance = isSingleInstance;
     }
 }
-class Injector {
+export class Injector {
     instancesContainer;
     recipesContainer;
     constructor() {

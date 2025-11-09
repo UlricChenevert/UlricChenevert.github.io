@@ -1,10 +1,9 @@
 // Commands
 
 import { KeyEventCommand } from "../Command/Events/KeyEventCommand.js";
-import { StartupEventCommand } from "../Command/Events/StartupEventCommand.js";
+import { LifeCycleEventCommand } from "../Command/Events/StartupEventCommand.js";
 import { GameSceneCommands } from "../Command/Scene/GameSceneCommands.js";
-import { DependencyInjection } from "../Libraries/Injection.js";
-import { Perlin } from "../Libraries/PerlinNoise.js";
+import { Perlin } from "../../Framework/RandomGeneration/PerlinNoise.js";
 import { BeingComponentBundler } from "../State/Bundler/BeingComponentBundler.js";
 import { CellBundler } from "../State/Bundler/CellBundler.js";
 import { DisplayableBundler } from "../State/Bundler/DisplayableBundler.js";
@@ -14,12 +13,16 @@ import { LoadingProgressState } from "../State/LoadingProgressState.js";
 import { LoadingSceneCommands } from "./Scene/LoadingSceneCommands.js";
 import { MenuSceneCommands } from "./Scene/MenuSceneCommands.js";
 
-export function buildCommand () {
-    DependencyInjection.register(KeyEventCommand, [], true)
-    DependencyInjection.register(GameSceneCommands, [], true)
-    DependencyInjection.register(StartupEventCommand, [
+import { Injector } from "../../Framework/DependencyInjection/DependencyInjection.js";
+
+export function buildCommand (DependencyInjectionInstance : Injector) {
+    DependencyInjectionInstance.register(KeyEventCommand, [], true)
+    DependencyInjectionInstance.register(GameSceneCommands, [], true)
+    DependencyInjectionInstance.register(LifeCycleEventCommand, [
         DisplayableBundler, BeingComponentBundler, EntityDirectory, CellBundler, 
         FrameBundler, KeyEventCommand, GameSceneCommands, Perlin], true)
-    DependencyInjection.register(LoadingSceneCommands, [LoadingProgressState, FrameBundler], true)
-    DependencyInjection.register(MenuSceneCommands, [FrameBundler], true)
+    DependencyInjectionInstance.register(LoadingSceneCommands, [LoadingProgressState, FrameBundler], true)
+    DependencyInjectionInstance.register(MenuSceneCommands, [FrameBundler], true)
+
+    return DependencyInjectionInstance
 }

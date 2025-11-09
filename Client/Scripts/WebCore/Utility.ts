@@ -1,4 +1,3 @@
-import { IHTMLInjectable, IPartialViewModel } from "../Framework/Contracts/ViewModel.js";
 
 export namespace Utility {
     export const getBaseHTMLUrl = (htmlPath : string) => {

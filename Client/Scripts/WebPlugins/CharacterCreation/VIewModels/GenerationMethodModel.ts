@@ -1,7 +1,5 @@
-import { IHTMLInjectable, IWizardModel } from "../../../Framework/Contracts/ViewModel.js";
 import { Observable } from "../../../Framework/Knockout/knockout.js";
 import { IConfiguredCharacterData, RandomizeGlobalCharacterData } from "../Configuration/CharacterWizardData.js";
-import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { DropDownButtonModel } from "./DropdownButtonModel.js";
 import { Utility } from "../../../WebCore/Utility.js";

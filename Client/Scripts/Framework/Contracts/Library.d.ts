@@ -1,27 +1,27 @@
-export interface IRandom {
+interface IRandom {
     random : () => number
 }
 
-export type constructorType = Function
-export type dependencyTypes = Function | Object
+type constructorType = Function
+type dependencyTypes = Function | Object
 
-export interface IClassRecipe {
+interface IClassRecipe {
     tag : string,
     classReference : constructorType,
     isSingleInstance : boolean,
     dependencies : dependencyTypes[]
 }
 
-export interface IAttachDependency {
+interface IAttachDependency {
     build : Function
 }
 
-export interface IInjector {
+interface IInjector {
     resolve  : (classSymbol : constructorType) => Object,
     register : (classSymbol : constructorType, dependencies : constructorType[], isSingleInstance : boolean) => void
 }
 
-export interface IPerlin {
+interface IPerlin {
     getNoise (x : number, y : number) : number
 }
 

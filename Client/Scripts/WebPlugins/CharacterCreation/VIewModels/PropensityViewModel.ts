@@ -1,6 +1,5 @@
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import {ko} from "../../../Framework/Knockout/ko.js"
-import { IHTMLInjectable } from "../../../Framework/Contracts/ViewModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { DescriptionModel, PictureModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
 import { DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, RaceType } from "../Contracts/StringTypes.js";

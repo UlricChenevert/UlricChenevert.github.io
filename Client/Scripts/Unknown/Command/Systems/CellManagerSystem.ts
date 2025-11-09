@@ -1,4 +1,4 @@
-import { shiftGrid, withinBounds } from "../../Libraries/Utility.js";
+import { shiftGrid, withinBounds } from "../../../Framework/Utility.js";
 import { CellBundler } from "../../State/Bundler/CellBundler.js";
 import { CellComponent } from "../../State/Component/CellComponent.js";
 import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";

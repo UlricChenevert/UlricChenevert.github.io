@@ -1,5 +1,3 @@
-import { IPerlin, IRandom } from "../Contracts/Library"
-
 export class Perlin implements IPerlin {
     RandomGenerator : IRandom
 

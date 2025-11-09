@@ -1,6 +1,5 @@
 // System: A system is a process which acts on all entities with the desired components. For example, a physics system may query for entities having mass, velocity and position components, and iterate over the results doing physics calculations on the set of components for each entity. 
-
-import { integerMixing, normalizedIntegerMixing } from "../../Libraries/Utility.js";
+import { normalizedIntegerMixing } from "../../../Framework/Utility.js"
 import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";
 import { Coordinate } from "../../State/DTO/Coordinate.js";
 import { IDisplayableComponent } from "../../State/Interfaces.js";

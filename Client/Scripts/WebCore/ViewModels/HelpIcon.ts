@@ -1,4 +1,3 @@
-import { IHTMLInjectable } from "../../Framework/Contracts/ViewModel.js";
 import { ko } from "../../Framework/Knockout/ko.js";
 
 export class HelpIconModel implements IHTMLInjectable<void> {

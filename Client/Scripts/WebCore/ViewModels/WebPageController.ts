@@ -1,6 +1,5 @@
 import { ko } from "../../Framework/Knockout/ko.js";
 import { Observable } from "../../Framework/Knockout/knockout.js";
-import { IHTMLInjectable, IPartialViewModel } from "../../Framework/Contracts/ViewModel.js";
 import { PageOption } from "../Contracts/PageOption.js";
 
 // Controls url, current page, and navigation within SPA
@@ -27,16 +26,21 @@ export class WebPageController implements IHTMLInjectable<void> {
         if (urlParts.length == 0) return Promise.resolve();
 
         const selectedPageOption = this.NavigationOptions.find((testOption)=>{return testOption.pageKey == urlParts[0]})
-
-        if (selectedPageOption === undefined) throw "Invalid url state!"
-
-        this.CurrentPage(selectedPageOption.modelConstructor())
-
-        return Promise.resolve();
+        
+        return this.UpdatePage(selectedPageOption)
     }
 
-    UpdatePage (selectedOption : PageOption) {
+    async UpdatePage (selectedOption? : PageOption) {
+        if (selectedOption === undefined) throw "Invalid url state!"
+
         // history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`)
-        this.CurrentPage(selectedOption.modelConstructor())
+
+        const pageViewModel = selectedOption.modelConstructor()
+        this.CurrentPage(pageViewModel)
+        return pageViewModel.Model.Init().then(()=>this.isLoading(false));
     }
+
+    // Destruction () {
+    //     this.CurrentPage().Model.Destruction?.()
+    // } 
 }

@@ -1,4 +1,3 @@
-import { IPartialViewModel, IWizardModel } from "../../../Framework/Contracts/ViewModel.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { Wizard } from "../../../WebCore/ViewModels/Wizard.js"
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"

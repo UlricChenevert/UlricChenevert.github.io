@@ -1,12 +1,12 @@
 import { KeyEventCommand } from "../Command/Events/KeyEventCommand.js"
-import { StartupEventCommand } from "../Command/Events/StartupEventCommand.js"
+import { LifeCycleEventCommand } from "../Command/Events/StartupEventCommand.js"
 import { ISceneCommand } from "../Command/Interfaces.js"
 import { ISceneLoader } from "../Layer/Interfaces.js"
 
 export class ModeHandler {
     // Needs to know about the different modes and needs to interact with its display
     keyEventCommand : KeyEventCommand
-    startupEventCommand : StartupEventCommand
+    lifeCycleEventCommand : LifeCycleEventCommand
     sceneLoader : ISceneLoader
 
     gameScene: ISceneCommand
@@ -16,11 +16,11 @@ export class ModeHandler {
     activeScene : ISceneCommand
 
     constructor (
-        keyEventCommand: KeyEventCommand, startupEventCommand : StartupEventCommand,
+        keyEventCommand: KeyEventCommand, lifeCycleEventCommand : LifeCycleEventCommand,
         gameScene: ISceneCommand, menuScene: ISceneCommand, loadingScene : ISceneCommand,
         sceneLoader : ISceneLoader) {
         this.keyEventCommand = keyEventCommand
-        this.startupEventCommand = startupEventCommand
+        this.lifeCycleEventCommand = lifeCycleEventCommand
 
         this.sceneLoader = sceneLoader
         
@@ -53,11 +53,16 @@ export class ModeHandler {
 
     async handleStartup () {
         /* Bubble to command */
-        this.startupEventCommand.handleStartup().then(()=>{
+        this.lifeCycleEventCommand.handleStartup().then(()=>{
             /* Set Mode */
             this.activeScene = this.gameScene
         })
 
+    }
+
+    async handleTearDown () {
+        /* Bubble to command */
+        this.lifeCycleEventCommand.handleTearDown()
     }
     
     // This will be requested >10 times per second

@@ -1,4 +1,4 @@
-import { withinBounds } from "../../Libraries/Utility.js";
+import { withinBounds } from "../../../Framework/Utility.js";
 import { DisplayableBundler } from "../../State/Bundler/DisplayableBundler.js";
 import { FrameBundler } from "../../State/Bundler/FrameBundler.js";
 import { GraphicsConfig } from "../../State/Config/GraphicsConfig.js";

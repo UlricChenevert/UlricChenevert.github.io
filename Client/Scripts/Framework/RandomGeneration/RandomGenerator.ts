@@ -1,7 +1,5 @@
 // Based on Linear Congruential Generator
 
-import { IRandom } from "../Contracts/Library"
-
 export class RandomGenerator implements IRandom {
     lastNumber : number
     multiplier : number

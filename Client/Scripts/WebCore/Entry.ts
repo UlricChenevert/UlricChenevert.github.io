@@ -2,14 +2,18 @@ import { ko } from "../Framework/Knockout/ko.js"
 import { KnockoutBindings } from "./KnockoutBindings.js"
 import { Utility } from "./Utility.js"
 import { WebPageController } from "./ViewModels/WebPageController.js"
-import { naviagationOptions } from "./Utility/ConfiguredNavigationOptions.js"
+import { navigationOptions } from "./Utility/ConfiguredNavigationOptions.js"
 
 KnockoutBindings.initializePartialView()
 
 document.addEventListener("DOMContentLoaded", initialization)
 
 function initialization (this: Document) {
-    ko.applyBindings({main: Utility.BundleViewAndModel(
-        new WebPageController(naviagationOptions)
-    )})
+    const temp = Utility.BundleViewAndModel(
+        new WebPageController(navigationOptions)
+    )
+
+    temp.Model.Init()
+
+    ko.applyBindings({main: temp})
 }

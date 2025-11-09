@@ -1,4 +1,3 @@
-import { IPartialViewModel } from "../../../Framework/Contracts/ViewModel.js"
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js"
 import { AgeType, DispositionType, PronounType } from "../Contracts/StringTypes.js"
