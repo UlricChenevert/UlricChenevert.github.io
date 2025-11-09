@@ -142,7 +142,7 @@
   padding: 1em 3em;
   margin: 1em auto;
   font-size: 1em;
-  width: 80em;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -434,11 +434,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-@media (width <= 500px) {
-  body {
-    font-size: calc(10px * 2);
-  }
 }
 img {
   max-width: 80%;
