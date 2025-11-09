@@ -5,9 +5,9 @@ export class WebPageController {
     isLoading;
     NavigationOptions;
     CurrentPage;
-    constructor(NaviagationOptions) {
+    constructor(NavigationOptions) {
         this.isLoading = ko.observable(true);
-        this.NavigationOptions = NaviagationOptions;
+        this.NavigationOptions = NavigationOptions;
         this.CurrentPage = ko.observable(this.NavigationOptions[0].modelConstructor());
     }
     Init() {

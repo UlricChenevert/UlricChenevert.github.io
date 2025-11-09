@@ -1,7 +1,7 @@
 import { ko } from "../Framework/Knockout/ko.js"
 import { KnockoutBindings } from "./KnockoutBindings.js"
 import { Utility } from "./Utility.js"
-import { WebPageController } from "./ViewModels/WebPage.js"
+import { WebPageController } from "./ViewModels/WebPageController.js"
 import { naviagationOptions } from "./Utility/ConfiguredNavigationOptions.js"
 
 KnockoutBindings.initializePartialView()

@@ -8,6 +8,7 @@
 @import "./carousel.less";
 @import "./toolTip.less";
 @import "./paneledOptions.less";
+@import "./footer.less";
 
 
 body {
@@ -20,6 +21,9 @@ body {
     font-size: @body-font-size;
 
     min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -30,6 +34,18 @@ img {
     aspect-ratio: 1;
     max-height: 1.5em;    
     transition: transform 0.3s ease-in-out;
+}
+
+.button-icon {
+    aspect-ratio: 1;
+    max-height: 1.5em;    
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-link {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .image-container {
@@ -47,8 +63,30 @@ img {
     font-size: inherit;
 }
 
-.main-container {
+#main-website-container {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+
+    nav {
+        flex-grow: 1;
+    }
+
+    main {
+        flex-grow: 3;
+    }
+
+    footer {
+        flex-grow: 1;
+    }
+}
+
+#main-view {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.standard-padding {
+    padding: @standard-padding @standard-padding;
 }

@@ -8,14 +8,14 @@ import { PageOption } from "../Contracts/PageOption.js";
 export class WebPageController implements IHTMLInjectable<void> {
     readonly ViewUrl = "/PartialViews/WebPageView.html";
     isLoading: Observable<boolean>;
-    NaviagationOptions : PageOption[]
+    NavigationOptions : PageOption[]
     CurrentPage : ko.Observable<IPartialViewModel<IHTMLInjectable<void>>>
     
-    constructor(NaviagationOptions : PageOption[]) {
+    constructor(NavigationOptions : PageOption[]) {
         this.isLoading = ko.observable(true);
-        this.NaviagationOptions = NaviagationOptions
+        this.NavigationOptions = NavigationOptions
 
-        this.CurrentPage = ko.observable(this.NaviagationOptions[0].modelConstructor())
+        this.CurrentPage = ko.observable(this.NavigationOptions[0].modelConstructor())
     }
 
     Init () : Promise<void> {
@@ -26,7 +26,7 @@ export class WebPageController implements IHTMLInjectable<void> {
 
         if (urlParts.length == 0) return Promise.resolve();
 
-        const selectedPageOption = this.NaviagationOptions.find((testOption)=>{return testOption.pageKey == urlParts[0]})
+        const selectedPageOption = this.NavigationOptions.find((testOption)=>{return testOption.pageKey == urlParts[0]})
 
         if (selectedPageOption === undefined) throw "Invalid url state!"
 

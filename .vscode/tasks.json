@@ -28,7 +28,7 @@
       {
         "label": "Build Blog",
         "type": "shell",
-        "command": "powershell -NoExit -File  ${workspaceFolder}\\Tools\\Windows\\Build-Pages.ps1 '${workspaceFolder}\\Client\\Blog\\' '${workspaceFolder}\\wwwroot\\HTML\\'",
+        "command": "powershell -NoExit -File  ${workspaceFolder}\\Tools\\Windows\\Build-Pages.ps1 '${workspaceFolder}\\Client\\Blog\\' '${workspaceFolder}\\wwwroot\\HTML\\GeneratedViews\\'",
         "isBackground": true,
         "presentation": 
         {

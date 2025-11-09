@@ -12,10 +12,22 @@
 
 @title-font-size: 1.5 * @body-font-size;
 
-@pop-color: rgb(152, 161, 188);
-@background-color : rgb(85, 88, 121); // rgba(80, 2, 73, 0.658);
-@article-color:  rgb(222, 211, 196);
-@text-color: rgb(80, 80, 80);
+@background-color : darken(@article-color, 5%);
+@text-color: rgb(0, 0, 0);
+@less-important-text-color: lighten(@text-color, 10%);
+
+@pop-color: @colorB;
+
+@article-color:  rgb(255, 255, 255);
+
+@colorA: rgb(185, 102, 225);
+@colorB : rgb(164, 153, 190);
+@colorC : rgb(158, 133, 118);
+@colorD : rgb(122, 84, 46);
+@colorE : rgb(42, 46, 69);
+
+
+
 @hover-color: darken(@pop-color, 10%);
 @fade-background-color: darken(@article-color, 20%);
 

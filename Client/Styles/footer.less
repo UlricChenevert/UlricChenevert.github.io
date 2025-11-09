@@ -1,0 +1,49 @@
+@import "./variables.less";
+
+#footer {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color: @pop-color;
+    color: @less-important-text-color;
+
+    .centered {
+         display: inline-flex;
+    }
+
+    #sections {
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-between;
+    }
+
+    #design-section {
+        // background-color: @article-color;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        img {
+            // aspect-ratio: 1;
+            max-height: 10em;
+        }
+        flex-grow: 2;
+    }
+
+    h2 {
+        font-size: @title-font-size;
+        color: @text-color;
+    }
+
+    #contacts-section {
+        // background-color: @article-color;
+
+        flex-grow: 1;
+    }
+
+    a {
+        color: @text-color;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}

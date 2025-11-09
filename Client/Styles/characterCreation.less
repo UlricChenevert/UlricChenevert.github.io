@@ -57,13 +57,6 @@
     margin-top: @margin-size;
 }
 
-.wizard-button-icon {
-    aspect-ratio: 1;
-    max-height: 1.5em;    
-    transition: transform 0.3s ease-in-out;
-    // font-size: initial;
-}
-
 .wizard-button {
     background: @pop-color;
     color: @text-color;
@@ -98,7 +91,7 @@
     animation: shake 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
-.wizard-button:focus, .wizard-button:hover, .wizard-button-icon:focus, .wizard-button-icon:hover {
+.wizard-button:focus, .wizard-button:hover, .button-icon:focus, .button-icon:hover {
     transform: scale(1.10);
     cursor: pointer;
 }
@@ -196,7 +189,7 @@ hr {
 // }
 
 // /* Style the dropdown icon part of the button */
-// .two-button-container .wizard-button-icon {
+// .two-button-container .button-icon {
 //     border-top-left-radius: 0;
 //     border-bottom-left-radius: 0;
 //     border-left: none; /* Merges the borders */
@@ -208,7 +201,7 @@ hr {
 //     transition: background 0.18s, transform 0.18s;
 // }
 
-// .two-button-container .wizard-button-icon:hover {
+// .two-button-container .button-icon:hover {
 //     background: @hover-color;
 //     transform: none; /* Prevent the icon part from scaling on its own */
 // }
@@ -291,7 +284,7 @@ hr {
 
     .wizard-button {background-color: transparent; padding: 0;}
 
-    .wizard-button-icon {display: inline-flex;}
+    .button-icon {display: inline-flex;}
 
 }
 
