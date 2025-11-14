@@ -6,7 +6,7 @@ export let generateUniqueId = {
     }
 }
 
-export function withinBounds(value : number, lowerBound : number, upperBound : number) : boolean {
+export const withinBounds = (value : number, lowerBound : number, upperBound : number) : boolean => {
     return (value-upperBound)*(value-lowerBound) <= 0
 }
 

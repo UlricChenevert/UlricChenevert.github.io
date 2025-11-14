@@ -5,9 +5,9 @@ export let generateUniqueId = {
         return this.lastID;
     }
 };
-export function withinBounds(value, lowerBound, upperBound) {
+export const withinBounds = (value, lowerBound, upperBound) => {
     return (value - upperBound) * (value - lowerBound) <= 0;
-}
+};
 export function swap(object) {
     const temp = object.a;
     object.a = object.b;
