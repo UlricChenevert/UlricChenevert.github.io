@@ -16,6 +16,19 @@ describe("Coordinate Accessors and Comparators", () => {
     });
 });
 
+describe("Detecting when Y equal, but x different", () => {
+    test("Bug when Y=100, X=0, but test data is Y=100, X=100", () => {
+        const a : EntityGrouping[] = []
+        const w = new EntityGroupingWorldView(a) 
+        const e1 = new EntityGrouping({topLeft: new Coordinate(100, 100), length: 100}, [], w);
+
+        w.sortedGroupings[0] = e1
+        
+        // Y is equal (10), so sort by X: 50 - 60 = -10 (e1 comes before e2)
+        expect(multiAxisBinarySearch(w.sortedGroupings, new Coordinate(0, 100), EntityGroupingAccessor)).toBe(1); // Fail
+    });
+});
+
 // --- New and Updated Tests for Multi-Axis Logic ---
 
 describe("Multi-Axis Search, Insertion, and Deletion (Y-primary, X-secondary)", () => {

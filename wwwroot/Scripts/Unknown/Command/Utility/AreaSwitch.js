@@ -12,7 +12,7 @@ export const AreaSwitch = (testPosition, testArea, outsideAreaTopLeft, outsideAr
     if (withinBoundsX && withinBoundsY)
         return insideArea;
     const leftOfArea = testPosition.x < testArea.topLeft.x;
-    const rightOfArea = testPosition.x > testArea.topLeft.y + testArea.length;
+    const rightOfArea = testPosition.x > testArea.topLeft.x + testArea.length;
     const aboveArea = testPosition.y < testArea.topLeft.y;
     const belowArea = testPosition.y > testArea.topLeft.y + testArea.length;
     if (leftOfArea && belowArea) // left bottom

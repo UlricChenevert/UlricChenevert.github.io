@@ -25,7 +25,7 @@ export const AreaSwitch = (
         return insideArea
 
     const leftOfArea = testPosition.x < testArea.topLeft.x
-    const rightOfArea = testPosition.x > testArea.topLeft.y + testArea.length
+    const rightOfArea = testPosition.x > testArea.topLeft.x + testArea.length
     const aboveArea = testPosition.y < testArea.topLeft.y
     const belowArea = testPosition.y > testArea.topLeft.y + testArea.length
 

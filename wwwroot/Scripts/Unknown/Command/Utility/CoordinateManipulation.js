@@ -7,7 +7,7 @@ export const compareByYThenX = (a, b, coordinateAccessor) => {
     // If Y is the same, compare by X
     return coordinateAccessor(a).x - coordinateAccessor(b).x;
 };
-export const multiAxisBinarySearch = (sortedGroupings, target, accessor) => {
+export const multiAxisLowerBoundBinarySearch = (sortedGroupings, target, accessor) => {
     let low = 0;
     let high = sortedGroupings.length;
     let resultIndex = high;
@@ -37,6 +37,41 @@ export const multiAxisBinarySearch = (sortedGroupings, target, accessor) => {
         }
     }
     return resultIndex;
+};
+export const multiAxisBinarySearch = (sortedGroupings, target, accessor) => {
+    let low = 0;
+    // Use 'length - 1' for the high boundary in an exact-match search
+    let high = sortedGroupings.length - 1;
+    // Loop while the search space is valid
+    while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        const grouping = sortedGroupings[mid];
+        const currentY = accessor(grouping).y;
+        const currentX = accessor(grouping).x;
+        // The comparison logic *must* mirror the sort logic (Y-primary, X-secondary)
+        // 1. Check Primary Axis (Y)
+        if (currentY < target.y) {
+            low = mid + 1; // The item is too small, search the right half
+        }
+        else if (currentY > target.y) {
+            high = mid - 1; // The item is too large, search the left half
+        }
+        else {
+            // Y-axis is equal, now check Secondary Axis (X)
+            if (currentX < target.x) {
+                low = mid + 1; // The item is too small, search the right half
+            }
+            else if (currentX > target.x) {
+                high = mid - 1; // The item is too large, search the left half
+            }
+            else {
+                // Both Y and X are equal
+                return mid; // Found the exact match!
+            }
+        }
+    }
+    // The loop finished without finding an exact match
+    return -1;
 };
 /**
  * Inserts a new EntityGrouping element into the array while preserving

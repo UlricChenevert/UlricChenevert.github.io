@@ -32,7 +32,7 @@ export class EntityGrouping {
         
         let i = firstIndex
        
-        while (i < length || this.sortedEntities[i] !== entity) i++;
+        while (i < length && this.sortedEntities[i] !== entity) i++;
 
         if (i == length) throw "Entity found in binary search, but not by object!"
 
@@ -50,19 +50,46 @@ export const GenerateNewGroupingWithEntity = (entity : EntityLocation, oldSquare
     const area = TranslateSquareArea(oldSquareArea, groupingRelativePosition)
 
     // I need to find all of the cells, but I don't need to pass in the same parameters every time, but just the translation
-    const SimplifiedCellSearch = (translation : {x: Translation, y: Translation}) => 
-        worldScope.sortedGroupings
-        [
-            multiAxisBinarySearch(worldScope.sortedGroupings, TranslateCoordinate(area.topLeft, translation, oldSquareArea.length), EntityGroupingAccessor)
-        ]
+    const SimplifiedCellSearch = (translation : {x: Translation, y: Translation}) => {
+        const index = multiAxisBinarySearch(worldScope.sortedGroupings, TranslateCoordinate(area.topLeft, translation, oldSquareArea.length), EntityGroupingAccessor)
+        
+        if (index == worldScope.sortedGroupings.length) return undefined
+        return worldScope.sortedGroupings[index]
+    
+    }
     
     // I know I could simplify by using the other one that I already found
+    const x0y0 = SimplifiedCellSearch({x: Translation.Backwards, y: Translation.Backwards}); 
+    const x1y0 = SimplifiedCellSearch({x: Translation.None, y: Translation.Backwards})
+    const x2y0 = SimplifiedCellSearch({x: Translation.Forwards, y: Translation.Backwards})
 
-    const newGrouping = new EntityGrouping(area, [entity], worldScope, 
-        SimplifiedCellSearch({x: Translation.Backwards, y: Translation.Backwards}), SimplifiedCellSearch({x: Translation.None, y: Translation.Backwards}), SimplifiedCellSearch({x: Translation.Forwards, y: Translation.Backwards}),
-        SimplifiedCellSearch({x: Translation.Backwards, y: Translation.None}),                                                                             SimplifiedCellSearch({x: Translation.Forwards, y: Translation.None}),
-        SimplifiedCellSearch({x: Translation.Backwards, y: Translation.Forwards}),  SimplifiedCellSearch({x: Translation.None, y: Translation.Forwards}),  SimplifiedCellSearch({x: Translation.Forwards, y: Translation.Forwards})
+    const x0y1 = SimplifiedCellSearch({x: Translation.Backwards, y: Translation.None})
+
+    const x2y1 = SimplifiedCellSearch({x: Translation.Forwards, y: Translation.None})
+
+    const x0y2 = SimplifiedCellSearch({x: Translation.Backwards, y: Translation.Forwards}); 
+    const x1y2 = SimplifiedCellSearch({x: Translation.None, y: Translation.Forwards})
+    const x2y2 = SimplifiedCellSearch({x: Translation.Forwards, y: Translation.Forwards})
+
+    const newGrouping = new EntityGrouping(
+        area, [entity], worldScope, 
+        x0y0, x1y0, x2y0,
+        x0y1,       x2y1,
+        x0y2, x1y2, x2y2 
     )
+
+    // Connect other grouping with current
+    if (x0y0) x0y0.bottomRightGrouping = newGrouping;
+    if (x1y0) x1y0.bottomCenterGrouping = newGrouping;
+    if (x2y0) x2y0.bottomLeftGrouping = newGrouping;
+
+    if (x0y1) x0y1.centerRightGrouping = newGrouping;
+
+    if (x2y1) x2y1.centerLeftGrouping = newGrouping;
+
+    if (x0y1) x0y1.centerRightGrouping = newGrouping;
+    if (x2y1) x2y1.centerLeftGrouping = newGrouping;
+    if (x2y2) x2y2.topLeftGrouping = newGrouping;
 
     insertSorted(worldScope.sortedGroupings, newGrouping, EntityGroupingAccessor)
     
