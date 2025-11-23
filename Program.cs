@@ -13,4 +13,6 @@ app.MapStaticAssets();
 
 app.MapControllers();
 
+app.MapFallbackToController("Index", "Home");
+
 app.Run();

@@ -18,7 +18,7 @@ export class UnknownModel implements IHTMLInjectable<void> {
         this.modeHandler = <ModeHandler>UnknownClassInstances.resolve(ModeHandler)
     }
 
-    async Init() {
+    async Init() { // Bug: Need to integrate with knockout or add one more level of model because to load, it needs Knockout to set up the HTML
         const displayElement = await this.HTMLandKnockoutRequestCallback.then(()=>{return <HTMLElement>document.getElementById("Game")}) 
 
         console.log("Game starting up!");

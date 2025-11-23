@@ -12,8 +12,10 @@ function initialization (this: Document) {
     const temp = Utility.BundleViewAndModel(
         new WebPageController(navigationOptions)
     )
-
-    temp.Model.Init()
-
     ko.applyBindings({main: temp})
+
+    temp.Model
+        .Init()
+        .then(()=>temp.Model.isLoading(false))
+    
 }

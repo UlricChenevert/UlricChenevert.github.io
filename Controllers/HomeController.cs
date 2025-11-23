@@ -4,7 +4,7 @@ namespace NemoEsuriat.Controllers;
 
 public class HomeController : Controller
 {
-    [Route("")]
+    // [Route("")]
     public IActionResult Index()
     {
         var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HTML", "index.html");

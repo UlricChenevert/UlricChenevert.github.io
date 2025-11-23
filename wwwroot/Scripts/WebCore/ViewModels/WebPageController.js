@@ -15,14 +15,19 @@ export class WebPageController {
         const url = window.location.pathname;
         const urlParts = url.split("/").filter((text) => { return text != ""; });
         if (urlParts.length == 0)
-            return Promise.resolve();
-        const selectedPageOption = this.NavigationOptions.find((testOption) => { return testOption.pageKey == urlParts[0]; });
+            return this.UpdatePage(this.NavigationOptions[0]);
+        let selectedPageOption = this.NavigationOptions.find((testOption) => { return testOption.pageKey == urlParts[0]; });
+        if (!selectedPageOption) {
+            console.warn("Page not found, redirecting to home");
+            selectedPageOption = this.NavigationOptions[0];
+        }
         return this.UpdatePage(selectedPageOption);
     }
     async UpdatePage(selectedOption) {
         if (selectedOption === undefined)
             throw "Invalid url state!";
-        // history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`)
+        // history.replaceState
+        history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`);
         const pageViewModel = selectedOption.modelConstructor();
         this.CurrentPage(pageViewModel);
         return pageViewModel.Model.Init().then(() => this.isLoading(false));
