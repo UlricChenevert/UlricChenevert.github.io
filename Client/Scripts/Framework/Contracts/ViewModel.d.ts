@@ -19,7 +19,7 @@ interface IHTMLInjectable<ResolveType, InitializationType = undefined> {
     Destruction? : ()=>void
 }
 
-interface IWizardModel<ResolveType, EvaluateType> extends IHTMLInjectable<ResolveType>, IEvaluatable<EvaluateType> {
+interface IWizardModel<ResolveType, EvaluateType, InitializationType = undefined> extends IHTMLInjectable<ResolveType, InitializationType>, IEvaluatable<EvaluateType> {
     FriendlyName : string
 }
 

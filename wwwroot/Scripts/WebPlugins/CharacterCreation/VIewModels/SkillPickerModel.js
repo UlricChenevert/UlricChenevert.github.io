@@ -1,0 +1,45 @@
+import { ko } from "../../../Framework/Knockout/ko.js";
+import { Utility } from "../../../WebCore/Utility.js";
+export class AbilityPickerModel {
+    FriendlyName;
+    UnselectedValues;
+    GlobalCharacterData;
+    ViewUrl = "PartialViews/AbilityPickerView.html";
+    isLoading;
+    selectionObservable;
+    chosenValue;
+    isLocked;
+    constructor(FriendlyName, UnselectedValues, GlobalCharacterData) {
+        this.FriendlyName = FriendlyName;
+        this.UnselectedValues = UnselectedValues;
+        this.GlobalCharacterData = GlobalCharacterData;
+        this.selectionObservable = ko.observable(undefined);
+        this.chosenValue = ko.observable(0);
+        this.isLocked = ko.observable(false); // This is necessary to avoid a cyclical dependency
+        this.isLocked.subscribe((isLocked) => {
+            if (!isLocked) { // Unlocking adds the value back to pile
+                this.UnselectedValues.push(this.chosenValue());
+            }
+        });
+        this.selectionObservable.subscribe((newValue) => {
+            if (this.isLocked())
+                return;
+            if (newValue === undefined)
+                return;
+            this.chosenValue(newValue);
+            this.isLocked(true);
+            const index = this.UnselectedValues().indexOf(newValue);
+            this.UnselectedValues.splice(index, 1);
+        });
+        this.isLoading = ko.observable(false);
+    }
+    unlock() { this.isLocked(false); }
+    clear() { this.isLocked(false); this.chosenValue(0); this.selectionObservable(undefined); }
+    Init(chosenValue) {
+        if (chosenValue)
+            this.chosenValue(chosenValue);
+        return Promise.resolve();
+    }
+    Randomize() { this.selectionObservable(Utility.RandomElement(this.UnselectedValues())); }
+    Evaluate() { return this.chosenValue(); }
+}

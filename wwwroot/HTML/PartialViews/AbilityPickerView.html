@@ -1,0 +1,13 @@
+<div>
+    <div data-bind="text: FriendlyName"></div>
+
+    <!-- ko if: isLocked -->
+        <div data-bind="text: chosenValue"> </div>
+        <div data-bind="click: unlock">Unlock</div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: isLocked-->
+        <select data-bind="options: UnselectedValues, optionsCaption: 'Choose', value: selectionObservable"></select>
+    <!-- /ko -->
+
+</div>

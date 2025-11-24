@@ -3,6 +3,7 @@ import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configur
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { getPossibleBackground } from "../Utility/General.js";
+import { RandomizeAbilities } from "../Utility/DiceRoll.js";
 export class ConfiguredCharacterData {
     Race;
     Age;
@@ -12,6 +13,7 @@ export class ConfiguredCharacterData {
     ChildhoodBackground;
     AdultBackground;
     ElderBackground;
+    Abilities;
     Items;
     People;
     Places;
@@ -25,6 +27,7 @@ export class ConfiguredCharacterData {
         this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload);
         this.AdultBackground = ko.observable(AdultBackgrounds[0].Payload);
         this.ElderBackground = ko.observable(undefined);
+        this.Abilities = ko.observable(undefined);
         this.Items = ko.observableArray([]);
         this.People = ko.observableArray([]);
         this.Organizations = ko.observableArray([]);
@@ -38,6 +41,7 @@ export function RandomizeGlobalCharacterData(configuredCharacterData) {
     configuredCharacterData.EconomicBackground(Utility.RandomElement(DevelopmentalEnvironments));
     configuredCharacterData.Age(Utility.RandomElement(Ages));
     configuredCharacterData.ChildhoodBackground(Utility.RandomElement(getPossibleBackground(ChildhoodBackgrounds, configuredCharacterData)));
+    configuredCharacterData.Abilities(RandomizeAbilities());
     configuredCharacterData.AdultBackground((configuredCharacterData.Age() == 'Adult' || configuredCharacterData.Age() == 'Elder') ?
         Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)) : undefined);
     configuredCharacterData.ElderBackground((configuredCharacterData.Age() == 'Elder') ?

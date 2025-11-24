@@ -1,0 +1,9 @@
+<!-- ko if: isVisible-->
+<div class="modal">
+    <div class="modal-contents">
+        <div class="header"><span data-bind="text: FriendlyName"></span><button data-bind="click: Close">X</button></div>
+        <div data-bind="PartialView: ModalModel"></div>
+        <div><button data-bind="click: Close">Done</button></div>
+    </div>
+</div>
+<!-- /ko -->

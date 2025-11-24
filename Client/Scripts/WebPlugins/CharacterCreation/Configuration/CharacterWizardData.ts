@@ -6,6 +6,8 @@ import { Observable, ObservableArray } from "../../../Framework/Knockout/knockou
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { getPossibleBackground } from "../Utility/General.js"
+import { Abilities } from "../Contracts/Abilities.js"
+import { RandomizeAbilities } from "../Utility/DiceRoll.js"
 
 export interface IConfiguredCharacterData {
     Race: ko.Observable<RaceType> 
@@ -18,6 +20,8 @@ export interface IConfiguredCharacterData {
     ChildhoodBackground : ko.Observable<StoryModel>
     AdultBackground : ko.Observable<StoryModel | undefined>
     ElderBackground : ko.Observable<StoryModel | undefined>
+    
+    Abilities : Observable<Abilities | undefined>
 
     Items : ObservableArray<Item>
     People : ObservableArray<RelationshipModel>
@@ -37,6 +41,8 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
     AdultBackground: Observable<StoryModel | undefined>
     ElderBackground: Observable<StoryModel | undefined>
 
+    Abilities : Observable<Abilities | undefined>
+
     Items : ObservableArray<Item>
     People : ObservableArray<RelationshipModel>
     Places : ObservableArray<RelationshipModel>
@@ -52,6 +58,8 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
         this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload)
         this.AdultBackground = ko.observable<StoryModel | undefined>(AdultBackgrounds[0].Payload)
         this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
+
+        this.Abilities = ko.observable<Abilities | undefined>(undefined)
 
         this.Items = ko.observableArray([] as Item[])
         this.People = ko.observableArray([] as RelationshipModel[])
@@ -69,6 +77,8 @@ export function RandomizeGlobalCharacterData(configuredCharacterData : Configure
     configuredCharacterData.Age(Utility.RandomElement(Ages))
     configuredCharacterData.ChildhoodBackground(Utility.RandomElement(getPossibleBackground(ChildhoodBackgrounds, configuredCharacterData)))
     
+    configuredCharacterData.Abilities(RandomizeAbilities())
+
     configuredCharacterData.AdultBackground(
         (configuredCharacterData.Age() == 'Adult' || configuredCharacterData.Age() == 'Elder' )? 
             Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)) : undefined)

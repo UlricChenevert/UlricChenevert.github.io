@@ -1,0 +1,13 @@
+<div>
+    Select Language:
+    <select data-bind="options: possibleLanguages, optionsText: function(item) {return item.Payload.Name}, value: chosenLanguage, optionsCaption: 'Choose'"></select>
+
+    <!-- ko if: chosenLanguage() !== undefined -->
+    Description:
+    <div data-bind="value: chosenLanguage().Description"></div>
+    <!-- /ko-->
+
+    <div>Can Speak: <input type="checkbox" data-bind="value: canSpeak"></div>
+    <div>Can Read: <input type="checkbox" data-bind="value: canRead"></div>
+    <div>Can Write: <input type="checkbox" data-bind="value: canWrite"></div>
+</div>

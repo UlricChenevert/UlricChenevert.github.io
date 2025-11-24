@@ -7,11 +7,12 @@ import { EntryConfigurationModel } from "./GenerationMethodModel.js";
 import { ItemConfigModel } from "./ItemModel.js";
 import { PropensityViewModel } from "./PropensityViewModel.js";
 import { RelationshipsConfigModel } from "./RelationshipsModel.js";
+import { SkillsModel } from "./SkillsModel.js";
 export class CharacterWizardModel extends Wizard {
     constructor() {
         const globalCharacterData = new ConfiguredCharacterData();
         const panels = [];
         super(panels, "Heartbreaker Character Creator");
-        panels.push(Utility.BundleViewAndModel(new EntryConfigurationModel(globalCharacterData, this.next.bind(this))), Utility.BundleViewAndModel(new PropensityViewModel(globalCharacterData)), Utility.BundleViewAndModel(new BackgroundViewModel(globalCharacterData)), Utility.BundleViewAndModel(new ItemConfigModel(globalCharacterData)), Utility.BundleViewAndModel(new RelationshipsConfigModel(globalCharacterData)), Utility.BundleViewAndModel(new CharacterSheetModel(globalCharacterData)));
+        panels.push(Utility.BundleViewAndModel(new SkillsModel(globalCharacterData, [7, 8, 8, 9, 9, 10])), Utility.BundleViewAndModel(new EntryConfigurationModel(globalCharacterData, this.next.bind(this))), Utility.BundleViewAndModel(new PropensityViewModel(globalCharacterData)), Utility.BundleViewAndModel(new BackgroundViewModel(globalCharacterData)), Utility.BundleViewAndModel(new ItemConfigModel(globalCharacterData)), Utility.BundleViewAndModel(new RelationshipsConfigModel(globalCharacterData)), Utility.BundleViewAndModel(new CharacterSheetModel(globalCharacterData)));
     }
 }
