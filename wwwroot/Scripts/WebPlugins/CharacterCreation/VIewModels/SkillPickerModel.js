@@ -37,7 +37,7 @@ export class AbilityPickerModel {
     clear() { this.isLocked(false); this.chosenValue(0); this.selectionObservable(undefined); }
     Init(chosenValue) {
         if (chosenValue)
-            this.chosenValue(chosenValue);
+            this.selectionObservable(chosenValue);
         return Promise.resolve();
     }
     Randomize() { this.selectionObservable(Utility.RandomElement(this.UnselectedValues())); }

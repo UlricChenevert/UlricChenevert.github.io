@@ -1,0 +1,20 @@
+
+<!-- ko ifnot: subheading -->
+    <h2 data-bind="text: FriendlyName"></h2>
+<!-- /ko -->
+
+<!-- ko if: subheading -->
+    <label class="input-group" data-bind="text: FriendlyName"></label>
+<!-- /ko -->
+
+<div data-bind="foreach: itemList">
+    <div>
+        <span data-bind="text: $parent.determineName($data)">aaa</span>
+        <button data-bind="click: ()=>$parent.EditItem($index)">edit</button>
+    </div>
+</div>
+<div>
+    <button data-bind="click: CreateItem">Add</button><span data-bind="text: FriendlyName"></span>
+</div>
+
+<div data-bind="PartialView: modal"></div>

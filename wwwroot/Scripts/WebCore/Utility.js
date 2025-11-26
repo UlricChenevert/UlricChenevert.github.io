@@ -18,9 +18,32 @@ export var Utility;
     }
     Utility.BundleViewAndModel = BundleViewAndModel;
     function RandomElement(aList) {
-        return aList[Math.floor(Math.random() * aList.length)];
+        return aList[RandomIndex(aList)];
     }
     Utility.RandomElement = RandomElement;
+    function RandomIndex(aList) {
+        return Math.floor(Math.random() * aList.length);
+    }
+    Utility.RandomIndex = RandomIndex;
+    function removeRandomElement(destroyableList) {
+        const pickedIndex = Utility.RandomIndex(destroyableList);
+        const item = destroyableList.splice(pickedIndex, 1);
+        return item[0];
+    }
+    Utility.removeRandomElement = removeRandomElement;
+    function splitIntoTwoArrays(a, separationPredicate) {
+        const length = a.length;
+        const predicateTrueArray = [];
+        const predicateFalseArray = [];
+        for (let i = 0; i < length; i++) {
+            if (separationPredicate(a[i]))
+                predicateTrueArray.push(a[i]);
+            else
+                predicateFalseArray.push(a[i]);
+        }
+        return { predicateTrueArray: predicateTrueArray, predicateFalseArray: predicateFalseArray };
+    }
+    Utility.splitIntoTwoArrays = splitIntoTwoArrays;
     class UniqueID {
         id = 0;
         newID = () => {

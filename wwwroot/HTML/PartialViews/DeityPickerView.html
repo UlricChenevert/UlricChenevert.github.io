@@ -1,0 +1,16 @@
+<div>
+    <!-- ko ifnot: isCustom -->
+        <div data-bind="text: console.log($data)"></div>
+        <select data-bind="options: possibleDeities, optionsText: (item)=>item.Pronoun.name, value: chosenDeity"></select>
+        <div data-bind="text: chosenDeityDescription"></div>
+    <!-- /ko -->
+
+    <!-- ko if: isCustom -->
+        Name:
+        <input data-bind="value: createdDeityName">
+        Description:
+        <input data-bind="value: createdDeityDescription">
+    <!-- /ko -->
+
+    <div>Customize: <input type="checkbox" data-bind="checked: isCustom"></div>
+</div>

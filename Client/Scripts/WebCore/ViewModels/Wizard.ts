@@ -33,26 +33,40 @@ export class Wizard implements IWizardModel<void, string> {
         return this.currentPanelIndex() == index
     }
 
-    next () {
+    next (data:any, event:any, amount = 1) {
+        if (amount == -1) amount = this.panels.length - this.currentPanelIndex() - 1
 
-        this.panels[this.currentPanelIndex()].Model.Evaluate()
-
-        const nextIndex = this.currentPanelIndex() + 1
-
-        if (nextIndex == this.panels.length) return
-
-        this.currentPanelIndex(nextIndex)
+        this.hopPanel(this.currentPanelIndex(), this.currentPanelIndex() + amount)
     }
 
     previous () {
+        this.hopPanel(this.currentPanelIndex(), this.currentPanelIndex() - 1)
+    }
 
-        this.panels[this.currentPanelIndex()].Model.Evaluate()
+    async hopPanel(currentIndex : number, nextIndex : number) {
+        if (nextIndex < 0 || this.panels.length <= nextIndex) return
+        if (currentIndex == nextIndex) return
 
-        const previousIndex = this.currentPanelIndex() - 1
+        const lowerBound = Math.min(currentIndex, nextIndex)
+        const upperBound = Math.max(currentIndex, nextIndex)
 
-        if (previousIndex < 0) return
+        const jumpedPanelRefs = this.panels.filter((_, index)=>lowerBound < index && index < upperBound)
 
-        this.currentPanelIndex(previousIndex)
+        // Possible bug, inits not waited in order
+
+        await this.panels[currentIndex].Model.Evaluate()
+
+        await this.panels[currentIndex].Model.Evaluate();
+
+        for (const panel of jumpedPanelRefs) {
+            await panel.Model.Init();
+            
+            await panel.Model.Evaluate();
+        }
+
+        await this.panels[nextIndex].Model.Init();
+
+        this.currentPanelIndex(nextIndex);
     }
 
     isFirstPanel () {

@@ -1,6 +1,6 @@
 import { Utility } from "../../../WebCore/Utility.js";
 import { taggedSyllablesPrefixes, taggedSyllablesRoots, taggedSyllablesSuffixes } from "../Configuration/NameData.js";
-import { isMatchingIfExists } from "./General.js";
+import { isMatchingIfExists } from "./FilterUtility.js";
 import { NameGrammar } from "./NameGrammar.js";
 export var NameUtility;
 (function (NameUtility) {
@@ -29,4 +29,6 @@ export var NameUtility;
         return RandomElement.Payload.Syllable;
     }
     NameUtility.getRandomSyllable = getRandomSyllable;
+    NameUtility.determineFullNameFromCharacterName = (data) => NameUtility.determineFullName(data.Name, data.Bynames, data.Epithets);
+    NameUtility.determineFullName = (Names, Bynames, Epithets) => Names + " of " + Bynames + " the " + Epithets;
 })(NameUtility || (NameUtility = {}));

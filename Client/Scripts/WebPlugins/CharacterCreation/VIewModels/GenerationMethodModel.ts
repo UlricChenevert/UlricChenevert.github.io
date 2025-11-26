@@ -1,5 +1,5 @@
 import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { IConfiguredCharacterData, RandomizeGlobalCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData, RandomizeGlobalCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { DropDownButtonModel } from "./DropdownButtonModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
@@ -19,20 +19,20 @@ export class EntryConfigurationModel implements IWizardModel<void, void> {
         {Name: "Halfling", clickFunction:()=>{this.SetRace("Halfling")}}
     ]))
 
-    constructor (public GlobalCharacterData: IConfiguredCharacterData, nextPanel : Function) {
+    constructor (public GlobalCharacterData: ConfiguredCharacterData, nextPanel : Function) {
         this.isLoading = ko.observable(true)
         this.nextPanel = nextPanel
     }
 
     Randomize () {
         RandomizeGlobalCharacterData(this.GlobalCharacterData)
-        this.nextPanel()
+        this.nextPanel(undefined, undefined, -1)
     }
 
     SetRace (race : RaceType) {
         RandomizeGlobalCharacterData(this.GlobalCharacterData)
         this.GlobalCharacterData.Race(race)
-        this.nextPanel()
+        this.nextPanel(undefined, undefined, -1)
     }
     
     Evaluate () {

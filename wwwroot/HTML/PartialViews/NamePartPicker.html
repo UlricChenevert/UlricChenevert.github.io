@@ -1,0 +1,11 @@
+
+<div data-bind="FriendlyName"></div>:
+<!-- ko ifnot:  isCustom -->
+    <select data-bind="options: possibleOptions, optionsText: function(item) {return item.Payload}, value: chosenValueOption"></select>
+<!-- /ko -->
+
+<!-- ko if:  isCustom -->
+    <input data-bind="value: chosenValue">
+<!-- /ko -->
+
+<div>Custom <div data-bind="FriendlyName"></div>: <input type="checkbox" data-bind="checked: isCustom"></div>

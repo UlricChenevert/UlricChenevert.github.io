@@ -1,14 +1,11 @@
 import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { AbilityPickerModel } from "./SkillPickerModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { RandomizeAbilities, rollAbility } from "../Utility/DiceRoll.js";
-import { ModalFrameModel } from "../../../WebCore/ViewModels/ModalFrameModel.js";
-import { Language } from "../Contracts/Language.js";
-import { LanguageModel } from "./LangaugesModel.js";
-import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
+import { Abilities } from "../Contracts/Abilities.js";
 
 export class SkillsModel implements ICharacterWizardViewModel<void, void> {
     FriendlyName = "Ability Scores";
@@ -23,30 +20,31 @@ export class SkillsModel implements ICharacterWizardViewModel<void, void> {
     wisdomPicker : IPartialViewModel<AbilityPickerModel>
     charismaPicker : IPartialViewModel<AbilityPickerModel>
 
-    test : IPartialViewModel<ModalFrameModel<void, Language, Language, LanguageModel>>
-
     static ABILITY_SCORE_AMOUNT = 6
     
     UnselectedSkills : ko.ObservableArray<number>    
 
-    constructor (public GlobalCharacterData : IConfiguredCharacterData, standardAbilityScores : number[]) {
+    constructor (public GlobalCharacterData : ConfiguredCharacterData, standardAbilityScores : number[]) {
         this.UnselectedSkills = ko.observableArray(standardAbilityScores.map(x=>x))
 
-        this.strengthPicker= Utility.BundleViewAndModel(new AbilityPickerModel("Strength", this.UnselectedSkills, this.GlobalCharacterData))
-        this.dexterityPicker= Utility.BundleViewAndModel(new AbilityPickerModel("Dexterity", this.UnselectedSkills, this.GlobalCharacterData))
-        this.constitutionPicker= Utility.BundleViewAndModel(new AbilityPickerModel("Constitution", this.UnselectedSkills, this.GlobalCharacterData))
-        this.intelligencePicker= Utility.BundleViewAndModel(new AbilityPickerModel("Intelligence", this.UnselectedSkills, this.GlobalCharacterData))
-        this.wisdomPicker= Utility.BundleViewAndModel(new AbilityPickerModel("Wisdom", this.UnselectedSkills, this.GlobalCharacterData))
-        this.charismaPicker= Utility.BundleViewAndModel(new AbilityPickerModel("Charisma", this.UnselectedSkills, this.GlobalCharacterData))
+        this.strengthPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Strength", this.UnselectedSkills, this.GlobalCharacterData))
+        this.dexterityPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Dexterity", this.UnselectedSkills, this.GlobalCharacterData))
+        this.constitutionPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Constitution", this.UnselectedSkills, this.GlobalCharacterData))
+        this.intelligencePicker = Utility.BundleViewAndModel(new AbilityPickerModel("Intelligence", this.UnselectedSkills, this.GlobalCharacterData))
+        this.wisdomPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Wisdom", this.UnselectedSkills, this.GlobalCharacterData))
+        this.charismaPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Charisma", this.UnselectedSkills, this.GlobalCharacterData))
         
-        const a = Utility.BundleViewAndModel(new LanguageModel(TaggedLanguageData))
-        const b = new ModalFrameModel<void, Language, Language | undefined, LanguageModel>("Language", a)
-        this.test = Utility.BundleViewAndModel<void, ModalFrameModel<void, Language, Language | undefined, LanguageModel>, Language | undefined>(b)
-
         this.isLoading = ko.observable(true)
     }
     
     Init () {
+        this.strengthPicker.Model.Init(this.GlobalCharacterData.Abilities().Strength)
+        this.dexterityPicker.Model.Init(this.GlobalCharacterData.Abilities().Dexterity)
+        this.constitutionPicker.Model.Init(this.GlobalCharacterData.Abilities().Constitution)
+        this.intelligencePicker.Model.Init(this.GlobalCharacterData.Abilities().Intelligence)
+        this.wisdomPicker.Model.Init(this.GlobalCharacterData.Abilities().Wisdom)
+        this.charismaPicker.Model.Init(this.GlobalCharacterData.Abilities().Charisma)
+
         return Promise.resolve();
     }
 
@@ -72,8 +70,16 @@ export class SkillsModel implements ICharacterWizardViewModel<void, void> {
     Randomize () {
         this.GlobalCharacterData.Abilities(RandomizeAbilities())
     }
-    Evaluate () {}
-
-    
+    Evaluate () {
+        this.GlobalCharacterData.Abilities(
+            new Abilities(
+                this.strengthPicker.Model.Evaluate(),
+                this.dexterityPicker.Model.Evaluate(),
+                this.constitutionPicker.Model.Evaluate(),
+                this.intelligencePicker.Model.Evaluate(),
+                this.wisdomPicker.Model.Evaluate(),
+                this.charismaPicker.Model.Evaluate()
+        ))
+    }
 }
 

@@ -1,0 +1,9 @@
+<div class="input-group">
+    <label data-bind="text: FriendlyName"></label>
+    <div>
+        <span data-bind="text: determineName(item())"></span>
+        <button data-bind="click: EditItem">edit</button>
+    </div>
+</div>
+
+<div data-bind="PartialView: modal"></div>

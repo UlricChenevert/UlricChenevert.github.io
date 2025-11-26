@@ -8,7 +8,7 @@ export const RandomizeAbilities = () => {
     const Charisma = rollAbility();
     return new Abilities(Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
 };
-const sixSidedDieRoll = () => Math.ceil(Math.random() * 5 + 1);
+export const sixSidedDieRoll = () => Math.ceil(Math.random() * 5 + 1);
 export const rollAbility = () => {
     let sum = 0;
     const roll = [sixSidedDieRoll(), sixSidedDieRoll(), sixSidedDieRoll()];

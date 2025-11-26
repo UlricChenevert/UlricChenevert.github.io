@@ -273,7 +273,6 @@ export const ChildhoodBackgrounds : TaggedCharacterData<StoryModel>[] =  [
     }
 ]
 
-
 export const AdultBackgrounds : TaggedCharacterData<StoryModel>[] =  [
     {
         Tags: {
@@ -696,4 +695,8 @@ export const ElderBackgrounds : TaggedCharacterData<StoryModel>[] =  [
             Story: "The lightning strike that should have killed you instead left you with an otherworldly connection to storms and weather patterns. Over decades, you've learned to read the winds and clouds like others read books, predicting natural disasters with uncanny accuracy. Your latest visions show a gathering storm unlike any in living memory, one that threatens to reshape the very foundations of the world."
         }
     }
+]
+
+export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
+    
 ]

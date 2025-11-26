@@ -22,12 +22,12 @@ export class EntryConfigurationModel {
     }
     Randomize() {
         RandomizeGlobalCharacterData(this.GlobalCharacterData);
-        this.nextPanel();
+        this.nextPanel(undefined, undefined, -1);
     }
     SetRace(race) {
         RandomizeGlobalCharacterData(this.GlobalCharacterData);
         this.GlobalCharacterData.Race(race);
-        this.nextPanel();
+        this.nextPanel(undefined, undefined, -1);
     }
     Evaluate() {
     }

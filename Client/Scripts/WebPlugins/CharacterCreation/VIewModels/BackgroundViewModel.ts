@@ -1,13 +1,14 @@
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js"
-import { AgeType, DispositionType, PronounType } from "../Contracts/StringTypes.js"
+import { AgeType, DispositionType, PronounType, RelationshipType } from "../Contracts/StringTypes.js"
 import {ko} from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js"
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { BackgroundStoryPickerModel } from "./BackgroundTypeModel.js"
-import { Item, RelationshipModel, StoryModel } from "../Contracts/TaggedData.js"
+import { Item, StoryModel } from "../Contracts/TaggedData.js"
 import { HelpIconModel } from "../../../WebCore/ViewModels/HelpIcon.js"
+import { Entanglements } from "../Contracts/Entanglements.js"
 
 export class BackgroundViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/BackgroundView.html"
@@ -26,7 +27,7 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
 
     PossibleAges = Ages
 
-    constructor(public GlobalCharacterData : IConfiguredCharacterData) {
+    constructor(public GlobalCharacterData : ConfiguredCharacterData) {
         this.ChildBackgroundPicker = Utility.BundleViewAndModel(new BackgroundStoryPickerModel("Childhood Background", this.GlobalCharacterData, ChildhoodBackgrounds))
         this.AdultBackgroundPicker = Utility.BundleViewAndModel(new BackgroundStoryPickerModel("Adult Background", this.GlobalCharacterData, AdultBackgrounds))
         this.ElderBackgroundPicker = Utility.BundleViewAndModel(new BackgroundStoryPickerModel("Elder Background", this.GlobalCharacterData, ElderBackgrounds))
@@ -104,21 +105,21 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
         this.GlobalCharacterData.Organizations(filteredOrganizations)
     }
 
-    _addRelationships(evaluationModel : StoryModel | undefined, workingPeopleRef : RelationshipModel[], workingPlacesRef : RelationshipModel[], workingOrganizationsRef : RelationshipModel[]) {
+    _addRelationships(evaluationModel : StoryModel | undefined, workingPeopleRef : Entanglements[], workingPlacesRef : Entanglements[], workingOrganizationsRef : Entanglements[]) {
         if (evaluationModel === undefined) return
         
         if (evaluationModel.OrganizationNames !== undefined)
-            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, workingOrganizationsRef)
+            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, "Organization", workingOrganizationsRef)
 
         if (evaluationModel.PeopleNames !== undefined)
-            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, workingPeopleRef)
+            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, "Person", workingPeopleRef)
 
 
         if (evaluationModel.PlaceNames !== undefined)
-            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, workingPlacesRef)
+            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, "Place", workingPlacesRef)
     }
 
-    _addRelationshipModel(names : PronounType[] | undefined, relationships : DispositionType[] | undefined, workingRelationshipsRef : RelationshipModel[]) {
+    _addRelationshipModel(names : PronounType[] | undefined, relationships : DispositionType[] | undefined, type : RelationshipType, workingRelationshipsRef : Entanglements[]) {
         if (!names) return
 
         names.forEach((name, index)=>{
@@ -126,7 +127,7 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
 
             const disposition : DispositionType = (providedDisposition)? providedDisposition : "Unknown"
 
-            workingRelationshipsRef.push({Name: name, Disposition: disposition, Source: "Background"})
+            workingRelationshipsRef.push({Name: name, Attitudes: disposition, Type:type ,Source: "Background"})
         })
     }
 

@@ -1,11 +1,11 @@
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { GenerationType } from "../Configuration/NameData.js";
 import { BackgroundType, PronounType, SourceTypes } from "../Contracts/StringTypes.js";
 import { Item, NameGeneratorSettings, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { NameUtility } from "./NameUtility.js";
 import { ReplaceString } from "./StringManipulation.js";
 
-export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>, characterData : IConfiguredCharacterData): TaggedCharacterData<StoryModel> {
+export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>, characterData : ConfiguredCharacterData): TaggedCharacterData<StoryModel> {
 
     const storyPayloadReference = taggedStory.Payload;
 

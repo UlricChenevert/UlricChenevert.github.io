@@ -5,17 +5,19 @@ export type NounMashNameGeneratorType = "Adjective" | "Noun" | "Verb";
 
 export type ItemTypes = "Unusual Ring";
 
-export type RelationshipType = "Colleagues" | "Family" | "Local Authorities" | "Local Religious Authorities" | "Master" | "Neighbors" | "Shadow Groups";
-
 export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disinterested" | "Receptive" | "Friendly" | "Unknown";
 
 export type PrestigeType = "Prestigious" | "Insignificant" | "Secretive";
 
 export type PronounType = { id: number; name: string; };
 
+export type SocialRelationships = "Colleagues" | "Family" | "Local Civic Authorities" | "Local Religious Authorities" | "Master/Mentor/Lord" | "Neighbors/Local Inhabitants" | "Shadow Groups"
+
+export type RelationshipType = NameType | SocialRelationships
+
 export type TagType = 'Race' | 'Profession' | 'Alignment' | 'Background' | 'DevelopmentalEnvironment';
 
-export type RaceType = 'Orc' | 'Human' | 'Elf' | 'Dwarf' | 'Halfling';
+export type RaceType = 'Orc' | 'Human' | 'Elf' | 'Dwarf' | 'Halfling' | "Ixian";
 
 export type GodType = "Abala" | "Asherah" | "Enoch" | "Gestas" | "Golb" | "Hiram" | "Juba" | "Kain" | "Moloch" | "Tubal" | "Weut";
 
@@ -46,8 +48,7 @@ export type ChildhoodBackgroundsTypes =
     "Carnival Prodigy" |
     "Dragon Scale Collector" |
     "Prophecy Child" |
-    "Dark Cultist's Child" // Evil
-    |
+    "Dark Cultist's Child" |
     "Young Paladin"; // Lawful Good
 
 
@@ -108,9 +109,13 @@ export type DevelopmentalEnvironmentType = 'Nobility' | 'Clergy' | 'Commoner';
 export type NameType = "Organization" | "Person" | "Place";
 
 export type ProfessionType =
-    // Martial Classes
-    'Fighter' | 'Barbarian' | 'Monk' | 'Ranger' |
-    // Spellcasters
-    'Wizard' | 'Sorcerer' | 'Warlock' | 'Cleric' | 'Druid' |
-    // Mixed
-    'Paladin' | 'Bard' | 'Rogue';
+    "Adventurer" | "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+    // // Martial Classes
+    // 'Fighter' | 'Barbarian' | 'Monk' | 'Ranger' |
+    // // Spellcasters
+    // 'Wizard' | 'Sorcerer' | 'Warlock' | 'Cleric' | 'Druid' |
+    // // Mixed
+    // 'Paladin' | 'Bard' | 'Rogue';
+
+
+export type JobType = "Jeweler"

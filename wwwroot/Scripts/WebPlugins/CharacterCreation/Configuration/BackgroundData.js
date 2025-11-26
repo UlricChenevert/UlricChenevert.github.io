@@ -686,3 +686,4 @@ export const ElderBackgrounds = [
         }
     }
 ];
+export const ClassBackgrounds = [];

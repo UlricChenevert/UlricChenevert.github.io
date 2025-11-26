@@ -1,6 +1,6 @@
 import { Utility } from "../../../WebCore/Utility.js";
 import { taggedNouns, taggedAdjectives, taggedVerb } from "../Configuration/NameData.js";
-import { isMatchingIfExists } from "./General.js";
+import { isMatchingIfExists } from "./FilterUtility.js";
 import { NameUtility } from "./NameUtility.js";
 export class NameGrammar {
     maxLength;

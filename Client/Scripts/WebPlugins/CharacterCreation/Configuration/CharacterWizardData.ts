@@ -1,35 +1,22 @@
-import { Item, RelationshipModel, StoryModel } from "../Contracts/TaggedData.js"
+import { Item, StoryModel } from "../Contracts/TaggedData.js"
 import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType, ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configuration/DispositionData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
 import { Utility } from "../../../WebCore/Utility.js"
-import { getPossibleBackground } from "../Utility/General.js"
+import { getPossibleBackground } from "../Utility/FilterUtility.js"
 import { Abilities } from "../Contracts/Abilities.js"
 import { RandomizeAbilities } from "../Utility/DiceRoll.js"
+import { Language, LearnedLanguage } from "../Contracts/Language.js"
+import { Entanglements } from "../Contracts/Entanglements.js"
+import { Deity } from "../Contracts/Diety.js"
+import { possibleDeities } from "./DietiesData.js"
+import { Edges } from "../Contracts/Edges.js"
+import { CharacterName } from "../Contracts/CharacterName.js"
 
-export interface IConfiguredCharacterData {
-    Race: ko.Observable<RaceType> 
-    Morality : ko.Observable<MoralityTypes>
-    Order : ko.Observable<OrderTypes>
-    EconomicBackground : ko.Observable<DevelopmentalEnvironmentType>
-
-    Age : ko.Observable<AgeType>
-
-    ChildhoodBackground : ko.Observable<StoryModel>
-    AdultBackground : ko.Observable<StoryModel | undefined>
-    ElderBackground : ko.Observable<StoryModel | undefined>
-    
-    Abilities : Observable<Abilities | undefined>
-
-    Items : ObservableArray<Item>
-    People : ObservableArray<RelationshipModel>
-    Places : ObservableArray<RelationshipModel>
-    Organizations : ObservableArray<RelationshipModel>
-}
-
-export class ConfiguredCharacterData implements IConfiguredCharacterData {
+export class ConfiguredCharacterData {
+    Name : Observable<CharacterName>
     Race: Observable<RaceType>
     Age: Observable<AgeType>
     
@@ -41,12 +28,16 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
     AdultBackground: Observable<StoryModel | undefined>
     ElderBackground: Observable<StoryModel | undefined>
 
-    Abilities : Observable<Abilities | undefined>
-
+    Abilities : Observable<Abilities>
+    Languages: ObservableArray<LearnedLanguage>
+    
     Items : ObservableArray<Item>
-    People : ObservableArray<RelationshipModel>
-    Places : ObservableArray<RelationshipModel>
-    Organizations : ObservableArray<RelationshipModel>
+
+    People : ObservableArray<Entanglements>
+    Places : ObservableArray<Entanglements>
+    Organizations : ObservableArray<Entanglements>
+    Deities : ObservableArray<Deity>
+    Edges : ObservableArray<Edges>
 
     constructor () {
         this.Race = ko.observable(Races[0])
@@ -59,12 +50,18 @@ export class ConfiguredCharacterData implements IConfiguredCharacterData {
         this.AdultBackground = ko.observable<StoryModel | undefined>(AdultBackgrounds[0].Payload)
         this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
 
-        this.Abilities = ko.observable<Abilities | undefined>(undefined)
+        this.Abilities = ko.observable(new Abilities(0, 0, 0, 0, 0, 0))
+        this.Languages = ko.observableArray<LearnedLanguage>([])
 
         this.Items = ko.observableArray([] as Item[])
-        this.People = ko.observableArray([] as RelationshipModel[])
-        this.Organizations = ko.observableArray([] as RelationshipModel[])
-        this.Places = ko.observableArray([] as RelationshipModel[])
+        this.People = ko.observableArray([] as Entanglements[])
+        this.Organizations = ko.observableArray([] as Entanglements[])
+        this.Places = ko.observableArray([] as Entanglements[])
+
+        this.Name = ko.observable(new CharacterName("Unnamed", "Unlanded", "Untitled")) //new CharacterName("", "", "")
+
+        this.Deities = ko.observableArray([] as Deity[])
+        this.Edges = ko.observableArray([] as Edges[])
     }
 }
 
@@ -85,4 +82,12 @@ export function RandomizeGlobalCharacterData(configuredCharacterData : Configure
 
     configuredCharacterData.ElderBackground((configuredCharacterData.Age() == 'Elder' )? 
             Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)) : undefined)
+
+    const copyOfDeities = possibleDeities.map(x=>x)
+
+    const mainDeity = Utility.removeRandomElement(copyOfDeities)
+    const secondDeity = Utility.removeRandomElement(copyOfDeities)
+    const thirdDeity = Utility.removeRandomElement(copyOfDeities)
+
+    configuredCharacterData.Deities([mainDeity, secondDeity, thirdDeity])
 }

@@ -1,4 +1,4 @@
-import { getPossibleBackground } from "../Utility/General.js";
+import { getPossibleBackground } from "../Utility/FilterUtility.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 export class BackgroundStoryPickerModel {

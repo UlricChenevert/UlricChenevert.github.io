@@ -82,19 +82,19 @@ export class BackgroundViewModel {
         if (evaluationModel === undefined)
             return;
         if (evaluationModel.OrganizationNames !== undefined)
-            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, workingOrganizationsRef);
+            this._addRelationshipModel(evaluationModel.OrganizationNames, evaluationModel.OrganizationRelations, "Organization", workingOrganizationsRef);
         if (evaluationModel.PeopleNames !== undefined)
-            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, workingPeopleRef);
+            this._addRelationshipModel(evaluationModel.PeopleNames, evaluationModel.PeopleRelations, "Person", workingPeopleRef);
         if (evaluationModel.PlaceNames !== undefined)
-            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, workingPlacesRef);
+            this._addRelationshipModel(evaluationModel.PlaceNames, evaluationModel.PlaceRelationships, "Place", workingPlacesRef);
     }
-    _addRelationshipModel(names, relationships, workingRelationshipsRef) {
+    _addRelationshipModel(names, relationships, type, workingRelationshipsRef) {
         if (!names)
             return;
         names.forEach((name, index) => {
             const providedDisposition = relationships?.[index];
             const disposition = (providedDisposition) ? providedDisposition : "Unknown";
-            workingRelationshipsRef.push({ Name: name, Disposition: disposition, Source: "Background" });
+            workingRelationshipsRef.push({ Name: name, Attitudes: disposition, Type: type, Source: "Background" });
         });
     }
     Init() {

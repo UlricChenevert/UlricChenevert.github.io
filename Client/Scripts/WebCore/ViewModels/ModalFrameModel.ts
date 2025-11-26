@@ -10,19 +10,26 @@ export class ModalFrameModel<ResolveType, EvaluateType, InitializationType, Mode
 
     constructor (
         public FriendlyName : string,
-        public ModalModel : IPartialViewModel<ModelType>
+        public ModalModel : IPartialViewModel<ModelType>,
+        public isConfiguredCallback : (model : ModelType) => boolean
     ) {
         this.isLoading = ko.observable(false)
-        this.isVisible = ko.observable(true)
+        this.isVisible = ko.observable(false)
     }
     
     Init = ((initiationObject?: InitializationType): Promise<ResolveType> => {
         const childInit = this.ModalModel.Model.Init as Function; 
-        return childInit(initiationObject);
+
+        return childInit.bind(this.ModalModel.Model)(initiationObject);
     }) as IWizardModel<ResolveType, EvaluateType, InitializationType>['Init'];
 
     Evaluate () {return this.ModalModel.Model.Evaluate()} // External Process must evaluate
 
     Open () {this.isVisible(true)}
     Close () {this.isVisible(false)}
+    
+    Done () {
+        if (this.isConfiguredCallback(this.ModalModel.Model))
+            this.isVisible(false)
+    }
 }
