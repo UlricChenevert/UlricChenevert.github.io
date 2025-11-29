@@ -14,9 +14,11 @@ export class NamePartPickerModel {
         this.chosenValue = ko.observable(possibleOptions[0].Payload);
         this.isCustom = ko.observable(false);
         this.chosenValueOption.subscribe((newValue) => {
-            if (this.isCustom())
-                return;
             if (newValue === undefined)
+                return;
+            if (newValue.Payload == "Custom")
+                this.isCustom(true);
+            if (this.isCustom())
                 return;
             this.chosenValue(newValue.Payload);
         });

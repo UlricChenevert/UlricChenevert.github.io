@@ -1,3 +1,4 @@
+import { Utility } from "../../../WebCore/Utility.js";
 import { PopulateBackground } from "./PopulateStory.js";
 export function isMatchingIfExists(testProperty, comparisonProperty) {
     return testProperty == undefined || comparisonProperty == undefined || testProperty == comparisonProperty;
@@ -24,3 +25,6 @@ export function getMatchingMultiTaggedData(source, GlobalCharacterData) {
             (tag.Alignment === undefined || tag.Alignment.Order == GlobalCharacterData.Order()));
     });
 }
+export const filterOnProfession = (TaggedData, job) => TaggedData.Tags.some((tag) => tag.Profession?.Job === job);
+export const filterOnProfessionData = (TaggedData, job) => TaggedData.filter((TaggedData) => filterOnProfession(TaggedData, job)).map(x => x.Payload);
+export const randomTaggedData = (TaggedData) => [Utility.RandomElement(TaggedData).Payload];

@@ -1,13 +1,19 @@
-<div>
-    <div data-bind="text: FriendlyName"></div>
+<div data-bind="click: unlock">
+    <div class="title">
+        <h4 data-bind="text: FriendlyName"></h4>
+        <!-- ko if: isLocked -->
+            <button class="pop-content button-icon centered" data-bind="click: Randomize">
+                <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\lock.svg" alt="Unlock" />
+            </button>
+        <!-- /ko -->
+    </div>
 
     <!-- ko if: isLocked -->
         <div data-bind="text: chosenValue"> </div>
-        <div data-bind="click: unlock">Unlock</div>
     <!-- /ko -->
 
     <!-- ko ifnot: isLocked-->
-        <select data-bind="options: UnselectedValues, optionsCaption: 'Choose', value: selectionObservable"></select>
+        <select class="wizard-select" data-bind="options: UnselectedValues, optionsCaption: 'Choose', value: selectionObservable"></select>
     <!-- /ko -->
 
 </div>

@@ -4,6 +4,7 @@ import { CharacterName } from "../Contracts/CharacterName.js";
 import { NameUtility } from "../Utility/NameUtility.js";
 import { NamePartPickerModel } from "./NamePartPickerModel.js";
 export class NamePickerModel {
+    GlobalCharacterData;
     possibleNames;
     possibleBynames;
     possibleEpithets;
@@ -17,13 +18,14 @@ export class NamePickerModel {
     chosenBynames;
     chosenEpithets;
     fullName;
-    constructor(possibleNames, possibleBynames, possibleEpithets) {
+    constructor(GlobalCharacterData, possibleNames, possibleBynames, possibleEpithets) {
+        this.GlobalCharacterData = GlobalCharacterData;
         this.possibleNames = possibleNames;
         this.possibleBynames = possibleBynames;
         this.possibleEpithets = possibleEpithets;
         this.NamePicker = Utility.BundleViewAndModel(new NamePartPickerModel("Name", possibleNames));
-        this.BynamePicker = Utility.BundleViewAndModel(new NamePartPickerModel("Name", possibleBynames));
-        this.EpithetPicker = Utility.BundleViewAndModel(new NamePartPickerModel("Name", possibleEpithets));
+        this.BynamePicker = Utility.BundleViewAndModel(new NamePartPickerModel("Byname", possibleBynames));
+        this.EpithetPicker = Utility.BundleViewAndModel(new NamePartPickerModel("Epithet", possibleEpithets));
         this.chosenName = this.NamePicker.Model.chosenValue;
         this.chosenBynames = this.BynamePicker.Model.chosenValue;
         this.chosenEpithets = this.EpithetPicker.Model.chosenValue;
@@ -33,15 +35,21 @@ export class NamePickerModel {
         this.fullName = ko.observable(NameUtility.determineFullName(this.chosenName(), this.chosenBynames(), this.chosenEpithets()));
         this.isLoading = ko.observable(false);
     }
-    Init(chosenLanguage) {
-        if (chosenLanguage) {
-            this.NamePicker.Model.Init(chosenLanguage.Name);
-            this.BynamePicker.Model.Init(chosenLanguage.Bynames);
-            this.EpithetPicker.Model.Init(chosenLanguage.Epithets);
+    Randomize() {
+    }
+    Destruction;
+    Init() {
+        const name = this.GlobalCharacterData.Name();
+        if (name) {
+            this.NamePicker.Model.Init(name.Name);
+            this.BynamePicker.Model.Init(name.Bynames);
+            this.EpithetPicker.Model.Init(name.Epithets);
         }
         return Promise.resolve();
     }
     Evaluate() {
-        return new CharacterName(this.chosenName(), this.chosenBynames(), this.chosenEpithets());
+        const newName = new CharacterName(this.chosenName(), this.chosenBynames(), this.chosenEpithets());
+        this.GlobalCharacterData.Name(newName);
+        return newName;
     }
 }

@@ -5,11 +5,15 @@ import { Item, NameGeneratorSettings, StoryModel, TaggedCharacterData } from "..
 import { NameUtility } from "./NameUtility.js";
 import { ReplaceString } from "./StringManipulation.js";
 
-export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>, characterData : ConfiguredCharacterData): TaggedCharacterData<StoryModel> {
+export function PopulateBackground(storySeed: TaggedCharacterData<StoryModel>, characterData : ConfiguredCharacterData): TaggedCharacterData<StoryModel> {
 
-    const storyPayloadReference = taggedStory.Payload;
+    const storyPayloadReference = storySeed.Payload;
 
-    const returnTaggedStory : TaggedCharacterData<StoryModel> = {Tags: taggedStory.Tags, Payload: {Name: storyPayloadReference.Name, Story: storyPayloadReference.Story}}
+    const returnTaggedStory : TaggedCharacterData<StoryModel> = {
+        Tags: storySeed.Tags, 
+        Payload: Object.assign({}, storyPayloadReference)
+    }
+
     const returnPayloadReference = returnTaggedStory.Payload
 
     if (storyPayloadReference.Items) {
@@ -24,7 +28,7 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
     if (storyPayloadReference.PeopleNames) {
 
         const generationSettings : NameGeneratorSettings = {NameType: "Person"}
-        if (taggedStory.Tags.Race !== undefined) generationSettings.Race = taggedStory.Tags.Race.Race
+        if (storySeed.Tags.Race !== undefined) generationSettings.Race = storySeed.Tags.Race.Race
 
         const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, ()=>{ return NameUtility.GeneratePersonName(generationSettings) })
 
@@ -39,11 +43,11 @@ export function PopulateBackground(taggedStory: TaggedCharacterData<StoryModel>,
         const generationSettings : NameGeneratorSettings & { NameType: "Place" } = {NameType: "Place"}
         
         generationSettings.Race = characterData.Race()
-        if (taggedStory.Tags.PrestigeLevel) generationSettings.Prestige = taggedStory.Tags.PrestigeLevel.Prestige
-        if (taggedStory.Tags.PhysicalFeatures) generationSettings.Geography = taggedStory.Tags.PhysicalFeatures.Geography
-        if (taggedStory.Tags.Religion) generationSettings.God = taggedStory.Tags.Religion.God
-        if (taggedStory.Tags.Alignment) generationSettings.Goal = taggedStory.Tags.Alignment?.Morality
-        if (taggedStory.Tags.DevelopmentalEnvironment) generationSettings.PowerBase = taggedStory.Tags.DevelopmentalEnvironment.Class
+        if (storySeed.Tags.PrestigeLevel) generationSettings.Prestige = storySeed.Tags.PrestigeLevel.Prestige
+        if (storySeed.Tags.PhysicalFeatures) generationSettings.Geography = storySeed.Tags.PhysicalFeatures.Geography
+        if (storySeed.Tags.Religion) generationSettings.God = storySeed.Tags.Religion.God
+        if (storySeed.Tags.Alignment) generationSettings.Goal = storySeed.Tags.Alignment?.Morality
+        if (storySeed.Tags.DevelopmentalEnvironment) generationSettings.PowerBase = storySeed.Tags.DevelopmentalEnvironment.Class
 
         const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, ()=>{ return NameUtility.GeneratePlaceName(generationSettings) })
 

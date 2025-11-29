@@ -5,7 +5,6 @@ import { Deity } from "../Contracts/Diety.js";
 import { PronounType } from "../Contracts/StringTypes.js";
 
 export class DeityCreationModel implements IWizardModel<void, Deity, Deity | undefined> {
-    FriendlyName = "Worshipped Deity"
     ViewUrl = "PartialViews/DeityPickerView.html"
     isLoading: Observable<boolean>;
     
@@ -18,19 +17,24 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity | und
 
     isCustom : Observable<boolean>
 
-    constructor (public possibleDeities : Deity[]) {
+    constructor (public possibleDeities : Deity[], public FriendlyName = "Worshipped Deity") {
         this.chosenDeity = ko.observable<Deity>(this.possibleDeities[0])
         this.chosenDeityDescription = ko.observable(this.possibleDeities[0].Description)
 
-        this.createdDeityName = ko.observable("")
-        this.createdDeityDescription = ko.observable("")
+        this.createdDeityName = ko.observable(this.possibleDeities[0].Pronoun.name)
+        this.createdDeityDescription = ko.observable(this.possibleDeities[0].Description)
 
         this.deityPronoun;
 
-        this.isCustom = ko.observable(false)
+        this.isCustom = ko.observable(this.chosenDeity().Pronoun.name == "Custom")
         this.isLoading = ko.observable(false)
 
-        this.chosenDeity.subscribe((newDeity)=>{this.chosenDeityDescription(newDeity.Description)})
+        this.chosenDeity.subscribe((newDeity)=>{
+            this.chosenDeityDescription(newDeity.Description)
+            this.isCustom(newDeity.Pronoun.name == "Custom")
+            this.createdDeityName(newDeity.Pronoun.name)
+            this.createdDeityDescription(newDeity.Description)
+        })
     }
     
     Init (chosenDeity? : Deity) {
@@ -71,5 +75,9 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity | und
         if (this.isCustom()) return this.createDeity() 
 
         return this.chosenDeity()
+    }
+
+    Randomize() {
+        this.chosenDeity(Utility.RandomElement(this.possibleDeities))
     }
 }

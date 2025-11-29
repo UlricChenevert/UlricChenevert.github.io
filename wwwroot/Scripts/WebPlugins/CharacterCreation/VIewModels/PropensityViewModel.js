@@ -1,6 +1,6 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
-import { DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
+import { DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
 import { getMatchingMultiTaggedData } from "../Utility/FilterUtility.js";
 import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
 import { TaggedItemData } from "../Configuration/TaggedItemData.js";
@@ -8,21 +8,18 @@ import { LearnedLanguage } from "../Contracts/Language.js";
 import { TaggedEdgesData } from "../Configuration/EdgesData.js";
 import { TaggedCharacterBynameData, TaggedCharacterEpithetsData, TaggedCharacterNameData } from "../Configuration/TaggedNameData.js";
 import { CharacterName } from "../Contracts/CharacterName.js";
+import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
 export class PropensityViewModel {
     GlobalCharacterData;
     ViewUrl = "PartialViews/PropensityView.html";
     isLoading;
-    FriendlyName = "Propensity";
+    FriendlyName = "Ancestry    ";
     ChosenRace;
     ChosenEconomicClass;
-    ChosenMorality;
-    ChosenOrder;
     PictureUrl;
     RaceDescription;
     EconomicClassDescription;
     PossibleRaces = Races;
-    PossibleMoralities = Moralities;
-    PossibleOrders = Order;
     PossibleEconomicClasses = DevelopmentalEnvironments;
     constructor(GlobalCharacterData) {
         this.GlobalCharacterData = GlobalCharacterData;
@@ -30,8 +27,6 @@ export class PropensityViewModel {
         const chosenClass = GlobalCharacterData.EconomicBackground();
         this.ChosenRace = ko.observable(chosenRace);
         this.ChosenEconomicClass = ko.observable(chosenClass);
-        this.ChosenMorality = ko.observable(GlobalCharacterData.Morality());
-        this.ChosenOrder = ko.observable(GlobalCharacterData.Order());
         const raceData = this.GetRaceData();
         this.PictureUrl = ko.observable(raceData.PictureUrl);
         this.RaceDescription = ko.observable(raceData.Description);
@@ -50,12 +45,12 @@ export class PropensityViewModel {
         this.isLoading = ko.observable(true);
     }
     Init() {
+        this.ChosenRace(this.GlobalCharacterData.Race());
+        this.ChosenEconomicClass(this.GlobalCharacterData.EconomicBackground());
         return Promise.resolve();
     }
     Evaluate() {
         this.GlobalCharacterData.Race(this.ChosenRace());
-        this.GlobalCharacterData.Morality(this.ChosenMorality());
-        this.GlobalCharacterData.Order(this.ChosenOrder());
         this.GlobalCharacterData.EconomicBackground(this.ChosenEconomicClass());
         updateItemData(this.GlobalCharacterData);
         updateLanguageData(this.GlobalCharacterData);
@@ -63,10 +58,7 @@ export class PropensityViewModel {
         updateNameData(this.GlobalCharacterData);
     }
     Randomize() {
-        // console.log("Randomize!")
         this.ChosenRace(Utility.RandomElement(Races));
-        this.ChosenMorality(Utility.RandomElement(Moralities));
-        this.ChosenOrder(Utility.RandomElement(Order));
         this.ChosenEconomicClass(Utility.RandomElement(DevelopmentalEnvironments));
     }
     GetRaceData() {
@@ -74,7 +66,7 @@ export class PropensityViewModel {
             .find((taggedData) => { return taggedData.Tags.Race?.Race == this.ChosenRace(); });
         if (taggedRaceData == undefined)
             throw Error(this.ChosenRace() + " config not found");
-        return { PictureUrl: Utility.getBaseImageUrl(taggedRaceData.Payload.PictureUrl), Description: taggedRaceData.Payload.Description };
+        return { PictureUrl: getCharacterCreatorPicturePath(taggedRaceData.Payload.PictureUrl), Description: taggedRaceData.Payload.Description };
     }
     GetEconomicData() {
         const taggedEconomicDescription = DevelopmentalEnvironmentDescriptions

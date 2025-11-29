@@ -97,10 +97,25 @@
                 <section class="box drawbacks" data-bind="PartialView: edgesPicker">
                 </section>
 
+                <section class="box skill">
+                    <h2>Skill</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Skills">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
+                </section>
+
                 <section class="box corruption">
-                    <h2>Step 8: Corruption</h2>
-                    <p class="subtext">Magical afflictions or effects.</p>
-                    <textarea rows="4"></textarea>
+                    <h2>Corruption</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Corruption">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
+                </section>
+
+                <section class="box corruption">
+                    <h2>Drawbacks</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Drawbacks">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
                 </section>
             </div>
 

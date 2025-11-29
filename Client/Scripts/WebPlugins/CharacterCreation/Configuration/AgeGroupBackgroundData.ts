@@ -697,6 +697,3 @@ export const ElderBackgrounds : TaggedCharacterData<StoryModel>[] =  [
     }
 ]
 
-export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
-    
-]

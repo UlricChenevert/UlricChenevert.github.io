@@ -110,12 +110,27 @@ export type NameType = "Organization" | "Person" | "Place";
 
 export type ProfessionType =
     "Adventurer" | "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+
+
+// export type JobType = "Jeweler" | "Arbalist" | "Escaped Thrall" | "Rat Catcher" | "Scrivener" | "Inspector/Reeve" | "Carpenter" | "Smith" | "Cooper/Wheelwright" | "Leatherworker" | 
+
+
+// export type ProfessionType =
+//     "Adventurer" | "Bureaucrat" | "Crafter" | "Mercantiler" | "Free Laborer" | "Vagabond" |
+//     "Scholar" | "Cultist" | "Barbarian" | "Warlock" | "Scoundrel" | // New Classes
+//     "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+
+export type JobType = 
+    "Jeweler" | "Arbalist" | "Scrivener" | "Advocate/Beadle" | "Cartographer" | "Inspector/Reeve" | 
+    "Interpreter" | "Rat Catcher" | "Smith" | "Carpenter" | "Cooper/Wheelwright" | "Leatherworker" | 
+    "Mason" | "Swordsmith" | "Money Changer" | "Assayer" | "Brewer" | "Herbalist" | "Peddler" | 
+    "Vintner" | "Ambler" | "Chef" | "Farmer" | "Fisher" | "Herder" | "Wagoner" | "Escaped Thrall" |
+    "House Servant" | "Farmhand" | "Laborer" | "Sailor (Conscript)" | "Warlock" | "Scoundrel" | "Barbarian" | "Cultist" | "Scholar";
+
+
     // // Martial Classes
     // 'Fighter' | 'Barbarian' | 'Monk' | 'Ranger' |
     // // Spellcasters
     // 'Wizard' | 'Sorcerer' | 'Warlock' | 'Cleric' | 'Druid' |
     // // Mixed
     // 'Paladin' | 'Bard' | 'Rogue';
-
-
-export type JobType = "Jeweler"

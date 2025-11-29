@@ -1,0 +1,19 @@
+<div class="title">
+    <h4 data-bind="text: FriendlyName"></h4>
+    
+    <button class="pop-content button-icon centered" data-bind="click: Randomize">
+        <img src="\Images\dice-icon.svg" alt="Randomize"/>
+    </button>
+</div>
+<hr>
+<div class="hoverable-container" data-bind="PartialView: primaryDeity"></div>
+<hr>
+
+<!-- ko if: secondaryDeity -->
+    <div class="hoverable-container" data-bind="PartialView: secondaryDeity"></div>
+<!-- /ko -->
+
+<!-- ko if: thirdDeity -->
+    <hr>
+    <div class="hoverable-container" data-bind="PartialView: thirdDeity"></div>
+<!-- /ko -->

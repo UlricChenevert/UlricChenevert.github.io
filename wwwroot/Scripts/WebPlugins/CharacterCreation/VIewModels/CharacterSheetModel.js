@@ -47,7 +47,7 @@ export class CharacterSheetModel {
         this.deityPicker = Utility.BundleViewAndModel(deityListPicker);
         const edgesListPicker = new CreateObjectListModel("Edges", new EdgesCreationModel(TaggedEdgesData), (data) => data.Edges, (item) => item.Name, (model) => { return true; }, () => { }, GlobalCharacterData);
         this.edgesPicker = Utility.BundleViewAndModel(edgesListPicker);
-        const namePickerModel = new CreateObjectModel("Name", new NamePickerModel(TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData), (data) => data.Name, NameUtility.determineFullNameFromCharacterName, () => true, GlobalCharacterData);
+        const namePickerModel = new CreateObjectModel("Name", new NamePickerModel(this.GlobalCharacterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData), (data) => data.Name, NameUtility.determineFullNameFromCharacterName, () => true, GlobalCharacterData);
         this.namePicker = Utility.BundleViewAndModel(namePickerModel);
         this.isLoading = ko.observable(true);
         this.jsonText = ko.observable("");

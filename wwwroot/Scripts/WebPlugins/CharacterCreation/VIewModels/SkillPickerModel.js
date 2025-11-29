@@ -14,10 +14,10 @@ export class AbilityPickerModel {
         this.UnselectedValues = UnselectedValues;
         this.GlobalCharacterData = GlobalCharacterData;
         this.selectionObservable = ko.observable(undefined);
-        this.chosenValue = ko.observable(0);
+        this.chosenValue = ko.observable(undefined);
         this.isLocked = ko.observable(false); // This is necessary to avoid a cyclical dependency
         this.isLocked.subscribe((isLocked) => {
-            if (!isLocked) { // Unlocking adds the value back to pile
+            if (!isLocked && this.chosenValue() !== undefined) { // Unlocking adds the value back to pile
                 this.UnselectedValues.push(this.chosenValue());
             }
         });

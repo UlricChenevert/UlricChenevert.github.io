@@ -1,4 +1,7 @@
+import { Utility } from "../../../WebCore/Utility.js";
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
+import { JobType } from "../Contracts/StringTypes.js";
 import { MultiTaggedCharacterData, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { PopulateBackground } from "./PopulateStory.js";
 
@@ -32,3 +35,10 @@ export function getMatchingMultiTaggedData<T> (source : MultiTaggedCharacterData
             )
         })
 }
+
+export const filterOnProfession = <T>(TaggedData : MultiTaggedCharacterData<T>, job: JobType)=>TaggedData.Tags.some((tag)=>tag.Profession?.Job === job)
+
+export const filterOnProfessionData = <T>(TaggedData : MultiTaggedCharacterData<T>[], job: JobType)=>TaggedData.filter((TaggedData)=>filterOnProfession(TaggedData, job)).map(x=>x.Payload)
+
+export const randomTaggedData = <T>(TaggedData : MultiTaggedCharacterData<T>[]) => [Utility.RandomElement(TaggedData).Payload]
+

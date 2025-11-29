@@ -1,17 +1,18 @@
 import { Edges } from "../Contracts/Edges.js";
 import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
+import { barbarianTag, cultistTag, dwarfBasicTag, elfBasicTag, halfingBasicTag, humanBasicTag, ixianBasicTag, scoundrelTag, warlockTag } from "../Utility/TagUtility.js";
 
 // NOTE: Assuming the Contracts/Edges and Contracts/TaggedData files contain the necessary class/type definitions.
 // Example Edges class (Placeholder for context, assumed to exist):
 // class Edges { constructor(public name: string, public description: string) {} }
 // Example Race Tag structure (Placeholder for context, assumed to exist):
-// {Race: { Type: 'Race', Race: "Dwarf" }, Optional: false}
+// {Race: dwarfBasicTag, Optional: false}
 
 export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     // --- DWARF EDGES (Original provided data) ---
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Dwarf" }, Optional: false} // Mandatory base Edge
+            {Race: dwarfBasicTag, Optional: false} // Mandatory base Edge
         ],
         Payload: new Edges(
             "Determined Edge",
@@ -20,8 +21,8 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Dwarf" }, Optional: true}, // Optional 1-2
-            {Race: { Type: 'Race', Race: "Elf" }, Optional: true}    // Optional 1-2
+            {Race: dwarfBasicTag, Optional: true}, // Optional 1-2
+            {Race: elfBasicTag, Optional: true}    // Optional 1-2
         ],
         Payload: new Edges(
             "Low Light Vision",
@@ -30,7 +31,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Dwarf" }, Optional: true} // Optional 3-4
+            {Race: dwarfBasicTag, Optional: true} // Optional 3-4
         ],
         Payload: new Edges(
             "Under Sense",
@@ -39,7 +40,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Dwarf" }, Optional: true} // Optional 5-6
+            {Race: dwarfBasicTag, Optional: true} // Optional 5-6
         ],
         Payload: new Edges(
             "Pack Mule",
@@ -50,7 +51,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     // --- ELF EDGES ---
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Elf" }, Optional: false} // Mandatory base Edge
+            {Race: elfBasicTag, Optional: false} // Mandatory base Edge
         ],
         Payload: new Edges(
             "Dire Focus",
@@ -59,7 +60,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Elf" }, Optional: true} // Optional 3-4
+            {Race: elfBasicTag, Optional: true} // Optional 3-4
         ],
         Payload: new Edges(
             "Sylvan Step",
@@ -68,7 +69,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Elf" }, Optional: true} // Optional 5-6
+            {Race: elfBasicTag, Optional: true} // Optional 5-6
         ],
         Payload: new Edges(
             "Elven Accuracy",
@@ -79,7 +80,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     // --- HALFLING EDGES ---
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Halfling" }, Optional: false} // Mandatory base Edge
+            {Race: halfingBasicTag, Optional: false} // Mandatory base Edge
         ],
         Payload: new Edges(
             "Second Breakfast",
@@ -88,7 +89,8 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Halfling" }, Optional: true} // Optional 1-2
+            {Race: halfingBasicTag, Optional: true}, // Optional 1-2
+            {Profession: { Class: "Adventurer", Job: "Rat Catcher" }, Optional: false}
         ],
         Payload: new Edges(
             "Sneaky",
@@ -97,7 +99,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Halfling" }, Optional: true} // Optional 3-4
+            {Race: halfingBasicTag, Optional: true} // Optional 3-4
         ],
         Payload: new Edges(
             "Elusive",
@@ -106,7 +108,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Halfling" }, Optional: true} // Optional 4-6
+            {Race: halfingBasicTag, Optional: true} // Optional 4-6
         ],
         Payload: new Edges(
             "Durable",
@@ -117,7 +119,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     // --- HUMAN EDGES ---
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Human" }, Optional: false} // Mandatory base Edge
+            {Race: humanBasicTag, Optional: false} // Mandatory base Edge
         ],
         Payload: new Edges(
             "Adaptable",
@@ -128,7 +130,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     // --- IXIAN EDGES ---
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Ixian" }, Optional: false} // Mandatory base Edge
+            {Race: ixianBasicTag, Optional: false} // Mandatory base Edge
         ],
         Payload: new Edges(
             "Infernal Heritage",
@@ -137,7 +139,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Ixian" }, Optional: true} // Optional 1-2
+            {Race: ixianBasicTag, Optional: true} // Optional 1-2
         ],
         Payload: new Edges(
             "Fire Resistance",
@@ -146,7 +148,7 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Ixian" }, Optional: true} // Optional 3-4
+            {Race: ixianBasicTag, Optional: true} // Optional 3-4
         ],
         Payload: new Edges(
             "Flight",
@@ -155,11 +157,68 @@ export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
     },
     {
         Tags: [
-            {Race: { Type: 'Race', Race: "Ixian" }, Optional: true} // Optional 5-6
+            {Race: ixianBasicTag, Optional: true} // Optional 5-6
         ],
         Payload: new Edges(
             "Innate Spell",
             "You know and can cast a spell at will. (The associated spell ability does not require a Spellcasting Ud Check or components, and is cast repeatedly until a failed Spell Check.)"
+        )
+    },
+    {
+        Tags: [
+            {Profession: { Class: "Adventurer", Job: "Escaped Thrall" }, Optional: false}
+        ],
+        Payload: new Edges(
+            "Crucible",
+            "That which has not killed you has made you stronger. Choose or roll 1d6 to increase your 1-3: STR or 4-6: CON by +1."
+        )
+    },
+    {
+        Tags: [
+            {Profession: cultistTag, Optional: false}
+        ],
+        Payload: new Edges(
+            "Hex 1",
+            "You can make a nearby opponent, that you can see, weaker."
+        )
+    },
+    // --- Barbarian Edges ---
+    {
+        Tags: [
+            {Profession: barbarianTag, Optional: false}
+        ],
+        Payload: new Edges(
+            "Berserk",
+            "When in this frenzied state, you can make lightning fast attacks on multiple melee opponents."
+        )
+    },
+    // --- Warlock Edges ---
+    {
+        Tags: [
+            {Profession: warlockTag, Optional: false}
+        ],
+        Payload: new Edges(
+            "Familiar",
+            "You have attracted, trained, and have a deep connection with a small, unusually intelligent animal that can follow simple commands and can communicate “yes” and “no” to your questions."
+        )
+    },
+    // --- Scoundrel Edges ---
+    {
+        Tags: [
+            {Profession: scoundrelTag, Optional: false}
+        ],
+        Payload: new Edges(
+            "Elusive",
+            "You are good at getting away from foes."
+        )
+    },
+    {
+        Tags: [
+            {Profession: scoundrelTag, Optional: false}
+        ],
+        Payload: new Edges(
+            "Filcher",
+            "You can usually pick pockets and cut purses undetected."
         )
     },
 ];

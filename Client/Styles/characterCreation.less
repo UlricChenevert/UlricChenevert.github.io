@@ -12,11 +12,13 @@
     font-size: 1em;
     
     // width: 80em;
-    width: 80%;
+    width: 65%;
     // min-width: 50vw;
 
     display: flex;
     flex-direction: column;
+
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.23);
 }
 
 .retain-height {
@@ -30,6 +32,127 @@
     flex-shrink: 1;
 }
 
+.AbilityView {
+    // display: flex;
+    // flex-direction: row;
+
+    .header {
+        justify-content: center
+    }
+
+    .image {
+        max-height: 15em;
+    }
+
+    .ability-pickers {
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-container {
+
+    }
+
+    .vertical-columns {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.deity-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header {
+        justify-content: center
+    }
+
+    .image{
+        max-height: 12em;
+    }
+
+    .wizard-select {
+        height: 3em;
+    }
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    h4 {
+        margin-right: 1em;
+    }
+}
+
+.name-picker {
+    .header {
+        justify-content: center;
+        
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.character-name {
+    padding: 2em;
+    justify-content: center;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    display: flex;
+}
+
+.hoverable-container {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    padding: 1em;
+    text-align: center;
+    margin: 1em;
+    box-shadow: 0 0 0, 0, rgb(0,0,0);
+
+    h4 {text-transform: uppercase;
+    margin-right: 1em;}
+
+    transition: all 1s;
+
+    .title {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+.hoverable-container:hover {
+    outline: 1px solid #ccc;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.10);
+}
+
+.cover {
+    background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
+    
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.bubble-widget {
+    background-color: @article-color;
+    padding: 2em;
+    
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .wizard-button {
+        margin: 0.5em;
+    }
+}
 
 .wizard-header {
     font-size: @title-font-size;
@@ -40,8 +163,6 @@
     justify-content: space-between;
     border-bottom: 1px solid fade(@pop-color, 20%);
     padding-bottom: 0.3em;
-
-
 }
 
 .wizard-panel {
@@ -145,17 +266,9 @@ hr {
 
 // Propensity View
 .propensity-view {
-    .dispositions {
-        display: flex;
-        flex-direction: column;
-        gap: @standard-padding;
-        align-items: center;
-    }
 
-    .propensity-dispositions-row {
-        display: flex;
-        gap: @standard-padding;
-        margin-top: @standard-padding;
+    .image {
+        max-height: 30em;
     }
 }
 
@@ -166,92 +279,6 @@ hr {
     gap: 0.5em;
     flex-direction: column;
 }
-
-// .two-button-container {
-//     display: flex;
-//     flex-direction: row;
-//     background: @pop-color;
-//     gap: 0.5em; /* Ensures the buttons are directly next to each other */
-//     position: relative;
-//     padding: 0.5em 0.5em;
-//     min-width: 12em;
-// }
-
-// /* Style the main part of the button */
-// .two-button-container .wizard-button {
-//     border-top-right-radius: 0;
-//     border-bottom-right-radius: 0;
-//     border-right: 1px solid fade(@pop-color, 30%); /* Creates a subtle dividing line */
-//     padding: @standard-padding;
-//     display: flex;
-//     padding: 0;
-//     align-items: center;
-//     justify-content: center;
-// }
-
-// /* Style the dropdown icon part of the button */
-// .two-button-container .button-icon {
-//     border-top-left-radius: 0;
-//     border-bottom-left-radius: 0;
-//     border-left: none; /* Merges the borders */
-//     background: @pop-color;
-//     cursor: pointer;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     transition: background 0.18s, transform 0.18s;
-// }
-
-// .two-button-container .button-icon:hover {
-//     background: @hover-color;
-//     transform: none; /* Prevent the icon part from scaling on its own */
-// }
-
-// /* Style the dropdown menu */
-// .dropdown-button {
-//     position: relative;
-//     display: inline-block;
-// }
-
-// .dropdown-menu {
-//     position: absolute;
-//     top: 100%;
-//     left: 0;
-//     z-index: 5;
-//     min-width: 100%;
-//     background: @pop-color;
-//     border: 1px solid fade(@pop-color, 30%);
-//     border-radius: 0.2em;
-//     padding: 0;
-//     margin: 0.1em 0 0 0;
-//     box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.1);
-//     list-style-type: none;
-//     // Align menu to the same width as the button
-//     box-sizing: border-box;
-// }
-
-// // The individual dropdown items
-// .dropdown-menu li {
-//     padding: @standard-padding;
-//     cursor: pointer;
-//     white-space: nowrap;
-//     display: block;
-//     // Use the same text color as the main buttons
-//     color: @text-color; 
-//     // Ensure smooth transitions on hover
-//     transition: background 0.18s;
-// }
-
-// // Add the selected state style to the list item
-// .dropdown-menu li.selected-option {
-//     .selected-button(); // Inherit styles from the selected-button class
-//     // Override any conflicting styles if necessary
-// }
-
-// // Hover state for the dropdown items
-// .dropdown-menu li:hover {
-//     background: @hover-color;
-// }
 
 .largeText {
     width: 70%;
@@ -344,6 +371,24 @@ hr {
     }
 }
 
+.background-view {
+    .dispositions {
+        display: flex;
+        flex-direction: column;
+        gap: @standard-padding;
+        align-items: center;
+    }
+
+    .propensity-dispositions-row {
+        display: flex;
+        gap: @standard-padding;
+        margin-top: @standard-padding;
+    }
+
+    .image {
+        max-height: 30em;
+    }
+}
 
 .character-sheet-container {
     background-color: @article-color;

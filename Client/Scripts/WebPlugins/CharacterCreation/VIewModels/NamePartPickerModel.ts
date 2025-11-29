@@ -21,8 +21,12 @@ export class NamePartPickerModel implements IWizardModel<void, string, string | 
         this.isCustom = ko.observable(false)
 
         this.chosenValueOption.subscribe((newValue)=>{
-            if (this.isCustom()) return
             if (newValue === undefined) return
+
+            if (newValue.Payload == "Custom")
+                this.isCustom(true)
+
+            if (this.isCustom()) return
 
             this.chosenValue(newValue.Payload)
         })

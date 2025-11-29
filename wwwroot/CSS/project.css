@@ -61,7 +61,7 @@
   margin: 0 15%;
   padding: 1em 3em;
   background-color: #ffffff;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 @media (width <= 500px) {
   #custom-article {
@@ -142,9 +142,10 @@
   padding: 1em 3em;
   margin: 1em auto;
   font-size: 1em;
-  width: 80%;
+  width: 65%;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.23);
 }
 .retain-height {
   flex-shrink: 1;
@@ -154,6 +155,96 @@
 .grow-height-as-much-as-possible {
   flex-grow: 1;
   flex-shrink: 1;
+}
+.AbilityView .header {
+  justify-content: center;
+}
+.AbilityView .image {
+  max-height: 15em;
+}
+.AbilityView .ability-pickers {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+.AbilityView .vertical-columns {
+  display: flex;
+  flex-direction: row;
+}
+.deity-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.deity-picker .header {
+  justify-content: center;
+}
+.deity-picker .image {
+  max-height: 12em;
+}
+.deity-picker .wizard-select {
+  height: 3em;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}
+.title h4 {
+  margin-right: 1em;
+}
+.name-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.name-picker .header {
+  justify-content: center;
+}
+.character-name {
+  padding: 2em;
+  justify-content: center;
+  font-size: large;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+}
+.hoverable-container {
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  padding: 1em;
+  text-align: center;
+  margin: 1em;
+  box-shadow: 0 0 0, 0, #000000;
+  transition: all 1s;
+}
+.hoverable-container h4 {
+  text-transform: uppercase;
+  margin-right: 1em;
+}
+.hoverable-container .title {
+  display: flex;
+  justify-content: center;
+}
+.hoverable-container:hover {
+  outline: 1px solid #ccc;
+  box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.1);
+}
+.cover {
+  background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.bubble-widget {
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bubble-widget .wizard-button {
+  margin: 0.5em;
 }
 .wizard-header {
   font-size: 15px;
@@ -258,16 +349,8 @@ hr {
   opacity: 10%;
   color: #a499be;
 }
-.propensity-view .dispositions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  align-items: center;
-}
-.propensity-view .propensity-dispositions-row {
-  display: flex;
-  gap: 0.5em;
-  margin-top: 0.5em;
+.propensity-view .image {
+  max-height: 30em;
 }
 .centered {
   display: flex;
@@ -353,6 +436,20 @@ hr {
   .propensity-image {
     max-width: 7em;
   }
+}
+.background-view .dispositions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+}
+.background-view .propensity-dispositions-row {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+.background-view .image {
+  max-height: 30em;
 }
 .character-sheet-container {
   background-color: #ffffff;

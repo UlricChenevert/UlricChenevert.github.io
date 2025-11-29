@@ -1,9 +1,9 @@
-import { Item, StoryModel } from "../Contracts/TaggedData.js"
-import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType, ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes } from "../Contracts/StringTypes.js"
+import { Item, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js"
+import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType, ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, ProfessionType, JobType } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configuration/DispositionData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
-import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "../Configuration/BackgroundData.js"
+import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "./AgeGroupBackgroundData.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { getPossibleBackground } from "../Utility/FilterUtility.js"
 import { Abilities } from "../Contracts/Abilities.js"
@@ -14,9 +14,13 @@ import { Deity } from "../Contracts/Diety.js"
 import { possibleDeities } from "./DietiesData.js"
 import { Edges } from "../Contracts/Edges.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
+import { Corruption } from "../Contracts/Corruption.js"
+import { Skill } from "../Contracts/Skill.js"
+import { Drawbacks } from "../Contracts/Drawbacks.js"
+import { possibleClasses, possibleJobs } from "./CareerGroupBackgroundData.js"
 
 export class ConfiguredCharacterData {
-    Name : Observable<CharacterName>
+    Name : Observable<CharacterName | undefined>
     Race: Observable<RaceType>
     Age: Observable<AgeType>
     
@@ -28,7 +32,9 @@ export class ConfiguredCharacterData {
     AdultBackground: Observable<StoryModel | undefined>
     ElderBackground: Observable<StoryModel | undefined>
 
-    Abilities : Observable<Abilities>
+    ClassBackground: Observable<TaggedCharacterData<StoryModel> | undefined>
+
+    Abilities : Observable<Abilities | undefined>
     Languages: ObservableArray<LearnedLanguage>
     
     Items : ObservableArray<Item>
@@ -36,8 +42,15 @@ export class ConfiguredCharacterData {
     People : ObservableArray<Entanglements>
     Places : ObservableArray<Entanglements>
     Organizations : ObservableArray<Entanglements>
+    
     Deities : ObservableArray<Deity>
+    IsMonotheist : Observable<boolean>
+
     Edges : ObservableArray<Edges>
+
+    Skills : ObservableArray<Skill>
+    Corruption : ObservableArray<Corruption>
+    Drawbacks : ObservableArray<Drawbacks>
 
     constructor () {
         this.Race = ko.observable(Races[0])
@@ -49,8 +62,9 @@ export class ConfiguredCharacterData {
         this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload)
         this.AdultBackground = ko.observable<StoryModel | undefined>(AdultBackgrounds[0].Payload)
         this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
+        this.ClassBackground = ko.observable<TaggedCharacterData<StoryModel> | undefined>(undefined)
 
-        this.Abilities = ko.observable(new Abilities(0, 0, 0, 0, 0, 0))
+        this.Abilities = ko.observable<Abilities | undefined>(undefined)
         this.Languages = ko.observableArray<LearnedLanguage>([])
 
         this.Items = ko.observableArray([] as Item[])
@@ -58,36 +72,15 @@ export class ConfiguredCharacterData {
         this.Organizations = ko.observableArray([] as Entanglements[])
         this.Places = ko.observableArray([] as Entanglements[])
 
-        this.Name = ko.observable(new CharacterName("Unnamed", "Unlanded", "Untitled")) //new CharacterName("", "", "")
+        this.Name = ko.observable<CharacterName | undefined>(undefined) //new CharacterName("", "", "")
 
         this.Deities = ko.observableArray([] as Deity[])
+        this.IsMonotheist = ko.observable(false)
+
         this.Edges = ko.observableArray([] as Edges[])
+
+        this.Skills = ko.observableArray<Skill>([]) 
+        this.Corruption = ko.observableArray<Corruption>([])
+        this.Drawbacks = ko.observableArray<Drawbacks>([])
     }
-}
-
-export function RandomizeGlobalCharacterData(configuredCharacterData : ConfiguredCharacterData) {
-    configuredCharacterData.Race(Utility.RandomElement(Races))
-    configuredCharacterData.Morality(Utility.RandomElement(Moralities))
-    configuredCharacterData.Order(Utility.RandomElement(Order))
-    configuredCharacterData.EconomicBackground(Utility.RandomElement(DevelopmentalEnvironments))
-    
-    configuredCharacterData.Age(Utility.RandomElement(Ages))
-    configuredCharacterData.ChildhoodBackground(Utility.RandomElement(getPossibleBackground(ChildhoodBackgrounds, configuredCharacterData)))
-    
-    configuredCharacterData.Abilities(RandomizeAbilities())
-
-    configuredCharacterData.AdultBackground(
-        (configuredCharacterData.Age() == 'Adult' || configuredCharacterData.Age() == 'Elder' )? 
-            Utility.RandomElement(getPossibleBackground(AdultBackgrounds, configuredCharacterData)) : undefined)
-
-    configuredCharacterData.ElderBackground((configuredCharacterData.Age() == 'Elder' )? 
-            Utility.RandomElement(getPossibleBackground(ElderBackgrounds, configuredCharacterData)) : undefined)
-
-    const copyOfDeities = possibleDeities.map(x=>x)
-
-    const mainDeity = Utility.removeRandomElement(copyOfDeities)
-    const secondDeity = Utility.removeRandomElement(copyOfDeities)
-    const thirdDeity = Utility.removeRandomElement(copyOfDeities)
-
-    configuredCharacterData.Deities([mainDeity, secondDeity, thirdDeity])
 }

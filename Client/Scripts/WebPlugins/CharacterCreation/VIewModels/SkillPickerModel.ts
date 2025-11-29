@@ -10,18 +10,18 @@ export class AbilityPickerModel implements ICharacterWizardViewModel<void, void>
     isLoading: Observable<boolean>;
 
     selectionObservable : ko.Observable<number | undefined>
-    chosenValue : ko.Observable<number>
+    chosenValue : ko.Observable<number | undefined>
 
     isLocked : ko.Observable<boolean>
 
     constructor (public FriendlyName : string, public UnselectedValues : ObservableArray<number>, public GlobalCharacterData : ConfiguredCharacterData) {
         this.selectionObservable = ko.observable<number | undefined>(undefined);
-        this.chosenValue = ko.observable(0);
+        this.chosenValue = ko.observable<number | undefined>(undefined);
         this.isLocked = ko.observable(false) // This is necessary to avoid a cyclical dependency
 
         this.isLocked.subscribe((isLocked)=>{
-            if (!isLocked) { // Unlocking adds the value back to pile
-                this.UnselectedValues.push(this.chosenValue())
+            if (!isLocked && this.chosenValue() !== undefined) { // Unlocking adds the value back to pile
+                this.UnselectedValues.push(this.chosenValue() as number)
             }
         })
 

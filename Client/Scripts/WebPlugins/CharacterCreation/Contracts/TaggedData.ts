@@ -1,3 +1,4 @@
+import { Edges } from "./Edges";
 import { Language } from "./Language";
 import { Skill } from "./Skill";
 import { Spell } from "./Spell";
@@ -34,18 +35,18 @@ export type DescriptionModel = {Description: string}
 export type PartOfSpeechModel = {PartOfSpeech : string}
 export type PictureModel = DescriptionModel & {PictureUrl: string}
 export type StoryModel = {
-    Name: ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
+    Name: string //ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
     Story : string
 
     Items? : Item[]
 
-    Edges? : Item[]
+    Edges? : Edges[]
     Skills? : Skill[]
     
     Spells? : Spell[]
     Languages? : Language[]
 
-    Other? : string[]
+    Other? : string
 
     PeopleNames? : PronounType[]
     PeopleRelations? : DispositionType[]
@@ -55,6 +56,8 @@ export type StoryModel = {
 
     PlaceNames? : PronounType[]
     PlaceRelationships? : DispositionType[]
+
+    PartialPictureUrl? : string
 }
 
 export type SyllableModel = {
