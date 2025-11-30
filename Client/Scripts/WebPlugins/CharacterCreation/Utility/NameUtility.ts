@@ -41,7 +41,7 @@ export namespace NameUtility {
         return RandomElement.Payload.Syllable;
     }
 
-    export const determineFullNameFromCharacterName = (data : CharacterName) => determineFullName(data.Name, data.Bynames, data.Epithets) 
+    export const determineFullNameFromCharacterName = (data : CharacterName) => determineFullName((data.Name)? data.Name : "Unnamed", (data.Bynames)? data.Bynames : "Unnamed", (data.Epithets)? data.Epithets : "Untitled") 
     export const determineFullName = (Names : string, Bynames : string, Epithets : string)=>Names + " of " + Bynames + " the " + Epithets
 
 }

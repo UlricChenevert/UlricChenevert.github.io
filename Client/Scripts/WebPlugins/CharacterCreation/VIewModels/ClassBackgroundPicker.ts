@@ -10,7 +10,7 @@ import { ClassBackgrounds } from "../Configuration/CareerGroupBackgroundData.js"
 import { PopulateBackground } from "../Utility/PopulateStory.js";
 import { tryGetCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
 
-export class ClassBackgroundPickerModel implements ICharacterWizardViewModel<void, StoryModel> {
+export class ClassBackgroundPickerModel implements ICharacterWizardViewModel<void, TaggedCharacterData<StoryModel>> {
     readonly ViewUrl = "PartialViews/ClassBackgroundPicker.html";
     isLoading: Observable<boolean>;
 
@@ -78,7 +78,7 @@ export class ClassBackgroundPickerModel implements ICharacterWizardViewModel<voi
     }
 
     Evaluate () {
-        return this.chosenClassBackground().Payload
+        return this.chosenClassBackground()
     }
 
     Randomize () {

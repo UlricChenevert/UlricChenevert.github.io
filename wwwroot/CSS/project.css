@@ -453,11 +453,8 @@ hr {
 }
 .character-sheet-container {
   background-color: #ffffff;
-  width: 100%;
-  max-width: 850px;
-  padding: 40px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid #ccc;
+  max-width: 80em;
+  padding: 1em;
   /* TYPOGRAPHY */
   /* FORMS & INPUTS */
   /* LAYOUT GRIDS */
@@ -465,6 +462,15 @@ hr {
   /* ABILITY SCORES */
   /* LANGUAGES GRID */
   /* PRINT OPTIMIZATION */
+}
+.character-sheet-container .header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.character-sheet-container .major {
+  background-color: #000000;
+  color: #ffffff;
 }
 .character-sheet-container h1 {
   text-align: center;
@@ -476,10 +482,9 @@ hr {
 }
 .character-sheet-container h2 {
   font-size: 1.1rem;
-  background-color: #333;
+  background-color: #000000;
   color: white;
   padding: 0.5em 1em;
-  margin: 0 0 1em 0;
   text-transform: uppercase;
 }
 .character-sheet-container h3 {
@@ -527,7 +532,7 @@ hr {
 }
 .character-sheet-container .grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 20px;
 }
 .character-sheet-container .grid-5 {
@@ -555,8 +560,7 @@ hr {
 }
 .character-sheet-container .box {
   border: 2px solid #ffffff;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 0.5em;
 }
 .character-sheet-container .box-highlight input {
   font-weight: bold;

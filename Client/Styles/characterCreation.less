@@ -392,12 +392,22 @@ hr {
 
 .character-sheet-container {
     background-color: @article-color;
-    width: 100%;
-    max-width: 850px;
-    padding: 40px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border: 1px solid #ccc;
-    
+    max-width: 80em;
+    padding: 1em;
+
+    .header {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        
+    }
+
+    .major {
+        background-color: @text-color;
+        color: @article-color;
+    }
+
     /* TYPOGRAPHY */
     h1 {
         // font-family: var(--header-font);
@@ -412,10 +422,10 @@ hr {
     h2 {
         // font-family: var(--header-font);
         font-size: 1.1rem;
-        background-color: #333;
+        background-color: @text-color;
         color: white;
         padding: 0.5em 1em;
-        margin: 0 0 1em 0;
+        // margin: 0 0 0.5em 0;
         text-transform: uppercase;
     }
 
@@ -473,7 +483,7 @@ hr {
     /* LAYOUT GRIDS */
     .grid-3 {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1fr;
         gap: 20px;
     }
     
@@ -507,8 +517,8 @@ hr {
     /* SECTION SPECIFIC STYLES */
     .box {
         border: 2px solid @article-color;
-        padding: 10px;
-        margin-bottom: 20px;
+        padding: 0.5em;
+        // margin-bottom: 20px;
     }
     
     .box-highlight input {

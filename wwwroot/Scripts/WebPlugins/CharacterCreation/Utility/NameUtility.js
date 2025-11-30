@@ -29,6 +29,6 @@ export var NameUtility;
         return RandomElement.Payload.Syllable;
     }
     NameUtility.getRandomSyllable = getRandomSyllable;
-    NameUtility.determineFullNameFromCharacterName = (data) => NameUtility.determineFullName(data.Name, data.Bynames, data.Epithets);
+    NameUtility.determineFullNameFromCharacterName = (data) => NameUtility.determineFullName((data.Name) ? data.Name : "Unnamed", (data.Bynames) ? data.Bynames : "Unnamed", (data.Epithets) ? data.Epithets : "Untitled");
     NameUtility.determineFullName = (Names, Bynames, Epithets) => Names + " of " + Bynames + " the " + Epithets;
 })(NameUtility || (NameUtility = {}));

@@ -84,7 +84,8 @@ export class BackgroundViewModel implements ICharacterWizardViewModel<void, void
         // this.GlobalCharacterData.AdultBackground(adultEvaluation)
         // this.GlobalCharacterData.ElderBackground(elderEvaluation)
 
-
+        const chosenClass = this.ClassPicker.Model.Evaluate()
+        this.GlobalCharacterData.ClassBackground(chosenClass)
         
         this._setAllItems(childEvaluation)
         this._setAllRelationships(childEvaluation)

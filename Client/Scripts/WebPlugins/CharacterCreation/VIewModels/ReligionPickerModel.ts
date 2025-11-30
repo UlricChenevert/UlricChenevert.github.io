@@ -15,8 +15,8 @@ export class ReligionPickerModel implements ICharacterWizardViewModel<void, Deit
 
     isMonotheist : Observable<boolean>
     primaryDeity : IPartialViewModel<DeityCreationModel>
-    secondaryDeity : IPartialViewModel<DeityCreationModel> | undefined
-    thirdDeity : IPartialViewModel<DeityCreationModel> | undefined
+    secondaryDeity : IPartialViewModel<DeityCreationModel> 
+    thirdDeity : IPartialViewModel<DeityCreationModel>
 
     constructor (
         public GlobalCharacterData : ConfiguredCharacterData, 
@@ -25,21 +25,20 @@ export class ReligionPickerModel implements ICharacterWizardViewModel<void, Deit
         this.isMonotheist = ko.observable(false)
 
         this.primaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Primary Deity"))
-        
+        this.secondaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Secondary Deity"))
+        this.thirdDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Third Deity"))
+
         this.isLoading = ko.observable(false)
     }
 
-    Init () {
+    async Init () {
         this.primaryDeity.Model.Init()
 
         this.isMonotheist(this.GlobalCharacterData.IsMonotheist())
 
         if (!this.isMonotheist()) {
-            this.secondaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(this.PossibleReligions, "Secondary Deity"))
-            this.thirdDeity = Utility.BundleViewAndModel(new DeityCreationModel(this.PossibleReligions, "Third Deity"))
-
-            this.secondaryDeity.Model.Init()
-            this.thirdDeity.Model.Init()
+            await this.secondaryDeity.Model.Init()
+            await this.thirdDeity.Model.Init()
         }
     
         return Promise.resolve()
@@ -61,7 +60,7 @@ export class ReligionPickerModel implements ICharacterWizardViewModel<void, Deit
     Randomize () {
         this.primaryDeity.Model.Randomize()
 
-        if (this.isMonotheist()) {
+        if (!this.isMonotheist()) {
             this.secondaryDeity?.Model.Randomize()
             this.thirdDeity?.Model.Randomize()
         }

@@ -20,7 +20,7 @@ import { Drawbacks } from "../Contracts/Drawbacks.js"
 import { possibleClasses, possibleJobs } from "./CareerGroupBackgroundData.js"
 
 export class ConfiguredCharacterData {
-    Name : Observable<CharacterName | undefined>
+    Name : Observable<CharacterName>
     Race: Observable<RaceType>
     Age: Observable<AgeType>
     
@@ -52,6 +52,11 @@ export class ConfiguredCharacterData {
     Corruption : ObservableArray<Corruption>
     Drawbacks : ObservableArray<Drawbacks>
 
+    Class : Observable<string>
+    Level : Observable<number>
+    HitDie : Observable<number>
+    HitPoints : Observable<number>
+
     constructor () {
         this.Race = ko.observable(Races[0])
         this.Morality = ko.observable(Moralities[1])
@@ -72,7 +77,7 @@ export class ConfiguredCharacterData {
         this.Organizations = ko.observableArray([] as Entanglements[])
         this.Places = ko.observableArray([] as Entanglements[])
 
-        this.Name = ko.observable<CharacterName | undefined>(undefined) //new CharacterName("", "", "")
+        this.Name = ko.observable<CharacterName>(new CharacterName("", "", ""))
 
         this.Deities = ko.observableArray([] as Deity[])
         this.IsMonotheist = ko.observable(false)
@@ -82,5 +87,10 @@ export class ConfiguredCharacterData {
         this.Skills = ko.observableArray<Skill>([]) 
         this.Corruption = ko.observableArray<Corruption>([])
         this.Drawbacks = ko.observableArray<Drawbacks>([])
+
+        this.Class = ko.observable<string>("")
+        this.Level = ko.observable<number>(0)
+        this.HitDie = ko.observable<number>(1)
+        this.HitPoints = ko.observable<number>(4)
     }
 }

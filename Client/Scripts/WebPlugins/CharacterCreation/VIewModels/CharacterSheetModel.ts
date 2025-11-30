@@ -137,7 +137,10 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
         const namePickerModel = new CreateObjectModel(
             "Name",
             new NamePickerModel(this.GlobalCharacterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData),
-            (data)=>data.Name as Observable<CharacterName>,
+            (data)=>{
+                return data.Name
+    
+            },
             NameUtility.determineFullNameFromCharacterName,
             ()=>true,
             GlobalCharacterData

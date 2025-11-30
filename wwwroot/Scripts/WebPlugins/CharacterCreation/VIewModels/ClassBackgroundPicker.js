@@ -52,7 +52,7 @@ export class ClassBackgroundPickerModel {
         return Promise.resolve();
     }
     Evaluate() {
-        return this.chosenClassBackground().Payload;
+        return this.chosenClassBackground();
     }
     Randomize() {
         this.chosenClasses(Utility.RandomElement(this.PossibleClasses()));

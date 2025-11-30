@@ -9,11 +9,11 @@
 <div class="hoverable-container" data-bind="PartialView: primaryDeity"></div>
 <hr>
 
-<!-- ko if: secondaryDeity -->
+<!-- ko ifnot: isMonotheist -->
     <div class="hoverable-container" data-bind="PartialView: secondaryDeity"></div>
 <!-- /ko -->
 
-<!-- ko if: thirdDeity -->
+<!-- ko ifnot: isMonotheist -->
     <hr>
     <div class="hoverable-container" data-bind="PartialView: thirdDeity"></div>
 <!-- /ko -->

@@ -1,6 +1,7 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configuration/DispositionData.js";
 import { AdultBackgrounds, Ages, ChildhoodBackgrounds } from "./AgeGroupBackgroundData.js";
+import { CharacterName } from "../Contracts/CharacterName.js";
 export class ConfiguredCharacterData {
     Name;
     Race;
@@ -24,6 +25,10 @@ export class ConfiguredCharacterData {
     Skills;
     Corruption;
     Drawbacks;
+    Class;
+    Level;
+    HitDie;
+    HitPoints;
     constructor() {
         this.Race = ko.observable(Races[0]);
         this.Morality = ko.observable(Moralities[1]);
@@ -40,12 +45,16 @@ export class ConfiguredCharacterData {
         this.People = ko.observableArray([]);
         this.Organizations = ko.observableArray([]);
         this.Places = ko.observableArray([]);
-        this.Name = ko.observable(undefined); //new CharacterName("", "", "")
+        this.Name = ko.observable(new CharacterName("", "", ""));
         this.Deities = ko.observableArray([]);
         this.IsMonotheist = ko.observable(false);
         this.Edges = ko.observableArray([]);
         this.Skills = ko.observableArray([]);
         this.Corruption = ko.observableArray([]);
         this.Drawbacks = ko.observableArray([]);
+        this.Class = ko.observable("");
+        this.Level = ko.observable(0);
+        this.HitDie = ko.observable(1);
+        this.HitPoints = ko.observable(4);
     }
 }

@@ -16,16 +16,16 @@ export class ReligionPickerModel {
         this.PossibleReligions = PossibleReligions;
         this.isMonotheist = ko.observable(false);
         this.primaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Primary Deity"));
+        this.secondaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Secondary Deity"));
+        this.thirdDeity = Utility.BundleViewAndModel(new DeityCreationModel(PossibleReligions, "Third Deity"));
         this.isLoading = ko.observable(false);
     }
-    Init() {
+    async Init() {
         this.primaryDeity.Model.Init();
         this.isMonotheist(this.GlobalCharacterData.IsMonotheist());
         if (!this.isMonotheist()) {
-            this.secondaryDeity = Utility.BundleViewAndModel(new DeityCreationModel(this.PossibleReligions, "Secondary Deity"));
-            this.thirdDeity = Utility.BundleViewAndModel(new DeityCreationModel(this.PossibleReligions, "Third Deity"));
-            this.secondaryDeity.Model.Init();
-            this.thirdDeity.Model.Init();
+            await this.secondaryDeity.Model.Init();
+            await this.thirdDeity.Model.Init();
         }
         return Promise.resolve();
     }
@@ -40,7 +40,7 @@ export class ReligionPickerModel {
     }
     Randomize() {
         this.primaryDeity.Model.Randomize();
-        if (this.isMonotheist()) {
+        if (!this.isMonotheist()) {
             this.secondaryDeity?.Model.Randomize();
             this.thirdDeity?.Model.Randomize();
         }

@@ -1,53 +1,26 @@
 <div class="standard-wizard-styles ">
     <div class="character-sheet-container">
         <header class="header-section">
-            <h1>HEARTBREAKER</h1>
-            <div class="header-grid">
-                <div class="input-group" data-bind="PartialView: namePicker">
-                    <label>Character Name</label>
-                    <input type="text" placeholder="Name">
-                </div>
-                <!-- <div class="input-group">
-                    <label>Player Name</label>
-                    <input type="text" placeholder="Player">
-                </div> -->
-            </div>
+            <h1>OVERVIEW</h1>
         </header>
 
         <section class="box basics">
-            <h2>Identity & Vitals</h2>
-            <div class="grid-5">
+            <div class="grid-3">
+                <div class="input-group" data-bind="PartialView: namePicker">
+                </div>
                 <div class="input-group">
                     <label>Ancestry</label>
                     <span data-bind="text: GlobalCharacterData.Race"></span>
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label>Class</label>
-                    <input type="text">
-                </div>
+                    <input data-bind="GlobalCharacterData.Class" type="text">
+                </div> -->
                 <div class="input-group">
                     <label>Level</label>
-                    <input type="number" value="0">
-                </div>
-                <div class="input-group box-highlight">
-                    <label>Hit Die</label>
-                    <input type="text" value="1">
-                </div>
-                <div class="input-group box-highlight">
-                    <label>Hit Points</label>
-                    <input type="number" value="4">
+                    <input data-bind="GlobalCharacterData.Level" type="number" value="0">
                 </div>
             </div>
-            <!-- <div class="grid-2">
-                <div class="input-group box-highlight">
-                    <label>Hit Die</label>
-                    <input type="text" value="1">
-                </div>
-                <div class="input-group box-highlight">
-                    <label>Hit Points</label>
-                    <input type="number" value="4">
-                </div>
-            </div> -->
         </section>
 
         <div class="main-body-grid">
@@ -58,27 +31,27 @@
                     <h2>Ability Scores</h2>
                     <div class="stat-row">
                         <label>Strength</label>
-                        <span data-bind="text: GlobalCharacterData.Abilities().Strength"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Strength"></span>
                     </div>
                     <div class="stat-row">
                         <label>Dexterity</label>
-                        <span data-bind="text: GlobalCharacterData.Abilities().Dexterity"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Dexterity"></span>
                     </div>
                     <div class="stat-row">
                         <label>Constitution</label>
-                        <span data-bind="text: GlobalCharacterData.Abilities().Constitution"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Constitution"></span>
                     </div>
                     <div class="stat-row">
                         <label>Wisdom</label>
-                        <span data-bind="text: GlobalCharacterData.Abilities().Wisdom"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Wisdom"></span>
                     </div>
                     <div class="stat-row">
                         <label>Charisma</label>
-                        <span data-bind="text: GlobalCharacterData.Abilities().Charisma"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Charisma"></span>
                     </div>
                     <div class="stat-row">
                         <label>Intelligence</label> 
-                        <span data-bind="text: GlobalCharacterData.Abilities().Intelligence"></span>
+                        <span data-bind="text: GlobalCharacterData.Abilities()?.Intelligence"></span>
                     </div>
                 </section>
 
@@ -96,27 +69,6 @@
 
                 <section class="box drawbacks" data-bind="PartialView: edgesPicker">
                 </section>
-
-                <section class="box skill">
-                    <h2>Skill</h2>
-                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Skills">
-                        <p data-bind="text: $data.Name"></p>
-                    </p>
-                </section>
-
-                <section class="box corruption">
-                    <h2>Corruption</h2>
-                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Corruption">
-                        <p data-bind="text: $data.Name"></p>
-                    </p>
-                </section>
-
-                <section class="box corruption">
-                    <h2>Drawbacks</h2>
-                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Drawbacks">
-                        <p data-bind="text: $data.Name"></p>
-                    </p>
-                </section>
             </div>
 
             <div class="right-col">
@@ -127,33 +79,24 @@
                         <label>Background Group/Selection</label>
                         <span>
                             <span data-bind="text: GlobalCharacterData.ChildhoodBackground().Name"></span>
-    
+
+                            <!-- ko if: GlobalCharacterData.ClassBackground() !== undefined -->
+                                <span>></span> <span data-bind="text: GlobalCharacterData.ClassBackground().Payload.Name"></span>
+                            <!-- /ko -->
+
                             <!-- ko if: GlobalCharacterData.AdultBackground() !== undefined -->
-                            <span>></span> <span data-bind="text: GlobalCharacterData.AdultBackground().Name"></span>
+                            <!-- <span>></span> <span data-bind="text: GlobalCharacterData.AdultBackground().Name"></span> -->
                             <!-- /ko -->
     
                             <!-- ko if: GlobalCharacterData.ElderBackground() !== undefined -->
-                            <span>></span> <span data-bind="text: GlobalCharacterData.ElderBackground().Name"></span>
+                            <!-- <span>></span> <span data-bind="text: GlobalCharacterData.ElderBackground().Name"></span> -->
                             <!-- /ko -->
                         </span>
-                    </div>
-                    <div class="input-group">
-                        <label>Your Life Before</label>
-                        <span data-bind="text: GlobalCharacterData.ChildhoodBackground().Story"></span>
-    
-                        <!-- ko if: GlobalCharacterData.AdultBackground() !== undefined -->
-                        <span data-bind="text: GlobalCharacterData.AdultBackground().Story"></span>
-                        <!-- /ko -->
-
-                        <!-- ko if: GlobalCharacterData.ElderBackground() !== undefined -->
-                        <span data-bind="text: GlobalCharacterData.ElderBackground().Story"></span>
-                        <!-- /ko -->
                     </div>
                 </section>
 
                 <section class="box entanglements">
                     <h2>Entanglements</h2>
-                    <p class="subtext">Past impacts on present opportunities.</p>
                     <p data-bind="PartialView: personPicker"></p>
                     <p data-bind="PartialView: placePicker"></p>
                     <p data-bind="PartialView: organizationPicker"></p>
@@ -163,6 +106,27 @@
                 </section>
 
                 <section class="box languages" data-bind="PartialView: languagesPicker">
+                </section>
+
+                <section class="box skill">
+                    <h2>Skill</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Skills">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
+                </section>
+
+                <!-- <section class="box corruption">
+                    <h2>Corruption</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Corruption">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
+                </section> -->
+
+                <section class="box corruption">
+                    <h2>Drawbacks</h2>
+                    <p class="subtext" data-bind="foreach: GlobalCharacterData.Drawbacks">
+                        <p data-bind="text: $data.Name"></p>
+                    </p>
                 </section>
 
             </div>

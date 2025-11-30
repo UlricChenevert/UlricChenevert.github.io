@@ -8,7 +8,7 @@ import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
 import { NameUtility } from "../Utility/NameUtility.js";
 import { NamePartPickerModel } from "./NamePartPickerModel.js";
 
-export class NamePickerModel implements ICharacterWizardViewModel<void, CharacterName | undefined> {
+export class NamePickerModel implements ICharacterWizardViewModel<void, CharacterName> {
     FriendlyName = "Name"
     ViewUrl = "PartialViews/NamePickerView.html"
     isLoading: Observable<boolean>;
@@ -50,11 +50,15 @@ export class NamePickerModel implements ICharacterWizardViewModel<void, Characte
     Init () {
         const name = this.GlobalCharacterData.Name()
         
-        if (name) {
+        if (name.Name) 
             this.NamePicker.Model.Init(name.Name)
+        
+        if (name.Bynames) 
             this.BynamePicker.Model.Init(name.Bynames)
+
+        if (name.Epithets) 
             this.EpithetPicker.Model.Init(name.Epithets)
-        }
+        
         return Promise.resolve()
     }
     

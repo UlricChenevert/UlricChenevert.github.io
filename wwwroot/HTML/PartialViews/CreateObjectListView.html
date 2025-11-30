@@ -1,20 +1,33 @@
-
 <!-- ko ifnot: subheading -->
-    <h2 data-bind="text: FriendlyName"></h2>
+    <div class="major header">
+        <h2 data-bind="text: FriendlyName"></h2>
+
+        <button class="pop-content button-icon centered" data-bind="click: CreateItem">
+            <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\add-svgrepo-com.svg" alt="Add"/>
+        </button>
+    </div>
 <!-- /ko -->
 
 <!-- ko if: subheading -->
-    <label class="input-group" data-bind="text: FriendlyName"></label>
+    <div class="header">
+        <label class="input-group" data-bind="text: FriendlyName"></label>
+
+        <button class="pop-content button-icon centered" data-bind="click: CreateItem">
+            <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\add-svgrepo-com.svg" alt="Add"/>
+        </button>
+    </div>
 <!-- /ko -->
 
+
+
 <div data-bind="foreach: itemList">
-    <div>
+    <div class="header">
         <span data-bind="text: $parent.determineName($data)">aaa</span>
-        <button data-bind="click: ()=>$parent.EditItem($index)">edit</button>
+        
+        <button class="pop-content button-icon centered" data-bind="click: ()=>$parent.EditItem($index)">
+            <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\edit-button-svgrepo-com.svg" alt="Edit"/>
+        </button>
     </div>
-</div>
-<div>
-    <button data-bind="click: CreateItem">Add</button><span data-bind="text: FriendlyName"></span>
 </div>
 
 <div data-bind="PartialView: modal"></div>

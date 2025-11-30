@@ -40,11 +40,12 @@ export class NamePickerModel {
     Destruction;
     Init() {
         const name = this.GlobalCharacterData.Name();
-        if (name) {
+        if (name.Name)
             this.NamePicker.Model.Init(name.Name);
+        if (name.Bynames)
             this.BynamePicker.Model.Init(name.Bynames);
+        if (name.Epithets)
             this.EpithetPicker.Model.Init(name.Epithets);
-        }
         return Promise.resolve();
     }
     Evaluate() {
