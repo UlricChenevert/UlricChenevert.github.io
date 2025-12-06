@@ -2,8 +2,9 @@ import { Utility } from "../../../WebCore/Utility.js";
 import { taggedSyllablesPrefixes, taggedSyllablesRoots, taggedSyllablesSuffixes } from "../Configuration/NameData.js";
 import { SyllableModel, SyllableTag, TaggedData, NameGeneratorSettings } from "../Contracts/TaggedData.js";
 import { PronounType } from "../Contracts/StringTypes.js";
-import { isMatchingIfExists } from "./General.js";
+import { isMatchingIfExists } from "./FilterUtility.js";
 import { NameGrammar } from "./NameGrammar.js";
+import { CharacterName } from "../Contracts/CharacterName.js";
 
 export namespace NameUtility {
     export function GeneratePersonName(settings?: NameGeneratorSettings): PronounType {
@@ -39,4 +40,8 @@ export namespace NameUtility {
 
         return RandomElement.Payload.Syllable;
     }
+
+    export const determineFullNameFromCharacterName = (data : CharacterName) => determineFullName((data.Name)? data.Name : "Unnamed", (data.Bynames)? data.Bynames : "Unnamed", (data.Epithets)? data.Epithets : "Untitled") 
+    export const determineFullName = (Names : string, Bynames : string, Epithets : string)=>Names + " of " + Bynames + " the " + Epithets
+
 }

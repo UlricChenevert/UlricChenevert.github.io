@@ -23,7 +23,35 @@ export namespace Utility {
     }
     
     export function RandomElement<T> (aList : T[]) {
-        return aList[Math.floor(Math.random()*aList.length)]
+        return aList[RandomIndex(aList)]
+    }
+
+    export function RandomIndex<T> (aList : T[]) {
+        return Math.floor(Math.random()*aList.length)
+    }
+
+    export function removeRandomElement<T>(destroyableList : T[]) : T {
+        const pickedIndex = Utility.RandomIndex(destroyableList)
+        const item = destroyableList.splice(pickedIndex, 1)
+
+        return item[0]
+
+    }
+
+    export function splitIntoTwoArrays<T> (a : T[], separationPredicate : (element : T)=>boolean) {
+        const length = a.length
+
+        const predicateTrueArray = []
+        const predicateFalseArray = []
+        
+        for (let i = 0; i < length; i++) {
+            if (separationPredicate(a[i]))
+                predicateTrueArray.push(a[i])
+            else
+                predicateFalseArray.push(a[i])
+        }   
+
+        return {predicateTrueArray: predicateTrueArray, predicateFalseArray: predicateFalseArray}
     }
 
     class UniqueID {
@@ -56,5 +84,23 @@ export namespace Utility {
 
     export function capitalize (str : string) {
         return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    export function shuffle<T> (array : T[]) {
+        let currentIndex = array.length;
+
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+
+            // Pick a remaining element...
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array
     }
 }

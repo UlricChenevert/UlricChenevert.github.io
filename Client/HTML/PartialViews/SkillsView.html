@@ -1,12 +1,46 @@
-<div>
-    <div data-bind="PartialView: strengthPicker"></div>
-    <div data-bind="PartialView: dexterityPicker"></div>
-    <div data-bind="PartialView: constitutionPicker"></div>
-    <div data-bind="PartialView: intelligencePicker"></div>
-    <div data-bind="PartialView: wisdomPicker"></div>
-    <div data-bind="PartialView: charismaPicker"></div>
+<div class="AbilityView">
+    <div class="header">
+        <div data-bind="text: FriendlyName"></div>
+        <button class="pop-content button-icon random-button centered" data-bind="click: Randomize">
+            <img src="/Images/dice-icon.svg" alt="Randomize" />
+        </button>
+    </div>
 
-    <button data-bind="click: rollAbilityScores">Roll</button>
+    <div class="image-container">
+        <img class="image" style="max-height: 10em;" src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\dice.png">
+    </div>
 
-    <div data-bind="PartialView: test"></div>
+    <hr>
+
+    <div class="vertical-columns">
+        <div>
+            <div class="ability-pickers">
+                <div class="hoverable-container" data-bind="PartialView: strengthPicker"></div>
+                <div class="hoverable-container" data-bind="PartialView: dexterityPicker"></div>
+                <div class="hoverable-container" data-bind="PartialView: constitutionPicker"></div>
+                <div class="hoverable-container" data-bind="PartialView: intelligencePicker"></div>
+                <div class="hoverable-container" data-bind="PartialView: wisdomPicker"></div>
+                <div class="hoverable-container" data-bind="PartialView: charismaPicker"></div>
+            </div>
+            
+            <!-- ko ifnot: customRoll -->
+                <div class="centered"><button class="wizard-button" data-bind="click: rollAbilityScores">Use Random Ability Rolls</button></div>
+            <!-- /ko -->
+        </div>
+        
+        <!-- ko if: abilitiesDescription -->
+        <div class="image-container">
+            <img class="image" style="max-height: 45em;" data-bind="attr: {src: abilitiesDescription().pictureUrl}">
+            <div class="centered largeText" data-bind="text: abilitiesDescription().description"></div>
+        </div>
+        <!-- /ko -->
+        
+
+    </div>
+
+    
+    
+
+    
+
 </div>

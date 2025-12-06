@@ -12,7 +12,10 @@ export const RandomizeAbilities = () =>
     return new Abilities(Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
 }
 
-const sixSidedDieRoll = () => Math.ceil(Math.random() * 5 + 1)
+export const sixSidedDieRoll = () => Math.ceil(Math.random() * 5 + 1)
+export const fourSidedDieRoll = () => Math.ceil(Math.random() * 3 + 1)
+export const eightSidedDieRoll = () => Math.ceil(Math.random() * 7 + 1)
+
 export const rollAbility = () => {
     let sum = 0;
 

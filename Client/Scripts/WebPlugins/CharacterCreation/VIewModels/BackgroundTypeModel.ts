@@ -1,8 +1,8 @@
 import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
-import { getPossibleBackground } from "../Utility/General.js";
+import { getPossibleBackground } from "../Utility/FilterUtility.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 
@@ -16,7 +16,7 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
 
     constructor (
         public FriendlyName : string, 
-        public GlobalCharacterData : IConfiguredCharacterData, 
+        public GlobalCharacterData : ConfiguredCharacterData, 
         public PossibleBackgrounds : TaggedCharacterData<StoryModel>[]
     ) {
         this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
@@ -28,28 +28,13 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
 
         this.isLoading = ko.observable(true)
 
-        this.GlobalCharacterData.Race.subscribe(()=>{
-            this.SelectableBackgrounds(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
-        })
-
-        this.GlobalCharacterData.EconomicBackground.subscribe(()=>{
-            this.SelectableBackgrounds(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
-        })
-
-        this.GlobalCharacterData.Morality.subscribe(()=>{
-            this.SelectableBackgrounds(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
-        })
-
-        this.GlobalCharacterData.Order.subscribe(()=>{
-            this.SelectableBackgrounds(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
-        })
-
         this.SelectableBackgrounds.subscribe((newBackgrounds)=>{this.ChosenStory(newBackgrounds[0])})
         this.ChosenStory.subscribe((newStory)=>{this.ChosenBackground(newStory.Story)})
-
     }
 
     Init () {
+        this.ChosenStory(this.GlobalCharacterData.ChildhoodBackground())
+    
         return Promise.resolve()
     }
 
@@ -58,8 +43,6 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
     }
 
     Randomize () {
-        
-
         this.ChosenStory(Utility.RandomElement(this.SelectableBackgrounds()))
     }
 

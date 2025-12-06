@@ -1,0 +1,15 @@
+<div class="input-group">
+    <div class="header">
+        <label data-bind="text: FriendlyName"></label> 
+        <button class="pop-content button-icon centered" data-bind="click: EditItem">
+            <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\edit-button-svgrepo-com.svg" alt="Edit"/>
+        </button>
+    </div>
+
+    <div>
+        <span data-bind="text: determineName(item())"></span>
+    </div>
+
+</div>
+
+<div data-bind="PartialView: modal"></div>

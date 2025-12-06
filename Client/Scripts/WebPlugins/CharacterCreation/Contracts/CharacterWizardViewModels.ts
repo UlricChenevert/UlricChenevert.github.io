@@ -1,6 +1,6 @@
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 
 export interface ICharacterWizardViewModel<ResolveType, EvaluateType> extends IWizardModel<ResolveType, EvaluateType>  {
     Randomize : Function
-    GlobalCharacterData : IConfiguredCharacterData
+    GlobalCharacterData : ConfiguredCharacterData
 }

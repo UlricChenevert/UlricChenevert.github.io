@@ -1,0 +1,11 @@
+<div>
+    <!-- ko ifnot: isCustom -->
+        <select data-bind="options: possibleItems, optionsText: (item)=>item.Payload.Name, value: chosenItem"></select>
+    <!-- /ko -->
+
+    <!-- ko if: isCustom -->
+        <input data-bind="value: createdItemName">
+    <!-- /ko -->
+
+    <div>Customize: <input type="checkbox" data-bind="checked: isCustom"></div>
+</div>

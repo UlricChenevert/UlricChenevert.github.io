@@ -1,21 +1,27 @@
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import {ko} from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js";
-import { DescriptionModel, PictureModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
+import { DescriptionModel, MultiTaggedCharacterData, PictureModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
 import { DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, RaceType } from "../Contracts/StringTypes.js";
 import {DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
-import { IConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { Observable } from "../../../Framework/Knockout/knockout.js";
+import { getMatchingMultiTaggedData, getMatchingTaggedData } from "../Utility/FilterUtility.js";
+import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
+import { TaggedItemData } from "../Configuration/TaggedItemData.js";
+import { LearnedLanguage } from "../Contracts/Language.js";
+import { TaggedEdgesData } from "../Configuration/EdgesData.js";
+import { TaggedCharacterBynameData, TaggedCharacterEpithetsData, TaggedCharacterNameData } from "../Configuration/TaggedNameData.js";
+import { CharacterName } from "../Contracts/CharacterName.js";
+import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
 
 export class PropensityViewModel implements ICharacterWizardViewModel<void, void> {
     ViewUrl = "PartialViews/PropensityView.html"
     isLoading: Observable<boolean>;
-    FriendlyName = "Propensity"
+    FriendlyName = "Ancestry    "
     
     ChosenRace : ko.Observable<RaceType>
     ChosenEconomicClass : ko.Observable<DevelopmentalEnvironmentType>
-    ChosenMorality : ko.Observable<MoralityTypes> 
-    ChosenOrder : ko.Observable<OrderTypes>
     
     PictureUrl : ko.Observable<string>
     RaceDescription : ko.Observable<string>
@@ -23,20 +29,15 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
     EconomicClassDescription : ko.Observable<string>
 
     PossibleRaces = Races
-    PossibleMoralities = Moralities
-    PossibleOrders = Order
     PossibleEconomicClasses = DevelopmentalEnvironments
 
-    constructor (public GlobalCharacterData : IConfiguredCharacterData) {
+    constructor (public GlobalCharacterData : ConfiguredCharacterData) {
 
         const chosenRace : RaceType = GlobalCharacterData.Race()
         const chosenClass : DevelopmentalEnvironmentType = GlobalCharacterData.EconomicBackground()
         
         this.ChosenRace = ko.observable(chosenRace)
         this.ChosenEconomicClass = ko.observable(chosenClass)
-        
-        this.ChosenMorality = ko.observable(GlobalCharacterData.Morality())
-        this.ChosenOrder = ko.observable(GlobalCharacterData.Order())
 
         const raceData = this.GetRaceData()
         this.PictureUrl = ko.observable(raceData.PictureUrl)
@@ -58,31 +59,31 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
             
             this.EconomicClassDescription(economicData.Description)
         })
-
-        this.GlobalCharacterData.Race.subscribe((value)=>{this.ChosenRace(value) })
-        this.GlobalCharacterData.EconomicBackground.subscribe((value)=>{this.ChosenEconomicClass(value) })
-        this.GlobalCharacterData.Morality.subscribe((value)=>{this.ChosenMorality(value) })
-        this.GlobalCharacterData.Order.subscribe((value)=>{this.ChosenOrder(value) })
-
+        
         this.isLoading = ko.observable(true)
     }
 
     Init () : Promise<void> {
+        this.ChosenRace(this.GlobalCharacterData.Race())
+        this.ChosenEconomicClass(this.GlobalCharacterData.EconomicBackground())
+
         return Promise.resolve()
     }
 
     Evaluate () {
         this.GlobalCharacterData.Race(this.ChosenRace())
-        this.GlobalCharacterData.Morality(this.ChosenMorality())
-        this.GlobalCharacterData.Order(this.ChosenOrder())
+        
         this.GlobalCharacterData.EconomicBackground(this.ChosenEconomicClass())
+        
+        updateItemData(this.GlobalCharacterData)
+        updateLanguageData(this.GlobalCharacterData)
+        updateEdgesData(this.GlobalCharacterData)
+        updateNameData(this.GlobalCharacterData)
     }
 
     Randomize () {
-        console.log("Randomize!")
         this.ChosenRace(Utility.RandomElement(Races)) 
-        this.ChosenMorality (Utility.RandomElement(Moralities))
-        this.ChosenOrder(Utility.RandomElement(Order))
+        
         this.ChosenEconomicClass(Utility.RandomElement(DevelopmentalEnvironments))
     }
 
@@ -92,7 +93,7 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
 
         if (taggedRaceData == undefined) throw Error(this.ChosenRace() + " config not found")
         
-        return {PictureUrl: Utility.getBaseImageUrl(taggedRaceData.Payload.PictureUrl), Description : taggedRaceData.Payload.Description}
+        return {PictureUrl: getCharacterCreatorPicturePath(taggedRaceData.Payload.PictureUrl), Description : taggedRaceData.Payload.Description}
     }
 
     private GetEconomicData () : DescriptionModel {
@@ -103,4 +104,51 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
 
         return taggedEconomicDescription?.Payload
     }
+}
+
+
+const updateItemData = (characterData : ConfiguredCharacterData) => {
+    const items = getMatchingMultiTaggedData(TaggedItemData, characterData)
+    characterData.Items(items.map(x=>x.Payload))
+}
+
+const updateLanguageData = (characterData : ConfiguredCharacterData) => {
+    const languages = getMatchingMultiTaggedData(TaggedLanguageData, characterData)
+    const language = Utility.RandomElement(languages).Payload
+    characterData.Languages([new LearnedLanguage(language.Name, true, true, true)])
+}
+
+const updateEdgesData = (characterData : ConfiguredCharacterData) => {
+    const edges = getMatchingMultiTaggedData(TaggedEdgesData, characterData)
+    const splitArray = Utility.splitIntoTwoArrays(edges, 
+        (edgeData)=>
+            edgeData.Tags.some(
+                (tag)=>
+                    (tag.Race === undefined || tag.Race.Race == characterData.Race()) &&
+                    (tag.Optional !== undefined && tag.Optional)
+                )
+        )
+
+    const edgesYouHaveToChoose = splitArray.predicateTrueArray
+    const raceEnsuredEdges = splitArray.predicateFalseArray
+
+    if (edgesYouHaveToChoose.length > 0) 
+        raceEnsuredEdges.push(Utility.RandomElement(edgesYouHaveToChoose))
+
+    characterData.Edges(raceEnsuredEdges.map(x=>x.Payload))
+}
+
+const updateNameData = (characterData : ConfiguredCharacterData) => {
+    characterData.Name(new CharacterName(
+        updateNamePart(TaggedCharacterNameData, characterData),
+        updateNamePart(TaggedCharacterBynameData, characterData),
+        updateNamePart(TaggedCharacterEpithetsData, characterData),
+    ))
+}
+
+const updateNamePart = (possibleNamePart : MultiTaggedCharacterData<string>[], characterData : ConfiguredCharacterData) => {
+    const NameParts = getMatchingMultiTaggedData(possibleNamePart, characterData)
+    const NamePart = Utility.RandomElement(NameParts).Payload
+
+    return NamePart
 }

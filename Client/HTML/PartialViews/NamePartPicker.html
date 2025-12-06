@@ -1,0 +1,13 @@
+<div class="hoverable-container">
+    <h4 data-bind="text: FriendlyName"></h4>
+    <!-- ko ifnot:  isCustom -->
+        <select class="wizard-select" data-bind="options: possibleOptions, optionsText: function(item) {return item.Payload}, value: chosenValueOption"></select>
+    <!-- /ko -->
+    
+    <!-- ko if:  isCustom -->
+        <input data-bind="value: chosenValue">
+    <!-- /ko -->
+    
+    <!-- <div>Custom <div data-bind="FriendlyName"></div>: <input type="checkbox" data-bind="checked: isCustom"></div> -->
+</div>
+

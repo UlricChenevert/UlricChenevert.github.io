@@ -1,0 +1,34 @@
+<div class="title">
+    <h4 data-bind="text: FriendlyName"></h4>
+    
+    <button class="pop-content button-icon centered" data-bind="click: Randomize">
+        <img src="\Images\dice-icon.svg" alt="Randomize"/>
+    </button>
+</div>
+<div class="deity-picker">
+    <!-- ko ifnot: isCustom -->
+        <select class="wizard-select" data-bind="options: possibleDeities, optionsText: (item)=>item.Pronoun.name, value: chosenDeity"></select>
+        
+        <div class="centered largeText" data-bind="text: chosenDeityDescription"></div>
+
+        <div class="image-container">
+            <img class="image" data-bind="attr: {src: chosenDeity().SymbolPath}">
+        </div>
+    
+    <!-- /ko -->
+
+    <!-- ko if: isCustom -->
+        <span>
+            Name:
+            <input data-bind="value: createdDeityName">
+        </span>
+
+        <span>
+            Description:
+            <input data-bind="value: createdDeityDescription">
+        </span>
+    <!-- /ko -->
+    
+
+    <!-- <div>Customize: <input type="checkbox" data-bind="checked: isCustom"></div> -->
+</div>

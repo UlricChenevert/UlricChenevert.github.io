@@ -1,4 +1,8 @@
-import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes } from "./StringTypes";
+import { Edges } from "./Edges";
+import { Language } from "./Language";
+import { Skill } from "./Skill";
+import { Spell } from "./Spell";
+import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
 
 export interface TaggedData<T, Y> {
     Tags : Y,
@@ -10,6 +14,11 @@ export interface TaggedCharacterData<T> extends TaggedData<T, CharacterTags> {
     Payload : T
 }
 
+export interface MultiTaggedCharacterData<T> extends TaggedData<T, CharacterTags[]> {
+    Tags : CharacterTags[],
+    Payload : T
+}
+
 export interface CharacterTags {
     Race?: RaceTag;
     DevelopmentalEnvironment?: DevelopmentalEnvironmentTag;
@@ -18,16 +27,26 @@ export interface CharacterTags {
     Alignment?: AlignmentTag;
     PhysicalFeatures? : PhysicalFeaturesTag
     Religion? : ReligionTag
-    PrestigeLevel? : PrestigeTag
+    PrestigeLevel? : PrestigeTag,
+    Optional? : boolean
 }
 
 export type DescriptionModel = {Description: string}
 export type PartOfSpeechModel = {PartOfSpeech : string}
 export type PictureModel = DescriptionModel & {PictureUrl: string}
 export type StoryModel = {
-    Name: ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
+    Name: string //ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
     Story : string
+
     Items? : Item[]
+
+    Edges? : Edges[]
+    Skills? : Skill[]
+    
+    Spells? : Spell[]
+    Languages? : Language[]
+
+    Other? : string
 
     PeopleNames? : PronounType[]
     PeopleRelations? : DispositionType[]
@@ -37,15 +56,15 @@ export type StoryModel = {
 
     PlaceNames? : PronounType[]
     PlaceRelationships? : DispositionType[]
+
+    PartialPictureUrl? : string
 }
 
 export type SyllableModel = {
     Syllable : string
 }
 
-export type Item = {Name: string, Source: SourceTypes}
-
-export type RelationshipModel = {Name?: PronounType, Disposition : DispositionType, Source : SourceTypes}
+export type Item = {Name: string, Amount?: number, Description?: string, Source: SourceTypes}
 
 export interface BaseTag {
     Type?: TagType;
@@ -57,6 +76,7 @@ export interface RaceTag extends BaseTag {
 
 export interface ProfessionTag extends BaseTag {
     Class: ProfessionType;
+    Job?: JobType
 }
 
 export interface DevelopmentalEnvironmentTag extends BaseTag {

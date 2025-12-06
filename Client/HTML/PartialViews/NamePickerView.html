@@ -1,0 +1,21 @@
+<div>
+    <div class="title">
+        <h4 data-bind="text: FriendlyName"></h4>
+        
+        <button class="pop-content button-icon centered" data-bind="click: Randomize">
+            <img src="\Images\dice-icon.svg" alt="Randomize"/>
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="name-picker">
+        <div data-bind="PartialView: NamePicker"></div>
+        <div data-bind="PartialView: BynamePicker"></div>
+        <div data-bind="PartialView: EpithetPicker"></div>
+    </div>
+
+
+    <div class="character-name hoverable-container" data-bind="text: fullName"></div>
+
+</div>
