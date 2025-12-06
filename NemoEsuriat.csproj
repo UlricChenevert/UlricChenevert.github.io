@@ -11,9 +11,31 @@
          <Exec Command="tsc" /> 
   </Target>
 
+  <ItemGroup> 
+    <Content Include="HTML\**\*.html" CopyToPublishDirectory="Always"/> 
+    <Content Include="Fonts\*" CopyToPublishDirectory="Always"/>
+    <Content Include="Images\*" CopyToPublishDirectory="Always"/>
+  </ItemGroup>
+
   <!-- <Target Name="Compile Blog Files" BeforeTargets="Build">
      <Message Text="Compiling Blog..." Importance="low" />
-     <Exec Command=".\\Tools\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\"/> 
-  </Target> -->
+     <Exec Command=".\\Tools\\Windows\\Build-Pages.ps1 .\\Client\\Blog\\ .\\wwwroot\\HTML\\GeneratedViews\\"/> 
+  </Target>
+   -->
+  <Target Name="CopyClientFilesToWWWRoot" AfterTargets="Build">
+    <ItemGroup>
+        <ClientContent Include="Client\**\*.js" />
+        <ClientContent Include="Client\**\*.ttf" />
+        <ClientContent Include="Client\**\*.html" />
+        <ClientContent Include="Client\**\Images\*.*" />
+    </ItemGroup>
+
+    <Copy
+        SourceFiles="@(ClientContent)"
+        DestinationFiles="@(ClientContent -> 'wwwroot\%(RecursiveDir)%(Filename)%(Extension)')"
+        SkipUnchangedFiles="true"
+        OverwriteReadOnlyFiles="true"
+    />
+  </Target>
 
 </Project>

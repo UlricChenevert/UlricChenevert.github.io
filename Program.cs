@@ -9,7 +9,8 @@ var app = builder.Build();
 
 app.UseRouting();
 
-app.MapStaticAssets();
+// app.MapStaticAssets();
+app.UseStaticFiles(); 
 
 app.MapControllers();
 
