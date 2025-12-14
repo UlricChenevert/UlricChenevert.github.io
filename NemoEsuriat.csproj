@@ -13,8 +13,8 @@
 
   <ItemGroup> 
     <Content Include="HTML\**\*.html" CopyToPublishDirectory="Always"/> 
-    <Content Include="Fonts\*" CopyToPublishDirectory="Always"/>
-    <Content Include="Images\*" CopyToPublishDirectory="Always"/>
+    <Content Include="Fonts\**\*.*" CopyToPublishDirectory="Always"/>
+    <Content Include="Images\**\*.*" CopyToPublishDirectory="Always"/>
   </ItemGroup>
 
   <!-- <Target Name="Compile Blog Files" BeforeTargets="Build">
@@ -27,7 +27,7 @@
         <ClientContent Include="Client\**\*.js" />
         <ClientContent Include="Client\**\*.ttf" />
         <ClientContent Include="Client\**\*.html" />
-        <ClientContent Include="Client\**\Images\*.*" />
+        <ClientContent Include="Client\**\Images\**\*.*" />
     </ItemGroup>
 
     <Copy
