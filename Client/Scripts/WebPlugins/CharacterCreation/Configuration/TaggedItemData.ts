@@ -1,5 +1,5 @@
 import { Item, MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
-import { eightSidedDieRoll, fourSidedDieRoll, sixSidedDieRoll } from "../Utility/DiceRoll.js";
+import { DiceRoll } from "../Utility/DiceRoll.js";
 
 export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     {
@@ -20,7 +20,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Race:{Race:"Dwarf"}}],
-        Payload:{Name: "Gems", Amount: sixSidedDieRoll(), Description:"Worth 2 coins each", Source: "Disposition"}
+        Payload:{Name: "Gems", Amount: DiceRoll.sixSidedDieRoll(), Description:"Worth 2 coins each", Source: "Disposition"}
     },
     {
         Tags:[{Race:{Race:"Elf"}}, {Race:{Race:"Human"}}],
@@ -88,7 +88,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Race:{Race:"Orc"}}],
-        Payload:{Name: "Teeth (Orcish currency)", Amount: 4 * sixSidedDieRoll(), Description: "Equivalent to 1 coin per 2 teeth", Source: "Disposition"}
+        Payload:{Name: "Teeth (Orcish currency)", Amount: 4 * DiceRoll.sixSidedDieRoll(), Description: "Equivalent to 1 coin per 2 teeth", Source: "Disposition"}
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Jeweler"}, Optional: false}],
@@ -120,7 +120,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Arbalist"}, Optional: false}],
-        Payload:{Name:"Crossbow", Description:"Simple Ranged Weapon, 1d6 damage, Range Nearby", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Crossbow", Description:"Simple Ranged Weapon, 1d6 damage, Range Nearby", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     // --- Arbalist Items ---
     {
@@ -129,7 +129,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Arbalist"}, Optional: false}],
-        Payload:{Name:"Bolts", Description:"Ammunition for Crossbow", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Bolts", Description:"Ammunition for Crossbow", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     // --- Scrivener Items ---
     {
@@ -236,7 +236,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Leatherworker"}, Optional: false}],
-        Payload:{Name:"Leather Armor", Description:"Light Armor, Ud4 (Assumed to be fourSidedDieRoll)", Amount:fourSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Leather Armor", Description:"Light Armor, Ud4 (Assumed to be fourSidedDieRoll)", Amount:DiceRoll.fourSidedDieRoll(), Source:"Background"}
     },
     // --- Mason Items (Replaces Smith gear) ---
     {
@@ -245,7 +245,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Mason"}, Optional: false}],
-        Payload:{Name:"Iron Spikes", Amount:eightSidedDieRoll(), Source:"Background"} // Assuming Ud8 is 1d8, so using a new placeholder
+        Payload:{Name:"Iron Spikes", Amount:DiceRoll.eightSidedDieRoll(), Source:"Background"} // Assuming Ud8 is 1d8, so using a new placeholder
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Mason"}, Optional: false}],
@@ -314,7 +314,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Ambler"}, Optional: false}],
-        Payload:{Name:"Saddlebags with grain", Amount:fourSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Saddlebags with grain", Amount:DiceRoll.fourSidedDieRoll(), Source:"Background"}
     },
     // --- Chef Items (Replaces Ambler gear) ---
     {
@@ -336,7 +336,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Fisher"}, Optional: false}],
-        Payload:{Name:"Brass hooks", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Brass hooks", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     // --- Herder Items (No Ambler base gear) ---
     {
@@ -358,7 +358,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class:"Adventurer", Job:"Wagoner"}, Optional: false}],
-        Payload:{Name:"Bolts", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Bolts", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     // --- Escaped Thrall Items (No standard gear) ---
     {
@@ -396,7 +396,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class: "Magic User", Job: "Cultist"}, Optional: false}],
-        Payload:{Name:"Candles", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Candles", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     {
         Tags:[{Profession:{Class: "Magic User", Job: "Cultist"}, Optional: false}],
@@ -421,7 +421,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     // --- Barbarian Items ---
     {
         Tags:[{Profession:{Class: "Fighter", Job: "Barbarian"}, Optional: false}],
-        Payload:{Name:"Layers of smelly furs with sewn on bones", Description:"Light Armor, Ud6", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Layers of smelly furs with sewn on bones", Description:"Light Armor, Ud6", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     {
         Tags:[{Profession:{Class: "Fighter", Job: "Barbarian"}, Optional: false}],
@@ -429,11 +429,11 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class: "Fighter", Job: "Barbarian"}, Optional: true}],
-        Payload:{Name:"Mushrooms", Description:"Mind altering substance for Berserk Frenzy", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Mushrooms", Description:"Mind altering substance for Berserk Frenzy", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     {
         Tags:[{Profession:{Class: "Fighter", Job: "Barbarian"}, Optional: true}],
-        Payload:{Name:"Special leaves", Description:"Mind altering substance for Berserk Frenzy", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Special leaves", Description:"Mind altering substance for Berserk Frenzy", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     // Weapons (Mandatory 1)
     {
@@ -471,7 +471,7 @@ export const TaggedItemData : MultiTaggedCharacterData<Item>[] = [
     },
     {
         Tags:[{Profession:{Class: "Magic User", Job: "Warlock"}, Optional: false}],
-        Payload:{Name:"Small sack of feed", Amount:sixSidedDieRoll(), Source:"Background"}
+        Payload:{Name:"Small sack of feed", Amount:DiceRoll.sixSidedDieRoll(), Source:"Background"}
     },
     {
         Tags:[{Profession:{Class: "Magic User", Job: "Warlock"}, Optional: true}],

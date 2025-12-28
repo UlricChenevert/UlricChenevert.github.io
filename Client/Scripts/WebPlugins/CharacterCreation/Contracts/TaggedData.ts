@@ -64,7 +64,11 @@ export type SyllableModel = {
     Syllable : string
 }
 
-export type Item = {Name: string, Amount?: number, Description?: string, Source: SourceTypes}
+export type Item = {
+    Name: string, 
+    Amount?: number, 
+    Description?: string, 
+    Source: SourceTypes}
 
 export interface BaseTag {
     Type?: TagType;

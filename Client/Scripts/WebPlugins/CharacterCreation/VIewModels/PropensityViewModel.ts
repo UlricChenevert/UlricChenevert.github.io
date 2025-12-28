@@ -1,12 +1,12 @@
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import {ko} from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js";
-import { DescriptionModel, MultiTaggedCharacterData, PictureModel, TaggedCharacterData, TaggedData } from "../Contracts/TaggedData.js";
-import { DevelopmentalEnvironmentType, MoralityTypes, OrderTypes, RaceType } from "../Contracts/StringTypes.js";
-import {DevelopmentalEnvironmentDescriptions, DevelopmentalEnvironments, Moralities, Order, RaceDescriptions, Races } from "../Configuration/DispositionData.js";
+import { MultiTaggedCharacterData, PictureModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
+import { RaceType } from "../Contracts/StringTypes.js";
+import {RaceDescriptions, Races } from "../Configuration/DispositionData.js";
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { getMatchingMultiTaggedData, getMatchingTaggedData } from "../Utility/FilterUtility.js";
+import { getMatchingMultiTaggedData } from "../Utility/FilterUtility.js";
 import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
 import { TaggedItemData } from "../Configuration/TaggedItemData.js";
 import { LearnedLanguage } from "../Contracts/Language.js";
@@ -21,30 +21,30 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
     FriendlyName = "Ancestry    "
     
     ChosenRace : ko.Observable<RaceType>
-    ChosenEconomicClass : ko.Observable<DevelopmentalEnvironmentType>
+    // ChosenEconomicClass : ko.Observable<DevelopmentalEnvironmentType>
     
     PictureUrl : ko.Observable<string>
     RaceDescription : ko.Observable<string>
 
-    EconomicClassDescription : ko.Observable<string>
+    // EconomicClassDescription : ko.Observable<string>
 
     PossibleRaces = Races
-    PossibleEconomicClasses = DevelopmentalEnvironments
+    // PossibleEconomicClasses = DevelopmentalEnvironments
 
     constructor (public GlobalCharacterData : ConfiguredCharacterData) {
 
         const chosenRace : RaceType = GlobalCharacterData.Race()
-        const chosenClass : DevelopmentalEnvironmentType = GlobalCharacterData.EconomicBackground()
+        // const chosenClass : DevelopmentalEnvironmentType = GlobalCharacterData.EconomicBackground()
         
         this.ChosenRace = ko.observable(chosenRace)
-        this.ChosenEconomicClass = ko.observable(chosenClass)
+        // this.ChosenEconomicClass = ko.observable(chosenClass)
 
         const raceData = this.GetRaceData()
         this.PictureUrl = ko.observable(raceData.PictureUrl)
         this.RaceDescription = ko.observable(raceData.Description)
 
-        const economicData = this.GetEconomicData()
-        this.EconomicClassDescription = ko.observable(economicData.Description)
+        // const economicData = this.GetEconomicData()
+        // this.EconomicClassDescription = ko.observable(economicData.Description)
 
         // Setting up updates
         this.ChosenRace.subscribe(()=>{
@@ -54,18 +54,18 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
             this.RaceDescription(raceData.Description)
         })
 
-        this.ChosenEconomicClass.subscribe(()=>{
-            const economicData = this.GetEconomicData()
+        // this.ChosenEconomicClass.subscribe(()=>{
+        //     const economicData = this.GetEconomicData()
             
-            this.EconomicClassDescription(economicData.Description)
-        })
+        //     this.EconomicClassDescription(economicData.Description)
+        // })
         
         this.isLoading = ko.observable(true)
     }
 
     Init () : Promise<void> {
         this.ChosenRace(this.GlobalCharacterData.Race())
-        this.ChosenEconomicClass(this.GlobalCharacterData.EconomicBackground())
+        // this.ChosenEconomicClass(this.GlobalCharacterData.EconomicBackground())
 
         return Promise.resolve()
     }
@@ -73,7 +73,7 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
     Evaluate () {
         this.GlobalCharacterData.Race(this.ChosenRace())
         
-        this.GlobalCharacterData.EconomicBackground(this.ChosenEconomicClass())
+        // this.GlobalCharacterData.EconomicBackground(this.ChosenEconomicClass())
         
         updateItemData(this.GlobalCharacterData)
         updateLanguageData(this.GlobalCharacterData)
@@ -84,7 +84,7 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
     Randomize () {
         this.ChosenRace(Utility.RandomElement(Races)) 
         
-        this.ChosenEconomicClass(Utility.RandomElement(DevelopmentalEnvironments))
+        // this.ChosenEconomicClass(Utility.RandomElement(DevelopmentalEnvironments))
     }
 
     private GetRaceData () : PictureModel {
@@ -96,14 +96,14 @@ export class PropensityViewModel implements ICharacterWizardViewModel<void, void
         return {PictureUrl: getCharacterCreatorPicturePath(taggedRaceData.Payload.PictureUrl), Description : taggedRaceData.Payload.Description}
     }
 
-    private GetEconomicData () : DescriptionModel {
-        const taggedEconomicDescription: TaggedCharacterData<DescriptionModel> | undefined = DevelopmentalEnvironmentDescriptions
-            .find((taggedData)=>{return taggedData.Tags.DevelopmentalEnvironment?.Class == this.ChosenEconomicClass()})
+    // private GetEconomicData () : DescriptionModel {
+    //     const taggedEconomicDescription: TaggedCharacterData<DescriptionModel> | undefined = DevelopmentalEnvironmentDescriptions
+    //         .find((taggedData)=>{return taggedData.Tags.DevelopmentalEnvironment?.Class == this.ChosenEconomicClass()})
             
-        if (taggedEconomicDescription == undefined) throw Error(this.ChosenEconomicClass() + " config not found")
+        // if (taggedEconomicDescription == undefined) throw Error(this.ChosenEconomicClass() + " config not found")
 
-        return taggedEconomicDescription?.Payload
-    }
+    //     return taggedEconomicDescription?.Payload
+    // }
 }
 
 

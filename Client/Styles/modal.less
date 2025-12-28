@@ -17,10 +17,18 @@
   justify-content: center;
 
   .modal-contents {
+    margin: 10em;
     width: 60em;
     height: 60em;
     background-color: @article-color;
     padding: 1em;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-display {
+    flex-grow: 1;
   }
 
   .header {

@@ -5,7 +5,6 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 
 export class AbilityPickerModel implements ICharacterWizardViewModel<void, void> {
-    
     ViewUrl = "PartialViews/AbilityPickerView.html"
     isLoading: Observable<boolean>;
 

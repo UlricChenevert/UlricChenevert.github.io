@@ -1,5 +1,5 @@
-import { Observable, ObservableArray } from "../../Framework/Knockout/knockout";
-import { ko } from "../../Framework/Knockout/ko";
+import { Observable, ObservableArray } from "../../Framework/Knockout/knockout.js";
+import { ko } from "../../Framework/Knockout/ko.js";
 
 export class PaneledOptions<T> implements IHTMLInjectable<void>, IEvaluatable<T> {
     ViewUrl = "PartialViews/PaneledOptions.html";

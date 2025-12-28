@@ -1,23 +1,18 @@
 import { Item, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js"
-import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType, ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, ProfessionType, JobType } from "../Contracts/StringTypes.js"
+import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configuration/DispositionData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
-import { AdultBackgrounds, Ages, ChildhoodBackgrounds, ElderBackgrounds } from "./AgeGroupBackgroundData.js"
-import { Utility } from "../../../WebCore/Utility.js"
-import { getPossibleBackground } from "../Utility/FilterUtility.js"
+import { AdultBackgrounds, Ages, ChildhoodBackgrounds } from "./AgeGroupBackgroundData.js"
 import { Abilities } from "../Contracts/Abilities.js"
-import { RandomizeAbilities } from "../Utility/DiceRoll.js"
-import { Language, LearnedLanguage } from "../Contracts/Language.js"
+import { LearnedLanguage } from "../Contracts/Language.js"
 import { Entanglements } from "../Contracts/Entanglements.js"
 import { Deity } from "../Contracts/Diety.js"
-import { possibleDeities } from "./DietiesData.js"
 import { Edges } from "../Contracts/Edges.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
 import { Corruption } from "../Contracts/Corruption.js"
 import { Skill } from "../Contracts/Skill.js"
 import { Drawbacks } from "../Contracts/Drawbacks.js"
-import { possibleClasses, possibleJobs } from "./CareerGroupBackgroundData.js"
 
 export class ConfiguredCharacterData {
     Name : Observable<CharacterName>
@@ -34,7 +29,7 @@ export class ConfiguredCharacterData {
 
     ClassBackground: Observable<TaggedCharacterData<StoryModel> | undefined>
 
-    Abilities : Observable<Abilities | undefined>
+    Abilities : Observable<Abilities>
     Languages: ObservableArray<LearnedLanguage>
     
     Items : ObservableArray<Item>
@@ -69,7 +64,7 @@ export class ConfiguredCharacterData {
         this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
         this.ClassBackground = ko.observable<TaggedCharacterData<StoryModel> | undefined>(undefined)
 
-        this.Abilities = ko.observable<Abilities | undefined>(undefined)
+        this.Abilities = ko.observable<Abilities>(new Abilities(0, 0, 0, 0, 0, 0))
         this.Languages = ko.observableArray<LearnedLanguage>([])
 
         this.Items = ko.observableArray([] as Item[])

@@ -1,6 +1,6 @@
 interface IPartialViewModel<ModelType> {
-    readonly  ViewUrl : string
-    readonly Model : ModelType
+    ViewUrl : string
+    Model : ModelType
 }
 
 interface IHTMLInjectable<ResolveType, InitializationType = undefined> {
