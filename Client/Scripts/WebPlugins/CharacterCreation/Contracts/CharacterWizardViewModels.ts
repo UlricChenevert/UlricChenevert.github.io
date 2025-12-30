@@ -4,3 +4,7 @@ export interface ICharacterWizardViewModel<ResolveType, EvaluateType> extends IW
     Randomize : Function
     GlobalCharacterData : ConfiguredCharacterData
 }
+
+export type IRandomizeWizardModel<EvaluateType> = IWizardModel<void, EvaluateType, undefined> & {Randomize : Function}
+
+

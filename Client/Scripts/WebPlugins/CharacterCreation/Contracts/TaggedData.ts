@@ -1,5 +1,6 @@
+import { ObservableArray, ObservableArrayFunctions } from "../../../Framework/Knockout/knockout";
 import { Edges } from "./Edges";
-import { Language } from "./Language";
+import { Language, LearnedLanguage } from "./Language";
 import { Skill } from "./Skill";
 import { Spell } from "./Spell";
 import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
@@ -29,24 +30,24 @@ export interface CharacterTags {
     Religion? : ReligionTag
     PrestigeLevel? : PrestigeTag,
     Optional? : boolean
+    Source?: SourceTypes
 }
 
 export type DescriptionModel = {Description: string}
 export type PartOfSpeechModel = {PartOfSpeech : string}
 export type PictureModel = DescriptionModel & {PictureUrl: string}
 export type StoryModel = {
-    Name: string //ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
+    Name: string
     Story : string
-
-    Items? : Item[]
-
-    Edges? : Edges[]
-    Skills? : Skill[]
-    
-    Spells? : Spell[]
-    Languages? : Language[]
-
     Other? : string
+
+    Items? : SelectionPackage<Item>
+
+    Edges? : SelectionPackage<Edges>
+    Skills? : SelectionPackage<Skill>
+    
+    // Spells? : ItemPackage<Spell>
+    Languages? : SelectionPackage<LearnedLanguage>
 
     PeopleNames? : PronounType[]
     PeopleRelations? : DispositionType[]
@@ -60,15 +61,37 @@ export type StoryModel = {
     PartialPictureUrl? : string
 }
 
+export class SelectionPackage<T> {
+    constructor (
+        public FixedSelection: T[], // e.g. Items every Dwarf gets automatically
+        public ChoiceSelection: ChoiceGroup<T>[] // Groups of items they must choose between
+    ) {}
+}
+
+
+export class ChoiceGroup<T> {
+    constructor (
+        public pickCount: number, // How many can they choose?
+        public options: T[], // The items themselves
+        public selectedValues: T[]
+    ) {}
+}
+
+export class TaggedObservableSelectionPackage<T> {
+    constructor (
+        public FixedSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items every Dwarf gets automatically
+        public ChoiceSelection: ObservableArray<TaggedCharacterData<ChoiceGroup<T>>> // Groups of items they must choose between
+    ) {}
+}
+
+
 export type SyllableModel = {
     Syllable : string
 }
 
-export type Item = {
-    Name: string, 
-    Amount?: number, 
-    Description?: string, 
-    Source: SourceTypes}
+export class Item {
+    constructor(public Name: string, public Amount?: number, public Description?: string, public Overrides? : Item) {}
+}
 
 export interface BaseTag {
     Type?: TagType;

@@ -1,14 +1,14 @@
-import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js";
-import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
-import { MultiTaggedCharacterData, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
-import { getPossibleBackground } from "../Utility/FilterUtility.js";
-import { ko } from "../../../Framework/Knockout/ko.js";
-import { Utility } from "../../../WebCore/Utility.js";
-import { JobType, ProfessionType } from "../Contracts/StringTypes.js";
-import { ClassBackgrounds } from "../Configuration/CareerGroupBackgroundData.js";
-import { PopulateBackground } from "../Utility/PopulateStory.js";
-import { tryGetCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
+import { Observable, ObservableArray } from "../../../../Framework/Knockout/knockout.js";
+import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
+import { ICharacterWizardViewModel } from "../../Contracts/CharacterWizardViewModels.js";
+import { MultiTaggedCharacterData, StoryModel, TaggedCharacterData } from "../../Contracts/TaggedData.js";
+import { getPossibleBackground } from "../../Utility/FilterUtility.js";
+import { ko } from "../../../../Framework/Knockout/ko.js";
+import { Utility } from "../../../../WebCore/Utility.js";
+import { JobType, ProfessionType } from "../../Contracts/StringTypes.js";
+import { ClassBackgrounds } from "../../Configuration/CareerGroupBackgroundData.js";
+import { PopulateBackground } from "../../Utility/PopulateStory.js";
+import { tryGetCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
 
 export class ClassBackgroundPickerModel implements ICharacterWizardViewModel<void, TaggedCharacterData<StoryModel>> {
     readonly ViewUrl = "PartialViews/ClassBackgroundPicker.html";

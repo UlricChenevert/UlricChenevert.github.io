@@ -25,7 +25,7 @@ export type BackgroundType = 'Childhood' | 'Adult' | 'Elder';
 
 export type GeographyType = "Water" | "Landform";
 
-export type SourceTypes = "Background" | "Disposition" | "Custom"
+export type SourceTypes = "Background" | "Ancestry" | "Custom" | "Innate"
 
 export type OrganizationType = "";
 
@@ -111,14 +111,6 @@ export type NameType = "Organization" | "Person" | "Place";
 export type ProfessionType =
     "Adventurer" | "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
 
-
-// export type JobType = "Jeweler" | "Arbalist" | "Escaped Thrall" | "Rat Catcher" | "Scrivener" | "Inspector/Reeve" | "Carpenter" | "Smith" | "Cooper/Wheelwright" | "Leatherworker" | 
-
-
-// export type ProfessionType =
-//     "Adventurer" | "Bureaucrat" | "Crafter" | "Mercantiler" | "Free Laborer" | "Vagabond" |
-//     "Scholar" | "Cultist" | "Barbarian" | "Warlock" | "Scoundrel" | // New Classes
-//     "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
 
 export type JobType = 
     "Jeweler" | "Arbalist" | "Scrivener" | "Advocate/Beadle" | "Cartographer" | "Inspector/Reeve" | 

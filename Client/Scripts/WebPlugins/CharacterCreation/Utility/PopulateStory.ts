@@ -18,11 +18,13 @@ export function PopulateBackground(storySeed: TaggedCharacterData<StoryModel>, c
 
     if (storyPayloadReference.Items) {
 
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "an unusual item", Source: "Background" as SourceTypes}})
+        console.warn("Item story loading needs to be finished!")
 
-        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
+        // const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "an unusual item", Source: "Background" as SourceTypes}})
 
-        returnPayloadReference.Items = getNewOrDefault.usedData
+        // returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
+
+        // returnPayloadReference.Items = getNewOrDefault.usedData
     }
 
     if (storyPayloadReference.PeopleNames) {

@@ -1,14 +1,14 @@
-<div class="standard-wizard-styles ">
+<div class="character-background-image standard-wizard-styles">
     <div class="character-sheet-container">
         <header class="header-section">
             <h1>CHARACTER DESIGN</h1>
         </header>
         
-        <section>
+        <section class="reveal-section hoverable-container">
             <div data-bind="PartialView: AncestryPicker"></div>
         </section>
 
-        <section>
+        <section class="reveal-section hoverable-container">
             <div data-bind="PartialView: BackgroundPicker"></div>
             <!-- <h2>Background</h2> -->
             <!-- <div class="input-group"> -->
@@ -31,38 +31,36 @@
             <!-- </div> -->
         </section>
 
-        <section class="abilities">
-            <div data-bind="PartialView: SkillsPicker"></div>
+        <section class="abilities reveal-section hoverable-container">
+            <div data-bind="PartialView: AbilityPicker"></div>
         </section>
 
-        <section class="box entanglements">
+        <section class="reveal-section entanglements hoverable-container">
             <h2>Entanglements</h2>
             <p data-bind="PartialView: personPicker"></p>
             <p data-bind="PartialView: placePicker"></p>
             <p data-bind="PartialView: organizationPicker"></p>
         </section>
         
-        <section class="box" data-bind="PartialView: equipmentPicker">
+        <section class="reveal-section hoverable-container" data-bind="PartialView: equipmentPicker">
         </section>
 
-        <section class="box">
+        <section class="reveal-section hoverable-container">
             <h2>Trinkets</h2>
         </section>
         
-        <section class="box skill">
-            <h2>Skill</h2>
-            <p class="subtext" data-bind="foreach: GlobalCharacterData.Skills">
-                <p data-bind="text: $data.Name"></p>
-            </p>
+        <section class="reveal-section hoverable-container skill">
+            <div data-bind="PartialView: skillsPicker"></div>
         </section>
 
-        <section class="box edges" data-bind="PartialView: edgesPicker">
+        <section class="reveal-section hoverable-container edges">
+            <div data-bind="PartialView: edgesPicker"></div>
         </section>
 
-        <section class="box languages" data-bind="PartialView: languagesPicker">
+        <section class="reveal-section hoverable-container languages" data-bind="PartialView: languagesPicker">
         </section>
         
-        <section class="box religion" data-bind="PartialView: deityPicker">
+        <section class="reveal-section hoverable-container religion" data-bind="PartialView: deityPicker">
             <!-- <h2>Religion</h2>
             <div class="input-group">
                 <label>Primary Deity</label>
@@ -74,12 +72,12 @@
             </div> -->
         </section>
 
-        <section>
+        <section class="reveal-section hoverable-container">
             <div class="input-group" data-bind="PartialView: namePicker"></div>
         </section>
 
 
-        <section class="box corruption">
+        <section class="reveal-section hoverable-container corruption">
             <h2>Corruption</h2>
             <p class="subtext">Unimplemented</p>
             <!-- <p class="subtext" data-bind="foreach: GlobalCharacterData.Corruption">
@@ -87,7 +85,7 @@
             </p> -->
         </section>
 
-        <section class="box drawbacks">
+        <section class="reveal-section hoverable-container drawbacks">
             <h2>Drawbacks</h2>
             <!-- ko if: GlobalCharacterData.Drawbacks().length == 0 -->
                 <p class="subtext"> none </p>

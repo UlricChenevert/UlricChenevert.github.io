@@ -2,22 +2,23 @@ import { Observable, ObservableArray } from "../../../Framework/Knockout/knockou
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
-import { AbilityPickerModel } from "./SkillPickerModel.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
 import { Abilities, AbilitiesToArray, MaxAbility } from "../Contracts/Abilities.js";
+import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
+import { LockableObjectPickerModel } from "./LockableObjectPickerModel.js";
 
 export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
     FriendlyName = "Ability Scores";
     ViewUrl = "PartialViews/SkillsView.html"
     isLoading: Observable<boolean>;
 
-    strengthPicker : IPartialViewModel<AbilityPickerModel>
-    dexterityPicker : IPartialViewModel<AbilityPickerModel>
-    constitutionPicker : IPartialViewModel<AbilityPickerModel>
-    intelligencePicker : IPartialViewModel<AbilityPickerModel>
-    wisdomPicker : IPartialViewModel<AbilityPickerModel>
-    charismaPicker : IPartialViewModel<AbilityPickerModel>
+    strengthPicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    dexterityPicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    constitutionPicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    intelligencePicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    wisdomPicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    charismaPicker : IPartialViewModel<LockableObjectPickerModel<number>>
 
     PictureUrl : Observable<string | undefined>
 
@@ -37,12 +38,12 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
 
         this.UnselectedSkills = ko.observableArray<number>(this.standardRollArray.map(x=>x))
 
-        this.strengthPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Strength", this.UnselectedSkills, this.GlobalCharacterData))
-        this.dexterityPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Dexterity", this.UnselectedSkills, this.GlobalCharacterData))
-        this.constitutionPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Constitution", this.UnselectedSkills, this.GlobalCharacterData))
-        this.intelligencePicker = Utility.BundleViewAndModel(new AbilityPickerModel("Intelligence", this.UnselectedSkills, this.GlobalCharacterData))
-        this.wisdomPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Wisdom", this.UnselectedSkills, this.GlobalCharacterData))
-        this.charismaPicker = Utility.BundleViewAndModel(new AbilityPickerModel("Charisma", this.UnselectedSkills, this.GlobalCharacterData))
+        this.strengthPicker = ConfiguredViewModels.createAbilityPickerModel("Strength", this.UnselectedSkills, this.GlobalCharacterData)
+        this.dexterityPicker = ConfiguredViewModels.createAbilityPickerModel("Dexterity", this.UnselectedSkills, this.GlobalCharacterData)
+        this.constitutionPicker = ConfiguredViewModels.createAbilityPickerModel("Constitution", this.UnselectedSkills, this.GlobalCharacterData)
+        this.intelligencePicker = ConfiguredViewModels.createAbilityPickerModel("Intelligence", this.UnselectedSkills, this.GlobalCharacterData)
+        this.wisdomPicker = ConfiguredViewModels.createAbilityPickerModel("Wisdom", this.UnselectedSkills, this.GlobalCharacterData)
+        this.charismaPicker = ConfiguredViewModels.createAbilityPickerModel("Charisma", this.UnselectedSkills, this.GlobalCharacterData)
 
         this.PictureUrl = ko.observable<string | undefined>(undefined)
 

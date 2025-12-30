@@ -1,8 +1,8 @@
-import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js";
-import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { ko } from "../../../Framework/Knockout/ko.js";
-import { Utility } from "../../../WebCore/Utility.js";
-import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
+import { Observable, ObservableArray } from "../../../../Framework/Knockout/knockout.js";
+import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
+import { ko } from "../../../../Framework/Knockout/ko.js";
+import { Utility } from "../../../../WebCore/Utility.js";
+import { MultiTaggedCharacterData } from "../../Contracts/TaggedData.js";
 
 export class NamePartPickerModel implements IWizardModel<void, string, string | undefined> {
     ViewUrl = "PartialViews/NamePartPicker.html"

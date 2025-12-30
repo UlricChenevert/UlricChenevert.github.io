@@ -9,11 +9,11 @@
     </div>
 
     <!-- ko if: isLocked -->
-        <div data-bind="text: chosenValue"> </div>
+        <div data-bind="text: widgetPreviewText"> </div>
     <!-- /ko -->
 
     <!-- ko ifnot: isLocked-->
-        <select class="wizard-select" data-bind="options: UnselectedValues, optionsCaption: 'Choose', value: selectionObservable"></select>
+        <select class="wizard-select" data-bind="options: UnselectedValues, optionsText: determineSelectionPreview, optionsCaption: 'Choose', value: selectedUIValueObservable"></select>
     <!-- /ko -->
 
 </div>

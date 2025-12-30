@@ -21,6 +21,36 @@
     box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.23);
 }
 
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-section {
+  /* Animation name | Duration | Timing function | Fill-mode */
+  animation: reveal 3s ease-out backwards;
+}
+
+.reveal-section:nth-child(1) { animation-delay: 1.2s; }
+.reveal-section:nth-child(2) { animation-delay: 1.4s; }
+.reveal-section:nth-child(3) { animation-delay: 1.6s; }
+.reveal-section:nth-child(4) { animation-delay: 1.8s; }
+.reveal-section:nth-child(5) { animation-delay: 2.0s; }
+.reveal-section:nth-child(6) { animation-delay: 2.2s; }
+.reveal-section:nth-child(7) { animation-delay: 2.4s; }
+.reveal-section:nth-child(8) { animation-delay: 2.6s; }
+.reveal-section:nth-child(9) { animation-delay: 2.8s; }
+.reveal-section:nth-child(10) { animation-delay: 3.0s; }
+.reveal-section:nth-child(11) { animation-delay: 3.2s; }
+.reveal-section:nth-child(12) { animation-delay: 3.4s; }
+.reveal-section:nth-child(13) { animation-delay: 3.6s; }
+.reveal-section:nth-child(14) { animation-delay: 3.8s; }
 .retain-height {
     flex-shrink: 1;
     flex-grow: 0;
@@ -274,12 +304,47 @@
     75% { transform: rotate(15deg); }
 }
 
+.grid-4 {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.grid-8 {
+    display: inline-grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.container-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.character-background-image {
+    background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
+    background-size: cover;
+    // mask-image: linear-gradient(
+    //     to bottom, 
+    //     transparent 0%, 
+    //     black 10%, 
+    //     black 90%, 
+    //     transparent 100% );
+    background-color: black;
+    padding: 10em;
+    // padding-top: 90em;
+}
+
+.container-list-item {
+    flex-grow: 1;
+    flex-basis: 15%;
+}
+
 .standard-wizard-styles {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: @margin-size;
-    padding: @standard-padding;
+    // padding: @standard-padding;
 
     .image {
         display: block;
@@ -313,7 +378,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5em;
+    gap: 2em;
     flex-direction: column;
 }
 
@@ -380,6 +445,11 @@ hr {
 }
 
 .small-gap {
+    display: flex;
+    gap: 1em;
+}
+
+.medium-gap {
     display: flex;
     gap: 1em;
 }
@@ -459,7 +529,7 @@ hr {
 }
 
 .character-sheet-container {
-    background-color: @article-color;
+    background: radial-gradient(circle at top, @article-color, @fade-background-color 150%);
     width: 100em;
     padding: 1em;
 
@@ -519,6 +589,7 @@ hr {
         padding: 1em;
         border: 1px solid #000;
         border-radius: 1em;
+        margin-bottom: 1em;
     }
 
     /* FORMS & INPUTS */

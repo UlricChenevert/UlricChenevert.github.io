@@ -1,15 +1,8 @@
-import { T } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
-import { Edges } from "../Contracts/Edges.js";
-import { Language } from "../Contracts/Language.js";
-import { Spell } from "../Contracts/Spell.js";
 import { JobType, ProfessionType } from "../Contracts/StringTypes.js";
-import { MultiTaggedCharacterData, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
-import { filterOnProfession, filterOnProfessionData, randomTaggedData } from "../Utility/FilterUtility.js";
-import { TaggedEdgesData } from "./EdgesData.js";
+import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
+import { EdgesData } from "./EdgesData.js";
 import { GenerationType } from "./NameData.js";
-import { SpellData } from "./SpellsData.js";
-import { TaggedLanguageData } from "./LanguageOptions.js";
-import { Utility } from "../../../WebCore/Utility.js";
+import { LanguageData } from "./LanguageData.js";
 import { barbarianWholeTag, cultistWholeTag, scholarTag, scoundrelWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
 
 enum JobTypes {
@@ -42,7 +35,7 @@ const generateScholarBackground = (jobName : JobTypes, PictureUrl? : string) : T
             Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you. You were either discharged or left in the night with your supplies.",
             OrganizationNames: [/* Master/Colleagues */],
             OrganizationRelations:["Hostile"], 
-            Languages: randomTaggedData(TaggedLanguageData),
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "If your reputation is not widely known, a Bureaucrat can take up a job with a new master in a large city and make 40 coins per week.",
             PartialPictureUrl: PictureUrl
         }
@@ -81,8 +74,8 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master, " + GenerationType.PersonName + ", blamed you. You were either discharged or left in the night with your supplies.",
             PeopleNames: [/* Master/Colleagues */],
             PeopleRelations:["Hostile"],
-            Spells: filterOnProfessionData(SpellData, JobTypes.Scrivener),
-            Languages: filterOnProfessionData(TaggedLanguageData, JobTypes.Scrivener),
+            // Spells: filterOnProfessionData(SpellData, JobTypes.Scrivener),
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "Since you were discharged, put your lowest roll on **Master or Colleagues** in Step 4 - Entanglements. If your reputation is not widely known, a Bureaucrat can take up a job with a new master in a large city and make 40 coins per week.",
             PartialPictureUrl: "Human\\PD 300dpi 3inW MEN SCRIVNER SCRIBE THR.jpg"
         }
@@ -95,7 +88,7 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you. You were either discharged or left in the night with your supplies.",
             OrganizationNames: [/* Master/Colleagues */],
             OrganizationRelations:["Hostile"], 
-            Languages: randomTaggedData(TaggedLanguageData),
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "If your reputation is not widely known, a Bureaucrat can take up a job with a new master in a large city and make 40 coins per week.",
             PartialPictureUrl: "Human\\PD 300dpi 3inW LAWYER ADVOCATE MONEY CHANGER Hans Holbein.jpg"
         }
@@ -108,7 +101,7 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you. You were either discharged or left in the night with your supplies.",
             OrganizationNames: [/* Master/Colleagues */],
             OrganizationRelations:["Hostile"], 
-            Languages: randomTaggedData(TaggedLanguageData),
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "If your reputation is not widely known, a Bureaucrat can take up a job with a new master in a large city and make 40 coins per week.",
             PartialPictureUrl: "Human\\PD 300dpi 3in W MEN CARTOGRAPHER Jost Amman.jpg"
         }
@@ -117,18 +110,18 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
     generateScholarBackground(JobTypes.Interpreter),
 
     // --- Rat Catcher Background (Shares story with Scrivener, different gear/skill set) ---
-    {
-        Tags:{Profession:{Class:"Adventurer", Job:"Rat Catcher"}},
-        Payload: {
-            Name: "Rat Catcher",
-            Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you. You were either discharged or left in the night with your supplies.",
-            PeopleNames: [/* Master/Colleagues */],
-            PeopleRelations:["Hostile"],
-            Edges: randomTaggedData(TaggedEdgesData), // Assuming an 'Edges' constructor
-            Other: "Your anonymity has opened underworld contacts and opportunities for you. In Step 4 - Entanglements, put your highest in **Shadow Groups**. As a Rat Catcher, you make **20 coins** per week."
+    // {
+    //     Tags:{Profession:{Class:"Adventurer", Job:"Rat Catcher"}},
+    //     Payload: {
+    //         Name: "Rat Catcher",
+    //         Story: "Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you. You were either discharged or left in the night with your supplies.",
+    //         PeopleNames: [/* Master/Colleagues */],
+    //         PeopleRelations:["Hostile"],
+    //         Edges: randomTaggedData(TaggedEdgesData), // Assuming an 'Edges' constructor
+    //         Other: "Your anonymity has opened underworld contacts and opportunities for you. In Step 4 - Entanglements, put your highest in **Shadow Groups**. As a Rat Catcher, you make **20 coins** per week."
             
-        }
-    },
+    //     }
+    // },
     // --- Smith Background ---
     {
         Tags:{Profession:{Class:"Adventurer", Job:"Smith"}},
@@ -197,7 +190,7 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "Through debt or birth, you were locked into servitude. Through providence or assistance of a friend, you have escaped and finally broke the chains that bind and got the boot off of your neck. This may be your only chance to have a life you choose.",
             PeopleNames: [],
             PeopleRelations:["Hostile", "Negative"],
-            Edges: randomTaggedData(TaggedEdgesData),
+            Edges: EdgesData.EscapedThrallSelection,
             Other: "Since you are an escapee from forced servitude, put your lowest roll on **Master or Local Authorities** for Step 4 - Entanglements. If your background remains unknown, you can make **20 coins per week** with your Skill. In another town, you can take up a job with an unscrupulous new master that is aware of your status but you will only be able to get free meals and sleep in the shed."
             , PartialPictureUrl: "Halfling\\RR HALFLING VAGABOND THRALL Stocks Leg Chains JE Shields.png"
         }
@@ -209,8 +202,8 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "You have always loved and been drawn to stories and ways to gain more knowledge. At a young age, you learned to read from a relative or a mentor who noted your intelligence and hunger for knowlege. You were then apprenticed to another Scholar to learn and research. Now that your apprenticeship is complete, you wanted to seek out new lore in the world rather than research minutiae and sit in a dark room reading dusty scrolls and tomes.",
             PeopleNames: [],
             PeopleRelations:[],
-            Spells: [new Spell("Comprehend Languages", "You can speak, read, and write an unknown language for the duration of the spell.")],
-            Languages: randomTaggedData(TaggedLanguageData),
+            // Spells: [new Spell("Comprehend Languages", "You can speak, read, and write an unknown language for the duration of the spell.")],
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "Depending upon your Skills, you should be able to obtain employment as a researcher or tutor for **20 coins per week**. You will and also have food, drink, and a place to sleep if you are in residence or live-in.",
             PartialPictureUrl: "Human\\PD 300dpi 3inW MEN SPELLCASTER ACADEMIC SCHOLAR Eugen Neureuther.jpg"
         }
@@ -223,10 +216,10 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
             Story: "Dark powers whisper in your mind and have led you down a path of intriguing and often disturbing research. You now have the urge to seek out deeper forbidden lore and find others with similar interests.",
             PeopleNames: [/* Cultist Group */],
             PeopleRelations:["Receptive"],
-            Spells: [
+            // Spells: [
                 
-            ],
-            Languages: randomTaggedData(TaggedLanguageData),
+            // ],
+            Languages: LanguageData.ReadWriteLanguageSelection,
             Other: "For Step 4 - Entanglements, put your lowest roll in **Local Religious Authorities** if you have not kept your beliefs and power secret. Put your highest roll in a group consisting of like-minded cultists (**Colleagues**, **Family**, **Master**, or **Shadow Groups**). If you maintain the secrecy of your cultish beliefs, you can impersonate an Acolyte and earn **30 coins per week**.",
             PartialPictureUrl: "Human\\PD 300dpi 3inW MEN CLERIC CULTIST Howard Pyle modified.jpg"
         }
@@ -249,10 +242,10 @@ export const ClassBackgrounds : TaggedCharacterData<StoryModel>[] = [
         Payload: {
             Name: "Warlock",
             Story: "You speak with your familiar and the voice in your head more than you speak with people and that makes them nervous. It does not help that you also dress like it is Hallow’s Eve. Those people have nothing to be nervous about, yet.",
-            Spells: [
+            // Spells: [
                 
-            ],
-            Languages:  randomTaggedData(TaggedLanguageData),
+            // ],
+            Languages:  LanguageData.ReadWriteLanguageSelection,
             Other: "You prefer black (or very dark shades of gray) for all of your clothing. You are pursuing sponsorship from a profane/extraplanar being. For Step 4 - Entanglements, put your lowest three rolls in **Neighbors**, **Local Authorities**, and **Local Religious Authorities**. Reeves and Inquisitors may keep you under surveillance. See the rules for your Master (Ixian Raver, Ixian Archon, Elder God, Lich, Moloch, or Kain).",
             PartialPictureUrl: "Halfling\\CC 300dpi 3inW HALFLING WARLOCK Didrik Magnus modified thicker outline.jpg"
         }

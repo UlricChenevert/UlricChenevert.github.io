@@ -3,5 +3,5 @@ export class Language {
 }
 
 export class LearnedLanguage {
-    constructor(public Name : string, public canSpeak : boolean, public canRead : boolean, public canWrite : boolean) {}
+    constructor(public Language : Language, public canSpeak : boolean, public canRead : boolean, public canWrite : boolean) {}
 }

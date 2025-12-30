@@ -1,11 +1,11 @@
-import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { ko } from "../../../Framework/Knockout/ko.js";
-import { Utility } from "../../../WebCore/Utility.js";
-import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { CharacterName } from "../Contracts/CharacterName.js";
-import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
-import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
-import { NameUtility } from "../Utility/NameUtility.js";
+import { Observable } from "../../../../Framework/Knockout/knockout.js";
+import { ko } from "../../../../Framework/Knockout/ko.js";
+import { Utility } from "../../../../WebCore/Utility.js";
+import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
+import { CharacterName } from "../../Contracts/CharacterName.js";
+import { ICharacterWizardViewModel } from "../../Contracts/CharacterWizardViewModels.js";
+import { MultiTaggedCharacterData } from "../../Contracts/TaggedData.js";
+import { NameUtility } from "../../Utility/NameUtility.js";
 import { NamePartPickerModel } from "./NamePartPickerModel.js";
 
 export class NamePickerModel implements ICharacterWizardViewModel<void, CharacterName> {

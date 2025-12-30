@@ -4,7 +4,7 @@ import { Utility } from "../../../WebCore/Utility.js";
 import { Deity } from "../Contracts/Diety.js";
 import { PronounType } from "../Contracts/StringTypes.js";
 
-export class DeityCreationModel implements IWizardModel<void, Deity, Deity | undefined> {
+export class DeityCreationModel implements IWizardModel<void, Deity, Deity> {
     ViewUrl = "PartialViews/DeityPickerView.html"
     isLoading: Observable<boolean>;
     
@@ -12,7 +12,7 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity | und
     chosenDeityDescription : Observable<string>
 
     createdDeityName : Observable<string>
-    deityPronoun : PronounType | undefined
+    deityPronoun : PronounType
     createdDeityDescription : Observable<string>
 
     isCustom : Observable<boolean>
@@ -24,7 +24,7 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity | und
         this.createdDeityName = ko.observable(this.possibleDeities[0].Pronoun.name)
         this.createdDeityDescription = ko.observable(this.possibleDeities[0].Description)
 
-        this.deityPronoun;
+        this.deityPronoun = this.possibleDeities[0].Pronoun;
 
         this.isCustom = ko.observable(this.chosenDeity().Pronoun.name == "Custom")
         this.isLoading = ko.observable(false)

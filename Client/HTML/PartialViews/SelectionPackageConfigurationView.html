@@ -1,0 +1,29 @@
+<!-- ko if: fixedChoices().length == 0 && selectableChoices().length == 0 -->
+    <div>Nothing to customize.</div>
+<!-- /ko -->
+
+
+<!-- ko ifnot: fixedChoices().length == 0 && selectableChoices().length == 0 -->
+    <div class="centered">
+        <button class="wizard-button pop-content" data-bind="click: ChoiceRandomly">Choose Randomly</button>
+    </div>
+    
+    <div class="container-list">
+        <!-- ko foreach: fixedChoices -->
+        
+        <div class="hoverable-container container-list-item">
+            <h4 class="title" data-bind="text: $data.Title"></h4>
+            <div data-bind="text: $data.Description"></div>
+        </div>
+        
+        <!-- /ko -->
+        
+        <!-- ko foreach: selectableChoices -->
+        
+        <div class="hoverable-container container-list-item">
+            <div data-bind="PartialView: $data"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+<!-- /ko -->
+

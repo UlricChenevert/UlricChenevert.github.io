@@ -1,9 +1,9 @@
-import { Item, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js"
+import { ChoiceGroup, Item, StoryModel, TaggedCharacterData, TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js"
 import { RaceType, MoralityTypes, OrderTypes, AgeType, DevelopmentalEnvironmentType } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { DevelopmentalEnvironments, Moralities, Order, Races } from "../Configuration/DispositionData.js"
-import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
-import { AdultBackgrounds, Ages, ChildhoodBackgrounds } from "./AgeGroupBackgroundData.js"
+import { Observable, observableArray, ObservableArray } from "../../../Framework/Knockout/knockout.js"
+// import { Ages } from "./AgeGroupBackgroundData.js"
 import { Abilities } from "../Contracts/Abilities.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
 import { Entanglements } from "../Contracts/Entanglements.js"
@@ -13,37 +13,40 @@ import { CharacterName } from "../Contracts/CharacterName.js"
 import { Corruption } from "../Contracts/Corruption.js"
 import { Skill } from "../Contracts/Skill.js"
 import { Drawbacks } from "../Contracts/Drawbacks.js"
+import { ItemData } from "./ItemData.js"
+import { ClassBackgrounds } from "./CareerGroupBackgroundData.js"
+import { ReligionData } from "./DietiesData.js"
 
 export class ConfiguredCharacterData {
     Name : Observable<CharacterName>
     Race: Observable<RaceType>
-    Age: Observable<AgeType>
+    // Age: Observable<AgeType>
     
     Morality: Observable<MoralityTypes>
     Order: Observable<OrderTypes>
 
     EconomicBackground: Observable<DevelopmentalEnvironmentType>
-    ChildhoodBackground: Observable<StoryModel>
+    ChildhoodBackground: Observable<StoryModel | undefined>
     AdultBackground: Observable<StoryModel | undefined>
     ElderBackground: Observable<StoryModel | undefined>
 
-    ClassBackground: Observable<TaggedCharacterData<StoryModel> | undefined>
+    ClassBackground: Observable<TaggedCharacterData<StoryModel>>
 
     Abilities : Observable<Abilities>
-    Languages: ObservableArray<LearnedLanguage>
+    LanguageSelections: Observable<TaggedObservableSelectionPackage<LearnedLanguage>>
     
-    Items : ObservableArray<Item>
+    ItemSelections : Observable<TaggedObservableSelectionPackage<Item>>
 
     People : ObservableArray<Entanglements>
     Places : ObservableArray<Entanglements>
     Organizations : ObservableArray<Entanglements>
     
-    Deities : ObservableArray<Deity>
+    ReligionSelections : Observable<TaggedObservableSelectionPackage<Deity>>
     IsMonotheist : Observable<boolean>
 
-    Edges : ObservableArray<Edges>
+    EdgeSelections : Observable<TaggedObservableSelectionPackage<Edges>>
 
-    Skills : ObservableArray<Skill>
+    SkillsSelection : Observable<TaggedObservableSelectionPackage<Skill>>
     Corruption : ObservableArray<Corruption>
     Drawbacks : ObservableArray<Drawbacks>
 
@@ -58,28 +61,51 @@ export class ConfiguredCharacterData {
         this.Order = ko.observable(Order[1])
         this.EconomicBackground = ko.observable(DevelopmentalEnvironments[0])
         
-        this.Age = ko.observable(Ages[1])
-        this.ChildhoodBackground = ko.observable(ChildhoodBackgrounds[0].Payload)
-        this.AdultBackground = ko.observable<StoryModel | undefined>(AdultBackgrounds[0].Payload)
+        // this.Age = ko.observable(Ages[1])
+        this.ChildhoodBackground = ko.observable<StoryModel | undefined>(undefined)
+        this.AdultBackground = ko.observable<StoryModel | undefined>(undefined)
         this.ElderBackground = ko.observable<StoryModel | undefined>(undefined)
-        this.ClassBackground = ko.observable<TaggedCharacterData<StoryModel> | undefined>(undefined)
+        this.ClassBackground = ko.observable<TaggedCharacterData<StoryModel>>(ClassBackgrounds[0])
 
         this.Abilities = ko.observable<Abilities>(new Abilities(0, 0, 0, 0, 0, 0))
-        this.Languages = ko.observableArray<LearnedLanguage>([])
+        this.LanguageSelections = ko.observable(new TaggedObservableSelectionPackage<LearnedLanguage>(
+            ko.observableArray<TaggedCharacterData<LearnedLanguage>>([]), 
+            ko.observableArray<TaggedCharacterData<ChoiceGroup<LearnedLanguage>>>([])
+        ))
 
-        this.Items = ko.observableArray([] as Item[])
+        this.ItemSelections = ko.observable(new TaggedObservableSelectionPackage<Item>(
+            ko.observableArray<TaggedCharacterData<Item>>(ItemData.UniversalStartingGear.FixedSelection.map(x=>{
+                return {Tags : {Source: "Innate"}, Payload : x}
+            })), 
+            ko.observableArray<TaggedCharacterData<ChoiceGroup<Item>>>(ItemData.UniversalStartingGear.ChoiceSelection.map(x=>{
+                return {Tags : {Source: "Innate"}, Payload : x}
+            })))
+        )
+
         this.People = ko.observableArray([] as Entanglements[])
         this.Organizations = ko.observableArray([] as Entanglements[])
         this.Places = ko.observableArray([] as Entanglements[])
 
         this.Name = ko.observable<CharacterName>(new CharacterName("", "", ""))
 
-        this.Deities = ko.observableArray([] as Deity[])
+        this.ReligionSelections = ko.observable(new TaggedObservableSelectionPackage<Deity>(
+            ko.observableArray<TaggedCharacterData<Deity>>([]), 
+            ko.observableArray<TaggedCharacterData<ChoiceGroup<Deity>>>(ReligionData.ReligionSelection.ChoiceSelection.map(x=>{
+                return {Tags : {Source: "Innate"}, Payload : x}
+            })))
+        )
+
         this.IsMonotheist = ko.observable(false)
 
-        this.Edges = ko.observableArray([] as Edges[])
+        this.EdgeSelections = ko.observable(new TaggedObservableSelectionPackage<Edges>(
+            ko.observableArray<TaggedCharacterData<Edges>>([]), 
+            ko.observableArray<TaggedCharacterData<ChoiceGroup<Edges>>>([])
+        ))
 
-        this.Skills = ko.observableArray<Skill>([]) 
+        this.SkillsSelection = ko.observable(new TaggedObservableSelectionPackage<Skill>(
+            ko.observableArray<TaggedCharacterData<Skill>>([]), 
+            ko.observableArray<TaggedCharacterData<ChoiceGroup<Skill>>>([])
+        ))
         this.Corruption = ko.observableArray<Corruption>([])
         this.Drawbacks = ko.observableArray<Drawbacks>([])
 

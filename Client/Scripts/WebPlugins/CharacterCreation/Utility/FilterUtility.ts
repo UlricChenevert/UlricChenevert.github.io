@@ -1,6 +1,5 @@
 import { Utility } from "../../../WebCore/Utility.js";
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { TaggedLanguageData } from "../Configuration/LanguageOptions.js";
 import { JobType } from "../Contracts/StringTypes.js";
 import { MultiTaggedCharacterData, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { PopulateBackground } from "./PopulateStory.js";

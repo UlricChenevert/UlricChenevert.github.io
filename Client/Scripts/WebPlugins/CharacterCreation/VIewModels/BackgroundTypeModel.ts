@@ -17,13 +17,12 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
     constructor (
         public FriendlyName : string, 
         public GlobalCharacterData : ConfiguredCharacterData, 
-        public PossibleBackgrounds : TaggedCharacterData<StoryModel>[]
+        public PossibleBackgrounds : TaggedCharacterData<StoryModel>[],
+        public CharacterDataAccessor : (characterData : ConfiguredCharacterData) => Observable<TaggedCharacterData<StoryModel>>
     ) {
         this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
         
-        const useGlobalChildStory = this.checkGlobalStory(this.SelectableBackgrounds(), GlobalCharacterData.ChildhoodBackground())
-    
-        this.ChosenStory = ko.observable((useGlobalChildStory)? GlobalCharacterData.ChildhoodBackground() : this.SelectableBackgrounds()[0])
+        this.ChosenStory = ko.observable(this.SelectableBackgrounds()[0])
         this.ChosenBackground = ko.observable(this.ChosenStory().Story)
 
         this.isLoading = ko.observable(true)
@@ -33,7 +32,7 @@ export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<voi
     }
 
     Init () {
-        this.ChosenStory(this.GlobalCharacterData.ChildhoodBackground())
+        this.ChosenStory(this.CharacterDataAccessor(this.GlobalCharacterData)().Payload)
     
         return Promise.resolve()
     }

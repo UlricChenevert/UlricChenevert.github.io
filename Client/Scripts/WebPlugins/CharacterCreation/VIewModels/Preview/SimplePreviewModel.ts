@@ -1,4 +1,4 @@
-import { Observable } from "../../../../Framework/Knockout/knockout.js";
+import { Observable, ObservableArray } from "../../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../../Framework/Knockout/ko.js"
 
 export class SimplePreviewModel implements IHTMLInjectable<void> {
