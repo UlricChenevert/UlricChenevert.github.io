@@ -1,51 +1,51 @@
-import { Observable } from "../../../Framework/Knockout/knockout.js";
-import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
-import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
-import { getPossibleBackground } from "../Utility/FilterUtility.js";
-import { ko } from "../../../Framework/Knockout/ko.js";
-import { Utility } from "../../../WebCore/Utility.js";
+// import { Observable } from "../../../Framework/Knockout/knockout.js";
+// import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+// import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
+// import { StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
+// import { getPossibleBackground } from "../Utility/FilterUtility.js";
+// import { ko } from "../../../Framework/Knockout/ko.js";
+// import { Utility } from "../../../WebCore/Utility.js";
 
-export class BackgroundStoryPickerModel implements ICharacterWizardViewModel<void, StoryModel> {
-    readonly ViewUrl = "PartialViews/BackgroundStoryPicker.html";
-    isLoading: Observable<boolean>;
+// export class BackgroundStoryPickerModel<NameType> implements ICharacterWizardViewModel<void, StoryModel<NameType>> {
+//     readonly ViewUrl = "PartialViews/BackgroundStoryPicker.html";
+//     isLoading: Observable<boolean>;
 
-    ChosenBackground : ko.Observable<string>
-    ChosenStory : ko.Observable<StoryModel>
-    SelectableBackgrounds : ko.ObservableArray<StoryModel>
+//     ChosenBackground : ko.Observable<string>
+//     ChosenStory : ko.Observable<StoryModel<NameType>>
+//     SelectableBackgrounds : ko.ObservableArray<StoryModel<NameType>>
 
-    constructor (
-        public FriendlyName : string, 
-        public GlobalCharacterData : ConfiguredCharacterData, 
-        public PossibleBackgrounds : TaggedCharacterData<StoryModel>[],
-        public CharacterDataAccessor : (characterData : ConfiguredCharacterData) => Observable<TaggedCharacterData<StoryModel>>
-    ) {
-        this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
+//     constructor (
+//         public FriendlyName : string, 
+//         public GlobalCharacterData : ConfiguredCharacterData, 
+//         public PossibleBackgrounds : TaggedCharacterData<StoryModel<NameType>>[],
+//         public CharacterDataAccessor : (characterData : ConfiguredCharacterData) => Observable<TaggedCharacterData<StoryModel<NameType>>>
+//     ) {
+//         this.SelectableBackgrounds = ko.observableArray(getPossibleBackground(this.PossibleBackgrounds, this.GlobalCharacterData))
         
-        this.ChosenStory = ko.observable(this.SelectableBackgrounds()[0])
-        this.ChosenBackground = ko.observable(this.ChosenStory().Story)
+//         this.ChosenStory = ko.observable(this.SelectableBackgrounds()[0])
+//         this.ChosenBackground = ko.observable(this.ChosenStory().Story)
 
-        this.isLoading = ko.observable(true)
+//         this.isLoading = ko.observable(true)
 
-        this.SelectableBackgrounds.subscribe((newBackgrounds)=>{this.ChosenStory(newBackgrounds[0])})
-        this.ChosenStory.subscribe((newStory)=>{this.ChosenBackground(newStory.Story)})
-    }
+//         this.SelectableBackgrounds.subscribe((newBackgrounds)=>{this.ChosenStory(newBackgrounds[0])})
+//         this.ChosenStory.subscribe((newStory)=>{this.ChosenBackground(newStory.Story)})
+//     }
 
-    Init () {
-        this.ChosenStory(this.CharacterDataAccessor(this.GlobalCharacterData)().Payload)
+//     Init () {
+//         this.ChosenStory(this.CharacterDataAccessor(this.GlobalCharacterData)().Payload)
     
-        return Promise.resolve()
-    }
+//         return Promise.resolve()
+//     }
 
-    Evaluate () {
-        return this.ChosenStory()
-    }
+//     Evaluate () {
+//         return this.ChosenStory()
+//     }
 
-    Randomize () {
-        this.ChosenStory(Utility.RandomElement(this.SelectableBackgrounds()))
-    }
+//     Randomize () {
+//         this.ChosenStory(Utility.RandomElement(this.SelectableBackgrounds()))
+//     }
 
-    checkGlobalStory(sourceOfTruth : StoryModel[], check : StoryModel) {
-        return sourceOfTruth.some((story)=>{return story.Name == check.Name})
-    }
-}
+//     checkGlobalStory(sourceOfTruth : StoryModel<NameType>[], check : StoryModel<NameType>) {
+//         return sourceOfTruth.some((story)=>{return story.Name == check.Name})
+//     }
+// }

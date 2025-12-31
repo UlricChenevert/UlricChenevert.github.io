@@ -65,6 +65,12 @@ img {
     font-size: inherit;
 }
 
+@media print {
+    #footer, #nav-bar, .remove-when-print{
+        display: none !important;
+    }
+}
+
 #main-website-container {
     display: flex;
     min-height: 100vh;

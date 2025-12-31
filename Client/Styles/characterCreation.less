@@ -1,4 +1,10 @@
 // DnD Character Creator Styles
+@media print {
+  /* Hide the header and navigation */
+    .hoverable-container, .character-sheet-container section {
+        border: none !important;
+    }
+}
 .pop-content {
     box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.1);
 }
@@ -51,6 +57,13 @@
 .reveal-section:nth-child(12) { animation-delay: 3.4s; }
 .reveal-section:nth-child(13) { animation-delay: 3.6s; }
 .reveal-section:nth-child(14) { animation-delay: 3.8s; }
+.reveal-section:nth-child(14) { animation-delay: 3.8s; }
+.reveal-section:nth-child(15) { animation-delay: 4.0s; }
+.reveal-section:nth-child(16) { animation-delay: 4.2s; }
+.reveal-section:nth-child(17) { animation-delay: 4.4s; }
+.reveal-section:nth-child(18) { animation-delay: 4.6s; }
+.reveal-section:nth-child(19) { animation-delay: 4.8s; }
+.reveal-section:nth-child(20) { animation-delay: 4.8s; }
 .retain-height {
     flex-shrink: 1;
     flex-grow: 0;
@@ -320,6 +333,8 @@
     gap: 1em;
 }
 
+// .printer-friendly {}
+
 .character-background-image {
     background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
     background-size: cover;
@@ -337,6 +352,7 @@
 .container-list-item {
     flex-grow: 1;
     flex-basis: 15%;
+    // filter: drop-shadow(0 0 3em #000);
 }
 
 .standard-wizard-styles {

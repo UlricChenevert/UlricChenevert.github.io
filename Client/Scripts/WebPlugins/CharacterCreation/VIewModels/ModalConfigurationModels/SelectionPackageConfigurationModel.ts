@@ -20,6 +20,7 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         public SelectionPackageAccessor : (characterData: ConfiguredCharacterData) => Observable<TaggedObservableSelectionPackage<SelectionType>>,
         public DetermineName : (item: SelectionType)=>string,
         public DetermineDescription : (item: SelectionType)=>string,
+        private IsConfigured : Observable<boolean>
         // public CreateOptionConfigurationModels: ModelCreation = defaultModelCreator
     ) {
         this.fixedChoices = ko.observableArray<ObjectPreview>([])
@@ -36,7 +37,7 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         // Need to move / create observation subscriptions to handle hand over without modal initiation  
 
         // or....
-        this.Init ()
+        this.Init()
 
         this.ChoiceRandomly()
         return
@@ -82,7 +83,7 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
                 for (let i = 0; i < splitCount; i++) {
                     const SelectionViewModel = this.createItemSelectionPicker(choices, this.FriendlyName, unselectedOptions)
 
-                    if (choices.Payload.selectedValues.length > 0) {
+                    if (choices.Payload.selectedValues.length > 0 && this.IsConfigured()) {
                         const choice = choices.Payload.selectedValues.pop()
                         SelectionViewModel.Model.Init(choice)
                     } else {

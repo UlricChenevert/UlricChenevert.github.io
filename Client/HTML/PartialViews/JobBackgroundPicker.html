@@ -1,0 +1,24 @@
+<div class="centered">
+    <div class="centered largeText">
+        <div>Profession</div>
+        <select class="wizard-select pop-content" data-bind="options: PossibleProfessions, optionsCaption: 'Choose', value: chosenProfession"></select>
+    </div>
+
+    <div class="centered largeText">
+        <div>Job</div>
+        <select class="centered wizard-select pop-content" data-bind="options: PossibleJobs, optionsCaption: 'Choose', value: chosenJob"></select>
+    </div>
+    
+    <!-- ko if: PictureUrl -->
+        <div class="image-container">
+            <img class="image medium-sized-image" data-bind="attr: {src: PictureUrl}">
+        </div>
+    <!-- /ko-->
+    
+    <div class="centered largeText" data-bind="text: chosenJobBackground().Story"></div>
+    
+    <div class="centered largeText">
+        <div>Sub-Job</div>
+        <select class="centered wizard-select pop-content" data-bind="options: PossibleJobSubset, optionsCaption: 'Choose', value: chosenJobSubset"></select>
+    </div>
+</div>

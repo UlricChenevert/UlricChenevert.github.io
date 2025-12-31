@@ -1,10 +1,10 @@
-import { DispositionType, RelationshipType, PronounType, SourceTypes, SocialRelationships } from "./StringTypes";
+import { DispositionType, PronounType, SocialRelationships, NameType } from "./StringTypes";
 
 export class Entanglements {
-    constructor(public Attitudes : DispositionType, public Type : RelationshipType, public Source : SourceTypes, public Name? : PronounType) {}
+    constructor(public Identifier : PronounType, public Attitudes : DispositionType, public Type : NameType) {}
 }
 
-export type RelationshipModel = {Name?: PronounType, Disposition : DispositionType, Source : SourceTypes}
+export type RelationshipModel = {Identifier: PronounType, Disposition : DispositionType}
 
 export const AttitudesTypes : DispositionType[] = [
     "Aggressive",

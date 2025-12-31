@@ -1,7 +1,7 @@
 <div class="character-background-image standard-wizard-styles">
     <div class="character-sheet-container">
         <header class="header-section">
-            <h1>CHARACTER DESIGN</h1>
+            <h1>HEARTBREAKER CHARACTER DESIGN</h1>
         </header>
         
         <section class="reveal-section hoverable-container">
@@ -10,25 +10,6 @@
 
         <section class="reveal-section hoverable-container">
             <div data-bind="PartialView: BackgroundPicker"></div>
-            <!-- <h2>Background</h2> -->
-            <!-- <div class="input-group"> -->
-                <!-- <label>Background Group/Selection</label>
-                <span> -->
-                    <!-- <span data-bind="text: GlobalCharacterData.ChildhoodBackground().Name"></span> -->
-
-                    <!-- ko if: GlobalCharacterData.ClassBackground() !== undefined -->
-                        <!-- <span>></span> <span data-bind="text: GlobalCharacterData.ClassBackground().Payload.Name"></span> -->
-                    <!-- /ko -->
-
-                    <!-- ko if: GlobalCharacterData.AdultBackground() !== undefined -->
-                    <!-- <span>></span> <span data-bind="text: GlobalCharacterData.AdultBackground().Name"></span> -->
-                    <!-- /ko -->
-
-                    <!-- ko if: GlobalCharacterData.ElderBackground() !== undefined -->
-                    <!-- <span>></span> <span data-bind="text: GlobalCharacterData.ElderBackground().Name"></span> -->
-                    <!-- /ko -->
-                <!-- </span> -->
-            <!-- </div> -->
         </section>
 
         <section class="abilities reveal-section hoverable-container">
@@ -44,63 +25,41 @@
         
         <section class="reveal-section hoverable-container" data-bind="PartialView: equipmentPicker">
         </section>
-
-        <section class="reveal-section hoverable-container">
-            <h2>Trinkets</h2>
+        
+        
+        <section class="reveal-section hoverable-container" data-bind="PartialView: trinketPicker">
         </section>
         
-        <section class="reveal-section hoverable-container skill">
-            <div data-bind="PartialView: skillsPicker"></div>
-        </section>
-
+        
         <section class="reveal-section hoverable-container edges">
             <div data-bind="PartialView: edgesPicker"></div>
         </section>
+
+        <section class="reveal-section hoverable-container skill" data-bind="visible: IsSelection(GlobalCharacterData.SkillsSelection)">
+            <div data-bind="PartialView: skillsPicker"></div>
+        </section>
+        
+        <section class="reveal-section hoverable-container" data-bind="PartialView: spellPicker, visible: IsSelection(GlobalCharacterData.SpellSelection)">
+        </section>
+        
 
         <section class="reveal-section hoverable-container languages" data-bind="PartialView: languagesPicker">
         </section>
         
         <section class="reveal-section hoverable-container religion" data-bind="PartialView: deityPicker">
-            <!-- <h2>Religion</h2>
-            <div class="input-group">
-                <label>Primary Deity</label>
-                <input type="text">
-            </div>
-            <div class="input-group">
-                <label>Secondary Deities</label>
-                <textarea rows="2"></textarea>
-            </div> -->
         </section>
 
         <section class="reveal-section hoverable-container">
             <div class="input-group" data-bind="PartialView: namePicker"></div>
         </section>
 
-
-        <section class="reveal-section hoverable-container corruption">
-            <h2>Corruption</h2>
-            <p class="subtext">Unimplemented</p>
-            <!-- <p class="subtext" data-bind="foreach: GlobalCharacterData.Corruption">
-                <p data-bind="text: $data.Name"></p>
-            </p> -->
+        <section class="reveal-section hoverable-container corruption" data-bind="PartialView: corruptionPicker, visible: IsSelection(GlobalCharacterData.CorruptionSelection)">
         </section>
 
-        <section class="reveal-section hoverable-container drawbacks">
-            <h2>Drawbacks</h2>
-            <!-- ko if: GlobalCharacterData.Drawbacks().length == 0 -->
-                <p class="subtext"> none </p>
-            <!-- /ko -->
-            
-            <!-- ko ifnot: GlobalCharacterData.Drawbacks().length == 0 -->
-                <p class="subtext" data-bind="foreach: GlobalCharacterData.Drawbacks">
-                    <p data-bind="text: $data.Name"></p>
-                </p>
-            <!-- /ko -->
-
+        <section class="reveal-section hoverable-container drawbacks" data-bind="PartialView: drawbackPicker, visible: IsSelection(GlobalCharacterData.DrawbacksSelection)">
         </section>
 
-    <div>
-        <button class="wizard-button" data-bind="click: exportAsJson">Export As JSON</button>
+    <div class="centered remove-when-print">
         <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>
     </div>
     

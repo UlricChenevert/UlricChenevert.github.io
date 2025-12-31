@@ -1,10 +1,12 @@
 import { Observable } from "../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
+import { EntityGrouping } from "../../../Unknown/State/LocationComponent/EntityGrouping.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { Entanglements } from "../Contracts/Entanglements.js";
-import { DispositionType, PronounType, RelationshipType, SocialRelationships } from "../Contracts/StringTypes.js";
+import { DispositionType, PronounType, RelationshipType, SocialRelationships, SourceTypes } from "../Contracts/StringTypes.js";
+import { TaggedCharacterData } from "../Contracts/TaggedData.js";
 
-export class EntanglementCreationModel implements IWizardModel<void, Entanglements, Entanglements | undefined> {
+export class EntanglementCreationModel implements IWizardModel<void, TaggedCharacterData<Entanglements>, TaggedCharacterData<Entanglements>> {
     FriendlyName = "Entanglement"
     ViewUrl = "PartialViews/EntanglementsView.html"
     isLoading: Observable<boolean>;
@@ -30,28 +32,32 @@ export class EntanglementCreationModel implements IWizardModel<void, Entanglemen
         this.isLoading = ko.observable(false)
     }
     
-    Init (chosenEntanglements? : Entanglements) {
+    Init (chosenEntanglements? : TaggedCharacterData<Entanglements>) {
         if (chosenEntanglements === undefined) return Promise.resolve()
 
-        if (chosenEntanglements.Name) {
-            this.createdEntanglementsName(chosenEntanglements.Name.name)
-            this.entanglementPronoun = chosenEntanglements.Name
+        if (chosenEntanglements.Payload.Identifier.name) {
+            this.createdEntanglementsName(chosenEntanglements.Payload.Identifier.name)
+            this.entanglementPronoun = chosenEntanglements.Payload.Identifier
         }
 
-        this.createdEntanglementsAttitude(chosenEntanglements.Attitudes)
-        this.createdEntanglementsType(chosenEntanglements.Type)
+        this.createdEntanglementsAttitude(chosenEntanglements.Payload.Attitudes)
+        this.createdEntanglementsType(chosenEntanglements.Payload.Type)
 
         return Promise.resolve()
     }
 
-    Evaluate () {
-        return new Entanglements(
-            this.createdEntanglementsAttitude(), 
-            this.createdEntanglementsType(), 
-            "Custom", 
-            (this.entanglementPronoun)? 
-                { id: this.entanglementPronoun.id, name: this.createdEntanglementsName()} :
-                { id: Utility.idGenerator.newID(), name: this.createdEntanglementsName()}
-        )
+    Evaluate () : TaggedCharacterData<Entanglements> {
+        return {
+            Tags: {Source: "Custom" as SourceTypes},
+            Payload: new Entanglements(
+                (this.entanglementPronoun)? 
+                    { id: this.entanglementPronoun.id, name: this.createdEntanglementsName()} :
+                    { id: Utility.idGenerator.newID(), name: this.createdEntanglementsName()},
+                this.createdEntanglementsAttitude(), 
+                this.createdEntanglementsType(),  
+            )
+        }
+        
+        
     }
 }

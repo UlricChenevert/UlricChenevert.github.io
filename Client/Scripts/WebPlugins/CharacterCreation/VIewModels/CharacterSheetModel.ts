@@ -11,12 +11,15 @@ import { Edges } from "../Contracts/Edges.js";
 import { CreateObjectModel } from "./CreateObjectModel.js";
 import { CharacterName } from "../Contracts/CharacterName.js";
 import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
-import { RaceType } from "../Contracts/StringTypes.js";
+import { JobType, RaceType } from "../Contracts/StringTypes.js";
 import { SimplePreviewModel } from "./Preview/SimplePreviewModel.js";
 import { Abilities } from "../Contracts/Abilities.js";
 import { AbilityPreviewModel } from "./Preview/AbilityPreviewModel.js";
 import { StringListPreviewModel } from "./Preview/StringListPreviewModel.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
+import { Drawbacks } from "../Contracts/Drawbacks.js";
+import { Corruption } from "../Contracts/Corruption.js";
+import { Spell } from "../Contracts/Spell.js";
 
 export class CharacterSheetModel implements ICharacterWizardViewModel<void, void> {
     FriendlyName = "Character Sheet";
@@ -27,20 +30,25 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     showOutput : ko.Observable<boolean>
 
     AncestryPicker : IPartialViewModel<CreateObjectModel<RaceType, SimplePreviewModel>>
-    BackgroundPicker : IPartialViewModel<CreateObjectModel<TaggedCharacterData<StoryModel>, SimplePreviewModel>>
+    BackgroundPicker : IPartialViewModel<CreateObjectModel<StoryModel<JobType>, SimplePreviewModel>>
     AbilityPicker : IPartialViewModel<CreateObjectModel<Abilities, AbilityPreviewModel>>
 
     namePicker : IPartialViewModel<CreateObjectModel<CharacterName, SimplePreviewModel>>
 
     languagesPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<LearnedLanguage>, StringListPreviewModel>>
     equipmentPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Item>, StringListPreviewModel>>
+    trinketPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Item>, StringListPreviewModel>>
     deityPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Deity>, StringListPreviewModel>>
     edgesPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Edges>, StringListPreviewModel>>
     skillsPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Edges>, StringListPreviewModel>>
 
-    personPicker : IPartialViewModel<CreateObjectListModel<Entanglements>>
-    placePicker : IPartialViewModel<CreateObjectListModel<Entanglements>>
-    organizationPicker : IPartialViewModel<CreateObjectListModel<Entanglements>>
+    personPicker : IPartialViewModel<CreateObjectListModel<TaggedCharacterData<Entanglements>>>
+    placePicker : IPartialViewModel<CreateObjectListModel<TaggedCharacterData<Entanglements>>>
+    organizationPicker : IPartialViewModel<CreateObjectListModel<TaggedCharacterData<Entanglements>>>
+
+    spellPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Spell>, StringListPreviewModel>>
+    drawbackPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Drawbacks>, StringListPreviewModel>>
+    corruptionPicker : IPartialViewModel<CreateObjectModel<TaggedObservableSelectionPackage<Corruption>, StringListPreviewModel>>
 
     constructor (public GlobalCharacterData: ConfiguredCharacterData) {
 
@@ -52,6 +60,10 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
         this.deityPicker = ConfiguredModals.createDeityPickerModel(GlobalCharacterData)
         this.edgesPicker = ConfiguredModals.createEdgesPickerModel(GlobalCharacterData)
         this.namePicker = ConfiguredViewModels.createNamePickerModel(GlobalCharacterData)
+        this.trinketPicker = ConfiguredModals.createTrinketPickerModel(GlobalCharacterData)
+        this.spellPicker = ConfiguredModals.createSpellPickerModel(GlobalCharacterData)
+        this.drawbackPicker = ConfiguredModals.createDrawbackPickerModel(GlobalCharacterData)
+        this.corruptionPicker = ConfiguredModals.createCorruptionPickerModel(GlobalCharacterData)
 
         this.AncestryPicker = ConfiguredModals.createAncestryPickerModel(GlobalCharacterData)
         this.BackgroundPicker = ConfiguredModals.createBackgroundPickerModel(GlobalCharacterData)
@@ -62,7 +74,10 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
         this.isLoading = ko.observable(true)
         this.jsonText = ko.observable("")
         this.showOutput = ko.observable(false)
+    }
 
+    IsSelection<T> (data : Observable<TaggedObservableSelectionPackage<T>>) {
+        return data().ChoiceSelection().length > 0 || data().FixedSelection().length > 0
     }
 
     exportAsPDF () {

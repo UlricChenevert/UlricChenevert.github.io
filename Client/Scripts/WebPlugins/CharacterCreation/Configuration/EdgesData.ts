@@ -1,7 +1,6 @@
 import { Edges } from "../Contracts/Edges.js";
 import { RaceType } from "../Contracts/StringTypes.js";
-import { ChoiceGroup, RaceTag, SelectionPackage } from "../Contracts/TaggedData.js";
-import { raceTag } from "../Utility/TagUtility.js";
+import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
 
 export namespace EdgesData {
     // --- Individual Edge Instances ---

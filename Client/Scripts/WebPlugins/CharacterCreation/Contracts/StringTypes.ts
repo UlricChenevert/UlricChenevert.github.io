@@ -9,11 +9,12 @@ export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disintere
 
 export type PrestigeType = "Prestigious" | "Insignificant" | "Secretive";
 
-export type PronounType = { id: number; name: string; };
+export type PronounType = { id: number; name?: string; };
 
 export type SocialRelationships = "Colleagues" | "Family" | "Local Civic Authorities" | "Local Religious Authorities" | "Master/Mentor/Lord" | "Neighbors/Local Inhabitants" | "Shadow Groups"
 
-export type RelationshipType = NameType | SocialRelationships
+export type RelationshipType = NameType
+// | SocialRelationships
 
 export type TagType = 'Race' | 'Profession' | 'Alignment' | 'Background' | 'DevelopmentalEnvironment';
 
@@ -109,20 +110,95 @@ export type DevelopmentalEnvironmentType = 'Nobility' | 'Clergy' | 'Commoner';
 export type NameType = "Organization" | "Person" | "Place";
 
 export type ProfessionType =
-    "Adventurer" | "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+    "Skilled & Laborer" | "Performer & Scholarly" | "Religious" | "Martial" | "Arcane" | "Rogue"
 
 
-export type JobType = 
-    "Jeweler" | "Arbalist" | "Scrivener" | "Advocate/Beadle" | "Cartographer" | "Inspector/Reeve" | 
-    "Interpreter" | "Rat Catcher" | "Smith" | "Carpenter" | "Cooper/Wheelwright" | "Leatherworker" | 
-    "Mason" | "Swordsmith" | "Money Changer" | "Assayer" | "Brewer" | "Herbalist" | "Peddler" | 
-    "Vintner" | "Ambler" | "Chef" | "Farmer" | "Fisher" | "Herder" | "Wagoner" | "Escaped Thrall" |
-    "House Servant" | "Farmhand" | "Laborer" | "Sailor (Conscript)" | "Warlock" | "Scoundrel" | "Barbarian" | "Cultist" | "Scholar";
+export type SkilledLaborerJobType = 
+    "Apprentice Artisan" | "Apprentice Bureaucrat" | "Free Laborer" | 
+    "Apprentice Crafter" | "Apprentice Mercantiler" | "Escaped Peasant/Thrall"
+export type PerformerScholarlyJobType = 
+    "Acrobat" | "Contortionist" | "Jester" | "Minstrel" | "Scholar" | "Storyteller/Thespian"
+export type ReligiousJobType = 
+    "Accursed" | "Acolyte" | "Cultist" | "Inquisitor" | "Pariah" | "Touched/Anchorite"
+export type MartialJobType = 
+    "Armiger" | "Barbarian" | "Mercentary/Hedge" | "Prizefighter" | "Ruffian/Enforcer" | "Woodard/Warden"
+export type ArcaneJobType = 
+    "Adept/Arcane Apprentice" | "Alchemy Apprentice" | "Arcane Researcher" | "Charlatan" | "Dowser" | "Warlock"
+export type RogueJobType = 
+    "Fence" | "Gambler" | "Scoundrel" | "Sharp" | "Spy" | "Street Urchin"
+
+export type JobType = SkilledLaborerJobType | PerformerScholarlyJobType | ReligiousJobType | MartialJobType | ArcaneJobType | RogueJobType
+
+export enum JobSubsetEnum {
+    None = "None",
+    // Skilled & Laborer
+    Jeweler = "Jeweler",
+    Arbalist = "Arbalist",
+    Scrivener = "Scrivener",
+    Advocate = "Advocate/Beadle",
+    Cartographer = "Cartographer",
+    Inspector = "Inspector/Reeve",
+    Interpreter = "Interpreter",
+    Smith = "Smith",
+    Carpenter = "Carpenter",
+    MoneyChanger = "Money Changer",
+    Ambler = "Ambler",
+    Chef = "Chef",
+    // Escaped Thrall
+    HouseServant = "House Servant",
+    Farmhand = "Farmhand",
+    Laborer = "Laborer",
+    Sailor = "Sailor (Conscript)",
+    // Religious (Acolyte/Inquisitor)
+    Brewer = "Brewer",
+    Farmer = "Farmer",
+    Herder = "Herder",
+    Oratory = "Oratory",
+    Theology = "Theology",
+    Vintner = "Vintner",
+    Esoterica = "Esoterica",
+    // Martial (Armiger/Mercenary/Woodard)
+    ActiveService = "Active Service",
+    Freelance = "Freelance",
+    LordSlain = "Lord Slain/Captured",
+    Disgraced = "Disgraced",
+    HedgeKnight = "Hedge Knight",
+    Mercenary = "Mercenary",
+    Bandit = "Bandit",
+    Discharged = "Discharged",
+    // Adept / Warlock Masters
+    IxianRaver = "Ixian Raver",
+    IxianArchon = "Ixian Archon",
+    Dragon = "Dragon",
+    Lich = "Lich",
+    Wizard = "Wizard",
+    ElderGod = "Elder God (Ghoelb)",
+    Moloch = "Moloch",
+    Kain = "Kain",
+
+    // Spy Specializations
+    DisguiseSpecialist = "Disguise Specialist",
+    BurglarSpecialist = "Burglar Specialist"
+}
+
+export type JobSubset = JobSubsetEnum
 
 
-    // // Martial Classes
-    // 'Fighter' | 'Barbarian' | 'Monk' | 'Ranger' |
-    // // Spellcasters
-    // 'Wizard' | 'Sorcerer' | 'Warlock' | 'Cleric' | 'Druid' |
-    // // Mixed
-    // 'Paladin' | 'Bard' | 'Rogue';
+    // | JobSubsetEnum.Jeweler 
+    // | JobSubsetEnum.Arbalist
+    // | JobSubsetEnum.Scrivener
+    // | JobSubsetEnum.Advocate
+    // | JobSubsetEnum.Cartographer
+    // | JobSubsetEnum.Inspector
+    // | JobSubsetEnum.Interpreter
+    // | JobSubsetEnum.Smith
+    // | JobSubsetEnum.Carpenter
+    // | JobSubsetEnum.MoneyChanger
+    // | JobSubsetEnum.Ambler
+    // | JobSubsetEnum.Chef
+    // | JobSubsetEnum.HouseServant
+    // | JobSubsetEnum.Farmhand
+    // | JobSubsetEnum.Laborer
+    // | JobSubsetEnum.Sailor
+    // | JobSubsetEnum.None;
+

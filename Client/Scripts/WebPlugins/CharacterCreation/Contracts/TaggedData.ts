@@ -1,5 +1,6 @@
 import { ObservableArray, ObservableArrayFunctions } from "../../../Framework/Knockout/knockout";
 import { Edges } from "./Edges";
+import { RelationshipModel } from "./Entanglements";
 import { Language, LearnedLanguage } from "./Language";
 import { Skill } from "./Skill";
 import { Spell } from "./Spell";
@@ -36,30 +37,26 @@ export interface CharacterTags {
 export type DescriptionModel = {Description: string}
 export type PartOfSpeechModel = {PartOfSpeech : string}
 export type PictureModel = DescriptionModel & {PictureUrl: string}
-export type StoryModel = {
-    Name: string
+export type StoryModel<StoryType> = {
+    Name: StoryType
     Story : string
     Other? : string
 
-    Items? : SelectionPackage<Item>
+    // Below handled by update functions
+    // Items? : SelectionPackage<Item>
+    // Edges? : SelectionPackage<Edges> 
+    // Skills? : SelectionPackage<Skill>
+    // Spells? : SelectionPackage<Spell>
+    // Languages? : SelectionPackage<LearnedLanguage>
 
-    Edges? : SelectionPackage<Edges>
-    Skills? : SelectionPackage<Skill>
-    
-    // Spells? : ItemPackage<Spell>
-    Languages? : SelectionPackage<LearnedLanguage>
-
-    PeopleNames? : PronounType[]
-    PeopleRelations? : DispositionType[]
-
-    OrganizationNames? : PronounType[]
-    OrganizationRelations? : DispositionType[]
-
-    PlaceNames? : PronounType[]
-    PlaceRelationships? : DispositionType[]
+    AffectedPeople : RelationshipModel[]
+    AffectedOrganization : RelationshipModel[]
+    AffectedPlace : RelationshipModel[]
 
     PartialPictureUrl? : string
 }
+
+export type RelationshipType = {identifier: PronounType, disposition: DispositionType}
 
 export class SelectionPackage<T> {
     constructor (
@@ -80,7 +77,8 @@ export class ChoiceGroup<T> {
 export class TaggedObservableSelectionPackage<T> {
     constructor (
         public FixedSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items every Dwarf gets automatically
-        public ChoiceSelection: ObservableArray<TaggedCharacterData<ChoiceGroup<T>>> // Groups of items they must choose between
+        public ChoiceSelection: ObservableArray<TaggedCharacterData<ChoiceGroup<T>>>, // Groups of items they must choose between
+        public OverrideSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items that every STREET URCHIN cannot have
     ) {}
 }
 
@@ -90,7 +88,7 @@ export type SyllableModel = {
 }
 
 export class Item {
-    constructor(public Name: string, public Amount?: number, public Description?: string, public Overrides? : Item) {}
+    constructor(public Name: string, public Amount?: number, public Description?: string) {}
 }
 
 export interface BaseTag {

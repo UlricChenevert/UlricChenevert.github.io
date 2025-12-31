@@ -8,10 +8,10 @@ export function isMatchingIfExists<T>(testProperty: T, comparisonProperty: T) {
     return testProperty == undefined || comparisonProperty == undefined || testProperty == comparisonProperty;
 }
 
-export function getPossibleBackground (source : TaggedCharacterData<StoryModel>[], GlobalCharacterData : ConfiguredCharacterData) {
-        return getMatchingTaggedData(source, GlobalCharacterData)
-            .map((taggedData)=>{return PopulateBackground(taggedData, GlobalCharacterData).Payload}) 
-    }
+// export function getPossibleBackground<T> (source : TaggedCharacterData<StoryModel<T>>[], GlobalCharacterData : ConfiguredCharacterData) {
+//         return getMatchingTaggedData(source, GlobalCharacterData)
+//             .map((taggedData)=>{return PopulateBackground(taggedData, GlobalCharacterData).Payload}) 
+//     }
 
 export function getMatchingTaggedData<T> (source : TaggedCharacterData<T>[], GlobalCharacterData : ConfiguredCharacterData) {
     return source

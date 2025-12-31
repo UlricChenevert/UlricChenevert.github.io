@@ -1,25 +1,26 @@
 import { Observable } from "../../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../../Framework/Knockout/ko.js";
-import { ClassBackgrounds, possibleJobs, possibleClasses } from "../../Configuration/CareerGroupBackgroundData.js";
+import { CareerData } from "../../Configuration/CareerData.js";
 import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
 import { Races } from "../../Configuration/DispositionData.js";
 import { Abilities } from "../../Contracts/Abilities.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
-import { RaceType } from "../../Contracts/StringTypes.js";
-import { TaggedObservableSelectionPackage, TaggedCharacterData, StoryModel, Item } from "../../Contracts/TaggedData.js";
-import { createGenericPicker, updateItemsData, updateEdgesData, flattenSelectionPackage, updateNameData, updateSkillsData, updateRaceLanguageData } from "../../Utility/ViewModelUtility.js";
+import { JobType, RaceType } from "../../Contracts/StringTypes.js";
+import { TaggedObservableSelectionPackage, StoryModel, Item } from "../../Contracts/TaggedData.js";
+import { createGenericPicker, updateItemsData, updateEdgesData, flattenSelectionPackage, updateNameData, updateSkillsData, updateRaceLanguageData } from "../../Utility/UpdateUtility.js";
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
 import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
 import { SkillsModel } from "../AbilityModel.js";
 import { AncestryViewModel } from "./AncestoryViewModel.js";
-import { ClassBackgroundPickerModel } from "./ClassBackgroundPicker.js";
 import { SelectionPackageConfigurationModel } from "./SelectionPackageConfigurationModel.js";
 import { LearnedLanguage } from "../../Contracts/Language.js";
 import { Deity } from "../../Contracts/Diety.js";
-import { DeityCreationModel } from "../DeityPickerModel.js";
-import { Utility } from "../../../../WebCore/Utility.js";
+import { Spell } from "../../Contracts/Spell.js";
+import { Drawbacks } from "../../Contracts/Drawbacks.js";
+import { Corruption } from "../../Contracts/Corruption.js";
+import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
 
 export namespace ConfiguredModals {
     export const createAncestryPickerModel = (characterData: ConfiguredCharacterData) => {
@@ -53,7 +54,7 @@ export namespace ConfiguredModals {
         });
 
         const isConfigured = ko.observable(false);
-        characterData.ClassBackground.subscribe(() => isConfigured(false));
+        characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
         return createGenericPicker<SelectionPackageConfigurationModel<Edges>, StringListPreviewModel, TaggedObservableSelectionPackage<Edges>>({
@@ -64,7 +65,8 @@ export namespace ConfiguredModals {
                 characterData,
                 (data) => data.EdgeSelections,
                 (item: Edges) => item.Name,
-                (item: Edges) => item.Name + " - " + item.Description
+                (item: Edges) => item.Name + " - " + item.Description,
+                isConfigured
             ),
             dataSelector: (data) => data.EdgeSelections,
             createPreview: (modal) => new StringListPreviewModel(
@@ -85,7 +87,7 @@ export namespace ConfiguredModals {
         });
 
         const isConfigured = ko.observable(false);
-        characterData.ClassBackground.subscribe(() => isConfigured(false));
+        characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
         return createGenericPicker<SelectionPackageConfigurationModel<Skill>, StringListPreviewModel, TaggedObservableSelectionPackage<Skill>>({
@@ -96,7 +98,8 @@ export namespace ConfiguredModals {
                 characterData,
                 (data) => data.SkillsSelection,
                 (item: Skill) => item.Name,
-                (item: Skill) => item.Name + " - " + item.Description
+                (item: Skill) => item.Name + " - " + item.Description,
+                isConfigured
             ),
             dataSelector: (data) => data.SkillsSelection,
             createPreview: (modal) => new StringListPreviewModel(
@@ -112,20 +115,21 @@ export namespace ConfiguredModals {
     export const createBackgroundPickerModel = (characterData: ConfiguredCharacterData) => {
         // Local logic for the specific display string
         const displayLabel = ko.observable("");
-        characterData.ClassBackground.subscribe((background) => {
-            displayLabel(background ? background.Payload.Name : "Unknown");
+        characterData.JobBackground.subscribe((background) => {
+            displayLabel(background ? background.Name : "Unknown");
         });
 
-        return createGenericPicker<ClassBackgroundPickerModel, SimplePreviewModel, TaggedCharacterData<StoryModel>>({
+        return createGenericPicker<JobBackgroundPickerModel, SimplePreviewModel, StoryModel<JobType>>({
             name: "Background",
             characterData,
-            pickerModel: new ClassBackgroundPickerModel(
+            pickerModel: new JobBackgroundPickerModel(
                 characterData, 
-                ClassBackgrounds, 
-                possibleJobs, 
-                possibleClasses
+                CareerData.possibleProfessions,
+                CareerData.ProfessionToJobData,
+                CareerData.JobToStoryData,
+                CareerData.JobSubsetData
             ),
-            dataSelector: (data) => data.ClassBackground,
+            dataSelector: (data) => data.JobBackground,
             createPreview: (modal) => new SimplePreviewModel(
                 modal.FriendlyName,
                 displayLabel,
@@ -160,7 +164,7 @@ export namespace ConfiguredModals {
         });
 
         const isConfigured = ko.observable(false);
-        characterData.ClassBackground.subscribe(() => isConfigured(false));
+        characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
         return createGenericPicker<SelectionPackageConfigurationModel<Item>, StringListPreviewModel, TaggedObservableSelectionPackage<Item>>({
@@ -171,11 +175,45 @@ export namespace ConfiguredModals {
                 characterData,
                 (data) => data.ItemSelections,
                 (item: Item) => item.Name,
-                (item: Item) => `${item.Name} ${(item.Description)? " - " + item.Description : ""} ${(item.Amount)? " x" + item.Amount : ""}`
+                (item: Item) => `${item.Name} ${(item.Description)? " - " + item.Description : ""} ${(item.Amount)? " x" + item.Amount : ""}`,
+                isConfigured
             ),
             dataSelector: (data) => data.ItemSelections,
             createPreview: (modal) => new StringListPreviewModel(
                 "Equipment",
+                stringPreview,
+                isConfigured,
+                modal.Randomize.bind(modal),
+                modal.EditItem.bind(modal)
+            )
+        });
+    };
+
+    export const createTrinketPickerModel = (characterData: ConfiguredCharacterData) => {
+        // Unique logic stays here
+        const stringPreview = ko.observableArray<string>([]);
+        characterData.TrinketSelections.subscribe((newValue) => {
+            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+        });
+
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
+
+        return createGenericPicker<SelectionPackageConfigurationModel<Item>, StringListPreviewModel, TaggedObservableSelectionPackage<Item>>({
+            name: "Trinket",
+            characterData,
+            pickerModel: new SelectionPackageConfigurationModel(
+                "Trinket",
+                characterData,
+                (data) => data.TrinketSelections,
+                (item: Item) => item.Name,
+                (item: Item) => `${item.Name} ${(item.Description)? " - " + item.Description : ""} ${(item.Amount)? " x" + item.Amount : ""}`,
+                isConfigured
+            ),
+            dataSelector: (data) => data.TrinketSelections,
+            createPreview: (modal) => new StringListPreviewModel(
+                "Trinket",
                 stringPreview,
                 isConfigured,
                 modal.Randomize.bind(modal),
@@ -196,7 +234,7 @@ export namespace ConfiguredModals {
         }
 
         const isConfigured = ko.observable(false);
-        characterData.ClassBackground.subscribe(() => isConfigured(false));
+        characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
         return createGenericPicker<SelectionPackageConfigurationModel<LearnedLanguage>, StringListPreviewModel, TaggedObservableSelectionPackage<LearnedLanguage>>({
@@ -207,7 +245,8 @@ export namespace ConfiguredModals {
                 characterData,
                 (data) => data.LanguageSelections,
                 (item: LearnedLanguage) => item.Language.Name,
-                (item: LearnedLanguage) => determineName(item) + ": " + item.Language.Description
+                (item: LearnedLanguage) => determineName(item) + ": " + item.Language.Description,
+                isConfigured
             ),
             dataSelector: (data) => data.LanguageSelections,
             createPreview: (modal) => new StringListPreviewModel(
@@ -220,15 +259,114 @@ export namespace ConfiguredModals {
         });
     };
 
+    export const createSpellPickerModel = (characterData: ConfiguredCharacterData) => {
+        // Unique logic stays here
+        const stringPreview = ko.observableArray<string>([]);
+        characterData.SpellSelection.subscribe((newValue) => {
+            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+        });
+
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
+
+        return createGenericPicker<SelectionPackageConfigurationModel<Spell>, StringListPreviewModel, TaggedObservableSelectionPackage<Spell>>({
+            name: "Spells",
+            characterData,
+            pickerModel: new SelectionPackageConfigurationModel(
+                "Spells",
+                characterData,
+                (data) => data.SpellSelection,
+                (item: Spell) => item.Name,
+                (item: Spell) => `${item.Name} ${(item.Description)? " - " + item.Description : ""}}`,
+                isConfigured
+            ),
+            dataSelector: (data) => data.SpellSelection,
+            createPreview: (modal) => new StringListPreviewModel(
+                "Spells",
+                stringPreview,
+                isConfigured,
+                modal.Randomize.bind(modal),
+                modal.EditItem.bind(modal)
+            )
+        });
+    };
+
+    export const createDrawbackPickerModel = (characterData: ConfiguredCharacterData) => {
+        // Unique logic stays here
+        const stringPreview = ko.observableArray<string>([]);
+        characterData.DrawbacksSelection.subscribe((newValue) => {
+            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+        });
+
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
+
+        return createGenericPicker<SelectionPackageConfigurationModel<Drawbacks>, StringListPreviewModel, TaggedObservableSelectionPackage<Drawbacks>>({
+            name: "Drawbacks",
+            characterData,
+            pickerModel: new SelectionPackageConfigurationModel(
+                "Drawbacks",
+                characterData,
+                (data) => data.DrawbacksSelection,
+                (item: Drawbacks) => item.Name,
+                (item: Drawbacks) => `${item.Name} ${(item.Description)? " - " + item.Description : ""}}`,
+                isConfigured
+            ),
+            dataSelector: (data) => data.DrawbacksSelection,
+            createPreview: (modal) => new StringListPreviewModel(
+                "Drawbacks",
+                stringPreview,
+                isConfigured,
+                modal.Randomize.bind(modal),
+                modal.EditItem.bind(modal)
+            )
+        });
+    };
+
+    export const createCorruptionPickerModel = (characterData: ConfiguredCharacterData) => {
+        // Unique logic stays here
+        const stringPreview = ko.observableArray<string>([]);
+        characterData.CorruptionSelection.subscribe((newValue) => {
+            stringPreview(flattenSelectionPackage(newValue).map(x => x.Effect));
+        });
+
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
+
+        return createGenericPicker<SelectionPackageConfigurationModel<Corruption>, StringListPreviewModel, TaggedObservableSelectionPackage<Corruption>>({
+            name: "Corruption",
+            characterData,
+            pickerModel: new SelectionPackageConfigurationModel(
+                "Corruption",
+                characterData,
+                (data) => data.CorruptionSelection,
+                (item: Corruption) => item.Effect,
+                (item: Corruption) => `${item.Effect} ${(item.Description)? " - " + item.Description : ""}}`,
+                isConfigured
+            ),
+            dataSelector: (data) => data.CorruptionSelection,
+            createPreview: (modal) => new StringListPreviewModel(
+                "Corruption",
+                stringPreview,
+                isConfigured,
+                modal.Randomize.bind(modal),
+                modal.EditItem.bind(modal)
+            )
+        });
+    };
+
     export const createDeityPickerModel = (characterData: ConfiguredCharacterData) => {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.ReligionSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Pronoun.name));
+            stringPreview(flattenSelectionPackage(newValue).map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god"));
         });
 
         const isConfigured = ko.observable(false);
-        characterData.ClassBackground.subscribe(() => isConfigured(false));
+        characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
         return createGenericPicker<SelectionPackageConfigurationModel<Deity>, StringListPreviewModel, TaggedObservableSelectionPackage<Deity>>({
@@ -238,8 +376,9 @@ export namespace ConfiguredModals {
                 "Religion",
                 characterData,
                 (data) => data.ReligionSelections,
-                (item: Deity) => item.Pronoun.name,
-                (item: Deity) => `${item.Pronoun.name}`
+                (item: Deity) => (item.Pronoun.name)? item.Pronoun.name : "An unknown god",
+                (item: Deity) => `${item.Pronoun.name}`,
+                isConfigured
             ),
             dataSelector: (data) => data.ReligionSelections,
             createPreview: (modal) => new StringListPreviewModel(
@@ -260,7 +399,7 @@ export namespace ConfiguredModals {
     //     });
 
     //     const isConfigured = ko.observable(false);
-    //     characterData.ClassBackground.subscribe(() => isConfigured(false));
+    //     characterData.JobBackground.subscribe(() => isConfigured(false));
     //     characterData.Race.subscribe(() => isConfigured(false));
 
     //     return createGenericPicker<SelectionPackageConfigurationModel<Deity>, StringListPreviewModel, TaggedObservableSelectionPackage<Deity>>({

@@ -13,15 +13,18 @@ import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../Configuration/TaggedNameData.js"
 import { ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { LockableObjectPickerModel } from "./LockableObjectPickerModel.js"
+import { TaggedCharacterData } from "../Contracts/TaggedData.js"
 
 export namespace ConfiguredViewModels {
     
+    const entanglementPreviewModel = (item : TaggedCharacterData<Entanglements>)=>`${item.Tags.Source}: ${((item.Payload.Identifier.name)? item.Payload.Identifier.name : "Unknown")} - ${item.Payload.Attitudes}`
+
     export const createOrganizationPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
         new CreateObjectListModel(
             "Known Organizations", 
             new EntanglementCreationModel(AttitudesTypes, OrganizationTypes, true), 
             (data)=>data.Organizations, 
-            (item : Entanglements)=>item.Source + ": " + ((item.Name)? item.Name.name : "Unknown") + " - " + item.Attitudes, 
+            entanglementPreviewModel, 
             (model)=>{return true}, 
             ()=>{},
             characterData,
@@ -33,7 +36,7 @@ export namespace ConfiguredViewModels {
             "Known People", 
             new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
             (data)=>data.People, 
-            (item : Entanglements)=>item.Source + ": " + ((item.Name)? item.Name.name : "Unknown") + " - " + item.Attitudes, 
+            entanglementPreviewModel, 
             (model)=>{return true}, 
             ()=>{},
             characterData,
@@ -47,7 +50,7 @@ export namespace ConfiguredViewModels {
             "Known Places", 
             new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
             (data)=>data.Places, 
-            (item : Entanglements)=>item.Source + ": " + ((item.Name)? item.Name.name : "Unknown") + " - " + item.Attitudes, 
+            entanglementPreviewModel, 
             (model)=>{return true}, 
             ()=>{},
             characterData,

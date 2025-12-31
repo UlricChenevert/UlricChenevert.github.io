@@ -162,6 +162,28 @@ export namespace ItemData {
     export const ScoundrelCloak = new Item("Gray or neutral colored cloak", undefined, "Has long sleeves for concealing items.");
     export const NarrowDaggers = new Item("Narrow daggers", 2, "Light Melee/Ranged (1d4), concealed.");
 
+    // --- Trinkets & Special Items ---
+    export const BlackArrow = new Item("Arrow, Black", 1, "At the end of the Encounter, you can always find it within 1d6 turns if you search.");
+    export const LuckyCopperCoin = new Item("Coin, Lucky Copper", 1, "It always lands on your mental choice of heads or tails.");
+    export const GlowingCrystal = new Item("Crystal, glowing", 1, "Emits bluish light continually. Illuminates an area Close. Unaffected by Darkness spell.");
+    export const CurvedDagger = new Item("Dagger, curved", 1, "1d4 damage. Contains 4 gems (10 coins each). If removed, gems regrow after one week.");
+    export const BountifulFlask = new Item("Flask, Bountiful", 1, "Refills with water for two people/day. If wine is added, refills with wine for one week.");
+    export const GlassMarbles = new Item("Glass Marbles, dozen", 1, "Standard Action to cast. DEX Test or be Down. Returns to pouch with 1 min concentration.");
+    export const SilentHammer = new Item("Silent Hammer", 1, "Makes no sound when used for work. Weapon: Simple Melee & Ranged, 1d6 damage, Range: Nearby.");
+    export const SkeletonKey = new Item("Key, Skeleton", 1, "1 in 4 chance to work on any mundane lock. Can retry the following day.");
+    export const FoldingKnife = new Item("Knife with folding blade", 1, "Easy to conceal. Never dulls, won't break on Critical Failure. 1d2 damage, Range: Nearby.");
+    export const FishCharmNecklace = new Item("Leather Necklace with Lucky Fish Charm", 1, "Advantage on INT Test when fishing or Foraging at a shoreline.");
+    export const LuckyDice = new Item("Lucky Dice, pair", 1, "Once per day, reroll a dice game result and take the better result.");
+    export const Lodestone = new Item("Lodestone on a leather thong", 1, "Points north. Can be attuned to a touched target with 1 min concentration.");
+    export const FloralPerfume = new Item("Perfume, Floral (Ud4)", 1, "Advantage on CHA Tests for info/favors. Lasts 1 hour per application.");
+    export const InsectRing = new Item("Ring, silver with insect motif", 1, "Insects avoid you. Insect creatures must pass WIS Test to attack.");
+    export const SpiderSilkRope = new Item("Rope, spider silk rope, 100’", 1, "Holds 1200 lbs. Never tangles. 8 HP to sever.");
+    export const RosewoodFlute = new Item("Rosewood flute", 1, "Standard Action: Once per day, GM rerolls NPC Reaction Table.");
+    export const MagicSatchel = new Item("Satchel, tooled leather", 1, "Holds 60 lbs (1200 coins) but weighs 10 lbs. Living creatures die after 24 hours.");
+    export const SneezingPowder = new Item("Sneezing powder, packets (Ud6)", 1, "Reaction: Target fails CON Test or sneezes (Disadvantage on Actions). No use in wind.");
+    export const SpringBladeStaff = new Item("Staff, Walking with concealed blade", 1, "Functions as Spear: Simple Melee/Ranged, 1d6 damage, Range: Nearby.");
+    export const JadeMonkeyStatuette = new Item("Lucky Statuette Jade Monkey", 1, "Advantage on one INT Ability Test per day while held.");
+
     // --- Selection Packages ---
 
     export const DwarfItemSelection = new SelectionPackage<Item>(
@@ -228,6 +250,20 @@ export namespace ItemData {
                 Axe, DaggerMelee, HammerMelee, SpearMelee, Staff, Sword,
                 // Ranged Sub-options
                 CrossbowWithBolts, DaggerRanged, Javelins, ShortBowWithArrows, SlingWithStones, SpearRanged
+            ], [])
+        ]
+    );
+
+    // --- Trinket Selection Package ---
+    // This allows a user to roll a d20 or choose from the list provided
+    export const TrinketSelection = new SelectionPackage<Item>(
+        [],
+        [
+            new ChoiceGroup(1, [
+                BlackArrow, LuckyCopperCoin, GlowingCrystal, CurvedDagger, BountifulFlask,
+                GlassMarbles, SilentHammer, SkeletonKey, FoldingKnife, FishCharmNecklace,
+                LuckyDice, Lodestone, FloralPerfume, InsectRing, SpiderSilkRope,
+                RosewoodFlute, MagicSatchel, SneezingPowder, SpringBladeStaff, JadeMonkeyStatuette
             ], [])
         ]
     );

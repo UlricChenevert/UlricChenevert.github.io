@@ -25,16 +25,16 @@ export const elfTag = raceTagWithProfession(elfBasicTag)
 export const dwarfBasicTag = raceTag("Dwarf")
 export const dwarfTag = raceTagWithProfession(dwarfBasicTag)
 
-export const cultistTag : ProfessionTag = {Class: "Magic User", Job: "Cultist"}
+export const cultistTag : ProfessionTag = {Class: "Arcane", Job: "Cultist"}
 export const cultistWholeTag = backgroundTagWithProfession(cultistTag)
 
-export const barbarianTag : ProfessionTag = {Class: "Fighter", Job: "Barbarian"}
+export const barbarianTag : ProfessionTag = {Class: "Martial", Job: "Barbarian"}
 export const barbarianWholeTag = backgroundTagWithProfession(barbarianTag)
 
-export const scholarTag : ProfessionTag = {Class:"Bard", Job:"Scholar"}
+export const scholarTag : ProfessionTag = {Class:"Performer & Scholarly", Job:"Scholar"}
 
-export const warlockTag : ProfessionTag = {Class: "Magic User", Job: "Warlock"}
+export const warlockTag : ProfessionTag = {Class: "Arcane", Job: "Warlock"}
 export const warlockWholeTag = backgroundTagWithProfession(warlockTag)
 
-export const scoundrelTag : ProfessionTag = {Class: "Thief", Job: "Scoundrel"}
+export const scoundrelTag : ProfessionTag = {Class: "Rogue", Job: "Scoundrel"}
 export const scoundrelWholeTag = backgroundTagWithProfession(scoundrelTag)

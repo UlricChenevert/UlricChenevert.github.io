@@ -1,5 +1,5 @@
 import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js"
-import { barbarianWholeTag, cultistWholeTag, dwarfTag, elfTag, halfingTag, humanTag, ixianTag, orcTag, scoundrelWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
+import { dwarfTag, elfTag, halfingTag, humanTag, ixianTag, orcTag, scoundrelWholeTag, cultistWholeTag, barbarianWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
 
 export const TaggedCharacterNameData : MultiTaggedCharacterData<string>[] = [
     {Tags:[], Payload: "Custom"},
@@ -67,7 +67,7 @@ export const TaggedCharacterNameData : MultiTaggedCharacterData<string>[] = [
     { Tags: [orcTag], Payload: "Skroti" },
 ];
 
-// -----------------------------------------------------------------------------
+// // -----------------------------------------------------------------------------
 
 export const TaggedCharacterBynameData : MultiTaggedCharacterData<string>[] = [
     {Tags:[], Payload: "Custom"},

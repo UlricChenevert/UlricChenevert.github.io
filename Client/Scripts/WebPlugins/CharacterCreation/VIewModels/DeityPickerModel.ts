@@ -21,7 +21,7 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity> {
         this.chosenDeity = ko.observable<Deity>(this.possibleDeities[0])
         this.chosenDeityDescription = ko.observable(this.possibleDeities[0].Description)
 
-        this.createdDeityName = ko.observable(this.possibleDeities[0].Pronoun.name)
+        this.createdDeityName = ko.observable((this.possibleDeities[0].Pronoun.name)? this.possibleDeities[0].Pronoun.name : "Unknown Deity")
         this.createdDeityDescription = ko.observable(this.possibleDeities[0].Description)
 
         this.deityPronoun = this.possibleDeities[0].Pronoun;
@@ -32,7 +32,7 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity> {
         this.chosenDeity.subscribe((newDeity)=>{
             this.chosenDeityDescription(newDeity.Description)
             this.isCustom(newDeity.Pronoun.name == "Custom")
-            this.createdDeityName(newDeity.Pronoun.name)
+            this.createdDeityName((newDeity.Pronoun.name)? newDeity.Pronoun.name : "Unknown Deity")
             this.createdDeityDescription(newDeity.Description)
         })
     }
@@ -48,7 +48,7 @@ export class DeityCreationModel implements IWizardModel<void, Deity, Deity> {
             return Promise.resolve()
         }
 
-        this.createdDeityName(chosenDeity.Pronoun.name)
+        this.createdDeityName((chosenDeity.Pronoun.name)? chosenDeity.Pronoun.name : "Unknown Deity")
         this.createdDeityDescription(chosenDeity.Description)
         this.deityPronoun = chosenDeity.Pronoun
         this.isCustom(true)
