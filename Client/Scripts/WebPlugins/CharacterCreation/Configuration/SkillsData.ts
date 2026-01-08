@@ -1,6 +1,6 @@
 import { Skill } from "../Contracts/Skill.js";
-import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
-import { JobType, RaceType } from "../Contracts/StringTypes.js";
+import { ChoiceGroup, ProfessionTag, SelectionPackage } from "../Contracts/TaggedData.js";
+import { JobSubset, JobSubsetEnum, JobType, RaceType } from "../Contracts/StringTypes.js";
 
 export namespace SkillsData {
     // --- Individual Skill Definitions ---
@@ -52,6 +52,25 @@ export namespace SkillsData {
     export const LaborerSkill = new Skill("Laborer", "You are good at clearing land, digging ditches, and simple maintenance of structures.");
     export const SailorSkill = new Skill("Sailor", "You have basic sailing skills, can sail small vessels and are skilled with knots and ropemaking.");
 
+    // Performer & Scholarly Skills
+    export const CoordinationSkill = new Skill("Coordination", "You have developed great balance and hand-eye coordination. You can juggle and perform feats such as handstands as well as walk on your hands.");
+    export const TumblingSkill = new Skill("Tumbling", "You are skilled at feats related to jumping, climbing, falling, and balancing. You can make a controlled fall twice as far as others without sustaining damage.");
+    export const ContortionistSkill = new Skill("Contortionist", "You excel at fitting into cramped spaces, squeezing through narrow spaces, and escaping shackles and bindings.");
+    export const MusicalPerformerSkill = new Skill("Musical Performer", "You read and write musical notation. You can sing and play five instruments (e.g., woodwinds, strings, percussion).");
+    export const CostumeMakeupSkill = new Skill("Costume & Makeup", "You can make costumes, prosthetics, and makeup to disguise yourself or someone else.");
+    export const ReligiousLoreSkill = new Skill("Religious Lore", "You know the stories of creation and the sagas of the gods and heroes by heart.");
+
+    // Martial Skills
+    export const HeraldrySkill = new Skill("Heraldry", "You know the coat of arms for all local families and knights and can usually have more successful interactions.");
+    export const AmbushSkill = new Skill("Ambush", "You can do a lot of damage to a surprised opponent.");
+    export const MartialEvaluationSkill = new Skill("Martial Evaluation", "You can size up the martial prowess of a foe.");
+    export const SizeUpMarkSkill = new Skill("Size Up Mark", "You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.");
+    export const ObservantSkill = new Skill("Observant", "You are good at noticing and recalling details.");
+    export const VigilantSkill = new Skill("Vigilant", "Your cautious nature lets you usually act first.");
+
+    // Arcane Skills
+    export const FlashPowderSkill = new Skill("Formulate Flash Powder", "With proper materials and equipment, you can make Flash Powder (Ud4).");
+    export const DowsingRodSkill = new Skill("Fabricate Dowsing Rods", "With proper materials and tools, you can fabricate sensitive dowsing rods in one day for ¼ the typical cost.");
     // --- Specific Racial Option Definitions ---
 
     // Dwarven / Orcish Shared Options
@@ -66,54 +85,155 @@ export namespace SkillsData {
     // Elven Options
     export const LongbowProficiency = new Skill("Elven Weapon Proficiency", "You are proficient with long bows.");
 
-    // --- Job Records ---
+    const noSkillSelection = new SelectionPackage<Skill>([], [], []);
 
-    export const JobRecord: Record<string, SelectionPackage<Skill>> = {
-        Jeweler: new SelectionPackage([JewelerSkill], []),
-        Arbalist: new SelectionPackage([ArbalistSkill], []),
-        Scrivener: new SelectionPackage([ScrivenerSkill], []),
-        "Advocate/Beadle": new SelectionPackage([AdvocateSkill], []),
-        Cartographer: new SelectionPackage([CartographerSkill], []),
-        Interpreter: new SelectionPackage([PolyglotSkill], []),
-        "Rat Catcher": new SelectionPackage([SnaresSkill], []),
-        Smith: new SelectionPackage([SmithSkill], []),
-        Carpenter: new SelectionPackage([CarpenterSkill], []),
-        "Cooper/Wheelwright": new SelectionPackage([CooperSkill], []),
-        Leatherworker: new SelectionPackage([LeatherworkerSkill], []),
-        Mason: new SelectionPackage([MasonSkill], []),
-        Swordsmith: new SelectionPackage([SwordsmithSkill], []),
-        "Money Changer": new SelectionPackage([MoneyChangerSkill, FenceSkill], []),
-        Assayer: new SelectionPackage([AssayerSkill], []),
-        Brewer: new SelectionPackage([BrewerSkill], []),
-        Herbalist: new SelectionPackage([HerbalistSkill], []),
-        Peddler: new SelectionPackage([PeddlerSkill], []), // Legacy data note: Fence is granted here
-        Vintner: new SelectionPackage([VintnerSkill], []),
-        Ambler: new SelectionPackage([EquitationSkill], []),
-        Chef: new SelectionPackage([ChefSkill], []),
-        Farmer: new SelectionPackage([FarmerSkill], []),
-        Fisher: new SelectionPackage([FisherSkill], []),
-        Herder: new SelectionPackage([HerderSkill], []),
-        "House Servant": new SelectionPackage([HouseServantSkill], []),
-        Farmhand: new SelectionPackage([FarmhandSkill], []),
-        Laborer: new SelectionPackage([LaborerSkill], []),
-        "Sailor (Conscript)": new SelectionPackage([SailorSkill], []),
+    // --- Job Records ---
+    export const JobToSkillRecord: Record<JobType, SelectionPackage<Skill>> = {
+        // Performer & Scholarly
+        "Acrobat": new SelectionPackage([CoordinationSkill, TumblingSkill], [], []),
+        "Contortionist": new SelectionPackage([ContortionistSkill, CoordinationSkill], [], []),
+        "Jester": new SelectionPackage([], [
+            new ChoiceGroup(1, [CoordinationSkill, TumblingSkill], [])
+        ], []),
+        "Minstrel": new SelectionPackage([MusicalPerformerSkill], [], []),
+        "Scholar": new SelectionPackage([], [
+            // Roll 1d6 twice for two skills
+            new ChoiceGroup(2, [OratorySkill, ProbabilitiesSkill], []) 
+        ], []),
+        "Storyteller/Thespian": new SelectionPackage([OratorySkill], [
+            new ChoiceGroup(1, [CostumeMakeupSkill, ReligiousLoreSkill], [])
+        ], []),
+
+        // Religious
+        "Accursed": noSkillSelection,
+        "Acolyte": new SelectionPackage([], [
+            new ChoiceGroup(1, [
+                BrewerSkill, FarmerSkill, HerderSkill, 
+                OratorySkill, TheologySkill, VintnerSkill
+            ], [])
+        ], []),
+        "Cultist": noSkillSelection,
+        "Inquisitor": new SelectionPackage([], [
+            new ChoiceGroup(1, [EsotericaSkill, OratorySkill, TheologySkill], [])
+        ], []),
+        "Pariah": new SelectionPackage([TheologySkill], [], []),
+        "Touched/Anchorite": noSkillSelection,
+
+        // Skilled Laborers (Placeholders for the parent JobType)
+        "Apprentice Artisan": noSkillSelection,
+        "Apprentice Bureaucrat": noSkillSelection,
+        "Free Laborer": noSkillSelection,
+        "Apprentice Crafter": noSkillSelection,
+        "Apprentice Mercantiler": noSkillSelection,
+        "Escaped Peasant/Thrall": noSkillSelection,
+
+        // --- Martial Jobs ---
+        "Armiger": new SelectionPackage([HeraldrySkill], [], []),
+        "Barbarian": new SelectionPackage([], [
+            new ChoiceGroup(1, [ScoutSkill, HealerSkill], [])
+        ], []),
+        "Mercenary/Hedge": new SelectionPackage([], [
+            new ChoiceGroup(1, [AmbushSkill, FenceSkill, HeraldrySkill, ObservantSkill], [])
+        ], []),
+        "Prizefighter": new SelectionPackage([], [
+            new ChoiceGroup(1, [MartialEvaluationSkill, HealerSkill], [])
+        ], []),
+        "Ruffian/Enforcer": new SelectionPackage([], [
+            new ChoiceGroup(1, [MartialEvaluationSkill, SizeUpMarkSkill], [])
+        ], []),
+        "Woodard/Warden": new SelectionPackage([ScoutSkill], [], []),
+
+        // --- Arcane Jobs ---
+        "Adept/Arcane Apprentice": new SelectionPackage([EsotericaSkill], [], []),
+        "Alchemy Apprentice": new SelectionPackage([EsotericaSkill], [], []),
+        "Arcane Researcher": new SelectionPackage([EsotericaSkill], [], []),
+        "Charlatan": new SelectionPackage([FlashPowderSkill, SizeUpMarkSkill], [], []),
+        "Dowser": new SelectionPackage([DowsingRodSkill], [], []),
+        "Warlock": noSkillSelection,
+
+        // --- Rogue Jobs ---
+        "Fence": new SelectionPackage([FenceSkill, SizeUpMarkSkill], [], []),
+        "Gambler": new SelectionPackage([ProbabilitiesSkill], [], []),
+        "Scoundrel": new SelectionPackage([OratorySkill], [], []),
+        "Sharp": new SelectionPackage([], [
+            new ChoiceGroup(1, [ObservantSkill, VigilantSkill], [])
+        ], []),
+        "Spy": new SelectionPackage([], [
+            new ChoiceGroup(1, [CostumeMakeupSkill, ObservantSkill, OratorySkill], [VigilantSkill])
+        ], []),
+        "Street Urchin": new SelectionPackage([], [
+            new ChoiceGroup(2, [ObservantSkill, SizeUpMarkSkill], [VigilantSkill])
+        ], []),
+    };
+
+    // --- Job Subset Records ---
+    export const JobSubsetToSkillRecord: Record<JobSubsetEnum, SelectionPackage<Skill>> = {
+        [JobSubsetEnum.None]: noSkillSelection,
         
-        // Class Specifics (using ChoiceGroups for Optional: true)
-        Bard: new SelectionPackage([], [
-            new ChoiceGroup(1, [OratorySkill, ProbabilitiesSkill, EsotericaSkill, HistoricLoreSkill, NatureLoreSkill, TheologySkill], [])
-        ]),
-        Barbarian: new SelectionPackage([], [
-            new ChoiceGroup(1, [ScoutSkill], [])
-        ]),
-        Cleric: new SelectionPackage([], [
-            new ChoiceGroup(1, [HealerSkill], [])
-        ]),
-        Scoundrel: new SelectionPackage([OratorySkill], [])
+        // Skilled & Laborer Subsets
+        [JobSubsetEnum.Jeweler]: new SelectionPackage([JewelerSkill], [], []),
+        [JobSubsetEnum.Arbalist]: new SelectionPackage([ArbalistSkill], [], []),
+        [JobSubsetEnum.Scrivener]: new SelectionPackage([ScrivenerSkill], [], []),
+        [JobSubsetEnum.Advocate]: new SelectionPackage([AdvocateSkill], [], []),
+        [JobSubsetEnum.Cartographer]: new SelectionPackage([CartographerSkill], [], []),
+        [JobSubsetEnum.Inspector]: noSkillSelection,
+        [JobSubsetEnum.Interpreter]: new SelectionPackage([PolyglotSkill], [], []),
+        [JobSubsetEnum.Smith]: new SelectionPackage([SmithSkill], [], []),
+        [JobSubsetEnum.Carpenter]: new SelectionPackage([CarpenterSkill], [], []),
+        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([MoneyChangerSkill], [], []),
+        [JobSubsetEnum.Ambler]: new SelectionPackage([EquitationSkill], [], []),
+        [JobSubsetEnum.Chef]: new SelectionPackage([ChefSkill], [], []),
+
+        // Escaped Thrall Subsets
+        [JobSubsetEnum.HouseServant]: new SelectionPackage([HouseServantSkill], [], []),
+        [JobSubsetEnum.Farmhand]: new SelectionPackage([FarmhandSkill], [], []),
+        [JobSubsetEnum.Laborer]: new SelectionPackage([LaborerSkill], [], []),
+        [JobSubsetEnum.Sailor]: new SelectionPackage([SailorSkill], [], []),
+
+        // Religious Subsets (Acolyte/Inquisitor options)
+        [JobSubsetEnum.Brewer]: new SelectionPackage([BrewerSkill], [], []),
+        [JobSubsetEnum.Farmer]: new SelectionPackage([FarmerSkill], [], []),
+        [JobSubsetEnum.Herder]: new SelectionPackage([HerderSkill], [], []),
+        [JobSubsetEnum.Oratory]: new SelectionPackage([OratorySkill], [], []),
+        [JobSubsetEnum.Theology]: new SelectionPackage([TheologySkill], [], []),
+        [JobSubsetEnum.Vintner]: new SelectionPackage([VintnerSkill], [], []),
+        [JobSubsetEnum.Esoterica]: new SelectionPackage([EsotericaSkill], [], []),
+
+        [JobSubsetEnum.HedgeKnight]: new SelectionPackage([], [
+        new ChoiceGroup(1, [AmbushSkill, FenceSkill, HeraldrySkill, ObservantSkill], [])
+    ], []),
+    [JobSubsetEnum.Mercenary]: new SelectionPackage([], [
+        new ChoiceGroup(1, [AmbushSkill, FenceSkill, HeraldrySkill, ObservantSkill], [])
+    ], []),
+    [JobSubsetEnum.Bandit]: new SelectionPackage([], [
+        new ChoiceGroup(1, [AmbushSkill, FenceSkill, HeraldrySkill, ObservantSkill], [])
+    ], []),
+
+    // Spy/Rogue Specializations
+    [JobSubsetEnum.DisguiseSpecialist]: new SelectionPackage([CostumeMakeupSkill], [], []),
+    [JobSubsetEnum.BurglarSpecialist]: new SelectionPackage([ObservantSkill], [], []),
+
+    // These remain none as they represent story backgrounds or masters rather than unique skill sets
+    [JobSubsetEnum.ActiveService]: noSkillSelection,
+    [JobSubsetEnum.Freelance]: noSkillSelection,
+    [JobSubsetEnum.LordSlain]: noSkillSelection,
+    [JobSubsetEnum.Disgraced]: noSkillSelection,
+    [JobSubsetEnum.Discharged]: noSkillSelection,
+    [JobSubsetEnum.IxianRaver]: noSkillSelection,
+    [JobSubsetEnum.IxianArchon]: noSkillSelection,
+    [JobSubsetEnum.Dragon]: noSkillSelection,
+    [JobSubsetEnum.Lich]: noSkillSelection,
+    [JobSubsetEnum.Wizard]: noSkillSelection,
+    [JobSubsetEnum.ElderGod]: noSkillSelection,
+    [JobSubsetEnum.Moloch]: noSkillSelection,
+    [JobSubsetEnum.Kain]: noSkillSelection,
+    [JobSubsetEnum.ThreeTrinketRandom]: noSkillSelection,
+    [JobSubsetEnum.OneTrinketChoice]: noSkillSelection,
     };
 
     // --- Race Records ---
 
-    export const RaceRecord: Record<string, SelectionPackage<Skill>> = {
+    export const RaceRecord: Record<RaceType, SelectionPackage<Skill>> = {
         Dwarf: new SelectionPackage(
             [], 
             [
@@ -121,12 +241,12 @@ export namespace SkillsData {
                     BattleaxeProficiency, // Result 1-3
                     WarhammerProficiency  // Result 4-6
                 ], [])
-            ]
+            ], []
         ),
 
         Elf: new SelectionPackage(
             [LongbowProficiency], 
-            []
+            [], []
         ),
 
         Orc: new SelectionPackage(
@@ -138,7 +258,7 @@ export namespace SkillsData {
                     WarhammerMaulProficiency, // Result 5
                     GreatClubProficiency     // Result 6
                 ], [])
-            ]
+            ], []
         ),
 
         Halfling: new SelectionPackage(
@@ -148,10 +268,10 @@ export namespace SkillsData {
                     HouseServantSkill, 
                     FarmhandSkill
                 ], [])
-            ]
+            ], []
         ),
 
-        Ixian: new SelectionPackage([], []),
-        Human: new SelectionPackage([], [])
+        Ixian: noSkillSelection,
+        Human: noSkillSelection
     };
 }

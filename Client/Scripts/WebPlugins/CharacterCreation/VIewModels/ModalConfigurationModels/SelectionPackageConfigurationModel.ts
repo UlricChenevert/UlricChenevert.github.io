@@ -5,6 +5,7 @@ import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData
 import { ICharacterWizardViewModel, IRandomizeWizardModel } from "../../Contracts/CharacterWizardViewModels.js";
 import { ObjectPreview } from "../../Contracts/ObjectPreview.js";
 import { ChoiceGroup, TaggedCharacterData, TaggedObservableSelectionPackage } from "../../Contracts/TaggedData.js";
+import { flattenAndFilterSelectionPackage } from "../../Utility/FilterUtility.js";
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 
 export class SelectionPackageConfigurationModel<SelectionType> implements ICharacterWizardViewModel<void, TaggedObservableSelectionPackage<SelectionType>> {
@@ -21,23 +22,21 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         public DetermineName : (item: SelectionType)=>string,
         public DetermineDescription : (item: SelectionType)=>string,
         private IsConfigured : Observable<boolean>
-        // public CreateOptionConfigurationModels: ModelCreation = defaultModelCreator
     ) {
         this.fixedChoices = ko.observableArray<ObjectPreview>([])
         this.selectableChoices = ko.observableArray<IPartialViewModel<IRandomizeWizardModel<SelectionType>>>([])
-        this.fixedChoices.length
         // This is so you don't lose references to the original unflattened selection
         this.choicesMappingToSelectedViewModels = new Map<IRandomizeWizardModel<SelectionType>, TaggedCharacterData<ChoiceGroup<SelectionType>>>()
         this.isLoading = ko.observable(false)
     }
 
-    Randomize() {
+    async Randomize() {
 
         // TODO: the proper evalution relies on the initization of the mapping, which does not occur in Random eval cycle. 
         // Need to move / create observation subscriptions to handle hand over without modal initiation  
 
         // or....
-        this.Init()
+        await this.Init()
 
         this.ChoiceRandomly()
         return
@@ -49,39 +48,30 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         })
     }
 
-    Init () {
+    Init() {
         const selectionPackage = this.SelectionPackageAccessor(this.GlobalCharacterData)()
         this.choicesMappingToSelectedViewModels.clear()
 
-        this.fixedChoices(selectionPackage.FixedSelection().map(
-            fixedSelection => new ObjectPreview(
-                `${fixedSelection.Tags.Source} ${this.FriendlyName}`, 
-                this.DetermineDescription(fixedSelection.Payload)
-            ))
-        )
+        const flattenedChoices = flattenAndFilterSelectionPackage(selectionPackage, this.GlobalCharacterData)
 
+        this.fixedChoices(flattenedChoices.fixedSelection.map((fixedChoice)=>new ObjectPreview(
+                `${fixedChoice.Tags.Source} ${this.FriendlyName}`, 
+                this.DetermineDescription(fixedChoice.Payload)
+            )))
+        
+        // I split the choices groups so that the there are multiple choice selection views that all share the same "choices"
         const finalSelectionViewModels : IPartialViewModel<IRandomizeWizardModel<SelectionType>>[] = []
 
-        selectionPackage.ChoiceSelection().forEach(
-            choices => {
-                // const createdModels = this.CreateOptionConfigurationModels(
-                //     choices, 
-                //     `${choices.Tags.Source} ${this.FriendlyName}`, 
-                //     this.DetermineName,
-                //     this.DetermineDescription, 
-                //     this.GlobalCharacterData
-                // )
+        flattenedChoices.filteredChoiceSelection.forEach(
+            choicePackage => {
+                const choices = choicePackage.choiceReference
+                const possibleChoices = choicePackage.possibleChoices
 
-                // createdModels.forEach((model)=>{
-                //     finalSelectionViewModels.push(model)
-                //     this.choicesMappingToSelectedViewModels.set(model.Model, choices)
-                // })
-
-                let splitCount = choices.Payload.pickCount
-                let unselectedOptions = ko.observableArray(choices.Payload.options.map(x=>x))
+                // Adjust split count if the filter filters out all of the options
+                let splitCount = Math.min(choices.Payload.pickCount, possibleChoices().length)
 
                 for (let i = 0; i < splitCount; i++) {
-                    const SelectionViewModel = this.createItemSelectionPicker(choices, this.FriendlyName, unselectedOptions)
+                    const SelectionViewModel = this.createItemSelectionPicker(choices, this.FriendlyName, possibleChoices)
 
                     if (choices.Payload.selectedValues.length > 0 && this.IsConfigured()) {
                         const choice = choices.Payload.selectedValues.pop()
@@ -116,60 +106,18 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
     }
     
     createItemSelectionPicker (choices : TaggedCharacterData<ChoiceGroup<SelectionType>>, name : string, sourceOfTruth : ObservableArray<SelectionType> ) {
-        const objectConfig = new LockableObjectPickerModel(
-                            `${choices.Tags.Source} ${this.FriendlyName}`,
-                            sourceOfTruth,
-                            this.GlobalCharacterData,
-                            choices.Payload.options[0],
-                            this.DetermineName,
-                            this.DetermineDescription
-                        )
-                    
+        const objectConfig = 
+            new LockableObjectPickerModel(
+                `${choices.Tags.Source} ${name}`,
+                sourceOfTruth,
+                this.GlobalCharacterData,
+                choices.Payload.options[0],
+                this.DetermineName,
+                this.DetermineDescription
+            )
+            
         const objectConfigViewModel = Utility.BundleViewAndModel<void, LockableObjectPickerModel<SelectionType>>(objectConfig)
         return objectConfigViewModel
     }
 }
 
-type ModelCreation = <SelectionType>(
-        choices : TaggedCharacterData<ChoiceGroup<SelectionType>>,
-        ConfigurationTitle : string,
-        DetermineShortPreview : (item: SelectionType)=>string,
-        DetermineLongPreview : (item: SelectionType)=>string,
-        characterData: ConfiguredCharacterData
-    ) => IPartialViewModel<IRandomizeWizardModel<SelectionType>>[]
-
-const defaultModelCreator : ModelCreation = <SelectionType>(
-    choices : TaggedCharacterData<ChoiceGroup<SelectionType>>,
-    ConfigurationTitle : string,
-    DetermineShortPreview : (item: SelectionType)=>string,
-    DetermineLongPreview : (item: SelectionType)=>string,
-    characterData: ConfiguredCharacterData
-): IPartialViewModel<IRandomizeWizardModel<SelectionType>>[] => {
-    const finalList : IPartialViewModel<LockableObjectPickerModel<SelectionType>>[] = [] as IPartialViewModel<LockableObjectPickerModel<SelectionType>>[]
-
-    let splitCount = choices.Payload.pickCount
-    let unselectedOptions = ko.observableArray(choices.Payload.options.map(x=>x)) // I want to use the same list for the groups of options
-
-    for (let i = 0; i < splitCount; i++) {
-        const SelectionViewModel = new LockableObjectPickerModel(
-            ConfigurationTitle,
-            unselectedOptions,
-            characterData,
-            choices.Payload.options[0],
-            DetermineShortPreview,
-            DetermineLongPreview
-        )
-
-        if (choices.Payload.selectedValues.length > 0) {
-            const choice = choices.Payload.selectedValues.pop()
-            SelectionViewModel.Init(choice)
-        } else {
-            SelectionViewModel.Init()
-        }
-
-        finalList.push(Utility.BundleViewAndModel<void, LockableObjectPickerModel<SelectionType>>(SelectionViewModel))
-    }
-
-
-    return finalList
-} 

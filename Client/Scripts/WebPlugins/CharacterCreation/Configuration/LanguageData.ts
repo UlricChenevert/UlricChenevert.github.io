@@ -1,10 +1,17 @@
 import { Language, LearnedLanguage } from "../Contracts/Language.js";
-import { ChoiceGroup, SelectionPackage, MultiTaggedCharacterData, TaggedCharacterData } from "../Contracts/TaggedData.js";
+import { JobSubset, JobSubsetEnum, JobType, RaceType } from "../Contracts/StringTypes.js";
+import { ChoiceGroup, SelectionPackage, MultiTaggedCharacterData, TaggedCharacterData, OverrideChoiceLambda } from "../Contracts/TaggedData.js";
+import { ancestrySourceTag, backgroundSourceTag, createTaggedData } from "../Utility/TagUtility.js";
 
 export namespace LanguageData {
     export const Kaduz = new Language(
             "Kaduz",
             "Kaduz is a language shared with hill dwarves and is also spoken by halflings who live in hills or near the surface in hilly areas.",
+            3 // Common among hill/surface dwellers
+        )
+    export const Kelinya = new Language(
+            "Kelinya",
+            "Kelinya is the ancient language of the old empire used by most religious groups and government officials.",
             3 // Common among hill/surface dwellers
         )
     export const Dwerg = new Language(
@@ -53,6 +60,8 @@ export namespace LanguageData {
     export const SpeakKaduz = new LearnedLanguage(Kaduz, true, false, false);
     export const ReadWriteKaduz = new LearnedLanguage(Kaduz, false, true, true);
 
+    export const SpeakReadWriteKelinya = new LearnedLanguage(Kelinya, true, true, true);
+
     // Dwerg
     export const SpeakDwerg = new LearnedLanguage(Dwerg, true, false, false);
     export const ReadWriteDwerg = new LearnedLanguage(Dwerg, false, true, true);
@@ -86,70 +95,148 @@ export namespace LanguageData {
     export const ReadWriteInfernal = new LearnedLanguage(Infernal, false, true, true);
 
     // --- Specific Selection Packages ---
+    const dwarfChoices = new ChoiceGroup(1, [SpeakDwerg, SpeakKaduz], [])
+    const elfChoices = new ChoiceGroup(1, [SpeakSindar, SpeakSylvan], [])
+    const humanChoices = new ChoiceGroup(2, [SpeakNulya, SpeakSulya, SpeakIstya, SpeakMuluk, SpeakSylvan], [])
+    const halflingChoice = new ChoiceGroup(1, [SpeakNulya, SpeakSulya, SpeakSylvan], [])
+    const orcChoice = new ChoiceGroup(1, [SpeakSulya, SpeakIstya], [])
+    const ixianChoice = new ChoiceGroup(1, [SpeakNulya, SpeakIstya], [])
 
-    /**
-     * DWARVES: Automatically speak Kaduz and Dwerg. 
-     * Get 1 choice of Reading/Writing for their native tongues.
-     */
-    export const DwarfLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [], 
-        [new ChoiceGroup(1, [SpeakDwerg, SpeakKaduz], [])]
-    );
+    const raceChoiceList = [dwarfChoices, elfChoices, humanChoices, halflingChoice, orcChoice, ixianChoice]
 
-    /**
-     * ELVES: Automatically speak Sindar and Sylvan.
-     */
-    export const ElfLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [],
-        [new ChoiceGroup(1, [SpeakSindar, SpeakSylvan], [])]
-    );
-
-    /**
-     * HUMANS: Automatically speak Nulya.
-     * Choice of 1 additional spoken language from regional dialects.
-     */
-    export const HumanLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [], 
-        [new ChoiceGroup(1, [SpeakSulya, SpeakIstya, SpeakMuluk, SpeakSylvan], [])]
-    );
-
-    /**
-     * HALFLINGS: Automatically speak Kaduz.
-     * Choice of 1 additional spoken language.
-     */
-    export const HalflingLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [],
-        [new ChoiceGroup(1, [SpeakNulya, SpeakSulya, SpeakSylvan], [])]
-    );
-
-    /**
-     * ORCS/IXIANS: Automatically speak their native tongues.
-     */
-    export const OrcLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [],
-        [new ChoiceGroup(1, [SpeakSulya, SpeakIstya], [])]
-    );
-
-    export const IxianLanguageSelection = new SelectionPackage<LearnedLanguage>(
-        [SpeakInfernal],
-        [new ChoiceGroup(1, [SpeakNulya, SpeakIstya], [])]
-    );
+    export const NoneSelection = new SelectionPackage<LearnedLanguage>([], [], [])
 
     export const ReadWriteLanguageSelection = new SelectionPackage<LearnedLanguage>(
         [],
-        [new ChoiceGroup(2, [ReadWriteKaduz, ReadWriteDwerg, ReadWriteInfernal, ReadWriteIstya, ReadWriteMuluk, ReadWriteNulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSylvan], [])]
+        [new ChoiceGroup(1, [ReadWriteKaduz, ReadWriteDwerg, ReadWriteInfernal, ReadWriteIstya, ReadWriteMuluk, ReadWriteNulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSylvan], [])], []
     );
 
-    export const RaceRecord: Record<string, SelectionPackage<LearnedLanguage>> = {
-        Dwarf: DwarfLanguageSelection,
+    export const JobTypeToLanguage: Record<JobType, SelectionPackage<LearnedLanguage>> = {
+        "Apprentice Artisan": NoneSelection,
+        "Apprentice Bureaucrat": new SelectionPackage([SpeakReadWriteKelinya], [], []),
+        "Free Laborer": NoneSelection,
+        "Apprentice Crafter": NoneSelection,
+        "Apprentice Mercantiler": NoneSelection,
+        "Escaped Peasant/Thrall": NoneSelection,
+        Acrobat: NoneSelection,
+        Contortionist: NoneSelection,
+        Jester: NoneSelection,
+        Minstrel: NoneSelection,
+        Scholar: ReadWriteLanguageSelection,
+        "Storyteller/Thespian": NoneSelection,
+        Accursed: NoneSelection,
+        Acolyte: NoneSelection,
+        Cultist: NoneSelection,
+        Inquisitor: NoneSelection,
+        Pariah: NoneSelection,
+        "Touched/Anchorite": NoneSelection,
+        Armiger: NoneSelection,
+        Barbarian: NoneSelection,
+        "Mercenary/Hedge": NoneSelection,
+        Prizefighter: NoneSelection,
+        "Ruffian/Enforcer": NoneSelection,
+        "Woodard/Warden": NoneSelection,
+        "Adept/Arcane Apprentice": NoneSelection,
+        "Alchemy Apprentice": NoneSelection,
+        "Arcane Researcher": NoneSelection,
+        Charlatan: NoneSelection,
+        Dowser: NoneSelection,
+        Warlock: NoneSelection,
+        Fence: NoneSelection,
+        Gambler: NoneSelection,
+        Scoundrel: NoneSelection,
+        Sharp: NoneSelection,
+        Spy: NoneSelection,
+        "Street Urchin": NoneSelection
+    };
 
-        Elf: ElfLanguageSelection,
+    export const JobSubsetToLanguage: Record<JobSubset, SelectionPackage<LearnedLanguage>> = {
+        [JobSubsetEnum.None]: NoneSelection,
+        [JobSubsetEnum.Jeweler]: NoneSelection,
+        [JobSubsetEnum.Arbalist]: NoneSelection,
+        [JobSubsetEnum.Scrivener]: NoneSelection,
+        [JobSubsetEnum.Advocate]: NoneSelection,
+        [JobSubsetEnum.Cartographer]: NoneSelection,
+        [JobSubsetEnum.Inspector]: NoneSelection,
+        [JobSubsetEnum.Interpreter]: NoneSelection,
+        [JobSubsetEnum.Smith]: NoneSelection,
+        [JobSubsetEnum.Carpenter]: NoneSelection,
+        [JobSubsetEnum.MoneyChanger]: NoneSelection,
+        [JobSubsetEnum.Ambler]: NoneSelection,
+        [JobSubsetEnum.Chef]: NoneSelection,
+        [JobSubsetEnum.HouseServant]: NoneSelection,
+        [JobSubsetEnum.Farmhand]: NoneSelection,
+        [JobSubsetEnum.Laborer]: NoneSelection,
+        [JobSubsetEnum.Sailor]: NoneSelection,
+        [JobSubsetEnum.Brewer]: NoneSelection,
+        [JobSubsetEnum.Farmer]: NoneSelection,
+        [JobSubsetEnum.Herder]: NoneSelection,
+        [JobSubsetEnum.Oratory]: NoneSelection,
+        [JobSubsetEnum.Theology]: NoneSelection,
+        [JobSubsetEnum.Vintner]: NoneSelection,
+        [JobSubsetEnum.Esoterica]: NoneSelection,
+        [JobSubsetEnum.ActiveService]: NoneSelection,
+        [JobSubsetEnum.Freelance]: NoneSelection,
+        [JobSubsetEnum.LordSlain]: NoneSelection,
+        [JobSubsetEnum.Disgraced]: NoneSelection,
+        [JobSubsetEnum.HedgeKnight]: NoneSelection,
+        [JobSubsetEnum.Mercenary]: NoneSelection,
+        [JobSubsetEnum.Bandit]: NoneSelection,
+        [JobSubsetEnum.Discharged]: NoneSelection,
+        [JobSubsetEnum.IxianRaver]: NoneSelection,
+        [JobSubsetEnum.IxianArchon]: NoneSelection,
+        [JobSubsetEnum.Dragon]: NoneSelection,
+        [JobSubsetEnum.Lich]: NoneSelection,
+        [JobSubsetEnum.Wizard]: NoneSelection,
+        [JobSubsetEnum.ElderGod]: NoneSelection,
+        [JobSubsetEnum.Moloch]: NoneSelection,
+        [JobSubsetEnum.Kain]: NoneSelection,
+        [JobSubsetEnum.ThreeTrinketRandom]: NoneSelection,
+        [JobSubsetEnum.OneTrinketChoice]: NoneSelection,
+        [JobSubsetEnum.DisguiseSpecialist]: NoneSelection,
+        [JobSubsetEnum.BurglarSpecialist]: NoneSelection
+    };
 
-        Orc: OrcLanguageSelection,
+    const readWriteOverrides : (JobType | JobSubset)[] = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Warlock", ]
 
-        Halfling: HalflingLanguageSelection,
+    export const readWriteOverride = new Set<JobType | JobSubset>()
+    readWriteOverrides.forEach((override)=>readWriteOverride.add(override)) 
+    
+    export const raceLanguageOverride = new Map<ChoiceGroup<LearnedLanguage>, TaggedCharacterData<OverrideChoiceLambda<LearnedLanguage>>>()
 
-        Ixian: IxianLanguageSelection,
-        Human: HumanLanguageSelection
+    export const raceOverrideLambda : OverrideChoiceLambda<LearnedLanguage> = (taggedChoiceBeingOverridden, characterData)=>{
+        
+        if (readWriteOverride.has(characterData.Job()) || readWriteOverride.has(characterData.JobSubset())) {
+            const choice = taggedChoiceBeingOverridden.Payload
+
+            const languagesOptionsCopy = choice.options.map(
+                x=>new LearnedLanguage(x.Language, x.canSpeak, true, true)
+            )
+
+            // Possible bug. I don't want to redo the whole lambda system
+            // 1. because it will take a lot of time
+            // 2. I don't want to write out every possible combination into a record
+            // 3. the lambda system returns a new copy of the choice group, and the selected values are lost when the
+            //    user exits the modal, the UI uses this code to find out what selected values it has, but it just gets a 
+            //    new blank copy
+            const selectedLanguagesCopy = choice.selectedValues 
+
+            return createTaggedData(backgroundSourceTag, new ChoiceGroup<LearnedLanguage>(choice.pickCount, languagesOptionsCopy, selectedLanguagesCopy))
+        }
+
+        return taggedChoiceBeingOverridden
+    }
+
+    raceChoiceList.forEach((choice)=>raceLanguageOverride.set(choice, createTaggedData(ancestrySourceTag, raceOverrideLambda)))
+
+    const languageSelectionFactory = (choice : ChoiceGroup<LearnedLanguage>) => new SelectionPackage<LearnedLanguage>([], [choice], [], raceLanguageOverride)
+
+    export const RaceRecord: Record<RaceType, SelectionPackage<LearnedLanguage>> = {
+        Dwarf: languageSelectionFactory(dwarfChoices),
+        Elf: languageSelectionFactory(elfChoices),
+        Orc: languageSelectionFactory(orcChoice),
+        Halfling: languageSelectionFactory(halflingChoice),
+        Ixian: languageSelectionFactory(ixianChoice),
+        Human: languageSelectionFactory(humanChoices)
     };
 }

@@ -8,7 +8,7 @@ import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { JobType, RaceType } from "../../Contracts/StringTypes.js";
 import { TaggedObservableSelectionPackage, StoryModel, Item } from "../../Contracts/TaggedData.js";
-import { createGenericPicker, updateItemsData, updateEdgesData, flattenSelectionPackage, updateNameData, updateSkillsData, updateRaceLanguageData } from "../../Utility/UpdateUtility.js";
+import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills } from "../../Utility/UpdateUtility.js";
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
 import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
@@ -30,10 +30,10 @@ export namespace ConfiguredModals {
             pickerModel: new AncestryViewModel(characterData, Races),
             dataSelector: (data) => data.Race,
             onUpdate: (data) => {
-                updateItemsData(data, "Ancestry");
+                updateRaceItemsData(data, "Ancestry");
                 updateRaceLanguageData(data);
-                updateEdgesData(data, "Ancestry");
-                updateSkillsData(data, "Ancestry")
+                updateRaceEdgesData(data, "Ancestry");
+                updateRaceSkillsData(data, "Ancestry")
                 updateNameData(data);
             },
             createPreview: (modal) => new SimplePreviewModel(
@@ -50,7 +50,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.EdgeSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -83,7 +83,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.SkillsSelection.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -136,7 +136,13 @@ export namespace ConfiguredModals {
                 ko.observable(false),
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: ()=> {
+                updateBackgroundItems(characterData)
+                updateBackgroundEdges(characterData)
+                updateBackgroundSkills(characterData)
+                updateBackgroundLanguages(characterData)
+            }
         });
     };
 
@@ -156,11 +162,13 @@ export namespace ConfiguredModals {
         });
     };
 
+    
+
     export const createEquipmentPickerModel = (characterData: ConfiguredCharacterData) => {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.ItemSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -193,7 +201,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.TrinketSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -226,7 +234,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.LanguageSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => determineName(x)));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => determineName(x)));
         });
 
         const determineName = (language : LearnedLanguage)=>{
@@ -263,7 +271,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.SpellSelection.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -296,7 +304,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.DrawbacksSelection.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
         });
 
         const isConfigured = ko.observable(false);
@@ -329,7 +337,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.CorruptionSelection.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => x.Effect));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Effect));
         });
 
         const isConfigured = ko.observable(false);
@@ -362,7 +370,7 @@ export namespace ConfiguredModals {
         // Unique logic stays here
         const stringPreview = ko.observableArray<string>([]);
         characterData.ReligionSelections.subscribe((newValue) => {
-            stringPreview(flattenSelectionPackage(newValue).map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god"));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god"));
         });
 
         const isConfigured = ko.observable(false);

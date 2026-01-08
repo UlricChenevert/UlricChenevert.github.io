@@ -11,15 +11,18 @@ import { Edges } from "../Contracts/Edges.js";
 import { CreateObjectModel } from "./CreateObjectModel.js";
 import { CharacterName } from "../Contracts/CharacterName.js";
 import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
-import { JobType, RaceType } from "../Contracts/StringTypes.js";
+import { JobSubsetEnum, JobType, RaceType } from "../Contracts/StringTypes.js";
 import { SimplePreviewModel } from "./Preview/SimplePreviewModel.js";
-import { Abilities } from "../Contracts/Abilities.js";
+import { Abilities, MaxAbility } from "../Contracts/Abilities.js";
 import { AbilityPreviewModel } from "./Preview/AbilityPreviewModel.js";
 import { StringListPreviewModel } from "./Preview/StringListPreviewModel.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
 import { Drawbacks } from "../Contracts/Drawbacks.js";
 import { Corruption } from "../Contracts/Corruption.js";
 import { Spell } from "../Contracts/Spell.js";
+import { Utility } from "../../../WebCore/Utility.js";
+import { Personalities } from "../Configuration/MoodData.js";
+import { flattenAndCombineSelectionPackage } from "../Utility/UpdateUtility.js";
 
 export class CharacterSheetModel implements ICharacterWizardViewModel<void, void> {
     FriendlyName = "Character Sheet";
@@ -76,23 +79,38 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
         this.showOutput = ko.observable(false)
     }
 
-    IsSelection<T> (data : Observable<TaggedObservableSelectionPackage<T>>) {
-        return data().ChoiceSelection().length > 0 || data().FixedSelection().length > 0
+    IsSelection<T> (data : TaggedObservableSelectionPackage<T>) {
+        return data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0
     }
 
     exportAsPDF () {
         print()
     }
 
-    exportAsDocx () {
+    talkToCharacter() {
+        const npcName = `${this.GlobalCharacterData.Name().Bynames} ${this.GlobalCharacterData.Name().Name} ${this.GlobalCharacterData.Name().Epithets}`
+        const definingAttribute = MaxAbility(this.GlobalCharacterData.Abilities()).name
+        
+        const personality = `a ${Utility.RandomElement(Personalities)} ${this.GlobalCharacterData.Race()} ${this.GlobalCharacterData.Job()} ${(this.GlobalCharacterData.JobSubset() !== JobSubsetEnum.None)? this.GlobalCharacterData.Job() : ""} with great ${definingAttribute}`;
+        const instructions = `Act as a D&D npc named ${npcName}, ${personality}. Greet the user as if they just walked by.`;
 
+        const finalUrl = `https://chatgpt.com/?q=${encodeURIComponent(instructions)}`;
+
+        window.location.href = finalUrl;
     }
 
-    exportAsJson () {
-        const simplifiedGlobalVariables = Object.entries(this.GlobalCharacterData).map((entry : [string, Observable<unknown>])=>entry[1]())
+    createAnCharacterImage() {        
+        const items = flattenAndCombineSelectionPackage(this.GlobalCharacterData.ItemSelections(), this.GlobalCharacterData).map(x=> x.Name).join(" ")
+        const scars = flattenAndCombineSelectionPackage(this.GlobalCharacterData.CorruptionSelection(), this.GlobalCharacterData).map(x=> x.Effect + " ").join(" ")
+        const instructions = `Create an image of my D&D character, a ${this.GlobalCharacterData.Job} ${this.GlobalCharacterData.Race()}. If possible, try to incorporate the equipment: ${items}. ${(scars.length > 0)? "The character has deformities: " + scars : ""}`;
 
-        this.jsonText(JSON.stringify(simplifiedGlobalVariables))
-        this.showOutput(true)
+        const finalUrl = `https://chatgpt.com/?q=${encodeURIComponent(instructions)}`;
+
+        window.location.href = finalUrl;
+    }
+
+    exportAsDocx () {
+
     }
 
     Init () {

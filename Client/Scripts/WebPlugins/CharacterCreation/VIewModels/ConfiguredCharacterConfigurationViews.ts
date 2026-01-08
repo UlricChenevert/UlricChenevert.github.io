@@ -75,7 +75,7 @@ export namespace ConfiguredViewModels {
         
         const modal = Utility.BundleViewAndModel(
             new CreateObjectModel(
-            "Name",
+            "Identity",
             new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData),
             (data)=>data.Name,
             tempPreview,
@@ -85,13 +85,18 @@ export namespace ConfiguredViewModels {
             )
         )
 
-        const NameObservable = ko.observable(NameUtility.determineFullNameFromCharacterName(characterData.Name()))
-        characterData.Name.subscribe((newName)=>NameObservable(NameUtility.determineFullNameFromCharacterName(newName)))
+        const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData))
+        characterData.Name.subscribe(()=>NameObservable(NameUtility.determineIdentityPreview(characterData)))
+        characterData.Gender.subscribe(()=>NameObservable(NameUtility.determineIdentityPreview(characterData)))
+        
+        const isConfigured = ko.observable(false)
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
 
         tempPreview.Model = new SimplePreviewModel(
                 modal.Model.FriendlyName,
                 NameObservable,
-                ko.observable(false),
+                isConfigured,
                 modal.Model.Randomize.bind(modal.Model),
                 modal.Model.EditItem.bind(modal.Model)
             )

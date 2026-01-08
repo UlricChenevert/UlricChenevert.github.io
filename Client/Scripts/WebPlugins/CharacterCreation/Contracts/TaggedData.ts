@@ -1,10 +1,8 @@
-import { ObservableArray, ObservableArrayFunctions } from "../../../Framework/Knockout/knockout";
-import { Edges } from "./Edges";
+import { ObservableArray } from "../../../Framework/Knockout/knockout";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData";
 import { RelationshipModel } from "./Entanglements";
-import { Language, LearnedLanguage } from "./Language";
-import { Skill } from "./Skill";
-import { Spell } from "./Spell";
-import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
+import { LearnedLanguage } from "./Language";
+import { PronounType, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
 
 export interface TaggedData<T, Y> {
     Tags : Y,
@@ -58,10 +56,14 @@ export type StoryModel<StoryType> = {
 
 export type RelationshipType = {identifier: PronounType, disposition: DispositionType}
 
+export type OverrideChoiceLambda<T> = (taggedChoiceBeingOverridden : TaggedCharacterData<ChoiceGroup<T>>, characterData : ConfiguredCharacterData)=>TaggedCharacterData<ChoiceGroup<T>>
+
 export class SelectionPackage<T> {
     constructor (
         public FixedSelection: T[], // e.g. Items every Dwarf gets automatically
-        public ChoiceSelection: ChoiceGroup<T>[] // Groups of items they must choose between
+        public ChoiceSelection: ChoiceGroup<T>[], // Groups of items they must choose between
+        public OverrideSelection: T[], 
+        public OverridePossibleChoiceSelection?: Map<ChoiceGroup<T>, TaggedCharacterData<OverrideChoiceLambda<T>>>, // e.g. Class trinkets selection that overrides race trinket selection
     ) {}
 }
 
@@ -78,17 +80,17 @@ export class TaggedObservableSelectionPackage<T> {
     constructor (
         public FixedSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items every Dwarf gets automatically
         public ChoiceSelection: ObservableArray<TaggedCharacterData<ChoiceGroup<T>>>, // Groups of items they must choose between
-        public OverrideSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items that every STREET URCHIN cannot have
+        public OverridePossibleSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items that every STREET URCHIN cannot have
+        public OverridePossibleChoiceSelection: Map<ChoiceGroup<T>, TaggedCharacterData<OverrideChoiceLambda<T>>>, // e.g. Class trinkets selection that overrides race trinket selection
     ) {}
 }
-
 
 export type SyllableModel = {
     Syllable : string
 }
 
 export class Item {
-    constructor(public Name: string, public Amount?: number, public Description?: string) {}
+    constructor(public Name: string, public Amount?: number, public Description?: string, public Value? : number) {}
 }
 
 export interface BaseTag {

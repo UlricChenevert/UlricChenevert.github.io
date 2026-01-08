@@ -35,11 +35,11 @@
             <div data-bind="PartialView: edgesPicker"></div>
         </section>
 
-        <section class="reveal-section hoverable-container skill" data-bind="visible: IsSelection(GlobalCharacterData.SkillsSelection)">
+        <section class="reveal-section hoverable-container skill" data-bind="visible: IsSelection(GlobalCharacterData.SkillsSelection())">
             <div data-bind="PartialView: skillsPicker"></div>
         </section>
         
-        <section class="reveal-section hoverable-container" data-bind="PartialView: spellPicker, visible: IsSelection(GlobalCharacterData.SpellSelection)">
+        <section class="reveal-section hoverable-container" data-bind="PartialView: spellPicker, visible: IsSelection(GlobalCharacterData.SpellSelection())">
         </section>
         
 
@@ -53,15 +53,15 @@
             <div class="input-group" data-bind="PartialView: namePicker"></div>
         </section>
 
-        <section class="reveal-section hoverable-container corruption" data-bind="PartialView: corruptionPicker, visible: IsSelection(GlobalCharacterData.CorruptionSelection)">
+        <section class="reveal-section hoverable-container corruption" data-bind="PartialView: corruptionPicker, visible: IsSelection(GlobalCharacterData.CorruptionSelection())">
         </section>
 
-        <section class="reveal-section hoverable-container drawbacks" data-bind="PartialView: drawbackPicker, visible: IsSelection(GlobalCharacterData.DrawbacksSelection)">
+        <section class="reveal-section hoverable-container drawbacks" data-bind="PartialView: drawbackPicker, visible: IsSelection(GlobalCharacterData.DrawbacksSelection())">
         </section>
 
-    <div class="centered remove-when-print">
+    <div class="centered remove-when-print space-around">
         <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>
+        <!-- <button class="wizard-button" data-bind="click: talkToCharacter">Talk to Character</button> -->
+        <!-- <button class="wizard-button" data-bind="click: createAnCharacterImage">Create Character Image</button> -->
     </div>
-    
-    <div data-bind="if: showOutput"><div data-bind="text: jsonText"></div></div>
-</div>
+        </div>

@@ -1,5 +1,5 @@
 import { Edges } from "../Contracts/Edges.js";
-import { RaceType } from "../Contracts/StringTypes.js";
+import { JobSubset, JobSubsetEnum, JobType, RaceType } from "../Contracts/StringTypes.js";
 import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
 
 export namespace EdgesData {
@@ -54,48 +54,76 @@ export namespace EdgesData {
     export const Filcher = new Edges("Filcher", "Pick pockets and cut purses undetected.");
     export const Burglar = new Edges("Burglar", "Good at climbing and picking locks.");
 
-    // Arcane Spells (Simplified as Edges for the template)
-    export const DetectMagic = new Edges("Detect Magic", "Sense the power and presence of magic.");
-    export const LightDarkness = new Edges("Light/Darkness", "Create illumination or darkness.");
-    export const Prestidigitation = new Edges("Prestidigitation", "Perform minor magic tricks.");
-    export const MageHand = new Edges("Mage Hand", "Manipulate items at a distance.");
-    export const CharmPerson = new Edges("Charm Person", "Make someone act like a close friend.");
-    export const MagicMissile = new Edges("Magic Missile", "Shoot energy darts that never miss.");
-    export const Summon = new Edges("Summon", "Make an allied creature appear.");
-    export const ArcaneMark = new Edges("Arcane Mark", "Write visible or invisible messages.");
-    export const Mending = new Edges("Mending", "Repair a break or tear in an object.");
+    // Additional Magic & Utility Edges
+    export const Arcana0 = new Edges("Arcana (Level 0)", "You know and can cast two Level 0 Arcane Spells.");
+    export const Arcana01 = new Edges("Arcana (Basic)", "You know and can cast one Level 0 and one Level 1 Arcane Spell.");
+    export const Dowsing = new Edges("Dowsing", "Locate water, metals, gems, and secret compartments.");
+    export const Nondetection = new Edges("Nondetection", "Difficult to locate through scrying or magical means.");
+
+    // Choice groups for conditional logic (e.g., "If you already have X, take Y")
+    export const AcrobatEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Lucky, Evasion], [])], []
+    );
+
+    export const PrizefighterEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Brawler1, Brute1], [])], []
+    );
+
+    export const RuffianEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Ambush, StunningBlow], [])], []
+    );
+
+    export const WoodardEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Sneaky, Sentinel], [])], []
+    );
+
+    export const SpyEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Burglar, Sneaky], [])], []
+    );
+
+    export const StreetUrchinEdgeSelection = new SelectionPackage<Edges>(
+        [Filcher, Elusive], 
+        [new ChoiceGroup(1, [Sneaky], [])], [] // Simplified logic for selection
+    );
 
     // --- Choice Groups ---
 
     export const DwarfEdgeSelection = new SelectionPackage<Edges>(
         [DeterminedEdge], 
-        [new ChoiceGroup(1, [LowLightVision, UnderSense, PackMule], [])]
+        [new ChoiceGroup(1, [LowLightVision, UnderSense, PackMule], [])], []
     );
 
     export const ElfEdgeSelection = new SelectionPackage<Edges>(
         [DireFocus], 
-        [new ChoiceGroup(1, [LowLightVision, SylvanStep, ElvenAccuracy], [])]
+        [new ChoiceGroup(1, [LowLightVision, SylvanStep, ElvenAccuracy], [])], []
     );
 
     export const OrcEdgeSelection = new SelectionPackage<Edges>(
         [Vengeful], 
-        [new ChoiceGroup(1, [Brute1, LowLightVision, OrcSavagery], [])]
+        [new ChoiceGroup(1, [Brute1, LowLightVision, OrcSavagery], [])], []
     );
 
     export const IxianEdgeSelection = new SelectionPackage<Edges>(
         [InfernalHeritage],
-        [new ChoiceGroup(1, [FireResistance, Flight, InnateSpell], [])]
+        [new ChoiceGroup(1, [FireResistance, Flight, InnateSpell], [])], []
     );
 
     export const HalflingEdgeSelection = new SelectionPackage<Edges>(
 
         [SecondBreakfast],
 
-        [new ChoiceGroup(1, [Sneaky, Elusive, Durable], [])]
+        [new ChoiceGroup(1, [Sneaky, Elusive, Durable], [])], []
 
     ) 
 
-    export const HumanEdgeSelection = new SelectionPackage<Edges>([Adaptable], []);
+    export const HumanEdgeSelection = new SelectionPackage<Edges>([Adaptable], [], []);
+
+    export const NoneEdgeSelection = new SelectionPackage<Edges>([], [], []);
 
     export const RaceRecord : Record<RaceType, SelectionPackage<Edges>> = {
         Dwarf: DwarfEdgeSelection,
@@ -106,50 +134,107 @@ export namespace EdgesData {
         Halfling : HalflingEdgeSelection
     }
 
-    // Backgrounds / Professions
-    export const RatCatcherSelection = new SelectionPackage<Edges>([Crucible], []);
-    
-    export const EscapedThrallSelection = new SelectionPackage<Edges>([Crucible], []);
-    
-    export const AcrobatSelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(1, [Lucky, Evasion], [])] // Logic: Take Evasion if already Lucky
-    );
+    export const JobToEdgeRecord : Record<JobType, SelectionPackage<Edges>> = {
+        // Performer & Scholarly
+        "Acrobat": AcrobatEdgeSelection,
+        "Jester": new SelectionPackage<Edges>([CuttingWords], [], []),
+        "Contortionist": NoneEdgeSelection, // No edges provided in text
+        "Minstrel": NoneEdgeSelection,
+        "Scholar": NoneEdgeSelection,
+        "Storyteller/Thespian": NoneEdgeSelection,
 
-    export const PrizefighterSelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(1, [Brawler1, Brute1], [])]
-    );
+        // Religious
+        "Cultist": new SelectionPackage<Edges>([Hex1], [], []),
+        "Inquisitor": new SelectionPackage<Edges>([Grace], [], []),
+        "Touched/Anchorite": new SelectionPackage<Edges>([Grace], [], []),
+        "Accursed": NoneEdgeSelection,
+        "Acolyte": NoneEdgeSelection,
+        "Pariah": NoneEdgeSelection,
 
-    export const RuffianSelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(1, [Ambush, StunningBlow], [])]
-    );
+        // Martial
+        "Armiger": new SelectionPackage<Edges>([Armaments], [], []),
+        "Mercenary/Hedge": new SelectionPackage<Edges>([Armaments], [], []),
+        "Prizefighter": PrizefighterEdgeSelection,
+        "Ruffian/Enforcer": RuffianEdgeSelection,
+        "Woodard/Warden": WoodardEdgeSelection,
+        "Barbarian": NoneEdgeSelection,
 
-    export const WoodardSelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(1, [Sneaky, Sentinel], [])]
-    );
+        // Arcane
+        "Adept/Arcane Apprentice": new SelectionPackage<Edges>([Arcana01], [], []),
+        "Alchemy Apprentice": new SelectionPackage<Edges>([Alchemy], [], []),
+        "Arcane Researcher": new SelectionPackage<Edges>([Arcana0], [], []),
+        "Charlatan": new SelectionPackage<Edges>([RitualSpell], [], []),
+        "Dowser": new SelectionPackage<Edges>([Dowsing, Nondetection], [], []),
+        "Warlock": new SelectionPackage<Edges>([Familiar], [], []),
 
-    export const ScoundrelSelection = new SelectionPackage<Edges>([Filcher, Elusive], []);
+        // Rogue
+        "Gambler": new SelectionPackage<Edges>([ExpertGamester], [], []),
+        "Scoundrel": new SelectionPackage<Edges>([Elusive, Filcher], [], []),
+        "Sharp": new SelectionPackage<Edges>([Sentinel], [], []),
+        "Spy": SpyEdgeSelection,
+        "Street Urchin": StreetUrchinEdgeSelection,
+        "Fence": NoneEdgeSelection,
 
-    export const StreetUrchinSelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(2, [Filcher, Elusive, Sneaky], [])]
-    );
+        // Skilled Laborer
+        "Escaped Peasant/Thrall": new SelectionPackage<Edges>([Crucible], [], []),
+        "Apprentice Artisan": NoneEdgeSelection,
+        "Apprentice Bureaucrat": NoneEdgeSelection,
+        "Free Laborer": NoneEdgeSelection,
+        "Apprentice Crafter": NoneEdgeSelection,
+        "Apprentice Mercantiler": NoneEdgeSelection
+    }
 
-    export const SpySelection = new SelectionPackage<Edges>(
-        [], 
-        [new ChoiceGroup(1, [Burglar, Sneaky], [])]
-    );
+    export const JobSubsetToEdgeRecord : Record<JobSubset, SelectionPackage<Edges>> = {
+        [JobSubsetEnum.None]: NoneEdgeSelection,
+        // Vagabond / Escaped Thrall Variants
+        [JobSubsetEnum.HouseServant]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Farmhand]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Laborer]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Sailor]: new SelectionPackage<Edges>([Crucible], [], []),
+        
+        // Martial Subsets (Inherit Armaments)
+        [JobSubsetEnum.HedgeKnight]: new SelectionPackage<Edges>([Armaments], [], []),
+        [JobSubsetEnum.Mercenary]: new SelectionPackage<Edges>([Armaments], [], []),
+        [JobSubsetEnum.Bandit]: new SelectionPackage<Edges>([Armaments], [], []),
 
-    export const ArmigerSelection = new SelectionPackage<Edges>([Armaments], []);
-    
-    export const AdeptSelection = new SelectionPackage<Edges>(
-        [],
-        [
-            new ChoiceGroup(1, [DetectMagic, LightDarkness, Prestidigitation, MageHand], []),
-            new ChoiceGroup(1, [CharmPerson, MagicMissile, Summon], [])
-        ]
-    );
+        // Spy Specializations
+        [JobSubsetEnum.BurglarSpecialist]: new SelectionPackage<Edges>([Burglar], [], []),
+        
+        // Placeholder for remaining enums to satisfy Record type
+        [JobSubsetEnum.Jeweler]: NoneEdgeSelection,
+        [JobSubsetEnum.Arbalist]: NoneEdgeSelection,
+        [JobSubsetEnum.Scrivener]: NoneEdgeSelection,
+        [JobSubsetEnum.Advocate]: NoneEdgeSelection,
+        [JobSubsetEnum.Cartographer]: NoneEdgeSelection,
+        [JobSubsetEnum.Inspector]: NoneEdgeSelection,
+        [JobSubsetEnum.Interpreter]: NoneEdgeSelection,
+        [JobSubsetEnum.Smith]: NoneEdgeSelection,
+        [JobSubsetEnum.Carpenter]: NoneEdgeSelection,
+        [JobSubsetEnum.MoneyChanger]: NoneEdgeSelection,
+        [JobSubsetEnum.Ambler]: NoneEdgeSelection,
+        [JobSubsetEnum.Chef]: NoneEdgeSelection,
+        [JobSubsetEnum.Brewer]: NoneEdgeSelection,
+        [JobSubsetEnum.Farmer]: NoneEdgeSelection,
+        [JobSubsetEnum.Herder]: NoneEdgeSelection,
+        [JobSubsetEnum.Oratory]: NoneEdgeSelection,
+        [JobSubsetEnum.Theology]: NoneEdgeSelection,
+        [JobSubsetEnum.Vintner]: NoneEdgeSelection,
+        [JobSubsetEnum.Esoterica]: NoneEdgeSelection,
+        [JobSubsetEnum.ActiveService]: NoneEdgeSelection,
+        [JobSubsetEnum.Freelance]: NoneEdgeSelection,
+        [JobSubsetEnum.LordSlain]: NoneEdgeSelection,
+        [JobSubsetEnum.Disgraced]: NoneEdgeSelection,
+        [JobSubsetEnum.Discharged]: NoneEdgeSelection,
+        [JobSubsetEnum.IxianRaver]: NoneEdgeSelection,
+        [JobSubsetEnum.IxianArchon]: NoneEdgeSelection,
+        [JobSubsetEnum.Dragon]: NoneEdgeSelection,
+        [JobSubsetEnum.Lich]: NoneEdgeSelection,
+        [JobSubsetEnum.Wizard]: NoneEdgeSelection,
+        [JobSubsetEnum.ElderGod]: NoneEdgeSelection,
+        [JobSubsetEnum.Moloch]: NoneEdgeSelection,
+        [JobSubsetEnum.Kain]: NoneEdgeSelection,
+        [JobSubsetEnum.ThreeTrinketRandom]: NoneEdgeSelection,
+        [JobSubsetEnum.OneTrinketChoice]: NoneEdgeSelection,
+        [JobSubsetEnum.DisguiseSpecialist]: NoneEdgeSelection
+    }
 }

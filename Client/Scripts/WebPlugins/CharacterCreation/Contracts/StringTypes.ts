@@ -121,7 +121,7 @@ export type PerformerScholarlyJobType =
 export type ReligiousJobType = 
     "Accursed" | "Acolyte" | "Cultist" | "Inquisitor" | "Pariah" | "Touched/Anchorite"
 export type MartialJobType = 
-    "Armiger" | "Barbarian" | "Mercentary/Hedge" | "Prizefighter" | "Ruffian/Enforcer" | "Woodard/Warden"
+    "Armiger" | "Barbarian" | "Mercenary/Hedge" | "Prizefighter" | "Ruffian/Enforcer" | "Woodard/Warden"
 export type ArcaneJobType = 
     "Adept/Arcane Apprentice" | "Alchemy Apprentice" | "Arcane Researcher" | "Charlatan" | "Dowser" | "Warlock"
 export type RogueJobType = 
@@ -175,6 +175,8 @@ export enum JobSubsetEnum {
     ElderGod = "Elder God (Ghoelb)",
     Moloch = "Moloch",
     Kain = "Kain",
+    ThreeTrinketRandom = "Three trinkets random",
+    OneTrinketChoice = "One trinket choice",
 
     // Spy Specializations
     DisguiseSpecialist = "Disguise Specialist",

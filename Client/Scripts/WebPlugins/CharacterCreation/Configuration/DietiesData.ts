@@ -7,7 +7,6 @@ export namespace ReligionData {
     
     const resolveDeityPath = (pictureName : string) => getCharacterCreatorPicturePath("/Deity Symbols and Runes/" + pictureName)
     
-    
     export const possibleDeities = [
         
         new Deity({name:"Enoch", id: Utility.idGenerator.newID()}, 
@@ -48,7 +47,7 @@ export namespace ReligionData {
 
     export const ReligionSelection = new SelectionPackage<Deity>(
         [], 
-        [new ChoiceGroup(3, possibleDeities, [])]
+        [new ChoiceGroup(3, possibleDeities, [])], []
     ); 
 
 }

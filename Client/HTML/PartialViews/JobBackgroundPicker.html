@@ -1,11 +1,11 @@
 <div class="centered">
-    <div class="centered largeText">
-        <div>Profession</div>
+    <div class="small-gap centered largeText">
+        <h4>Profession</h4>
         <select class="wizard-select pop-content" data-bind="options: PossibleProfessions, optionsCaption: 'Choose', value: chosenProfession"></select>
     </div>
 
-    <div class="centered largeText">
-        <div>Job</div>
+    <div class="small-gap centered largeText">
+        <h4>Job</h4>
         <select class="centered wizard-select pop-content" data-bind="options: PossibleJobs, optionsCaption: 'Choose', value: chosenJob"></select>
     </div>
     
@@ -15,10 +15,10 @@
         </div>
     <!-- /ko-->
     
-    <div class="centered largeText" data-bind="text: chosenJobBackground().Story"></div>
+    <div class="small-gap centered largeText" data-bind="text: chosenJobBackground().Story"></div>
     
-    <div class="centered largeText">
-        <div>Sub-Job</div>
+    <div class="small-gap centered largeText">
+        <h4>Job Subsection</h4>
         <select class="centered wizard-select pop-content" data-bind="options: PossibleJobSubset, optionsCaption: 'Choose', value: chosenJobSubset"></select>
     </div>
 </div>

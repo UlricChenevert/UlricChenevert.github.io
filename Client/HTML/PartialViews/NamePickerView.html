@@ -1,21 +1,26 @@
 <div>
-    <div class="title">
-        <h4 data-bind="text: FriendlyName"></h4>
-        
-        <button class="pop-content button-icon centered" data-bind="click: Randomize">
-            <img src="\Images\dice-icon.svg" alt="Randomize"/>
-        </button>
-    </div>
+    <div class="character-name hoverable-container" data-bind="text: namePreview"></div>
+    <hr>
 
+    <h4>Gender Expression</h4>
+    <select class="wizard-select" data-bind="options: possibleGenders, optionsCaption: 'Choose', value: chosenGender"></select>
+    
+    <hr>
+    
+    <h4>Name Decoration</h4>
+    <select class="wizard-select" data-bind="options: possibleNameDecorations, optionsText: function(item) {return item.Preview}, value: chosenDecorations"></select>
+    
     <hr>
 
     <div class="name-picker">
         <div data-bind="PartialView: NamePicker"></div>
+        <!-- ko ifnot: notShowingBynames -->
         <div data-bind="PartialView: BynamePicker"></div>
+        <!-- /ko -->
+        <!-- ko ifnot: notShowingEpithets -->
         <div data-bind="PartialView: EpithetPicker"></div>
+        <!-- /ko -->
     </div>
 
-
-    <div class="character-name hoverable-container" data-bind="text: fullName"></div>
 
 </div>

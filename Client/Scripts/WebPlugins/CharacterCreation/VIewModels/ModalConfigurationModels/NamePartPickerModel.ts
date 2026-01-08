@@ -13,12 +13,14 @@ export class NamePartPickerModel implements IWizardModel<void, string, string | 
     chosenValue : ko.Observable<string>
 
     isCustom : ko.Observable<boolean>
+    possibleOptions : ObservableArray<MultiTaggedCharacterData<string>>
 
-    constructor (public FriendlyName : string, public possibleOptions : MultiTaggedCharacterData<string>[]) {
+    constructor (public FriendlyName : string, possibleOptions : MultiTaggedCharacterData<string>[], public overrideOnNotFound = false) {
         this.chosenValueOption = ko.observable<MultiTaggedCharacterData<string> | undefined>(possibleOptions[0])
         
         this.chosenValue = ko.observable(possibleOptions[0].Payload);
         this.isCustom = ko.observable(false)
+        this.possibleOptions = ko.observableArray(possibleOptions)
 
         this.chosenValueOption.subscribe((newValue)=>{
             if (newValue === undefined) return
@@ -36,16 +38,19 @@ export class NamePartPickerModel implements IWizardModel<void, string, string | 
     
     Init (chosenValue? : string) {
         if (chosenValue) {
-            this.chosenValueOption(this.possibleOptions.find((testValue)=>chosenValue == testValue.Payload))
+            this.chosenValueOption(this.possibleOptions().find((testValue)=>chosenValue == testValue.Payload))
             
-            if (this.chosenValueOption() === undefined) 
-                this.isCustom(true)
+            if (this.chosenValueOption() === undefined)
+                if (this.overrideOnNotFound)
+                    this.chosenValueOption(this.possibleOptions()[0])
+                else
+                    this.isCustom(true)
             
             this.chosenValue(chosenValue)
         }
         return Promise.resolve()
     }
     
-    // Randomize () {this.chosenValueOption(Utility.RandomElement(this.possibleOptions))}
+    Randomize () {this.chosenValueOption(Utility.RandomElement(this.possibleOptions()))}
     Evaluate () {return this.chosenValue()}
 }

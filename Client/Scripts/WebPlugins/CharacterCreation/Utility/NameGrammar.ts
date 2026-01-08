@@ -33,7 +33,7 @@ export class NameGrammar {
     createPossessivePhrase() {
         this.currentLength++;
 
-        return NameUtility.GeneratePersonName(this.settings).name + "'s " + Utility.capitalize(this.selectRandomNounRule());
+        return NameUtility.GeneratePersonName(this.settings) + "'s " + Utility.capitalize(this.selectRandomNounRule());
     }
 
     // combineNounAndVerb() {

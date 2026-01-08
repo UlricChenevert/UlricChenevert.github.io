@@ -9,58 +9,101 @@ import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpit
 import { CharacterName } from "../Contracts/CharacterName.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
 import { SourceTypes } from "../Contracts/StringTypes.js"
-import { TaggedCharacterData, ChoiceGroup, MultiTaggedCharacterData, TaggedObservableSelectionPackage, SelectionPackage } from "../Contracts/TaggedData.js"
+import { TaggedCharacterData, ChoiceGroup, MultiTaggedCharacterData, TaggedObservableSelectionPackage, SelectionPackage, OverrideChoiceLambda } from "../Contracts/TaggedData.js"
 import { CreateObjectModel } from "../VIewModels/CreateObjectModel.js"
-import { getMatchingMultiTaggedData } from "./FilterUtility.js"
+import { getMatchingMultiTaggedData, flattenAndFilterSelectionPackage } from "./FilterUtility.js"
+import { createTaggedData } from "./TagUtility.js"
+
+const updateSelectionBySource = <SelectionType>(newSelections : SelectionType[], sourceToFilterBy : SourceTypes, updateTarget : Observable<TaggedCharacterData<SelectionType>[]>, override : boolean)=>{
+    const nonSourceOverrideSelections = (!override)? updateTarget() : updateTarget().filter((taggedSource)=>{
+        const isNotOldSourceData = taggedSource.Tags.Source != sourceToFilterBy
+        return isNotOldSourceData
+    })
+
+    const newOverrideChoices : TaggedCharacterData<SelectionType>[] = newSelections.map(x=>{
+        return {Tags : {Source: sourceToFilterBy}, Payload: x}
+    })
+    nonSourceOverrideSelections.push(...newOverrideChoices)
+
+    updateTarget(nonSourceOverrideSelections)
+}
 
 const updateGenericSelectionPackage = <SelectionType>(
     dataSourceSelection : SelectionPackage<SelectionType>, 
     updateTarget : TaggedObservableSelectionPackage<SelectionType>,
-    sourceConfiguration : SourceTypes
+    sourceConfiguration : SourceTypes,
+    override = true,
 ) => {
     // Remove all prior created edge data (from Race)
-    const nonSourceFixedSelections = updateTarget.FixedSelection().filter((taggedSource)=>taggedSource.Tags.Source != sourceConfiguration)
-    
-    // Add new possible edge selections (Fixed)
-    const newChosenEdges : TaggedCharacterData<SelectionType>[] = dataSourceSelection.FixedSelection.map(x=>{
-        return {Tags : {Source: sourceConfiguration}, Payload: x}
-    })
-    nonSourceFixedSelections.push(...newChosenEdges)
-    updateTarget.FixedSelection(nonSourceFixedSelections)
+    updateSelectionBySource(dataSourceSelection.FixedSelection, sourceConfiguration, updateTarget.FixedSelection, override)
     
     // Add new possible edge selections (Selectable)
-    const nonSourceChoiceSelections = updateTarget.ChoiceSelection().filter((taggedSource)=>taggedSource.Tags.Source != sourceConfiguration)
+    updateSelectionBySource(dataSourceSelection.ChoiceSelection, sourceConfiguration, updateTarget.ChoiceSelection, override)
 
-    const newEdgeChoices : TaggedCharacterData<ChoiceGroup<SelectionType>>[] = dataSourceSelection.ChoiceSelection.map(x=>{
-        return {Tags : {Source: sourceConfiguration}, Payload: x}
-    })
-    nonSourceChoiceSelections.push(...newEdgeChoices)
+    // Add new possible edge selections (Override)
+    updateSelectionBySource(dataSourceSelection.OverrideSelection, sourceConfiguration, updateTarget.OverridePossibleSelection, override)
 
-    updateTarget.ChoiceSelection(nonSourceChoiceSelections)
+    // Add new possible edge selections (Override)
+    if (dataSourceSelection.OverridePossibleChoiceSelection !== undefined) {
+        const targetMap = updateTarget.OverridePossibleChoiceSelection;
+
+        // 1. Remove old: Identify keys matching the source and delete them
+        for (const entries of targetMap.entries()) {
+            if (entries[1].Tags.Source === sourceConfiguration) {
+                targetMap.delete(entries[0]);
+            }
+        }
+
+        // 2. Add new: Map the source selections into the target Map
+        addNewOverrides(dataSourceSelection.OverridePossibleChoiceSelection, targetMap)
+    }
+}
+
+export const updateBackgroundData = <SelectionType>(
+    dataSourceSelection : SelectionPackage<SelectionType>, 
+    updateTarget : TaggedObservableSelectionPackage<SelectionType>,
+    override = true
+) => {
+    updateGenericSelectionPackage(dataSourceSelection, updateTarget, "Background", override)
+}
+
+export const updateBackgroundItems = (characterData : ConfiguredCharacterData)=>{
+    updateBackgroundData(ItemData.JobTypeToItem[characterData.Job()], characterData.ItemSelections())
+    updateBackgroundData(ItemData.JobSubsetToItem[characterData.JobSubset()], characterData.ItemSelections(), false)
+
+    // updateBackgroundData(ItemData.TrinketUpdates[characterData.Job()], )
+}
+
+export const updateBackgroundEdges = (characterData : ConfiguredCharacterData)=>{
+    updateBackgroundData(EdgesData.JobToEdgeRecord[characterData.Job()], characterData.EdgeSelections())
+    updateBackgroundData(EdgesData.JobSubsetToEdgeRecord[characterData.JobSubset()], characterData.EdgeSelections(), false)
+}
+
+export const updateBackgroundSkills = (characterData : ConfiguredCharacterData)=>{
+    updateBackgroundData(SkillsData.JobToSkillRecord[characterData.Job()], characterData.SkillsSelection())
+    updateBackgroundData(SkillsData.JobSubsetToSkillRecord[characterData.JobSubset()], characterData.SkillsSelection(), false)
+}
+
+export const updateBackgroundLanguages = (characterData : ConfiguredCharacterData)=>{
+    updateGenericSelectionPackage(LanguageData.JobTypeToLanguage[characterData.Job()], characterData.LanguageSelections(), "Background")
+    updateGenericSelectionPackage(LanguageData.JobSubsetToLanguage[characterData.JobSubset()], characterData.LanguageSelections(), "Background", false)
 }
 
 
-export const updateItemsData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
+export const updateRaceItemsData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
     updateGenericSelectionPackage(ItemData.RaceRecord[characterData.Race()], characterData.ItemSelections(), source)
 }
 
-export const updateEdgesData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
+export const updateRaceEdgesData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
     updateGenericSelectionPackage(EdgesData.RaceRecord[characterData.Race()], characterData.EdgeSelections(), source)
 }
 
-export const updateSkillsData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
+export const updateRaceSkillsData = (characterData : ConfiguredCharacterData, source : SourceTypes) => {
     updateGenericSelectionPackage(SkillsData.RaceRecord[characterData.Race()], characterData.SkillsSelection(), source)
 }
 
 export const updateRaceLanguageData = (characterData : ConfiguredCharacterData) => {
     updateGenericSelectionPackage(LanguageData.RaceRecord[characterData.Race()], characterData.LanguageSelections(), "Ancestry")
-}
-
-export const updateJobLanguageData = (characterData : ConfiguredCharacterData) => {
-    console.warn("Languages not implemented")
-    // const languages = getMatchingMultiTaggedData(LanguageData.TaggedLanguageData, characterData)
-    // const language = Utility.RandomElement(languages).Payload
-    // characterData.Languages([new LearnedLanguage(language, true, true, true)])
 }
 
 export const updateNameData = (characterData : ConfiguredCharacterData) => {
@@ -78,14 +121,18 @@ const updateNamePart = (possibleNamePart : MultiTaggedCharacterData<string>[], c
     return NamePart
 }
 
-export const flattenSelectionPackage = <SelectionType>(selectionPackage: TaggedObservableSelectionPackage<SelectionType>) => {
+export const flattenAndCombineSelectionPackage = <SelectionType>(selectionPackage: TaggedObservableSelectionPackage<SelectionType>, characterData : ConfiguredCharacterData) => {
+    const filteredChoices = flattenAndFilterSelectionPackage(selectionPackage, characterData)
+    
     // Return flattened edges
     const result : SelectionType[] = []
 
-    selectionPackage.FixedSelection().forEach((choice)=>result.push(choice.Payload))
+    result.push(...filteredChoices.fixedSelection.map((choice)=>choice.Payload))
 
-    selectionPackage.ChoiceSelection().forEach((choice)=>{
-        result.push(...choice.Payload.selectedValues)
+    filteredChoices.filteredChoiceSelection.forEach((choice)=>{
+        // I am assuming that the UI successfully disallows you from selecting un-selectable values
+        
+        result.push(...choice.choiceReference.Payload.selectedValues)
     })
     
     return result
@@ -129,3 +176,22 @@ export const createGenericPicker = <
 
     return modalBundle;
 };
+
+export const addNewOverrides = <SelectionType>(sourceOverrides : Map<ChoiceGroup<SelectionType>, TaggedCharacterData<OverrideChoiceLambda<SelectionType>>>, overrideTarget : Map<ChoiceGroup<SelectionType>, TaggedCharacterData<OverrideChoiceLambda<SelectionType>>>)=>{
+    sourceOverrides.forEach((lambda, selection) => {
+            overrideTarget.set(selection, lambda);
+        });
+}
+
+// const nonSourceOverrideSelections = (!override)? updateTarget.OverridePossibleSelection() : updateTarget.OverridePossibleSelection().filter((taggedSource)=>{
+    //     const isNotOldSourceData = taggedSource.Tags.Source != sourceConfiguration
+    //     const isNotOverridden = (overrideLambdas?.[2])? overrideLambdas[2](taggedSource) : true
+    //     return isNotOldSourceData && isNotOverridden
+    // })
+
+    // const newOverrideChoices : TaggedCharacterData<SelectionType>[] = dataSourceSelection.OverrideSelection.map(x=>{
+    //     return {Tags : {Source: sourceConfiguration}, Payload: x}
+    // })
+    // nonSourceOverrideSelections.push(...newOverrideChoices)
+
+    // updateTarget.OverridePossibleSelection(nonSourceOverrideSelections)

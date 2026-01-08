@@ -1,6 +1,23 @@
-import { JobType, ProfessionType, RaceType } from "../Contracts/StringTypes.js";
-import { ChoiceGroup, Item, MultiTaggedCharacterData, SelectionPackage } from "../Contracts/TaggedData.js";
+import { Utility } from "../../../WebCore/Utility.js";
+import { JobSubset, JobSubsetEnum, JobType, ProfessionType, RaceType } from "../Contracts/StringTypes.js";
+import { ChoiceGroup, Item, MultiTaggedCharacterData, OverrideChoiceLambda, SelectionPackage, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
+import { ancestrySourceTag, backgroundSourceTag, createTaggedData, humanTag, innateSourceTag } from "../Utility/TagUtility.js";
+
+const genericCoinFactory = (amount : number, Description? : string) : Item => {
+    return new Item("Coin", amount, Description, amount)
+}
+
+const ItemToCoinFactory = (item : Item, Description? : string) : Item => {
+    const amount = (item.Amount)? item.Amount : 1
+    const cost = (item.Value)? item.Value : 0
+    return genericCoinFactory(amount * cost, Description)
+}
+
+const TrinketToCoinFactory = (item : Item) : Item => {
+    const amount = (item.Amount)? item.Amount : 0
+    return genericCoinFactory(amount, "Earned from selling " + item.Name)
+}
 
 export namespace ItemData { 
     // --- Item Definitions ---
@@ -13,9 +30,9 @@ export namespace ItemData {
     export const UtilityKnife = new Item("Knife", 1, "Light Melee & Ranged, 1d2 damage, Range: Nearby. Can be thrown.");
     export const Sack = new Item("Sack", 1, "Holds 15 lbs / 300 coins");
     export const HempTwine = new Item("Hemp twine", 1, "10 feet");
-    export const BeltPouchWithCoins = new Item("Leather belt pouch", 3 * DiceRoll.sixSidedDieRoll(), "Holds 80 coins (4 lbs)");
+    export const Coins = new Item("Coins", 3 * DiceRoll.sixSidedDieRoll(), "Coins in leather belt pouch, holding a max of 80 coins (4 lbs)");
     export const StandardRations = new Item("Rations", DiceRoll.fourSidedDieRoll());
-    export const Wineskin = new Item("Wineskin", DiceRoll.fourSidedDieRoll(), "Filled with water");
+    export const Water = new Item("Wineskin", DiceRoll.fourSidedDieRoll(), "Filled with water");
 
     // --- Melee Weapon Options ---
     export const Axe = new Item("Axe", 1, "Simple Melee & Ranged, 1d6 damage, Range: Nearby");
@@ -53,8 +70,11 @@ export namespace ItemData {
     export const TobaccoPouch = new Item("Tobacco pouch");
     export const WalkingStick = new Item("Walking stick", undefined, "Light Melee Weapon, 1d4 damage");
     export const Handkerchief = new Item("Pocket handkerchief");
-    export const HalflingRations = new Item("Rations", undefined, "Hard cheese, bread, and dried meat (replaces standard rations)");
-    export const BerryWine = new Item("Flask of berry wine or dark beer");
+    export const Cheese = new Item("Hard cheese", 1)
+    export const Bread = new Item("Bread", 2)
+    export const DriedMeat = new Item("Dried meat", 1)
+    export const BerryWine = new Item("Flask of berry wine");
+    export const DarkBeer = new Item("Flask of Dark Beer") 
 
     // Orc
     export const OrcArmor = new Item("Light Armor", undefined, "Made of hides and piecemeal metal and leather armor salvaged parts.");
@@ -163,56 +183,141 @@ export namespace ItemData {
     export const NarrowDaggers = new Item("Narrow daggers", 2, "Light Melee/Ranged (1d4), concealed.");
 
     // --- Trinkets & Special Items ---
-    export const BlackArrow = new Item("Arrow, Black", 1, "At the end of the Encounter, you can always find it within 1d6 turns if you search.");
-    export const LuckyCopperCoin = new Item("Coin, Lucky Copper", 1, "It always lands on your mental choice of heads or tails.");
-    export const GlowingCrystal = new Item("Crystal, glowing", 1, "Emits bluish light continually. Illuminates an area Close. Unaffected by Darkness spell.");
-    export const CurvedDagger = new Item("Dagger, curved", 1, "1d4 damage. Contains 4 gems (10 coins each). If removed, gems regrow after one week.");
-    export const BountifulFlask = new Item("Flask, Bountiful", 1, "Refills with water for two people/day. If wine is added, refills with wine for one week.");
-    export const GlassMarbles = new Item("Glass Marbles, dozen", 1, "Standard Action to cast. DEX Test or be Down. Returns to pouch with 1 min concentration.");
-    export const SilentHammer = new Item("Silent Hammer", 1, "Makes no sound when used for work. Weapon: Simple Melee & Ranged, 1d6 damage, Range: Nearby.");
-    export const SkeletonKey = new Item("Key, Skeleton", 1, "1 in 4 chance to work on any mundane lock. Can retry the following day.");
-    export const FoldingKnife = new Item("Knife with folding blade", 1, "Easy to conceal. Never dulls, won't break on Critical Failure. 1d2 damage, Range: Nearby.");
-    export const FishCharmNecklace = new Item("Leather Necklace with Lucky Fish Charm", 1, "Advantage on INT Test when fishing or Foraging at a shoreline.");
-    export const LuckyDice = new Item("Lucky Dice, pair", 1, "Once per day, reroll a dice game result and take the better result.");
-    export const Lodestone = new Item("Lodestone on a leather thong", 1, "Points north. Can be attuned to a touched target with 1 min concentration.");
-    export const FloralPerfume = new Item("Perfume, Floral (Ud4)", 1, "Advantage on CHA Tests for info/favors. Lasts 1 hour per application.");
-    export const InsectRing = new Item("Ring, silver with insect motif", 1, "Insects avoid you. Insect creatures must pass WIS Test to attack.");
-    export const SpiderSilkRope = new Item("Rope, spider silk rope, 100’", 1, "Holds 1200 lbs. Never tangles. 8 HP to sever.");
-    export const RosewoodFlute = new Item("Rosewood flute", 1, "Standard Action: Once per day, GM rerolls NPC Reaction Table.");
-    export const MagicSatchel = new Item("Satchel, tooled leather", 1, "Holds 60 lbs (1200 coins) but weighs 10 lbs. Living creatures die after 24 hours.");
-    export const SneezingPowder = new Item("Sneezing powder, packets (Ud6)", 1, "Reaction: Target fails CON Test or sneezes (Disadvantage on Actions). No use in wind.");
-    export const SpringBladeStaff = new Item("Staff, Walking with concealed blade", 1, "Functions as Spear: Simple Melee/Ranged, 1d6 damage, Range: Nearby.");
-    export const JadeMonkeyStatuette = new Item("Lucky Statuette Jade Monkey", 1, "Advantage on one INT Ability Test per day while held.");
+    export const BlackArrow = new Item("Arrow, Black", 1, "At the end of the Encounter, you can always find it within 1d6 turns if you search.", 5);
+    export const LuckyCopperCoin = new Item("Coin, Lucky Copper", 1, "It always lands on your mental choice of heads or tails.", 5);
+    export const GlowingCrystal = new Item("Crystal, glowing", 1, "Emits bluish light continually. Illuminates an area Close. Unaffected by Darkness spell.", 20);
+    export const CurvedDagger = new Item("Dagger, curved", 1, "1d4 damage. Contains 4 gems (10 coins each). If removed, gems regrow after one week.", 40);
+    export const BountifulFlask = new Item("Flask, Bountiful", 1, "Refills with water for two people/day. If wine is added, refills with wine for one week.", 15);
+    export const GlassMarbles = new Item("Glass Marbles, dozen", 1, "Standard Action to cast. DEX Test or be Down. Returns to pouch with 1 min concentration.", 5);
+    export const SilentHammer = new Item("Silent Hammer", 1, "Makes no sound when used for work. Weapon: Simple Melee & Ranged, 1d6 damage, Range: Nearby.", 10);
+    export const SkeletonKey = new Item("Key, Skeleton", 1, "1 in 4 chance to work on any mundane lock. Can retry the following day.", 20);
+    export const FoldingKnife = new Item("Knife with folding blade", 1, "Easy to conceal. Never dulls, won't break on Critical Failure. 1d2 damage, Range: Nearby.", 10);
+    export const FishCharmNecklace = new Item("Leather Necklace with Lucky Fish Charm", 1, "Advantage on INT Test when fishing or Foraging at a shoreline.", 5);
+    export const LuckyDice = new Item("Lucky Dice, pair", 1, "Once per day, reroll a dice game result and take the better result.", 5);
+    export const Lodestone = new Item("Lodestone on a leather thong", 1, "Points north. Can be attuned to a touched target with 1 min concentration.", 10);
+    export const FloralPerfume = new Item("Perfume, Floral (Ud4)", 1, "Advantage on CHA Tests for info/favors. Lasts 1 hour per application.", 5);
+    export const InsectRing = new Item("Ring, silver with insect motif", 1, "Insects avoid you. Insect creatures must pass WIS Test to attack.", 10);
+    export const SpiderSilkRope = new Item("Rope, spider silk rope, 100’", 1, "Holds 1200 lbs. Never tangles. 8 HP to sever.", 15);
+    export const RosewoodFlute = new Item("Rosewood flute", 1, "Standard Action: Once per day, GM rerolls NPC Reaction Table.", 10);
+    export const MagicSatchel = new Item("Satchel, tooled leather", 1, "Holds 60 lbs (1200 coins) but weighs 10 lbs. Living creatures die after 24 hours.", 20);
+    export const SneezingPowder = new Item("Sneezing powder, packets (Ud6)", 1, "Reaction: Target fails CON Test or sneezes (Disadvantage on Actions). No use in wind.", 10);
+    export const SpringBladeStaff = new Item("Staff, Walking with concealed blade", 1, "Functions as Spear: Simple Melee/Ranged, 1d6 damage, Range: Nearby.", 10);
+    export const JadeMonkeyStatuette = new Item("Lucky Statuette Jade Monkey", 1, "Advantage on one INT Ability Test per day while held.", 10);
+    export const Pliers = new Item("Pliers", 1)
+    export const FineWoodShavers = new Item("Fine wood shavers", 1)
+
+    export const basicTrinketSection = [
+        BlackArrow, LuckyCopperCoin, GlowingCrystal, CurvedDagger, BountifulFlask,
+        GlassMarbles, SilentHammer, SkeletonKey, FoldingKnife, FishCharmNecklace,
+        LuckyDice, Lodestone, FloralPerfume, InsectRing, SpiderSilkRope,
+        RosewoodFlute, MagicSatchel, SneezingPowder, SpringBladeStaff, JadeMonkeyStatuette
+    ]
+
+    // --- Performance & Entertainment ---
+    export const PerformanceOutfit = new Item("Performance outfit", 1, "Bright and decorative with bells, sequins, or tassels");
+    export const JugglingClubs = new Item("Juggling clubs", 5, "Light Melee & Ranged, 1d4 damage, Range: Nearby");
+    export const JesterClub = new Item("Jester's club", 1, "Light Melee, 1d4 damage, decorated with bells");
+    export const InstrumentCase = new Item("Leather instrument case");
+    export const DisguiseKit = new Item("Disguise Kit", 1, "Small chest with clothes, jewelry, wigs, and makeup");
+
+    // --- Divine & Occult ---
+    export const PrayerMat = new Item("Prayer mat");
+    export const Candles = new Item("Candles", DiceRoll.sixSidedDieRoll(), "Usage Die: Ud6");
+    export const PsalmBook = new Item("Book of psalms/prayers");
+    export const ForbiddenBook = new Item("Forbidden book of profane prayers");
+    export const CoarseRobe = new Item("Coarse spun robe");
+    export const RopeBelt = new Item("Rope belt");
+    export const Sandals = new Item("Sandals");
+    export const UnholySymbol = new Item("Unholy symbol");
+    export const ArcaneTrinkets = new Item("Collection of arcane trinkets");
+    export const StrangeBooks = new Item("Books of strange theories");
+
+    // --- Craft & Trade ---
+    export const CooperTools = new Item("Cooper tools", 1, "Includes draw knife, dividers, and a planer");
+    export const LeatherPunches = new Item("Leather punches and awls");
+    export const MasonTrowel = new Item("Mason's trowel");
+    export const BrewerTools = new Item("Brewing equipment", 1, "Kettles and fermentation jars");
+    export const VintnerTools = new Item("Winemaking equipment");
+    export const HerbalistKit = new Item("Herbalist kit", 1, "Pouches and shears for harvesting");
+
+    // --- Labor & Travel ---
+    export const SmallVessel = new Item("Small fishing vessel", 1, "Suitable for rivers and coasts");
+    export const WagonBolts = new Item("Crossbow bolts", DiceRoll.sixSidedDieRoll(), "Usage Die: Ud6");
+
+    // --- Combat & Weaponry ---
+    export const    SpikedMaceHoly = new Item("Spiked Mace", 1, "Simple Melee (1d6). Dispenses holy water (Ud4, 1d4 damage).");
+    export const HolySymbol = new Item("Holy Symbol");
+    export const VariantHolySymbol = new Item("Variant Holy Symbol", 1, "An older or sectarian version of a holy symbol.");
+    export const SpearLance = new Item("Spear/Light Lance", 1, "Light Melee (1d6). Includes detachable banner.");
+    export const SmallShield = new Item("Small Shield", 1, "Ud4 protection on 1 attack/Round.");
+    export const BrassKnuckles = new Item("Brass Knuckles", 1, "1d2+1 damage (or 1d4+1 with Brawler).");
+    export const Sap = new Item("Sap", 1, "Simple Melee (1d4). Potential for knockout.");
+
+    // --- Magic & Research ---
+    export const ResearchTrunk = new Item("Trunk of Research", 1, "Contains books and notes.");
+    export const YewStaff = new Item("Carved Yew Staff", 1, "Simple Melee (1d4).");
+    export const AlchemyJournal = new Item("Leather-bound Alchemical Journal", 1, "Partially filled with formulae.");
+    export const EyeGoggles = new Item("Glass-lensed Eye Goggles");
+    export const SilkScarf = new Item("Silk Scarf", 1, "Protection from chemical inhalation.");
+    export const LabGlassware = new Item("Wooden Case of Lab Glassware", 1, "Includes testing agents (Ud8).");
+    export const FlashPowder = new Item("Flash Powder", 1, "Usage Die: Ud4.");
+    export const CopperDowsingRods = new Item("Copper Dowsing Rods");
+
+    // --- Toolkits & Kits ---
+    export const DivinationKit = new Item("Divination Kit", 1, "Dice, cards, small bones, or sticks.");
+    export const ShelterKit = new Item("Shelter Kit", 1, "Large sack, 20' rope, 12 stakes, 15x15 water resistant canvas.");
+    export const LockPicks = new Item("Lock Picks");
+    export const Crowbar = new Item("Crowbar");
+    export const GrapplingHook = new Item("Grappling Hook", 1, "Includes 50' of light rope.");
+
+    // --- Misc & Class Specific ---
+    export const InquisitorGarb = new Item("Inquisitor Garb", 1, "Special robe and exotic hat.");
+    export const Gambeson = new Item("Leather Gambeson", 1, "Light Armor, Ud4.");
+    export const FlashyCape = new Item("Flashy Cape");
+    export const ThighBoots = new Item("Thigh-high Leather Boots");
+    export const DecoratedWand = new Item("Decorated Wand");
+    export const GamingSet = new Item("Gaming Set", 1, "Dice, deck of cards, and thimblerig set.");
+    export const EmergencyFund = new Item("Emergency Fund", 20, "20 additional starting coins.");
+
+    const none = new SelectionPackage<Item>([], [], [])
+
 
     // --- Selection Packages ---
 
     export const DwarfItemSelection = new SelectionPackage<Item>(
-        [Apron, Nails, Hammer, Whiskey, Gems], []
+        [Apron, Nails, Hammer, Whiskey, Gems], [],
+        []
     );
 
     export const ElfItemSelection = new SelectionPackage<Item>(
-        [LinenHaversack, ElfRations, Wine], []
+        [LinenHaversack, ElfRations, Wine], [],
+        [StandardRations, Water]
     );
 
     export const HumanItemSelection = new SelectionPackage<Item>(
-        [LinenHaversack, WateredWine], []
+        [LinenHaversack, WateredWine], [],
+        [Water]
     );
 
     export const HalflingItemSelection = new SelectionPackage<Item>(
-        [ClayPipe, TobaccoPouch, WalkingStick, Handkerchief, HalflingRations, BerryWine], []
+        [ClayPipe, TobaccoPouch, WalkingStick, Handkerchief, Cheese, Bread, DriedMeat], [new ChoiceGroup(1, [BerryWine, DarkBeer], [])],
+        [StandardRations, Water]
     );
 
     export const OrcItemSelection = new SelectionPackage<Item>(
-        [OrcArmor, Dagger, BeltPouch, Whetstone, Teeth], []
+        [OrcArmor, Dagger, BeltPouch, Whetstone, Teeth], [],
+        []
     );
 
     export const IxianItemSelection = new SelectionPackage<Item>(
-        [LeatherHaversack, LeatherGloves], []
+        [LeatherHaversack, LeatherGloves], [],
+        []
     );
 
     export const JewelerItemSelection = new SelectionPackage<Item>(
         [Satchel, Files, Saw], 
-        [new ChoiceGroup(1, [Ring, Bracelet, Necklace, Pendant], [])]
+        [new ChoiceGroup(1, [Ring, Bracelet, Necklace, Pendant], [])],
+        []
     );
 
     export const BarbarianItemSelection = new SelectionPackage<Item>(
@@ -220,7 +325,8 @@ export namespace ItemData {
         [
             new ChoiceGroup(1, [Mushrooms, SpecialLeaves], []),
             new ChoiceGroup(1, [BarbSword, BarbAxe, BarbMace, BarbGreatSword], [])
-        ]
+        ],
+        []
     );
 
     // --- The Starting Selection Package ---
@@ -233,9 +339,9 @@ export namespace ItemData {
             UtilityKnife, 
             Sack, 
             HempTwine, 
-            BeltPouchWithCoins, 
+            Coins, 
             StandardRations, 
-            Wineskin
+            Water
         ],
         [
             // Choice 1: The Cloak Style
@@ -251,22 +357,42 @@ export namespace ItemData {
                 // Ranged Sub-options
                 CrossbowWithBolts, DaggerRanged, Javelins, ShortBowWithArrows, SlingWithStones, SpearRanged
             ], [])
-        ]
+        ],
+        []
     );
-
+    
     // --- Trinket Selection Package ---
-    // This allows a user to roll a d20 or choose from the list provided
-    export const TrinketSelection = new SelectionPackage<Item>(
-        [],
-        [
-            new ChoiceGroup(1, [
-                BlackArrow, LuckyCopperCoin, GlowingCrystal, CurvedDagger, BountifulFlask,
-                GlassMarbles, SilentHammer, SkeletonKey, FoldingKnife, FishCharmNecklace,
-                LuckyDice, Lodestone, FloralPerfume, InsectRing, SpiderSilkRope,
-                RosewoodFlute, MagicSatchel, SneezingPowder, SpringBladeStaff, JadeMonkeyStatuette
-            ], [])
-        ]
-    );
+    const randomizeTrinketSelection = Utility.shuffle(basicTrinketSection.map(x=>x))
+
+    const basicTrinketChoice = new ChoiceGroup(1, [randomizeTrinketSelection[0], TrinketToCoinFactory(randomizeTrinketSelection[0])], [])
+
+    const overrideBasicTrinketSelection = new Map<ChoiceGroup<Item>, TaggedCharacterData<OverrideChoiceLambda<Item>>>()
+    overrideBasicTrinketSelection.set(basicTrinketChoice, createTaggedData(innateSourceTag,
+        (taggedChoiceBeingOverridden, characterData)=>{
+            const raceOverride = TrinketUpdates.get(characterData.Race())
+            if (raceOverride) return raceOverride
+
+            const jobOverride = TrinketUpdates.get(characterData.Job())
+            if (jobOverride) return jobOverride
+
+            const JobSubsetOverride = TrinketUpdates.get(characterData.JobSubset())
+            if (JobSubsetOverride) return JobSubsetOverride
+
+            return taggedChoiceBeingOverridden
+        }))
+
+    const TwoTrinketsChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], randomizeTrinketSelection[1], TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(randomizeTrinketSelection[1])], [])
+    const ThreeTrinketsChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], randomizeTrinketSelection[1], randomizeTrinketSelection[2], TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(randomizeTrinketSelection[1]), TrinketToCoinFactory(randomizeTrinketSelection[2])], [])
+    const LoadstoneOrRandomChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], Lodestone, TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(Lodestone)], [])
+    const TrinketChoice = new ChoiceGroup(1, ItemData.basicTrinketSection, [])
+
+    export const TrinketUpdates = new Map<RaceType | JobType | JobSubset, TaggedCharacterData<ChoiceGroup<Item>>>()
+    TrinketUpdates.set("Human", createTaggedData(ancestrySourceTag, TwoTrinketsChoiceSelection))
+    TrinketUpdates.set("Dowser", createTaggedData(backgroundSourceTag, LoadstoneOrRandomChoiceSelection))
+    TrinketUpdates.set(JobSubsetEnum.ThreeTrinketRandom, createTaggedData(backgroundSourceTag, ThreeTrinketsChoiceSelection)),
+    TrinketUpdates.set(JobSubsetEnum.OneTrinketChoice, createTaggedData(backgroundSourceTag, TrinketChoice))
+
+    export const TrinketSelection = new SelectionPackage<Item>([], [basicTrinketChoice], [], overrideBasicTrinketSelection);
 
     // --- Records ---
 
@@ -279,45 +405,133 @@ export namespace ItemData {
         Halfling: HalflingItemSelection
     };
 
-    // export const JobRecord : Record<JobType, SelectionPackage<Item>> = {
-    //     Jeweler: JewelerItemSelection,
-    //     Arbalist: new SelectionPackage([Crossbow, ToolChest, Bolts], []),
-    //     Scrivener: new SelectionPackage([Ink, Quill, Paper, CourierSatchel], []),
-    //     Scholar: new SelectionPackage([Ink, Quill, Paper, CourierSatchel], []),
-    //     "Inspector/Reeve": new SelectionPackage([SimpleSword, BadgeOfOffice], []),
-    //     "Rat Catcher": new SelectionPackage([RatTraps, Cage, ViciousDog], []),
-    //     Smith: new SelectionPackage([SmithTools, SteelDagger], []),
-    //     Carpenter: new SelectionPackage([Mallet, Adze, WoodPlaner, Level], []),
-    //     "Cooper/Wheelwright": new SelectionPackage([Mallet, WideAx, DrawKnife, Dividers, WoodPlaner, Cart, Mule], []),
-    //     Leatherworker: new SelectionPackage([LeatherKit, TannedLeather, LeatherArmorRoll], []),
-    //     Mason: new SelectionPackage([MasonHammer, IronSpikes, Trowel, Level], []),
-    //     Swordsmith: new SelectionPackage([SwordsmithWeapon], []),
-    //     "Money Changer": new SelectionPackage([FancyClothes, BeltPouch, Abacus, LeadStylus, Ledger], []),
-    //     Assayer: new SelectionPackage([MortarPestle, Reagents], []),
-    //     Peddler: new SelectionPackage([MerchantBackpack, Baubles], []),
-    //     Ambler: new SelectionPackage([RidingHorse, Saddle, Bridle, Saddlebags], []),
-    //     Chef: new SelectionPackage([ChefKnives, CuttingBoard, MortarPestle], []),
-    //     Fisher: new SelectionPackage([FishingString, BrassHooks], []),
-    //     Herder: new SelectionPackage([HerderDog], []),
-    //     Wagoner: new SelectionPackage([OpenWagon, Ponies, Crossbow, Bolts], []),
-    //     "Escaped Thrall": new SelectionPackage([RaggedClothes, Twine, Shackles], []),
-    //     Barbarian: BarbarianItemSelection,
-    //     Warlock: new SelectionPackage([BlackClothing, PortableKennel, FamiliarFeed], [new ChoiceGroup(1, Familiars, [])]),
-    //     Scoundrel: new SelectionPackage([ScoundrelCloak, NarrowDaggers], []),
-    //     Cultist: new SelectionPackage(
-    //         [new Item("Prayer mat"), new Item("Forbidden book"), new Item("Coarse spun robe"), new Item("Rope belt"), new Item("Sandals")],
-    //         [new ChoiceGroup(1, [new Item("Candles", DiceRoll.sixSidedDieRoll()), new Item("Secret tattoo")], [])]
-    //     ),
-    //     "Advocate/Beadle": undefined,
-    //     Cartographer: undefined,
-    //     Interpreter: undefined,
-    //     Brewer: undefined,
-    //     Herbalist: undefined,
-    //     Vintner: undefined,
-    //     Farmer: undefined,
-    //     "House Servant": undefined,
-    //     Farmhand: undefined,
-    //     Laborer: undefined,
-    //     "Sailor (Conscript)": undefined
-    // }
+    export const JobTypeToItem : Record<JobType, SelectionPackage<Item>> = {
+        "Apprentice Artisan": none,
+        "Apprentice Bureaucrat": new SelectionPackage([Ink, Quill, Paper, CourierSatchel], [], []),
+        "Free Laborer": new SelectionPackage([RidingHorse, Saddle, Bridle, Saddlebags], [], []),
+        "Apprentice Crafter": new SelectionPackage([SmithTools, SteelDagger], [], []),
+        "Apprentice Mercantiler": new SelectionPackage([FancyClothes, Satchel, Abacus, LeadStylus, Ledger], [], []),
+        "Escaped Peasant/Thrall": new SelectionPackage([RaggedClothes, Twine, Shackles], [], [TravelingClothes, LeatherBelt, LeatherBoots, UtilityKnife, Sack, HempTwine, Coins, StandardRations, Water, HoodedCloak, CloakAndHat]),
+        Acrobat: new SelectionPackage([PerformanceOutfit, JugglingClubs], [], []),
+        Contortionist: new SelectionPackage([PerformanceOutfit, JugglingClubs], [], []),
+        Jester: new SelectionPackage([PerformanceOutfit, JesterClub], [], []),
+        Minstrel: new SelectionPackage([PerformanceOutfit, InstrumentCase], [new ChoiceGroup(1, [RosewoodFlute], [])], []),
+        "Storyteller/Thespian": new SelectionPackage([PerformanceOutfit], [new ChoiceGroup(1, [DisguiseKit], [])], []),
+        Accursed: new SelectionPackage([ArcaneTrinkets, StrangeBooks], [], []),
+        Acolyte: new SelectionPackage([PrayerMat, Candles, PsalmBook, CoarseRobe, RopeBelt, Sandals], [],
+            [TravelingClothes, LeatherBelt, LeatherBoots]),
+        Cultist: new SelectionPackage([PrayerMat, Candles, ForbiddenBook, UnholySymbol, CoarseRobe, RopeBelt, Sandals], [],
+            [TravelingClothes, LeatherBelt, LeatherBoots]),
+        Inquisitor: new SelectionPackage([InquisitorGarb, HolySymbol, SpikedMaceHoly], [], []),
+
+        Pariah: new SelectionPackage([PrayerMat, Candles, HolySymbol, PsalmBook, DivinationKit], [],
+            [TravelingClothes, LeatherBelt, LeatherBoots]),
+
+        "Touched/Anchorite": new SelectionPackage([PrayerMat, Candles, HolySymbol, new Item("Prayer Beads")], [],
+            [TravelingClothes, LeatherBelt, LeatherBoots]),
+
+        Armiger: new SelectionPackage([RidingHorse, Saddle, Saddlebags, Saddlebags, SpearLance],
+            [
+                new ChoiceGroup(1, [Gambeson, SmallShield], []),
+                new ChoiceGroup(1, [Sword, Axe, BarbMace, BarbGreatSword, new Item("Warhammer", 1, "1d8"), new Item("Battle Axe", 1, "1d8")], [])
+            ], []),
+
+        Barbarian: BarbarianItemSelection,
+
+        "Mercenary/Hedge": new SelectionPackage([],
+            [
+                new ChoiceGroup(1, [Gambeson, SmallShield], []),
+                new ChoiceGroup(1, [Sword, Axe, BarbMace, BarbGreatSword, new Item("Warhammer", 1, "1d8"), new Item("Battle Axe", 1, "1d8")], [])
+            ], []),
+
+        Prizefighter: new SelectionPackage([BrassKnuckles], [], []),
+
+        "Ruffian/Enforcer": new SelectionPackage([], [new ChoiceGroup(1, [BrassKnuckles, Sap], [])], []),
+
+        "Woodard/Warden": new SelectionPackage([ShelterKit], [], []),
+
+        "Adept/Arcane Apprentice": new SelectionPackage([ResearchTrunk, YewStaff], [], []),
+
+        "Alchemy Apprentice": new SelectionPackage([Ink, Quill, AlchemyJournal, EyeGoggles, SilkScarf, LabGlassware], [], []),
+
+        "Arcane Researcher": new SelectionPackage([Ink, Quill, new Item("Arcane Research Book")], [], []),
+
+        Charlatan: new SelectionPackage([FlashyCape, ThighBoots, DecoratedWand, new Item("Divination Cards"), FlashPowder], [], []),
+
+        Dowser: new SelectionPackage([CopperDowsingRods], [], []),
+
+        Warlock: new SelectionPackage([BlackClothing, PortableKennel, FamiliarFeed], [new ChoiceGroup(1, Familiars, [])], []),
+
+        Fence: new SelectionPackage([Satchel, Abacus, LeadStylus, Ledger, EmergencyFund], [], []),
+
+        Gambler: new SelectionPackage([GamingSet], [], []),
+
+        Scoundrel: new SelectionPackage([ScoundrelCloak, NarrowDaggers], [], []),
+
+        Sharp: new SelectionPackage([TravelingClothes, NarrowDaggers], [], []),
+
+        Spy: new SelectionPackage([HoodedCloak], [new ChoiceGroup(1, [DisguiseKit, LockPicks, Crowbar, GrapplingHook], [])], []),
+
+        "Street Urchin": new SelectionPackage([], [], [LeatherBoots, HoodedCloak, CloakAndHat, Coins]),
+        
+        Scholar: new SelectionPackage([Ink, Quill, Paper, CourierSatchel], [], [])
+    }
+
+    export const JobSubsetToItem : Record<JobSubsetEnum, SelectionPackage<Item>> = {
+        [JobSubsetEnum.None]: none,
+        [JobSubsetEnum.Jeweler]: JewelerItemSelection,
+        [JobSubsetEnum.Arbalist]: new SelectionPackage([ToolChest, Pliers, Files, FineWoodShavers, Crossbow, Bolts], [], []),
+        [JobSubsetEnum.Scrivener]: new SelectionPackage([Ink, Quill, Paper, CourierSatchel], [], []),
+        [JobSubsetEnum.Advocate]: none,
+        [JobSubsetEnum.Cartographer]: none,
+        [JobSubsetEnum.Inspector]: new SelectionPackage([SimpleSword, BadgeOfOffice], [], []),
+        [JobSubsetEnum.Interpreter]: none,
+        [JobSubsetEnum.Smith]: new SelectionPackage([SmithTools, SteelDagger], [], []),
+        [JobSubsetEnum.Carpenter]: new SelectionPackage([Mallet, Adze, WoodPlaner, Level], [], []),
+        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([FancyClothes, Abacus, LeadStylus, Ledger], [], []),
+        [JobSubsetEnum.Ambler]: new SelectionPackage([RidingHorse, Saddle, Bridle, Saddlebags], [], []),
+        [JobSubsetEnum.Chef]: new SelectionPackage([ChefKnives, CuttingBoard, MortarPestle], [], []),
+
+        // Laborer & Service Subsets
+        [JobSubsetEnum.HouseServant]: none,
+        [JobSubsetEnum.Farmhand]: none,
+        [JobSubsetEnum.Laborer]: none,
+        [JobSubsetEnum.Sailor]: none,
+        [JobSubsetEnum.Brewer]: new SelectionPackage([BrewerTools], [], []),
+        [JobSubsetEnum.Farmer]: none, // Description mentions knowledge/skills but no specific gear
+        [JobSubsetEnum.Herder]: new SelectionPackage([HerderDog], [], []),
+        [JobSubsetEnum.Vintner]: new SelectionPackage([VintnerTools], [], []),
+
+        [JobSubsetEnum.Oratory]: none,
+        [JobSubsetEnum.Theology]: new SelectionPackage([PsalmBook], [], []),
+        [JobSubsetEnum.Esoterica]: new SelectionPackage([ArcaneTrinkets, StrangeBooks], [], []),
+
+        // Martial & Backstory Subsets
+        [JobSubsetEnum.ActiveService]: none,
+        [JobSubsetEnum.Freelance]: none,
+        [JobSubsetEnum.LordSlain]: none,
+        [JobSubsetEnum.Disgraced]: none,
+        [JobSubsetEnum.HedgeKnight]: new SelectionPackage([Gambeson, SmallShield, Sword], [], []),
+        [JobSubsetEnum.Mercenary]: new SelectionPackage([Gambeson, Sword], [], []),
+        [JobSubsetEnum.Bandit]: new SelectionPackage([Gambeson, Sword], [], []),
+        [JobSubsetEnum.Discharged]: none,
+
+        // High Arcane / Ixian Subsets (No gear specified in text)
+        [JobSubsetEnum.IxianRaver]: none,
+        [JobSubsetEnum.IxianArchon]: none,
+        [JobSubsetEnum.Dragon]: none,
+        [JobSubsetEnum.Lich]: none,
+        [JobSubsetEnum.Wizard]: none,
+        [JobSubsetEnum.ElderGod]: none,
+        [JobSubsetEnum.Moloch]: none,
+        [JobSubsetEnum.Kain]: none,
+
+        // Rogue Specializations (Often conditional, but mapped to basic kits)
+        [JobSubsetEnum.DisguiseSpecialist]: new SelectionPackage([DisguiseKit], [], []),
+        [JobSubsetEnum.BurglarSpecialist]: new SelectionPackage([LockPicks, Crowbar, GrapplingHook], [], []),
+        [JobSubsetEnum.ThreeTrinketRandom]: none,
+        [JobSubsetEnum.OneTrinketChoice]: none
+    };
+
+    
 }

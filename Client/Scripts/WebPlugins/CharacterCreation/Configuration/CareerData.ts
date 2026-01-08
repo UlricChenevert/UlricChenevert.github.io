@@ -19,7 +19,7 @@ export namespace CareerData {
             "Apprentice Crafter", "Apprentice Mercantiler", "Escaped Peasant/Thrall"],
         "Performer & Scholarly": ["Acrobat", "Contortionist", "Jester", "Minstrel", "Scholar", "Storyteller/Thespian"],
         Religious: ["Accursed", "Acolyte", "Cultist", "Inquisitor", "Pariah", "Touched/Anchorite"],
-        Martial: ["Armiger", "Barbarian", "Mercentary/Hedge", "Prizefighter", "Ruffian/Enforcer", "Woodard/Warden"],
+        Martial: ["Armiger", "Barbarian", "Mercenary/Hedge", "Prizefighter", "Ruffian/Enforcer", "Woodard/Warden"],
         Arcane: ["Adept/Arcane Apprentice", "Alchemy Apprentice", "Arcane Researcher", "Charlatan", "Dowser", "Warlock"],
         Rogue: ["Fence", "Gambler", "Scoundrel", "Sharp", "Spy", "Street Urchin"]
     }
@@ -27,7 +27,7 @@ export namespace CareerData {
     export const JobToStoryData : Record<JobType, StoryModel<JobType>> = {
         "Apprentice Artisan": {
             Name: "Apprentice Artisan",
-            Story: "You were discharged by your master, or absconded with a set of tools. They were either cruel and stingy, jealous of your genius, or blamed you for something valuable that disappeared.",
+            Story: "You were discharged by your master,  or absconded with a set of tools. They were either cruel and stingy, jealous of your genius, or blamed you for something valuable that disappeared.",
             Other: "If your reputation is not widely known, an Artisan can take up a job with a new master in a large city and make 40 coins per week.",
             AffectedPeople: [generateRelationships("Hostile", "Former Master")],
             AffectedOrganization: [],
@@ -192,8 +192,8 @@ export namespace CareerData {
             AffectedPlace: [],
             PartialPictureUrl: undefined
         },
-        "Mercentary/Hedge": {
-            Name: "Mercentary/Hedge",
+        "Mercenary/Hedge": {
+            Name: "Mercenary/Hedge",
             Story: "Extenuating circumstances led to hard choices. You may be a knight in exile, or a field-trained talent with no allegiance due to bad luck.",
             Other: "Mercenaries/Bandits make STR/DEX/INT tests weekly: 10 coins per success, 20 per Crit. Crit Failure requires Wounded Table roll.",
             AffectedPeople: [],
@@ -375,7 +375,7 @@ export namespace CareerData {
         "Touched/Anchorite": [JobSubsetEnum.None],
         // MARTIAL
         Armiger: [JobSubsetEnum.ActiveService, JobSubsetEnum.Freelance],
-        "Mercentary/Hedge": [JobSubsetEnum.LordSlain, JobSubsetEnum.Disgraced, JobSubsetEnum.HedgeKnight, JobSubsetEnum.Mercenary, JobSubsetEnum.Bandit],
+        "Mercenary/Hedge": [JobSubsetEnum.LordSlain, JobSubsetEnum.Disgraced, JobSubsetEnum.HedgeKnight, JobSubsetEnum.Mercenary, JobSubsetEnum.Bandit],
         "Woodard/Warden": [JobSubsetEnum.ActiveService, JobSubsetEnum.Discharged],
         Barbarian: [JobSubsetEnum.None],
         Prizefighter: [JobSubsetEnum.None],
@@ -394,7 +394,7 @@ export namespace CareerData {
         "Arcane Researcher": [JobSubsetEnum.None],
         Charlatan: [JobSubsetEnum.None],
         Dowser: [JobSubsetEnum.None],
-        Fence: [JobSubsetEnum.None],
+        Fence: [JobSubsetEnum.ThreeTrinketRandom, JobSubsetEnum.OneTrinketChoice],
         Gambler: [JobSubsetEnum.None],
         Scoundrel: [JobSubsetEnum.None],
         Sharp: [JobSubsetEnum.None],
