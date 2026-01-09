@@ -1,5 +1,5 @@
-import { RaceType, ProfessionType, JobType, SourceTypes } from "../Contracts/StringTypes";
-import { CharacterTags, MultiTaggedCharacterData, ProfessionTag, RaceTag, TaggedCharacterData } from "../Contracts/TaggedData";
+import { RaceType, ProfessionType, JobType, SourceTypes } from "../Contracts/StringTypes.js";
+import { CharacterTags, ProfessionTag, RaceTag, TaggedCharacterData } from "../Contracts/TaggedData.js";
 
 export const raceTag = (race: RaceType) : RaceTag =>  ({ Type: 'Race', Race: race });
 export const raceTagWithProfession = (race : RaceTag) : CharacterTags => ({ Race: race } );

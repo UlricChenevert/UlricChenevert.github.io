@@ -1,5 +1,4 @@
-import { DescriptionModel, NameGeneratorTag, PartOfSpeechModel, SyllableModel, SyllableTag, TaggedData } from "../Contracts/TaggedData";
-import { NameType } from "../Contracts/StringTypes";
+import { NameGeneratorTag, PartOfSpeechModel, SyllableModel, SyllableTag, TaggedData } from "../Contracts/TaggedData.js";
 
 export enum GenerationType {
   PersonName = "{{PersonName}}",
@@ -69,6 +68,12 @@ export const taggedSyllablesSuffixes: TaggedData<SyllableModel, SyllableTag>[] =
   { Tags: { SyllableType: "Suffix", Race: "Dwarf" }, Payload: { Syllable: "beard" } },
   { Tags: { SyllableType: "Suffix", Race: "Dwarf" }, Payload: { Syllable: "forge" } },
   { Tags: { SyllableType: "Suffix", Race: "Dwarf" }, Payload: { Syllable: "dun" } },
+
+  { Tags: { SyllableType: "Prefix", Race: "Orc" }, Payload: { Syllable: "mor" } },
+  { Tags: { SyllableType: "Prefix", Race: "Orc" }, Payload: { Syllable: "vulk" } },
+  { Tags: { SyllableType: "Prefix", Race: "Orc" }, Payload: { Syllable: "xar" } },
+  { Tags: { SyllableType: "Prefix", Race: "Orc" }, Payload: { Syllable: "drak" } },
+  { Tags: { SyllableType: "Prefix", Race: "Orc" }, Payload: { Syllable: "gorg" } },
 ];
 
 export const taggedAdjectives: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
@@ -135,6 +140,17 @@ export const taggedAdjectives: TaggedData<PartOfSpeechModel, NameGeneratorTag>[]
     { Tags: { SymbolType: "Adjective", God: "Moloch" }, Payload: { PartOfSpeech: "molochian" } },
     { Tags: { SymbolType: "Adjective", God: "Tubal" }, Payload: { PartOfSpeech: "tubalite" } },
     { Tags: { SymbolType: "Adjective", God: "Weut" }, Payload: { PartOfSpeech: "weutian" } },
+
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "baleful" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "blighted" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "corrupt" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "dire" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "hollow" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "malign" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "necrotic" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "obsidian" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "sinister" } },
+    { Tags: { SymbolType: "Adjective", Goal: "Evil" }, Payload: { PartOfSpeech: "venomous" } },
 ];
 
 export const taggedNouns: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
@@ -153,10 +169,10 @@ export const taggedNouns: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
     // --- Orc Nouns (6) ---
     { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Place" }, Payload: { PartOfSpeech: "maw" } },
     { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Place" }, Payload: { PartOfSpeech: "crag" } },
-    { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Person" }, Payload: { PartOfSpeech: "warlord" } },
-    { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Organization" }, Payload: { PartOfSpeech: "bloodfang" } },
-    { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Organization" }, Payload: { PartOfSpeech: "horde" } },
-    { Tags: { SymbolType: "Noun", Race: "Orc", NameType: "Organization" }, Payload: { PartOfSpeech: "brutality" } },
+    { Tags: { SymbolType: "Noun", Race: "Orc", Goal : "Evil", NameType: "Person" }, Payload: { PartOfSpeech: "warlord" } },
+    { Tags: { SymbolType: "Noun", Race: "Orc", Goal : "Evil", NameType: "Organization" }, Payload: { PartOfSpeech: "bloodfang" } },
+    { Tags: { SymbolType: "Noun", Race: "Orc", Goal : "Evil", NameType: "Organization" }, Payload: { PartOfSpeech: "horde" } },
+    { Tags: { SymbolType: "Noun", Race: "Orc", Goal : "Evil", NameType: "Organization" }, Payload: { PartOfSpeech: "brutality" } },
 
     // --- Human Nouns (6) ---
     { Tags: { SymbolType: "Noun", Race: "Human", NameType: "Place" }, Payload: { PartOfSpeech: "haven" } },
@@ -201,6 +217,19 @@ export const taggedNouns: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
     { Tags: { SymbolType: "Noun", God: "Moloch" }, Payload: { PartOfSpeech: "pyre" } },
     { Tags: { SymbolType: "Noun", God: "Tubal" }, Payload: { PartOfSpeech: "anvil" } },
     { Tags: { SymbolType: "Noun", God: "Weut" }, Payload: { PartOfSpeech: "veil" } },
+
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "conclave" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "syndicate" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "consortium" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "cabal" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "hegemony" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "order" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization" }, Payload: { PartOfSpeech: "pact" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization", Goal: "Evil" }, Payload: { PartOfSpeech: "cult" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization", Goal: "Evil" }, Payload: { PartOfSpeech: "legion" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization", Goal: "Evil" }, Payload: { PartOfSpeech: "scourge" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization", Goal: "Evil" }, Payload: { PartOfSpeech: "blight" } },
+    { Tags: { SymbolType: "Noun", NameType: "Organization", Goal: "Evil" }, Payload: { PartOfSpeech: "fang" } },
 ];
 
 export const taggedVerb: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
@@ -216,13 +245,22 @@ export const taggedVerb: TaggedData<PartOfSpeechModel, NameGeneratorTag>[] = [
     { Tags: { SymbolType: "Verb" }, Payload: { PartOfSpeech: "guard" } },
     { Tags: { SymbolType: "Verb" }, Payload: { PartOfSpeech: "endure" } },
 
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "reap" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "corrupt" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "subjugate" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "enclave" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "taint" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "scourge" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "despoil" } },
+    { Tags: { SymbolType: "Verb", Goal: "Evil" }, Payload: { PartOfSpeech: "extinguish" } },
+
     // --- Orc Verbs (6) ---
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "crush" } },
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "rend" } },
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "maul" } },
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "brutalize" } },
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "ravage" } },
-    // { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "conquer" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "crush" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "rend" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "maul" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "brutalize" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "ravage" } },
+    { Tags: { SymbolType: "Verb", Race: "Orc" }, Payload: { PartOfSpeech: "conquer" } },
 
     // --- Human Verbs (6) ---
     { Tags: { SymbolType: "Verb", Race: "Human" }, Payload: { PartOfSpeech: "crown" } },

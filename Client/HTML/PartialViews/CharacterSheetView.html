@@ -3,12 +3,16 @@
         <header class="header-section">
             <h1>HEARTBREAKER CHARACTER DESIGN</h1>
         </header>
-        
-        <section class="reveal-section hoverable-container">
-            <div data-bind="PartialView: AncestryPicker"></div>
-        </section>
 
-        <section class="reveal-section hoverable-container">
+        <!-- ko foreach: modalPickers -->
+            <div class="wizard-step-wrapper" data-bind="css: { 'visible': $parent.visibleObservables[$index()] }">
+                <section class="reveal-section hoverable-container" data-bind="PartialView: $data"></section>
+            </div>
+        <!-- /ko -->
+        
+        
+
+        <!-- <section class="reveal-section hoverable-container">
             <div data-bind="PartialView: BackgroundPicker"></div>
         </section>
 
@@ -16,11 +20,7 @@
             <div data-bind="PartialView: AbilityPicker"></div>
         </section>
 
-        <section class="reveal-section entanglements hoverable-container">
-            <h2>Entanglements</h2>
-            <p data-bind="PartialView: personPicker"></p>
-            <p data-bind="PartialView: placePicker"></p>
-            <p data-bind="PartialView: organizationPicker"></p>
+        <section class="reveal-section entanglements hoverable-container" data-bind="PartialView: entanglementPicker">
         </section>
         
         <section class="reveal-section hoverable-container" data-bind="PartialView: equipmentPicker">
@@ -57,7 +57,7 @@
         </section>
 
         <section class="reveal-section hoverable-container drawbacks" data-bind="PartialView: drawbackPicker, visible: IsSelection(GlobalCharacterData.DrawbacksSelection())">
-        </section>
+        </section> -->
 
     <div class="centered remove-when-print space-around">
         <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>

@@ -1,12 +1,12 @@
 <div data-bind="click: unlock">
     <div class="title">
         <h4 data-bind="text: FriendlyName"></h4>
-        <!-- ko if: isLocked -->
-            <button class="pop-content button-icon centered" data-bind="click: Randomize">
+        <!-- ko if: isLocked() && isUnlockableByUser() -->
+            <button class="pop-content button-icon centered" >
                 <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\lock.svg" alt="Unlock" />
             </button>
         <!-- /ko -->
-    </div>
+    </div> 
 
     <!-- ko if: isLocked -->
         <div data-bind="text: widgetPreviewText"> </div>

@@ -32,13 +32,8 @@
     
 
     <div>
-        <div class="ability-pickers"> 
-            <div class="hoverable-container" data-bind="PartialView: strengthPicker"></div>
-            <div class="hoverable-container" data-bind="PartialView: dexterityPicker"></div>
-            <div class="hoverable-container" data-bind="PartialView: constitutionPicker"></div>
-            <div class="hoverable-container" data-bind="PartialView: intelligencePicker"></div>
-            <div class="hoverable-container" data-bind="PartialView: wisdomPicker"></div>
-            <div class="hoverable-container" data-bind="PartialView: charismaPicker"></div>
+        <div class="ability-pickers" data-bind="foreach: AbilityKeys"> 
+            <div class="hoverable-container" data-bind="PartialView: $parent.abilityPickers[$data]"></div>
         </div>
     </div>
 

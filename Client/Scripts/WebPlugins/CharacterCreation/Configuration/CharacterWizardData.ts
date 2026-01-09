@@ -1,11 +1,11 @@
 import { CharacterTags, ChoiceGroup, Item, OverrideChoiceLambda, SelectionPackage, StoryModel, TaggedCharacterData, TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js"
-import { RaceType, JobType, JobSubset, JobSubsetEnum, ProfessionType, SourceTypes } from "../Contracts/StringTypes.js"
+import { RaceType, JobType, JobSubset, JobSubsetEnum, ProfessionType } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { Races } from "../Configuration/DispositionData.js"
 import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js"
 import { Abilities } from "../Contracts/Abilities.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
-import { Entanglements } from "../Contracts/Entanglements.js"
+import { EntanglementAffect,  OrganizationEntanglementsGroup } from "../Contracts/Entanglements.js"
 import { Deity } from "../Contracts/Diety.js"
 import { Edges } from "../Contracts/Edges.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
@@ -17,7 +17,6 @@ import { ReligionData } from "./DietiesData.js"
 import { Spell } from "../Contracts/Spell.js"
 import { CareerData } from "./CareerData.js"
 import { createTaggedData, innateSourceTag } from "../Utility/TagUtility.js"
-import { addNewOverrides } from "../Utility/UpdateUtility.js"
 
 
 export class ConfiguredCharacterData {
@@ -44,10 +43,9 @@ export class ConfiguredCharacterData {
     ItemSelections : Observable<TaggedObservableSelectionPackage<Item>>
     TrinketSelections : Observable<TaggedObservableSelectionPackage<Item>>
 
-    People : ObservableArray<TaggedCharacterData<Entanglements>>
-    Places : ObservableArray<TaggedCharacterData<Entanglements>>
-    Organizations : ObservableArray<TaggedCharacterData<Entanglements>>
-    
+    OrganizationEntanglements : Observable<OrganizationEntanglementsGroup>
+    EntanglementAffects : ObservableArray<TaggedCharacterData<EntanglementAffect>>
+
     ReligionSelections : Observable<TaggedObservableSelectionPackage<Deity>>
     IsMonotheist : Observable<boolean>
 
@@ -79,9 +77,8 @@ export class ConfiguredCharacterData {
 
         this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.TrinketSelection, innateSourceTag)
 
-        this.People = ko.observableArray([] as TaggedCharacterData<Entanglements>[])
-        this.Organizations = ko.observableArray([] as TaggedCharacterData<Entanglements>[])
-        this.Places = ko.observableArray([] as TaggedCharacterData<Entanglements>[])
+        this.OrganizationEntanglements = ko.observable<OrganizationEntanglementsGroup>(new OrganizationEntanglementsGroup(undefined, undefined, undefined, undefined, undefined, undefined))
+        this.EntanglementAffects = ko.observableArray<TaggedCharacterData<EntanglementAffect>>([]);
 
         this.Name = ko.observable<CharacterName>(new CharacterName("", "", ""))
 

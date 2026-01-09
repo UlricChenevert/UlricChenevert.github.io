@@ -1,7 +1,8 @@
 import { Observable, ObservableArray } from "../../../../Framework/Knockout/knockout.js"
 import { ko } from "../../../../Framework/Knockout/ko.js"
+import { IConfigurableViewModel } from "../../Contracts/CharacterWizardViewModels.js"
 
-export class StringListPreviewModel implements IHTMLInjectable<void> {
+export class StringListPreviewModel implements IConfigurableViewModel {
     Edit : Function
     Randomize : Function
 

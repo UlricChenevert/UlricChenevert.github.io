@@ -1,12 +1,8 @@
 import {ko} from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js"
-import { Deity } from "../Contracts/Diety.js"
-import { AttitudesTypes, OrganizationTypes, Entanglements } from "../Contracts/Entanglements.js"
+import { Entanglements } from "../Contracts/Entanglements.js"
 import { NameUtility } from "../Utility/NameUtility.js"
-import { CreateObjectListModel } from "./CreateObjectListModel.js"
 import { CreateObjectModel } from "./CreateObjectModel.js"
-import { DeityCreationModel } from "./DeityPickerModel.js"
-import { EntanglementCreationModel } from "./EntanglementCreationModel.js"
 import { NamePickerModel } from "./ModalConfigurationModels/NamePickerModel.js"
 import { SimplePreviewModel } from "./Preview/SimplePreviewModel.js"
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
@@ -19,44 +15,44 @@ export namespace ConfiguredViewModels {
     
     const entanglementPreviewModel = (item : TaggedCharacterData<Entanglements>)=>`${item.Tags.Source}: ${((item.Payload.Identifier.name)? item.Payload.Identifier.name : "Unknown")} - ${item.Payload.Attitudes}`
 
-    export const createOrganizationPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
-        new CreateObjectListModel(
-            "Known Organizations", 
-            new EntanglementCreationModel(AttitudesTypes, OrganizationTypes, true), 
-            (data)=>data.Organizations, 
-            entanglementPreviewModel, 
-            (model)=>{return true}, 
-            ()=>{},
-            characterData,
-            true
-        )
-    )
-    export const createPersonPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
-        new CreateObjectListModel(
-            "Known People", 
-            new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
-            (data)=>data.People, 
-            entanglementPreviewModel, 
-            (model)=>{return true}, 
-            ()=>{},
-            characterData,
-            true
-        )
-    )
+    // export const createOrganizationPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
+    //     new CreateObjectListModel(
+    //         "Known Organizations", 
+    //         new EntanglementCreationModel(AttitudesTypes, OrganizationTypes, true), 
+    //         (data)=>data.Organizations, 
+    //         entanglementPreviewModel, 
+    //         (model)=>{return true}, 
+    //         ()=>{},
+    //         characterData,
+    //         true
+    //     )
+    // )
+    // export const createPersonPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
+    //     new CreateObjectListModel(
+    //         "Known People", 
+    //         new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
+    //         (data)=>data.People, 
+    //         entanglementPreviewModel, 
+    //         (model)=>{return true}, 
+    //         ()=>{},
+    //         characterData,
+    //         true
+    //     )
+    // )
     
     
-    export const createPlacePickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
-        new CreateObjectListModel(
-            "Known Places", 
-            new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
-            (data)=>data.Places, 
-            entanglementPreviewModel, 
-            (model)=>{return true}, 
-            ()=>{},
-            characterData,
-            true
-        )
-    )
+    // export const createPlacePickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
+    //     new CreateObjectListModel(
+    //         "Known Places", 
+    //         new EntanglementCreationModel(AttitudesTypes, OrganizationTypes), 
+    //         (data)=>data.Places, 
+    //         entanglementPreviewModel, 
+    //         (model)=>{return true}, 
+    //         ()=>{},
+    //         characterData,
+    //         true
+    //     )
+    // )
     
     // export const createDeityPickerModel = (characterData : ConfiguredCharacterData) => Utility.BundleViewAndModel(
     //     new CreateObjectListModel(

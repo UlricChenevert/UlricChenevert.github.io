@@ -5,13 +5,42 @@ export type NounMashNameGeneratorType = "Adjective" | "Noun" | "Verb";
 
 export type ItemTypes = "Unusual Ring";
 
-export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disinterested" | "Receptive" | "Friendly" | "Unknown";
+export enum DispositionsEnum {
+    "Aggressive"= "Aggressive",
+    "Hostile"= "Hostile", 
+    "Negative"= "Negative", 
+    "Disinterested"= "Disinterested", 
+    "Receptive"= "Receptive", 
+    "Friendly"= "Friendly"
+}
+
+export const Dispositions : {[index: string] : {name : string, roll : number}}= {
+    [DispositionsEnum.Aggressive]: {name: DispositionsEnum.Aggressive, roll: 1},
+    [DispositionsEnum.Hostile]: {name: DispositionsEnum.Hostile, roll: 2}, 
+    [DispositionsEnum.Negative]: {name: DispositionsEnum.Negative, roll: 3}, 
+    [DispositionsEnum.Disinterested]: {name: DispositionsEnum.Disinterested, roll: 4}, 
+    [DispositionsEnum.Receptive]: {name: DispositionsEnum.Receptive, roll: 5}, 
+    [DispositionsEnum.Friendly]: {name: DispositionsEnum.Friendly, roll: 6}} as const;
+
+export type DispositionType = typeof Dispositions
+
 
 export type PrestigeType = "Prestigious" | "Insignificant" | "Secretive";
 
 export type PronounType = { id: number; name?: string; };
 
-export type SocialRelationships = "Colleagues" | "Family" | "Local Civic Authorities" | "Local Religious Authorities" | "Master/Mentor/Lord" | "Neighbors/Local Inhabitants" | "Shadow Groups"
+export enum EntanglementOrganizationTypesEnum {
+    "Colleagues" = "Colleagues",
+    "Family" = "Family",
+    "CivicAuthorities" = "Local Civic Authorities",
+    "ReligiousAuthorities" = "Local Religious Authorities",
+    "Master" = "Master",
+    "Neighbors"= "Neighbors",
+    "ShadowGroups"= "Shadow Groups"
+}
+
+export type EntanglementOrganizationTypes = EntanglementOrganizationTypesEnum
+
 
 export type RelationshipType = NameType
 // | SocialRelationships
@@ -28,7 +57,6 @@ export type GeographyType = "Water" | "Landform";
 
 export type SourceTypes = "Background" | "Ancestry" | "Custom" | "Innate"
 
-export type OrganizationType = "";
 
 export type ChildhoodBackgroundsTypes =
     "Farm Boy" |

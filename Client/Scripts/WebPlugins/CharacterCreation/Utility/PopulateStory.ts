@@ -1,6 +1,6 @@
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { GenerationType } from "../Configuration/NameData.js";
-import { RelationshipModel } from "../Contracts/Entanglements.js";
+import { EntanglementAffect, RelationshipModel } from "../Contracts/Entanglements.js";
 import { NameGeneratorSettings, StoryModel } from "../Contracts/TaggedData.js";
 import { NameUtility } from "./NameUtility.js";
 import { ReplaceString } from "./StringManipulation.js";
@@ -10,8 +10,6 @@ export function PopulateBackground<T>(storySeed: StoryModel<T>, characterData : 
     const storyPayloadReference = storySeed;
 
     const returnPayloadReference = Object.assign({}, storyPayloadReference)
-
-    console.warn("Item story loading needs to be finished!")
 
     if (storyPayloadReference.AffectedPeople) {
 
@@ -45,8 +43,8 @@ export function PopulateBackground<T>(storySeed: StoryModel<T>, characterData : 
 
 class GetNextOrGenerateNew {
     index : number
-    storyRelationships : RelationshipModel[]
-    constructor(storyData : RelationshipModel[], public generateNewName : (relationship : RelationshipModel) => string, public replaceAll = false) { //, public customLogic? : (element : RelationshipModel)=>boolean
+    storyRelationships : EntanglementAffect[]
+    constructor(storyData : EntanglementAffect[], public generateNewName : (relationship : EntanglementAffect) => string, public replaceAll = false) { //, public customLogic? : (element : RelationshipModel)=>boolean
         this.storyRelationships = JSON.parse(JSON.stringify(storyData))
         this.index = 0
     }
@@ -65,5 +63,5 @@ class GetNextOrGenerateNew {
         return relationship.Identifier.name as string
     }
 
-    needToGenerateNew(relationship : RelationshipModel) {return relationship.Identifier.name === undefined}
+    needToGenerateNew(relationship : EntanglementAffect) {return relationship.Identifier.name === undefined}
 }

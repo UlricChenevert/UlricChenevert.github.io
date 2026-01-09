@@ -1,8 +1,8 @@
-import { ObservableArray } from "../../../Framework/Knockout/knockout";
-import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData";
-import { RelationshipModel } from "./Entanglements";
+import { ObservableArray } from "../../../Framework/Knockout/knockout.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { EntanglementAffect, RelationshipModel } from "./Entanglements.js";
 import { LearnedLanguage } from "./Language";
-import { PronounType, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
+import { PronounType, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType, EntanglementOrganizationTypes } from "./StringTypes.js";
 
 export interface TaggedData<T, Y> {
     Tags : Y,
@@ -20,6 +20,7 @@ export interface MultiTaggedCharacterData<T> extends TaggedData<T, CharacterTags
 }
 
 export interface CharacterTags {
+    EntanglementType? : EntanglementOrganizationTypes
     Race?: RaceTag;
     DevelopmentalEnvironment?: DevelopmentalEnvironmentTag;
     Profession?: ProfessionTag;
@@ -47,9 +48,9 @@ export type StoryModel<StoryType> = {
     // Spells? : SelectionPackage<Spell>
     // Languages? : SelectionPackage<LearnedLanguage>
 
-    AffectedPeople : RelationshipModel[]
-    AffectedOrganization : RelationshipModel[]
-    AffectedPlace : RelationshipModel[]
+    AffectedPeople : EntanglementAffect[]
+    AffectedOrganization : EntanglementAffect[]
+    AffectedPlace : EntanglementAffect[]
 
     PartialPictureUrl? : string
 }

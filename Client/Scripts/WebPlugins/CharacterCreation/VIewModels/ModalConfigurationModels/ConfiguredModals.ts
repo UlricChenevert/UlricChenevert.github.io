@@ -6,9 +6,9 @@ import { Races } from "../../Configuration/DispositionData.js";
 import { Abilities } from "../../Contracts/Abilities.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
-import { JobType, RaceType } from "../../Contracts/StringTypes.js";
+import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
 import { TaggedObservableSelectionPackage, StoryModel, Item } from "../../Contracts/TaggedData.js";
-import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills } from "../../Utility/UpdateUtility.js";
+import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementAffects, updateEntanglementBackgroundAffects } from "../../Utility/UpdateUtility.js";
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
 import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
@@ -21,9 +21,12 @@ import { Spell } from "../../Contracts/Spell.js";
 import { Drawbacks } from "../../Contracts/Drawbacks.js";
 import { Corruption } from "../../Contracts/Corruption.js";
 import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
+import { createEntanglementPreview, OrganizationEntanglementsGroup } from "../../Contracts/Entanglements.js";
+import { EntanglementCreationModel } from "./EntanglementCreationModel.js";
+import { IConfigurableViewModal } from "../../Contracts/CharacterWizardViewModels.js";
 
 export namespace ConfiguredModals {
-    export const createAncestryPickerModel = (characterData: ConfiguredCharacterData) => {
+    export const createAncestryPickerModel = (characterData: ConfiguredCharacterData) : IConfigurableViewModal<RaceType> => {
         return createGenericPicker<AncestryViewModel, SimplePreviewModel, RaceType>({
             name: "Ancestry",
             characterData,
@@ -142,6 +145,7 @@ export namespace ConfiguredModals {
                 updateBackgroundEdges(characterData)
                 updateBackgroundSkills(characterData)
                 updateBackgroundLanguages(characterData)
+                updateEntanglementBackgroundAffects(characterData)
             }
         });
     };
@@ -189,6 +193,41 @@ export namespace ConfiguredModals {
             dataSelector: (data) => data.ItemSelections,
             createPreview: (modal) => new StringListPreviewModel(
                 "Equipment",
+                stringPreview,
+                isConfigured,
+                modal.Randomize.bind(modal),
+                modal.EditItem.bind(modal)
+            )
+        });
+    };
+
+    export const createEntanglementPickerModel = (characterData: ConfiguredCharacterData) => {
+        // Unique logic stays here
+        const stringPreview = ko.observableArray<string>([]);
+        characterData.OrganizationEntanglements.subscribe((newValue) => {
+            const finalPreview = [
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.CivicAuthorities, newValue.CivicAuthorities),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.Colleagues, newValue.Colleagues),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.Family, newValue.Family),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.Master, newValue.Master),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.Neighbors, newValue.Neighbors),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.ReligiousAuthorities, newValue.ReligiousAuthorities),
+                createEntanglementPreview(EntanglementOrganizationTypesEnum.ShadowGroups, newValue.ShadowGroups)
+            ]
+
+            stringPreview(finalPreview);
+        });
+
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+
+        return createGenericPicker<EntanglementCreationModel, StringListPreviewModel, OrganizationEntanglementsGroup>({
+            name: "Entanglement",
+            characterData,
+            pickerModel: new EntanglementCreationModel(characterData),
+            dataSelector: (data) => data.OrganizationEntanglements,
+            createPreview: (modal) => new StringListPreviewModel(
+                "Entanglement",
                 stringPreview,
                 isConfigured,
                 modal.Randomize.bind(modal),

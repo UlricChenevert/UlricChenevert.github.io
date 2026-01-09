@@ -27,43 +27,57 @@
     box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.23);
 }
 
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(1em);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* The Container for each step */
+.wizard-step-wrapper {
+  display: grid;
+  grid-template-rows: 0fr; /* Start "collapsed" */
+  transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
+.wizard-step-wrapper.visible {
+  grid-template-rows: 1fr; /* Smoothly expands to fit content */
+  margin-bottom: 1.5rem;
+}
+
+/* The actual content inside */
 .reveal-section {
-  /* Animation name | Duration | Timing function | Fill-mode */
-  animation: reveal 3s ease-out backwards;
+  min-height: 0;
+  opacity: 0;
+//   transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.reveal-section:nth-child(1) { animation-delay: 1.2s; }
-.reveal-section:nth-child(2) { animation-delay: 1.4s; }
-.reveal-section:nth-child(3) { animation-delay: 1.6s; }
-.reveal-section:nth-child(4) { animation-delay: 1.8s; }
-.reveal-section:nth-child(5) { animation-delay: 2.0s; }
-.reveal-section:nth-child(6) { animation-delay: 2.2s; }
-.reveal-section:nth-child(7) { animation-delay: 2.4s; }
-.reveal-section:nth-child(8) { animation-delay: 2.6s; }
-.reveal-section:nth-child(9) { animation-delay: 2.8s; }
-.reveal-section:nth-child(10) { animation-delay: 3.0s; }
-.reveal-section:nth-child(11) { animation-delay: 3.2s; }
-.reveal-section:nth-child(12) { animation-delay: 3.4s; }
-.reveal-section:nth-child(13) { animation-delay: 3.6s; }
-.reveal-section:nth-child(14) { animation-delay: 3.8s; }
-.reveal-section:nth-child(14) { animation-delay: 3.8s; }
-.reveal-section:nth-child(15) { animation-delay: 4.0s; }
-.reveal-section:nth-child(16) { animation-delay: 4.2s; }
-.reveal-section:nth-child(17) { animation-delay: 4.4s; }
-.reveal-section:nth-child(18) { animation-delay: 4.6s; }
-.reveal-section:nth-child(19) { animation-delay: 4.8s; }
-.reveal-section:nth-child(20) { animation-delay: 4.8s; }
+.visible .reveal-section {
+  opacity: 1;
+//   transform: translateY(0);
+
+  max-height: 100vh; /* Set to a value larger than any possible step */
+  overflow: visible; /* Re-enable so the shadow can bleed out */
+  padding: 1rem; /* Give the shadow room to breathe */
+}
+
+// .reveal-section:nth-child(1) { animation-delay: 1.2s; }
+// .reveal-section:nth-child(2) { animation-delay: 1.4s; }
+// .reveal-section:nth-child(3) { animation-delay: 1.6s; }
+// .reveal-section:nth-child(4) { animation-delay: 1.8s; }
+// .reveal-section:nth-child(5) { animation-delay: 2.0s; }
+// .reveal-section:nth-child(6) { animation-delay: 2.2s; }
+// .reveal-section:nth-child(7) { animation-delay: 2.4s; }
+// .reveal-section:nth-child(8) { animation-delay: 2.6s; }
+// .reveal-section:nth-child(9) { animation-delay: 2.8s; }
+// .reveal-section:nth-child(10) { animation-delay: 3.0s; }
+// .reveal-section:nth-child(11) { animation-delay: 3.2s; }
+// .reveal-section:nth-child(12) { animation-delay: 3.4s; }
+// .reveal-section:nth-child(13) { animation-delay: 3.6s; }
+// .reveal-section:nth-child(14) { animation-delay: 3.8s; }
+// .reveal-section:nth-child(14) { animation-delay: 3.8s; }
+// .reveal-section:nth-child(15) { animation-delay: 4.0s; }
+// .reveal-section:nth-child(16) { animation-delay: 4.2s; }
+// .reveal-section:nth-child(17) { animation-delay: 4.4s; }
+// .reveal-section:nth-child(18) { animation-delay: 4.6s; }
+// .reveal-section:nth-child(19) { animation-delay: 4.8s; }
+// .reveal-section:nth-child(20) { animation-delay: 4.8s; }
 .retain-height {
     flex-shrink: 1;
     flex-grow: 0;
@@ -193,7 +207,7 @@
     border-radius: 0.5em;
     padding: 1em;
     text-align: center;
-    margin: 1em;
+    margin: 1.5em;
     box-shadow: 0 0 0, 0, rgb(0,0,0);
 
     h4 {text-transform: uppercase;
@@ -210,7 +224,7 @@
 
 .hoverable-container:hover {
     outline: 1px solid #ccc;
-    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 1.0em 0.5em rgba(0, 0, 0, 0.10);
 }
 
 .cover {
@@ -381,6 +395,14 @@ hr {
     opacity: 10%;
     color: @pop-color;
     margin: 1em 0 1em 0;
+}
+
+.grayed-out {
+    background-color: @fade-background-color;
+    color: @faded-text;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(100%)
 }
 
 // Propensity View
@@ -612,7 +634,7 @@ hr {
         padding: 1em;
         border: 1px solid #000;
         border-radius: 1em;
-        margin-bottom: 1em;
+        // margin-bottom: 1em;
     }
 
     /* FORMS & INPUTS */

@@ -7,6 +7,7 @@ import { LanguageData } from "../Configuration/LanguageData.js"
 import { SkillsData } from "../Configuration/SkillsData.js"
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../Configuration/TaggedNameData.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
+import { EntanglementAffect } from "../Contracts/Entanglements.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
 import { SourceTypes } from "../Contracts/StringTypes.js"
 import { TaggedCharacterData, ChoiceGroup, MultiTaggedCharacterData, TaggedObservableSelectionPackage, SelectionPackage, OverrideChoiceLambda } from "../Contracts/TaggedData.js"
@@ -183,15 +184,31 @@ export const addNewOverrides = <SelectionType>(sourceOverrides : Map<ChoiceGroup
         });
 }
 
-// const nonSourceOverrideSelections = (!override)? updateTarget.OverridePossibleSelection() : updateTarget.OverridePossibleSelection().filter((taggedSource)=>{
-    //     const isNotOldSourceData = taggedSource.Tags.Source != sourceConfiguration
-    //     const isNotOverridden = (overrideLambdas?.[2])? overrideLambdas[2](taggedSource) : true
-    //     return isNotOldSourceData && isNotOverridden
-    // })
+export const updateEntanglementAffects = (
+    characterData: ConfiguredCharacterData, 
+    source: SourceTypes, 
+    newAffects: EntanglementAffect[], 
+    override = true
+) => {
+    const target = characterData.EntanglementAffects;
+    
+    // 1. Remove old affects from this source
+    const nonSourceTaggedData = override 
+        ? target().filter(t => t.Tags.Source !== source)
+        : target();
 
-    // const newOverrideChoices : TaggedCharacterData<SelectionType>[] = dataSourceSelection.OverrideSelection.map(x=>{
-    //     return {Tags : {Source: sourceConfiguration}, Payload: x}
-    // })
-    // nonSourceOverrideSelections.push(...newOverrideChoices)
+    // 2. Add new affects tagged by source
+    const newTaggedData = newAffects.map(payload => ({
+        Tags: { Source: source },
+        Payload: payload
+    }));
 
-    // updateTarget.OverridePossibleSelection(nonSourceOverrideSelections)
+    target([...nonSourceTaggedData, ...newTaggedData]);
+};
+
+export const updateEntanglementBackgroundAffects = (characterData : ConfiguredCharacterData) => {
+    const source = "Background"
+    updateEntanglementAffects(characterData, source, characterData.JobBackground().AffectedPeople)
+    updateEntanglementAffects(characterData, source, characterData.JobBackground().AffectedOrganization, false)
+    updateEntanglementAffects(characterData, source, characterData.JobBackground().AffectedPlace, false)
+}

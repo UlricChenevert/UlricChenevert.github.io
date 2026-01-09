@@ -1,8 +1,101 @@
 import { Spell } from "../Contracts/Spell.js";
-import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
+import { JobSubset, JobSubsetEnum, JobType } from "../Contracts/StringTypes.js";
+import { SelectionPackage } from "../Contracts/TaggedData.js";
+
+export namespace SpellData {
+    
+    const none = new SelectionPackage<Spell>([], [], [])
+
+    export const JobToSpellSelection : Record<JobType, SelectionPackage<Spell>> = {
+        "Apprentice Artisan": none,
+        "Apprentice Bureaucrat": none,
+        "Free Laborer": none,
+        "Apprentice Crafter": none,
+        "Apprentice Mercantiler": none,
+        "Escaped Peasant/Thrall": none,
+        Acrobat: none,
+        Contortionist: none,
+        Jester: none,
+        Minstrel: none,
+        Scholar: none,
+        "Storyteller/Thespian": none,
+        Accursed: none,
+        Acolyte: none,
+        Cultist: none,
+        Inquisitor: none,
+        Pariah: none,
+        "Touched/Anchorite": none,
+        Armiger: none,
+        Barbarian: none,
+        "Mercenary/Hedge": none,
+        Prizefighter: none,
+        "Ruffian/Enforcer": none,
+        "Woodard/Warden": none,
+        "Adept/Arcane Apprentice": none,
+        "Alchemy Apprentice": none,
+        "Arcane Researcher": none,
+        Charlatan: none,
+        Dowser: none,
+        Warlock: none,
+        Fence: none,
+        Gambler: none,
+        Scoundrel: none,
+        Sharp: none,
+        Spy: none,
+        "Street Urchin": none
+    }
+    
+    export const JobSubsetToSpellSelection : Record<JobSubset, SelectionPackage<Spell>> = {
+        [JobSubsetEnum.None]: none,
+        [JobSubsetEnum.Jeweler]: none,
+        [JobSubsetEnum.Arbalist]: none,
+        [JobSubsetEnum.Scrivener]: none,
+        [JobSubsetEnum.Advocate]: none,
+        [JobSubsetEnum.Cartographer]: none,
+        [JobSubsetEnum.Inspector]: none,
+        [JobSubsetEnum.Interpreter]: none,
+        [JobSubsetEnum.Smith]: none,
+        [JobSubsetEnum.Carpenter]: none,
+        [JobSubsetEnum.MoneyChanger]: none,
+        [JobSubsetEnum.Ambler]: none,
+        [JobSubsetEnum.Chef]: none,
+        [JobSubsetEnum.HouseServant]: none,
+        [JobSubsetEnum.Farmhand]: none,
+        [JobSubsetEnum.Laborer]: none,
+        [JobSubsetEnum.Sailor]: none,
+        [JobSubsetEnum.Brewer]: none,
+        [JobSubsetEnum.Farmer]: none,
+        [JobSubsetEnum.Herder]: none,
+        [JobSubsetEnum.Oratory]: none,
+        [JobSubsetEnum.Theology]: none,
+        [JobSubsetEnum.Vintner]: none,
+        [JobSubsetEnum.Esoterica]: none,
+        [JobSubsetEnum.ActiveService]: none,
+        [JobSubsetEnum.Freelance]: none,
+        [JobSubsetEnum.LordSlain]: none,
+        [JobSubsetEnum.Disgraced]: none,
+        [JobSubsetEnum.HedgeKnight]: none,
+        [JobSubsetEnum.Mercenary]: none,
+        [JobSubsetEnum.Bandit]: none,
+        [JobSubsetEnum.Discharged]: none,
+        [JobSubsetEnum.IxianRaver]: none,
+        [JobSubsetEnum.IxianArchon]: none,
+        [JobSubsetEnum.Dragon]: none,
+        [JobSubsetEnum.Lich]: none,
+        [JobSubsetEnum.Wizard]: none,
+        [JobSubsetEnum.ElderGod]: none,
+        [JobSubsetEnum.Moloch]: none,
+        [JobSubsetEnum.Kain]: none,
+        [JobSubsetEnum.ThreeTrinketRandom]: none,
+        [JobSubsetEnum.OneTrinketChoice]: none,
+        [JobSubsetEnum.DisguiseSpecialist]: none,
+        [JobSubsetEnum.BurglarSpecialist]: none
+    }
+
+}
 // import { cultistTag, cultistWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
 
-export const SpellData : MultiTaggedCharacterData<Spell>[] = [
+// export const SpellData : MultiTaggedCharacterData<Spell>[] = [
     // {
     //     Tags:[warlockWholeTag],
     //     Payload:new Spell("Chill Touch (Arcane)", "A target takes necrotic damage and cannot heal."),
@@ -40,4 +133,3 @@ export const SpellData : MultiTaggedCharacterData<Spell>[] = [
     //     Tags:[cultistWholeTag],
     //     Payload: new Spell("Light/Darkness (Theurgy)", "You can create illumination or darkness in an area or on a target."),
     // },
-] 

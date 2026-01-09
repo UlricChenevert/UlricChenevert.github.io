@@ -8,17 +8,14 @@ import { Abilities, AbilitiesToArray, MaxAbility } from "../Contracts/Abilities.
 import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
 import { LockableObjectPickerModel } from "./LockableObjectPickerModel.js";
 
+const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"] as const;
+
 export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
     FriendlyName = "Ability Scores";
     ViewUrl = "PartialViews/SkillsView.html"
     isLoading: Observable<boolean>;
 
-    strengthPicker : IPartialViewModel<LockableObjectPickerModel<number>>
-    dexterityPicker : IPartialViewModel<LockableObjectPickerModel<number>>
-    constitutionPicker : IPartialViewModel<LockableObjectPickerModel<number>>
-    intelligencePicker : IPartialViewModel<LockableObjectPickerModel<number>>
-    wisdomPicker : IPartialViewModel<LockableObjectPickerModel<number>>
-    charismaPicker : IPartialViewModel<LockableObjectPickerModel<number>>
+    abilityPickers: Record<string, IPartialViewModel<LockableObjectPickerModel<number>>> = {};
 
     PictureUrl : Observable<string | undefined>
 
@@ -31,6 +28,8 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
 
     isUsingCustomRoll : Observable<boolean>
 
+    AbilityKeys = AbilityKeys
+
 
     constructor (public GlobalCharacterData : ConfiguredCharacterData) {
         this.standardRollArray = DiceRoll.standardAbilityScores
@@ -38,12 +37,13 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
 
         this.UnselectedSkills = ko.observableArray<number>(this.standardRollArray.map(x=>x))
 
-        this.strengthPicker = ConfiguredViewModels.createAbilityPickerModel("Strength", this.UnselectedSkills, this.GlobalCharacterData)
-        this.dexterityPicker = ConfiguredViewModels.createAbilityPickerModel("Dexterity", this.UnselectedSkills, this.GlobalCharacterData)
-        this.constitutionPicker = ConfiguredViewModels.createAbilityPickerModel("Constitution", this.UnselectedSkills, this.GlobalCharacterData)
-        this.intelligencePicker = ConfiguredViewModels.createAbilityPickerModel("Intelligence", this.UnselectedSkills, this.GlobalCharacterData)
-        this.wisdomPicker = ConfiguredViewModels.createAbilityPickerModel("Wisdom", this.UnselectedSkills, this.GlobalCharacterData)
-        this.charismaPicker = ConfiguredViewModels.createAbilityPickerModel("Charisma", this.UnselectedSkills, this.GlobalCharacterData)
+        AbilityKeys.forEach(ability => {
+            this.abilityPickers[ability] = ConfiguredViewModels.createAbilityPickerModel(
+                ability, 
+                this.UnselectedSkills, 
+                this.GlobalCharacterData
+            );
+        });
 
         this.PictureUrl = ko.observable<string | undefined>(undefined)
 
@@ -58,29 +58,23 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
         })
 
         this.UnselectedSkills.subscribe((list)=>{
-            this.CurrentlySelectedAbilities(this.EvaluateChildren())
+            
             
             if (list.length < DiceRoll.ABILITY_SCORE_AMOUNT)
                 this.PictureUrl(MaxAbility(this.CurrentlySelectedAbilities()).pictureUrl)
+
+            if (list.length == 0)
+                this.CurrentlySelectedAbilities(this.EvaluateChildren())
         })
 
         this.isLoading = ko.observable(false)
     }
     
     Init () {
-        const Strength = this.GlobalCharacterData.Abilities()?.Strength
-        const Dexterity = this.GlobalCharacterData.Abilities()?.Dexterity
-        const Constitution = this.GlobalCharacterData.Abilities()?.Constitution
-        const Intelligence = this.GlobalCharacterData.Abilities()?.Intelligence
-        const Wisdom = this.GlobalCharacterData.Abilities()?.Wisdom
-        const Charisma = this.GlobalCharacterData.Abilities()?.Charisma
-
-        this.strengthPicker.Model.Init(Strength)
-        this.dexterityPicker.Model.Init(Dexterity)
-        this.constitutionPicker.Model.Init(Constitution)
-        this.intelligencePicker.Model.Init(Intelligence)
-        this.wisdomPicker.Model.Init(Wisdom)
-        this.charismaPicker.Model.Init(Charisma)
+        AbilityKeys.forEach(key => {
+            const value : number | undefined = this.GlobalCharacterData.Abilities()?.[key]
+            this.abilityPickers[key].Model.Init(value);
+        });
         
         const abilityData : number[] = AbilitiesToArray(this.GlobalCharacterData.Abilities()).sort((a, b)=>a-b)
 
@@ -102,12 +96,9 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
         
         
         this.ClearChildren()
-        this.strengthPicker.Model.Init(selection[0])
-        this.dexterityPicker.Model.Init(selection[1])
-        this.constitutionPicker.Model.Init(selection[2])
-        this.intelligencePicker.Model.Init(selection[3])
-        this.wisdomPicker.Model.Init(selection[4])
-        this.charismaPicker.Model.Init(selection[5])
+        AbilityKeys.forEach((key, index) => {
+            this.abilityPickers[key].Model.Init(selection[index]);
+        });
 
     }
     
@@ -123,29 +114,28 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
     }
 
     Evaluate () {
+        this.CurrentlySelectedAbilities(this.EvaluateChildren())
+        
         this.GlobalCharacterData.Abilities(this.CurrentlySelectedAbilities())
 
         return this.CurrentlySelectedAbilities()
     }
 
     EvaluateChildren() {
+        const finalValues : number[] = []
+        AbilityKeys.forEach((key) => {
+            finalValues.push(this.abilityPickers[key].Model.Evaluate())
+        });
+
         return new Abilities(
-            this.strengthPicker.Model.Evaluate(),
-            this.dexterityPicker.Model.Evaluate(),
-            this.constitutionPicker.Model.Evaluate(),
-            this.intelligencePicker.Model.Evaluate(),
-            this.wisdomPicker.Model.Evaluate(),
-            this.charismaPicker.Model.Evaluate()
+            ...finalValues
         )
     }
 
     ClearChildren () {
-        this.strengthPicker.Model.clear()
-        this.dexterityPicker.Model.clear()
-        this.constitutionPicker.Model.clear()
-        this.intelligencePicker.Model.clear()
-        this.wisdomPicker.Model.clear()
-        this.charismaPicker.Model.clear()
+        AbilityKeys.forEach((key, index) => {
+            this.abilityPickers[key].Model.clear();
+        });
     }
 }
 
