@@ -1,0 +1,21 @@
+<div class="wizard-container grow-height-as-much-as-possible">
+    <!-- <div class="retain-height">
+        <div class="wizard-header">
+            <span data-bind="text: FriendlyName">Character Creator</span>
+            <button class="button-icon pop-content centered" data-bind="click: cancel">
+                <img src="/Images/x-icon.svg" alt="Cancel" />
+            </button>
+        </div>
+    </div> -->
+    <div class="grow-height-as-much-as-possible carousel" data-bind="foreach: panels">
+        <div class="wizard-panel pop-content carousel-item" data-bind="PartialView: $data, style: {transform: $parent.currentTranslation()}"></div>
+    </div>
+    <div class="retain-height">
+        <div class="wizard-controls">
+            <button class="wizard-button" data-bind="click: cancel, visible: isFirstPanel()">Cancel</button>
+            <button class="wizard-button" data-bind="click: previous, hidden: isFirstPanel()">Previous</button>
+            <button class="wizard-button" data-bind="click: next, hidden: isLastPanel()">Next</button>
+            <button class="wizard-button" data-bind="click: finish, visible: isLastPanel()">Finish</button>
+        </div>
+    </div>
+</div>

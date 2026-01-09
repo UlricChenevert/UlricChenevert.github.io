@@ -1,0 +1,27 @@
+<div class="AbilityView">
+    <div class="boolean-button small-gap">
+        <div class="padded-centered-text hoverable-container">
+            <div>
+                Entanglement Rolls
+            </div>
+            <div class="bold-text small-gap">
+                <!-- ko foreach: PossibleAttitudes -->
+                    <span data-bind="text: $data"></span>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div>
+        <div class="ability-pickers" data-bind="foreach: OrganizationTypes"> 
+            <div class="hoverable-container" data-bind="PartialView: $parent.Pickers[$data]"></div>
+        </div>
+    </div>
+
+    <div class="centered">
+        <button class="hoverable-container wizard-button" data-bind="click: chooseRandomly"> Randomly Assign Scores </button>
+    </div>
+
+</div>

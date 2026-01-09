@@ -1,0 +1,45 @@
+<!-- ko if: IsConfigured -->
+
+<div>
+    <span>
+        <span data-bind="text: FriendlyName"></span>
+    </span>
+
+    <span>
+        <button class="pop-content button-icon centered" data-bind="click: Edit">
+            <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\edit-button-svgrepo-com.svg" alt="Edit"/>
+        </button>
+        <button class="pop-content button-icon centered" data-bind="click: Randomize">
+            <img src="\Images\dice-icon.svg" alt="Randomize"/>
+        </button>
+    </span>
+</div>
+
+<div data-bind="foreach: Languages">
+    <span data-bind="chosenLanguage().Payload.Name"></span>
+
+    <span data-bind="canSpeak"></span>
+
+    <span data-bind="canWrite"></span>
+    
+    <span data-bind="canRead"></span>
+</div>
+
+<!-- /ko -->
+
+<!-- ko ifnot: IsConfigured -->
+
+<div>
+    <button class="pop-content" data-bind="click: Edit">
+        <span>Select </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+
+    <button class="pop-content" data-bind="click: Randomize">
+        <span>Roll </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+</div>
+
+<!-- /ko -->
+

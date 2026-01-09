@@ -1,0 +1,50 @@
+<div class="AbilityView">
+    <div class="image-container">
+        <img class="image" style="max-height: 10em;" src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\dice.png">
+    </div>
+
+    <hr>
+
+    <div class="boolean-button small-gap">
+        <div class="padded-centered-text hoverable-container" data-bind="click: ()=>{isUsingCustomRoll(false)}, css: { selected: !isUsingCustomRoll() }">
+            <div>
+                Standard Ability Choices
+            </div>
+            <div class="bold-text">
+                <!-- ko foreach: standardRollArray -->
+                    <span data-bind="text: $data"></span>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <div class="padded-centered-text hoverable-container" data-bind="click: ()=>{isUsingCustomRoll(true)}, css: { selected: isUsingCustomRoll() }">
+            <div>
+                Random Ability Choices
+            </div>
+            <div class="bold-text">
+                <!-- ko foreach: customRollArray -->
+                    <span data-bind="text: $data"></span>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div>
+        <div class="ability-pickers" data-bind="foreach: AbilityKeys"> 
+            <div class="hoverable-container" data-bind="PartialView: $parent.abilityPickers[$data]"></div>
+        </div>
+    </div>
+
+    <!--ko if: PictureUrl -->
+    <div class="image-container">
+        <img class="medium-sized-image image " data-bind="attr: {src: PictureUrl}">
+    </div>
+    <!-- /ko -->
+
+    <div class="centered">
+        <button class="hoverable-container wizard-button" data-bind="click: chooseRandomly"> Randomly Assign Scores </button>
+    </div>
+
+</div>

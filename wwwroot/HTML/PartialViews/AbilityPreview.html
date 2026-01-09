@@ -1,0 +1,57 @@
+<!-- ko if: IsConfigured -->
+<div>
+    <div class="header large-gap">
+        <div data-bind="text: FriendlyName"></div>
+        
+        <div class="medium-gap remove-when-print">
+            <button class="pop-content button-icon centered" data-bind="click: Edit">
+                <img src="\Images\00 - Art for CharGen-20251126T183321Z-1-001\00 - Art for CharGen\edit-button-svgrepo-com.svg" alt="Edit"/>
+            </button>
+            <button class="pop-content button-icon centered" data-bind="click: Randomize">
+                <img src="\Images\dice-icon.svg" alt="Randomize"/>
+            </button>
+        </div>
+    </div>
+    
+    <div class="make-row">
+        <div class="bubble-widget">
+            Str <span data-bind="text: Ability().Strength"></span>
+        </div>
+        <div class="bubble-widget">
+            Dex <span data-bind="text: Ability().Dexterity"></span>
+        </div>
+        <div class="bubble-widget">
+            Con <span data-bind="text: Ability().Constitution"></span>
+        </div>
+        <div class="bubble-widget">
+            Int <span data-bind="text: Ability().Intelligence"></span>
+        </div>
+        <div class="bubble-widget">
+            Wis <span data-bind="text: Ability().Wisdom"></span>
+        </div>
+        <div class="bubble-widget">
+            Cha <span data-bind="text: Ability().Charisma"></span>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- /ko -->
+
+<!-- ko ifnot: IsConfigured -->
+
+<div class="medium-gap remove-when-print">
+    <button class="pop-content wizard-button" data-bind="click: Edit">
+        <span> Select </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+
+    <button class="pop-content wizard-button" data-bind="click: Randomize">
+        <span>Roll </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+</div>
+
+<!-- /ko -->
+
