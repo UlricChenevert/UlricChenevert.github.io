@@ -1,0 +1,28 @@
+To redirect your HTML page to the new URL, the most common and reliable method is using a Meta Refresh tag. This tells the browser to fetch a different URL immediately.
+Updated Code
+
+I have added the <meta> tag inside your <head> section. I also added a small snippet of JavaScript as a backup, which is a best practice to ensure the redirect happens even if the browser has specific meta-refresh restrictions.
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="refresh" content="0; url=https://ulricchenevert.github.io/HTML/index.html">
+    
+    <script type="text/javascript">
+        window.location.href = "https://ulricchenevert.github.io/HTML/index.html";
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemo Esuriat - Redirecting...</title>
+    <link rel="stylesheet" href="/CSS/project.css">
+    <link rel="icon" type="image/png" href="/Images/favicon.ico"/>
+    <script type='text/javascript' src="/Scripts/Framework/Knockout/knockout.js"></script>
+    <script type="module" src="/Scripts/WebCore/Entry.js"></script>
+  </head>
+  <body>
+    <p>If you are not redirected automatically, follow this <a href="https://ulricchenevert.github.io/HTML/index.html">link</a>.</p>
+    <div id="main-website-container" data-bind="PartialView: main" style="display:none;"></div>
+  </body>
+</html>
