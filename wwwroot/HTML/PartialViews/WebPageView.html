@@ -3,7 +3,9 @@
         <span class="logo">Nemo Esuriat</span>
     </div>
     <div class="nav-elements" data-bind="foreach: NavigationOptions">
-        <button class="pop-content wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+        <!-- <a class="link" data-bind="text: $data, click: $parent.lastClickedOnView">Link</a> -->
+        <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+        <!-- <span data-bind="if: $parent.showDivider()" class="dividers">|</span>  -->
     </div>
 </nav>
 

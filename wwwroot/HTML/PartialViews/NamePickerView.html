@@ -12,13 +12,13 @@
     
     <hr>
 
-    <div class="name-picker">
-        <div data-bind="PartialView: NamePicker"></div>
+    <div class="name-picker container-list">
+        <div class="container-list-item" data-bind="PartialView: NamePicker"></div>
         <!-- ko ifnot: notShowingBynames -->
-        <div data-bind="PartialView: BynamePicker"></div>
+        <div class="container-list-item" data-bind="PartialView: BynamePicker"></div>
         <!-- /ko -->
         <!-- ko ifnot: notShowingEpithets -->
-        <div data-bind="PartialView: EpithetPicker"></div>
+        <div class="container-list-item" data-bind="PartialView: EpithetPicker"></div>
         <!-- /ko -->
     </div>
 
