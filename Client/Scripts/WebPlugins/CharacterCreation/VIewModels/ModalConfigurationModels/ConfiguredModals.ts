@@ -24,6 +24,7 @@ import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
 import { createEntanglementPreview, OrganizationEntanglementsGroup } from "../../Contracts/Entanglements.js";
 import { EntanglementCreationModel } from "./EntanglementCreationModel.js";
 import { IConfigurableViewModal } from "../../Contracts/CharacterWizardViewModels.js";
+import { LanguagePreviewModel } from "../Preview/LanguagePreviewModel.js";
 
 export namespace ConfiguredModals {
     export const createAncestryPickerModel = (characterData: ConfiguredCharacterData) : IConfigurableViewModal<RaceType> => {
@@ -271,9 +272,9 @@ export namespace ConfiguredModals {
 
     export const createLanguagePickerModel = (characterData: ConfiguredCharacterData) => {
         // Unique logic stays here
-        const stringPreview = ko.observableArray<string>([]);
+        const stringPreview = ko.observableArray<LearnedLanguage>([]);
         characterData.LanguageSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => determineName(x)));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x));
         });
 
         const determineName = (language : LearnedLanguage)=>{
@@ -284,7 +285,7 @@ export namespace ConfiguredModals {
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<LearnedLanguage>, StringListPreviewModel, TaggedObservableSelectionPackage<LearnedLanguage>>({
+        return createGenericPicker<SelectionPackageConfigurationModel<LearnedLanguage>, LanguagePreviewModel, TaggedObservableSelectionPackage<LearnedLanguage>>({
             name: "Language",
             characterData,
             pickerModel: new SelectionPackageConfigurationModel(
@@ -296,7 +297,7 @@ export namespace ConfiguredModals {
                 isConfigured
             ),
             dataSelector: (data) => data.LanguageSelections,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new LanguagePreviewModel(
                 "Language",
                 stringPreview,
                 isConfigured,
@@ -424,7 +425,7 @@ export namespace ConfiguredModals {
                 characterData,
                 (data) => data.ReligionSelections,
                 (item: Deity) => (item.Pronoun.name)? item.Pronoun.name : "An unknown god",
-                (item: Deity) => `${item.Pronoun.name}`,
+                (item: Deity) => `${item.Pronoun.name}: ${item.Description}`,
                 isConfigured
             ),
             dataSelector: (data) => data.ReligionSelections,

@@ -339,7 +339,7 @@
   box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.1);
 }
 .cover {
-  background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
+  background-image: url("/Images/CharacterCreator/RR Heartbreaker Cover_Final Kennon James.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -449,7 +449,7 @@
   gap: 1em;
 }
 .character-background-image {
-  background-image: url("/Images/00 - Art for CharGen-20251126T183321Z-1-001/00 - Art for CharGen/RR Heartbreaker Cover_Final Kennon James.jpg");
+  background-image: url("/Images/CharacterCreator/RR Heartbreaker Cover_Final Kennon James.jpg");
   background-size: cover;
   background-color: black;
   padding: 10em;
@@ -558,7 +558,7 @@ hr {
 }
 .medium-gap {
   display: flex;
-  gap: 1em;
+  gap: 2.5em;
 }
 .large-gap {
   gap: 4em !important;

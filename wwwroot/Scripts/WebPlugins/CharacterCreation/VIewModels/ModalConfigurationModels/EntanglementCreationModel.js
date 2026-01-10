@@ -66,7 +66,10 @@ export class EntanglementCreationModel {
         this.ClearChildren();
         const selection = Utility.shuffle(this.SortedUnselectedAttitudes().map(x => x));
         for (let i = 0; i < OrganizationTypes.length; i++) {
-            this.Pickers[OrganizationTypes[i]].Model.Init(selection[i]);
+            const modelReference = this.Pickers[OrganizationTypes[i]].Model;
+            if (!modelReference.isUnlockableByUser())
+                continue; // Already has a value provided
+            this.Pickers[OrganizationTypes[i]].Model.Init(selection.pop());
         }
     }
     Randomize() {

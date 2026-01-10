@@ -12,6 +12,7 @@ import { SelectionPackageConfigurationModel } from "./SelectionPackageConfigurat
 import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
 import { createEntanglementPreview } from "../../Contracts/Entanglements.js";
 import { EntanglementCreationModel } from "./EntanglementCreationModel.js";
+import { LanguagePreviewModel } from "../Preview/LanguagePreviewModel.js";
 export var ConfiguredModals;
 (function (ConfiguredModals) {
     ConfiguredModals.createAncestryPickerModel = (characterData) => {
@@ -157,7 +158,7 @@ export var ConfiguredModals;
         // Unique logic stays here
         const stringPreview = ko.observableArray([]);
         characterData.LanguageSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => determineName(x)));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x));
         });
         const determineName = (language) => {
             return `${language.Language.Name} (${(language.canSpeak) ? " Speak " : ""} ${(language.canRead) ? " Read " : ""} ${(language.canWrite) ? " Write " : ""})`;
@@ -170,7 +171,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: new SelectionPackageConfigurationModel("Language", characterData, (data) => data.LanguageSelections, (item) => item.Language.Name, (item) => determineName(item) + ": " + item.Language.Description, isConfigured),
             dataSelector: (data) => data.LanguageSelections,
-            createPreview: (modal) => new StringListPreviewModel("Language", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
+            createPreview: (modal) => new LanguagePreviewModel("Language", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
         });
     };
     ConfiguredModals.createSpellPickerModel = (characterData) => {
@@ -236,7 +237,7 @@ export var ConfiguredModals;
         return createGenericPicker({
             name: "Religion",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel("Religion", characterData, (data) => data.ReligionSelections, (item) => (item.Pronoun.name) ? item.Pronoun.name : "An unknown god", (item) => `${item.Pronoun.name}`, isConfigured),
+            pickerModel: new SelectionPackageConfigurationModel("Religion", characterData, (data) => data.ReligionSelections, (item) => (item.Pronoun.name) ? item.Pronoun.name : "An unknown god", (item) => `${item.Pronoun.name}: ${item.Description}`, isConfigured),
             dataSelector: (data) => data.ReligionSelections,
             createPreview: (modal) => new StringListPreviewModel("Religion", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
         });

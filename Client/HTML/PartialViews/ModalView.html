@@ -1,7 +1,10 @@
 <!-- ko if: isVisible-->
 <div class="modal">
     <div class="modal-contents">
-        <div class="header"><span data-bind="text: FriendlyName"></span><button data-bind="click: Close">X</button></div>
+        <div class="header">
+            <span data-bind="text: FriendlyName"></span>
+            <button class="button-icon pop-content centered" data-bind="click: Close"><img src="/Images/x-icon.svg" alt="Cancel" /></button>
+        </div>
         <div class="modal-display" data-bind="PartialView: ModalModel"></div>
         <div class="modal-done-button"><button class="align-left wizard-button pop-content" data-bind="click: Done">Done</button></div>
     </div>
