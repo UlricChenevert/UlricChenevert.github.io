@@ -1,10 +1,8 @@
-
-
 <!-- ko if: IsConfigured -->
 <div class="header large-gap">
     <div data-bind="text: FriendlyName"></div>
     
-    <div class="medium-gap remove-when-print">
+    <div class="small-gap remove-when-print">
         <button class="pop-content button-icon centered" data-bind="click: Edit">
             <img src="\Images\CharacterCreator\edit-button-svgrepo-com.svg" alt="Edit"/>
         </button>
@@ -14,24 +12,25 @@
     </div>
 </div>
 
-<div class="transform-smoothly container-list" data-bind="foreach: previewList">
-    <span class="container-list-item small-gap"> 
+<div class="container-list" data-bind="foreach: previewList">
+    <span class="container-list-item small-gap">
+
         <span data-bind="text: Language.Name"></span>
         <!-- ko if: canSpeak -->
-            <span class="pop-content button-icon centered">
+            <span class="button-icon centered">
                 <img src="\Images\speaking-svgrepo-com.svg" alt="Speak"/>
             </span>
         <!-- /ko -->
         <!-- ko if: canRead -->
-            <span class="pop-content button-icon centered">
+            <span class="button-icon centered">
                 <img src="\Images\read-book-icon.svg" alt="Read"/>
-
+    
             </span>
         <!-- /ko -->
         <!-- ko if: canWrite -->
-            <span class="pop-content button-icon centered">
+            <span class="button-icon centered">
                 <img src="\Images\writing-icon.svg" alt="Write"/>
-
+    
             </span>
         <!-- /ko -->
     </span>

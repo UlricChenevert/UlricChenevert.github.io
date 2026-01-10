@@ -20,19 +20,6 @@
   max-width: 100vw;
   z-index: 999;
 }
-#nav-bar button {
-  border: 1;
-  border-color: transparent;
-  border-radius: 0.5em;
-  padding: auto;
-  background-color: transparent;
-}
-#nav-bar button:hover,
-#nav-bar button:focus {
-  background-color: #887aaa;
-  outline: none;
-  transform: scale(1.3);
-}
 #nav-bar .nav-elements {
   display: flex;
   justify-content: space-evenly;
@@ -552,6 +539,11 @@ hr {
 .wizard-option:hover {
   background: white;
 }
+@media (width <= 500px) {
+  .section-buttons {
+    flex-direction: column;
+  }
+}
 .small-gap {
   display: flex;
   gap: 1em;
@@ -878,7 +870,7 @@ hr {
 .modal .modal-contents {
   margin: 10em;
   width: 50vw;
-  height: 60em;
+  max-height: 60em;
   background-color: #ffffff;
   padding: 1em;
   overflow: scroll;
@@ -887,7 +879,9 @@ hr {
 }
 @media (width <= 500px) {
   .modal .modal-contents {
-    font-size: 75vw;
+    width: 75vw;
+    margin: 7em;
+    margin-top: 15em;
   }
 }
 .modal .modal-done-button {

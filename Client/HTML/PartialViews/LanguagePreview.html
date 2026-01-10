@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="container-list" data-bind="foreach: previewList">
+<div class="container-list large-gap" data-bind="foreach: previewList">
     <span class="container-list-item small-gap">
 
         <span data-bind="text: Language.Name"></span>
@@ -38,7 +38,7 @@
 <!-- /ko -->
 
 <!-- ko ifnot: IsConfigured -->
-<div class="medium-gap remove-when-print" >
+<div class="section-buttons small-gap remove-when-print" >
     <button class="pop-content wizard-button" data-bind="click: Edit">
         <span>Select </span>
         <span data-bind="text: FriendlyName"></span>

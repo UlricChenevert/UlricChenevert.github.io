@@ -4,7 +4,7 @@
     </div>
     <div class="nav-elements" data-bind="foreach: NavigationOptions">
         <!-- <a class="link" data-bind="text: $data, click: $parent.lastClickedOnView">Link</a> -->
-        <button data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+        <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
         <!-- <span data-bind="if: $parent.showDivider()" class="dividers">|</span>  -->
     </div>
 </nav>
