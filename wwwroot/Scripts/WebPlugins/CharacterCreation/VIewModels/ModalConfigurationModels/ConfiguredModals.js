@@ -2,7 +2,7 @@ import { ko } from "../../../../Framework/Knockout/ko.js";
 import { CareerData } from "../../Configuration/CareerData.js";
 import { Races } from "../../Configuration/DispositionData.js";
 import { EntanglementOrganizationTypesEnum } from "../../Contracts/StringTypes.js";
-import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects } from "../../Utility/UpdateUtility.js";
+import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells } from "../../Utility/UpdateUtility.js";
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
 import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
@@ -13,6 +13,12 @@ import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
 import { createEntanglementPreview } from "../../Contracts/Entanglements.js";
 import { EntanglementCreationModel } from "./EntanglementCreationModel.js";
 import { LanguagePreviewModel } from "../Preview/LanguagePreviewModel.js";
+import { Utility } from "../../../../WebCore/Utility.js";
+import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../../Configuration/TaggedNameData.js";
+import { NameUtility } from "../../Utility/NameUtility.js";
+import { CreateObjectModel } from "../CreateObjectModel.js";
+import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
+import { NamePickerModel } from "./NamePickerModel.js";
 export var ConfiguredModals;
 (function (ConfiguredModals) {
     ConfiguredModals.createAncestryPickerModel = (characterData) => {
@@ -45,7 +51,10 @@ export var ConfiguredModals;
             characterData,
             pickerModel: new SelectionPackageConfigurationModel("Edges", characterData, (data) => data.EdgeSelections, (item) => item.Name, (item) => item.Name + " - " + item.Description, isConfigured),
             dataSelector: (data) => data.EdgeSelections,
-            createPreview: (modal) => new StringListPreviewModel("Edges", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
+            createPreview: (modal) => new StringListPreviewModel("Edges", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
+            onUpdate: () => {
+                updateEdgesSpells(characterData);
+            }
         });
     };
     ConfiguredModals.createSkillsPickerModel = (characterData) => {
@@ -83,6 +92,7 @@ export var ConfiguredModals;
                 updateBackgroundSkills(characterData);
                 updateBackgroundLanguages(characterData);
                 updateEntanglementBackgroundAffects(characterData);
+                updateBackgroundSpells(characterData);
             }
         });
     };
@@ -242,4 +252,18 @@ export var ConfiguredModals;
             createPreview: (modal) => new StringListPreviewModel("Religion", stringPreview, isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
         });
     };
+    ConfiguredModals.createNamePickerModel = (characterData) => {
+        let tempPreview = Utility.BundleViewAndModel({});
+        const modal = Utility.BundleViewAndModel(new CreateObjectModel("Identity", new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData), (data) => data.Name, tempPreview, () => true, () => { }, characterData));
+        const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData));
+        characterData.Name.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
+        characterData.Gender.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
+        const isConfigured = ko.observable(false);
+        characterData.JobBackground.subscribe(() => isConfigured(false));
+        characterData.Race.subscribe(() => isConfigured(false));
+        tempPreview.Model = new SimplePreviewModel(modal.Model.FriendlyName, NameObservable, isConfigured, modal.Model.Randomize.bind(modal.Model), modal.Model.EditItem.bind(modal.Model));
+        tempPreview.ViewUrl = tempPreview.Model.ViewUrl;
+        return modal;
+    };
+    ConfiguredModals.createAbilityPickerModel = (name, choices, characterData) => Utility.BundleViewAndModel(new LockableObjectPickerModel(name, choices, characterData, 0, (value) => value.toString(), (value) => value.toString()));
 })(ConfiguredModals || (ConfiguredModals = {}));

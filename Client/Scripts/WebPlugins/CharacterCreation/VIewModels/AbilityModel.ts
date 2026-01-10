@@ -5,7 +5,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
 import { Abilities, AbilitiesToArray, MaxAbility } from "../Contracts/Abilities.js";
-import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
+import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
 import { LockableObjectPickerModel } from "./LockableObjectPickerModel.js";
 
 const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"] as const;
@@ -38,7 +38,7 @@ export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
         this.UnselectedSkills = ko.observableArray<number>(this.standardRollArray.map(x=>x))
 
         AbilityKeys.forEach(ability => {
-            this.abilityPickers[ability] = ConfiguredViewModels.createAbilityPickerModel(
+            this.abilityPickers[ability] = ConfiguredModals.createAbilityPickerModel(
                 ability, 
                 this.UnselectedSkills, 
                 this.GlobalCharacterData

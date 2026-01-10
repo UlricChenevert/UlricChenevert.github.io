@@ -3,7 +3,6 @@ import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js
 import { ICharacterWizardViewModel, IConfigurableViewModal } from "../Contracts/CharacterWizardViewModels.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js";
-import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
 import { JobSubsetEnum } from "../Contracts/StringTypes.js";
 import { MaxAbility } from "../Contracts/Abilities.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
@@ -51,7 +50,7 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
             
             ConfiguredModals.createDeityPickerModel(GlobalCharacterData),
             
-            ConfiguredViewModels.createNamePickerModel(GlobalCharacterData),
+            ConfiguredModals.createNamePickerModel(GlobalCharacterData),
         ]
         
         this.isThereAnythingToConfigure = []
@@ -60,10 +59,10 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
         for (let i=7; i < 11; i++)
             this.isThereAnythingToConfigure[i](false)
 
-        this.GlobalCharacterData.SkillsSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[7]));
-        this.GlobalCharacterData.SpellSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[8]));
-        this.GlobalCharacterData.DrawbacksSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[9]));
-        this.GlobalCharacterData.CorruptionSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[10]));
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SkillsSelection(), this.isThereAnythingToConfigure[7]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SpellSelection(), this.isThereAnythingToConfigure[8]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.DrawbacksSelection(), this.isThereAnythingToConfigure[9]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.CorruptionSelection(), this.isThereAnythingToConfigure[10]);
 
         this.canSectionBeConfiguredObservables = []
         this.modalPickers.forEach(()=>{this.canSectionBeConfiguredObservables.push(ko.observable(false))})
@@ -85,10 +84,6 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
                     this.canSectionBeConfiguredObservables[j](isConfigured)
             }) 
         })
-
-        const updateIsConfigured = <T>(data : TaggedObservableSelectionPackage<T>, isConfigured : Observable<boolean>)=>{
-            isConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0);
-        }
         
         this.isLoading = ko.observable(true)
         this.jsonText = ko.observable("")
@@ -137,3 +132,7 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
 
 }
 
+const UpdateIsThereAnythingToConfigure = <T>(data : TaggedObservableSelectionPackage<T>, SomethingToBeConfigured : Observable<boolean>)=>{
+    data.ChoiceSelection.subscribe(()=>SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0))
+    data.FixedSelection.subscribe(()=>SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0))
+}

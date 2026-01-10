@@ -55,7 +55,7 @@ export type BackgroundType = 'Childhood' | 'Adult' | 'Elder';
 
 export type GeographyType = "Water" | "Landform";
 
-export type SourceTypes = "Background" | "Ancestry" | "Custom" | "Innate"
+export type SourceTypes = "Background" | "Ancestry" | "Custom" | "Innate" | "Edges"
 
 
 export type ChildhoodBackgroundsTypes =

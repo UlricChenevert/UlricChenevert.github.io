@@ -94,7 +94,7 @@ export namespace LanguageData {
     // Infernal
     export const SpeakInfernal = new LearnedLanguage(Infernal, true, false, false);
     export const ReadWriteInfernal = new LearnedLanguage(Infernal, false, true, true);
-    export const SpeakReadWriteInfernal = new LearnedLanguage(Infernal, false, true, true);
+    export const SpeakReadWriteInfernal = new LearnedLanguage(Infernal, true, true, true);
 
     // --- Specific Selection Packages ---
     const dwarfChoices = new ChoiceGroup(1, [SpeakDwerg, SpeakKaduz], [])
@@ -201,7 +201,7 @@ export namespace LanguageData {
         [JobSubsetEnum.BurglarSpecialist]: NoneSelection
     };
 
-    const readWriteOverrides : (JobType | JobSubset)[] = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Warlock", ]
+    const readWriteOverrides : (JobType | JobSubset)[] = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"]
 
     export const readWriteOverride = new Set<JobType | JobSubset>()
     readWriteOverrides.forEach((override)=>readWriteOverride.add(override)) 

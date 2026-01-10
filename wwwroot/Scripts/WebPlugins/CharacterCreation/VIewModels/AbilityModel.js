@@ -2,7 +2,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
 import { Abilities, AbilitiesToArray, MaxAbility } from "../Contracts/Abilities.js";
-import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
+import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
 const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 export class SkillsModel {
     GlobalCharacterData;
@@ -23,7 +23,7 @@ export class SkillsModel {
         this.customRollArray = DiceRoll.getRandomWeightedRolls();
         this.UnselectedSkills = ko.observableArray(this.standardRollArray.map(x => x));
         AbilityKeys.forEach(ability => {
-            this.abilityPickers[ability] = ConfiguredViewModels.createAbilityPickerModel(ability, this.UnselectedSkills, this.GlobalCharacterData);
+            this.abilityPickers[ability] = ConfiguredModals.createAbilityPickerModel(ability, this.UnselectedSkills, this.GlobalCharacterData);
         });
         this.PictureUrl = ko.observable(undefined);
         this.isUsingCustomRoll = ko.observable(false);

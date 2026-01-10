@@ -53,7 +53,7 @@ export var LanguageData;
     // Infernal
     LanguageData.SpeakInfernal = new LearnedLanguage(LanguageData.Infernal, true, false, false);
     LanguageData.ReadWriteInfernal = new LearnedLanguage(LanguageData.Infernal, false, true, true);
-    LanguageData.SpeakReadWriteInfernal = new LearnedLanguage(LanguageData.Infernal, false, true, true);
+    LanguageData.SpeakReadWriteInfernal = new LearnedLanguage(LanguageData.Infernal, true, true, true);
     // --- Specific Selection Packages ---
     const dwarfChoices = new ChoiceGroup(1, [LanguageData.SpeakDwerg, LanguageData.SpeakKaduz], []);
     const elfChoices = new ChoiceGroup(1, [LanguageData.SpeakSindar, LanguageData.SpeakSylvan], []);
@@ -149,7 +149,7 @@ export var LanguageData;
         [JobSubsetEnum.DisguiseSpecialist]: LanguageData.NoneSelection,
         [JobSubsetEnum.BurglarSpecialist]: LanguageData.NoneSelection
     };
-    const readWriteOverrides = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Warlock",];
+    const readWriteOverrides = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"];
     LanguageData.readWriteOverride = new Set();
     readWriteOverrides.forEach((override) => LanguageData.readWriteOverride.add(override));
     LanguageData.raceLanguageOverride = new Map();

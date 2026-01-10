@@ -1,5 +1,4 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
-import { ConfiguredViewModels } from "./ConfiguredCharacterConfigurationViews.js";
 import { JobSubsetEnum } from "../Contracts/StringTypes.js";
 import { MaxAbility } from "../Contracts/Abilities.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
@@ -32,16 +31,16 @@ export class CharacterSheetModel {
             ConfiguredModals.createCorruptionPickerModel(GlobalCharacterData),
             ConfiguredModals.createLanguagePickerModel(GlobalCharacterData),
             ConfiguredModals.createDeityPickerModel(GlobalCharacterData),
-            ConfiguredViewModels.createNamePickerModel(GlobalCharacterData),
+            ConfiguredModals.createNamePickerModel(GlobalCharacterData),
         ];
         this.isThereAnythingToConfigure = [];
         this.modalPickers.forEach(() => { this.isThereAnythingToConfigure.push(ko.observable(true)); });
         for (let i = 7; i < 11; i++)
             this.isThereAnythingToConfigure[i](false);
-        this.GlobalCharacterData.SkillsSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[7]));
-        this.GlobalCharacterData.SpellSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[8]));
-        this.GlobalCharacterData.DrawbacksSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[9]));
-        this.GlobalCharacterData.CorruptionSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[10]));
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SkillsSelection(), this.isThereAnythingToConfigure[7]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SpellSelection(), this.isThereAnythingToConfigure[8]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.DrawbacksSelection(), this.isThereAnythingToConfigure[9]);
+        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.CorruptionSelection(), this.isThereAnythingToConfigure[10]);
         this.canSectionBeConfiguredObservables = [];
         this.modalPickers.forEach(() => { this.canSectionBeConfiguredObservables.push(ko.observable(false)); });
         this.canSectionBeConfiguredObservables[0](true);
@@ -59,9 +58,6 @@ export class CharacterSheetModel {
                     this.canSectionBeConfiguredObservables[j](isConfigured);
             });
         });
-        const updateIsConfigured = (data, isConfigured) => {
-            isConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0);
-        };
         this.isLoading = ko.observable(true);
         this.jsonText = ko.observable("");
         this.showOutput = ko.observable(false);
@@ -95,3 +91,7 @@ export class CharacterSheetModel {
     Evaluate() { return; }
     Randomize() { return; }
 }
+const UpdateIsThereAnythingToConfigure = (data, SomethingToBeConfigured) => {
+    data.ChoiceSelection.subscribe(() => SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0));
+    data.FixedSelection.subscribe(() => SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0));
+};

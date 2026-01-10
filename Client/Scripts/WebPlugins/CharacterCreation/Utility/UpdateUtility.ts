@@ -5,6 +5,7 @@ import { EdgesData } from "../Configuration/EdgesData.js"
 import { ItemData } from "../Configuration/ItemData.js"
 import { LanguageData } from "../Configuration/LanguageData.js"
 import { SkillsData } from "../Configuration/SkillsData.js"
+import { SpellData } from "../Configuration/SpellsData.js"
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../Configuration/TaggedNameData.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
 import { EntanglementAffect } from "../Contracts/Entanglements.js"
@@ -15,11 +16,37 @@ import { CreateObjectModel } from "../VIewModels/CreateObjectModel.js"
 import { getMatchingMultiTaggedData, flattenAndFilterSelectionPackage } from "./FilterUtility.js"
 import { createTaggedData } from "./TagUtility.js"
 
-const updateSelectionBySource = <SelectionType>(newSelections : SelectionType[], sourceToFilterBy : SourceTypes, updateTarget : Observable<TaggedCharacterData<SelectionType>[]>, override : boolean)=>{
+const filterSelectionBySource = <SelectionType>(sourceToFilterBy : SourceTypes, updateTarget : Observable<TaggedCharacterData<SelectionType>[]>, override : boolean)=>{
     const nonSourceOverrideSelections = (!override)? updateTarget() : updateTarget().filter((taggedSource)=>{
         const isNotOldSourceData = taggedSource.Tags.Source != sourceToFilterBy
         return isNotOldSourceData
     })
+
+    return nonSourceOverrideSelections
+}
+
+const filterSelectionPackage = <SelectionType>(
+    updateTarget : TaggedObservableSelectionPackage<SelectionType>,
+    sourceConfiguration : SourceTypes,
+    override = true,
+) => { 
+    updateTarget.FixedSelection(filterSelectionBySource(sourceConfiguration, updateTarget.FixedSelection, override))
+
+    updateTarget.ChoiceSelection(filterSelectionBySource(sourceConfiguration, updateTarget.ChoiceSelection, override))
+
+    updateTarget.OverridePossibleSelection(filterSelectionBySource(sourceConfiguration, updateTarget.OverridePossibleSelection, override))
+  
+    const targetMap = updateTarget.OverridePossibleChoiceSelection;
+    
+    for (const entries of targetMap.entries()) {
+        if (entries[1].Tags.Source === sourceConfiguration) {
+            targetMap.delete(entries[0]);
+        }
+    }
+}
+
+const updateSelectionBySource = <SelectionType>(newSelections : SelectionType[], sourceToFilterBy : SourceTypes, updateTarget : Observable<TaggedCharacterData<SelectionType>[]>, override : boolean)=>{
+    const nonSourceOverrideSelections = filterSelectionBySource(sourceToFilterBy, updateTarget, override)
 
     const newOverrideChoices : TaggedCharacterData<SelectionType>[] = newSelections.map(x=>{
         return {Tags : {Source: sourceToFilterBy}, Payload: x}
@@ -28,6 +55,7 @@ const updateSelectionBySource = <SelectionType>(newSelections : SelectionType[],
 
     updateTarget(nonSourceOverrideSelections)
 }
+
 
 const updateGenericSelectionPackage = <SelectionType>(
     dataSourceSelection : SelectionPackage<SelectionType>, 
@@ -79,6 +107,28 @@ export const updateBackgroundEdges = (characterData : ConfiguredCharacterData)=>
     updateBackgroundData(EdgesData.JobToEdgeRecord[characterData.Job()], characterData.EdgeSelections())
     updateBackgroundData(EdgesData.JobSubsetToEdgeRecord[characterData.JobSubset()], characterData.EdgeSelections(), false)
 }
+
+export const updateBackgroundSpells = (characterData : ConfiguredCharacterData)=>{
+    updateBackgroundData(SpellData.JobToSpellsRecord[characterData.Job()], characterData.SpellSelection())
+    updateBackgroundData(SpellData.JobSubsetToSpellsRecord[characterData.JobSubset()], characterData.SpellSelection(), true)
+}
+
+export const updateEdgesSpells = (characterData : ConfiguredCharacterData)=>{
+    filterSelectionPackage(characterData.SpellSelection(), "Edges")
+
+    flattenAndCombineSelectionPackage(characterData.EdgeSelections(), characterData).forEach(
+        x=>{
+            const spellsRecord = SpellData.EdgeToSpellRecord.get(x)
+            if (spellsRecord === undefined) return
+
+            updateGenericSelectionPackage(spellsRecord, characterData.SpellSelection(), "Edges", false)
+        }
+    )
+}
+
+// export const updateRaceSpells = (characterData : ConfiguredCharacterData)=>{
+//     updateBackgroundData(SpellData.RaceToSpellsRecord[characterData.Race()], characterData.SpellSelection())
+// }
 
 export const updateBackgroundSkills = (characterData : ConfiguredCharacterData)=>{
     updateBackgroundData(SkillsData.JobToSkillRecord[characterData.Job()], characterData.SkillsSelection())

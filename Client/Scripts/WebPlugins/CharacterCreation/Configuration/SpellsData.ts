@@ -1,14 +1,54 @@
+import { Edges } from "../Contracts/Edges.js";
 import { Spell } from "../Contracts/Spell.js";
 import { JobSubset, JobSubsetEnum, JobType } from "../Contracts/StringTypes.js";
-import { SelectionPackage } from "../Contracts/TaggedData.js";
+import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
+import { EdgesData } from "./EdgesData.js";
 
 export namespace SpellData {
     
-    const none = new SelectionPackage<Spell>([], [], [])
+    // --- Spell Variables (Reused across jobs) ---
+    const ComprehendLanguages = new Spell("Comprehend Languages", "You can speak, read, and write an unknown language for the duration of the spell.");
+    const DetectMagic = new Spell("Detect Magic", "You can sense the power and presence of magic.");
+    const EndureElements = new Spell("Endure Elements", "You are resistant to damage from elemental forces/extreme temperatures.");
+    const TaintFoodAndDrink = new Spell("Taint Food and Drink", "Your touch can spoil food and beverages.");
+    const ChangeSelf = new Spell("Change Self", "You can alter your appearance as a disguise.");
+    const MageHand = new Spell("Mage Hand", "You can manipulate items at a distance as if with your hand.");
+    const Mending = new Spell("Mending", "You can repair a break or tear in an object.");
+    const DetectProfaneDivine = new Spell("Detect Profane/Divine", "You can sense creatures that are undead or of extraplanar origin.");
+    const HealingHand = new Spell("Healing Hand", "Your touch can heal minor wounds.");
+    const HarmingHand = new Spell("Harming Hand", "Your touch can cause minor wounds.");
+    const LightDarkness = new Spell("Light/Darkness", "You can create illumination or darkness in an area or on a target.");
+    const Guidance = new Spell("Guidance", "You can perform an action in a way you know is more likely to be successful.");
+    const Augury = new Spell("Augury", "You can see potential outcomes and events in the near future.");
+    const CreateWater = new Spell("Create Water", "You can manifest clear, clean drinking water.");
+    const PurifyFoodAndDrink = new Spell("Purify Food and Drink", "Your blessing can restore spoiled food and beverages.");
+    const Prestidigitation = new Spell("Prestidigitation", "You can do minor magic tricks like light a candle or clean a dish.");
+    const CharmPerson = new Spell("Charm Person", "You can make someone act like a close friend.");
+    const MagicMissile = new Spell("Magic Missile", "You can shoot energy darts that never miss.");
+    const Summon = new Spell("Summon", "You can make an allied creature appear to aid you.");
+    const FloatingDisk = new Spell("Floating Disk", "You can create an invisible platform that carries 300 lbs.");
+    const Identify = new Spell("Identify", "You can determine one function, use, and means of operation of an item.");
+    const DetectPoisonDisease = new Spell("Detect Poison & Disease", "You can sense and identify toxins.");
+    const ArcaneMark = new Spell("Arcane Mark", "You can write a visible or invisible message on a surface.");
+    const Daze = new Spell("Daze", "You can cause a target to become confused and lose actions.");
+    const CureWounds = new Spell("Cure Wounds", "Your touch can heal serious wounds.");
+    const DetectThoughts = new Spell("Detect Thoughts", "You can sense conscious thoughts of an intelligent target.");
+    const Invisibility = new Spell("Invisibility", "You can make yourself visually undetectable.");
+    const Levitate = new Spell("Levitate", "You can raise and move yourself or a heavy target.");
+    const LocateObject = new Spell("Locate Object", "You can sense the direction & distance of a person/object.");
+    const RopeTrick = new Spell("Rope Trick", "You can create a floating rope to access another dimension.");
+    const Sleep = new Spell("Sleep", "You can make foes fall into a deep slumber.");
+    const SpeakWithDead = new Spell("Speak with Dead", "You can compel a corpse or skeleton to answer questions.");
+    const Message = new Spell("Message", "You can whisper into someone’s ear that is far away.");
+    const MinorIllusion = new Spell("Minor Illusion", "You can create a temporary image.");
+    const DancingLights = new Spell("Dancing Lights", "You can create moving lights within line of sight.");
+    const DetectWater = new Spell("Detect Water", "You can detect water and its quality (safe, brackish, etc).");
 
-    export const JobToSpellSelection : Record<JobType, SelectionPackage<Spell>> = {
+    const none = new SelectionPackage<Spell>([], [], []);
+
+    export const JobToSpellsRecord : Record<JobType, SelectionPackage<Spell>> = {
         "Apprentice Artisan": none,
-        "Apprentice Bureaucrat": none,
+        "Apprentice Bureaucrat": none, // Managed via Subset (Scrivener)
         "Free Laborer": none,
         "Apprentice Crafter": none,
         "Apprentice Mercantiler": none,
@@ -17,26 +57,52 @@ export namespace SpellData {
         Contortionist: none,
         Jester: none,
         Minstrel: none,
-        Scholar: none,
+        Scholar: new SelectionPackage<Spell>([ComprehendLanguages], [], []),
         "Storyteller/Thespian": none,
-        Accursed: none,
-        Acolyte: none,
-        Cultist: none,
-        Inquisitor: none,
-        Pariah: none,
-        "Touched/Anchorite": none,
+        Accursed: new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [DetectMagic, EndureElements, TaintFoodAndDrink], []), // Theurgy choice
+            new ChoiceGroup(1, [ChangeSelf, MageHand, Mending], []) // Arcane choice
+        ], []),
+        Acolyte: new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [DetectProfaneDivine, HealingHand, LightDarkness], [])
+        ], []),
+        Cultist: new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [DetectProfaneDivine, HarmingHand, LightDarkness], [])
+        ], []),
+        Inquisitor: new SelectionPackage<Spell>([DetectProfaneDivine], [], []),
+        Pariah: new SelectionPackage<Spell>([Guidance, Augury], [], []),
+        "Touched/Anchorite": new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [CreateWater, HealingHand, PurifyFoodAndDrink], [])
+        ], []),
         Armiger: none,
         Barbarian: none,
         "Mercenary/Hedge": none,
         Prizefighter: none,
         "Ruffian/Enforcer": none,
         "Woodard/Warden": none,
-        "Adept/Arcane Apprentice": none,
-        "Alchemy Apprentice": none,
-        "Arcane Researcher": none,
-        Charlatan: none,
-        Dowser: none,
-        Warlock: none,
+        "Adept/Arcane Apprentice": new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [DetectMagic, LightDarkness, Prestidigitation, MageHand], []), // Lvl 0
+            new ChoiceGroup(1, [CharmPerson, MagicMissile, Summon, FloatingDisk], []) // Lvl 1
+        ], []),
+        "Alchemy Apprentice": new SelectionPackage<Spell>([Identify], [
+            new ChoiceGroup(1, [DetectPoisonDisease, EndureElements, Mending], [])
+        ], []),
+        "Arcane Researcher": new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [ArcaneMark, MageHand, Mending], []),
+            new ChoiceGroup(1, [ChangeSelf, Daze, DetectMagic], [])
+        ], []),
+        Charlatan: new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [Augury, CharmPerson, CureWounds, DetectThoughts, Invisibility, Levitate, LocateObject, RopeTrick, Sleep, SpeakWithDead], []), // Ritual choice
+            new ChoiceGroup(1, [ChangeSelf, Message, MinorIllusion], []), // Choice 1
+            new ChoiceGroup(1, [Daze, DancingLights, MageHand], []) // Choice 2
+        ], []),
+        Dowser: new SelectionPackage<Spell>([DetectWater], [
+            new ChoiceGroup(1, [DetectMagic, DetectPoisonDisease], [])
+        ], []),
+        Warlock: new SelectionPackage<Spell>([], [
+            new ChoiceGroup(1, [DetectMagic, LightDarkness, Prestidigitation, MageHand], []), // Lvl 0
+            new ChoiceGroup(1, [CharmPerson, MagicMissile, Summon, FloatingDisk], []) // Lvl 1
+        ], []),
         Fence: none,
         Gambler: none,
         Scoundrel: none,
@@ -45,11 +111,11 @@ export namespace SpellData {
         "Street Urchin": none
     }
     
-    export const JobSubsetToSpellSelection : Record<JobSubset, SelectionPackage<Spell>> = {
+    export const JobSubsetToSpellsRecord : Record<JobSubset, SelectionPackage<Spell>> = {
         [JobSubsetEnum.None]: none,
         [JobSubsetEnum.Jeweler]: none,
         [JobSubsetEnum.Arbalist]: none,
-        [JobSubsetEnum.Scrivener]: none,
+        [JobSubsetEnum.Scrivener]: new SelectionPackage<Spell>([ComprehendLanguages], [], []),
         [JobSubsetEnum.Advocate]: none,
         [JobSubsetEnum.Cartographer]: none,
         [JobSubsetEnum.Inspector]: none,
@@ -92,44 +158,7 @@ export namespace SpellData {
         [JobSubsetEnum.BurglarSpecialist]: none
     }
 
+    export const EdgeToSpellRecord : Map<Edges, SelectionPackage<Spell>> = new Map()
+    EdgeToSpellRecord.set(EdgesData.InnateSpell, new SelectionPackage<Spell>([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []))
+
 }
-// import { cultistTag, cultistWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
-
-// export const SpellData : MultiTaggedCharacterData<Spell>[] = [
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload:new Spell("Chill Touch (Arcane)", "A target takes necrotic damage and cannot heal."),
-    // },
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload: new Spell("Detect Profane/Divine (Arcane)", "You can sense creatures that are undead or of extraplanar origin."),
-
-    // },
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload: new Spell("Infestation (Arcane)", "You can create a swarm of parasites or pests to harass and attack a target."),
-    // },
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload: new Spell("Blade Ward (Arcane)", "You take less damage from melee attacks."),
-    // },
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload: new Spell("Detect Magic (Arcane)", "You can sense the power and presence of magic."),
-    // },
-    // {
-    //     Tags:[warlockWholeTag],
-    //     Payload: new Spell("Minor Illusion (Arcane)", "You can create a temporary image or sound."),
-    // },
-    // {
-    //     Tags:[cultistWholeTag],
-    //     Payload: new Spell("Detect Profane/Divine (Theurgy)", "You can sense creatures that are undead or of extraplanar origin."),
-    // },
-    // {
-    //     Tags:[cultistWholeTag],
-    //     Payload: new Spell("Harming Hand (Theurgy)", "Your touch can cause minor wounds."),
-    // },
-    // {
-    //     Tags:[cultistWholeTag],
-    //     Payload: new Spell("Light/Darkness (Theurgy)", "You can create illumination or darkness in an area or on a target."),
-    // },
