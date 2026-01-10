@@ -453,6 +453,7 @@
   background-size: cover;
   background-color: black;
   padding: 10em;
+  min-height: 75vh;
 }
 .container-list-item {
   flex-grow: 1;
