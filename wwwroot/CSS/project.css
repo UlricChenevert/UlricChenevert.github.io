@@ -200,7 +200,7 @@
 .wizard-step-wrapper .reveal-section.hoverable-container {
   padding: 0;
   margin: 0;
-  transition: padding 1s cubic-bezier(1, 0, 0, 1);
+  transition: padding 1s cubic-bezier(1, 0, 0, 1), opacity 2s ease-out, box-shadow 2s, width 2s ease-in-out, height 1s ease-in-out;
 }
 .wizard-step-wrapper.visible {
   grid-template-rows: 1fr;
@@ -323,7 +323,7 @@
   padding: 1em;
   text-align: center;
   margin: 1.5em;
-  box-shadow: 0 0 0, 0, #000000;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
   transition: all 1s;
 }
 .hoverable-container h4 {
