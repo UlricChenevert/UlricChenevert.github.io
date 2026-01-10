@@ -75,6 +75,7 @@ export class EntanglementCreationModel {
         this.Evaluate();
     }
     Evaluate() {
+        this.ConfiguredEntanglements(this.DetermineEntanglements());
         this.GlobalCharacterData.OrganizationEntanglements(this.ConfiguredEntanglements());
         return this.ConfiguredEntanglements();
     }

@@ -69,6 +69,7 @@ export namespace LanguageData {
     // Sindar
     export const SpeakSindar = new LearnedLanguage(Sindar, true, false, false);
     export const ReadWriteSindar = new LearnedLanguage(Sindar, false, true, true);
+    export const SpeakReadWriteSindar = new LearnedLanguage(Sindar, true, true, true);
 
     // Sylvan
     export const SpeakSylvan = new LearnedLanguage(Sylvan, true, false, false);
@@ -93,6 +94,7 @@ export namespace LanguageData {
     // Infernal
     export const SpeakInfernal = new LearnedLanguage(Infernal, true, false, false);
     export const ReadWriteInfernal = new LearnedLanguage(Infernal, false, true, true);
+    export const SpeakReadWriteInfernal = new LearnedLanguage(Infernal, false, true, true);
 
     // --- Specific Selection Packages ---
     const dwarfChoices = new ChoiceGroup(1, [SpeakDwerg, SpeakKaduz], [])
@@ -111,12 +113,14 @@ export namespace LanguageData {
         [new ChoiceGroup(1, [ReadWriteKaduz, ReadWriteDwerg, ReadWriteInfernal, ReadWriteIstya, ReadWriteMuluk, ReadWriteNulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSindar, ReadWriteSulya, ReadWriteSylvan], [])], []
     );
 
+    export const ArcaneChoiceSelection = new SelectionPackage([], [new ChoiceGroup(1, [SpeakReadWriteSindar, SpeakReadWriteKelinya, SpeakReadWriteInfernal], [])], [])
+
     export const JobTypeToLanguage: Record<JobType, SelectionPackage<LearnedLanguage>> = {
         "Apprentice Artisan": NoneSelection,
         "Apprentice Bureaucrat": new SelectionPackage([SpeakReadWriteKelinya], [], []),
         "Free Laborer": NoneSelection,
         "Apprentice Crafter": NoneSelection,
-        "Apprentice Mercantiler": NoneSelection,
+        "Apprentice Mercantiler": ReadWriteLanguageSelection,
         "Escaped Peasant/Thrall": NoneSelection,
         Acrobat: NoneSelection,
         Contortionist: NoneSelection,
@@ -124,25 +128,25 @@ export namespace LanguageData {
         Minstrel: NoneSelection,
         Scholar: ReadWriteLanguageSelection,
         "Storyteller/Thespian": NoneSelection,
-        Accursed: NoneSelection,
-        Acolyte: NoneSelection,
-        Cultist: NoneSelection,
-        Inquisitor: NoneSelection,
-        Pariah: NoneSelection,
-        "Touched/Anchorite": NoneSelection,
+        Accursed: ReadWriteLanguageSelection,
+        Acolyte: ReadWriteLanguageSelection,
+        Cultist: new SelectionPackage<LearnedLanguage>([SpeakReadWriteInfernal], [], []),
+        Inquisitor: ReadWriteLanguageSelection,
+        Pariah: ReadWriteLanguageSelection,
+        "Touched/Anchorite": ReadWriteLanguageSelection,
         Armiger: NoneSelection,
         Barbarian: NoneSelection,
         "Mercenary/Hedge": NoneSelection,
         Prizefighter: NoneSelection,
         "Ruffian/Enforcer": NoneSelection,
         "Woodard/Warden": NoneSelection,
-        "Adept/Arcane Apprentice": NoneSelection,
-        "Alchemy Apprentice": NoneSelection,
-        "Arcane Researcher": NoneSelection,
+        "Adept/Arcane Apprentice": ArcaneChoiceSelection,
+        "Alchemy Apprentice": ArcaneChoiceSelection,
+        "Arcane Researcher": ArcaneChoiceSelection,
         Charlatan: NoneSelection,
         Dowser: NoneSelection,
-        Warlock: NoneSelection,
-        Fence: NoneSelection,
+        Warlock: ReadWriteLanguageSelection,
+        Fence: ReadWriteLanguageSelection,
         Gambler: NoneSelection,
         Scoundrel: NoneSelection,
         Sharp: NoneSelection,
@@ -158,10 +162,10 @@ export namespace LanguageData {
         [JobSubsetEnum.Advocate]: NoneSelection,
         [JobSubsetEnum.Cartographer]: NoneSelection,
         [JobSubsetEnum.Inspector]: NoneSelection,
-        [JobSubsetEnum.Interpreter]: NoneSelection,
+        [JobSubsetEnum.Interpreter]: new SelectionPackage([], [new ChoiceGroup(3, [SpeakDwerg, SpeakInfernal, SpeakIstya, SpeakKaduz, SpeakNulya, SpeakSindar, SpeakSulya, SpeakSylvan], [])], []),
         [JobSubsetEnum.Smith]: NoneSelection,
         [JobSubsetEnum.Carpenter]: NoneSelection,
-        [JobSubsetEnum.MoneyChanger]: NoneSelection,
+        [JobSubsetEnum.MoneyChanger]: ReadWriteLanguageSelection,
         [JobSubsetEnum.Ambler]: NoneSelection,
         [JobSubsetEnum.Chef]: NoneSelection,
         [JobSubsetEnum.HouseServant]: NoneSelection,
@@ -183,8 +187,8 @@ export namespace LanguageData {
         [JobSubsetEnum.Mercenary]: NoneSelection,
         [JobSubsetEnum.Bandit]: NoneSelection,
         [JobSubsetEnum.Discharged]: NoneSelection,
-        [JobSubsetEnum.IxianRaver]: NoneSelection,
-        [JobSubsetEnum.IxianArchon]: NoneSelection,
+        [JobSubsetEnum.IxianRaver]: new SelectionPackage([SpeakInfernal], [], []),
+        [JobSubsetEnum.IxianArchon]: new SelectionPackage([SpeakInfernal], [], []),
         [JobSubsetEnum.Dragon]: NoneSelection,
         [JobSubsetEnum.Lich]: NoneSelection,
         [JobSubsetEnum.Wizard]: NoneSelection,

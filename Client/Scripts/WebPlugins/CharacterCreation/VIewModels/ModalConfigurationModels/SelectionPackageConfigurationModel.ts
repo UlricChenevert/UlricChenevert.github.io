@@ -39,7 +39,7 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         await this.Init()
 
         this.ChoiceRandomly()
-        return
+        return this.Evaluate()
     }
 
     ChoiceRandomly() {
@@ -94,6 +94,11 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         // Remove old references
         const selectionPackage = this.SelectionPackageAccessor(this.GlobalCharacterData)
         selectionPackage().ChoiceSelection().forEach((choice)=>{choice.Payload.selectedValues.length = 0}) // Remove all items of old data
+        
+        // POV your system is terrible because it tries to do cool mapping and replacing but it makes the entire system 
+        // unable to access your selected values because you were lazy and you didn't want to map another thing
+        this.choicesMappingToSelectedViewModels.forEach((parentChoiceSelection)=>{parentChoiceSelection.Payload.selectedValues.length = 0})
+
 
         // Update the selected models
         this.choicesMappingToSelectedViewModels.forEach((parentChoiceSelection, selectedValue)=>{

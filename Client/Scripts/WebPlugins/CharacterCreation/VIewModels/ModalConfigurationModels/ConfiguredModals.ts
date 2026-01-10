@@ -7,7 +7,7 @@ import { Abilities } from "../../Contracts/Abilities.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
-import { TaggedObservableSelectionPackage, StoryModel, Item } from "../../Contracts/TaggedData.js";
+import { TaggedObservableSelectionPackage, StoryModel, Item, SelectionPackage } from "../../Contracts/TaggedData.js";
 import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementAffects, updateEntanglementBackgroundAffects } from "../../Utility/UpdateUtility.js";
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
@@ -316,7 +316,7 @@ export namespace ConfiguredModals {
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-
+        
         return createGenericPicker<SelectionPackageConfigurationModel<Spell>, StringListPreviewModel, TaggedObservableSelectionPackage<Spell>>({
             name: "Spells",
             characterData,
@@ -349,7 +349,7 @@ export namespace ConfiguredModals {
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-
+        
         return createGenericPicker<SelectionPackageConfigurationModel<Drawbacks>, StringListPreviewModel, TaggedObservableSelectionPackage<Drawbacks>>({
             name: "Drawbacks",
             characterData,
@@ -382,7 +382,7 @@ export namespace ConfiguredModals {
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-
+        
         return createGenericPicker<SelectionPackageConfigurationModel<Corruption>, StringListPreviewModel, TaggedObservableSelectionPackage<Corruption>>({
             name: "Corruption",
             characterData,
@@ -438,70 +438,4 @@ export namespace ConfiguredModals {
         });
     };
 
-    // export const createReligionPickerModel = (characterData: ConfiguredCharacterData) => {
-    //     // Unique logic stays here
-    //     const stringPreview = ko.observableArray<string>([]);
-    //     characterData.ReligionSelections.subscribe((newValue) => {
-    //         stringPreview(flattenSelectionPackage(newValue).map(x => x.Pronoun.name));
-    //     });
-
-    //     const isConfigured = ko.observable(false);
-    //     characterData.JobBackground.subscribe(() => isConfigured(false));
-    //     characterData.Race.subscribe(() => isConfigured(false));
-
-    //     return createGenericPicker<SelectionPackageConfigurationModel<Deity>, StringListPreviewModel, TaggedObservableSelectionPackage<Deity>>({
-    //         name: "Deity",
-    //         characterData,
-    //         pickerModel: new SelectionPackageConfigurationModel<Deity>(
-    //             "Deity",
-    //             characterData,
-    //             (data) => data.ReligionSelections,
-    //             (item: Deity) => item.Pronoun.name,
-    //             (item: Deity) => item.Pronoun.name,
-    //             (
-    //                 choices : TaggedCharacterData<ChoiceGroup<Deity>>,
-    //                 ConfigurationTitle : string,
-    //                 DetermineShortPreview : (item: Deity)=>string,
-    //                 DetermineLongPreview : (item: Deity)=>string,
-    //                 characterData: ConfiguredCharacterData
-    //             ): IPartialViewModel<DeityCreationModel>[] => {
-    //                 const finalList : IPartialViewModel<DeityCreationModel>[] = [] as IPartialViewModel<DeityCreationModel>[]
-                
-    //                 let splitCount = choices.Payload.pickCount
-    //                 let unselectedOptions = ko.observableArray(choices.Payload.options.map(x=>x)) // I want to use the same list for the groups of options
-                
-    //                 for (let i = 0; i < splitCount; i++) {
-    //                     const SelectionViewModel = new DeityCreationModel(
-    //                         ConfigurationTitle,
-    //                         unselectedOptions,
-    //                         characterData,
-    //                         choices.Payload.options[0],
-    //                         DetermineShortPreview,
-    //                         DetermineLongPreview
-    //                     )
-                
-    //                     if (choices.Payload.selectedValues.length > 0) {
-    //                         const choice = choices.Payload.selectedValues.pop()
-    //                         SelectionViewModel.Init(choice)
-    //                     } else {
-    //                         SelectionViewModel.Init()
-    //                     }
-                
-    //                     finalList.push(Utility.BundleViewAndModel<void, DeityCreationModel>(SelectionViewModel))
-    //                 }
-                
-                
-    //                 return finalList
-    //             } 
-    //         ),
-    //         dataSelector: (data) => data.ReligionSelections,
-    //         createPreview: (modal) => new StringListPreviewModel(
-    //             "Deity",
-    //             stringPreview,
-    //             isConfigured,
-    //             modal.Randomize.bind(modal),
-    //             modal.EditItem.bind(modal)
-    //         )
-    //     });
-    // };
 }

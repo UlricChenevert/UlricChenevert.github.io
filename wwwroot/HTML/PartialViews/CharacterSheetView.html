@@ -5,59 +5,11 @@
         </header>
 
         <!-- ko foreach: modalPickers -->
-            <div class="wizard-step-wrapper" data-bind="css: { 'visible': $parent.visibleObservables[$index()] }">
+            <div class="wizard-step-wrapper" data-bind="css: { 'visible': $parent.visibleObservables[$index()], 'invisible' : !$parent.visibleObservables[$index()] }">
                 <section class="reveal-section hoverable-container" data-bind="PartialView: $data"></section>
             </div>
         <!-- /ko -->
         
-        
-
-        <!-- <section class="reveal-section hoverable-container">
-            <div data-bind="PartialView: BackgroundPicker"></div>
-        </section>
-
-        <section class="abilities reveal-section hoverable-container">
-            <div data-bind="PartialView: AbilityPicker"></div>
-        </section>
-
-        <section class="reveal-section entanglements hoverable-container" data-bind="PartialView: entanglementPicker">
-        </section>
-        
-        <section class="reveal-section hoverable-container" data-bind="PartialView: equipmentPicker">
-        </section>
-        
-        
-        <section class="reveal-section hoverable-container" data-bind="PartialView: trinketPicker">
-        </section>
-        
-        
-        <section class="reveal-section hoverable-container edges">
-            <div data-bind="PartialView: edgesPicker"></div>
-        </section>
-
-        <section class="reveal-section hoverable-container skill" data-bind="visible: IsSelection(GlobalCharacterData.SkillsSelection())">
-            <div data-bind="PartialView: skillsPicker"></div>
-        </section>
-        
-        <section class="reveal-section hoverable-container" data-bind="PartialView: spellPicker, visible: IsSelection(GlobalCharacterData.SpellSelection())">
-        </section>
-        
-
-        <section class="reveal-section hoverable-container languages" data-bind="PartialView: languagesPicker">
-        </section>
-        
-        <section class="reveal-section hoverable-container religion" data-bind="PartialView: deityPicker">
-        </section>
-
-        <section class="reveal-section hoverable-container">
-            <div class="input-group" data-bind="PartialView: namePicker"></div>
-        </section>
-
-        <section class="reveal-section hoverable-container corruption" data-bind="PartialView: corruptionPicker, visible: IsSelection(GlobalCharacterData.CorruptionSelection())">
-        </section>
-
-        <section class="reveal-section hoverable-container drawbacks" data-bind="PartialView: drawbackPicker, visible: IsSelection(GlobalCharacterData.DrawbacksSelection())">
-        </section> -->
 
     <div class="centered remove-when-print space-around">
         <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>

@@ -20,7 +20,8 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     showOutput : ko.Observable<boolean>
 
     modalPickers : IConfigurableViewModal<any>[]
-    visibleObservables : Observable<boolean>[]
+    canSectionBeConfiguredObservables : Observable<boolean>[]
+    isThereAnythingToConfigure : Observable<boolean>[]
 
     constructor (public GlobalCharacterData: ConfiguredCharacterData) {
         this.modalPickers = [
@@ -51,20 +52,44 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
             ConfiguredModals.createDeityPickerModel(GlobalCharacterData),
             
             ConfiguredViewModels.createNamePickerModel(GlobalCharacterData),
-        ] 
+        ]
+        
+        this.isThereAnythingToConfigure = []
+        this.modalPickers.forEach(()=>{this.isThereAnythingToConfigure.push(ko.observable(true))})
 
-        this.visibleObservables = [ko.observable(true)]
+        for (let i=7; i < 11; i++)
+            this.isThereAnythingToConfigure[i](false)
 
-        for (let i = 1; i < this.modalPickers.length; i++) {
-            // Add a new observable
-            this.visibleObservables.push(ko.observable(false))
+        this.GlobalCharacterData.SkillsSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[7]));
+        this.GlobalCharacterData.SpellSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[8]));
+        this.GlobalCharacterData.DrawbacksSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[9]));
+        this.GlobalCharacterData.CorruptionSelection.subscribe((newValue) => updateIsConfigured(newValue, this.isThereAnythingToConfigure[10]));
 
-            // Subscribe the n-1 isConfigured observable
-            this.modalPickers[i - 1].Model.previewViewModel.Model.IsConfigured.subscribe((isConfigured)=>{
-                this.visibleObservables[i](isConfigured)
-            })
+        this.canSectionBeConfiguredObservables = []
+        this.modalPickers.forEach(()=>{this.canSectionBeConfiguredObservables.push(ko.observable(false))})
+        this.canSectionBeConfiguredObservables[0](true)
+
+        this.canSectionBeConfiguredObservables.forEach((sectionObservable, index)=>{
+            // Subscribe to last section to see if this section can be configured
+            this.modalPickers[index - 1]?.Model.previewViewModel.Model.IsConfigured.subscribe((isConfigured)=>{
+                // Any skippable as well
+                let j = index;
+
+                while (j < this.canSectionBeConfiguredObservables.length && !this.isThereAnythingToConfigure[j]()) {
+                    this.canSectionBeConfiguredObservables[j](isConfigured)
+                    j++
+                }
+                
+                // Show the section after the last "nothing to configure sections" 
+                if (j < this.canSectionBeConfiguredObservables.length)
+                    this.canSectionBeConfiguredObservables[j](isConfigured)
+            }) 
+        })
+
+        const updateIsConfigured = <T>(data : TaggedObservableSelectionPackage<T>, isConfigured : Observable<boolean>)=>{
+            isConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0);
         }
-
+        
         this.isLoading = ko.observable(true)
         this.jsonText = ko.observable("")
         this.showOutput = ko.observable(false)

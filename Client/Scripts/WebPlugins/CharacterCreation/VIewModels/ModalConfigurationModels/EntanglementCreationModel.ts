@@ -112,6 +112,7 @@ export class EntanglementCreationModel implements ICharacterWizardViewModel<void
     }
 
     Evaluate () {
+        this.ConfiguredEntanglements(this.DetermineEntanglements())
         this.GlobalCharacterData.OrganizationEntanglements(this.ConfiguredEntanglements())
 
         return this.ConfiguredEntanglements()

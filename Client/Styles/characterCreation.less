@@ -29,33 +29,66 @@
 
 /* The Container for each step */
 .wizard-step-wrapper {
-  display: grid;
-  grid-template-rows: 0fr; /* Start "collapsed" */
-  transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 1s cubic-bezier(1,0,0,1), opacity 2s ease-in-out;
+    opacity: 0; 
+    overflow: hidden;
 
-.wizard-step-wrapper.visible {
-  grid-template-rows: 1fr; /* Smoothly expands to fit content */
-  margin-bottom: 1.5rem;
+    .reveal-section.hoverable-container {
+        padding: 0;
+        margin: 0;
+        transition: padding 1s cubic-bezier(1,0,0,1); 
+    }
+
+    &.visible {
+        grid-template-rows: 1fr; 
+        opacity: 1;
+
+        .reveal-section.hoverable-container {
+            padding: 1.5em; 
+        }
+
+        .reveal-section.hoverable-container {
+            margin: 1.5em; 
+        }
+    }
 }
 
 /* The actual content inside */
 .reveal-section {
-  min-height: 0;
-  opacity: 0;
-//   transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    min-height: 0;
+    // opacity: 0;
+    //   transform: translateY(20px);
+    transition: opacity 2s ease-out, width 2s ease-in-out, height 1s ease-in-out;
+    overflow: hidden;
 }
 
-.visible .reveal-section {
-  opacity: 1;
-//   transform: translateY(0);
-
-  max-height: 100vh; /* Set to a value larger than any possible step */
-  overflow: visible; /* Re-enable so the shadow can bleed out */
-  padding: 1rem; /* Give the shadow room to breathe */
+.section-padding {
+    padding: @section-padding !important;
 }
+
+.no-padding {
+    padding: 0 !important;
+}
+
+// .invisible {
+//     // display: none;
+//     // overflow: hidden;
+//     // opacity: 0;
+// }
+
+// .visible .reveal-section {
+//     display: block;
+//     opacity: 1;
+//     max-height: 100vh; /* Set to a value larger than any possible step */
+//     //   transform: translateY(0);
+
+//     overflow: visible; /* Re-enable so the shadow can bleed out */
+//     padding: 1rem; /* Give the shadow room to breathe */
+//     overflow: auto !important;
+// }
 
 // .reveal-section:nth-child(1) { animation-delay: 1.2s; }
 // .reveal-section:nth-child(2) { animation-delay: 1.4s; }
@@ -571,12 +604,18 @@ hr {
     }
 }
 
-
+.transform-smoothly {
+    transition: all 3s ease-in-out;
+}
 
 .character-sheet-container {
     background: radial-gradient(circle at top, @article-color, @fade-background-color 150%);
     width: 80vw;
     padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    transition: all 2s ease-in-out;
 
     .header {
         display: flex;

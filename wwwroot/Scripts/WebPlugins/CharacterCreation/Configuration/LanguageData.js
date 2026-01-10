@@ -34,6 +34,7 @@ export var LanguageData;
     // Sindar
     LanguageData.SpeakSindar = new LearnedLanguage(LanguageData.Sindar, true, false, false);
     LanguageData.ReadWriteSindar = new LearnedLanguage(LanguageData.Sindar, false, true, true);
+    LanguageData.SpeakReadWriteSindar = new LearnedLanguage(LanguageData.Sindar, true, true, true);
     // Sylvan
     LanguageData.SpeakSylvan = new LearnedLanguage(LanguageData.Sylvan, true, false, false);
     LanguageData.ReadWriteSylvan = new LearnedLanguage(LanguageData.Sylvan, false, true, true);
@@ -52,6 +53,7 @@ export var LanguageData;
     // Infernal
     LanguageData.SpeakInfernal = new LearnedLanguage(LanguageData.Infernal, true, false, false);
     LanguageData.ReadWriteInfernal = new LearnedLanguage(LanguageData.Infernal, false, true, true);
+    LanguageData.SpeakReadWriteInfernal = new LearnedLanguage(LanguageData.Infernal, false, true, true);
     // --- Specific Selection Packages ---
     const dwarfChoices = new ChoiceGroup(1, [LanguageData.SpeakDwerg, LanguageData.SpeakKaduz], []);
     const elfChoices = new ChoiceGroup(1, [LanguageData.SpeakSindar, LanguageData.SpeakSylvan], []);
@@ -62,12 +64,13 @@ export var LanguageData;
     const raceChoiceList = [dwarfChoices, elfChoices, humanChoices, halflingChoice, orcChoice, ixianChoice];
     LanguageData.NoneSelection = new SelectionPackage([], [], []);
     LanguageData.ReadWriteLanguageSelection = new SelectionPackage([], [new ChoiceGroup(1, [LanguageData.ReadWriteKaduz, LanguageData.ReadWriteDwerg, LanguageData.ReadWriteInfernal, LanguageData.ReadWriteIstya, LanguageData.ReadWriteMuluk, LanguageData.ReadWriteNulya, LanguageData.ReadWriteSindar, LanguageData.ReadWriteSulya, LanguageData.ReadWriteSindar, LanguageData.ReadWriteSulya, LanguageData.ReadWriteSylvan], [])], []);
+    LanguageData.ArcaneChoiceSelection = new SelectionPackage([], [new ChoiceGroup(1, [LanguageData.SpeakReadWriteSindar, LanguageData.SpeakReadWriteKelinya, LanguageData.SpeakReadWriteInfernal], [])], []);
     LanguageData.JobTypeToLanguage = {
         "Apprentice Artisan": LanguageData.NoneSelection,
         "Apprentice Bureaucrat": new SelectionPackage([LanguageData.SpeakReadWriteKelinya], [], []),
         "Free Laborer": LanguageData.NoneSelection,
         "Apprentice Crafter": LanguageData.NoneSelection,
-        "Apprentice Mercantiler": LanguageData.NoneSelection,
+        "Apprentice Mercantiler": LanguageData.ReadWriteLanguageSelection,
         "Escaped Peasant/Thrall": LanguageData.NoneSelection,
         Acrobat: LanguageData.NoneSelection,
         Contortionist: LanguageData.NoneSelection,
@@ -75,25 +78,25 @@ export var LanguageData;
         Minstrel: LanguageData.NoneSelection,
         Scholar: LanguageData.ReadWriteLanguageSelection,
         "Storyteller/Thespian": LanguageData.NoneSelection,
-        Accursed: LanguageData.NoneSelection,
-        Acolyte: LanguageData.NoneSelection,
-        Cultist: LanguageData.NoneSelection,
-        Inquisitor: LanguageData.NoneSelection,
-        Pariah: LanguageData.NoneSelection,
-        "Touched/Anchorite": LanguageData.NoneSelection,
+        Accursed: LanguageData.ReadWriteLanguageSelection,
+        Acolyte: LanguageData.ReadWriteLanguageSelection,
+        Cultist: new SelectionPackage([LanguageData.SpeakReadWriteInfernal], [], []),
+        Inquisitor: LanguageData.ReadWriteLanguageSelection,
+        Pariah: LanguageData.ReadWriteLanguageSelection,
+        "Touched/Anchorite": LanguageData.ReadWriteLanguageSelection,
         Armiger: LanguageData.NoneSelection,
         Barbarian: LanguageData.NoneSelection,
         "Mercenary/Hedge": LanguageData.NoneSelection,
         Prizefighter: LanguageData.NoneSelection,
         "Ruffian/Enforcer": LanguageData.NoneSelection,
         "Woodard/Warden": LanguageData.NoneSelection,
-        "Adept/Arcane Apprentice": LanguageData.NoneSelection,
-        "Alchemy Apprentice": LanguageData.NoneSelection,
-        "Arcane Researcher": LanguageData.NoneSelection,
+        "Adept/Arcane Apprentice": LanguageData.ArcaneChoiceSelection,
+        "Alchemy Apprentice": LanguageData.ArcaneChoiceSelection,
+        "Arcane Researcher": LanguageData.ArcaneChoiceSelection,
         Charlatan: LanguageData.NoneSelection,
         Dowser: LanguageData.NoneSelection,
-        Warlock: LanguageData.NoneSelection,
-        Fence: LanguageData.NoneSelection,
+        Warlock: LanguageData.ReadWriteLanguageSelection,
+        Fence: LanguageData.ReadWriteLanguageSelection,
         Gambler: LanguageData.NoneSelection,
         Scoundrel: LanguageData.NoneSelection,
         Sharp: LanguageData.NoneSelection,
@@ -108,10 +111,10 @@ export var LanguageData;
         [JobSubsetEnum.Advocate]: LanguageData.NoneSelection,
         [JobSubsetEnum.Cartographer]: LanguageData.NoneSelection,
         [JobSubsetEnum.Inspector]: LanguageData.NoneSelection,
-        [JobSubsetEnum.Interpreter]: LanguageData.NoneSelection,
+        [JobSubsetEnum.Interpreter]: new SelectionPackage([], [new ChoiceGroup(3, [LanguageData.SpeakDwerg, LanguageData.SpeakInfernal, LanguageData.SpeakIstya, LanguageData.SpeakKaduz, LanguageData.SpeakNulya, LanguageData.SpeakSindar, LanguageData.SpeakSulya, LanguageData.SpeakSylvan], [])], []),
         [JobSubsetEnum.Smith]: LanguageData.NoneSelection,
         [JobSubsetEnum.Carpenter]: LanguageData.NoneSelection,
-        [JobSubsetEnum.MoneyChanger]: LanguageData.NoneSelection,
+        [JobSubsetEnum.MoneyChanger]: LanguageData.ReadWriteLanguageSelection,
         [JobSubsetEnum.Ambler]: LanguageData.NoneSelection,
         [JobSubsetEnum.Chef]: LanguageData.NoneSelection,
         [JobSubsetEnum.HouseServant]: LanguageData.NoneSelection,
@@ -133,8 +136,8 @@ export var LanguageData;
         [JobSubsetEnum.Mercenary]: LanguageData.NoneSelection,
         [JobSubsetEnum.Bandit]: LanguageData.NoneSelection,
         [JobSubsetEnum.Discharged]: LanguageData.NoneSelection,
-        [JobSubsetEnum.IxianRaver]: LanguageData.NoneSelection,
-        [JobSubsetEnum.IxianArchon]: LanguageData.NoneSelection,
+        [JobSubsetEnum.IxianRaver]: new SelectionPackage([LanguageData.SpeakInfernal], [], []),
+        [JobSubsetEnum.IxianArchon]: new SelectionPackage([LanguageData.SpeakInfernal], [], []),
         [JobSubsetEnum.Dragon]: LanguageData.NoneSelection,
         [JobSubsetEnum.Lich]: LanguageData.NoneSelection,
         [JobSubsetEnum.Wizard]: LanguageData.NoneSelection,
