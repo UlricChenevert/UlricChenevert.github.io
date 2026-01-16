@@ -1,28 +1,33 @@
+import { EntityEvent, EventSubscriber } from "../../../Framework/PubSub/PubSub.js";
+import { ConversationSystem } from "../../Command/Systems/ConvsersationSystem.js";
 import { SquareArea, TranslateSquareArea } from "../../Command/Utility/AreaSwitch.js";
 import { compareByYThenX, findAllMatchingCoordinates, insertSorted, multiAxisBinarySearch, removeSorted, TranslateCoordinate, Translation } from "../../Command/Utility/CoordinateManipulation.js";
+import { ConversationComponent } from "../CommunicationComponents/ConversationComponent.js";
 import { Coordinate } from "../DTO/Coordinate.js";
-import { EntityLocation } from "./EntityLocation.js";
+import { EntityLocation } from "../LocationComponent/EntityLocation.js";
+import { LocationComponent } from "../LocationComponent/LocationComponent.js";
 import { EntityGroupingAccessor, EntityGroupingWorldView } from "./WorldView.js";
 
 export class EntityGrouping {
     static readonly MAX_TILE_LENGTH = 100
-    sortedEntities : EntityLocation[]
-
+    sortedEntities : LocationComponent[]
+    
     constructor(
         public effectiveArea : SquareArea, 
-        entities : EntityLocation[], 
+        entities : LocationComponent[], 
         public worldScope : EntityGroupingWorldView,
+        public EventHandlingSystems : SubscribableSystem,
         public topLeftGrouping?    : EntityGrouping, public topCenterGrouping?    : EntityGrouping, public topRightGrouping?    : EntityGrouping,
         public centerLeftGrouping? : EntityGrouping,                                                public centerRightGrouping? : EntityGrouping,
         public bottomLeftGrouping? : EntityGrouping, public bottomCenterGrouping? : EntityGrouping, public bottomRightGrouping? : EntityGrouping
     ) {
-        this.sortedEntities = entities.map(x=>x).sort( (a, b) => compareByYThenX(a, b, (c : EntityLocation)=>c.location))
+        this.sortedEntities = entities.map(x=>x).sort( (a, b) => compareByYThenX(a, b, (c : LocationComponent)=>c.location))
     }
 
-    insert (newEntity : EntityLocation) {return insertSorted(this.sortedEntities, newEntity, EntityLocationAccessor)}
+    insert (newEntity : LocationComponent) {return insertSorted(this.sortedEntities, newEntity, EntityLocationAccessor)}
 
     removeByCoordinate (coordinate : Coordinate) {return removeSorted(this.sortedEntities, coordinate, EntityLocationAccessor)}
-    removeByEntity (entity : EntityLocation) : boolean {
+    removeByEntity (entity : LocationComponent) : boolean {
 
         const firstIndex = this.findFirst(entity.location)
 
@@ -41,12 +46,12 @@ export class EntityGrouping {
         return true 
     }
 
-    findFirst (targetLocation : Coordinate) {return multiAxisBinarySearch<EntityLocation>(this.sortedEntities, targetLocation, EntityLocationAccessor)}
+    findFirst (targetLocation : Coordinate) {return multiAxisBinarySearch<LocationComponent>(this.sortedEntities, targetLocation, EntityLocationAccessor)}
 
     findAll (targetLocation : Coordinate) {return findAllMatchingCoordinates(this.sortedEntities, targetLocation, EntityLocationAccessor)}
 }
 
-export const GenerateNewGroupingWithEntity = (entity : EntityLocation, oldSquareArea : SquareArea, worldScope : EntityGroupingWorldView, groupingRelativePosition : {x: Translation, y: Translation}) => {
+export const GenerateNewGroupingWithEntity = (entity : LocationComponent, oldSquareArea : SquareArea, worldScope : EntityGroupingWorldView, groupingRelativePosition : {x: Translation, y: Translation}, eventHandling : SubscribableSystem) => {
     const area = TranslateSquareArea(oldSquareArea, groupingRelativePosition)
 
     // I need to find all of the cells, but I don't need to pass in the same parameters every time, but just the translation
@@ -71,8 +76,16 @@ export const GenerateNewGroupingWithEntity = (entity : EntityLocation, oldSquare
     const x1y2 = SimplifiedCellSearch({x: Translation.None, y: Translation.Forwards})
     const x2y2 = SimplifiedCellSearch({x: Translation.Forwards, y: Translation.Forwards})
 
+    // Figure out all the systems the entity uses and build those
+    const newEventHandlingSystems = BuildSystemsForNewGrouping(
+        eventHandling.Communicate.conversationComponents.filter(
+            (testValue) => testValue.locationReference === entity
+        )
+    )
+
     const newGrouping = new EntityGrouping(
         area, [entity], worldScope, 
+        newEventHandlingSystems,
         x0y0, x1y0, x2y0,
         x0y1,       x2y1,
         x0y2, x1y2, x2y2 
@@ -146,4 +159,12 @@ export const RemoveGrouping = (group : EntityGrouping) : boolean => {
     return true
 }
 
-export const EntityLocationAccessor = (entity : EntityLocation)=>entity.location
+export const EntityLocationAccessor = (entity : LocationComponent)=>entity.location
+
+export const BuildSystemsForNewGrouping = (conversationComponents : ConversationComponent[]) : SubscribableSystem => {
+    return {"Communicate": new ConversationSystem(conversationComponents)}
+}
+
+type SubscribableSystem = {
+   Communicate : ConversationSystem
+}

@@ -9,6 +9,6 @@ export interface EventPublisher<T extends EntityEvent> {
     EmitEvent : (event : T) => void
 }
 
-export interface EventSubscriber<T extends EntityEvent> {
-    HandleEvent : (event : T) => void
+export interface EventSubscriber<EventType extends EntityEvent, EventDataType> {
+    HandleEvent : (event : EventType, eventData? : EventDataType) => void
 }

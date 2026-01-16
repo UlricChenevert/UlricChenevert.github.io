@@ -1,4 +1,6 @@
+import { withinBounds } from "../../../Framework/Utility";
 import { Coordinate } from "../../State/DTO/Coordinate";
+import { RectangleArea, SquareArea } from "./AreaSwitch";
 
 export type coordinateAccessor<T> = (entity : T) => Coordinate
 
@@ -141,6 +143,16 @@ export const removeSorted = <T>(sortedList : T[], coordinate : Coordinate, acces
 }
 
 export enum Translation {Backwards = -1, None = 0, Forwards = 1}
+
+export const withinRectangleAreaBounds = (test : Coordinate, targetArea : RectangleArea) => {
+    return withinBounds(test.x, targetArea.topLeft.x, targetArea.bottomRight.x) &&
+            withinBounds(test.y, targetArea.topLeft.y, targetArea.bottomRight.y)
+}
+
+export const withinSquareAreaBounds = (test : Coordinate, targetArea : SquareArea) => {
+    return withinBounds(test.x, targetArea.topLeft.x, targetArea.topLeft.x + targetArea.length) &&
+            withinBounds(test.y, targetArea.topLeft.y, targetArea.topLeft.y  + targetArea.length)
+}
 
 export const TranslateCoordinate = (coordinate : Coordinate, translation : {x : Translation, y : Translation}, length : number) => {
     return new Coordinate(
