@@ -378,6 +378,8 @@
   min-width: 12em;
   display: inline;
   white-space: nowrap;
+  -webkit-appearance: none; 
+  appearance: none;
 }
 .fill-row {
   flex-grow: 1;
@@ -498,6 +500,8 @@ hr {
   min-width: 12em;
   text-align: center;
   transition: all 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .wizard-select:hover,
 .wizard-select:focus {
