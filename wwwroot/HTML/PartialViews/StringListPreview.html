@@ -1,39 +1,39 @@
 
 
-<!-- ko if: IsConfigured -->
-<div class="header large-gap">
-    <div data-bind="text: FriendlyName"></div>
-    
-    <div class="small-gap remove-when-print">
-        <button class="pop-content button-icon centered" data-bind="click: Edit">
-            <img src="/Images/CharacterCreator/edit-button-svgrepo-com.svg" alt="Edit"/>
+    <!-- ko if: IsConfigured -->
+    <div class="header large-gap">
+        <div data-bind="text: FriendlyName"></div>
+        
+        <div class="small-gap remove-when-print">
+            <button class="pop-content button-icon centered" data-bind="click: Edit">
+                <img src="/Images/CharacterCreator/edit-button-svgrepo-com.svg" alt="Edit"/>
+            </button>
+            <button class="pop-content button-icon centered" data-bind="click: Randomize">
+                <img src="/Images/dice-icon.svg" alt="Randomize"/>
+            </button>
+        </div>
+    </div>
+
+    <div class="transform-smoothly container-list" data-bind="foreach: previewList">
+        <span class="container-list-item" data-bind="text: $data"></span>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: IsConfigured -->
+    <div class="section-buttons small-gap remove-when-print" >
+        <button class="pop-content wizard-button" data-bind="click: Edit">
+            <span>Select </span>
+            <span data-bind="text: FriendlyName"></span>
         </button>
-        <button class="pop-content button-icon centered" data-bind="click: Randomize">
-            <img src="/Images/dice-icon.svg" alt="Randomize"/>
+
+        <button class="pop-content wizard-button" data-bind="click: Randomize">
+            <span>Roll </span>
+            <span data-bind="text: FriendlyName"></span>
         </button>
     </div>
-</div>
-
-<div class="transform-smoothly container-list" data-bind="foreach: previewList">
-    <span class="container-list-item" data-bind="text: $data"></span>
-</div>
-<!-- /ko -->
-
-<!-- ko ifnot: IsConfigured -->
-<div class="section-buttons small-gap remove-when-print" >
-    <button class="pop-content wizard-button" data-bind="click: Edit">
-        <span>Select </span>
-        <span data-bind="text: FriendlyName"></span>
-    </button>
-
-    <button class="pop-content wizard-button" data-bind="click: Randomize">
-        <span>Roll </span>
-        <span data-bind="text: FriendlyName"></span>
-    </button>
-</div>
-<!-- /ko -->
-<!-- <div class="wizard-step-wrapper" data-bind="css: {'visible': !IsConfigured()}">
-    
-</div> -->
+    <!-- /ko -->
+    <!-- <div class="wizard-step-wrapper" data-bind="css: {'visible': !IsConfigured()}">
+        
+    </div> -->
 
 

@@ -1,3 +1,4 @@
+import { withinBounds } from "../../../Framework/Utility";
 import { Coordinate } from "../../State/DTO/Coordinate";
 export const compareByYThenX = (a, b, coordinateAccessor) => {
     const yDiff = coordinateAccessor(a).y - coordinateAccessor(b).y;
@@ -127,6 +128,14 @@ export var Translation;
     Translation[Translation["None"] = 0] = "None";
     Translation[Translation["Forwards"] = 1] = "Forwards";
 })(Translation || (Translation = {}));
+export const withinRectangleAreaBounds = (test, targetArea) => {
+    return withinBounds(test.x, targetArea.topLeft.x, targetArea.bottomRight.x) &&
+        withinBounds(test.y, targetArea.topLeft.y, targetArea.bottomRight.y);
+};
+export const withinSquareAreaBounds = (test, targetArea) => {
+    return withinBounds(test.x, targetArea.topLeft.x, targetArea.topLeft.x + targetArea.length) &&
+        withinBounds(test.y, targetArea.topLeft.y, targetArea.topLeft.y + targetArea.length);
+};
 export const TranslateCoordinate = (coordinate, translation, length) => {
     return new Coordinate(coordinate.x + translation.x * length, coordinate.y + translation.y * length);
 };
