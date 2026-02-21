@@ -1,9 +1,16 @@
-import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js"
-import { barbarianWholeTag, cultistWholeTag, dwarfTag, elfTag, halfingTag, humanTag, ixianTag, orcTag, scoundrelWholeTag, warlockWholeTag } from "../Utility/TagUtility.js";
+import { CharacterTags, MultiTaggedCharacterData, TaggedCharacterData } from "../Contracts/TaggedData.js"
+import { dwarfTag, elfTag, halfingTag, humanTag, ixianTag, orcTag, scoundrelWholeTag, cultistWholeTag, barbarianWholeTag, warlockWholeTag, acolyteTag, acrobatTag, adeptTag, alchemyTag, armigerTag, charlatanTag, contortionistTag, dowserTag, fenceTag, inquisitorTag, jesterTag, mercenaryTag, minstrelTag, pariahTag, prizefighterTag, researcherTag, ruffianTag, scholarTagRef, spyTag, storytellerTag, touchedTag, urchinTag, wardenTag } from "../Utility/TagUtility.js";
+import { ReligionData } from "./DietiesData.js";
+
+export const createMultiTaggedData = (tag: CharacterTags, payloads: string[]): MultiTaggedCharacterData<string>[] => {
+    return payloads.map(payload => ({
+        Tags: [tag],
+        Payload: payload
+    }));
+};
+
 
 export const TaggedCharacterNameData : MultiTaggedCharacterData<string>[] = [
-    {Tags:[], Payload: "Custom"},
-    
     // DWARF NAMES
     { Tags: [dwarfTag], Payload: "Alaric" },
     { Tags: [dwarfTag], Payload: "Alarsi" },
@@ -67,10 +74,9 @@ export const TaggedCharacterNameData : MultiTaggedCharacterData<string>[] = [
     { Tags: [orcTag], Payload: "Skroti" },
 ];
 
-// -----------------------------------------------------------------------------
+// // -----------------------------------------------------------------------------
 
 export const TaggedCharacterBynameData : MultiTaggedCharacterData<string>[] = [
-    {Tags:[], Payload: "Custom"},
     
     // DWARF BYNAMES
     { Tags: [dwarfTag], Payload: "Cavernfall" },
@@ -116,8 +122,6 @@ export const TaggedCharacterBynameData : MultiTaggedCharacterData<string>[] = [
 // -----------------------------------------------------------------------------
 
 export const TaggedCharacterEpithetsData : MultiTaggedCharacterData<string>[] = [
-    {Tags:[], Payload: "Custom"},
-    
     // DWARF EPITHETS
     { Tags: [dwarfTag], Payload: "Brightbraid" },
     { Tags: [dwarfTag], Payload: "Dour" },
@@ -162,37 +166,44 @@ export const TaggedCharacterEpithetsData : MultiTaggedCharacterData<string>[] = 
     { Tags: [orcTag], Payload: "Scarface" },
     { Tags: [orcTag], Payload: "White Eyes" },
 
-    // SCHOLAR EPITHETS (Roll of 5)
-    { Tags: [scoundrelWholeTag], Payload: "Academic" },
-    { Tags: [scoundrelWholeTag], Payload: "Bookworm" },
-    { Tags: [scoundrelWholeTag], Payload: "Inquirer" },
-    { Tags: [scoundrelWholeTag], Payload: "Quizzard" },
-    { Tags: [scoundrelWholeTag], Payload: "Scholastic" },
-    { Tags: [scoundrelWholeTag], Payload: "Seeker" },
-    
-    // CULTIST EPITHETS (Roll of 3)
-    { Tags: [cultistWholeTag], Payload: "Dark" },
-    { Tags: [cultistWholeTag], Payload: "Odd" },
-    { Tags: [cultistWholeTag], Payload: "Mumbler" },
-    { Tags: [cultistWholeTag], Payload: "Silent" },
-    { Tags: [cultistWholeTag], Payload: "Watcher" },
-    
-    // BARBARIAN EPITHETS (Roll of 2)
-    { Tags: [barbarianWholeTag], Payload: "Farwander" },
-    // Note: "Seeker" is shared with Scholar, adding multi-tag if this were a full list, 
-    // but here, I'll tag it only for Barbarian since it's an additive request.
-    { Tags: [barbarianWholeTag], Payload: "Seeker" }, 
-    { Tags: [barbarianWholeTag], Payload: "Untamed" },
-    { Tags: [barbarianWholeTag], Payload: "Wild" },
 
-    // WARLOCK EPITHETS (Roll of 6)
-    { Tags: [warlockWholeTag], Payload: "Darkling" },
-    { Tags: [warlockWholeTag], Payload: "Emo" },
-    { Tags: [warlockWholeTag], Payload: "Skulker" },
+    // PERFORMER & SCHOLARLY
+    ...createMultiTaggedData(acrobatTag, ["Cat", "Daring", "Incredible", "Juggler", "Tumbler"]),
+    ...createMultiTaggedData(contortionistTag, ["Astonishing", "Bent", "Freak", "Twister", "Uncanny", "Oddity"]),
+    ...createMultiTaggedData(jesterTag, ["Buffoon", "Clown", "Fool", "Joker", "Knifetongue", "Witty"]),
+    ...createMultiTaggedData(minstrelTag, ["Bard", "Heartstealer", "Minstrel", "Nightingale", "Performer"]),
+    ...createMultiTaggedData(scholarTagRef, ["Academic", "Bookworm", "Inquirer", "Quizzard", "Scholastic", "Seeker"]),
+    ...createMultiTaggedData(storytellerTag, ["Entertainer", "Griot", "Memory", "Owl", "Raconteur", "Rymer", "Wordsmith"]),
 
-    // SCOUNDREL EPITHETS (Roll of 3)
-    { Tags: [scoundrelWholeTag], Payload: "Cheat" },
-    { Tags: [scoundrelWholeTag], Payload: "Fox" },
-    { Tags: [scoundrelWholeTag], Payload: "Villain" },
-    { Tags: [scoundrelWholeTag], Payload: "Wily" },
+    // DEVOUT
+    ...createMultiTaggedData(acolyteTag, ["Drowsy", "Flatulent", "Haughty", "Pious", "Silent", "Stern"]),
+    ...createMultiTaggedData(cultistWholeTag, ["Dark", "Odd", "Mumbler", "Silent", "Watcher"]),
+    ...createMultiTaggedData(pariahTag, ["Annoying", "Blasphemer", "Seer", "Truthfinder"]),
+    ...createMultiTaggedData(touchedTag, ["Blessed", "Chosen", "Freak", "Touched"]),
+    
+    // INQUISITOR (Special Case for Deities)
+    ...createMultiTaggedData(inquisitorTag, ReligionData.possibleDeities.map(x=>`Dog of ${(x.Pronoun.name)? x.Pronoun.name : "Unknown god"}`)),
+    { Tags: [inquisitorTag], Payload: "Hound" },
+    { Tags: [inquisitorTag], Payload: "Merciless" },
+
+    // MARTIAL
+    ...createMultiTaggedData(armigerTag, ["Sir", "Madam"]), // Honorifics
+    ...createMultiTaggedData(barbarianWholeTag, ["Farwander", "Seeker", "Untamed", "Wild"]),
+    ...createMultiTaggedData(mercenaryTag, ["Faithless", "Fox", "Marauder", "Outlaw"]),
+    ...createMultiTaggedData(prizefighterTag, ["Bull", "Crooknose", "Hammerhands", "Killer", "Stonehead"]),
+    ...createMultiTaggedData(ruffianTag, ["Bully", "Jerk", "Meathead", "Slow", "Viper"]),
+    ...createMultiTaggedData(wardenTag, ["Forester", "Protector", "Warder"]),
+
+    // ARCANE
+    ...createMultiTaggedData(adeptTag, ["color Sorcerer", "color Wizard", "Mysterious"]),
+    ...createMultiTaggedData(alchemyTag, ["Arcanist", "Drincanmaster", "Firestarter", "Mixologist"]),
+    ...createMultiTaggedData(researcherTag, ["Bookworm", "Curious", "Eccentric", "Loremaster", "Odd", "Quizzard"]),
+    ...createMultiTaggedData(charlatanTag, ["Amazing", "Arcanist", "Medium", "Third Eye", "Trickster"]),
+    ...createMultiTaggedData(dowserTag, ["Finder", "Lodestone", "True"]),
+    ...createMultiTaggedData(warlockWholeTag, ["Darkling", "Emo", "Skulker"]),
+
+    // ROGUE
+    ...createMultiTaggedData(fenceTag, ["Broker", "Fixer", "Mover", "Receiver"]),
+    ...createMultiTaggedData(spyTag, ["Fox", "Shadow", "Silent", "Quiet"]),
+    ...createMultiTaggedData(urchinTag, ["Fleet", "Wily", "Youngblood"]),
 ];

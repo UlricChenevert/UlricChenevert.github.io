@@ -1,20 +1,23 @@
 interface IPartialViewModel<ModelType> {
-    readonly  ViewUrl : string
-    readonly Model : ModelType
+    ViewUrl : string
+    Model : ModelType
 }
 
-interface IHTMLInjectable<ResolveType, InitializationType = undefined> {
+interface IHTMLInjectable<ResolveType, InitializationType = void> {
     readonly ViewUrl : string
     isLoading : ko.Observable<boolean>
     HTMLandKnockoutRequestCallback? : Promise<void>
 
-    Init : InitializationType extends undefined // This is where you populate the class with values
-        ? // CASE 1: InitializationType is undefined (default/not passed)
-          // The parameter must be explicitly marked as optional (?)
-          (initiationObject?: InitializationType) => Promise<ResolveType>
-        : // CASE 2: InitializationType is specified
-          // The parameter is required
-          (initiationObject: InitializationType) => Promise<ResolveType>;
+    Init : InitializationType extends void? 
+        // CASE 2: InitializationType is specified
+        // The parameter is required
+        () => Promise<ResolveType>
+    
+        // This is where you populate the class with values
+        // CASE 1: InitializationType is undefined (default/not passed)
+        // The parameter must be explicitly marked as optional (?)
+        : (initiationObject?: InitializationType) => Promise<ResolveType>
+        
     
     Destruction? : ()=>void
 }

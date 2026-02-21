@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,7 +11,17 @@ var app = builder.Build();
 
 app.UseRouting();
 
-// app.MapStaticAssets();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(builder.Environment.ContentRootPath, "Client", "HTML")),
+        RequestPath = "/HTML" 
+    });
+}
+
 app.UseStaticFiles(); 
 
 app.MapControllers();

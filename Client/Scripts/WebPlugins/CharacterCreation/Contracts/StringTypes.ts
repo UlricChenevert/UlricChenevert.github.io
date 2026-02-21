@@ -5,15 +5,45 @@ export type NounMashNameGeneratorType = "Adjective" | "Noun" | "Verb";
 
 export type ItemTypes = "Unusual Ring";
 
-export type DispositionType = "Aggressive" | "Hostile" | "Negative" | "Disinterested" | "Receptive" | "Friendly" | "Unknown";
+export enum DispositionsEnum {
+    "Aggressive"= "Aggressive",
+    "Hostile"= "Hostile", 
+    "Negative"= "Negative", 
+    "Disinterested"= "Disinterested", 
+    "Receptive"= "Receptive", 
+    "Friendly"= "Friendly"
+}
+
+export const Dispositions : {[index: string] : {name : string, roll : number}}= {
+    [DispositionsEnum.Aggressive]: {name: DispositionsEnum.Aggressive, roll: 1},
+    [DispositionsEnum.Hostile]: {name: DispositionsEnum.Hostile, roll: 2}, 
+    [DispositionsEnum.Negative]: {name: DispositionsEnum.Negative, roll: 3}, 
+    [DispositionsEnum.Disinterested]: {name: DispositionsEnum.Disinterested, roll: 4}, 
+    [DispositionsEnum.Receptive]: {name: DispositionsEnum.Receptive, roll: 5}, 
+    [DispositionsEnum.Friendly]: {name: DispositionsEnum.Friendly, roll: 6}} as const;
+
+export type DispositionType = typeof Dispositions
+
 
 export type PrestigeType = "Prestigious" | "Insignificant" | "Secretive";
 
-export type PronounType = { id: number; name: string; };
+export type PronounType = { id: number; name?: string; };
 
-export type SocialRelationships = "Colleagues" | "Family" | "Local Civic Authorities" | "Local Religious Authorities" | "Master/Mentor/Lord" | "Neighbors/Local Inhabitants" | "Shadow Groups"
+export enum EntanglementOrganizationTypesEnum {
+    "Colleagues" = "Colleagues",
+    "Family" = "Family",
+    "CivicAuthorities" = "Local Civic Authorities",
+    "ReligiousAuthorities" = "Local Religious Authorities",
+    "Master" = "Master",
+    "Neighbors"= "Neighbors",
+    "ShadowGroups"= "Shadow Groups"
+}
 
-export type RelationshipType = NameType | SocialRelationships
+export type EntanglementOrganizationTypes = EntanglementOrganizationTypesEnum
+
+
+export type RelationshipType = NameType
+// | SocialRelationships
 
 export type TagType = 'Race' | 'Profession' | 'Alignment' | 'Background' | 'DevelopmentalEnvironment';
 
@@ -25,9 +55,8 @@ export type BackgroundType = 'Childhood' | 'Adult' | 'Elder';
 
 export type GeographyType = "Water" | "Landform";
 
-export type SourceTypes = "Background" | "Disposition" | "Custom"
+export type SourceTypes = "Background" | "Ancestry" | "Custom" | "Innate" | "Edges"
 
-export type OrganizationType = "";
 
 export type ChildhoodBackgroundsTypes =
     "Farm Boy" |
@@ -109,28 +138,97 @@ export type DevelopmentalEnvironmentType = 'Nobility' | 'Clergy' | 'Commoner';
 export type NameType = "Organization" | "Person" | "Place";
 
 export type ProfessionType =
-    "Adventurer" | "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+    "Skilled & Laborer" | "Performer & Scholarly" | "Religious" | "Martial" | "Arcane" | "Rogue"
 
 
-// export type JobType = "Jeweler" | "Arbalist" | "Escaped Thrall" | "Rat Catcher" | "Scrivener" | "Inspector/Reeve" | "Carpenter" | "Smith" | "Cooper/Wheelwright" | "Leatherworker" | 
+export type SkilledLaborerJobType = 
+    "Apprentice Artisan" | "Apprentice Bureaucrat" | "Free Laborer" | 
+    "Apprentice Crafter" | "Apprentice Mercantiler" | "Escaped Peasant/Thrall"
+export type PerformerScholarlyJobType = 
+    "Acrobat" | "Contortionist" | "Jester" | "Minstrel" | "Scholar" | "Storyteller/Thespian"
+export type ReligiousJobType = 
+    "Accursed" | "Acolyte" | "Cultist" | "Inquisitor" | "Pariah" | "Touched/Anchorite"
+export type MartialJobType = 
+    "Armiger" | "Barbarian" | "Mercenary/Hedge" | "Prizefighter" | "Ruffian/Enforcer" | "Woodard/Warden"
+export type ArcaneJobType = 
+    "Adept/Arcane Apprentice" | "Alchemy Apprentice" | "Arcane Researcher" | "Charlatan" | "Dowser" | "Warlock"
+export type RogueJobType = 
+    "Fence" | "Gambler" | "Scoundrel" | "Sharp" | "Spy" | "Street Urchin"
+
+export type JobType = SkilledLaborerJobType | PerformerScholarlyJobType | ReligiousJobType | MartialJobType | ArcaneJobType | RogueJobType
+
+export enum JobSubsetEnum {
+    None = "None",
+    // Skilled & Laborer
+    Jeweler = "Jeweler",
+    Arbalist = "Arbalist",
+    Scrivener = "Scrivener",
+    Advocate = "Advocate/Beadle",
+    Cartographer = "Cartographer",
+    Inspector = "Inspector/Reeve",
+    Interpreter = "Interpreter",
+    Smith = "Smith",
+    Carpenter = "Carpenter",
+    MoneyChanger = "Money Changer",
+    Ambler = "Ambler",
+    Chef = "Chef",
+    // Escaped Thrall
+    HouseServant = "House Servant",
+    Farmhand = "Farmhand",
+    Laborer = "Laborer",
+    Sailor = "Sailor (Conscript)",
+    // Religious (Acolyte/Inquisitor)
+    Brewer = "Brewer",
+    Farmer = "Farmer",
+    Herder = "Herder",
+    Oratory = "Oratory",
+    Theology = "Theology",
+    Vintner = "Vintner",
+    Esoterica = "Esoterica",
+    // Martial (Armiger/Mercenary/Woodard)
+    ActiveService = "Active Service",
+    Freelance = "Freelance",
+    LordSlain = "Lord Slain/Captured",
+    Disgraced = "Disgraced",
+    HedgeKnight = "Hedge Knight",
+    Mercenary = "Mercenary",
+    Bandit = "Bandit",
+    Discharged = "Discharged",
+    // Adept / Warlock Masters
+    IxianRaver = "Ixian Raver",
+    IxianArchon = "Ixian Archon",
+    Dragon = "Dragon",
+    Lich = "Lich",
+    Wizard = "Wizard",
+    ElderGod = "Elder God (Ghoelb)",
+    Moloch = "Moloch",
+    Kain = "Kain",
+    ThreeTrinketRandom = "Three trinkets random",
+    OneTrinketChoice = "One trinket choice",
+
+    // Spy Specializations
+    DisguiseSpecialist = "Disguise Specialist",
+    BurglarSpecialist = "Burglar Specialist"
+}
+
+export type JobSubset = JobSubsetEnum
 
 
-// export type ProfessionType =
-//     "Adventurer" | "Bureaucrat" | "Crafter" | "Mercantiler" | "Free Laborer" | "Vagabond" |
-//     "Scholar" | "Cultist" | "Barbarian" | "Warlock" | "Scoundrel" | // New Classes
-//     "Bard" | "Cleric" | "Fighter" | "Magic User" | "Thief"
+    // | JobSubsetEnum.Jeweler 
+    // | JobSubsetEnum.Arbalist
+    // | JobSubsetEnum.Scrivener
+    // | JobSubsetEnum.Advocate
+    // | JobSubsetEnum.Cartographer
+    // | JobSubsetEnum.Inspector
+    // | JobSubsetEnum.Interpreter
+    // | JobSubsetEnum.Smith
+    // | JobSubsetEnum.Carpenter
+    // | JobSubsetEnum.MoneyChanger
+    // | JobSubsetEnum.Ambler
+    // | JobSubsetEnum.Chef
+    // | JobSubsetEnum.HouseServant
+    // | JobSubsetEnum.Farmhand
+    // | JobSubsetEnum.Laborer
+    // | JobSubsetEnum.Sailor
+    // | JobSubsetEnum.None;
 
-export type JobType = 
-    "Jeweler" | "Arbalist" | "Scrivener" | "Advocate/Beadle" | "Cartographer" | "Inspector/Reeve" | 
-    "Interpreter" | "Rat Catcher" | "Smith" | "Carpenter" | "Cooper/Wheelwright" | "Leatherworker" | 
-    "Mason" | "Swordsmith" | "Money Changer" | "Assayer" | "Brewer" | "Herbalist" | "Peddler" | 
-    "Vintner" | "Ambler" | "Chef" | "Farmer" | "Fisher" | "Herder" | "Wagoner" | "Escaped Thrall" |
-    "House Servant" | "Farmhand" | "Laborer" | "Sailor (Conscript)" | "Warlock" | "Scoundrel" | "Barbarian" | "Cultist" | "Scholar";
-
-
-    // // Martial Classes
-    // 'Fighter' | 'Barbarian' | 'Monk' | 'Ranger' |
-    // // Spellcasters
-    // 'Wizard' | 'Sorcerer' | 'Warlock' | 'Cleric' | 'Druid' |
-    // // Mixed
-    // 'Paladin' | 'Bard' | 'Rogue';

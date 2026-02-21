@@ -43,31 +43,37 @@ export const AbilitiesToArray = (a? : Abilities) => {
 }
 
 export class AbilitiesDescription {
-    constructor (public description : string, public pictureUrl : string) {}
+    constructor (public name : string, public description : string, public pictureUrl : string) {}
 }
 
-const abilityDetailsMap: Record<AbilityNames, { description: string, pictureUrl: string }> = {
+const abilityDetailsMap: Record<AbilityNames, AbilitiesDescription> = {
     [AbilityNames.Strength]: {
+        name: AbilityNames.Strength,
         description: "You are the immovable object and the unstoppable force. You measure your worth in muscle and sinew, able to lift the heaviest gate or shatter the stoutest shield. When a challenge requires raw power, the party looks to you to break it.",
         pictureUrl: getCharacterCreatorPicturePath("/RR Downtime Meetup Ricardo de Gaspar.png") // Placeholder
     },
     [AbilityNames.Dexterity]: {
+        name: AbilityNames.Dexterity,
         description: "You move with the grace of a jungle cat and the speed of a viper's strike. Your fingers are quick, your balance is perfect, and you can slip through shadows without a sound. You are the one who ensures a surprise attack hits its mark or that a trap is safely bypassed.",
         pictureUrl: getCharacterCreatorPicturePath("/Elf/CC 300dpi 3inW MEN WOMEN ELF THIEF ACROBAT CONTORTIONIST ACTION Ambush Didrik Magnus-Andresen.jpg") // Placeholder
     },
     [AbilityNames.Constitution]: {
+        name: AbilityNames.Constitution,
         description: "You are built like an ox, possessed of phenomenal stamina and an iron will to survive. You can shrug off wounds that would fell a lesser person, march for days without rest, and shake off poisons as if they were water. You are the last to fall in a grueling fight.",
         pictureUrl: getCharacterCreatorPicturePath("/Human/PD 300dpi 3inW MEN ALCHEMIST ASSAYER HERBALIST John C Gilbert.jpg") // Placeholder
     },
     [AbilityNames.Intelligence]: {
+        name: AbilityNames.Intelligence,
         description: "Your mind is a steel trap, always analyzing, remembering, and calculating. Your friends always look to you to find the right answer, because you always seem to figure out the right way. You are often found learning the stories of old from your elders or trying to find the answers in scrolls or books.",
         pictureUrl: getCharacterCreatorPicturePath("/PD MAGIC WARLOCK  SPELLCASTER John Dickson Batten.jpg") // Placeholder
     },
     [AbilityNames.Wisdom]: {
+        name: AbilityNames.Wisdom,
         description: "You see what others miss. Your instincts are uncanny, your perception is keen, and you possess deep common sense. You can read a room, sense a trap before it's sprung, and know when someone is lying. You are the party's moral compass and guide through the wilderness.",
         pictureUrl: getCharacterCreatorPicturePath("/Human/PD MEN LAWYER ADVOCATE BEADLE cropped Grandville.jpg") // Placeholder
     },
     [AbilityNames.Charisma]: {
+        name: AbilityNames.Charisma,
         description: "You command attention the moment you enter a room. Your words can charm a noble, inspire a frightened soldier, or terrify a bandit leader into submission. You are a natural leader, able to bend social situations and people to your will with confidence and eloquence.",
         pictureUrl: getCharacterCreatorPicturePath("/RR Downtime Drinking Ricardo de Gaspar.JPG") // Placeholder
     },
@@ -111,12 +117,14 @@ export const MaxAbility = (ability: Abilities): AbilitiesDescription  => {
     // 3. Return the AbilitiesDescription object
     if (maxScore > -Infinity) {
         return new AbilitiesDescription(
+            maxAbilityName,
             details.description,
             details.pictureUrl
         );
     } else {
         // Fallback description if no valid scores are found
         return new AbilitiesDescription(
+            "None",
             "Could not determine the primary ability. Please ensure scores are correctly input.",
             "URL_FOR_DEFAULT_ICON" 
         );

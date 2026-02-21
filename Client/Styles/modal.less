@@ -16,11 +16,25 @@
   align-content: center;
   justify-content: center;
 
-  .modal-contents {
-    width: 60em;
-    height: 60em;
+  .modal-contents { 
+    @media (width <= @max-size-before-element-reaction) {width: 75vw; margin: 7em; margin-top: 15em;}
+
+    margin: 10em;
+    width: 50vw;
+    max-height: 60em;
     background-color: @article-color;
     padding: 1em;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-done-button {
+    margin-top: 1em;
+  }
+
+  .modal-display {
+    flex-grow: 1;
   }
 
   .header {

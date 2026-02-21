@@ -1,8 +1,8 @@
-import { Edges } from "./Edges";
-import { Language } from "./Language";
-import { Skill } from "./Skill";
-import { Spell } from "./Spell";
-import { ChildhoodBackgroundsTypes, AdultBackgroundsTypes, ElderBackgroundsTypes, PronounType, ItemTypes, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType } from "./StringTypes";
+import { ObservableArray } from "../../../Framework/Knockout/knockout.js";
+import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
+import { EntanglementAffect, RelationshipModel } from "./Entanglements.js";
+import { LearnedLanguage } from "./Language";
+import { PronounType, DispositionType, TagType, RaceType, ProfessionType, DevelopmentalEnvironmentType, SyllableType, NounMashNameGeneratorType, NameType, GodType, PrestigeType, MoralityTypes, GeographyType, BackgroundType, OrderTypes, SourceTypes, JobType, EntanglementOrganizationTypes } from "./StringTypes.js";
 
 export interface TaggedData<T, Y> {
     Tags : Y,
@@ -20,6 +20,7 @@ export interface MultiTaggedCharacterData<T> extends TaggedData<T, CharacterTags
 }
 
 export interface CharacterTags {
+    EntanglementType? : EntanglementOrganizationTypes
     Race?: RaceTag;
     DevelopmentalEnvironment?: DevelopmentalEnvironmentTag;
     Profession?: ProfessionTag;
@@ -29,42 +30,69 @@ export interface CharacterTags {
     Religion? : ReligionTag
     PrestigeLevel? : PrestigeTag,
     Optional? : boolean
+    Source?: SourceTypes
 }
 
 export type DescriptionModel = {Description: string}
 export type PartOfSpeechModel = {PartOfSpeech : string}
 export type PictureModel = DescriptionModel & {PictureUrl: string}
-export type StoryModel = {
-    Name: string //ChildhoodBackgroundsTypes | AdultBackgroundsTypes | ElderBackgroundsTypes
+export type StoryModel<StoryType> = {
+    Name: StoryType
     Story : string
-
-    Items? : Item[]
-
-    Edges? : Edges[]
-    Skills? : Skill[]
-    
-    Spells? : Spell[]
-    Languages? : Language[]
-
     Other? : string
 
-    PeopleNames? : PronounType[]
-    PeopleRelations? : DispositionType[]
+    // Below handled by update functions
+    // Items? : SelectionPackage<Item>
+    // Edges? : SelectionPackage<Edges> 
+    // Skills? : SelectionPackage<Skill>
+    // Spells? : SelectionPackage<Spell>
+    // Languages? : SelectionPackage<LearnedLanguage>
 
-    OrganizationNames? : PronounType[]
-    OrganizationRelations? : DispositionType[]
-
-    PlaceNames? : PronounType[]
-    PlaceRelationships? : DispositionType[]
+    AffectedPeople : EntanglementAffect[]
+    AffectedOrganization : EntanglementAffect[]
+    AffectedPlace : EntanglementAffect[]
 
     PartialPictureUrl? : string
+}
+
+export type RelationshipType = {identifier: PronounType, disposition: DispositionType}
+
+export type OverrideChoiceLambda<T> = (taggedChoiceBeingOverridden : TaggedCharacterData<ChoiceGroup<T>>, characterData : ConfiguredCharacterData)=>TaggedCharacterData<ChoiceGroup<T>>
+
+export class SelectionPackage<T> {
+    constructor (
+        public FixedSelection: T[], // e.g. Items every Dwarf gets automatically
+        public ChoiceSelection: ChoiceGroup<T>[], // Groups of items they must choose between
+        public OverrideSelection: T[], 
+        public OverridePossibleChoiceSelection?: Map<ChoiceGroup<T>, TaggedCharacterData<OverrideChoiceLambda<T>>>, // e.g. Class trinkets selection that overrides race trinket selection
+    ) {}
+}
+
+
+export class ChoiceGroup<T> {
+    constructor (
+        public pickCount: number, // How many can they choose?
+        public options: T[], // The items themselves
+        public selectedValues: T[]
+    ) {}
+}
+
+export class TaggedObservableSelectionPackage<T> {
+    constructor (
+        public FixedSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items every Dwarf gets automatically
+        public ChoiceSelection: ObservableArray<TaggedCharacterData<ChoiceGroup<T>>>, // Groups of items they must choose between
+        public OverridePossibleSelection: ObservableArray<TaggedCharacterData<T>>, // e.g. Items that every STREET URCHIN cannot have
+        public OverridePossibleChoiceSelection: Map<ChoiceGroup<T>, TaggedCharacterData<OverrideChoiceLambda<T>>>, // e.g. Class trinkets selection that overrides race trinket selection
+    ) {}
 }
 
 export type SyllableModel = {
     Syllable : string
 }
 
-export type Item = {Name: string, Amount?: number, Description?: string, Source: SourceTypes}
+export class Item {
+    constructor(public Name: string, public Amount?: number, public Description?: string, public Value? : number) {}
+}
 
 export interface BaseTag {
     Type?: TagType;

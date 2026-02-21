@@ -1,0 +1,19 @@
+<div data-bind="click: unlock">
+    <div class="title">
+        <h4 data-bind="text: FriendlyName"></h4>
+        <!-- ko if: isLocked() && isUnlockableByUser() -->
+            <button class="pop-content button-icon centered" >
+                <img src="\Images\CharacterCreator\lock.svg" alt="Unlock" />
+            </button>
+        <!-- /ko -->
+    </div> 
+
+    <!-- ko if: isLocked -->
+        <div data-bind="text: widgetPreviewText"> </div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: isLocked-->
+        <select class="wizard-select" data-bind="options: UnselectedValues, optionsText: determineSelectionPreview, optionsCaption: 'Choose', value: selectedUIValueObservable"></select>
+    <!-- /ko -->
+
+</div>

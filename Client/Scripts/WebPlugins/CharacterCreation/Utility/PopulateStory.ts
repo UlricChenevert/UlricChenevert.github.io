@@ -1,98 +1,67 @@
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { GenerationType } from "../Configuration/NameData.js";
-import { BackgroundType, PronounType, SourceTypes } from "../Contracts/StringTypes.js";
-import { Item, NameGeneratorSettings, StoryModel, TaggedCharacterData } from "../Contracts/TaggedData.js";
+import { EntanglementAffect, RelationshipModel } from "../Contracts/Entanglements.js";
+import { NameGeneratorSettings, StoryModel } from "../Contracts/TaggedData.js";
 import { NameUtility } from "./NameUtility.js";
 import { ReplaceString } from "./StringManipulation.js";
 
-export function PopulateBackground(storySeed: TaggedCharacterData<StoryModel>, characterData : ConfiguredCharacterData): TaggedCharacterData<StoryModel> {
+export function PopulateBackground<T>(storySeed: StoryModel<T>, characterData : ConfiguredCharacterData, override = false): StoryModel<T> {
 
-    const storyPayloadReference = storySeed.Payload;
+    const storyPayloadReference = storySeed;
 
-    const returnTaggedStory : TaggedCharacterData<StoryModel> = {
-        Tags: storySeed.Tags, 
-        Payload: Object.assign({}, storyPayloadReference)
-    }
+    const returnPayloadReference = Object.assign({}, storyPayloadReference)
 
-    const returnPayloadReference = returnTaggedStory.Payload
-
-    if (storyPayloadReference.Items) {
-
-        const getNewOrDefault = new GetNextOrGenerateNew(storyPayloadReference.Items, ()=>{return {Name: "an unusual item", Source: "Background" as SourceTypes}})
-
-        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.ItemName, ()=>getNewOrDefault.next().Name);
-
-        returnPayloadReference.Items = getNewOrDefault.usedData
-    }
-
-    if (storyPayloadReference.PeopleNames) {
+    if (storyPayloadReference.AffectedPeople) {
 
         const generationSettings : NameGeneratorSettings = {NameType: "Person"}
-        if (storySeed.Tags.Race !== undefined) generationSettings.Race = storySeed.Tags.Race.Race
+        if (characterData.Race() !== undefined) generationSettings.Race = characterData.Race()
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PeopleNames, ()=>{ return NameUtility.GeneratePersonName(generationSettings) })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.AffectedPlace, ()=>{ return NameUtility.GeneratePersonName(generationSettings) }, override)
 
-        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, ()=>getNewOrAddNew.next().name)
-
-        returnPayloadReference.PeopleNames = getNewOrAddNew.usedData
-
-        returnPayloadReference.PeopleRelations = storyPayloadReference.PeopleRelations
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PersonName, ()=>getNewOrAddNew.next())
     }
 
-    if (storyPayloadReference.PlaceNames) {
+    if (storyPayloadReference.AffectedPlace) {
+
         const generationSettings : NameGeneratorSettings & { NameType: "Place" } = {NameType: "Place"}
-        
-        generationSettings.Race = characterData.Race()
-        if (storySeed.Tags.PrestigeLevel) generationSettings.Prestige = storySeed.Tags.PrestigeLevel.Prestige
-        if (storySeed.Tags.PhysicalFeatures) generationSettings.Geography = storySeed.Tags.PhysicalFeatures.Geography
-        if (storySeed.Tags.Religion) generationSettings.God = storySeed.Tags.Religion.God
-        if (storySeed.Tags.Alignment) generationSettings.Goal = storySeed.Tags.Alignment?.Morality
-        if (storySeed.Tags.DevelopmentalEnvironment) generationSettings.PowerBase = storySeed.Tags.DevelopmentalEnvironment.Class
+        if (characterData.Race() !== undefined) generationSettings.Race = characterData.Race()
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.PlaceNames, ()=>{ return NameUtility.GeneratePlaceName(generationSettings) })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.AffectedPlace, ()=>{ return NameUtility.GeneratePlaceName(generationSettings) }, override)
 
-        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, ()=>getNewOrAddNew.next().name)
-
-        returnPayloadReference.PlaceNames = getNewOrAddNew.usedData
-
-        returnPayloadReference.PlaceRelationships = storyPayloadReference.PlaceRelationships
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.PlaceName, ()=>getNewOrAddNew.next())
     }
 
-    if (storyPayloadReference.OrganizationNames) {
+    if (storyPayloadReference.AffectedOrganization) {
 
-        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.OrganizationNames, ()=>{ return NameUtility.GenerateOrganizationName() })
+        const getNewOrAddNew = new GetNextOrGenerateNew(storyPayloadReference.AffectedOrganization, ()=>{ return NameUtility.GenerateOrganizationName() }, override)
 
-        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, ()=>getNewOrAddNew.next().name)
-
-        returnPayloadReference.OrganizationNames = getNewOrAddNew.usedData
-
-        returnPayloadReference.OrganizationRelations = storyPayloadReference.OrganizationRelations
+        returnPayloadReference.Story = ReplaceString(returnPayloadReference.Story, GenerationType.OrganizationName, ()=>getNewOrAddNew.next())
     }
-    
-    return returnTaggedStory
+
+    return returnPayloadReference
 }
 
-class GetNextOrGenerateNew<T> {
+class GetNextOrGenerateNew {
     index : number
-    usedData : T[]
-    constructor(usedData : T[], public generateNew : (index : number) => T, public customLogic? : (element : T)=>boolean) {
-        this.usedData = usedData.map(x=>x)
+    storyRelationships : EntanglementAffect[]
+    constructor(storyData : EntanglementAffect[], public generateNewName : (relationship : EntanglementAffect) => string, public replaceAll = false) { //, public customLogic? : (element : RelationshipModel)=>boolean
+        this.storyRelationships = JSON.parse(JSON.stringify(storyData))
         this.index = 0
     }
 
     next() {
-        const needNewItemByCustomLogic : boolean | undefined = this.customLogic?.(this.usedData[this.index])
+        // const needNewItemByCustomLogic : boolean | undefined = this.customLogic?.(this.usedData[this.index])
 
-        if (this.needToGenerateNew() || needNewItemByCustomLogic) {
-            this.usedData.push(this.generateNew(this.index))
+        const relationship = this.storyRelationships[this.index]
+
+        if (this.needToGenerateNew(relationship) || this.replaceAll) {
+            relationship.Identifier.name = this.generateNewName(relationship)
         }
- 
-        const value = this.usedData[this.index]
 
         this.index++
 
-        return value
+        return relationship.Identifier.name as string
     }
 
-    needToGenerateNew() {return this.index >= this.usedData.length}
+    needToGenerateNew(relationship : EntanglementAffect) {return relationship.Identifier.name === undefined}
 }

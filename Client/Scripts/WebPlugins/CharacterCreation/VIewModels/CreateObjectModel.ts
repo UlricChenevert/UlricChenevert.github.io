@@ -5,28 +5,26 @@ import { ModalFrameModel } from "../../../WebCore/ViewModels/ModalFrameModel.js"
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 
-export class CreateObjectModel<T> implements ICharacterWizardViewModel<void, void> {
-    readonly ViewUrl = "PartialViews/CreateObjectView.html";
+export class CreateObjectModel<ItemToConfigureDataType, PreviewModelType> implements ICharacterWizardViewModel<void, void> {
+    readonly ViewUrl = "PartialViews/CreateObjectView.html"
     isLoading: Observable<boolean>;
-
-    item : Observable<T>
-
-    modal : IPartialViewModel<ModalFrameModel<void, T, T, IWizardModel<void, T, T>>>
+    item : Observable<ItemToConfigureDataType>
+    modal : IPartialViewModel<ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>>
 
     constructor (
         public FriendlyName : string, 
-        public itemConstructionModel : IWizardModel<void, T, T>, 
-        public evaluationItemLocation : (characterData : ConfiguredCharacterData)=>Observable<T>, 
-        public determineName : (characterData : T)=>string, 
-        public isConfiguredCallback: (model: IWizardModel<void, T, T>) => boolean,
-        public GlobalCharacterData : ConfiguredCharacterData
+        public itemConstructionModel : IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType> & {Randomize : Function}, 
+        public evaluationItemLocation : (characterData : ConfiguredCharacterData)=>Observable<ItemToConfigureDataType>, 
+        public previewViewModel : IPartialViewModel<PreviewModelType>,
+        public isConfiguredCallback: (model: IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>) => boolean,
+        public EvaluationCallback : (characterData : ConfiguredCharacterData) => void,
+        public GlobalCharacterData : ConfiguredCharacterData,
     ) {
-
         this.item = this.evaluationItemLocation(this.GlobalCharacterData)
 
         const a = Utility.BundleViewAndModel(itemConstructionModel)
-        const b = new ModalFrameModel<void, T, T, IWizardModel<void, T, T>>(FriendlyName, a, isConfiguredCallback)
-        this.modal = Utility.BundleViewAndModel<void, ModalFrameModel<void, T, T, IWizardModel<void, T, T>>, T>(b)
+        const b = new ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>(FriendlyName, a, isConfiguredCallback)
+        this.modal = Utility.BundleViewAndModel<void, ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>, ItemToConfigureDataType>(b)
 
         this.isLoading = ko.observable(true)
     }
@@ -46,26 +44,14 @@ export class CreateObjectModel<T> implements ICharacterWizardViewModel<void, voi
             if (!this.isConfiguredCallback(this.itemConstructionModel)) return
 
             this.item(this.modal.Model.Evaluate())
-
+            this.EvaluationCallback(this.GlobalCharacterData)
         })
     }
 
-    // CreateItem() {
-    //     this.modal.Model.Open()
-
-    //     const subscription = this.modal.Model.isVisible.subscribe((isVisible : boolean)=>{
-    //         if (isVisible) return
-    //         subscription.dispose()
-            
-    //         if (!this.isConfiguredCallback(this.itemConstructionModel)) return
-
-    //         this.item(this.modal.Model.Evaluate())
-
-    //     })
-    // }
-
-    Evaluate () {
-        // this.evaluationItemLocation(this.GlobalCharacterData)(this.item().map(x=>x()))
+    Evaluate () {}
+    Randomize () {
+        this.itemConstructionModel.Randomize()
+        this.item(this.modal.Model.Evaluate())
+        this.EvaluationCallback(this.GlobalCharacterData)
     }
-    Randomize () {}
 }

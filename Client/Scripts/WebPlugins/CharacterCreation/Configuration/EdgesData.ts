@@ -1,224 +1,240 @@
 import { Edges } from "../Contracts/Edges.js";
-import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
-import { barbarianTag, cultistTag, dwarfBasicTag, elfBasicTag, halfingBasicTag, humanBasicTag, ixianBasicTag, scoundrelTag, warlockTag } from "../Utility/TagUtility.js";
+import { JobSubset, JobSubsetEnum, JobType, RaceType } from "../Contracts/StringTypes.js";
+import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
 
-// NOTE: Assuming the Contracts/Edges and Contracts/TaggedData files contain the necessary class/type definitions.
-// Example Edges class (Placeholder for context, assumed to exist):
-// class Edges { constructor(public name: string, public description: string) {} }
-// Example Race Tag structure (Placeholder for context, assumed to exist):
-// {Race: dwarfBasicTag, Optional: false}
+export namespace EdgesData {
+    // --- Individual Edge Instances ---
+    
+    // Species Edges
+    export const DeterminedEdge = new Edges("Determined", "When hurt badly, you get tougher and fight harder.");
+    export const UnderSense = new Edges("Under Sense", "You rarely lose your way underground.");
+    export const PackMule = new Edges("Pack Mule", "You can carry 1.5 times as much as normal.");
+    
+    export const DireFocus = new Edges("Dire Focus", "When hurt badly, you become sharper and more dextrous.");
+    export const SylvanStep = new Edges("Sylvan Step", "You can move unseen and unheard in the woods.");
+    export const ElvenAccuracy = new Edges("Elven Accuracy", "You do more damage with ranged attacks.");
+    
+    export const Adaptable = new Edges("Adaptable", "You are unusually good at many unexpected tasks.");
+    
+    export const Vengeful = new Edges("Vengeful", "When an opponent hurts you badly, you can charge and attack them.");
+    export const Brute1 = new Edges("Brute 1", "You are tough; increase your Hit Dice by 1.");
+    export const OrcSavagery = new Edges("Orc Savagery", "You do more damage in melee combat.");
 
-export const TaggedEdgesData : MultiTaggedCharacterData<Edges>[] = [
-    // --- DWARF EDGES (Original provided data) ---
-    {
-        Tags: [
-            {Race: dwarfBasicTag, Optional: false} // Mandatory base Edge
-        ],
-        Payload: new Edges(
-            "Determined Edge",
-            "Dwarves are bull headed. Determined - When hurt badly, you get tougher and fight harder. And roll 1d6 or choose one of the following Edges."
-        )
-    },
-    {
-        Tags: [
-            {Race: dwarfBasicTag, Optional: true}, // Optional 1-2
-            {Race: elfBasicTag, Optional: true}    // Optional 1-2
-        ],
-        Payload: new Edges(
-            "Low Light Vision",
-            "You can see in daylight and in dim conditions."
-        )
-    },
-    {
-        Tags: [
-            {Race: dwarfBasicTag, Optional: true} // Optional 3-4
-        ],
-        Payload: new Edges(
-            "Under Sense",
-            "You rarely lose your way underground."
-        )
-    },
-    {
-        Tags: [
-            {Race: dwarfBasicTag, Optional: true} // Optional 5-6
-        ],
-        Payload: new Edges(
-            "Pack Mule",
-            "You can carry 1.5 times as much as normal."
-        )
-    },
+    export const InfernalHeritage = new Edges("Infernal Heritage", "Physical expressions of Ixian lineage (wings, hooves, etc).");
+    export const FireResistance = new Edges("Fire Resistance", "Fire has less chance to harm you.");
+    export const Flight = new Edges("Flight", "You have small but functional bat wings.");
+    export const InnateSpell = new Edges("Innate Spell", "You know and can cast a spell at will.");
 
-    // --- ELF EDGES ---
-    {
-        Tags: [
-            {Race: elfBasicTag, Optional: false} // Mandatory base Edge
-        ],
-        Payload: new Edges(
-            "Dire Focus",
-            "When attacked and harmed, Elves become dangerous foes. Dire Focus - When hurt badly, you become sharper and more dextrous. And roll 1d6 or choose one of the following Edges."
-        )
-    },
-    {
-        Tags: [
-            {Race: elfBasicTag, Optional: true} // Optional 3-4
-        ],
-        Payload: new Edges(
-            "Sylvan Step",
-            "You can move unseen and unheard in the woods."
-        )
-    },
-    {
-        Tags: [
-            {Race: elfBasicTag, Optional: true} // Optional 5-6
-        ],
-        Payload: new Edges(
-            "Elven Accuracy",
-            "You do more damage with ranged attacks."
-        )
-    },
+    // Universal / Shared Edges
+    export const LowLightVision = new Edges("Low Light Vision", "See in daylight and dim conditions.");
+    export const Sneaky = new Edges("Sneaky", "Good at hiding and moving stealthily.");
+    export const Elusive = new Edges("Elusive", "Good at getting away from foes.");
+    export const Durable = new Edges("Durable", "Surprisingly resistant to serious wounds.");
+    export const SecondBreakfast = new Edges("Second Breakfast", "You perform better when well fed.");
+    
+    // Combat & Physical Edges
+    export const Armaments = new Edges("Armaments", "Proficient with all weapons and armors.");
+    export const Berserk = new Edges("Berserk", "Make lightning fast attacks on multiple melee opponents.");
+    export const Brawler1 = new Edges("Brawler 1", "Unarmed and improvised attacks cause more damage.");
+    export const Ambush = new Edges("Ambush", "Do extra damage to a surprised opponent.");
+    export const StunningBlow = new Edges("Stunning Blow", "Stun opponents with blunt or unarmed attacks.");
+    export const Sentinel = new Edges("Sentinel", "Always alert; can respond even when surprised.");
+    export const Lucky = new Edges("Lucky", "Unusually more successful in actions and events.");
+    export const Evasion = new Edges("Evasion", "Dexterously avoid damage from traps and spells.");
 
-    // --- HALFLING EDGES ---
-    {
-        Tags: [
-            {Race: halfingBasicTag, Optional: false} // Mandatory base Edge
-        ],
-        Payload: new Edges(
-            "Second Breakfast",
-            "A halfling receiving extra nourishment can excel. Second Breakfast - You perform better when well fed. And roll 1d6 or choose one of the following Edges."
-        )
-    },
-    {
-        Tags: [
-            {Race: halfingBasicTag, Optional: true}, // Optional 1-2
-            {Profession: { Class: "Adventurer", Job: "Rat Catcher" }, Optional: false}
-        ],
-        Payload: new Edges(
-            "Sneaky",
-            "You are good at hiding and moving stealthily."
-        )
-    },
-    {
-        Tags: [
-            {Race: halfingBasicTag, Optional: true} // Optional 3-4
-        ],
-        Payload: new Edges(
-            "Elusive",
-            "You are good at getting away from foes."
-        )
-    },
-    {
-        Tags: [
-            {Race: halfingBasicTag, Optional: true} // Optional 4-6
-        ],
-        Payload: new Edges(
-            "Durable",
-            "You are surprisingly resistant to serious wounds."
-        )
-    },
+    // Magic & Utility Edges
+    export const Hex1 = new Edges("Hex 1", "Make a nearby opponent weaker or ill.");
+    export const Grace = new Edges("Grace", "Armor-like divine protection.");
+    export const Alchemy = new Edges("Alchemy", "Identify and manipulate elements to create substances.");
+    export const RitualSpell = new Edges("Ritual Spell", "Cast a specific high-level spell as a ritual.");
+    export const Familiar = new Edges("Familiar", "Connection with a small, intelligent animal.");
+    export const CuttingWords = new Edges("Cutting Words", "Disrupt concentration and gain insight into motivations.");
+    export const Crucible = new Edges("Crucible", "Increase STR or CON by +1.");
+    export const ExpertGamester = new Edges("Expert Gamester", "Excel in games of chance and spot cheaters.");
+    export const Filcher = new Edges("Filcher", "Pick pockets and cut purses undetected.");
+    export const Burglar = new Edges("Burglar", "Good at climbing and picking locks.");
 
-    // --- HUMAN EDGES ---
-    {
-        Tags: [
-            {Race: humanBasicTag, Optional: false} // Mandatory base Edge
-        ],
-        Payload: new Edges(
-            "Adaptable",
-            "Humans seem to thrive in almost any condition. Adaptable - You are unusually good at many unexpected tasks."
-        )
-    },
+    // Additional Magic & Utility Edges
+    export const Arcana0 = new Edges("Arcana (Level 0)", "You know and can cast two Level 0 Arcane Spells.");
+    export const Arcana01 = new Edges("Arcana (Basic)", "You know and can cast one Level 0 and one Level 1 Arcane Spell.");
+    export const Dowsing = new Edges("Dowsing", "Locate water, metals, gems, and secret compartments.");
+    export const Nondetection = new Edges("Nondetection", "Difficult to locate through scrying or magical means.");
 
-    // --- IXIAN EDGES ---
-    {
-        Tags: [
-            {Race: ixianBasicTag, Optional: false} // Mandatory base Edge
-        ],
-        Payload: new Edges(
-            "Infernal Heritage",
-            "You have features expressing your Ixian heritage that could be glowing eyes, cloven hooves, a tail, and many others. See the table on the following page to determine your specific features. And roll 1d6 or choose one of the following Edges."
-        )
-    },
-    {
-        Tags: [
-            {Race: ixianBasicTag, Optional: true} // Optional 1-2
-        ],
-        Payload: new Edges(
-            "Fire Resistance",
-            "Fire has less chance to harm you."
-        )
-    },
-    {
-        Tags: [
-            {Race: ixianBasicTag, Optional: true} // Optional 3-4
-        ],
-        Payload: new Edges(
-            "Flight",
-            "You have small but functional bat wings."
-        )
-    },
-    {
-        Tags: [
-            {Race: ixianBasicTag, Optional: true} // Optional 5-6
-        ],
-        Payload: new Edges(
-            "Innate Spell",
-            "You know and can cast a spell at will. (The associated spell ability does not require a Spellcasting Ud Check or components, and is cast repeatedly until a failed Spell Check.)"
-        )
-    },
-    {
-        Tags: [
-            {Profession: { Class: "Adventurer", Job: "Escaped Thrall" }, Optional: false}
-        ],
-        Payload: new Edges(
-            "Crucible",
-            "That which has not killed you has made you stronger. Choose or roll 1d6 to increase your 1-3: STR or 4-6: CON by +1."
-        )
-    },
-    {
-        Tags: [
-            {Profession: cultistTag, Optional: false}
-        ],
-        Payload: new Edges(
-            "Hex 1",
-            "You can make a nearby opponent, that you can see, weaker."
-        )
-    },
-    // --- Barbarian Edges ---
-    {
-        Tags: [
-            {Profession: barbarianTag, Optional: false}
-        ],
-        Payload: new Edges(
-            "Berserk",
-            "When in this frenzied state, you can make lightning fast attacks on multiple melee opponents."
-        )
-    },
-    // --- Warlock Edges ---
-    {
-        Tags: [
-            {Profession: warlockTag, Optional: false}
-        ],
-        Payload: new Edges(
-            "Familiar",
-            "You have attracted, trained, and have a deep connection with a small, unusually intelligent animal that can follow simple commands and can communicate “yes” and “no” to your questions."
-        )
-    },
-    // --- Scoundrel Edges ---
-    {
-        Tags: [
-            {Profession: scoundrelTag, Optional: false}
-        ],
-        Payload: new Edges(
-            "Elusive",
-            "You are good at getting away from foes."
-        )
-    },
-    {
-        Tags: [
-            {Profession: scoundrelTag, Optional: false}
-        ],
-        Payload: new Edges(
-            "Filcher",
-            "You can usually pick pockets and cut purses undetected."
-        )
-    },
-];
+    // Choice groups for conditional logic (e.g., "If you already have X, take Y")
+    export const AcrobatEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Lucky, Evasion], [])], []
+    );
+
+    export const PrizefighterEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Brawler1, Brute1], [])], []
+    );
+
+    export const RuffianEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Ambush, StunningBlow], [])], []
+    );
+
+    export const WoodardEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Sneaky, Sentinel], [])], []
+    );
+
+    export const SpyEdgeSelection = new SelectionPackage<Edges>(
+        [], 
+        [new ChoiceGroup(1, [Burglar, Sneaky], [])], []
+    );
+
+    export const StreetUrchinEdgeSelection = new SelectionPackage<Edges>(
+        [Filcher, Elusive], 
+        [new ChoiceGroup(1, [Sneaky], [])], [] // Simplified logic for selection
+    );
+
+    // --- Choice Groups ---
+
+    export const DwarfEdgeSelection = new SelectionPackage<Edges>(
+        [DeterminedEdge], 
+        [new ChoiceGroup(1, [LowLightVision, UnderSense, PackMule], [])], []
+    );
+
+    export const ElfEdgeSelection = new SelectionPackage<Edges>(
+        [DireFocus], 
+        [new ChoiceGroup(1, [LowLightVision, SylvanStep, ElvenAccuracy], [])], []
+    );
+
+    export const OrcEdgeSelection = new SelectionPackage<Edges>(
+        [Vengeful], 
+        [new ChoiceGroup(1, [Brute1, LowLightVision, OrcSavagery], [])], []
+    );
+
+    export const IxianEdgeSelection = new SelectionPackage<Edges>(
+        [InfernalHeritage],
+        [new ChoiceGroup(1, [FireResistance, Flight, InnateSpell], [])], []
+    );
+
+    export const HalflingEdgeSelection = new SelectionPackage<Edges>(
+
+        [SecondBreakfast],
+
+        [new ChoiceGroup(1, [Sneaky, Elusive, Durable], [])], []
+
+    ) 
+
+    export const HumanEdgeSelection = new SelectionPackage<Edges>([Adaptable], [], []);
+
+    export const NoneEdgeSelection = new SelectionPackage<Edges>([], [], []);
+
+    export const RaceRecord : Record<RaceType, SelectionPackage<Edges>> = {
+        Dwarf: DwarfEdgeSelection,
+        Elf: ElfEdgeSelection,
+        Orc : OrcEdgeSelection,
+        Ixian : IxianEdgeSelection,
+        Human: HumanEdgeSelection,
+        Halfling : HalflingEdgeSelection
+    }
+
+    export const JobToEdgeRecord : Record<JobType, SelectionPackage<Edges>> = {
+        // Performer & Scholarly
+        "Acrobat": AcrobatEdgeSelection,
+        "Jester": new SelectionPackage<Edges>([CuttingWords], [], []),
+        "Contortionist": NoneEdgeSelection, // No edges provided in text
+        "Minstrel": NoneEdgeSelection,
+        "Scholar": NoneEdgeSelection,
+        "Storyteller/Thespian": NoneEdgeSelection,
+
+        // Religious
+        "Cultist": new SelectionPackage<Edges>([Hex1], [], []),
+        "Inquisitor": new SelectionPackage<Edges>([Grace], [], []),
+        "Touched/Anchorite": new SelectionPackage<Edges>([Grace], [], []),
+        "Accursed": NoneEdgeSelection,
+        "Acolyte": NoneEdgeSelection,
+        "Pariah": NoneEdgeSelection,
+
+        // Martial
+        "Armiger": new SelectionPackage<Edges>([Armaments], [], []),
+        "Mercenary/Hedge": new SelectionPackage<Edges>([Armaments], [], []),
+        "Prizefighter": PrizefighterEdgeSelection,
+        "Ruffian/Enforcer": RuffianEdgeSelection,
+        "Woodard/Warden": WoodardEdgeSelection,
+        "Barbarian": NoneEdgeSelection,
+
+        // Arcane
+        "Adept/Arcane Apprentice": new SelectionPackage<Edges>([Arcana01], [], []),
+        "Alchemy Apprentice": new SelectionPackage<Edges>([Alchemy], [], []),
+        "Arcane Researcher": new SelectionPackage<Edges>([Arcana0], [], []),
+        "Charlatan": new SelectionPackage<Edges>([RitualSpell], [], []),
+        "Dowser": new SelectionPackage<Edges>([Dowsing, Nondetection], [], []),
+        "Warlock": new SelectionPackage<Edges>([Familiar], [], []),
+
+        // Rogue
+        "Gambler": new SelectionPackage<Edges>([ExpertGamester], [], []),
+        "Scoundrel": new SelectionPackage<Edges>([Elusive, Filcher], [], []),
+        "Sharp": new SelectionPackage<Edges>([Sentinel], [], []),
+        "Spy": SpyEdgeSelection,
+        "Street Urchin": StreetUrchinEdgeSelection,
+        "Fence": NoneEdgeSelection,
+
+        // Skilled Laborer
+        "Escaped Peasant/Thrall": new SelectionPackage<Edges>([Crucible], [], []),
+        "Apprentice Artisan": NoneEdgeSelection,
+        "Apprentice Bureaucrat": NoneEdgeSelection,
+        "Free Laborer": NoneEdgeSelection,
+        "Apprentice Crafter": NoneEdgeSelection,
+        "Apprentice Mercantiler": NoneEdgeSelection
+    }
+
+    export const JobSubsetToEdgeRecord : Record<JobSubset, SelectionPackage<Edges>> = {
+        [JobSubsetEnum.None]: NoneEdgeSelection,
+        // Vagabond / Escaped Thrall Variants
+        [JobSubsetEnum.HouseServant]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Farmhand]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Laborer]: new SelectionPackage<Edges>([Crucible], [], []),
+        [JobSubsetEnum.Sailor]: new SelectionPackage<Edges>([Crucible], [], []),
+        
+        // Martial Subsets (Inherit Armaments)
+        [JobSubsetEnum.HedgeKnight]: new SelectionPackage<Edges>([Armaments], [], []),
+        [JobSubsetEnum.Mercenary]: new SelectionPackage<Edges>([Armaments], [], []),
+        [JobSubsetEnum.Bandit]: new SelectionPackage<Edges>([Armaments], [], []),
+
+        // Spy Specializations
+        [JobSubsetEnum.BurglarSpecialist]: new SelectionPackage<Edges>([Burglar], [], []),
+        
+        // Placeholder for remaining enums to satisfy Record type
+        [JobSubsetEnum.Jeweler]: NoneEdgeSelection,
+        [JobSubsetEnum.Arbalist]: NoneEdgeSelection,
+        [JobSubsetEnum.Scrivener]: NoneEdgeSelection,
+        [JobSubsetEnum.Advocate]: NoneEdgeSelection,
+        [JobSubsetEnum.Cartographer]: NoneEdgeSelection,
+        [JobSubsetEnum.Inspector]: NoneEdgeSelection,
+        [JobSubsetEnum.Interpreter]: NoneEdgeSelection,
+        [JobSubsetEnum.Smith]: NoneEdgeSelection,
+        [JobSubsetEnum.Carpenter]: NoneEdgeSelection,
+        [JobSubsetEnum.MoneyChanger]: NoneEdgeSelection,
+        [JobSubsetEnum.Ambler]: NoneEdgeSelection,
+        [JobSubsetEnum.Chef]: NoneEdgeSelection,
+        [JobSubsetEnum.Brewer]: NoneEdgeSelection,
+        [JobSubsetEnum.Farmer]: NoneEdgeSelection,
+        [JobSubsetEnum.Herder]: NoneEdgeSelection,
+        [JobSubsetEnum.Oratory]: NoneEdgeSelection,
+        [JobSubsetEnum.Theology]: NoneEdgeSelection,
+        [JobSubsetEnum.Vintner]: NoneEdgeSelection,
+        [JobSubsetEnum.Esoterica]: NoneEdgeSelection,
+        [JobSubsetEnum.ActiveService]: NoneEdgeSelection,
+        [JobSubsetEnum.Freelance]: NoneEdgeSelection,
+        [JobSubsetEnum.LordSlain]: NoneEdgeSelection,
+        [JobSubsetEnum.Disgraced]: NoneEdgeSelection,
+        [JobSubsetEnum.Discharged]: NoneEdgeSelection,
+        [JobSubsetEnum.IxianRaver]: NoneEdgeSelection,
+        [JobSubsetEnum.IxianArchon]: NoneEdgeSelection,
+        [JobSubsetEnum.Dragon]: NoneEdgeSelection,
+        [JobSubsetEnum.Lich]: NoneEdgeSelection,
+        [JobSubsetEnum.Wizard]: NoneEdgeSelection,
+        [JobSubsetEnum.ElderGod]: NoneEdgeSelection,
+        [JobSubsetEnum.Moloch]: NoneEdgeSelection,
+        [JobSubsetEnum.Kain]: NoneEdgeSelection,
+        [JobSubsetEnum.ThreeTrinketRandom]: NoneEdgeSelection,
+        [JobSubsetEnum.OneTrinketChoice]: NoneEdgeSelection,
+        [JobSubsetEnum.DisguiseSpecialist]: NoneEdgeSelection
+    }
+}

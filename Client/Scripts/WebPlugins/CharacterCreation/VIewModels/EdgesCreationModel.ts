@@ -8,22 +8,22 @@ export class EdgesCreationModel implements IWizardModel<void, Edges, Edges | und
     ViewUrl = "PartialViews/EdgesCreationView.html"
     isLoading: Observable<boolean>;
     
-    chosenEdge : Observable<MultiTaggedCharacterData<Edges>>
+    chosenEdge : Observable<Edges>
     chosenEdgeDescription : Observable<string>
 
-    constructor (public possibleEdges : MultiTaggedCharacterData<Edges>[]) {
-        this.chosenEdge = ko.observable<MultiTaggedCharacterData<Edges>>(this.possibleEdges[0])
-        this.chosenEdgeDescription = ko.observable<string>(this.chosenEdge().Payload.Description)
+    constructor (public possibleEdges : Edges[]) {
+        this.chosenEdge = ko.observable(this.possibleEdges[0])
+        this.chosenEdgeDescription = ko.observable<string>(this.chosenEdge().Description)
 
         this.isLoading = ko.observable(false)
 
-        this.chosenEdge.subscribe((newEdge)=>{this.chosenEdgeDescription(newEdge.Payload.Description)})
+        this.chosenEdge.subscribe((newEdge)=>{this.chosenEdgeDescription(newEdge.Description)})
     }
     
     Init (chosenEdges? : Edges) {
         if (chosenEdges === undefined) return Promise.resolve()
 
-        const EdgesData = this.possibleEdges.find((taggedEdge)=>taggedEdge.Payload.Name == chosenEdges.Name)
+        const EdgesData = this.possibleEdges.find((taggedEdge)=>taggedEdge.Name == chosenEdges.Name)
         
         if (EdgesData === undefined) {
             throw "Undefined edge"
@@ -35,6 +35,6 @@ export class EdgesCreationModel implements IWizardModel<void, Edges, Edges | und
     }
     
     Evaluate () {
-        return this.chosenEdge().Payload
+        return this.chosenEdge()
     }
 }
