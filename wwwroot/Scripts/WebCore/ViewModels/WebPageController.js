@@ -12,22 +12,22 @@ export class WebPageController {
     }
     Init() {
         // Add logic for grabbing state from url
-        const url = window.location.pathname;
-        const urlParts = url.split("/").filter((text) => { return text != ""; });
-        if (urlParts.length == 0)
-            return this.UpdatePage(this.NavigationOptions[0]);
-        let selectedPageOption = this.NavigationOptions.find((testOption) => { return testOption.pageKey == urlParts[0]; });
-        if (!selectedPageOption) {
-            console.warn("Page not found, redirecting to home");
-            selectedPageOption = this.NavigationOptions[0];
-        }
-        return this.UpdatePage(selectedPageOption);
+        // const url = window.location.pathname
+        // const urlParts : string[] = url.split("/").filter((text)=>{return text != ""})
+        // if (urlParts.length == 0) 
+        //     return this.UpdatePage(this.NavigationOptions[0])
+        // let selectedPageOption = this.NavigationOptions.find((testOption)=>{return testOption.pageKey == urlParts[0]})
+        // if (!selectedPageOption) {
+        //     console.warn("Page not found, redirecting to home");
+        //     selectedPageOption = this.NavigationOptions[0];
+        // }
+        // return this.UpdatePage(selectedPageOption)
+        return Promise.resolve();
     }
     async UpdatePage(selectedOption) {
         if (selectedOption === undefined)
             throw "Invalid url state!";
-        // history.replaceState
-        history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`);
+        // history.pushState(selectedOption.pageKey, selectedOption.FriendlyName, `/${selectedOption.pageKey}/`)
         const pageViewModel = selectedOption.modelConstructor();
         this.CurrentPage(pageViewModel);
         return pageViewModel.Model.Init().then(() => this.isLoading(false));

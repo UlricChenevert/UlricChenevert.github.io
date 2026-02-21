@@ -182,7 +182,7 @@
   grid-template-rows: 0fr;
   transition: grid-template-rows 1s cubic-bezier(1, 0, 0, 1), opacity 2s ease-in-out;
   opacity: 0;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .wizard-step-wrapper .reveal-section.hoverable-container {
   padding: 0;
@@ -203,7 +203,7 @@
 .reveal-section {
   min-height: 0;
   transition: opacity 2s ease-out, width 2s ease-in-out, height 1s ease-in-out;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .section-padding {
   padding: 1.5em !important;
@@ -221,6 +221,8 @@
   flex-shrink: 1;
 }
 .boolean-button {
+  -webkit-appearance: none;
+  appearance: none;
   color: #000000;
   border: 1px solid rgba(164, 153, 190, 0.3);
   border-radius: 0.2em;
@@ -378,6 +380,8 @@
   min-width: 12em;
   display: inline;
   white-space: nowrap;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .fill-row {
   flex-grow: 1;
@@ -398,6 +402,8 @@
 }
 .selected-button {
   background: #887aaa !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 @keyframes button-fadein {
   from {
@@ -490,6 +496,8 @@ hr {
   width: 70%;
 }
 .wizard-select {
+  -webkit-appearance: none;
+  appearance: none;
   background: #a499be;
   border: 1px solid rgba(164, 153, 190, 0.3);
   border-radius: 0.2em;
@@ -916,8 +924,10 @@ img {
 }
 .button-icon {
   aspect-ratio: 1;
-  max-height: 1.5em;
+  /* max-height: 1.5em; */
   transition: transform 0.3s ease-in-out;
+  width: 1.5em;      /* Force a width */
+  height: 1.5em;     /* Force a height */
 }
 .button-link {
   display: flex;
