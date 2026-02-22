@@ -5,7 +5,7 @@ import { ArticleModel } from "../ViewModels/ArticleModel.js"
 import { BlogPreviewer } from "../ViewModels/BlogPreviewer.js"
 
 export const constructHomeViewModel = ()=>{return Utility.BundleViewAndModel(new ArticleModel(
-    "/BlogViews/Home.html", "Welcome To My Skunkworks!", "/Images/Blogs/jupiter.jpg", ["Where am I? Who am I?", "The Vision", "Whats Cooking?", "What Drives Me"], ["General", "Welcome"], new Date(2026, 1, 22).toDateString(), "William Chenevert"))}
+    "/BlogViews/Home.html", "Welcome To My Skunkworks!", "/Images/Blogs/jupiter.jpg", ["Where am I? Who am I?", "The Vision", "What's Cooking?", "What Drives Me"], ["General", "Welcome"], new Date(2026, 1, 22).toDateString(), "William Chenevert"))}
 export const constructMinecraftProjectsViewModel = ()=>{return Utility.BundleViewAndModel(
     new ArticleModel("/BlogViews/Minecraft Projects.html", "Super Duper Smelter", "/Images/Blogs/minecraft-thumbnail.jpeg", [], ["Video Games"], new Date(2026, 1, 22).toDateString(), "William Chenevert"))
 }
@@ -44,7 +44,7 @@ export const constructProjectPreviewViewModel = ()=>{
             Description: "A character generator for a D&D-like homebrew",
             PictureUrl: "/Images/Blogs/PF 300dpi 3inW MEN ARMIGER MERCENARY Horse Alexander Wilke.jpg",
             modelConstructor: constructHomeViewModel, // if that doesn't work
-            pageUrl: "https://www.google.com"
+            pageUrl: "https://heartbreaker.chenevertsoftwareservices.com"
         }
     ]))
 }
