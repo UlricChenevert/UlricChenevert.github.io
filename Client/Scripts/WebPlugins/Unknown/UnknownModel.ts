@@ -5,7 +5,7 @@ import { ModeHandler } from "../../Unknown/Mode/ModeHandler.js";
 import { GraphicsConfig } from "../../Unknown/State/Config/GraphicsConfig.js";
 
 export class UnknownModel implements IHTMLInjectable<void> {
-    readonly ViewUrl = "PartialViews/UnknownView.html";
+    readonly ViewUrl = "WebPlugins/UnknownView.html";
     isLoading: Observable<boolean>;
     HTMLandKnockoutRequestCallback : Promise<void>
     modeHandler : ModeHandler

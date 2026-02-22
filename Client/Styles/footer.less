@@ -1,11 +1,10 @@
 @import "./variables.less";
 
 #footer {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    background-color: @pop-color;
-    color: @less-important-text-color;
+    // display: flex;
+    // flex-direction: row;
+    background-color: @article-color-2;
+    .regular-text;
 
     .centered {
          display: inline-flex;
@@ -30,20 +29,9 @@
         flex-grow: 2;
     }
 
-    h2 {
-        font-size: @title-font-size;
-        color: @text-color;
-    }
-
     #contacts-section {
         // background-color: @article-color;
 
         flex-grow: 1;
-    }
-
-    a {
-        color: @text-color;
-        font-weight: bold;
-        text-decoration: none;
     }
 }

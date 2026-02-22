@@ -11,7 +11,6 @@ var app = builder.Build();
 
 app.UseRouting();
 
-
 if (app.Environment.IsDevelopment())
 {
     app.UseStaticFiles(new StaticFileOptions

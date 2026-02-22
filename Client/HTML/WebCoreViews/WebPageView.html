@@ -1,0 +1,38 @@
+<nav id="navigation" class="flex-row">
+    <span class="nav-elements">
+        <img class="image-logo" style="filter: invert(100%);" data-bind="attr: { src: LogoImagePath }">
+    </span>
+
+    <span class="nav-elements" data-bind="foreach: NavigationOptions">
+        <button class="button-text" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+    </span>
+
+    <span class="nav-elements" data-bind="with: Contact">
+        <button class="button-primary" data-bind="text: FriendlyName; click: ()=>window.location.href='mailto:chenevertsoftwareservices@email.com'; "></button>
+    </span>
+</nav>
+
+<main id="main-view" data-bind="PartialView: CurrentPage()"></main>
+
+<footer id="footer" class="standard-padding spaced-evenly-row"> 
+    <span class="centered wrappable">
+        Terms & Conditions
+    </span>
+    
+    <span class="space-around-row centered wrappable">
+        <a href="mailto:chenevertsoftwareservices@email.com" class="button-link padded centered">
+            <img class="image-small" src="/Images/Icons/Gmail_Logo_White_512px.png" alt="Email" />
+        </a>
+
+        <a class="button-link padded centered" href="https://github.com/UlricChenevert">
+            <img class="image-small" src="/Images/Icons/github-white-icon.png" alt="Github" />
+        </a>
+        <a class="button-link padded centered" href="https://www.linkedin.com/in/william-chenevert">
+            <img class="image-small" src="/Images/Icons/linkedin-app-white-icon.png" alt="Linkedin" />
+        </a>
+    </span>
+    
+    <span class="centered wrappable">
+        © 2025 Chenevert Software Services.&nbsp;<a class="unimportant-link" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license">See License</a>
+    </span>
+</footer>

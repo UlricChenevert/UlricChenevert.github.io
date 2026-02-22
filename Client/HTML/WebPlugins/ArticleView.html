@@ -1,0 +1,43 @@
+<div id="custom-article" >
+    <div class="title-card">
+        <img class="article-image fading-image-to-bottom" data-bind="attr: {src: pictureURL}">
+        <div class="title-text centered small-separation" data-bind="text: Title">Place Text Here</div>
+    </div>
+    
+    <div class="flex-row">
+        <div class="bordered article padded-x-large" data-bind="PartialView: Blog"></div>
+        <div class="bordered info-card">
+            <div class="publication-card padded-x-large">
+                <div class="padded spaced-evenly-row">
+                    <div>
+                        <div class="small-separation regular-text">Author Name</div>
+                        <div data-bind="text: Author"></div>
+                    </div>
+                    <div>
+                        <div class="small-separation regular-text">Publication Date</div>
+                        <div data-bind="text: Date"></div>
+                    </div>
+                </div>
+                <div class="padded spaced-evenly-row">
+                    <div>
+                        <div class="small-separation regular-text">Categories</div>
+                        <div class="spaced-evenly-row" data-bind="foreach: BlogTags">
+                            <div data-bind="text: $data"></div>&ensp;
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small-separation regular-text">Reading Time</div>
+                        <div data-bind="text: ReadingTime"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="padded-x-large table-of-contents">
+                <div class="small-separation regular-text">Table Of Contents</div>
+                <ul class="card list" data-bind="foreach: sections">
+                    <li class="list-item" data-bind="text: $data"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

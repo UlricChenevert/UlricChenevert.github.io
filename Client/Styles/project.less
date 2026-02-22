@@ -4,17 +4,123 @@
 @import "./variables.less";
 @import "./article.less";
 @import "./game.less";
-@import "./characterCreation.less";
 @import "./carousel.less";
 @import "./toolTip.less";
 @import "./paneledOptions.less";
 @import "./footer.less";
 @import "./modal.less";
+@import "./buttons.less";
+@import "./image.less";
 
+.link {
+    text-decoration: none;
+    .regular-text;
+}
+
+.unimportant-link {
+    .regular-text;
+    .link;
+}
+
+.fading-image-to-bottom {
+  /* bottom fading */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+}
+
+.card-list-item {
+    flex: 0 0 30%;
+    .card;
+}
+
+.bordered {
+    border: solid 1px @border-color ;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.wrappable {
+    flex-wrap: wrap;
+}
+
+.padded {
+    padding: 0.75em 0.75em;
+}
+
+.padded-large {
+    padding: 1.5em 1.5em;
+}
+
+.padded-x-large {
+    padding: 3em 3em !important;
+}
+
+.spaced-evenly-row {
+    justify-content: space-evenly;
+    .flex-row;
+}
+
+.space-around-row {
+    justify-content: space-evenly;
+    .flex-row;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.title-text {
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.emphasized-text {
+    color: @emphasized-text-color;
+}
+
+.small-separation {
+    margin-bottom: 0.5em;
+}
+
+.list {
+    list-style-type: disc;
+    padding-left: 1.5rem;      /* Ensures the bullet isn't cut off */
+    margin-bottom: 1rem;
+}
+
+.list-item {
+    margin-left: 1.5em;
+    
+    margin-bottom: 0.5rem;     /* Adds space between individual points */
+    line-height: 1.6;
+
+}
+
+.regular-text {
+ color: @regular-text-color;
+}
+
+.emphasized-card {
+    background-color: @pop-color;
+    .card;
+}
+
+.card {
+    border-radius: 1em;
+    background-color: @article-color;
+    .padded;
+}
 
 body {
     background-color: @background-color;
-    color: @text-color;
+    .emphasized-text;
     
     // @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
 
@@ -25,10 +131,6 @@ body {
 
     display: flex;
     flex-direction: column;
-}
-
-img {
-    max-width: 80%;
 }
 
 .icon {
@@ -61,7 +163,7 @@ img {
     margin: 0;
 
     // font-family: inherit;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Inter, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: inherit;
 }
 

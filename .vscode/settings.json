@@ -5,4 +5,38 @@
         "Halfling",
         "Perlin"
 ],
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+
+    // .NET Build Artifacts
+    "**/bin": true,
+    "**/obj": true,
+
+    // Web / Frontend Noise
+    "**/node_modules": true,
+    "**/.npm": true,
+    "**/dist": true,
+    "**/.parcel-cache": true,
+
+    // .NET Specific temp files
+    "**/*.pyc": true,
+    "**/*.sln.dotSettings.user": true,
+    "**/_ReSharper.Caches": true,
+
+    // Optional: Hide the .vscode folder itself if you're done configuring
+    // ".vscode": true 
+    "package-lock.json":true,
+    ".github/":true,
+
+    // "wwwroot/":true,
+    "LICENSE":true,
+    "**/*.sln":true,
+    ".gitignore":true
+  }
 }

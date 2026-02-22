@@ -3,3 +3,14 @@
 }
 
 @grow-animation-settings: grow 2s;
+
+.animate-hover {
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s, transform 0.18s;
+    animation: button-fadein 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+
+    &::hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}

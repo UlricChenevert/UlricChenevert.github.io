@@ -1,31 +1,12 @@
 @import "./variables.less";
 
-#nav-bar {
-    background-color: @pop-color; 
-    padding: @standard-padding; 
-    filter: drop-shadow(0 0 0.5em #000000);
-    position: sticky;
-    top:0;
-    display: flex;
-    flex-direction: column;
+#navigation {
+    .flex-row;
+
+    padding: 0 3*@section-padding; 
     max-width: 100vw;
 
-    z-index: 999;
-
-    // button {
-    //     border: 1;
-    //     border-color: transparent;
-    //     border-radius: 0.5em;
-    //     padding: auto;
-
-    //     background-color: transparent;
-
-    //     &:hover, &:focus {
-    //         background-color: @hover-color;
-    //         outline: none;
-    //         transform: scale(1.3);
-    //     }
-    // }
+    justify-content: space-between;
 
     .nav-elements {
         display: flex; 
@@ -43,12 +24,5 @@
             display: none;
         }
     }
-
-    .logo {
-        font-family: 'Knewave-Regular', Arial;
-        font-weight: bold;
-        font-size: @title-font-size;
-    }
-
 }
 

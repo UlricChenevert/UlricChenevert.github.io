@@ -1,0 +1,45 @@
+.image-general {
+    
+}
+
+.image-small {
+    max-width: 1.5em;
+    .image-general;
+}
+
+.image-medium {
+    max-width: 6.5em;
+    .image-general;
+}
+
+.image-logo {
+    aspect-ratio: 1;
+    .image-medium;
+}
+
+.image-large {
+    max-width: 25em;
+    .image-general;
+}
+
+.image-icon {
+    aspect-ratio: 1;
+    .image-small;
+}
+
+.article-image {
+    width: 100vw;
+    .image-general;
+
+    height: 40vh;
+    display: flex;
+    flex-shrink: 0;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}

@@ -1,0 +1,15 @@
+<div class="bordered padded-x-large">
+    <div class="spaced-evenly-row wrappable" data-bind="foreach: options">
+        <div class="padded-x-large small-separation card-list-item" data-bind="click: (data)=>{
+                if (data.pageUrl !== undefined) window.location.href = pageUrl;
+                $parent.UpdatePage(data);
+            }"> 
+            <div class="image-container">
+                <img class="image-large small-separation" data-bind="attr: {src: PictureUrl}">
+            </div>
+            <div class="small-separation" data-bind="text: FriendlyName"></div>
+            <p class="regular-text small-separation" data-bind="text: Description">
+            </p>
+        </div>
+    </div>
+</div>
