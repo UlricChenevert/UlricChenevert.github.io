@@ -9,18 +9,50 @@
     border: none;
     border-radius: 0.50em;
 
-    .animate-hover;
+    .animate-hover();
+    .button-hover();
 }
 
 .button-text {
     background: transparent;
-    .regular-text;
-    .button-basic;
+    .regular-text();
+    .button-basic();
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.button-hover {
+    &:hover {
+        cursor: pointer; 
+    }
+}
+
+.card-button {
+    flex: 0 0 30%;
+    .bordered();
+    .card();
+    .animate-hover();
+    .button-hover();
+    
+    &:hover {
+        .bordered-heavy();
+        .outlined-highlight();
+        .neon-light-box-shadow-pop();
+    }
 }
 
 .button-primary {
     background: @pop-color;
-    .button-basic;
+    &:hover {
+        background-color: transparent;
+        color: @pop-color;
+        outline: @pop-color;
+        .bordered-heavy-pop();
+        
+    }
+    .button-basic();
 }
 
 .button-secondary {

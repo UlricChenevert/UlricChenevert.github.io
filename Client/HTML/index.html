@@ -8,7 +8,17 @@
     <link rel="icon" type="image/png" href="/Images/favicon.ico"/>
     <script type='text/javascript' src="/Scripts/Framework/Knockout/knockout.js"></script>
     <script type="module" src="/Scripts/WebCore/Entry.js"></script>
-  </head>
+  </head>  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCGKMEPW1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-LDCGKMEPW1');
+  </script>
+
   <body>
     <div id="main-website-container" data-bind="PartialView: main"></div>
   </body>

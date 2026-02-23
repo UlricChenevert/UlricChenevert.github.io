@@ -1,6 +1,6 @@
 <div class="bordered padded-x-large">
     <div class="spaced-evenly-row wrappable" data-bind="foreach: options">
-        <div class="padded-x-large small-separation card-list-item" data-bind="click: (data)=>{
+        <div class="padded-x-large small-separation card-button" data-bind="click: (data)=>{
                 if (data.pageUrl !== undefined) window.location.href = pageUrl;
                 $parent.UpdatePage(data);
             }"> 

@@ -22,19 +22,43 @@
     .link;
 }
 
+
+
 .fading-image-to-bottom {
   /* bottom fading */
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
 }
 
-.card-list-item {
-    flex: 0 0 30%;
-    .card;
-}
-
 .bordered {
     border: solid 1px @border-color ;
+}
+
+.bordered-heavy {
+    border: solid 2px @border-color;
+}
+
+.bordered-heavy-pop {
+    border: solid 2px @pop-color;
+}
+
+.bordered-heavy-emphasize {
+    border: solid 2px @emphasized-text-color;
+}
+
+.neon-light-box-shadow-pop {
+    box-shadow: 
+        0.2em 0.2em 1.2em @pop-color, 
+        -1 * 0.2em -1 * 0.2em 1.2em @pop-color;
+}
+
+
+.outlined {
+    outline: @border-color;
+}
+
+.outlined-highlight {
+    outline: @emphasized-text-color;
 }
 
 .centered {
@@ -83,6 +107,7 @@
 
 .emphasized-text {
     color: @emphasized-text-color;
+    font-size: 1.05em;
 }
 
 .small-separation {
@@ -90,6 +115,7 @@
 }
 
 .list {
+    background-color: @article-color;
     list-style-type: disc;
     padding-left: 1.5rem;      /* Ensures the bullet isn't cut off */
     margin-bottom: 1rem;
@@ -114,7 +140,6 @@
 
 .card {
     border-radius: 1em;
-    background-color: @article-color;
     .padded;
 }
 
