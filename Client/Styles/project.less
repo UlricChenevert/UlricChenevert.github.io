@@ -85,6 +85,12 @@
     padding: 3em 3em !important;
 }
 
+.turn-to-column-with-phone {
+    @media (width <= @max-size-before-element-reaction) {
+        flex-direction: column !important;
+    }
+}
+
 .spaced-evenly-row {
     justify-content: space-evenly;
     .flex-row;
@@ -144,13 +150,12 @@
 }
 
 body {
-    background-color: @background-color;
+    background-color: @article-color;
     .emphasized-text;
     
     // @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
 
     font-size: @body-font-size;
-    background-color: @pop-color;
 
     min-height: 100vh;
 

@@ -4,7 +4,7 @@ import { PageOption } from "../../../WebCore/Contracts/PageOption.js";
 import { customEvents } from "../Configuration/Events.js";
 export class BlogPreviewer implements IHTMLInjectable<void> {
     isLoading: Observable<boolean>;
-    public readonly ViewUrl : string = "/WebPlugins/BlogPreviewer.html"
+    public readonly ViewUrl : string = "WebPlugins/BlogPreviewer.html"
     
     constructor(public options: PageOption[]) {
         this.isLoading = ko.observable(true);

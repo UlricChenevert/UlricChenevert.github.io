@@ -17,8 +17,12 @@ public class HomeController : Controller
     {
         var fullPath = Path.Combine(_env.WebRootPath, "HTML", "index.html");
 
-        Console.Write(fullPath);
+        if (!System.IO.File.Exists(fullPath))
+        {
+            return NotFound($"Index.html not found at: {fullPath}");
+        }
 
-        return PhysicalFile(fullPath, "text/html");
+        var html = System.IO.File.ReadAllText(fullPath);
+        return Content(html, "text/html");
     }
 }

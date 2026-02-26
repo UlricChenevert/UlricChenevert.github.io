@@ -6,10 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 var app = builder.Build();
+app.UseDefaultFiles();
+
+app.MapControllers();
 
 // app.UseHttpsRedirection();
 
 app.UseRouting();
+app.UseStaticFiles(); 
 
 if (app.Environment.IsDevelopment())
 {
@@ -20,10 +24,6 @@ if (app.Environment.IsDevelopment())
         RequestPath = "/HTML" 
     });
 }
-
-app.UseStaticFiles(); 
-
-app.MapControllers();
 
 app.MapFallbackToController("Index", "Home");
 

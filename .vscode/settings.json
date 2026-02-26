@@ -15,7 +15,7 @@
     "**/Thumbs.db": true,
 
     // .NET Build Artifacts
-    "**/bin": true,
+    // "**/bin": true,
     "**/obj": true,
 
     // Web / Frontend Noise
@@ -34,7 +34,7 @@
     "package-lock.json":true,
     ".github/":true,
 
-    // "wwwroot/":true,
+    "wwwroot/":true,
     "LICENSE":true,
     "**/*.sln":true,
     ".gitignore":true
